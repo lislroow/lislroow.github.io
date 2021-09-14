@@ -17,30 +17,33 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>chrome | dlog</title>
+<title>git | dlog</title>
 
 
   
-  <meta name="description" content="http 를 https 로 자동으로 접속되는 상황
-
-chrome://net-internals/#hsts 로 이동
-Delete domain security policies 에서 해당 도메인 delete
-
-">
-<meta property="og:title" content="chrome" />
-<meta property="og:description" content="http 를 https 로 자동으로 접속되는 상황  chrome://net-internals/#hsts 로 이동 Delete domain security policies 에서 해당 도메인 delete  " />
+  <meta name="description" content="basic
+git config --global core.autocrlf true
+git config --global user.email hi@mgkim.net
+git config --global user.name 김명구
+pre-commit
+# …">
+<meta property="og:title" content="git" />
+<meta property="og:description" content="basic git config --global core.autocrlf true git config --global user.email hi@mgkim.net git config --global user.name 김명구 pre-commit # project/.git/hooks/pre-commit #!/bin/sh LIST=$(git diff --cached --name-only --diff-filter=ACRM) for file in $LIST do if [ $file = &#34;.settings/org.eclipse.wst.common.component&#34; ]; then echo &#34;이클립스 설정 파일($file)은 commit을 할 수 없습니다.&#34; exit 1 fi done exit 0 initialize Git global setup git config &ndash;global user.name &ldquo;myeonggu kim&rdquo; git config &ndash;global user.email &ldquo;mgkim.net@gmail.com&rdquo;
+Create a new repository git clone git@gitlab:nameless." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/localenv/chrome/" /><meta property="article:section" content="localenv" />
+<meta property="og:url" content="/localenv/git/" /><meta property="article:section" content="localenv" />
 
 
 
-<meta itemprop="name" content="chrome">
-<meta itemprop="description" content="http 를 https 로 자동으로 접속되는 상황  chrome://net-internals/#hsts 로 이동 Delete domain security policies 에서 해당 도메인 delete  ">
+<meta itemprop="name" content="git">
+<meta itemprop="description" content="basic git config --global core.autocrlf true git config --global user.email hi@mgkim.net git config --global user.name 김명구 pre-commit # project/.git/hooks/pre-commit #!/bin/sh LIST=$(git diff --cached --name-only --diff-filter=ACRM) for file in $LIST do if [ $file = &#34;.settings/org.eclipse.wst.common.component&#34; ]; then echo &#34;이클립스 설정 파일($file)은 commit을 할 수 없습니다.&#34; exit 1 fi done exit 0 initialize Git global setup git config &ndash;global user.name &ldquo;myeonggu kim&rdquo; git config &ndash;global user.email &ldquo;mgkim.net@gmail.com&rdquo;
+Create a new repository git clone git@gitlab:nameless.">
 
-<meta itemprop="wordCount" content="18">
+<meta itemprop="wordCount" content="143">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="chrome"/>
-<meta name="twitter:description" content="http 를 https 로 자동으로 접속되는 상황  chrome://net-internals/#hsts 로 이동 Delete domain security policies 에서 해당 도메인 delete  "/>
+<meta name="twitter:title" content="git"/>
+<meta name="twitter:description" content="basic git config --global core.autocrlf true git config --global user.email hi@mgkim.net git config --global user.name 김명구 pre-commit # project/.git/hooks/pre-commit #!/bin/sh LIST=$(git diff --cached --name-only --diff-filter=ACRM) for file in $LIST do if [ $file = &#34;.settings/org.eclipse.wst.common.component&#34; ]; then echo &#34;이클립스 설정 파일($file)은 commit을 할 수 없습니다.&#34; exit 1 fi done exit 0 initialize Git global setup git config &ndash;global user.name &ldquo;myeonggu kim&rdquo; git config &ndash;global user.email &ldquo;mgkim.net@gmail.com&rdquo;
+Create a new repository git clone git@gitlab:nameless."/>
 
 
 
@@ -185,12 +188,12 @@ Delete domain security policies 에서 해당 도메인 delete
   
   <a href="/localenv/" title="로컬 환경" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-localenv"><span class="">localenv</span></a>
   <ul class="ul-1">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-localenvchrome-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-localenvchrome-li">
   
-  <a href="/localenv/chrome/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-localenvchrome"><span class="td-sidebar-nav-active-item">chrome</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-localenvgit-li">
+  <a href="/localenv/chrome/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-localenvchrome"><span class="">chrome</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-localenvgit-li">
   
-  <a href="/localenv/git/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-localenvgit"><span class="">git</span></a>
+  <a href="/localenv/git/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-localenvgit"><span class="td-sidebar-nav-active-item">git</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-localenvjava-li">
   
   <a href="/localenv/java/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-localenvjava"><span class="">java</span></a>
@@ -233,7 +236,16 @@ Delete domain security policies 에서 해당 도메인 delete
 
 <div class="td-toc"><nav id="TableOfContents">
   <ul>
-    <li><a href="#http-를-https-로-자동으로-접속되는-상황">http 를 https 로 자동으로 접속되는 상황</a></li>
+    <li><a href="#basic">basic</a></li>
+    <li><a href="#pre-commit">pre-commit</a></li>
+    <li><a href="#initialize">initialize</a>
+      <ul>
+        <li><a href="#git-global-setup">Git global setup</a></li>
+        <li><a href="#create-a-new-repository">Create a new repository</a></li>
+        <li><a href="#push-an-existing-folder">Push an existing folder</a></li>
+        <li><a href="#push-an-existing-git-repository">Push an existing Git repository</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
 
@@ -282,7 +294,7 @@ Delete domain security policies 에서 해당 도메인 delete
 
 
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="/localenv/chrome/">chrome</a>
+	<a href="/localenv/git/">git</a>
 </li>
 
 	</ol>
@@ -290,7 +302,7 @@ Delete domain security policies 에서 해당 도메인 delete
 
             
 <div class="td-content">
-	<h1>chrome</h1>
+	<h1>git</h1>
 	
 	<header class="article-meta">
 		
@@ -307,11 +319,47 @@ Delete domain security policies 에서 해당 도메인 delete
 		
 		
 	</header>    
-	<h2 id="http-를-https-로-자동으로-접속되는-상황">http 를 https 로 자동으로 접속되는 상황</h2>
-<ul>
-<li><code>chrome://net-internals/#hsts</code> 로 이동</li>
-<li><code>Delete domain security policies</code> 에서 해당 도메인 delete</li>
-</ul>
+	<h2 id="basic">basic</h2>
+<pre><code>git config --global core.autocrlf true
+git config --global user.email hi@mgkim.net
+git config --global user.name 김명구
+</code></pre><h2 id="pre-commit">pre-commit</h2>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#408080;font-style:italic"># project/.git/hooks/pre-commit</span>
+<span style="color:#408080;font-style:italic">#!/bin/sh</span>
+<span style="color:#19177c">LIST</span><span style="color:#666">=</span><span style="color:#008000;font-weight:bold">$(</span>git diff --cached --name-only --diff-filter<span style="color:#666">=</span>ACRM<span style="color:#008000;font-weight:bold">)</span>
+
+<span style="color:#008000;font-weight:bold">for</span> file in <span style="color:#19177c">$LIST</span>
+<span style="color:#008000;font-weight:bold">do</span>
+	<span style="color:#008000;font-weight:bold">if</span> <span style="color:#666">[</span> <span style="color:#19177c">$file</span> <span style="color:#666">=</span> <span style="color:#ba2121">&#34;.settings/org.eclipse.wst.common.component&#34;</span> <span style="color:#666">]</span>; <span style="color:#008000;font-weight:bold">then</span>
+		<span style="color:#008000">echo</span> <span style="color:#ba2121">&#34;이클립스 설정 파일(</span><span style="color:#19177c">$file</span><span style="color:#ba2121">)은 commit을 할 수 없습니다.&#34;</span>
+		<span style="color:#008000">exit</span> <span style="color:#666">1</span>
+	<span style="color:#008000;font-weight:bold">fi</span>
+<span style="color:#008000;font-weight:bold">done</span>
+<span style="color:#008000">exit</span> <span style="color:#666">0</span>
+</code></pre></div><h2 id="initialize">initialize</h2>
+<h3 id="git-global-setup">Git global setup</h3>
+<p>git config &ndash;global user.name &ldquo;myeonggu kim&rdquo;
+git config &ndash;global user.email &ldquo;<a href="mailto:mgkim.net@gmail.com">mgkim.net@gmail.com</a>&rdquo;</p>
+<h3 id="create-a-new-repository">Create a new repository</h3>
+<p>git clone git@gitlab:nameless.spring/prototype.git
+cd prototype
+touch README.md
+git add README.md
+git commit -m &ldquo;add README&rdquo;
+git push -u origin master</p>
+<h3 id="push-an-existing-folder">Push an existing folder</h3>
+<p>cd existing_folder
+git init
+git remote add origin git@gitlab:nameless.spring/prototype.git
+git add .
+git commit -m &ldquo;Initial commit&rdquo;
+git push -u origin master</p>
+<h3 id="push-an-existing-git-repository">Push an existing Git repository</h3>
+<p>cd existing_repo
+git remote rename origin old-origin
+git remote add origin git@gitlab:nameless.spring/prototype.git
+git push -u origin &ndash;all
+git push -u origin &ndash;tags</p>
 
 	
 	

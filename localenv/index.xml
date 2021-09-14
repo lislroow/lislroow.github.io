@@ -32,6 +32,121 @@
     </item>
     
     <item>
+      <title>Localenv: git</title>
+      <link>/localenv/git/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/localenv/git/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;basic&#34;&gt;basic&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;git config --global core.autocrlf true
+git config --global user.email hi@mgkim.net
+git config --global user.name 김명구
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;pre-commit&#34;&gt;pre-commit&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#408080;font-style:italic&#34;&gt;# project/.git/hooks/pre-commit&lt;/span&gt;
+&lt;span style=&#34;color:#408080;font-style:italic&#34;&gt;#!/bin/sh&lt;/span&gt;
+&lt;span style=&#34;color:#19177c&#34;&gt;LIST&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;$(&lt;/span&gt;git diff --cached --name-only --diff-filter&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;ACRM&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;)&lt;/span&gt;
+
+&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;for&lt;/span&gt; file in &lt;span style=&#34;color:#19177c&#34;&gt;$LIST&lt;/span&gt;
+&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;do&lt;/span&gt;
+	&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;[&lt;/span&gt; &lt;span style=&#34;color:#19177c&#34;&gt;$file&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#34;.settings/org.eclipse.wst.common.component&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;]&lt;/span&gt;; &lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;then&lt;/span&gt;
+		&lt;span style=&#34;color:#008000&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#34;이클립스 설정 파일(&lt;/span&gt;&lt;span style=&#34;color:#19177c&#34;&gt;$file&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;)은 commit을 할 수 없습니다.&amp;#34;&lt;/span&gt;
+		&lt;span style=&#34;color:#008000&#34;&gt;exit&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;1&lt;/span&gt;
+	&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;fi&lt;/span&gt;
+&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;done&lt;/span&gt;
+&lt;span style=&#34;color:#008000&#34;&gt;exit&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;0&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;initialize&#34;&gt;initialize&lt;/h2&gt;
+&lt;h3 id=&#34;git-global-setup&#34;&gt;Git global setup&lt;/h3&gt;
+&lt;p&gt;git config &amp;ndash;global user.name &amp;ldquo;myeonggu kim&amp;rdquo;
+git config &amp;ndash;global user.email &amp;ldquo;&lt;a href=&#34;mailto:mgkim.net@gmail.com&#34;&gt;mgkim.net@gmail.com&lt;/a&gt;&amp;rdquo;&lt;/p&gt;
+&lt;h3 id=&#34;create-a-new-repository&#34;&gt;Create a new repository&lt;/h3&gt;
+&lt;p&gt;git clone git@gitlab:nameless.spring/prototype.git
+cd prototype
+touch README.md
+git add README.md
+git commit -m &amp;ldquo;add README&amp;rdquo;
+git push -u origin master&lt;/p&gt;
+&lt;h3 id=&#34;push-an-existing-folder&#34;&gt;Push an existing folder&lt;/h3&gt;
+&lt;p&gt;cd existing_folder
+git init
+git remote add origin git@gitlab:nameless.spring/prototype.git
+git add .
+git commit -m &amp;ldquo;Initial commit&amp;rdquo;
+git push -u origin master&lt;/p&gt;
+&lt;h3 id=&#34;push-an-existing-git-repository&#34;&gt;Push an existing Git repository&lt;/h3&gt;
+&lt;p&gt;cd existing_repo
+git remote rename origin old-origin
+git remote add origin git@gitlab:nameless.spring/prototype.git
+git push -u origin &amp;ndash;all
+git push -u origin &amp;ndash;tags&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Localenv: java</title>
+      <link>/localenv/java/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/localenv/java/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;vmargs&#34;&gt;vmargs&lt;/h2&gt;
+&lt;p&gt;tomcat/bin/setenv.* 에 JAVA_OPTS 변수 선언&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#setenv.sh
+JAVA_OPTS=&amp;quot; -Djava.net.preferIPv4Stack=true ${JAVA_OPTS} &amp;quot;
+
+#setenv.bat
+set JAVA_OPTS=&amp;quot; -Djava.net.preferIPv4Stack=true %JAVA_OPTS% &amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;request.getRemoteAddr() 반환이 IPv6 로 출력되는 경우&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;-Djava.net.preferIPv4Stack=true
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;java.lang.ClassCastException: weblogic.net.http.SOAPHttpsURLConnection cannot be cast to javax.net.ssl.HttpsURLConnection&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;-DUseSunHttpHandler=true
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;keytool&#34;&gt;keytool&lt;/h2&gt;
+&lt;p&gt;인증서 등록&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 등록할 인증서 파일: hello.crt
+# java 환경 인증서 저장경로 이동
+cd $JAVA_HOME/jre/lib/security
+
+# 인증서 등록
+keytool -importcert -keystore cacerts -file &amp;quot;hello.crt&amp;quot; -alias &amp;quot;hello&amp;quot;
+키 저장소 비밀번호 입력: (changeit 입력)
+이 인증서를 신뢰합니까? [아니오]:  (y 입력)
+인증서가 키 저장소에 추가되었습니다.
+
+# 인증서 조회
+keytool -list -keystore cacerts | grep &amp;quot;hello&amp;quot;
+키 저장소 비밀번호 입력: (changeit 입력)
+hello, 2020. 5. 8, trustedCertEntry,
+
+# 인증서 삭제
+keytool -delete -alias &amp;quot;hello&amp;quot; -keystore &amp;quot;cacerts&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Localenv: maven</title>
+      <link>/localenv/maven/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/localenv/maven/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;password&#34;&gt;password&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;C:&lt;span style=&#34;color:#a0a000&#34;&gt;\Users\Administrator&lt;/span&gt;&lt;span style=&#34;color:#408080;font-style:italic&#34;&gt;&amp;gt;mvn --encrypt-master-password mypassword&lt;/span&gt;
+{ODOdTfm09eMHYfUVt4vkUfm9dw1pkSRC+HAXsuqE0p0=}
+
+C:&lt;span style=&#34;color:#a0a000&#34;&gt;\Users\Administrator&lt;/span&gt;&lt;span style=&#34;color:#408080;font-style:italic&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      </description>
+    </item>
+    
+    <item>
       <title>Localenv: oracle client</title>
       <link>/localenv/oracle-client/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -195,6 +310,27 @@ SQL&amp;gt; select username, account_status, expiry_date from dba_users;
 &lt;p&gt;&lt;code&gt;NAT Settings...&lt;/code&gt; &amp;gt; &lt;code&gt;Gateway IP&lt;/code&gt; 확인&lt;/p&gt;
 &lt;p&gt;Subnet IP: 10.28.7.0, Subnet mask: 255.255.255.0&lt;/p&gt;
 
+      </description>
+    </item>
+    
+    <item>
+      <title>Localenv: windows cmd</title>
+      <link>/localenv/windows-cmd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/localenv/windows-cmd/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;디렉토리-압축&#34;&gt;디렉토리 압축&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#34;C:\Program Files\7-Zip\7z.exe&amp;#34;&lt;/span&gt; a -mx7 -mmt Z:\project.zip &lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#34;Z:\project&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#34;C:\Program Files\7-Zip\7z.exe&amp;#34;&lt;/span&gt; a -mx5 -t7z Z:\project.zip &lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#34;Z:\project&amp;#34;&lt;/span&gt; -xr!target -xr!node_modules
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;start-jmeter&#34;&gt;start-jmeter&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#19177c&#34;&gt;ts&lt;/span&gt;=&lt;span style=&#34;color:#19177c&#34;&gt;%DATE:~0,4%%DATE:~5,2%%DATE:~8,2%&lt;/span&gt;_&lt;span style=&#34;color:#19177c&#34;&gt;%TIME:~0,2%%TIME:~3,2%%TIME:~6,2%&lt;/span&gt;
+apache-jmeter-5.4.1\bin\jmeter.bat -n -t jmeter-mgkim-core.jmx -l data\&lt;span style=&#34;color:#19177c&#34;&gt;%ts%&lt;/span&gt;.csv -e -o data\&lt;span style=&#34;color:#19177c&#34;&gt;%ts%&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;dir&#34;&gt;dir&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;xcopy C:\exp\*.* Z:\exp\ /d/i/s/c/y
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       </description>
     </item>
     
