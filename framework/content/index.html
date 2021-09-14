@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.87.0" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
+
+<title>spring | dlog</title>
+
+
+  
+  <meta name="description" content="KInit
+was booting 과정에서 웹 어플리케이션이 초기화되는 시점은
+`javax.servlet.ServletContainerInitializer`를 구현한 클래스의 `onStartup(Set&lt;Class&lt;?&gt;&gt; …">
+<meta property="og:title" content="spring" />
+<meta property="og:description" content="KInit was booting 과정에서 웹 어플리케이션이 초기화되는 시점은
+`javax.servlet.ServletContainerInitializer`를 구현한 클래스의 `onStartup(Set&lt;Class&lt;?&gt;&gt; webAppInitializerClasses, ServletContext servletContext)` 메소드 호출입니다.
+Figure 1. ServletContext 초기화javax.servlet.ServletContainerInitializer를 구현한 클래스는 spring-web.jar 에 포함된 SpringServletContainerInitializer 클래스이며, onStartup 메소드에서는 WebApplicationInitializer 구현체를 탐지하고 onStartup(ServletContext servletContext) 메소드를 호출하는 것으로 spring 웹 어플리케이션 초기화가 시작됩니다.
+웹 어플리케이션의 초기화를 위해 호출받기 위해 spring-webmvc.jar 의 AbstractAnnotationConfigDispatcherServletInitializer 클래스를 상속받은 클래스 KInit 을 생성 합니다.
+TODO KInit 클래스를 생성하고 WebApplicationInitializer 클래스를 구현합니다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/framework/content/" /><meta property="article:section" content="framework" />
+
+
+
+<meta itemprop="name" content="spring">
+<meta itemprop="description" content="KInit was booting 과정에서 웹 어플리케이션이 초기화되는 시점은
+`javax.servlet.ServletContainerInitializer`를 구현한 클래스의 `onStartup(Set&lt;Class&lt;?&gt;&gt; webAppInitializerClasses, ServletContext servletContext)` 메소드 호출입니다.
+Figure 1. ServletContext 초기화javax.servlet.ServletContainerInitializer를 구현한 클래스는 spring-web.jar 에 포함된 SpringServletContainerInitializer 클래스이며, onStartup 메소드에서는 WebApplicationInitializer 구현체를 탐지하고 onStartup(ServletContext servletContext) 메소드를 호출하는 것으로 spring 웹 어플리케이션 초기화가 시작됩니다.
+웹 어플리케이션의 초기화를 위해 호출받기 위해 spring-webmvc.jar 의 AbstractAnnotationConfigDispatcherServletInitializer 클래스를 상속받은 클래스 KInit 을 생성 합니다.
+TODO KInit 클래스를 생성하고 WebApplicationInitializer 클래스를 구현합니다.">
+
+<meta itemprop="wordCount" content="328">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="spring"/>
+<meta name="twitter:description" content="KInit was booting 과정에서 웹 어플리케이션이 초기화되는 시점은
+`javax.servlet.ServletContainerInitializer`를 구현한 클래스의 `onStartup(Set&lt;Class&lt;?&gt;&gt; webAppInitializerClasses, ServletContext servletContext)` 메소드 호출입니다.
+Figure 1. ServletContext 초기화javax.servlet.ServletContainerInitializer를 구현한 클래스는 spring-web.jar 에 포함된 SpringServletContainerInitializer 클래스이며, onStartup 메소드에서는 WebApplicationInitializer 구현체를 탐지하고 onStartup(ServletContext servletContext) 메소드를 호출하는 것으로 spring 웹 어플리케이션 초기화가 시작됩니다.
+웹 어플리케이션의 초기화를 위해 호출받기 위해 spring-webmvc.jar 의 AbstractAnnotationConfigDispatcherServletInitializer 클래스를 상속받은 클래스 KInit 을 생성 합니다.
+TODO KInit 클래스를 생성하고 WebApplicationInitializer 클래스를 구현합니다."/>
+
+
+
+
+<link rel="preload" href="/scss/main.min.49935c5eb3f96e225026ec04fa18256b17f945124066cf7317bb40fab0c32ac4.css" as="style">
+<link href="/scss/main.min.49935c5eb3f96e225026ec04fa18256b17f945124066cf7317bb40fab0c32ac4.css" rel="stylesheet" integrity="">
+
+
+<script
+  src="https://code.jquery.com/jquery-3.5.1.min.js"
+  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous"></script>
+
+<script
+  src="https://unpkg.com/lunr@2.3.8/lunr.min.js"
+  integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
+  crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+  </head>
+  <body class="td-page">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="/">
+		<span class="navbar-logo"></span><span class="text-uppercase font-weight-bold">dlog</span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/system/" ><i class='fas fa-book'></i><span>system</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				
+				
+				<a class="nav-link active" href="/framework/" ><i class='fas fa-book'></i><span class="active">framework</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/localenv/" ><i class='fas fa-book'></i><span>localenv</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/terms/" ><i class='fas fa-book'></i><span>terms</span></a>
+			</li>
+			
+			
+			
+		</ul>
+	</div>
+	<div class="navbar-nav d-none d-lg-block">
+
+
+
+<input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; 사이트에서 검색…"
+  aria-label="사이트에서 검색…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="/offline-search-index.4e2a2fff7e2964fd176e0f3c0f57ae67.json"
+  data-offline-search-base-href="/"
+  data-offline-search-max-results="10"
+>
+
+</div>
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+
+
+
+<input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; 사이트에서 검색…"
+  aria-label="사이트에서 검색…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="/offline-search-index.4e2a2fff7e2964fd176e0f3c0f57ae67.json"
+  data-offline-search-base-href="/"
+  data-offline-search-max-results="10"
+>
+
+
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  <nav class="collapse td-sidebar-nav" id="td-section-nav">
+    <ul class="td-sidebar-nav__section pr-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-framework-li">
+  
+  <a href="/framework/" title="프레임워크" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-framework"><span class="">framework</span></a>
+  <ul class="ul-1">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-frameworkcontent-li">
+  
+  <a href="/framework/content/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-frameworkcontent"><span class="td-sidebar-nav-active-item">spring</span></a>
+</li>
+  </ul>
+</li>
+    </ul>
+  </nav>
+</div>
+
+          </aside>
+          <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+            
+  
+  
+  
+  
+  
+  
+  <div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
+  
+  
+  </div>
+
+
+            
+
+
+<div class="td-toc"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#kinit">KInit</a>
+      <ul>
+        <li><a href="#onstartupservletcontext-servletcontext-메소드-구현">onStartup(ServletContext servletContext) 메소드 구현</a></li>
+        <li><a href="#getrootconfigclasses-getservletconfigclasses-메소드-구현">getRootConfigClasses(), getServletConfigClasses() 메소드 구현</a></li>
+      </ul>
+    </li>
+    <li><a href="#kinitroot">KInitRoot</a></li>
+  </ul>
+</nav></div>
+
+
+
+            
+
+	
+		
+
+
+
+  
+  
+
+	
+		
+
+
+
+  
+  
+
+	
+
+          </aside>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="d-none d-md-block d-print-none">
+	<ol class="breadcrumb spb-1">
+		
+
+
+
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="/framework/">framework</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item active" aria-current="page">
+	<a href="/framework/content/">spring</a>
+</li>
+
+	</ol>
+</nav	>
+
+            
+<div class="td-content">
+	<h1>spring</h1>
+	
+	<header class="article-meta">
+		
+		
+			
+				
+
+
+			
+				
+
+
+			
+		
+		
+	</header>    
+	<h2 id="kinit">KInit</h2>
+<p>was booting 과정에서 웹 어플리케이션이 초기화되는 시점은</p>
+<pre><code>`javax.servlet.ServletContainerInitializer`를 구현한 클래스의 `onStartup(Set&lt;Class&lt;?&gt;&gt; webAppInitializerClasses, ServletContext servletContext)` 메소드 호출
+</code></pre><p>입니다.</p>
+<figure>
+  <img src="/images/framework/spring/20210904-ServletContext_초기화.png"
+       alt="ServletContext_초기화" />
+  <figcaption>
+    Figure 1. ServletContext 초기화
+  </figcaption>
+</figure>
+<p><code>javax.servlet.ServletContainerInitializer</code>를 구현한 클래스는 spring-web.jar 에 포함된 <code>SpringServletContainerInitializer</code> 클래스이며, onStartup 메소드에서는 <code>WebApplicationInitializer</code> 구현체를 탐지하고 <code>onStartup(ServletContext servletContext)</code> 메소드를 호출하는 것으로 spring 웹 어플리케이션 초기화가 시작됩니다.</p>
+<p>웹 어플리케이션의 초기화를 위해 호출받기 위해 spring-webmvc.jar 의 <code>AbstractAnnotationConfigDispatcherServletInitializer</code> 클래스를 상속받은 클래스 <code>KInit</code> 을 생성 합니다.</p>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">TODO</h4>
+
+    <p><code>KInit</code> 클래스를 생성하고 <code>WebApplicationInitializer</code> 클래스를 구현합니다.</p>
+<ul>
+<li>
+<p>onStartup() 메소드를 @Override 하여 listener 와 filter 를 ServletContext 에 등록합니다.</p>
+</li>
+<li>
+<p>getRootConfigClasses(), getServletConfigClasses() 를 @Override 하여 spring의 root-context, dispatcher-servlet 설정이 있는 클래스를 지정합니다.</p>
+</li>
+</ul>
+
+
+</div>
+
+<p><code>KInit</code>은 <code>WebApplicationInitializer</code> 인터페이스 타입이어야 합니다.</p>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">참고</h4>
+
+    <p>servlet 3.0 이후부터는 ServletContext 초기화(웹 어플리케이션의 초기화)를 web.xml 파일 아닌 <code>WebApplicationInitializer</code>를 구현하여 프로그래밍 방식으로 초기화할 수 있게 되었습니다. (servlet 3.0 은 2011에 release 되었음)</p>
+<ul>
+<li>
+<p>WebApplicationInitializer 는 spring-web.jar 에 포함된 인터페이스이며, 정확히는 javax.servlet-api.jar 의 ServletContainerInitializer 인터페이스를 구현한 클래스가 호출이 되고 WebApplicationInitializer 인터페이스를 구현한 클래스가 호출되는 형식입니다.</p>
+</li>
+<li>
+<p>spring4+ 기반에서는 ServletContainerInitializer 를 구현체가 아닌 WebApplicationInitializer 를 구현체를 생성하면 됩니다.</p>
+</li>
+<li>
+<p>WebApplicationInitializer 를 상속받는 것보다 spring-webmvc.jar 에서 제공하는 AbstractAnnotationConfigDispatcherServletInitializer 를 상속받는 것을 권합니다.</p>
+<pre><code>WebApplicationInitializer (spring-web.jar)
+ └ AbstractContextLoaderInitializer (spring-webmvc.jar)
+   └ AbstractDispatcherServletInitializer
+     └ AbstractAnnotationConfigDispatcherServletInitializer
+       └ KInit
+</code></pre></li>
+</ul>
+
+
+</div>
+
+<h3 id="onstartupservletcontext-servletcontext-메소드-구현">onStartup(ServletContext servletContext) 메소드 구현</h3>
+<ul>
+<li><code>javax.servlet.ServletContext</code> 에 filter 와 listener 를 추가함</li>
+<li>listener: request-listener</li>
+<li>filter: spring-security-filterchain-bean, multipart-filter, characterset-filter</li>
+</ul>
+<h3 id="getrootconfigclasses-getservletconfigclasses-메소드-구현">getRootConfigClasses(), getServletConfigClasses() 메소드 구현</h3>
+<ul>
+<li>root-context 초기화 클래스: <code>KInitRoot</code></li>
+<li>dispatcher-servlet 초기화 클래스: <code>KInitDispatcher</code>, <code>KInitDispatcherSwagger</code><br/>
+(dispatcher-servlet 에 설정하는 swagger는 복잡도를 낮추기 위해 분리함)</li>
+<li>dispacher-servlet 의 mapping 을 &ldquo;/&rdquo; 로 설정</li>
+<li>dispacher-servlet 은 ServletContext 에 servlet 으로 추가됨</li>
+</ul>
+<p>root-context 와 dispatcher-servlet 에 대한 초기화가 진행됨</p>
+<h2 id="kinitroot">KInitRoot</h2>
+<p><code>KInitRoot</code> 는 <code>root-context</code> 를 초기화 합니다.</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a2f">@Order</span><span style="color:#666">(</span>value<span style="color:#666">=</span>Integer<span style="color:#666">.</span><span style="color:#7d9029">MIN_VALUE</span><span style="color:#666">)</span>
+<span style="color:#a2f">@EnableAsync</span>
+<span style="color:#a2f">@EnableAspectJAutoProxy</span><span style="color:#666">(</span>proxyTargetClass <span style="color:#666">=</span> <span style="color:#008000;font-weight:bold">true</span><span style="color:#666">)</span>
+<span style="color:#a2f">@ComponentScan</span><span style="color:#666">(</span>basePackages <span style="color:#666">=</span> <span style="color:#666">{</span>KProfile<span style="color:#666">.</span><span style="color:#7d9029">GROUP</span><span style="color:#666">},</span>
+	useDefaultFilters <span style="color:#666">=</span> <span style="color:#008000;font-weight:bold">false</span><span style="color:#666">,</span>
+	includeFilters <span style="color:#666">=</span> <span style="color:#666">{</span>
+		<span style="color:#a2f">@ComponentScan.Filter</span><span style="color:#666">(</span>type <span style="color:#666">=</span> FilterType<span style="color:#666">.</span><span style="color:#7d9029">ANNOTATION</span><span style="color:#666">,</span> value <span style="color:#666">=</span> Service<span style="color:#666">.</span><span style="color:#7d9029">class</span><span style="color:#666">),</span>          <span style="color:#408080;font-style:italic">// spring stereotype
+</span><span style="color:#408080;font-style:italic"></span>		<span style="color:#a2f">@ComponentScan.Filter</span><span style="color:#666">(</span>type <span style="color:#666">=</span> FilterType<span style="color:#666">.</span><span style="color:#7d9029">ANNOTATION</span><span style="color:#666">,</span> value <span style="color:#666">=</span> Component<span style="color:#666">.</span><span style="color:#7d9029">class</span><span style="color:#666">),</span>        <span style="color:#408080;font-style:italic">// spring stereotype
+</span><span style="color:#408080;font-style:italic"></span>		<span style="color:#a2f">@ComponentScan.Filter</span><span style="color:#666">(</span>type <span style="color:#666">=</span> FilterType<span style="color:#666">.</span><span style="color:#7d9029">ANNOTATION</span><span style="color:#666">,</span> value <span style="color:#666">=</span> Repository<span style="color:#666">.</span><span style="color:#7d9029">class</span><span style="color:#666">),</span>       <span style="color:#408080;font-style:italic">// spring stereotype
+</span><span style="color:#408080;font-style:italic"></span>		<span style="color:#a2f">@ComponentScan.Filter</span><span style="color:#666">(</span>type <span style="color:#666">=</span> FilterType<span style="color:#666">.</span><span style="color:#7d9029">ANNOTATION</span><span style="color:#666">,</span> value <span style="color:#666">=</span> mgkim<span style="color:#666">.</span><span style="color:#7d9029">core</span><span style="color:#666">.</span><span style="color:#7d9029">com</span><span style="color:#666">.</span><span style="color:#7d9029">annotation</span><span style="color:#666">.</span><span style="color:#7d9029">KBean</span><span style="color:#666">.</span><span style="color:#7d9029">class</span><span style="color:#666">),</span>         <span style="color:#408080;font-style:italic">// 사용자정의 stereotype
+</span><span style="color:#408080;font-style:italic"></span>		<span style="color:#a2f">@ComponentScan.Filter</span><span style="color:#666">(</span>type <span style="color:#666">=</span> FilterType<span style="color:#666">.</span><span style="color:#7d9029">ANNOTATION</span><span style="color:#666">,</span> value <span style="color:#666">=</span> mgkim<span style="color:#666">.</span><span style="color:#7d9029">core</span><span style="color:#666">.</span><span style="color:#7d9029">com</span><span style="color:#666">.</span><span style="color:#7d9029">annotation</span><span style="color:#666">.</span><span style="color:#7d9029">KTaskSchedule</span><span style="color:#666">.</span><span style="color:#7d9029">class</span><span style="color:#666">)</span>  <span style="color:#408080;font-style:italic">// 사용자정의 stereotype
+</span><span style="color:#408080;font-style:italic"></span>	<span style="color:#666">},</span>
+	excludeFilters <span style="color:#666">=</span> <span style="color:#666">{</span>
+		<span style="color:#a2f">@ComponentScan.Filter</span><span style="color:#666">(</span>type <span style="color:#666">=</span> FilterType<span style="color:#666">.</span><span style="color:#7d9029">ANNOTATION</span><span style="color:#666">,</span> value <span style="color:#666">=</span> Controller<span style="color:#666">.</span><span style="color:#7d9029">class</span><span style="color:#666">),</span>       <span style="color:#408080;font-style:italic">// spring stereotype
+</span><span style="color:#408080;font-style:italic"></span>		<span style="color:#a2f">@ComponentScan.Filter</span><span style="color:#666">(</span>type <span style="color:#666">=</span> FilterType<span style="color:#666">.</span><span style="color:#7d9029">ANNOTATION</span><span style="color:#666">,</span> value <span style="color:#666">=</span> EnableWebMvc<span style="color:#666">.</span><span style="color:#7d9029">class</span><span style="color:#666">)</span>
+	<span style="color:#666">}</span>
+<span style="color:#666">)</span>
+<span style="color:#008000;font-weight:bold">public</span> <span style="color:#008000;font-weight:bold">class</span> <span style="color:#00f;font-weight:bold">KInitRoot</span> <span style="color:#666">{</span>
+
+<span style="color:#666">}</span>
+</code></pre></div><ul>
+<li>@Configuration</li>
+</ul>
+
+	
+	
+	<div class="text-muted mt-5 pt-3 border-top">
+
+</div>
+
+</div>
+
+
+          </main>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@8.11.2/dist/mermaid.min.js" integrity="sha384-m8Pdaep6Qk8sW3J6XhPOiwUww3maU9HxZTLvEfSEB4e1UVvTdHyfJsYmEfYqvwLC" crossorigin="anonymous"></script>
+
+
+
+<style>
+.markmap > svg {
+  width: 100%;
+  height: 300px;
+}
+</style>
+<script>
+window.markmap = {
+  autoLoader: { manual: true },
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
+
+
+<script src='/js/tabpane-persist.js'></script>
+
+
+
+<script src='/js/deflate.js'></script>
+
+
+ 
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.css" integrity="sha384-Cqd8ihRLum0CCg8rz0hYKPoLZ3uw+gES2rXQXycqnL5pgVQIflxAUDS7ZSjITLb5" crossorigin="anonymous">
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.js" integrity="sha384-1Or6BdeNQb0ezrmtGeqQHFpppNd7a/gw29xeiSikBbsb44xu3uAo8c7FwbF5jhbd" crossorigin="anonymous"></script>
+ 
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/mhchem.min.js" integrity="sha384-LIgAiYlGSAdpNC9+YDjDPF6JeS/RRIumtNo0CmyQERZ/+g0h9MbuYQwf/5pQ4Y4M"  crossorigin="anonymous"></script>
+
+
+<script defer src='https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/auto-render.min.js' integrity='sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl' crossorigin='anonymous' onload='renderMathInElement(document.body, null);'></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.min.c1b8f3c373b85f900699a7ea81c2038ebbbebcac1a5a4b6e5ef96c24c31790d6.js" integrity="sha256-wbjzw3O4X5AGmafqgcIDjru&#43;vKwaWktuXvlsJMMXkNY=" crossorigin="anonymous"></script>
+
+
+
+
+  </body>
+</html>

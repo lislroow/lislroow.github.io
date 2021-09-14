@@ -1,0 +1,128 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>dlog – 프레임워크</title>
+    <link>/framework/</link>
+    <description>Recent content in 프레임워크 on dlog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="/framework/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Framework: spring</title>
+      <link>/framework/content/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/framework/content/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;kinit&#34;&gt;KInit&lt;/h2&gt;
+&lt;p&gt;was booting 과정에서 웹 어플리케이션이 초기화되는 시점은&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;`javax.servlet.ServletContainerInitializer`를 구현한 클래스의 `onStartup(Set&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt; webAppInitializerClasses, ServletContext servletContext)` 메소드 호출
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;입니다.&lt;/p&gt;
+&lt;figure&gt;
+  &lt;img src=&#34;/images/framework/spring/20210904-ServletContext_초기화.png&#34;
+       alt=&#34;ServletContext_초기화&#34; /&gt;
+  &lt;figcaption&gt;
+    Figure 1. ServletContext 초기화
+  &lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;&lt;code&gt;javax.servlet.ServletContainerInitializer&lt;/code&gt;를 구현한 클래스는 spring-web.jar 에 포함된 &lt;code&gt;SpringServletContainerInitializer&lt;/code&gt; 클래스이며, onStartup 메소드에서는 &lt;code&gt;WebApplicationInitializer&lt;/code&gt; 구현체를 탐지하고 &lt;code&gt;onStartup(ServletContext servletContext)&lt;/code&gt; 메소드를 호출하는 것으로 spring 웹 어플리케이션 초기화가 시작됩니다.&lt;/p&gt;
+&lt;p&gt;웹 어플리케이션의 초기화를 위해 호출받기 위해 spring-webmvc.jar 의 &lt;code&gt;AbstractAnnotationConfigDispatcherServletInitializer&lt;/code&gt; 클래스를 상속받은 클래스 &lt;code&gt;KInit&lt;/code&gt; 을 생성 합니다.&lt;/p&gt;
+
+
+&lt;div class=&#34;alert alert-primary&#34; role=&#34;alert&#34;&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;TODO&lt;/h4&gt;
+
+    &lt;p&gt;&lt;code&gt;KInit&lt;/code&gt; 클래스를 생성하고 &lt;code&gt;WebApplicationInitializer&lt;/code&gt; 클래스를 구현합니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;onStartup() 메소드를 @Override 하여 listener 와 filter 를 ServletContext 에 등록합니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;getRootConfigClasses(), getServletConfigClasses() 를 @Override 하여 spring의 root-context, dispatcher-servlet 설정이 있는 클래스를 지정합니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;KInit&lt;/code&gt;은 &lt;code&gt;WebApplicationInitializer&lt;/code&gt; 인터페이스 타입이어야 합니다.&lt;/p&gt;
+
+
+&lt;div class=&#34;alert alert-primary&#34; role=&#34;alert&#34;&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;참고&lt;/h4&gt;
+
+    &lt;p&gt;servlet 3.0 이후부터는 ServletContext 초기화(웹 어플리케이션의 초기화)를 web.xml 파일 아닌 &lt;code&gt;WebApplicationInitializer&lt;/code&gt;를 구현하여 프로그래밍 방식으로 초기화할 수 있게 되었습니다. (servlet 3.0 은 2011에 release 되었음)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;WebApplicationInitializer 는 spring-web.jar 에 포함된 인터페이스이며, 정확히는 javax.servlet-api.jar 의 ServletContainerInitializer 인터페이스를 구현한 클래스가 호출이 되고 WebApplicationInitializer 인터페이스를 구현한 클래스가 호출되는 형식입니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;spring4+ 기반에서는 ServletContainerInitializer 를 구현체가 아닌 WebApplicationInitializer 를 구현체를 생성하면 됩니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;WebApplicationInitializer 를 상속받는 것보다 spring-webmvc.jar 에서 제공하는 AbstractAnnotationConfigDispatcherServletInitializer 를 상속받는 것을 권합니다.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;WebApplicationInitializer (spring-web.jar)
+ └ AbstractContextLoaderInitializer (spring-webmvc.jar)
+   └ AbstractDispatcherServletInitializer
+     └ AbstractAnnotationConfigDispatcherServletInitializer
+       └ KInit
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;/div&gt;
+
+&lt;h3 id=&#34;onstartupservletcontext-servletcontext-메소드-구현&#34;&gt;onStartup(ServletContext servletContext) 메소드 구현&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;javax.servlet.ServletContext&lt;/code&gt; 에 filter 와 listener 를 추가함&lt;/li&gt;
+&lt;li&gt;listener: request-listener&lt;/li&gt;
+&lt;li&gt;filter: spring-security-filterchain-bean, multipart-filter, characterset-filter&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;getrootconfigclasses-getservletconfigclasses-메소드-구현&#34;&gt;getRootConfigClasses(), getServletConfigClasses() 메소드 구현&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;root-context 초기화 클래스: &lt;code&gt;KInitRoot&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;dispatcher-servlet 초기화 클래스: &lt;code&gt;KInitDispatcher&lt;/code&gt;, &lt;code&gt;KInitDispatcherSwagger&lt;/code&gt;&lt;br/&gt;
+(dispatcher-servlet 에 설정하는 swagger는 복잡도를 낮추기 위해 분리함)&lt;/li&gt;
+&lt;li&gt;dispacher-servlet 의 mapping 을 &amp;ldquo;/&amp;rdquo; 로 설정&lt;/li&gt;
+&lt;li&gt;dispacher-servlet 은 ServletContext 에 servlet 으로 추가됨&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;root-context 와 dispatcher-servlet 에 대한 초기화가 진행됨&lt;/p&gt;
+&lt;h2 id=&#34;kinitroot&#34;&gt;KInitRoot&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;KInitRoot&lt;/code&gt; 는 &lt;code&gt;root-context&lt;/code&gt; 를 초기화 합니다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#a2f&#34;&gt;@Order&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;(&lt;/span&gt;value&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;Integer&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#7d9029&#34;&gt;MIN_VALUE&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color:#a2f&#34;&gt;@EnableAsync&lt;/span&gt;
+&lt;span style=&#34;color:#a2f&#34;&gt;@EnableAspectJAutoProxy&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;(&lt;/span&gt;proxyTargetClass &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color:#a2f&#34;&gt;@ComponentScan&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;(&lt;/span&gt;basePackages &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;{&lt;/span&gt;KProfile&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#7d9029&#34;&gt;GROUP&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;},&lt;/span&gt;
+	useDefaultFilters &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;false&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;,&lt;/span&gt;
+	includeFilters &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;{&lt;/span&gt;
+		&lt;span style=&#34;color:#a2f&#34;&gt;@ComponentScan.Filter&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;(&lt;/span&gt;type &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; FilterType&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#7d9029&#34;&gt;ANNOTATION&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;,&lt;/span&gt; value &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; Service&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#7d9029&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;),&lt;/span&gt;          &lt;span style=&#34;color:#408080;font-style:italic&#34;&gt;// spring stereotype
+&lt;/span&gt;&lt;span style=&#34;color:#408080;font-style:italic&#34;&gt;&lt;/span&gt;		&lt;span style=&#34;color:#a2f&#34;&gt;@ComponentScan.Filter&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;(&lt;/span&gt;type &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; FilterType&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#7d9029&#34;&gt;ANNOTATION&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;,&lt;/span&gt; value &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; Component&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#7d9029&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;),&lt;/span&gt;        &lt;span style=&#34;color:#408080;font-style:italic&#34;&gt;// spring stereotype
+&lt;/span&gt;&lt;span style=&#34;color:#408080;font-style:italic&#34;&gt;&lt;/span&gt;		&lt;span style=&#34;color:#a2f&#34;&gt;@ComponentScan.Filter&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;(&lt;/span&gt;type &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; FilterType&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#7d9029&#34;&gt;ANNOTATION&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;,&lt;/span&gt; value &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; Repository&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#7d9029&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;),&lt;/span&gt;       &lt;span style=&#34;color:#408080;font-style:italic&#34;&gt;// spring stereotype
+&lt;/span&gt;&lt;span style=&#34;color:#408080;font-style:italic&#34;&gt;&lt;/span&gt;		&lt;span style=&#34;color:#a2f&#34;&gt;@ComponentScan.Filter&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;(&lt;/span&gt;type &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; FilterType&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#7d9029&#34;&gt;ANNOTATION&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;,&lt;/span&gt; value &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; mgkim&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#7d9029&#34;&gt;core&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#7d9029&#34;&gt;com&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#7d9029&#34;&gt;annotation&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#7d9029&#34;&gt;KBean&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#7d9029&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;),&lt;/span&gt;         &lt;span style=&#34;color:#408080;font-style:italic&#34;&gt;// 사용자정의 stereotype
+&lt;/span&gt;&lt;span style=&#34;color:#408080;font-style:italic&#34;&gt;&lt;/span&gt;		&lt;span style=&#34;color:#a2f&#34;&gt;@ComponentScan.Filter&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;(&lt;/span&gt;type &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; FilterType&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#7d9029&#34;&gt;ANNOTATION&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;,&lt;/span&gt; value &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; mgkim&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#7d9029&#34;&gt;core&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#7d9029&#34;&gt;com&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#7d9029&#34;&gt;annotation&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#7d9029&#34;&gt;KTaskSchedule&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#7d9029&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;)&lt;/span&gt;  &lt;span style=&#34;color:#408080;font-style:italic&#34;&gt;// 사용자정의 stereotype
+&lt;/span&gt;&lt;span style=&#34;color:#408080;font-style:italic&#34;&gt;&lt;/span&gt;	&lt;span style=&#34;color:#666&#34;&gt;},&lt;/span&gt;
+	excludeFilters &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;{&lt;/span&gt;
+		&lt;span style=&#34;color:#a2f&#34;&gt;@ComponentScan.Filter&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;(&lt;/span&gt;type &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; FilterType&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#7d9029&#34;&gt;ANNOTATION&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;,&lt;/span&gt; value &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; Controller&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#7d9029&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;),&lt;/span&gt;       &lt;span style=&#34;color:#408080;font-style:italic&#34;&gt;// spring stereotype
+&lt;/span&gt;&lt;span style=&#34;color:#408080;font-style:italic&#34;&gt;&lt;/span&gt;		&lt;span style=&#34;color:#a2f&#34;&gt;@ComponentScan.Filter&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;(&lt;/span&gt;type &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; FilterType&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#7d9029&#34;&gt;ANNOTATION&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;,&lt;/span&gt; value &lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt; EnableWebMvc&lt;span style=&#34;color:#666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#7d9029&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;)&lt;/span&gt;
+	&lt;span style=&#34;color:#666&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color:#666&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#00f;font-weight:bold&#34;&gt;KInitRoot&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;{&lt;/span&gt;
+
+&lt;span style=&#34;color:#666&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;@Configuration&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

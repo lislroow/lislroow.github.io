@@ -1,0 +1,1110 @@
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.87.0" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
+
+<title>httpd | dlog</title>
+
+
+  
+  <meta name="description" content="configure
+httpd.conf
+ServerRoot &quot;/etc/httpd&quot;
+
+Listen 80
+
+Include conf.modules.d/*.conf
+
+User apache
+Group web
+
+ServerAdmin hi@mgkim.net …">
+<meta property="og:title" content="httpd" />
+<meta property="og:description" content="configure httpd.conf ServerRoot &quot;/etc/httpd&quot; Listen 80 Include conf.modules.d/*.conf User apache Group web ServerAdmin hi@mgkim.net ServerName develop:80 &lt;Directory /&gt; AllowOverride none Require all denied &lt;/Directory&gt; DocumentRoot &quot;/var/www/html&quot; &lt;Files &quot;.ht*&quot;&gt; Require all denied &lt;/Files&gt; ErrorLog &quot;/outlog/WEB/httpd/error.log&quot; LogLevel warn &lt;IfModule log_config_module&gt; LogFormat &quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b \&quot;%{Referer}i\&quot; \&quot;%{User-Agent}i\&quot;&quot; combined LogFormat &quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b&quot; common &lt;IfModule logio_module&gt; LogFormat &quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b \&quot;%{Referer}i\&quot; \&quot;%{User-Agent}i\&quot; %I %O&quot; combinedio &lt;/IfModule&gt; CustomLog &quot;/outlog/WEB/httpd/access." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/system/httpd/" /><meta property="article:section" content="system" />
+
+
+
+<meta itemprop="name" content="httpd">
+<meta itemprop="description" content="configure httpd.conf ServerRoot &quot;/etc/httpd&quot; Listen 80 Include conf.modules.d/*.conf User apache Group web ServerAdmin hi@mgkim.net ServerName develop:80 &lt;Directory /&gt; AllowOverride none Require all denied &lt;/Directory&gt; DocumentRoot &quot;/var/www/html&quot; &lt;Files &quot;.ht*&quot;&gt; Require all denied &lt;/Files&gt; ErrorLog &quot;/outlog/WEB/httpd/error.log&quot; LogLevel warn &lt;IfModule log_config_module&gt; LogFormat &quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b \&quot;%{Referer}i\&quot; \&quot;%{User-Agent}i\&quot;&quot; combined LogFormat &quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b&quot; common &lt;IfModule logio_module&gt; LogFormat &quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b \&quot;%{Referer}i\&quot; \&quot;%{User-Agent}i\&quot; %I %O&quot; combinedio &lt;/IfModule&gt; CustomLog &quot;/outlog/WEB/httpd/access.">
+
+<meta itemprop="wordCount" content="1475">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="httpd"/>
+<meta name="twitter:description" content="configure httpd.conf ServerRoot &quot;/etc/httpd&quot; Listen 80 Include conf.modules.d/*.conf User apache Group web ServerAdmin hi@mgkim.net ServerName develop:80 &lt;Directory /&gt; AllowOverride none Require all denied &lt;/Directory&gt; DocumentRoot &quot;/var/www/html&quot; &lt;Files &quot;.ht*&quot;&gt; Require all denied &lt;/Files&gt; ErrorLog &quot;/outlog/WEB/httpd/error.log&quot; LogLevel warn &lt;IfModule log_config_module&gt; LogFormat &quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b \&quot;%{Referer}i\&quot; \&quot;%{User-Agent}i\&quot;&quot; combined LogFormat &quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b&quot; common &lt;IfModule logio_module&gt; LogFormat &quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b \&quot;%{Referer}i\&quot; \&quot;%{User-Agent}i\&quot; %I %O&quot; combinedio &lt;/IfModule&gt; CustomLog &quot;/outlog/WEB/httpd/access."/>
+
+
+
+
+<link rel="preload" href="/scss/main.min.49935c5eb3f96e225026ec04fa18256b17f945124066cf7317bb40fab0c32ac4.css" as="style">
+<link href="/scss/main.min.49935c5eb3f96e225026ec04fa18256b17f945124066cf7317bb40fab0c32ac4.css" rel="stylesheet" integrity="">
+
+
+<script
+  src="https://code.jquery.com/jquery-3.5.1.min.js"
+  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous"></script>
+
+<script
+  src="https://unpkg.com/lunr@2.3.8/lunr.min.js"
+  integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
+  crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+  </head>
+  <body class="td-page">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="/">
+		<span class="navbar-logo"></span><span class="text-uppercase font-weight-bold">dlog</span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				
+				
+				<a class="nav-link active" href="/system/" ><i class='fas fa-book'></i><span class="active">system</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/framework/" ><i class='fas fa-book'></i><span>framework</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/localenv/" ><i class='fas fa-book'></i><span>localenv</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/terms/" ><i class='fas fa-book'></i><span>terms</span></a>
+			</li>
+			
+			
+			
+		</ul>
+	</div>
+	<div class="navbar-nav d-none d-lg-block">
+
+
+
+<input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; 사이트에서 검색…"
+  aria-label="사이트에서 검색…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="/offline-search-index.4e2a2fff7e2964fd176e0f3c0f57ae67.json"
+  data-offline-search-base-href="/"
+  data-offline-search-max-results="10"
+>
+
+</div>
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+
+
+
+<input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; 사이트에서 검색…"
+  aria-label="사이트에서 검색…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="/offline-search-index.4e2a2fff7e2964fd176e0f3c0f57ae67.json"
+  data-offline-search-base-href="/"
+  data-offline-search-max-results="10"
+>
+
+
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  <nav class="collapse td-sidebar-nav" id="td-section-nav">
+    <ul class="td-sidebar-nav__section pr-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-system-li">
+  
+  <a href="/system/" title="시스템 환경" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-system"><span class="">system</span></a>
+  <ul class="ul-1">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-systemhttpd-li">
+  
+  <a href="/system/httpd/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-systemhttpd"><span class="td-sidebar-nav-active-item">httpd</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemjenkins-li">
+  
+  <a href="/system/jenkins/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemjenkins"><span class="">jenkins</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemlinux-li">
+  
+  <a href="/system/linux/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemlinux"><span class="">linux</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemopenssh-li">
+  
+  <a href="/system/openssh/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemopenssh"><span class="">openssh</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemopenssl-li">
+  
+  <a href="/system/openssl/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemopenssl"><span class="">openssl</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemoracle-li">
+  
+  <a href="/system/oracle/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemoracle"><span class="">oracle</span></a>
+</li>
+  </ul>
+</li>
+    </ul>
+  </nav>
+</div>
+
+          </aside>
+          <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+            
+  
+  
+  
+  
+  
+  
+  <div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
+  
+  
+  </div>
+
+
+            
+
+
+<div class="td-toc"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#configure">configure</a>
+      <ul>
+        <li><a href="#httpdconf">httpd.conf</a></li>
+        <li><a href="#sslconf">ssl.conf</a></li>
+        <li><a href="#vhost-nexusconf">vhost-nexus.conf</a></li>
+        <li><a href="#vhost-gitlabconf">vhost-gitlab.conf</a></li>
+        <li><a href="#vhost-jenkinsconf">vhost-jenkins.conf</a></li>
+        <li><a href="#vhost-dlogconf">vhost-dlog.conf</a></li>
+      </ul>
+    </li>
+    <li><a href="#connector">connector</a>
+      <ul>
+        <li><a href="#weblogic">weblogic</a></li>
+      </ul>
+    </li>
+    <li><a href="#windows">windows</a>
+      <ul>
+        <li><a href="#install-command-apache-lounge">install command (Apache Lounge)</a></li>
+        <li><a href="#configure-1">configure</a></li>
+      </ul>
+    </li>
+    <li><a href="#openssl">openssl</a>
+      <ul>
+        <li><a href="#인증서-생성하기">인증서 생성하기</a></li>
+        <li><a href="#useful">useful</a></li>
+      </ul>
+    </li>
+    <li><a href="#selinux">selinux</a></li>
+  </ul>
+</nav></div>
+
+
+
+            
+
+	
+		
+
+
+
+  
+  
+
+	
+		
+
+
+
+  
+  
+
+	
+
+          </aside>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="d-none d-md-block d-print-none">
+	<ol class="breadcrumb spb-1">
+		
+
+
+
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="/system/">system</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item active" aria-current="page">
+	<a href="/system/httpd/">httpd</a>
+</li>
+
+	</ol>
+</nav	>
+
+            
+<div class="td-content">
+	<h1>httpd</h1>
+	
+	<header class="article-meta">
+		
+		
+			
+				
+
+
+			
+				
+
+
+			
+		
+		
+	</header>    
+	<h2 id="configure">configure</h2>
+<h3 id="httpdconf">httpd.conf</h3>
+<pre><code>ServerRoot &quot;/etc/httpd&quot;
+
+Listen 80
+
+Include conf.modules.d/*.conf
+
+User apache
+Group web
+
+ServerAdmin hi@mgkim.net
+ServerName develop:80
+
+&lt;Directory /&gt;
+  AllowOverride none
+  Require all denied
+&lt;/Directory&gt;
+
+DocumentRoot &quot;/var/www/html&quot;
+
+&lt;Files &quot;.ht*&quot;&gt;
+  Require all denied
+&lt;/Files&gt;
+
+ErrorLog &quot;/outlog/WEB/httpd/error.log&quot;
+
+LogLevel warn
+
+&lt;IfModule log_config_module&gt;
+  LogFormat &quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b \&quot;%{Referer}i\&quot; \&quot;%{User-Agent}i\&quot;&quot; combined
+  LogFormat &quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b&quot; common
+  &lt;IfModule logio_module&gt;
+    LogFormat &quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b \&quot;%{Referer}i\&quot; \&quot;%{User-Agent}i\&quot; %I %O&quot; combinedio
+  &lt;/IfModule&gt;
+  CustomLog &quot;/outlog/WEB/httpd/access.log&quot; combined
+&lt;/IfModule&gt;
+
+&lt;IfModule alias_module&gt;
+  ScriptAlias /cgi-bin/ &quot;/var/www/cgi-bin/&quot;
+&lt;/IfModule&gt;
+
+&lt;Directory &quot;/var/www/cgi-bin&quot;&gt;
+  AllowOverride None
+  Options None
+  Require all granted
+&lt;/Directory&gt;
+
+&lt;IfModule mime_module&gt;
+  TypesConfig /etc/mime.types
+  AddType application/x-compress .Z
+  AddType application/x-gzip .gz .tgz
+  AddType text/html .shtml
+  AddOutputFilter INCLUDES .shtml
+&lt;/IfModule&gt;
+
+AddDefaultCharset UTF-8
+
+&lt;IfModule mime_magic_module&gt;
+  MIMEMagicFile conf/magic
+&lt;/IfModule&gt;
+
+EnableSendfile on
+IncludeOptional conf.d/*.conf
+</code></pre><h3 id="sslconf">ssl.conf</h3>
+<pre><code>Listen 443 https
+
+SSLPassPhraseDialog exec:/usr/libexec/httpd-ssl-pass-dialog
+SSLSessionCache         shmcb:/run/httpd/sslcache(512000)
+SSLSessionCacheTimeout  300
+SSLRandomSeed startup file:/dev/urandom  256
+SSLRandomSeed connect builtin
+SSLCryptoDevice builtin
+
+&lt;VirtualHost _default_:443&gt;
+  ServerName develop
+  ErrorLog /outlog/WEB/httpd/develop-error_ssl.log
+  TransferLog /outlog/WEB/httpd/develop-access_ssl.log
+  LogLevel warn
+
+  SSLEngine on
+  SSLProtocol all -SSLv2 -SSLv3
+  SSLCipherSuite HIGH:3DES:!aNULL:!MD5:!SEED:!IDEA
+  SSLCertificateFile /etc/httpd/conf.d/certs/develop.crt
+  SSLCertificateKeyFile /etc/httpd/conf.d/certs/develop.key
+  &lt;Files ~ &quot;\.(cgi|shtml|phtml|php3?)$&quot;&gt;
+    SSLOptions +StdEnvVars
+  &lt;/Files&gt;
+  &lt;Directory &quot;/var/www/cgi-bin&quot;&gt;
+    SSLOptions +StdEnvVars
+  &lt;/Directory&gt;
+  BrowserMatch &quot;MSIE [2-5]&quot; nokeepalive ssl-unclean-shutdown downgrade-1.0 force-response-1.0
+  CustomLog /outlog/WEB/httpd/default-request_ssl.log &quot;%t %h %{SSL_PROTOCOL}x %{SSL_CIPHER}x \&quot;%r\&quot; %b&quot;
+&lt;/VirtualHost&gt;
+</code></pre><h3 id="vhost-nexusconf">vhost-nexus.conf</h3>
+<pre><code>&lt;VirtualHost *:80&gt;
+  ServerName nexus
+
+  RewriteEngine On
+  RewriteCond %{HTTPS} !=On
+  RewriteRule /(.*) https://nexus.mgkim.net/$1 [QSA,R,L]
+&lt;/VirtualHost&gt;
+
+&lt;VirtualHost *:443&gt;
+  ServerName nexus
+
+  SSLEngine On
+  SSLProtocol all -SSLv2
+  SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5
+  SSLCertificateFile /etc/httpd/conf.d/certs/nexus.crt
+  SSLCertificateKeyFile /etc/httpd/conf.d/certs/nexus.key
+
+  RewriteEngine On
+  RewriteRule /(.*) https://nexus.mgkim.net/$1 [QSA,R,L]
+&lt;/VirtualHost&gt;
+
+### mgkim.net
+
+&lt;VirtualHost *:80&gt;
+  ServerName nexus.mgkim.net
+
+  RewriteEngine On
+  RewriteCond %{HTTPS} !=On
+  RewriteRule /(.*) https://%{HTTP_HOST}/$1 [QSA,R,L]
+&lt;/VirtualHost&gt;
+
+&lt;VirtualHost *:443&gt;
+  ServerName nexus.mgkim.net
+
+  ErrorLog &quot;|/usr/sbin/rotatelogs /outlog/WEB/httpd/nexus.mgkim.net_ssl-error.log.%Y-%m-%d 86400 +540%&quot;
+  CustomLog &quot;|/usr/sbin/rotatelogs /outlog/WEB/httpd/nexus.mgkim.net_ssl-access.log.%Y-%m-%d 86400 +540%&quot; combined
+
+  SSLEngine On
+  SSLProtocol all -SSLv2
+  SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5
+  SSLCertificateFile /etc/httpd/conf.d/certs/STAR.mgkim.net.crt
+  SSLCertificateKeyFile /etc/httpd/conf.d/certs/STAR.mgkim.net.key
+
+  AllowEncodedSlashes On
+  Header set Access-Control-Allow-Origin &quot;*&quot;
+
+  ProxyRequests Off
+  ProxyPreserveHost On
+
+  &lt;Proxy *&gt;
+    Require all granted
+  &lt;/Proxy&gt;
+
+  ProxyPass / http://127.0.0.1:8100/
+  ProxyPassReverse / http://127.0.0.1:8100/
+  RequestHeader set X-Forwarded-Proto &quot;https&quot;
+  #ProxyPassMatch ^/(.*)$ http://127.0.0.1:8100/$1
+&lt;/VirtualHost&gt;
+</code></pre><h3 id="vhost-gitlabconf">vhost-gitlab.conf</h3>
+<pre><code>&lt;VirtualHost *:80&gt;
+  ServerName gitlab
+
+  RewriteEngine On
+  RewriteCond %{HTTPS} !=On
+  RewriteRule /(.*) https://gitlab.mgkim.net/$1 [QSA,R,L]
+&lt;/VirtualHost&gt;
+
+&lt;VirtualHost *:443&gt;
+  ServerName gitlab
+
+  SSLEngine On
+  SSLProtocol all -SSLv2
+  SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5
+  SSLCertificateFile /etc/httpd/conf.d/certs/gitlab.crt
+  SSLCertificateKeyFile /etc/httpd/conf.d/certs/gitlab.key
+
+  RewriteEngine On
+  RewriteRule /(.*) https://gitlab.mgkim.net/$1 [QSA,R,L]
+&lt;/VirtualHost&gt;
+
+### mgkim.net
+
+&lt;VirtualHost *:80&gt;
+  ServerName gitlab.mgkim.net
+
+  RewriteEngine On
+  RewriteCond %{HTTPS} !=On
+  RewriteRule /(.*) https://%{HTTP_HOST}/$1 [QSA,R,L]
+&lt;/VirtualHost&gt;
+
+&lt;VirtualHost *:443&gt;
+  ServerName gitlab.mgkim.net
+
+  DocumentRoot &quot;/opt/gitlab/embedded/service/gitlab-rails/public&quot;
+  ErrorLog &quot;|/usr/sbin/rotatelogs /outlog/WEB/httpd/gitlab.mgkim.net_ssl-error.log.%Y-%m-%d 86400 +540&quot;
+  CustomLog &quot;|/usr/sbin/rotatelogs /outlog/WEB/httpd/gitlab.mgkim.net_ssl-access.log.%Y-%m-%d 86400 +540&quot; combined
+
+  SSLEngine On
+  SSLProtocol all -SSLv2
+  SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5
+  SSLCertificateFile /etc/httpd/conf.d/certs/STAR.mgkim.net.crt
+  SSLCertificateKeyFile /etc/httpd/conf.d/certs/STAR.mgkim.net.key
+
+  ProxyRequests Off
+  ProxyPreserveHost On
+
+  &lt;Proxy gitlab&gt;
+    Require all granted
+  &lt;/Proxy&gt;
+
+  AllowEncodedSlashes On
+  Header set Access-Control-Allow-Origin &quot;*&quot;
+
+  ProxyPass / http://127.0.0.1:8200/
+  ProxyPassReverse / http://127.0.0.1:8200/
+&lt;/VirtualHost&gt;
+</code></pre><h3 id="vhost-jenkinsconf">vhost-jenkins.conf</h3>
+<pre><code>&lt;VirtualHost *:80&gt;
+  ServerName jenkins
+
+  RewriteEngine On
+  RewriteCond %{HTTPS} !=On
+  RewriteCond %{REQUEST_URI} ^/(computer)/.*$
+  RewriteRule /(.*) http://localhost:8400/$1 [QSA,P,L]
+  RewriteCond %{REQUEST_URI} ^/(wsagents)/.*$
+  RewriteRule /(.*) ws://localhost:8400/$1 [QSA,P,L]
+
+  RewriteRule /(.*) https://jenkins.mgkim.net/$1 [QSA,R,L]
+&lt;/VirtualHost&gt;
+
+&lt;VirtualHost *:443&gt;
+  ServerName jenkins
+
+  SSLEngine On
+  SSLProtocol all -SSLv2
+  SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5
+  SSLCertificateFile /etc/httpd/conf.d/certs/jenkins.crt
+  SSLCertificateKeyFile /etc/httpd/conf.d/certs/jenkins.key
+
+  RewriteEngine On
+  RewriteRule /(.*) https://jenkins.mgkim.net/$1 [QSA,R,L]
+&lt;/VirtualHost&gt;
+
+### mgkim.net
+
+&lt;VirtualHost *:80&gt;
+  ServerName jenkins.mgkim.net
+
+  RewriteEngine On
+  RewriteCond %{HTTPS} !=On
+  RewriteCond %{REQUEST_URI} ^/(computer)/.*$
+  RewriteRule /(.*) http://localhost:8400/$1 [QSA,P,L]
+  RewriteCond %{REQUEST_URI} ^/(wsagents)/.*$
+  RewriteRule /(.*) ws://localhost:8400/$1 [QSA,P,L]
+
+  RewriteRule /(.*) https://jenkins.mgkim.net/$1 [QSA,R,L]
+&lt;/VirtualHost&gt;
+
+&lt;VirtualHost *:443&gt;
+  ServerName jenkins.mgkim.net
+
+  ErrorLog &quot;|/usr/sbin/rotatelogs /outlog/WEB/httpd/jenkins.mgkim.net_ssl-error.log.%Y-%m-%d 86400 +540&quot;
+  CustomLog &quot;|/usr/sbin/rotatelogs /outlog/WEB/httpd/jenkins.mgkim.net_ssl-access.log.%Y-%m-%d 86400 +540&quot; combined
+
+  SSLEngine On
+  SSLProtocol all -SSLv2
+  SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5
+  SSLCertificateFile /etc/httpd/conf.d/certs/STAR.mgkim.net.crt
+  SSLCertificateKeyFile /etc/httpd/conf.d/certs/STAR.mgkim.net.key
+
+  AllowEncodedSlashes On
+  Header set Access-Control-Allow-Origin &quot;*&quot;
+
+  RewriteEngine On
+  RewriteCond %{HTTP:Upgrade} =websocket [NC]
+  RewriteRule /(.*) ws://localhost:8400/$1 [P,L]
+  RewriteCond %{HTTP:Upgrade} !=websocket [NC]
+  RewriteRule /(.*) http://localhost:8400/$1 [P,L]
+&lt;/VirtualHost&gt;
+</code></pre><h3 id="vhost-dlogconf">vhost-dlog.conf</h3>
+<pre><code>&lt;VirtualHost *:80&gt;
+  ServerName dlog
+
+  RewriteEngine On
+  RewriteCond %{HTTPS} !=On
+  RewriteRule /(.*) https://dlog.mgkim.net/$1 [QSA,R,L]
+&lt;/VirtualHost&gt;
+
+&lt;VirtualHost *:443&gt;
+  ServerName dlog
+
+  SSLEngine On
+  SSLProtocol all -SSLv2
+  SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5
+  SSLCertificateFile /etc/httpd/conf.d/certs/dlog.crt
+  SSLCertificateKeyFile /etc/httpd/conf.d/certs/dlog.key
+
+  RewriteEngine On
+  RewriteRule /(.*) https://dlog.mgkim.net/$1 [QSA,R,L]
+&lt;/VirtualHost&gt;
+
+### mgkim.net
+
+&lt;VirtualHost *:80&gt;
+  ServerName dlog.mgkim.net
+
+  RewriteEngine On
+  RewriteCond %{HTTPS} !=On
+  RewriteRule /(.*) https://%{HTTP_HOST}/$1 [QSA,R,L]
+&lt;/VirtualHost&gt;
+
+&lt;VirtualHost *:443&gt;
+  ServerName dlog.mgkim.net
+
+  #DocumentRoot &quot;/opt/gitlab/embedded/service/gitlab-rails/public&quot;
+  ErrorLog &quot;|/usr/sbin/rotatelogs /outlog/WEB/httpd/dlog.mgkim.net_ssl-error.log.%Y-%m-%d 86400 +540&quot;
+  CustomLog &quot;|/usr/sbin/rotatelogs /outlog/WEB/httpd/dlog.mgkim.net_ssl-access.log.%Y-%m-%d 86400 +540&quot; combined
+
+  SSLEngine On
+  SSLProtocol all -SSLv2
+  SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5
+  SSLCertificateFile /etc/httpd/conf.d/certs/STAR.mgkim.net.crt
+  SSLCertificateKeyFile /etc/httpd/conf.d/certs/STAR.mgkim.net.key
+
+  ProxyRequests Off
+  ProxyPreserveHost On
+
+  &lt;Proxy gitlab&gt;
+    Require all granted
+  &lt;/Proxy&gt;
+
+  AllowEncodedSlashes On
+  Header set Access-Control-Allow-Origin &quot;*&quot;
+
+  ProxyPass / http://127.0.0.1:1313/
+  ProxyPassReverse / http://127.0.0.1:1313/
+&lt;/VirtualHost&gt;
+</code></pre><h2 id="connector">connector</h2>
+<h3 id="weblogic">weblogic</h3>
+<pre><code>LoadModule weblogic_module modules/mod_wl_24.so
+
+&lt;IfModule mod_weblogic.c&gt;
+  WebLogicCluster IP:PORT,IP:PORT,IP:PORT
+  ConnectTimeoutSecs 8
+  ConnectRetrySecs 2
+  Idempotent OFF
+  DynamicServerList OFF
+  MatchExpression *
+  KeepAliveEnabled OFF
+&lt;/IfModule&gt;
+
+&lt;Location /api &gt;
+  WLSRequest On
+  #SetHandler weblogic-handler
+  WebLogicCluster IP:PORT,IP:PORT,IP:PORT
+  #Idempotent OFF
+&lt;/Location&gt;
+</code></pre><h2 id="windows">windows</h2>
+<h3 id="install-command-apache-lounge">install command (Apache Lounge)</h3>
+<pre><code>httpd.exe -k install
+httpd.exe -k configtest
+</code></pre><h3 id="configure-1">configure</h3>
+<ul>
+<li>httpd.conf</li>
+</ul>
+<pre><code>ServerRoot &quot;Z:/www/httpd_2.4.25-win64-VC14/Apache24&quot;
+
+Listen 80
+
+LoadModule access_compat_module modules/mod_access_compat.so
+LoadModule actions_module modules/mod_actions.so
+LoadModule alias_module modules/mod_alias.so
+LoadModule allowmethods_module modules/mod_allowmethods.so
+LoadModule asis_module modules/mod_asis.so
+LoadModule auth_basic_module modules/mod_auth_basic.so
+#LoadModule auth_digest_module modules/mod_auth_digest.so
+#LoadModule auth_form_module modules/mod_auth_form.so
+#LoadModule authn_anon_module modules/mod_authn_anon.so
+LoadModule authn_core_module modules/mod_authn_core.so
+#LoadModule authn_dbd_module modules/mod_authn_dbd.so
+#LoadModule authn_dbm_module modules/mod_authn_dbm.so
+LoadModule authn_file_module modules/mod_authn_file.so
+#LoadModule authn_socache_module modules/mod_authn_socache.so
+#LoadModule authnz_fcgi_module modules/mod_authnz_fcgi.so
+#LoadModule authnz_ldap_module modules/mod_authnz_ldap.so
+LoadModule authz_core_module modules/mod_authz_core.so
+#LoadModule authz_dbd_module modules/mod_authz_dbd.so
+#LoadModule authz_dbm_module modules/mod_authz_dbm.so
+LoadModule authz_groupfile_module modules/mod_authz_groupfile.so
+LoadModule authz_host_module modules/mod_authz_host.so
+#LoadModule authz_owner_module modules/mod_authz_owner.so
+LoadModule authz_user_module modules/mod_authz_user.so
+LoadModule autoindex_module modules/mod_autoindex.so
+#LoadModule buffer_module modules/mod_buffer.so
+#LoadModule cache_module modules/mod_cache.so
+#LoadModule cache_disk_module modules/mod_cache_disk.so
+#LoadModule cache_socache_module modules/mod_cache_socache.so
+#LoadModule cern_meta_module modules/mod_cern_meta.so
+LoadModule cgi_module modules/mod_cgi.so
+#LoadModule charset_lite_module modules/mod_charset_lite.so
+#LoadModule data_module modules/mod_data.so
+#LoadModule dav_module modules/mod_dav.so
+#LoadModule dav_fs_module modules/mod_dav_fs.so
+#LoadModule dav_lock_module modules/mod_dav_lock.so
+#LoadModule dbd_module modules/mod_dbd.so
+#LoadModule deflate_module modules/mod_deflate.so
+LoadModule dir_module modules/mod_dir.so
+#LoadModule dumpio_module modules/mod_dumpio.so
+LoadModule env_module modules/mod_env.so
+#LoadModule expires_module modules/mod_expires.so
+#LoadModule ext_filter_module modules/mod_ext_filter.so
+#LoadModule file_cache_module modules/mod_file_cache.so
+#LoadModule filter_module modules/mod_filter.so
+#LoadModule http2_module modules/mod_http2.so
+LoadModule headers_module modules/mod_headers.so
+#LoadModule heartbeat_module modules/mod_heartbeat.so
+#LoadModule heartmonitor_module modules/mod_heartmonitor.so
+#LoadModule ident_module modules/mod_ident.so
+#LoadModule imagemap_module modules/mod_imagemap.so
+LoadModule include_module modules/mod_include.so
+#LoadModule info_module modules/mod_info.so
+LoadModule isapi_module modules/mod_isapi.so
+#LoadModule lbmethod_bybusyness_module modules/mod_lbmethod_bybusyness.so
+#LoadModule lbmethod_byrequests_module modules/mod_lbmethod_byrequests.so
+#LoadModule lbmethod_bytraffic_module modules/mod_lbmethod_bytraffic.so
+#LoadModule lbmethod_heartbeat_module modules/mod_lbmethod_heartbeat.so
+#LoadModule ldap_module modules/mod_ldap.so
+#LoadModule logio_module modules/mod_logio.so
+LoadModule log_config_module modules/mod_log_config.so
+#LoadModule log_debug_module modules/mod_log_debug.so
+#LoadModule log_forensic_module modules/mod_log_forensic.so
+#LoadModule lua_module modules/mod_lua.so
+#LoadModule macro_module modules/mod_macro.so
+LoadModule mime_module modules/mod_mime.so
+#LoadModule mime_magic_module modules/mod_mime_magic.so
+LoadModule negotiation_module modules/mod_negotiation.so
+LoadModule proxy_module modules/mod_proxy.so
+LoadModule proxy_ajp_module modules/mod_proxy_ajp.so
+LoadModule proxy_balancer_module modules/mod_proxy_balancer.so
+LoadModule proxy_connect_module modules/mod_proxy_connect.so
+LoadModule proxy_express_module modules/mod_proxy_express.so
+LoadModule proxy_fcgi_module modules/mod_proxy_fcgi.so
+LoadModule proxy_ftp_module modules/mod_proxy_ftp.so
+LoadModule proxy_hcheck_module modules/mod_proxy_hcheck.so
+LoadModule proxy_html_module modules/mod_proxy_html.so
+LoadModule proxy_http_module modules/mod_proxy_http.so
+#LoadModule proxy_http2_module modules/mod_proxy_http2.so
+#LoadModule proxy_scgi_module modules/mod_proxy_scgi.so
+#LoadModule proxy_wstunnel_module modules/mod_proxy_wstunnel.so
+#LoadModule ratelimit_module modules/mod_ratelimit.so
+#LoadModule reflector_module modules/mod_reflector.so
+#LoadModule remoteip_module modules/mod_remoteip.so
+#LoadModule request_module modules/mod_request.so
+#LoadModule reqtimeout_module modules/mod_reqtimeout.so
+LoadModule rewrite_module modules/mod_rewrite.so
+#LoadModule sed_module modules/mod_sed.so
+#LoadModule session_module modules/mod_session.so
+#LoadModule session_cookie_module modules/mod_session_cookie.so
+#LoadModule session_crypto_module modules/mod_session_crypto.so
+#LoadModule session_dbd_module modules/mod_session_dbd.so
+LoadModule setenvif_module modules/mod_setenvif.so
+#LoadModule slotmem_plain_module modules/mod_slotmem_plain.so
+LoadModule slotmem_shm_module modules/mod_slotmem_shm.so
+#LoadModule socache_dbm_module modules/mod_socache_dbm.so
+#LoadModule socache_memcache_module modules/mod_socache_memcache.so
+LoadModule socache_shmcb_module modules/mod_socache_shmcb.so
+#LoadModule speling_module modules/mod_speling.so
+LoadModule ssl_module modules/mod_ssl.so
+#LoadModule status_module modules/mod_status.so
+#LoadModule substitute_module modules/mod_substitute.so
+#LoadModule unique_id_module modules/mod_unique_id.so
+#LoadModule userdir_module modules/mod_userdir.so
+#LoadModule usertrack_module modules/mod_usertrack.so
+#LoadModule version_module modules/mod_version.so
+#LoadModule vhost_alias_module modules/mod_vhost_alias.so
+LoadModule watchdog_module modules/mod_watchdog.so
+LoadModule xml2enc_module modules/mod_xml2enc.so
+
+&lt;IfModule unixd_module&gt;
+  User daemon
+  Group daemon
+&lt;/IfModule&gt;
+
+ServerAdmin hi@mgkim.net
+
+ServerName mgkim.net:50001
+
+&lt;Directory /&gt;
+  AllowOverride none
+  Require all denied
+&lt;/Directory&gt;
+
+DocumentRoot &quot;Z:/www/20210825_171631&quot;
+&lt;Directory &quot;Z:/www/20210825_171631&quot;&gt;
+  Options Indexes FollowSymLinks
+  AllowOverride None
+  Require all granted
+&lt;/Directory&gt;
+
+&lt;IfModule dir_module&gt;
+  DirectoryIndex index.html
+&lt;/IfModule&gt;
+
+&lt;Files &quot;.ht*&quot;&gt;
+  Require all denied
+&lt;/Files&gt;
+
+ErrorLog &quot;logs/error.log&quot;
+
+LogLevel warn
+
+&lt;IfModule log_config_module&gt;
+  LogFormat &quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b \&quot;%{Referer}i\&quot; \&quot;%{User-Agent}i\&quot;&quot; combined
+  LogFormat &quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b&quot; common
+
+  &lt;IfModule logio_module&gt;
+    LogFormat &quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b \&quot;%{Referer}i\&quot; \&quot;%{User-Agent}i\&quot; %I %O&quot; combinedio
+  &lt;/IfModule&gt;
+  CustomLog &quot;logs/access.log&quot; common
+&lt;/IfModule&gt;
+
+&lt;IfModule alias_module&gt;
+  ScriptAlias /cgi-bin/ &quot;c:/Apache24/cgi-bin/&quot;
+&lt;/IfModule&gt;
+
+&lt;IfModule headers_module&gt;
+  RequestHeader unset Proxy early
+&lt;/IfModule&gt;
+
+&lt;IfModule mime_module&gt;
+  TypesConfig conf/mime.types
+  AddType application/x-compress .Z
+  AddType application/x-gzip .gz .tgz
+&lt;/IfModule&gt;
+
+### include
+
+Include conf/extra/vhost-dlog.conf
+Include conf/extra/ssl.conf
+
+### exclude
+
+#Include conf/extra/httpd-mpm.conf
+#Include conf/extra/httpd-multilang-errordoc.conf
+#Include conf/extra/httpd-autoindex.conf
+#Include conf/extra/httpd-languages.conf
+#Include conf/extra/httpd-userdir.conf
+#Include conf/extra/httpd-info.conf
+#Include conf/extra/httpd-manual.conf
+#Include conf/extra/httpd-dav.conf
+#Include conf/extra/httpd-default.conf
+#&lt;IfModule proxy_html_module&gt;
+#  Include conf/extra/proxy-html.conf
+#&lt;/IfModule&gt;
+&lt;IfModule ssl_module&gt;
+  SSLRandomSeed startup builtin
+  SSLRandomSeed connect builtin
+&lt;/IfModule&gt;
+
+</code></pre><ul>
+<li>ssl.conf</li>
+</ul>
+<pre><code>Listen 9443
+#Listen 443
+
+SSLCipherSuite HIGH:MEDIUM:!MD5:!RC4
+SSLProxyCipherSuite HIGH:MEDIUM:!MD5:!RC4
+
+SSLHonorCipherOrder on
+
+SSLProtocol all -SSLv3
+SSLProxyProtocol all -SSLv3
+
+SSLPassPhraseDialog  builtin
+
+SSLSessionCache         &quot;shmcb:c:/Apache24/logs/ssl_scache(512000)&quot;
+SSLSessionCacheTimeout  300
+</code></pre><ul>
+<li>vhost-dlog.conf</li>
+</ul>
+<pre><code>#&lt;VirtualHost *:80&gt;
+#  ServerName vdlog.mgkim.net:80
+#
+#  RewriteEngine On
+#  RewriteCond %{HTTPS} !=On
+#  RewriteRule /(.*) https://vdlog.mgkim.net:9443/$1 [QSA,R,L]
+#&lt;/VirtualHost&gt;
+#
+#&lt;VirtualHost *:9443&gt;
+#  ServerName vdlog.mgkim.net:9443
+#
+#  ErrorLog &quot;|bin/rotatelogs.exe logs/vdlog.mgkim.net_ssl-error.log.%Y-%m-%d 86400 +540&quot;
+#  CustomLog &quot;|bin/rotatelogs.exe logs/vdlog.mgkim.net_ssl-access.log.%Y-%m-%d 86400 +540&quot; combined
+#
+#  SSLEngine On
+#  SSLProxyEngine On
+#  SSLProtocol all -SSLv2
+#  SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5
+#  SSLCertificateFile conf/certs/STAR.mgkim.net.crt
+#  SSLCertificateKeyFile conf/certs/STAR.mgkim.net.key
+#
+#  ProxyRequests Off
+#  ProxyPreserveHost On
+#
+#  &lt;Proxy gitlab&gt;
+#    Require all granted
+#  &lt;/Proxy&gt;
+#
+#  AllowEncodedSlashes On
+#  Header set Access-Control-Allow-Origin &quot;*&quot;
+#
+#  ProxyPass / http://127.0.0.1:1313/
+#  ProxyPassReverse / http://127.0.0.1:1313/
+#&lt;/VirtualHost&gt;
+
+&lt;VirtualHost *:80&gt;
+  ServerName vdlog.mgkim.net:80
+  ServerAlias mgkim.net:80
+
+  ErrorLog &quot;|bin/rotatelogs.exe logs/vdlog.mgkim.net-error.log.%Y-%m-%d 86400 +540&quot;
+  CustomLog &quot;|bin/rotatelogs.exe logs/vdlog.mgkim.net-access.log.%Y-%m-%d 86400 +540&quot; combined
+
+  ProxyRequests Off
+  ProxyPreserveHost On
+
+  &lt;Proxy gitlab&gt;
+    Require all granted
+  &lt;/Proxy&gt;
+
+  AllowEncodedSlashes On
+  Header set Access-Control-Allow-Origin &quot;*&quot;
+
+  ProxyPass / http://127.0.0.1:1313/
+  ProxyPassReverse / http://127.0.0.1:1313/
+&lt;/VirtualHost&gt;
+
+
+
+&lt;VirtualHost *:80&gt;
+  ServerName vdlog:80
+
+  RewriteEngine On
+  RewriteCond %{HTTPS} !=On
+  RewriteRule /(.*) https://vdlog:9443/$1 [QSA,R,L]
+&lt;/VirtualHost&gt;
+
+&lt;VirtualHost *:9443&gt;
+  ServerName vdlog:9443
+
+  SSLEngine On
+  SSLProxyEngine On
+  #SSLProxyCheckPeerCN On
+  #SSLProxyCheckPeerExpire On
+  SSLProtocol all -SSLv2
+  SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5
+  SSLCertificateFile conf/certs/vdlog.crt
+  SSLCertificateKeyFile conf/certs/vdlog.key
+
+  RewriteEngine On
+  RewriteRule /(.*) https://dlog.mgkim.net:443/$1 [QSA,P,L]
+&lt;/VirtualHost&gt;
+</code></pre><h2 id="openssl">openssl</h2>
+<h3 id="인증서-생성하기">인증서 생성하기</h3>
+<ol>
+<li>개인키(key) 생성</li>
+<li>인증서발급신청서(CSR) 생성</li>
+<li>인증서(CRT) 생성</li>
+</ol>
+<h3 id="useful">useful</h3>
+<p>개인키(domain.key)와 인증서(domain.crt) 파일을 동시에 생성하는 스크립트 입니다.</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#666">[</span>root@develop /etc/httpd/conf.d/certs<span style="color:#666">]</span>$ cat create-cert.sh
+<span style="color:#19177c">DOMAIN</span><span style="color:#666">=</span><span style="color:#19177c">$1</span>
+
+openssl req -x509 -nodes -days <span style="color:#666">730</span> -newkey rsa:2048 -keyout <span style="color:#19177c">$DOMAIN</span>.key -out <span style="color:#19177c">$DOMAIN</span>.crt -config &lt;<span style="color:#666">(</span>cat <span style="color:#ba2121">&lt;&lt;- TEXT
+</span><span style="color:#ba2121">[req]
+</span><span style="color:#ba2121">distinguished_name = req_distinguished_name
+</span><span style="color:#ba2121">x509_extensions = v3_req
+</span><span style="color:#ba2121">prompt = no
+</span><span style="color:#ba2121">[req_distinguished_name]
+</span><span style="color:#ba2121">countryName             = KR
+</span><span style="color:#ba2121">stateOrProvinceName     = Seoul
+</span><span style="color:#ba2121">localityName            = Seonyudo
+</span><span style="color:#ba2121">organizationName        = SPACESOFT
+</span><span style="color:#ba2121">organizationalUnitName  = Dev Team
+</span><span style="color:#ba2121">CN = $DOMAIN
+</span><span style="color:#ba2121">[v3_req]
+</span><span style="color:#ba2121">keyUsage = critical, digitalSignature, keyAgreement
+</span><span style="color:#ba2121">extendedKeyUsage = serverAuth
+</span><span style="color:#ba2121">subjectAltName = @alt_names
+</span><span style="color:#ba2121">[alt_names]
+</span><span style="color:#ba2121">DNS.1 = $DOMAIN
+</span><span style="color:#ba2121">TEXT</span><span style="color:#666">)</span> -sha256
+
+<span style="color:#666">[</span>root@develop /etc/httpd/conf.d/certs<span style="color:#666">]</span>$
+</code></pre></div><h2 id="selinux">selinux</h2>
+<pre><code>chcon -Rt httpd_log_t /outlog/WEB
+chcon -Rt httpd_sys_content_t /app/WEB/dlog
+setsebool -P httpd_can_network_connect on
+
+systemctl restart httpd
+</code></pre>
+	
+	
+	<div class="text-muted mt-5 pt-3 border-top">
+
+</div>
+
+</div>
+
+
+          </main>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@8.11.2/dist/mermaid.min.js" integrity="sha384-m8Pdaep6Qk8sW3J6XhPOiwUww3maU9HxZTLvEfSEB4e1UVvTdHyfJsYmEfYqvwLC" crossorigin="anonymous"></script>
+
+
+
+<style>
+.markmap > svg {
+  width: 100%;
+  height: 300px;
+}
+</style>
+<script>
+window.markmap = {
+  autoLoader: { manual: true },
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
+
+
+<script src='/js/tabpane-persist.js'></script>
+
+
+
+<script src='/js/deflate.js'></script>
+
+
+ 
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.css" integrity="sha384-Cqd8ihRLum0CCg8rz0hYKPoLZ3uw+gES2rXQXycqnL5pgVQIflxAUDS7ZSjITLb5" crossorigin="anonymous">
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.js" integrity="sha384-1Or6BdeNQb0ezrmtGeqQHFpppNd7a/gw29xeiSikBbsb44xu3uAo8c7FwbF5jhbd" crossorigin="anonymous"></script>
+ 
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/mhchem.min.js" integrity="sha384-LIgAiYlGSAdpNC9+YDjDPF6JeS/RRIumtNo0CmyQERZ/+g0h9MbuYQwf/5pQ4Y4M"  crossorigin="anonymous"></script>
+
+
+<script defer src='https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/auto-render.min.js' integrity='sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl' crossorigin='anonymous' onload='renderMathInElement(document.body, null);'></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.min.c1b8f3c373b85f900699a7ea81c2038ebbbebcac1a5a4b6e5ef96c24c31790d6.js" integrity="sha256-wbjzw3O4X5AGmafqgcIDjru&#43;vKwaWktuXvlsJMMXkNY=" crossorigin="anonymous"></script>
+
+
+
+
+  </body>
+</html>

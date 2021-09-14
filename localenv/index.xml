@@ -1,0 +1,202 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>dlog – 로컬 환경</title>
+    <link>/localenv/</link>
+    <description>Recent content in 로컬 환경 on dlog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="/localenv/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Localenv: chrome</title>
+      <link>/localenv/chrome/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/localenv/chrome/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;http-를-https-로-자동으로-접속되는-상황&#34;&gt;http 를 https 로 자동으로 접속되는 상황&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;chrome://net-internals/#hsts&lt;/code&gt; 로 이동&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Delete domain security policies&lt;/code&gt; 에서 해당 도메인 delete&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Localenv: oracle client</title>
+      <link>/localenv/oracle-client/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/localenv/oracle-client/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;환경변수&#34;&gt;환경변수&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;ORACLE_HOME
+D:\oracle\ora12c_32bit\client_12_1
+
+TNS_ADMIN
+%ORACLE_HOME%\network\admin
+
+PATH
+%PATH%;%ORACLE_HOME%\bin
+
+NLS_LANG
+KOREAN_KOREA.KO16MSWIN949
+
+NLS_DATE_FORMAT=YYYY-MM-DD HH24:MI:SS   #ALTER SESSION SET NLS_DATE_FORMAT=&#39;YYYY-MM-DD HH24:MI:SS&#39;;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;레지스트리&#34;&gt;레지스트리&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;HKEY_LOCAL_MACHINE\SOFTWARE\ORACLE\KEY_client&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\ORACLE\KEY_client]
+&amp;quot;ORACLE_BASE&amp;quot;=&amp;quot;Z:\\oracle\\ora12c_32bit&amp;quot;
+&amp;quot;ORACLE_HOME&amp;quot;=&amp;quot;Z:\\oracle\\ora12c_32bit\\client_12_1&amp;quot;
+&amp;quot;ORACLE_HOME_NAME&amp;quot;=&amp;quot;ora12c_32bit&amp;quot;
+&amp;quot;ORACLE_GROUP_NAME&amp;quot;=&amp;quot;oracle-client&amp;quot;
+&amp;quot;NLS_LANG&amp;quot;=&amp;quot;KOREAN_KOREA.KO16MSWIN949&amp;quot;
+&amp;quot;ORACLE_BUNDLE_NAME&amp;quot;=&amp;quot;Enterprise&amp;quot;
+&amp;quot;ORACLE_HOME_KEY&amp;quot;=&amp;quot;SOFTWARE\\ORACLE\\KEY_client&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\ORACLE\KEY_client&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\ORACLE\KEY_client]
+&amp;quot;ORACLE_BASE&amp;quot;=&amp;quot;Z:\\oracle\\ora12c_32bit&amp;quot;
+&amp;quot;ORACLE_HOME&amp;quot;=&amp;quot;Z:\\oracle\\ora12c_32bit\\client_12_1&amp;quot;
+&amp;quot;ORACLE_HOME_NAME&amp;quot;=&amp;quot;ora12c_32bit&amp;quot;
+&amp;quot;ORACLE_GROUP_NAME&amp;quot;=&amp;quot;oracle-client&amp;quot;
+&amp;quot;NLS_LANG&amp;quot;=&amp;quot;KOREAN_KOREA.KO16MSWIN949&amp;quot;
+&amp;quot;ORACLE_BUNDLE_NAME&amp;quot;=&amp;quot;Enterprise&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;tnsnamesora&#34;&gt;tnsnames.ora&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;SPADBP =
+  (DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = develop)(PORT = 1521))
+    (CONNECT_DATA =
+      (SERVER = DEDICATED)
+      (SERVICE_NAME = SPADBP)
+    )
+  )
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;sqlplus&#34;&gt;sqlplus&lt;/h2&gt;
+&lt;h3 id=&#34;connect&#34;&gt;connect&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;C:\Users\Administrator&amp;gt;sqlplus /nolog
+
+SQL*Plus: Release 12.1.0.2.0 Production on 목 9월 2 11:39:53 2021
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+SQL&amp;gt; conn SPADBA/password@develop:1521/SPADBP
+연결되었습니다.
+SQL&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;pdb&#34;&gt;PDB&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;[oracle@develop ~]$ sqlplus /nolog
+
+SQL*Plus: Release 12.1.0.2.0 Production on 목 9월 2 11:32:59 2021
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+SQL&amp;gt; conn /as sysdba
+연결되었습니다.
+SQL&amp;gt; show con_name
+
+CON_NAME
+------------------------------
+CDB$ROOT
+SQL&amp;gt; set line 150 pages 1000
+SQL&amp;gt; col name for a30
+SQL&amp;gt; select con_id, dbid, name, open_mode from v$containers order by 1;
+
+    CON_ID	 DBID NAME			     OPEN_MODE
+---------- ---------- ------------------------------ ----------
+	 1 1588065228 CDB$ROOT			     READ WRITE
+	 2 2599163564 PDB$SEED			     READ ONLY
+	 3  673775647 SPADBP			     READ WRITE
+
+SQL&amp;gt; alter session set container=SPADBP;
+
+세션이 변경되었습니다.
+
+SQL&amp;gt; show con_name
+
+CON_NAME
+------------------------------
+SPADBP
+SQL&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;oracle-object-조회&#34;&gt;oracle object 조회&lt;/h2&gt;
+&lt;h3 id=&#34;테이블-검색&#34;&gt;테이블 검색&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;SELECT&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#408080;font-style:italic&#34;&gt;/* (Alt+1) 테이블 검색  */&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;A.&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;OWNER&lt;/span&gt;,&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;A.COMMENTS&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;AS&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;T_COMMENT,&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;A.&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;TABLE_NAME&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;AS&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;T_NAME,&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;B.&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;COLUMN_NAME&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;AS&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;C_NAME,&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;B.COMMENTS&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;AS&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;C_COMMENT,&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;B1.COLUMN_ID&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;FROM&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;ALL_TAB_COMMENTS&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;A,&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;ALL_COL_COMMENTS&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;B,&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;ALL_TAB_COLS&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;B1&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;WHERE&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;AND&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;A.&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;TABLE_NAME&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;LIKE&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#39;%&amp;amp;Var%&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;AND&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;A.&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;TABLE_NAME&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;B.&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;TABLE_NAME&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;AND&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;B.&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;TABLE_NAME&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;B1.&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;TABLE_NAME&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;AND&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;B.&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;COLUMN_NAME&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;B1.&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;COLUMN_NAME&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;AND&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;A.&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;OWNER&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;B.&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;OWNER&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;AND&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;B.&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;OWNER&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;B1.&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;OWNER&lt;/span&gt;(&lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt;)&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;AND&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;A.&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;OWNER&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;IN&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;(&lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#39;SPADBA&amp;#39;&lt;/span&gt;)&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;ORDER&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;BY&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;A.&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;OWNER&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;DESC&lt;/span&gt;,&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;B1.COLUMN_ID,&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;A.COMMENTS&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;컬럼-검색&#34;&gt;컬럼 검색&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;SELECT&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#408080;font-style:italic&#34;&gt;/* (Alt+2) 컬럼 검색  */&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;A.&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;OWNER&lt;/span&gt;,&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;A.COMMENTS&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;AS&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;T_COMMENT,&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;A.&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;TABLE_NAME&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;AS&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;T_NAME,&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;B.&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;COLUMN_NAME&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;AS&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;C_NAME,&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;B.COMMENTS&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;AS&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;C_COMMENT,&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;B1.COLUMN_ID&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;FROM&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;ALL_TAB_COMMENTS&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;A,&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;ALL_COL_COMMENTS&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;B,&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;ALL_TAB_COLS&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;B1,&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;ALL_CONS_COLUMNS&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;C&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;WHERE&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;AND&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;(B.&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;COLUMN_NAME&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;LIKE&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#39;%&amp;amp;Var%&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;OR&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;B.COMMENTS&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;LIKE&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#39;%&amp;amp;Var%&amp;#39;&lt;/span&gt;)&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;AND&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;A.&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;TABLE_NAME&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;B.&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;TABLE_NAME&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;AND&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;B.&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;TABLE_NAME&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;C&lt;/span&gt;.&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;TABLE_NAME&lt;/span&gt;(&lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt;)&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;AND&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;B.&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;TABLE_NAME&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;B1.&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;TABLE_NAME&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;AND&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;B.&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;COLUMN_NAME&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;B1.&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;COLUMN_NAME&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;AND&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;A.&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;OWNER&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;B.&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;OWNER&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;AND&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;B.&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;OWNER&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;B1.&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;OWNER&lt;/span&gt;(&lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt;)&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;AND&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;B.&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;OWNER&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;C&lt;/span&gt;.&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;OWNER&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;AND&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;B.&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;COLUMN_NAME&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;C&lt;/span&gt;.&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;COLUMN_NAME&lt;/span&gt;(&lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt;)&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;AND&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;C&lt;/span&gt;.&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;CONSTRAINT_NAME&lt;/span&gt;(&lt;span style=&#34;color:#666&#34;&gt;+&lt;/span&gt;)&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;LIKE&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#39;%PK&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;AND&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;A.&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;OWNER&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;IN&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;(&lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#39;SPADBA&amp;#39;&lt;/span&gt;)&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;AND&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;(A.&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;TABLE_NAME&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;LIKE&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#39;E%&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;OR&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;A.&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;TABLE_NAME&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;LIKE&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#39;CB%&amp;#39;&lt;/span&gt;)&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;ORDER&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;BY&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;A.&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;OWNER&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;DESC&lt;/span&gt;,&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;A.COMMENTS,&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;B1.COLUMN_ID,&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;C&lt;/span&gt;.&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;POSITION&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;테이블-조회&#34;&gt;테이블 조회&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;SELECT&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#408080;font-style:italic&#34;&gt;/* (Alt+3) 테이블 조회 */&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;FROM&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;&amp;amp;&lt;/span&gt;Var&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;WHERE&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;ROWNUM&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;200&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;dict-검색&#34;&gt;dict 검색&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;SELECT&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#408080;font-style:italic&#34;&gt;/* (Alt+4) DICT 검색 */&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;FROM&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;DICT&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;WHERE&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;TABLE_NAME&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;LIKE&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#39;%&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;||&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#39;&amp;amp;Var&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;||&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#39;%&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;ORDER&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;BY&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;TABLE_NAME&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;사용자-관리&#34;&gt;사용자 관리&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;SQL&amp;gt; alter user SPADBA identified by 1234;
+
+사용자가 변경되었습니다.
+
+SQL&amp;gt; select resource_name, limit from dba_profiles where profile=&#39;DEFAULT&#39;;
+SQL&amp;gt; select username, account_status, expiry_date from dba_users;
+&lt;/code&gt;&lt;/pre&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Localenv: windows</title>
+      <link>/localenv/windows/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/localenv/windows/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;hosts&#34;&gt;hosts&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;# C:\Windows\System32\drivers\etc\hosts
+
+172.28.200.20  develop nexus gitlab jenkins dlog
+172.28.200.20  prototype hugo
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;vmware-nat&#34;&gt;vmware NAT&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;vmware&lt;/code&gt; &amp;gt; &lt;code&gt;Edit&lt;/code&gt; &amp;gt; &lt;code&gt;Virtual Network Editor&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;NAT Settings...&lt;/code&gt; &amp;gt; &lt;code&gt;Gateway IP&lt;/code&gt; 확인&lt;/p&gt;
+&lt;p&gt;Subnet IP: 10.28.7.0, Subnet mask: 255.255.255.0&lt;/p&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>
