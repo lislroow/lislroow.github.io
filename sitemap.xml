@@ -6,25 +6,17 @@
   </url><url>
     <loc>/categories/</loc>
   </url><url>
-    <loc>/localenv/chrome/</loc>
-  </url><url>
     <loc>/</loc>
   </url><url>
     <loc>/framework/</loc>
   </url><url>
-    <loc>/localenv/git/</loc>
-  </url><url>
     <loc>/system/httpd/</loc>
-  </url><url>
-    <loc>/localenv/java/</loc>
   </url><url>
     <loc>/system/jenkins/</loc>
   </url><url>
     <loc>/system/linux/</loc>
   </url><url>
     <loc>/localenv/</loc>
-  </url><url>
-    <loc>/localenv/maven/</loc>
   </url><url>
     <loc>/system/openssh/</loc>
   </url><url>
@@ -39,11 +31,5 @@
     <loc>/system/</loc>
   </url><url>
     <loc>/tags/</loc>
-  </url><url>
-    <loc>/terms/</loc>
-  </url><url>
-    <loc>/localenv/windows/</loc>
-  </url><url>
-    <loc>/localenv/windows-cmd/</loc>
   </url>
 </urlset>

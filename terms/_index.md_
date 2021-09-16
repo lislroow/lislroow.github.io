@@ -1,0 +1,39 @@
+---
+title: "용어"
+linkTitle: "terms"
+menu:
+  main:
+    weight: 40
+    pre: <i class='fas fa-book'></i>
+---
+
+## HMAC
+
+해싱 기법을 적용하여 메시지의 위변조를 방지하는 기법을 HMAC (Hash-based Message Authentication) 이라고 한다. 좀더 상세히 설명하면 Sender와 Recipient는 서로 API를 주고 받아야한다. 그럴때 이메시지가 Sender 가보낸 메시지인지 인증을 해야한다. 뿐만 아니라 이 메시지가 변조가 되었는지 확인을 해야한다. 이러한 문제점을 해결하는것이 HMAC이다. Sender는 메시지를 보내기전에 공유된 Secret키와 메시지를 기반으로 해쉬값을 만든다. 그리고 이해쉬값을 헤더값에 포함하여 전달해준다. 그리고 Recipient는 그 받은 메시지를 기반으로 또 자신이 가지고있는 공유된 Secret를 이용하여 해쉬를 만들어내고 헤더값에 넘어온 키를 대조한다. 이것이 일치하면 Sender에대한 인증, 메시지의 무결성을 확인할 수 있다.
+
+만약 중간에 해커가 메시지를 가로챈다고 하더라도 시크릿키를 알수 없기때문에 메시지를 변조할 수 없다. 그리고 보통 메시지 Body값에는 Timestamp를 넣는것이 일반적이다. 이렇게하면 서버에서 호출시간을 알 수 있고 이렇게 함으로써 좀더 보안성을 높여 사용할 수 있다.
+
+
+
+## CORS preflight
+
+브라우저는 현재 웹페이지 이외의 사이트에 xhr 요청할 때 CORS preflight 라는 요청을 보낸다. 이것은 실제 해당 서버에 CORS 정책을 확인하기 위한 요청이며 OPTIONS 메소드를 사용하여 요청을 보낸다 (GET /hello 요청에 대해 OPTIONS /hello 요청을 preflight로 보낸다).
+
+이 OPTIONS 요청은 웹페이지의 javascript에 의한 명시적인 요청이 아니라, 브라우저가 보내는 요청이다. 이 요청의 응답으로 적절한 CORS 접근 권한을 얻지 못하면 브라우저는 그 사이트에 대한 xhr 요청을 모두 무시한다. (실제 서버응답을 javascript로 돌려주지 않는다)
+
+CORS와 관련된 응답 헤더
+- Access-Contorl-Allow-Origin (CORS 요청을 허용할 사이트)
+- Access-Contorl-Allow-Method (CORS 요청을 허용할 method. GET,PUT,POST ...)
+- Access-Contorl-Allow-Headers (특정 헤더를 가진 경우에만 CORS 요청을 허용할 경우
+- Access-Contorl-Allow-Credencial (자격증명과 함께 요청을 할 수 있는지 여부)
+- Access-Contorl-Max-Age (preflight 요청의 캐시 시간)
+
+
+## bootstrap
+
+부트스트랩(bootstrap) 또는 부트스트래핑(bootstrapping)은 "현재 상황에서 어떻게든 한다"는 뜻이다. 또, 사물의 초기 단계에서 단순 요소로부터 복잡한 체계를 구축하는 과정을 가리키는 경우도 있다.
+
+부트스트랩 (컴퓨팅): 더 복잡한 도구를 만들 수 있도록 도와 주는 단순 도구를 만들거나 적재함으로써 복잡한 소프트웨어 도구를 만들거나 컴퓨터를 시작하는 것을 말한다. 줄여서 시동이라고도 할 수 있으며, 이는 컴퓨터를 시작하는 과정을 서술해 준다.
+부트스트랩 (컴파일러): 언어 그 자체를 사용하여 컴퓨터 언어에 맞춰 컴파일을 기록하는 것을 말한다.
+
+
