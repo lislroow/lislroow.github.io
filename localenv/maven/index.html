@@ -22,29 +22,33 @@
 
   
   <meta name="description" content="release
+명령어
+$ mvn -B clean release:prepare release:perform deploy
 $M2_HOME/conf/settings.xml 파일
-&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;
-&lt;settings xmlns= …">
+&lt;?xml version=&#34;1.0&#34; …">
 <meta property="og:title" content="maven" />
-<meta property="og:description" content="release $M2_HOME/conf/settings.xml 파일
+<meta property="og:description" content="release 명령어
+$ mvn -B clean release:prepare release:perform deploy $M2_HOME/conf/settings.xml 파일
 &lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt; &lt;settings xmlns=&#34;http://maven.apache.org/SETTINGS/1.0.0&#34; xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34; xsi:schemaLocation=&#34;http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd&#34;&gt; &lt;servers&gt; &lt;server&gt; &lt;id&gt;nexus-release&lt;/id&gt; &lt;username&gt;admin&lt;/username&gt; &lt;password&gt;passwd&lt;/password&gt; &lt;/server&gt; &lt;server&gt; &lt;id&gt;nexus-snapshot&lt;/id&gt; &lt;username&gt;admin&lt;/username&gt; &lt;password&gt;passwd&lt;/password&gt; &lt;/server&gt; &lt;/servers&gt; &lt;mirrors&gt; &lt;mirror&gt; &lt;id&gt;nexus&lt;/id&gt; &lt;name&gt;nexus&lt;/name&gt; &lt;url&gt;http://nexus/repository/maven-group/&lt;/url&gt; &lt;mirrorOf&gt;*&lt;/mirrorOf&gt; &lt;/mirror&gt; &lt;/mirrors&gt; &lt;/settings&gt; pom.xml 파일
-&lt;build&gt; &lt;plugins&gt; &lt;plugin&gt; &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt; &lt;artifactId&gt;maven-release-plugin&lt;/artifactId&gt; &lt;version&gt;3.0.0-M1&lt;/version&gt; &lt;!-- 필수 사항 --&gt; &lt;configuration&gt; &lt;autoVersionSubmodules&gt;true&lt;/autoVersionSubmodules&gt; &lt;goals&gt;deploy&lt;/goals&gt; &lt;username&gt;mgkim&lt;/username&gt; &lt;password&gt;passwd&lt;/password&gt; &lt;/configuration&gt; &lt;!-- //필수 사항 --&gt; &lt;/plugin&gt; &lt;/plugins&gt; &lt;/build&gt; &lt;!-- 필수 사항 --&gt; &lt;scm&gt; &lt;connection&gt;scm:svn:svn://develop/test/trunk/proto.www&lt;/connection&gt; &lt;/scm&gt; &lt;!-- //필수 사항 --&gt; &lt;distributionManagement&gt; &lt;snapshotRepository&gt; &lt;id&gt;mgkim-snapshot&lt;/id&gt; &lt;url&gt;http://nexus/repository/maven-mgkim-snapshot/&lt;/url&gt; &lt;/snapshotRepository&gt; &lt;repository&gt; &lt;id&gt;mgkim-release&lt;/id&gt; &lt;url&gt;http://nexus/repository/maven-mgkim-release/&lt;/url&gt; &lt;/repository&gt; &lt;/distributionManagement&gt;" />
+&lt;build&gt; &lt;plugins&gt; &lt;plugin&gt; &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt; &lt;artifactId&gt;maven-release-plugin&lt;/artifactId&gt; &lt;version&gt;3.0.0-M1&lt;/version&gt; &lt;!-- 필수 사항 --&gt; &lt;configuration&gt; &lt;autoVersionSubmodules&gt;true&lt;/autoVersionSubmodules&gt; &lt;goals&gt;deploy&lt;/goals&gt; &lt;username&gt;mgkim&lt;/username&gt; &lt;password&gt;passwd&lt;/password&gt; &lt;/configuration&gt; &lt;!-- //필수 사항 --&gt; &lt;/plugin&gt; &lt;/plugins&gt; &lt;/build&gt; &lt;!-- 필수 사항 --&gt; &lt;scm&gt; &lt;connection&gt;scm:svn:svn://develop/test/trunk/proto." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/localenv/maven/" /><meta property="article:section" content="localenv" />
 
 
 
 <meta itemprop="name" content="maven">
-<meta itemprop="description" content="release $M2_HOME/conf/settings.xml 파일
+<meta itemprop="description" content="release 명령어
+$ mvn -B clean release:prepare release:perform deploy $M2_HOME/conf/settings.xml 파일
 &lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt; &lt;settings xmlns=&#34;http://maven.apache.org/SETTINGS/1.0.0&#34; xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34; xsi:schemaLocation=&#34;http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd&#34;&gt; &lt;servers&gt; &lt;server&gt; &lt;id&gt;nexus-release&lt;/id&gt; &lt;username&gt;admin&lt;/username&gt; &lt;password&gt;passwd&lt;/password&gt; &lt;/server&gt; &lt;server&gt; &lt;id&gt;nexus-snapshot&lt;/id&gt; &lt;username&gt;admin&lt;/username&gt; &lt;password&gt;passwd&lt;/password&gt; &lt;/server&gt; &lt;/servers&gt; &lt;mirrors&gt; &lt;mirror&gt; &lt;id&gt;nexus&lt;/id&gt; &lt;name&gt;nexus&lt;/name&gt; &lt;url&gt;http://nexus/repository/maven-group/&lt;/url&gt; &lt;mirrorOf&gt;*&lt;/mirrorOf&gt; &lt;/mirror&gt; &lt;/mirrors&gt; &lt;/settings&gt; pom.xml 파일
-&lt;build&gt; &lt;plugins&gt; &lt;plugin&gt; &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt; &lt;artifactId&gt;maven-release-plugin&lt;/artifactId&gt; &lt;version&gt;3.0.0-M1&lt;/version&gt; &lt;!-- 필수 사항 --&gt; &lt;configuration&gt; &lt;autoVersionSubmodules&gt;true&lt;/autoVersionSubmodules&gt; &lt;goals&gt;deploy&lt;/goals&gt; &lt;username&gt;mgkim&lt;/username&gt; &lt;password&gt;passwd&lt;/password&gt; &lt;/configuration&gt; &lt;!-- //필수 사항 --&gt; &lt;/plugin&gt; &lt;/plugins&gt; &lt;/build&gt; &lt;!-- 필수 사항 --&gt; &lt;scm&gt; &lt;connection&gt;scm:svn:svn://develop/test/trunk/proto.www&lt;/connection&gt; &lt;/scm&gt; &lt;!-- //필수 사항 --&gt; &lt;distributionManagement&gt; &lt;snapshotRepository&gt; &lt;id&gt;mgkim-snapshot&lt;/id&gt; &lt;url&gt;http://nexus/repository/maven-mgkim-snapshot/&lt;/url&gt; &lt;/snapshotRepository&gt; &lt;repository&gt; &lt;id&gt;mgkim-release&lt;/id&gt; &lt;url&gt;http://nexus/repository/maven-mgkim-release/&lt;/url&gt; &lt;/repository&gt; &lt;/distributionManagement&gt;">
+&lt;build&gt; &lt;plugins&gt; &lt;plugin&gt; &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt; &lt;artifactId&gt;maven-release-plugin&lt;/artifactId&gt; &lt;version&gt;3.0.0-M1&lt;/version&gt; &lt;!-- 필수 사항 --&gt; &lt;configuration&gt; &lt;autoVersionSubmodules&gt;true&lt;/autoVersionSubmodules&gt; &lt;goals&gt;deploy&lt;/goals&gt; &lt;username&gt;mgkim&lt;/username&gt; &lt;password&gt;passwd&lt;/password&gt; &lt;/configuration&gt; &lt;!-- //필수 사항 --&gt; &lt;/plugin&gt; &lt;/plugins&gt; &lt;/build&gt; &lt;!-- 필수 사항 --&gt; &lt;scm&gt; &lt;connection&gt;scm:svn:svn://develop/test/trunk/proto.">
 
-<meta itemprop="wordCount" content="123">
+<meta itemprop="wordCount" content="141">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="maven"/>
-<meta name="twitter:description" content="release $M2_HOME/conf/settings.xml 파일
+<meta name="twitter:description" content="release 명령어
+$ mvn -B clean release:prepare release:perform deploy $M2_HOME/conf/settings.xml 파일
 &lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt; &lt;settings xmlns=&#34;http://maven.apache.org/SETTINGS/1.0.0&#34; xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34; xsi:schemaLocation=&#34;http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd&#34;&gt; &lt;servers&gt; &lt;server&gt; &lt;id&gt;nexus-release&lt;/id&gt; &lt;username&gt;admin&lt;/username&gt; &lt;password&gt;passwd&lt;/password&gt; &lt;/server&gt; &lt;server&gt; &lt;id&gt;nexus-snapshot&lt;/id&gt; &lt;username&gt;admin&lt;/username&gt; &lt;password&gt;passwd&lt;/password&gt; &lt;/server&gt; &lt;/servers&gt; &lt;mirrors&gt; &lt;mirror&gt; &lt;id&gt;nexus&lt;/id&gt; &lt;name&gt;nexus&lt;/name&gt; &lt;url&gt;http://nexus/repository/maven-group/&lt;/url&gt; &lt;mirrorOf&gt;*&lt;/mirrorOf&gt; &lt;/mirror&gt; &lt;/mirrors&gt; &lt;/settings&gt; pom.xml 파일
-&lt;build&gt; &lt;plugins&gt; &lt;plugin&gt; &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt; &lt;artifactId&gt;maven-release-plugin&lt;/artifactId&gt; &lt;version&gt;3.0.0-M1&lt;/version&gt; &lt;!-- 필수 사항 --&gt; &lt;configuration&gt; &lt;autoVersionSubmodules&gt;true&lt;/autoVersionSubmodules&gt; &lt;goals&gt;deploy&lt;/goals&gt; &lt;username&gt;mgkim&lt;/username&gt; &lt;password&gt;passwd&lt;/password&gt; &lt;/configuration&gt; &lt;!-- //필수 사항 --&gt; &lt;/plugin&gt; &lt;/plugins&gt; &lt;/build&gt; &lt;!-- 필수 사항 --&gt; &lt;scm&gt; &lt;connection&gt;scm:svn:svn://develop/test/trunk/proto.www&lt;/connection&gt; &lt;/scm&gt; &lt;!-- //필수 사항 --&gt; &lt;distributionManagement&gt; &lt;snapshotRepository&gt; &lt;id&gt;mgkim-snapshot&lt;/id&gt; &lt;url&gt;http://nexus/repository/maven-mgkim-snapshot/&lt;/url&gt; &lt;/snapshotRepository&gt; &lt;repository&gt; &lt;id&gt;mgkim-release&lt;/id&gt; &lt;url&gt;http://nexus/repository/maven-mgkim-release/&lt;/url&gt; &lt;/repository&gt; &lt;/distributionManagement&gt;"/>
+&lt;build&gt; &lt;plugins&gt; &lt;plugin&gt; &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt; &lt;artifactId&gt;maven-release-plugin&lt;/artifactId&gt; &lt;version&gt;3.0.0-M1&lt;/version&gt; &lt;!-- 필수 사항 --&gt; &lt;configuration&gt; &lt;autoVersionSubmodules&gt;true&lt;/autoVersionSubmodules&gt; &lt;goals&gt;deploy&lt;/goals&gt; &lt;username&gt;mgkim&lt;/username&gt; &lt;password&gt;passwd&lt;/password&gt; &lt;/configuration&gt; &lt;!-- //필수 사항 --&gt; &lt;/plugin&gt; &lt;/plugins&gt; &lt;/build&gt; &lt;!-- 필수 사항 --&gt; &lt;scm&gt; &lt;connection&gt;scm:svn:svn://develop/test/trunk/proto."/>
 
 
 
@@ -135,7 +139,7 @@ $M2_HOME/conf/settings.xml 파일
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.627b1e2080b4b0a2edeb410a2ebe84b3.json"
+  data-offline-search-index-json-src="/offline-search-index.6d338bf8516831a47bf12814b6a76c7d.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -162,7 +166,7 @@ $M2_HOME/conf/settings.xml 파일
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.627b1e2080b4b0a2edeb410a2ebe84b3.json"
+  data-offline-search-index-json-src="/offline-search-index.6d338bf8516831a47bf12814b6a76c7d.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -223,6 +227,7 @@ $M2_HOME/conf/settings.xml 파일
 <div class="td-toc"><nav id="TableOfContents">
   <ul>
     <li><a href="#release">release</a></li>
+    <li><a href="#versions">versions</a></li>
     <li><a href="#deploydeploy-file">deploy:deploy-file</a></li>
     <li><a href="#settingsxml">settings.xml</a></li>
     <li><a href="#password">password</a></li>
@@ -300,7 +305,9 @@ $M2_HOME/conf/settings.xml 파일
 		
 	</header>    
 	<h2 id="release">release</h2>
-<p>$M2_HOME/conf/settings.xml 파일</p>
+<p>명령어</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ mvn -B clean release:prepare release:perform deploy
+</code></pre></div><p>$M2_HOME/conf/settings.xml 파일</p>
 <div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#bc7a00">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
 <span style="color:#008000;font-weight:bold">&lt;settings</span> <span style="color:#7d9029">xmlns=</span><span style="color:#ba2121">&#34;http://maven.apache.org/SETTINGS/1.0.0&#34;</span>
           <span style="color:#7d9029">xmlns:xsi=</span><span style="color:#ba2121">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
@@ -363,7 +370,11 @@ $M2_HOME/conf/settings.xml 파일
   <span style="color:#008000;font-weight:bold">&lt;/repository&gt;</span>
 <span style="color:#008000;font-weight:bold">&lt;/distributionManagement&gt;</span>
 </code></pre></div><br>
-<h2 id="deploydeploy-file">deploy:deploy-file</h2>
+<h2 id="versions">versions</h2>
+<p>명령어</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#19177c">SNAPSHOT_NM</span><span style="color:#666">=</span><span style="color:#008000;font-weight:bold">$(</span>mvn -f pom.xml help:evaluate -Dexpression<span style="color:#666">=</span>project.version -q -DforceStdout<span style="color:#008000;font-weight:bold">)</span>
+</code></pre></div><h2 id="deploydeploy-file">deploy:deploy-file</h2>
+<p>명령어</p>
 <div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"><span style="color:#008000;font-weight:bold">set</span> <span style="color:#19177c">JAVA_HOME</span>=Z:\develop\java\openjdk-11.0.2
 <span style="color:#008000;font-weight:bold">set</span> <span style="color:#19177c">M2_HOME</span>=Z:\develop\build\maven-3.6.3
 <span style="color:#008000;font-weight:bold">set</span> <span style="color:#19177c">PATH</span>=<span style="color:#19177c">%JAVA_HOME%</span>\bin;<span style="color:#19177c">%M2_HOME%</span>\bin;<span style="color:#19177c">%PATH%</span>
