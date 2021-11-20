@@ -258,37 +258,18 @@ keytool -delete -alias &amp;quot;hello&amp;quot; -keystore &amp;quot;cacerts&amp
       <description>
         
         
-        &lt;h2 id=&#34;환경변수&#34;&gt;환경변수&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;ORACLE_HOME
-D:\oracle\ora12c_32bit\client_12_1
-
-TNS_ADMIN
-%ORACLE_HOME%\network\admin
-
-PATH
-%ORACLE_HOME%\bin
-
-NLS_LANG
-KOREAN_KOREA.KO16MSWIN949
-
-NLS_DATE_FORMAT           #ALTER SESSION SET NLS_DATE_FORMAT=&#39;YYYY-MM-DD HH24:MI:SS&#39;;
-YYYY-MM-DD HH24:MI:SS
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;레지스트리&#34;&gt;레지스트리&lt;/h2&gt;
+        &lt;h2 id=&#34;oracle-client&#34;&gt;oracle-client&lt;/h2&gt;
+&lt;h3 id=&#34;시스템변수&#34;&gt;시스템변수&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;/files/localenv/20211120-oracle_client_env.txt&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;레지스트리&#34;&gt;레지스트리&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;HKEY_LOCAL_MACHINE\SOFTWARE\ORACLE\KEY_client&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;/files/localenv/20211120-HLM_SW_Oracle_key_client(Z).reg&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\ORACLE\KEY_client&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;/files/localenv/20211120-HLM_SW_Wow6432Node_Oacle_key_client(Z).reg&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;tnsnamesora&#34;&gt;tnsnames.ora&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;/files/localenv/20211120-tnsnames.ora&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
 &lt;br&gt;
-&lt;h2 id=&#34;tnsnamesora&#34;&gt;tnsnames.ora&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;SPADBP =
-  (DESCRIPTION =
-    (ADDRESS = (PROTOCOL = TCP)(HOST = develop)(PORT = 1521))
-    (CONNECT_DATA =
-      (SERVER = DEDICATED)
-      (SERVICE_NAME = SPADBP)
-    )
-  )
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;sqlplus&#34;&gt;sqlplus&lt;/h2&gt;
+&lt;h2 id=&#34;sqlplus&#34;&gt;sqlplus&lt;/h2&gt;
 &lt;h3 id=&#34;connect&#34;&gt;connect&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;C:\Users\Administrator&amp;gt;sqlplus /nolog
 
