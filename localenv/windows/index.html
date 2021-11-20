@@ -35,6 +35,7 @@ set …">
 절전 cmd %windir%\System32\rundll32.exe powrprof.dll SetSuspendState 
 vmware cmd set &#34;VMWARE_HOME=C:\Program Files (x86)\VMware\VMware Workstation&#34; set &#34;PATH=%PATH%;%VMWARE_HOME%&#34; vmrun -T ws start &#34;Z:\centos7-develop\centos7-develop.vmx&#34; nogui 
 wol 절전 상태에서 wol 이 작동하려면 아래 옵션을 선택해야 합니다.
+새 창 보기
 port-forwarding cmd # 설정 netsh interface portproxy add v4tov4 listenport=8222 listenaddress=0.0.0.0 connectport=22 connectaddress=172.28.200.20 # 해제 netsh interface portproxy delete v4tov4 listenport=8222 listenaddress=0.0.0.0 # 확인 netsh interface portproxy show v4tov4" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/localenv/windows/" /><meta property="article:section" content="localenv" />
@@ -46,15 +47,17 @@ port-forwarding cmd # 설정 netsh interface portproxy add v4tov4 listenport=822
 절전 cmd %windir%\System32\rundll32.exe powrprof.dll SetSuspendState 
 vmware cmd set &#34;VMWARE_HOME=C:\Program Files (x86)\VMware\VMware Workstation&#34; set &#34;PATH=%PATH%;%VMWARE_HOME%&#34; vmrun -T ws start &#34;Z:\centos7-develop\centos7-develop.vmx&#34; nogui 
 wol 절전 상태에서 wol 이 작동하려면 아래 옵션을 선택해야 합니다.
+새 창 보기
 port-forwarding cmd # 설정 netsh interface portproxy add v4tov4 listenport=8222 listenaddress=0.0.0.0 connectport=22 connectaddress=172.28.200.20 # 해제 netsh interface portproxy delete v4tov4 listenport=8222 listenaddress=0.0.0.0 # 확인 netsh interface portproxy show v4tov4">
 
-<meta itemprop="wordCount" content="280">
+<meta itemprop="wordCount" content="305">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="windows"/>
 <meta name="twitter:description" content="eclipse hidpi -Dswt.autoScale=150 # 150 == 1.5배새 창 보기
 절전 cmd %windir%\System32\rundll32.exe powrprof.dll SetSuspendState 
 vmware cmd set &#34;VMWARE_HOME=C:\Program Files (x86)\VMware\VMware Workstation&#34; set &#34;PATH=%PATH%;%VMWARE_HOME%&#34; vmrun -T ws start &#34;Z:\centos7-develop\centos7-develop.vmx&#34; nogui 
 wol 절전 상태에서 wol 이 작동하려면 아래 옵션을 선택해야 합니다.
+새 창 보기
 port-forwarding cmd # 설정 netsh interface portproxy add v4tov4 listenport=8222 listenaddress=0.0.0.0 connectport=22 connectaddress=172.28.200.20 # 해제 netsh interface portproxy delete v4tov4 listenport=8222 listenaddress=0.0.0.0 # 확인 netsh interface portproxy show v4tov4"/>
 
 
@@ -146,7 +149,7 @@ port-forwarding cmd # 설정 netsh interface portproxy add v4tov4 listenport=822
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.db73992a98436021a1c216ad394edff8.json"
+  data-offline-search-index-json-src="/offline-search-index.85744f6a628e6385acf40efa80011ee7.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -173,7 +176,7 @@ port-forwarding cmd # 설정 netsh interface portproxy add v4tov4 listenport=822
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.db73992a98436021a1c216ad394edff8.json"
+  data-offline-search-index-json-src="/offline-search-index.85744f6a628e6385acf40efa80011ee7.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -240,8 +243,8 @@ port-forwarding cmd # 설정 netsh interface portproxy add v4tov4 listenport=822
     <li><a href="#port-forwarding-cmd">port-forwarding cmd</a></li>
     <li><a href="#파일-공유">파일 공유</a></li>
     <li><a href="#hosts">hosts</a></li>
-    <li><a href="#vmware-nat">vmware NAT</a></li>
-    <li><a href="#디렉토리-압축">디렉토리 압축</a></li>
+    <li><a href="#vmware-nat">vmware nat</a></li>
+    <li><a href="#7z-압축-cmd">7z 압축 cmd</a></li>
     <li><a href="#start-jmeter">start-jmeter</a></li>
     <li><a href="#dir">dir</a></li>
   </ul>
@@ -331,7 +334,7 @@ vmrun -T ws start <span style="color:#ba2121">&#34;Z:\centos7-develop\centos7-de
 </code></pre></div><br>
 <h2 id="wol">wol</h2>
 <p>절전 상태에서 wol 이 작동하려면 아래 옵션을 선택해야 합니다.</p>
-<p><img src="/images/localenv/20211120-windows_wol_1.png" /></p>
+<p><a href="/images/localenv/20211120-windows_wol_1.png" target="_blank">새 창 보기</a></p>
 <br>
 <h2 id="port-forwarding-cmd">port-forwarding cmd</h2>
 <div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"># 설정
@@ -375,15 +378,17 @@ $ vi /etc/fstab
 172.28.200.20  develop nexus gitlab jenkins dlog
 172.28.200.20  prototype hugo
 </code></pre><br>
-<h2 id="vmware-nat">vmware NAT</h2>
+<h2 id="vmware-nat">vmware nat</h2>
 <p><code>vmware</code> &gt; <code>Edit</code> &gt; <code>Virtual Network Editor</code></p>
 <p><code>NAT Settings...</code> &gt; <code>Gateway IP</code> 확인</p>
-<p>Subnet IP: 10.28.7.0, Subnet mask: 255.255.255.0</p>
+<p>Subnet IP: 172.28.200.0, Subnet mask: 255.255.255.0</p>
+<p>vmware 의 guest os는 172.28.200.2~254 로 설정하고, host os(windows) 와 통신은 172.28.200.1 로 합니다.</p>
 <br>
-<h2 id="디렉토리-압축">디렉토리 압축</h2>
+<h2 id="7z-압축-cmd">7z 압축 cmd</h2>
 <div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"><span style="color:#ba2121">&#34;C:\Program Files\7-Zip\7z.exe&#34;</span> a -mx7 -mmt Z:\project.zip <span style="color:#ba2121">&#34;Z:\project&#34;</span>
 <span style="color:#ba2121">&#34;C:\Program Files\7-Zip\7z.exe&#34;</span> a -mx5 -t7z Z:\project.zip <span style="color:#ba2121">&#34;Z:\project&#34;</span> -xr!target -xr!node_modules
-</code></pre></div><br>
+</code></pre></div><p>target 디렉토리와 node_modules 디렉토리는 압축 대상에서 제외됩니다.</p>
+<br>
 <h2 id="start-jmeter">start-jmeter</h2>
 <div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"><span style="color:#008000;font-weight:bold">set</span> <span style="color:#19177c">ts</span>=<span style="color:#19177c">%DATE:~0,4%%DATE:~5,2%%DATE:~8,2%</span>_<span style="color:#19177c">%TIME:~0,2%%TIME:~3,2%%TIME:~6,2%</span>
 apache-jmeter-5.4.1\bin\jmeter.bat -n -t jmeter-mgkim-core.jmx -l data\<span style="color:#19177c">%ts%</span>.csv -e -o data\<span style="color:#19177c">%ts%</span>
