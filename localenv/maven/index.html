@@ -139,7 +139,7 @@ $ mvn -B clean release:prepare release:perform deploy $M2_HOME/conf/settings.xml
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.6d338bf8516831a47bf12814b6a76c7d.json"
+  data-offline-search-index-json-src="/offline-search-index.f5b590893a29312fa2f3c152f481e6fb.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -166,7 +166,7 @@ $ mvn -B clean release:prepare release:perform deploy $M2_HOME/conf/settings.xml
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.6d338bf8516831a47bf12814b6a76c7d.json"
+  data-offline-search-index-json-src="/offline-search-index.f5b590893a29312fa2f3c152f481e6fb.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -227,7 +227,7 @@ $ mvn -B clean release:prepare release:perform deploy $M2_HOME/conf/settings.xml
 <div class="td-toc"><nav id="TableOfContents">
   <ul>
     <li><a href="#release">release</a></li>
-    <li><a href="#versions">versions</a></li>
+    <li><a href="#helpevaluate">help:evaluate</a></li>
     <li><a href="#deploydeploy-file">deploy:deploy-file</a></li>
     <li><a href="#settingsxml">settings.xml</a></li>
     <li><a href="#password">password</a></li>
@@ -370,7 +370,7 @@ $ mvn -B clean release:prepare release:perform deploy $M2_HOME/conf/settings.xml
   <span style="color:#008000;font-weight:bold">&lt;/repository&gt;</span>
 <span style="color:#008000;font-weight:bold">&lt;/distributionManagement&gt;</span>
 </code></pre></div><br>
-<h2 id="versions">versions</h2>
+<h2 id="helpevaluate">help:evaluate</h2>
 <p>명령어</p>
 <div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#19177c">SNAPSHOT_NM</span><span style="color:#666">=</span><span style="color:#008000;font-weight:bold">$(</span>mvn -f pom.xml help:evaluate -Dexpression<span style="color:#666">=</span>project.version -q -DforceStdout<span style="color:#008000;font-weight:bold">)</span>
 </code></pre></div><h2 id="deploydeploy-file">deploy:deploy-file</h2>
