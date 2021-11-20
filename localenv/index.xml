@@ -158,5 +158,74 @@ SQL&amp;gt; select username, account_status, expiry_date from dba_users;
       </description>
     </item>
     
+    <item>
+      <title>Localenv: windows</title>
+      <link>/localenv/windows/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/localenv/windows/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;port-forwarding&#34;&gt;port-forwarding&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;# 설정
+netsh interface portproxy add v4tov4 listenport=8222 listenaddress=0.0.0.0 connectport=22 connectaddress=172.28.200.20
+
+# 해제
+netsh interface portproxy delete v4tov4 listenport=8222 listenaddress=0.0.0.0
+
+# 확인
+netsh interface portproxy show v4tov4
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;파일-공유&#34;&gt;파일 공유&lt;/h2&gt;
+&lt;p&gt;windows 에서 파일 공유 시 권한이 없다는 메시지가 나오는 경우가 있음&lt;/p&gt;
+&lt;p&gt;windows 계정에 패스워드가 설정되어 있지 않으면 발생하는 사항&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;# 비밀번호 설정하기
+&amp;gt; net user administrator *
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;centos 에서 windows 공유 디렉토리 mount&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;$ mkdir /share
+$ mount -t cifs //172.28.200.1/share /share -o username=administrator,password=1
+$ df -h
+Filesystem            Size  Used Avail Use% Mounted on
+devtmpfs              3.8G     0  3.8G   0% /dev
+tmpfs                 3.9G   12K  3.9G   1% /dev/shm
+tmpfs                 3.9G   14M  3.8G   1% /run
+tmpfs                 3.9G     0  3.9G   0% /sys/fs/cgroup
+/dev/nvme0n1p9         76G   15G   61G  20% /
+/dev/nvme0n1p8        3.0G  2.7G  378M  88% /var
+/dev/nvme0n1p7        5.0G  2.6G  2.4G  53% /home
+/dev/nvme0n1p2        100G   27G   74G  27% /data
+/dev/nvme0n1p5         20G  5.0G   16G  25% /app
+/dev/nvme0n1p3         30G  9.8G   21G  33% /prod
+/dev/nvme0n1p1        474M  149M  326M  32% /boot
+tmpfs                 781M     0  781M   0% /run/user/0
+//172.28.200.1/share  345G  284G   62G  83% /share
+$ vi /etc/fstab
+//172.28.200.1/share /share cifs username=administrator,password=1 0 0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;h2 id=&#34;hosts&#34;&gt;hosts&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;# C:\Windows\System32\drivers\etc\hosts
+
+172.28.200.20  develop nexus gitlab jenkins dlog
+172.28.200.20  prototype hugo
+&lt;/code&gt;&lt;/pre&gt;&lt;br&gt;
+&lt;h2 id=&#34;vmware-nat&#34;&gt;vmware NAT&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;vmware&lt;/code&gt; &amp;gt; &lt;code&gt;Edit&lt;/code&gt; &amp;gt; &lt;code&gt;Virtual Network Editor&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;NAT Settings...&lt;/code&gt; &amp;gt; &lt;code&gt;Gateway IP&lt;/code&gt; 확인&lt;/p&gt;
+&lt;p&gt;Subnet IP: 10.28.7.0, Subnet mask: 255.255.255.0&lt;/p&gt;
+&lt;br&gt;
+&lt;h2 id=&#34;디렉토리-압축&#34;&gt;디렉토리 압축&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#34;C:\Program Files\7-Zip\7z.exe&amp;#34;&lt;/span&gt; a -mx7 -mmt Z:\project.zip &lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#34;Z:\project&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#34;C:\Program Files\7-Zip\7z.exe&amp;#34;&lt;/span&gt; a -mx5 -t7z Z:\project.zip &lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#34;Z:\project&amp;#34;&lt;/span&gt; -xr!target -xr!node_modules
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;h2 id=&#34;start-jmeter&#34;&gt;start-jmeter&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#19177c&#34;&gt;ts&lt;/span&gt;=&lt;span style=&#34;color:#19177c&#34;&gt;%DATE:~0,4%%DATE:~5,2%%DATE:~8,2%&lt;/span&gt;_&lt;span style=&#34;color:#19177c&#34;&gt;%TIME:~0,2%%TIME:~3,2%%TIME:~6,2%&lt;/span&gt;
+apache-jmeter-5.4.1\bin\jmeter.bat -n -t jmeter-mgkim-core.jmx -l data\&lt;span style=&#34;color:#19177c&#34;&gt;%ts%&lt;/span&gt;.csv -e -o data\&lt;span style=&#34;color:#19177c&#34;&gt;%ts%&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;h2 id=&#34;dir&#34;&gt;dir&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;xcopy C:\exp\*.* Z:\exp\ /d/i/s/c/y
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      </description>
+    </item>
+    
   </channel>
 </rss>

@@ -31,5 +31,7 @@
     <loc>/system/</loc>
   </url><url>
     <loc>/tags/</loc>
+  </url><url>
+    <loc>/localenv/windows/</loc>
   </url>
 </urlset>

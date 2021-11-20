@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko" class="no-js">
+<html lang="en" class="no-js">
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -21,33 +21,34 @@
 
 
   
-  <meta name="description" content="hosts
-# C:\Windows\System32\drivers\etc\hosts
+  <meta name="description" content="port-forwarding
+# 설정
+netsh interface portproxy add v4tov4 listenport=8222 listenaddress=0.0.0.0 connectport=22 connectaddress=172.28.200.20
 
-172.28.200.20  develop nexus gitlab jenkins dlog
-172.28.200.20  prototype hugo
-vmware NAT
-vmware &gt; …">
+# …">
 <meta property="og:title" content="windows" />
-<meta property="og:description" content="hosts # C:\Windows\System32\drivers\etc\hosts 172.28.200.20 develop nexus gitlab jenkins dlog 172.28.200.20 prototype hugo vmware NAT vmware &gt; Edit &gt; Virtual Network Editor
-NAT Settings... &gt; Gateway IP 확인
-Subnet IP: 10.28.7.0, Subnet mask: 255.255.255.0" />
+<meta property="og:description" content="port-forwarding # 설정 netsh interface portproxy add v4tov4 listenport=8222 listenaddress=0.0.0.0 connectport=22 connectaddress=172.28.200.20 # 해제 netsh interface portproxy delete v4tov4 listenport=8222 listenaddress=0.0.0.0 # 확인 netsh interface portproxy show v4tov4 파일 공유 windows 에서 파일 공유 시 권한이 없다는 메시지가 나오는 경우가 있음
+windows 계정에 패스워드가 설정되어 있지 않으면 발생하는 사항
+# 비밀번호 설정하기 &gt; net user administrator * centos 에서 windows 공유 디렉토리 mount
+$ mkdir /share $ mount -t cifs //172." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/localenv/windows/" /><meta property="article:section" content="localenv" />
 
 
 
 <meta itemprop="name" content="windows">
-<meta itemprop="description" content="hosts # C:\Windows\System32\drivers\etc\hosts 172.28.200.20 develop nexus gitlab jenkins dlog 172.28.200.20 prototype hugo vmware NAT vmware &gt; Edit &gt; Virtual Network Editor
-NAT Settings... &gt; Gateway IP 확인
-Subnet IP: 10.28.7.0, Subnet mask: 255.255.255.0">
+<meta itemprop="description" content="port-forwarding # 설정 netsh interface portproxy add v4tov4 listenport=8222 listenaddress=0.0.0.0 connectport=22 connectaddress=172.28.200.20 # 해제 netsh interface portproxy delete v4tov4 listenport=8222 listenaddress=0.0.0.0 # 확인 netsh interface portproxy show v4tov4 파일 공유 windows 에서 파일 공유 시 권한이 없다는 메시지가 나오는 경우가 있음
+windows 계정에 패스워드가 설정되어 있지 않으면 발생하는 사항
+# 비밀번호 설정하기 &gt; net user administrator * centos 에서 windows 공유 디렉토리 mount
+$ mkdir /share $ mount -t cifs //172.">
 
-<meta itemprop="wordCount" content="33">
+<meta itemprop="wordCount" content="239">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="windows"/>
-<meta name="twitter:description" content="hosts # C:\Windows\System32\drivers\etc\hosts 172.28.200.20 develop nexus gitlab jenkins dlog 172.28.200.20 prototype hugo vmware NAT vmware &gt; Edit &gt; Virtual Network Editor
-NAT Settings... &gt; Gateway IP 확인
-Subnet IP: 10.28.7.0, Subnet mask: 255.255.255.0"/>
+<meta name="twitter:description" content="port-forwarding # 설정 netsh interface portproxy add v4tov4 listenport=8222 listenaddress=0.0.0.0 connectport=22 connectaddress=172.28.200.20 # 해제 netsh interface portproxy delete v4tov4 listenport=8222 listenaddress=0.0.0.0 # 확인 netsh interface portproxy show v4tov4 파일 공유 windows 에서 파일 공유 시 권한이 없다는 메시지가 나오는 경우가 있음
+windows 계정에 패스워드가 설정되어 있지 않으면 발생하는 사항
+# 비밀번호 설정하기 &gt; net user administrator * centos 에서 windows 공유 디렉토리 mount
+$ mkdir /share $ mount -t cifs //172."/>
 
 
 
@@ -123,18 +124,6 @@ Subnet IP: 10.28.7.0, Subnet mask: 255.255.255.0"/>
 				<a class="nav-link active" href="/localenv/" ><i class='fas fa-book'></i><span class="active">localenv</span></a>
 			</li>
 			
-			<li class="nav-item mr-4 mb-2 mb-lg-0">
-				
-				
-				
-				
-				
-				
-				
-				
-				<a class="nav-link" href="/terms/" ><i class='fas fa-book'></i><span>terms</span></a>
-			</li>
-			
 			
 			
 		</ul>
@@ -146,11 +135,11 @@ Subnet IP: 10.28.7.0, Subnet mask: 255.255.255.0"/>
 <input
   type="search"
   class="form-control td-search-input"
-  placeholder="&#xf002; 사이트에서 검색…"
-  aria-label="사이트에서 검색…"
+  placeholder="&#xf002; Search this site…"
+  aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.c10b8c5da2c94175be67da873c181536.json"
+  data-offline-search-index-json-src="/offline-search-index.d0218617069bdcd0a0ebe87c5f6749e6.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -173,11 +162,11 @@ Subnet IP: 10.28.7.0, Subnet mask: 255.255.255.0"/>
 <input
   type="search"
   class="form-control td-search-input"
-  placeholder="&#xf002; 사이트에서 검색…"
-  aria-label="사이트에서 검색…"
+  placeholder="&#xf002; Search this site…"
+  aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.c10b8c5da2c94175be67da873c181536.json"
+  data-offline-search-index-json-src="/offline-search-index.d0218617069bdcd0a0ebe87c5f6749e6.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -192,27 +181,12 @@ Subnet IP: 10.28.7.0, Subnet mask: 255.255.255.0"/>
   
   <a href="/localenv/" title="로컬 환경" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-localenv"><span class="">localenv</span></a>
   <ul class="ul-1">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-localenvchrome-li">
-  
-  <a href="/localenv/chrome/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-localenvchrome"><span class="">chrome</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-localenvgit-li">
-  
-  <a href="/localenv/git/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-localenvgit"><span class="">git</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-localenvjava-li">
-  
-  <a href="/localenv/java/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-localenvjava"><span class="">java</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-localenvmaven-li">
-  
-  <a href="/localenv/maven/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-localenvmaven"><span class="">maven</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-localenvoracle-client-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-localenvoracle-client-li">
   
   <a href="/localenv/oracle-client/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-localenvoracle-client"><span class="">oracle client</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-localenvwindows-li">
   
   <a href="/localenv/windows/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-localenvwindows"><span class="td-sidebar-nav-active-item">windows</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-localenvwindows-cmd-li">
-  
-  <a href="/localenv/windows-cmd/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-localenvwindows-cmd"><span class="">windows cmd</span></a>
 </li>
   </ul>
 </li>
@@ -240,8 +214,13 @@ Subnet IP: 10.28.7.0, Subnet mask: 255.255.255.0"/>
 
 <div class="td-toc"><nav id="TableOfContents">
   <ul>
+    <li><a href="#port-forwarding">port-forwarding</a></li>
+    <li><a href="#파일-공유">파일 공유</a></li>
     <li><a href="#hosts">hosts</a></li>
     <li><a href="#vmware-nat">vmware NAT</a></li>
+    <li><a href="#디렉토리-압축">디렉토리 압축</a></li>
+    <li><a href="#start-jmeter">start-jmeter</a></li>
+    <li><a href="#dir">dir</a></li>
   </ul>
 </nav></div>
 
@@ -315,16 +294,63 @@ Subnet IP: 10.28.7.0, Subnet mask: 255.255.255.0"/>
 		
 		
 	</header>    
-	<h2 id="hosts">hosts</h2>
+	<h2 id="port-forwarding">port-forwarding</h2>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"># 설정
+netsh interface portproxy add v4tov4 listenport=8222 listenaddress=0.0.0.0 connectport=22 connectaddress=172.28.200.20
+
+# 해제
+netsh interface portproxy delete v4tov4 listenport=8222 listenaddress=0.0.0.0
+
+# 확인
+netsh interface portproxy show v4tov4
+</code></pre></div><h2 id="파일-공유">파일 공유</h2>
+<p>windows 에서 파일 공유 시 권한이 없다는 메시지가 나오는 경우가 있음</p>
+<p>windows 계정에 패스워드가 설정되어 있지 않으면 발생하는 사항</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"># 비밀번호 설정하기
+&gt; net user administrator *
+</code></pre></div><p>centos 에서 windows 공유 디렉토리 mount</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">$ mkdir /share
+$ mount -t cifs //172.28.200.1/share /share -o username=administrator,password=1
+$ df -h
+Filesystem            Size  Used Avail Use% Mounted on
+devtmpfs              3.8G     0  3.8G   0% /dev
+tmpfs                 3.9G   12K  3.9G   1% /dev/shm
+tmpfs                 3.9G   14M  3.8G   1% /run
+tmpfs                 3.9G     0  3.9G   0% /sys/fs/cgroup
+/dev/nvme0n1p9         76G   15G   61G  20% /
+/dev/nvme0n1p8        3.0G  2.7G  378M  88% /var
+/dev/nvme0n1p7        5.0G  2.6G  2.4G  53% /home
+/dev/nvme0n1p2        100G   27G   74G  27% /data
+/dev/nvme0n1p5         20G  5.0G   16G  25% /app
+/dev/nvme0n1p3         30G  9.8G   21G  33% /prod
+/dev/nvme0n1p1        474M  149M  326M  32% /boot
+tmpfs                 781M     0  781M   0% /run/user/0
+//172.28.200.1/share  345G  284G   62G  83% /share
+$ vi /etc/fstab
+//172.28.200.1/share /share cifs username=administrator,password=1 0 0
+</code></pre></div><br>
+<h2 id="hosts">hosts</h2>
 <pre><code># C:\Windows\System32\drivers\etc\hosts
 
 172.28.200.20  develop nexus gitlab jenkins dlog
 172.28.200.20  prototype hugo
-</code></pre><h2 id="vmware-nat">vmware NAT</h2>
+</code></pre><br>
+<h2 id="vmware-nat">vmware NAT</h2>
 <p><code>vmware</code> &gt; <code>Edit</code> &gt; <code>Virtual Network Editor</code></p>
 <p><code>NAT Settings...</code> &gt; <code>Gateway IP</code> 확인</p>
 <p>Subnet IP: 10.28.7.0, Subnet mask: 255.255.255.0</p>
-
+<br>
+<h2 id="디렉토리-압축">디렉토리 압축</h2>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"><span style="color:#ba2121">&#34;C:\Program Files\7-Zip\7z.exe&#34;</span> a -mx7 -mmt Z:\project.zip <span style="color:#ba2121">&#34;Z:\project&#34;</span>
+<span style="color:#ba2121">&#34;C:\Program Files\7-Zip\7z.exe&#34;</span> a -mx5 -t7z Z:\project.zip <span style="color:#ba2121">&#34;Z:\project&#34;</span> -xr!target -xr!node_modules
+</code></pre></div><br>
+<h2 id="start-jmeter">start-jmeter</h2>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"><span style="color:#008000;font-weight:bold">set</span> <span style="color:#19177c">ts</span>=<span style="color:#19177c">%DATE:~0,4%%DATE:~5,2%%DATE:~8,2%</span>_<span style="color:#19177c">%TIME:~0,2%%TIME:~3,2%%TIME:~6,2%</span>
+apache-jmeter-5.4.1\bin\jmeter.bat -n -t jmeter-mgkim-core.jmx -l data\<span style="color:#19177c">%ts%</span>.csv -e -o data\<span style="color:#19177c">%ts%</span>
+</code></pre></div><br>
+<h2 id="dir">dir</h2>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">xcopy C:\exp\*.* Z:\exp\ /d/i/s/c/y
+</code></pre></div>
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
