@@ -21,41 +21,43 @@
 
 
   
-  <meta name="description" content="systemd
-systemd 는 centos 7 부터 포함된 기능입니다.
-/etc/init.d 에서 서비스를 관리했던 것을 systemd 로 관리하게 되었습니다.
-실행 명령어는 systemctl 입니다.
-서비스 생성
-새로운 서비스를 등록할 경우 아래 템플릿으로 파일을  …">
+  <meta name="description" content="tar
+# split
+$ tar cvfz - target | split -b 3072m - target.tgz
+$ cat target.tgz.* | tar zxvf -
+
+# exclude
+$ cat .tarexclude
+build.*
+run.*
+bin
+.svn/* …">
 <meta property="og:title" content="linux" />
-<meta property="og:description" content="systemd systemd 는 centos 7 부터 포함된 기능입니다.
+<meta property="og:description" content="tar # split $ tar cvfz - target | split -b 3072m - target.tgz $ cat target.tgz.* | tar zxvf - # exclude $ cat .tarexclude build.* run.* bin .svn/* .git/* .project .tarexclude backup.sh $ tar cvfz ../target.tgz * -X .tarexclude 
+systemd systemd 는 centos 7 부터 포함된 기능입니다.
 /etc/init.d 에서 서비스를 관리했던 것을 systemd 로 관리하게 되었습니다.
 실행 명령어는 systemctl 입니다.
-서비스 생성 새로운 서비스를 등록할 경우 아래 템플릿으로 파일을 생성합니다.
- 파일경로: /etc/systemd/system/{서비스명}.service  [root@develop /etc/systemd/system]$ cat jenkins.service [Unit] Description=Jenkins After=network.target syslog.target [Service] Type=forking User=jenkins Group=ci ExecStart=/prod/jenkins/jenkins.sh start ExecStop=/prod/jenkins/jenkins.sh stop Restart=on-abort [Install] WantedBy=multi-user.target [root@develop /etc/systemd/system]$ yum 으로 패키지 설치시 systemctl 에 등록된 정보를 아래와 같은 방법으로 확인합니다.
-[root@develop /etc/systemd/system]$ systemctl --help systemctl [OPTIONS." />
+서비스 생성 새로운 서비스를 등록할 경우 아래 템플릿으로 파일을 생성합니다." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/system/linux/" /><meta property="article:section" content="system" />
 
 
 
 <meta itemprop="name" content="linux">
-<meta itemprop="description" content="systemd systemd 는 centos 7 부터 포함된 기능입니다.
+<meta itemprop="description" content="tar # split $ tar cvfz - target | split -b 3072m - target.tgz $ cat target.tgz.* | tar zxvf - # exclude $ cat .tarexclude build.* run.* bin .svn/* .git/* .project .tarexclude backup.sh $ tar cvfz ../target.tgz * -X .tarexclude 
+systemd systemd 는 centos 7 부터 포함된 기능입니다.
 /etc/init.d 에서 서비스를 관리했던 것을 systemd 로 관리하게 되었습니다.
 실행 명령어는 systemctl 입니다.
-서비스 생성 새로운 서비스를 등록할 경우 아래 템플릿으로 파일을 생성합니다.
- 파일경로: /etc/systemd/system/{서비스명}.service  [root@develop /etc/systemd/system]$ cat jenkins.service [Unit] Description=Jenkins After=network.target syslog.target [Service] Type=forking User=jenkins Group=ci ExecStart=/prod/jenkins/jenkins.sh start ExecStop=/prod/jenkins/jenkins.sh stop Restart=on-abort [Install] WantedBy=multi-user.target [root@develop /etc/systemd/system]$ yum 으로 패키지 설치시 systemctl 에 등록된 정보를 아래와 같은 방법으로 확인합니다.
-[root@develop /etc/systemd/system]$ systemctl --help systemctl [OPTIONS.">
+서비스 생성 새로운 서비스를 등록할 경우 아래 템플릿으로 파일을 생성합니다.">
 
-<meta itemprop="wordCount" content="551">
+<meta itemprop="wordCount" content="528">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="linux"/>
-<meta name="twitter:description" content="systemd systemd 는 centos 7 부터 포함된 기능입니다.
+<meta name="twitter:description" content="tar # split $ tar cvfz - target | split -b 3072m - target.tgz $ cat target.tgz.* | tar zxvf - # exclude $ cat .tarexclude build.* run.* bin .svn/* .git/* .project .tarexclude backup.sh $ tar cvfz ../target.tgz * -X .tarexclude 
+systemd systemd 는 centos 7 부터 포함된 기능입니다.
 /etc/init.d 에서 서비스를 관리했던 것을 systemd 로 관리하게 되었습니다.
 실행 명령어는 systemctl 입니다.
-서비스 생성 새로운 서비스를 등록할 경우 아래 템플릿으로 파일을 생성합니다.
- 파일경로: /etc/systemd/system/{서비스명}.service  [root@develop /etc/systemd/system]$ cat jenkins.service [Unit] Description=Jenkins After=network.target syslog.target [Service] Type=forking User=jenkins Group=ci ExecStart=/prod/jenkins/jenkins.sh start ExecStop=/prod/jenkins/jenkins.sh stop Restart=on-abort [Install] WantedBy=multi-user.target [root@develop /etc/systemd/system]$ yum 으로 패키지 설치시 systemctl 에 등록된 정보를 아래와 같은 방법으로 확인합니다.
-[root@develop /etc/systemd/system]$ systemctl --help systemctl [OPTIONS."/>
+서비스 생성 새로운 서비스를 등록할 경우 아래 템플릿으로 파일을 생성합니다."/>
 
 
 
@@ -146,7 +148,7 @@ systemd 는 centos 7 부터 포함된 기능입니다.
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.85744f6a628e6385acf40efa80011ee7.json"
+  data-offline-search-index-json-src="/offline-search-index.3ab7ef05aa1ac98113f06fb6bc6992d2.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -173,7 +175,7 @@ systemd 는 centos 7 부터 포함된 기능입니다.
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.85744f6a628e6385acf40efa80011ee7.json"
+  data-offline-search-index-json-src="/offline-search-index.3ab7ef05aa1ac98113f06fb6bc6992d2.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -233,6 +235,7 @@ systemd 는 centos 7 부터 포함된 기능입니다.
 
 <div class="td-toc"><nav id="TableOfContents">
   <ul>
+    <li><a href="#tar">tar</a></li>
     <li><a href="#systemd">systemd</a>
       <ul>
         <li><a href="#서비스-생성">서비스 생성</a></li>
@@ -243,7 +246,6 @@ systemd 는 centos 7 부터 포함된 기능입니다.
     <li><a href="#profile">.profile</a></li>
     <li><a href="#network">network</a></li>
     <li><a href="#hostname">hostname</a></li>
-    <li><a href="#tar">tar</a></li>
     <li><a href="#shell">shell</a></li>
     <li><a href="#sed">sed</a></li>
   </ul>
@@ -319,7 +321,24 @@ systemd 는 centos 7 부터 포함된 기능입니다.
 		
 		
 	</header>    
-	<h2 id="systemd">systemd</h2>
+	<h2 id="tar">tar</h2>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#408080;font-style:italic"># split</span>
+$ tar cvfz - target | split -b 3072m - target.tgz
+$ cat target.tgz.* | tar zxvf -
+
+<span style="color:#408080;font-style:italic"># exclude</span>
+$ cat .tarexclude
+build.*
+run.*
+bin
+.svn/*
+.git/*
+.project
+.tarexclude
+backup.sh
+$ tar cvfz ../target.tgz * -X .tarexclude
+</code></pre></div><br>
+<h2 id="systemd">systemd</h2>
 <p>systemd 는 centos 7 부터 포함된 기능입니다.</p>
 <p>/etc/init.d 에서 서비스를 관리했던 것을 systemd 로 관리하게 되었습니다.</p>
 <p>실행 명령어는 systemctl 입니다.</p>
@@ -416,24 +435,6 @@ enabled
 </code></pre></div><h2 id="hostname">hostname</h2>
 <pre><code>[root@develop ~]$ hostnamectl set-hostname develop
 [root@develop ~]$
-</code></pre><h2 id="tar">tar</h2>
-<p><strong>분할 압축</strong></p>
-<pre><code>[root@develop /data/PROD/nexus]$ du --max-depth=1 -h blobs/
-47M	blobs/maven-group-blob
-830M	blobs/npm-public-hosted
-181M	blobs/maven-public-hosted
-2.2G	blobs/npm-group-blob
-1.1G	blobs/maven-public-proxy
-1.6G	blobs/npm-public-proxy
-4.6M	blobs/maven-egov-proxy
-14M	blobs/maven-mgkim-snapshot-blob
-7.4M	blobs/maven-mgkim-release-blob
-5.9G	blobs/
-[root@develop /data/PROD/nexus]$
-[root@develop /data/PROD/nexus]$ tar cvfz - blob | split -b 3072m - blob.tgz
-[root@develop /data/PROD/nexus]$ cat blob.tgz.* | tar zxvf -
-</code></pre><p><strong>gzip or xz</strong></p>
-<pre><code>z or J : z는 gzip 사용, J는 xz 사용
 </code></pre><h2 id="shell">shell</h2>
 <pre><code>[ -z ] : 문자열의 길이가 0이면 참
 [ -n ] : 문자열의 길이가 0이 아니면 참

@@ -1020,7 +1020,24 @@ httpd 설정에 http 를 https 로 redirect 하도록 mod_rewrite 를 설정했�
       <description>
         
         
-        &lt;h2 id=&#34;systemd&#34;&gt;systemd&lt;/h2&gt;
+        &lt;h2 id=&#34;tar&#34;&gt;tar&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#408080;font-style:italic&#34;&gt;# split&lt;/span&gt;
+$ tar cvfz - target | split -b 3072m - target.tgz
+$ cat target.tgz.* | tar zxvf -
+
+&lt;span style=&#34;color:#408080;font-style:italic&#34;&gt;# exclude&lt;/span&gt;
+$ cat .tarexclude
+build.*
+run.*
+bin
+.svn/*
+.git/*
+.project
+.tarexclude
+backup.sh
+$ tar cvfz ../target.tgz * -X .tarexclude
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;h2 id=&#34;systemd&#34;&gt;systemd&lt;/h2&gt;
 &lt;p&gt;systemd 는 centos 7 부터 포함된 기능입니다.&lt;/p&gt;
 &lt;p&gt;/etc/init.d 에서 서비스를 관리했던 것을 systemd 로 관리하게 되었습니다.&lt;/p&gt;
 &lt;p&gt;실행 명령어는 systemctl 입니다.&lt;/p&gt;
@@ -1117,24 +1134,6 @@ enabled
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;hostname&#34;&gt;hostname&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;[root@develop ~]$ hostnamectl set-hostname develop
 [root@develop ~]$
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;tar&#34;&gt;tar&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;분할 압축&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;[root@develop /data/PROD/nexus]$ du --max-depth=1 -h blobs/
-47M	blobs/maven-group-blob
-830M	blobs/npm-public-hosted
-181M	blobs/maven-public-hosted
-2.2G	blobs/npm-group-blob
-1.1G	blobs/maven-public-proxy
-1.6G	blobs/npm-public-proxy
-4.6M	blobs/maven-egov-proxy
-14M	blobs/maven-mgkim-snapshot-blob
-7.4M	blobs/maven-mgkim-release-blob
-5.9G	blobs/
-[root@develop /data/PROD/nexus]$
-[root@develop /data/PROD/nexus]$ tar cvfz - blob | split -b 3072m - blob.tgz
-[root@develop /data/PROD/nexus]$ cat blob.tgz.* | tar zxvf -
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;gzip or xz&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;z or J : z는 gzip 사용, J는 xz 사용
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;shell&#34;&gt;shell&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;[ -z ] : 문자열의 길이가 0이면 참
 [ -n ] : 문자열의 길이가 0이 아니면 참
