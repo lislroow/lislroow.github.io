@@ -1,8 +1,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>dlog – Docsy</title>
+    <title>dlog – dev-log</title>
     <link>/</link>
-    <description>Recent content in Docsy on dlog</description>
+    <description>Recent content in dev-log on dlog</description>
     <generator>Hugo -- gohugo.io</generator>
     
 	  <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
