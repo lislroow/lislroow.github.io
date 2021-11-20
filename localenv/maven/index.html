@@ -21,25 +21,30 @@
 
 
   
-  <meta name="description" content="password
-C:\Users\Administrator&gt;mvn --encrypt-master-password mypassword
-{ODOdTfm09eMHYfUVt4vkUfm9dw1pkSRC&#43;HAXsuqE0p0=}
-
-C:\Users\Administrator&gt; …">
+  <meta name="description" content="release
+$M2_HOME/conf/settings.xml 파일
+&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;
+&lt;settings xmlns= …">
 <meta property="og:title" content="maven" />
-<meta property="og:description" content="password C:\Users\Administrator&gt;mvn --encrypt-master-password mypassword {ODOdTfm09eMHYfUVt4vkUfm9dw1pkSRC&#43;HAXsuqE0p0=} C:\Users\Administrator&gt; " />
+<meta property="og:description" content="release $M2_HOME/conf/settings.xml 파일
+&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt; &lt;settings xmlns=&#34;http://maven.apache.org/SETTINGS/1.0.0&#34; xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34; xsi:schemaLocation=&#34;http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd&#34;&gt; &lt;servers&gt; &lt;server&gt; &lt;id&gt;nexus-release&lt;/id&gt; &lt;username&gt;admin&lt;/username&gt; &lt;password&gt;passwd&lt;/password&gt; &lt;/server&gt; &lt;server&gt; &lt;id&gt;nexus-snapshot&lt;/id&gt; &lt;username&gt;admin&lt;/username&gt; &lt;password&gt;passwd&lt;/password&gt; &lt;/server&gt; &lt;/servers&gt; &lt;mirrors&gt; &lt;mirror&gt; &lt;id&gt;nexus&lt;/id&gt; &lt;name&gt;nexus&lt;/name&gt; &lt;url&gt;http://nexus/repository/maven-group/&lt;/url&gt; &lt;mirrorOf&gt;*&lt;/mirrorOf&gt; &lt;/mirror&gt; &lt;/mirrors&gt; &lt;/settings&gt; pom.xml 파일
+&lt;build&gt; &lt;plugins&gt; &lt;plugin&gt; &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt; &lt;artifactId&gt;maven-release-plugin&lt;/artifactId&gt; &lt;version&gt;3.0.0-M1&lt;/version&gt; &lt;!-- 필수 사항 --&gt; &lt;configuration&gt; &lt;autoVersionSubmodules&gt;true&lt;/autoVersionSubmodules&gt; &lt;goals&gt;deploy&lt;/goals&gt; &lt;username&gt;mgkim&lt;/username&gt; &lt;password&gt;passwd&lt;/password&gt; &lt;/configuration&gt; &lt;!-- //필수 사항 --&gt; &lt;/plugin&gt; &lt;/plugins&gt; &lt;/build&gt; &lt;!-- 필수 사항 --&gt; &lt;scm&gt; &lt;connection&gt;scm:svn:svn://develop/test/trunk/proto.www&lt;/connection&gt; &lt;/scm&gt; &lt;!-- //필수 사항 --&gt; &lt;distributionManagement&gt; &lt;snapshotRepository&gt; &lt;id&gt;mgkim-snapshot&lt;/id&gt; &lt;url&gt;http://nexus/repository/maven-mgkim-snapshot/&lt;/url&gt; &lt;/snapshotRepository&gt; &lt;repository&gt; &lt;id&gt;mgkim-release&lt;/id&gt; &lt;url&gt;http://nexus/repository/maven-mgkim-release/&lt;/url&gt; &lt;/repository&gt; &lt;/distributionManagement&gt;" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/localenv/maven/" /><meta property="article:section" content="localenv" />
 
 
 
 <meta itemprop="name" content="maven">
-<meta itemprop="description" content="password C:\Users\Administrator&gt;mvn --encrypt-master-password mypassword {ODOdTfm09eMHYfUVt4vkUfm9dw1pkSRC&#43;HAXsuqE0p0=} C:\Users\Administrator&gt; ">
+<meta itemprop="description" content="release $M2_HOME/conf/settings.xml 파일
+&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt; &lt;settings xmlns=&#34;http://maven.apache.org/SETTINGS/1.0.0&#34; xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34; xsi:schemaLocation=&#34;http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd&#34;&gt; &lt;servers&gt; &lt;server&gt; &lt;id&gt;nexus-release&lt;/id&gt; &lt;username&gt;admin&lt;/username&gt; &lt;password&gt;passwd&lt;/password&gt; &lt;/server&gt; &lt;server&gt; &lt;id&gt;nexus-snapshot&lt;/id&gt; &lt;username&gt;admin&lt;/username&gt; &lt;password&gt;passwd&lt;/password&gt; &lt;/server&gt; &lt;/servers&gt; &lt;mirrors&gt; &lt;mirror&gt; &lt;id&gt;nexus&lt;/id&gt; &lt;name&gt;nexus&lt;/name&gt; &lt;url&gt;http://nexus/repository/maven-group/&lt;/url&gt; &lt;mirrorOf&gt;*&lt;/mirrorOf&gt; &lt;/mirror&gt; &lt;/mirrors&gt; &lt;/settings&gt; pom.xml 파일
+&lt;build&gt; &lt;plugins&gt; &lt;plugin&gt; &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt; &lt;artifactId&gt;maven-release-plugin&lt;/artifactId&gt; &lt;version&gt;3.0.0-M1&lt;/version&gt; &lt;!-- 필수 사항 --&gt; &lt;configuration&gt; &lt;autoVersionSubmodules&gt;true&lt;/autoVersionSubmodules&gt; &lt;goals&gt;deploy&lt;/goals&gt; &lt;username&gt;mgkim&lt;/username&gt; &lt;password&gt;passwd&lt;/password&gt; &lt;/configuration&gt; &lt;!-- //필수 사항 --&gt; &lt;/plugin&gt; &lt;/plugins&gt; &lt;/build&gt; &lt;!-- 필수 사항 --&gt; &lt;scm&gt; &lt;connection&gt;scm:svn:svn://develop/test/trunk/proto.www&lt;/connection&gt; &lt;/scm&gt; &lt;!-- //필수 사항 --&gt; &lt;distributionManagement&gt; &lt;snapshotRepository&gt; &lt;id&gt;mgkim-snapshot&lt;/id&gt; &lt;url&gt;http://nexus/repository/maven-mgkim-snapshot/&lt;/url&gt; &lt;/snapshotRepository&gt; &lt;repository&gt; &lt;id&gt;mgkim-release&lt;/id&gt; &lt;url&gt;http://nexus/repository/maven-mgkim-release/&lt;/url&gt; &lt;/repository&gt; &lt;/distributionManagement&gt;">
 
-<meta itemprop="wordCount" content="6">
+<meta itemprop="wordCount" content="123">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="maven"/>
-<meta name="twitter:description" content="password C:\Users\Administrator&gt;mvn --encrypt-master-password mypassword {ODOdTfm09eMHYfUVt4vkUfm9dw1pkSRC&#43;HAXsuqE0p0=} C:\Users\Administrator&gt; "/>
+<meta name="twitter:description" content="release $M2_HOME/conf/settings.xml 파일
+&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt; &lt;settings xmlns=&#34;http://maven.apache.org/SETTINGS/1.0.0&#34; xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34; xsi:schemaLocation=&#34;http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd&#34;&gt; &lt;servers&gt; &lt;server&gt; &lt;id&gt;nexus-release&lt;/id&gt; &lt;username&gt;admin&lt;/username&gt; &lt;password&gt;passwd&lt;/password&gt; &lt;/server&gt; &lt;server&gt; &lt;id&gt;nexus-snapshot&lt;/id&gt; &lt;username&gt;admin&lt;/username&gt; &lt;password&gt;passwd&lt;/password&gt; &lt;/server&gt; &lt;/servers&gt; &lt;mirrors&gt; &lt;mirror&gt; &lt;id&gt;nexus&lt;/id&gt; &lt;name&gt;nexus&lt;/name&gt; &lt;url&gt;http://nexus/repository/maven-group/&lt;/url&gt; &lt;mirrorOf&gt;*&lt;/mirrorOf&gt; &lt;/mirror&gt; &lt;/mirrors&gt; &lt;/settings&gt; pom.xml 파일
+&lt;build&gt; &lt;plugins&gt; &lt;plugin&gt; &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt; &lt;artifactId&gt;maven-release-plugin&lt;/artifactId&gt; &lt;version&gt;3.0.0-M1&lt;/version&gt; &lt;!-- 필수 사항 --&gt; &lt;configuration&gt; &lt;autoVersionSubmodules&gt;true&lt;/autoVersionSubmodules&gt; &lt;goals&gt;deploy&lt;/goals&gt; &lt;username&gt;mgkim&lt;/username&gt; &lt;password&gt;passwd&lt;/password&gt; &lt;/configuration&gt; &lt;!-- //필수 사항 --&gt; &lt;/plugin&gt; &lt;/plugins&gt; &lt;/build&gt; &lt;!-- 필수 사항 --&gt; &lt;scm&gt; &lt;connection&gt;scm:svn:svn://develop/test/trunk/proto.www&lt;/connection&gt; &lt;/scm&gt; &lt;!-- //필수 사항 --&gt; &lt;distributionManagement&gt; &lt;snapshotRepository&gt; &lt;id&gt;mgkim-snapshot&lt;/id&gt; &lt;url&gt;http://nexus/repository/maven-mgkim-snapshot/&lt;/url&gt; &lt;/snapshotRepository&gt; &lt;repository&gt; &lt;id&gt;mgkim-release&lt;/id&gt; &lt;url&gt;http://nexus/repository/maven-mgkim-release/&lt;/url&gt; &lt;/repository&gt; &lt;/distributionManagement&gt;"/>
 
 
 
@@ -130,7 +135,7 @@ C:\Users\Administrator&gt; …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.3ab7ef05aa1ac98113f06fb6bc6992d2.json"
+  data-offline-search-index-json-src="/offline-search-index.627b1e2080b4b0a2edeb410a2ebe84b3.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -157,7 +162,7 @@ C:\Users\Administrator&gt; …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.3ab7ef05aa1ac98113f06fb6bc6992d2.json"
+  data-offline-search-index-json-src="/offline-search-index.627b1e2080b4b0a2edeb410a2ebe84b3.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -217,6 +222,9 @@ C:\Users\Administrator&gt; …">
 
 <div class="td-toc"><nav id="TableOfContents">
   <ul>
+    <li><a href="#release">release</a></li>
+    <li><a href="#deploydeploy-file">deploy:deploy-file</a></li>
+    <li><a href="#settingsxml">settings.xml</a></li>
     <li><a href="#password">password</a></li>
   </ul>
 </nav></div>
@@ -291,7 +299,95 @@ C:\Users\Administrator&gt; …">
 		
 		
 	</header>    
-	<h2 id="password">password</h2>
+	<h2 id="release">release</h2>
+<p>$M2_HOME/conf/settings.xml 파일</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#bc7a00">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<span style="color:#008000;font-weight:bold">&lt;settings</span> <span style="color:#7d9029">xmlns=</span><span style="color:#ba2121">&#34;http://maven.apache.org/SETTINGS/1.0.0&#34;</span>
+          <span style="color:#7d9029">xmlns:xsi=</span><span style="color:#ba2121">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
+          <span style="color:#7d9029">xsi:schemaLocation=</span><span style="color:#ba2121">&#34;http://maven.apache.org/SETTINGS/1.0.0
+</span><span style="color:#ba2121">          http://maven.apache.org/xsd/settings-1.0.0.xsd&#34;</span><span style="color:#008000;font-weight:bold">&gt;</span>
+  <span style="color:#008000;font-weight:bold">&lt;servers&gt;</span>
+    <span style="color:#008000;font-weight:bold">&lt;server&gt;</span>
+      <span style="color:#008000;font-weight:bold">&lt;id&gt;</span>nexus-release<span style="color:#008000;font-weight:bold">&lt;/id&gt;</span>
+      <span style="color:#008000;font-weight:bold">&lt;username&gt;</span>admin<span style="color:#008000;font-weight:bold">&lt;/username&gt;</span>
+      <span style="color:#008000;font-weight:bold">&lt;password&gt;</span>passwd<span style="color:#008000;font-weight:bold">&lt;/password&gt;</span>
+    <span style="color:#008000;font-weight:bold">&lt;/server&gt;</span>
+    <span style="color:#008000;font-weight:bold">&lt;server&gt;</span>
+      <span style="color:#008000;font-weight:bold">&lt;id&gt;</span>nexus-snapshot<span style="color:#008000;font-weight:bold">&lt;/id&gt;</span>
+      <span style="color:#008000;font-weight:bold">&lt;username&gt;</span>admin<span style="color:#008000;font-weight:bold">&lt;/username&gt;</span>
+      <span style="color:#008000;font-weight:bold">&lt;password&gt;</span>passwd<span style="color:#008000;font-weight:bold">&lt;/password&gt;</span>
+    <span style="color:#008000;font-weight:bold">&lt;/server&gt;</span>
+  <span style="color:#008000;font-weight:bold">&lt;/servers&gt;</span>
+  <span style="color:#008000;font-weight:bold">&lt;mirrors&gt;</span>
+    <span style="color:#008000;font-weight:bold">&lt;mirror&gt;</span>
+      <span style="color:#008000;font-weight:bold">&lt;id&gt;</span>nexus<span style="color:#008000;font-weight:bold">&lt;/id&gt;</span>
+      <span style="color:#008000;font-weight:bold">&lt;name&gt;</span>nexus<span style="color:#008000;font-weight:bold">&lt;/name&gt;</span>
+      <span style="color:#008000;font-weight:bold">&lt;url&gt;</span>http://nexus/repository/maven-group/<span style="color:#008000;font-weight:bold">&lt;/url&gt;</span>
+      <span style="color:#008000;font-weight:bold">&lt;mirrorOf&gt;</span>*<span style="color:#008000;font-weight:bold">&lt;/mirrorOf&gt;</span>
+    <span style="color:#008000;font-weight:bold">&lt;/mirror&gt;</span>
+  <span style="color:#008000;font-weight:bold">&lt;/mirrors&gt;</span>
+<span style="color:#008000;font-weight:bold">&lt;/settings&gt;</span>
+</code></pre></div><p>pom.xml 파일</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#008000;font-weight:bold">&lt;build&gt;</span>
+  <span style="color:#008000;font-weight:bold">&lt;plugins&gt;</span>
+    <span style="color:#008000;font-weight:bold">&lt;plugin&gt;</span>
+      <span style="color:#008000;font-weight:bold">&lt;groupId&gt;</span>org.apache.maven.plugins<span style="color:#008000;font-weight:bold">&lt;/groupId&gt;</span>
+      <span style="color:#008000;font-weight:bold">&lt;artifactId&gt;</span>maven-release-plugin<span style="color:#008000;font-weight:bold">&lt;/artifactId&gt;</span>
+      <span style="color:#008000;font-weight:bold">&lt;version&gt;</span>3.0.0-M1<span style="color:#008000;font-weight:bold">&lt;/version&gt;</span>
+      <span style="color:#408080;font-style:italic">&lt;!-- 필수 사항 --&gt;</span>
+      <span style="color:#008000;font-weight:bold">&lt;configuration&gt;</span>
+        <span style="color:#008000;font-weight:bold">&lt;autoVersionSubmodules&gt;</span>true<span style="color:#008000;font-weight:bold">&lt;/autoVersionSubmodules&gt;</span>
+        <span style="color:#008000;font-weight:bold">&lt;goals&gt;</span>deploy<span style="color:#008000;font-weight:bold">&lt;/goals&gt;</span>
+        <span style="color:#008000;font-weight:bold">&lt;username&gt;</span>mgkim<span style="color:#008000;font-weight:bold">&lt;/username&gt;</span>
+        <span style="color:#008000;font-weight:bold">&lt;password&gt;</span>passwd<span style="color:#008000;font-weight:bold">&lt;/password&gt;</span>
+      <span style="color:#008000;font-weight:bold">&lt;/configuration&gt;</span>
+      <span style="color:#408080;font-style:italic">&lt;!-- //필수 사항 --&gt;</span>
+    <span style="color:#008000;font-weight:bold">&lt;/plugin&gt;</span>
+  <span style="color:#008000;font-weight:bold">&lt;/plugins&gt;</span>
+<span style="color:#008000;font-weight:bold">&lt;/build&gt;</span>
+
+<span style="color:#408080;font-style:italic">&lt;!-- 필수 사항 --&gt;</span>
+<span style="color:#008000;font-weight:bold">&lt;scm&gt;</span>
+  <span style="color:#008000;font-weight:bold">&lt;connection&gt;</span>scm:svn:svn://develop/test/trunk/proto.www<span style="color:#008000;font-weight:bold">&lt;/connection&gt;</span>
+<span style="color:#008000;font-weight:bold">&lt;/scm&gt;</span>
+<span style="color:#408080;font-style:italic">&lt;!-- //필수 사항 --&gt;</span>
+
+<span style="color:#008000;font-weight:bold">&lt;distributionManagement&gt;</span>
+  <span style="color:#008000;font-weight:bold">&lt;snapshotRepository&gt;</span>
+    <span style="color:#008000;font-weight:bold">&lt;id&gt;</span>mgkim-snapshot<span style="color:#008000;font-weight:bold">&lt;/id&gt;</span>
+    <span style="color:#008000;font-weight:bold">&lt;url&gt;</span>http://nexus/repository/maven-mgkim-snapshot/<span style="color:#008000;font-weight:bold">&lt;/url&gt;</span>
+  <span style="color:#008000;font-weight:bold">&lt;/snapshotRepository&gt;</span>
+  <span style="color:#008000;font-weight:bold">&lt;repository&gt;</span>
+    <span style="color:#008000;font-weight:bold">&lt;id&gt;</span>mgkim-release<span style="color:#008000;font-weight:bold">&lt;/id&gt;</span>
+    <span style="color:#008000;font-weight:bold">&lt;url&gt;</span>http://nexus/repository/maven-mgkim-release/<span style="color:#008000;font-weight:bold">&lt;/url&gt;</span>
+  <span style="color:#008000;font-weight:bold">&lt;/repository&gt;</span>
+<span style="color:#008000;font-weight:bold">&lt;/distributionManagement&gt;</span>
+</code></pre></div><br>
+<h2 id="deploydeploy-file">deploy:deploy-file</h2>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"><span style="color:#008000;font-weight:bold">set</span> <span style="color:#19177c">JAVA_HOME</span>=Z:\develop\java\openjdk-11.0.2
+<span style="color:#008000;font-weight:bold">set</span> <span style="color:#19177c">M2_HOME</span>=Z:\develop\build\maven-3.6.3
+<span style="color:#008000;font-weight:bold">set</span> <span style="color:#19177c">PATH</span>=<span style="color:#19177c">%JAVA_HOME%</span>\bin;<span style="color:#19177c">%M2_HOME%</span>\bin;<span style="color:#19177c">%PATH%</span>
+<span style="color:#008000;font-weight:bold">set</span> <span style="color:#19177c">NEXUS_REPO</span>=-DrepositoryId=nexus -Durl=http://nexus/repository/maven-public-hosted/
+<span style="color:#008000;font-weight:bold">set</span> <span style="color:#19177c">GROUP_ID</span>=net.mgkim
+<span style="color:#008000;font-weight:bold">set</span> <span style="color:#19177c">ARTIFACT_ID</span>=spring-core
+<span style="color:#008000;font-weight:bold">set</span> <span style="color:#19177c">VERSION</span>=1.0.0
+<span style="color:#008000;font-weight:bold">set</span> <span style="color:#19177c">FILE</span>=Z:\mgkim-spring-core-1.0.0.jar
+
+<span style="color:#19177c">%M2_HOME%</span>\bin\mvn.bat -U deploy:deploy-file -DgroupId=<span style="color:#19177c">%GROUP_ID%</span> -DartifactId=<span style="color:#19177c">%ARTIFACT_ID%</span> -Dversion=<span style="color:#19177c">%VERSION%</span> -Dpackaging=jar -Dfile=<span style="color:#19177c">%FILE%</span> <span style="color:#19177c">%NEXUS_REPO%</span>
+</code></pre></div><p>플러그인</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#008000;font-weight:bold">&lt;build&gt;</span>
+  <span style="color:#008000;font-weight:bold">&lt;plugins&gt;</span>
+    <span style="color:#008000;font-weight:bold">&lt;plugin&gt;</span>
+      <span style="color:#008000;font-weight:bold">&lt;groupId&gt;</span>org.apache.maven.plugins<span style="color:#008000;font-weight:bold">&lt;/groupId&gt;</span>
+      <span style="color:#008000;font-weight:bold">&lt;artifactId&gt;</span>maven-deploy-plugin<span style="color:#008000;font-weight:bold">&lt;/artifactId&gt;</span>
+      <span style="color:#008000;font-weight:bold">&lt;version&gt;</span>3.0.0-M1<span style="color:#008000;font-weight:bold">&lt;/version&gt;</span>
+    <span style="color:#008000;font-weight:bold">&lt;/plugin&gt;</span>
+  <span style="color:#008000;font-weight:bold">&lt;/plugins&gt;</span>
+<span style="color:#008000;font-weight:bold">&lt;/build&gt;</span>
+</code></pre></div><br>
+<h2 id="settingsxml">settings.xml</h2>
+<p>$M2_HOME/conf/settings.xml</p>
+<h2 id="password">password</h2>
 <div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">C:<span style="color:#a0a000">\Users\Administrator</span><span style="color:#408080;font-style:italic">&gt;mvn --encrypt-master-password mypassword</span>
 {ODOdTfm09eMHYfUVt4vkUfm9dw1pkSRC+HAXsuqE0p0=}
 
