@@ -300,7 +300,11 @@ SQL&amp;gt; select username, account_status, expiry_date from dba_users;
       <description>
         
         
-        &lt;h2 id=&#34;절전-cmd&#34;&gt;절전 cmd&lt;/h2&gt;
+        &lt;h2 id=&#34;eclipse-hidpi&#34;&gt;eclipse hidpi&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;-Dswt.autoScale=150 # 150 == 1.5배
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;a href=&#34;/files/localenv/20211120-eclipse.ini&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
+&lt;br&gt;
+&lt;h2 id=&#34;절전-cmd&#34;&gt;절전 cmd&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;&lt;span style=&#34;color:#19177c&#34;&gt;%windir%&lt;/span&gt;\System32\rundll32.exe powrprof.dll SetSuspendState
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
 &lt;h2 id=&#34;vmware-cmd&#34;&gt;vmware cmd&lt;/h2&gt;
