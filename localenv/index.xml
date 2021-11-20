@@ -250,11 +250,11 @@ keytool -delete -alias &amp;quot;hello&amp;quot; -keystore &amp;quot;cacerts&amp
     </item>
     
     <item>
-      <title>Localenv: oracle client</title>
-      <link>/localenv/oracle-client/</link>
+      <title>Localenv: oracle</title>
+      <link>/localenv/oracle/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/localenv/oracle-client/</guid>
+      <guid>/localenv/oracle/</guid>
       <description>
         
         
@@ -266,35 +266,20 @@ TNS_ADMIN
 %ORACLE_HOME%\network\admin
 
 PATH
-%PATH%;%ORACLE_HOME%\bin
+%ORACLE_HOME%\bin
 
 NLS_LANG
 KOREAN_KOREA.KO16MSWIN949
 
-NLS_DATE_FORMAT=YYYY-MM-DD HH24:MI:SS   #ALTER SESSION SET NLS_DATE_FORMAT=&#39;YYYY-MM-DD HH24:MI:SS&#39;;
+NLS_DATE_FORMAT           #ALTER SESSION SET NLS_DATE_FORMAT=&#39;YYYY-MM-DD HH24:MI:SS&#39;;
+YYYY-MM-DD HH24:MI:SS
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;레지스트리&#34;&gt;레지스트리&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;HKEY_LOCAL_MACHINE\SOFTWARE\ORACLE\KEY_client&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Windows Registry Editor Version 5.00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\ORACLE\KEY_client]
-&amp;quot;ORACLE_BASE&amp;quot;=&amp;quot;Z:\\oracle\\ora12c_32bit&amp;quot;
-&amp;quot;ORACLE_HOME&amp;quot;=&amp;quot;Z:\\oracle\\ora12c_32bit\\client_12_1&amp;quot;
-&amp;quot;ORACLE_HOME_NAME&amp;quot;=&amp;quot;ora12c_32bit&amp;quot;
-&amp;quot;ORACLE_GROUP_NAME&amp;quot;=&amp;quot;oracle-client&amp;quot;
-&amp;quot;NLS_LANG&amp;quot;=&amp;quot;KOREAN_KOREA.KO16MSWIN949&amp;quot;
-&amp;quot;ORACLE_BUNDLE_NAME&amp;quot;=&amp;quot;Enterprise&amp;quot;
-&amp;quot;ORACLE_HOME_KEY&amp;quot;=&amp;quot;SOFTWARE\\ORACLE\\KEY_client&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\ORACLE\KEY_client&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Windows Registry Editor Version 5.00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\ORACLE\KEY_client]
-&amp;quot;ORACLE_BASE&amp;quot;=&amp;quot;Z:\\oracle\\ora12c_32bit&amp;quot;
-&amp;quot;ORACLE_HOME&amp;quot;=&amp;quot;Z:\\oracle\\ora12c_32bit\\client_12_1&amp;quot;
-&amp;quot;ORACLE_HOME_NAME&amp;quot;=&amp;quot;ora12c_32bit&amp;quot;
-&amp;quot;ORACLE_GROUP_NAME&amp;quot;=&amp;quot;oracle-client&amp;quot;
-&amp;quot;NLS_LANG&amp;quot;=&amp;quot;KOREAN_KOREA.KO16MSWIN949&amp;quot;
-&amp;quot;ORACLE_BUNDLE_NAME&amp;quot;=&amp;quot;Enterprise&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;tnsnamesora&#34;&gt;tnsnames.ora&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;/files/localenv/20211120-HLM_SW_Oracle_key_client(Z).reg&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\ORACLE\KEY_client&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;/files/localenv/20211120-HLM_SW_Wow6432Node_Oacle_key_client(Z).reg&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
+&lt;br&gt;
+&lt;h2 id=&#34;tnsnamesora&#34;&gt;tnsnames.ora&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;SPADBP =
   (DESCRIPTION =
     (ADDRESS = (PROTOCOL = TCP)(HOST = develop)(PORT = 1521))

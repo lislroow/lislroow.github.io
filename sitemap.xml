@@ -30,9 +30,9 @@
   </url><url>
     <loc>/system/openssl/</loc>
   </url><url>
-    <loc>/system/oracle/</loc>
+    <loc>/localenv/oracle/</loc>
   </url><url>
-    <loc>/localenv/oracle-client/</loc>
+    <loc>/system/oracle/</loc>
   </url><url>
     <loc>/search/</loc>
   </url><url>
