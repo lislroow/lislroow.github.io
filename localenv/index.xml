@@ -240,11 +240,11 @@ keytool -delete -alias &amp;quot;hello&amp;quot; -keystore &amp;quot;cacerts&amp
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
 &lt;h2 id=&#34;settingsxml&#34;&gt;settings.xml&lt;/h2&gt;
 &lt;p&gt;$M2_HOME/conf/settings.xml&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;/files/localenv/20211120-settings.xml&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
+&lt;br&gt;
 &lt;h2 id=&#34;password&#34;&gt;password&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;C:&lt;span style=&#34;color:#a0a000&#34;&gt;\Users\Administrator&lt;/span&gt;&lt;span style=&#34;color:#408080;font-style:italic&#34;&gt;&amp;gt;mvn --encrypt-master-password mypassword&lt;/span&gt;
-{ODOdTfm09eMHYfUVt4vkUfm9dw1pkSRC+HAXsuqE0p0=}
-
-C:&lt;span style=&#34;color:#a0a000&#34;&gt;\Users\Administrator&lt;/span&gt;&lt;span style=&#34;color:#408080;font-style:italic&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;$ mvn --encrypt-master-password mypassword
+&lt;span style=&#34;color:#666&#34;&gt;{&lt;/span&gt;ODOdTfm09eMHYfUVt4vkUfm9dw1pkSRC+HAXsuqE0p0&lt;span style=&#34;color:#666&#34;&gt;=}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       </description>
     </item>

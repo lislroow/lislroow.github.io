@@ -42,7 +42,7 @@ $ mvn -B clean release:prepare release:perform deploy $M2_HOME/conf/settings.xml
 &lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt; &lt;settings xmlns=&#34;http://maven.apache.org/SETTINGS/1.0.0&#34; xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34; xsi:schemaLocation=&#34;http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd&#34;&gt; &lt;servers&gt; &lt;server&gt; &lt;id&gt;nexus-release&lt;/id&gt; &lt;username&gt;admin&lt;/username&gt; &lt;password&gt;passwd&lt;/password&gt; &lt;/server&gt; &lt;server&gt; &lt;id&gt;nexus-snapshot&lt;/id&gt; &lt;username&gt;admin&lt;/username&gt; &lt;password&gt;passwd&lt;/password&gt; &lt;/server&gt; &lt;/servers&gt; &lt;mirrors&gt; &lt;mirror&gt; &lt;id&gt;nexus&lt;/id&gt; &lt;name&gt;nexus&lt;/name&gt; &lt;url&gt;http://nexus/repository/maven-group/&lt;/url&gt; &lt;mirrorOf&gt;*&lt;/mirrorOf&gt; &lt;/mirror&gt; &lt;/mirrors&gt; &lt;/settings&gt; pom.xml 파일
 &lt;build&gt; &lt;plugins&gt; &lt;plugin&gt; &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt; &lt;artifactId&gt;maven-release-plugin&lt;/artifactId&gt; &lt;version&gt;3.0.0-M1&lt;/version&gt; &lt;!-- 필수 사항 --&gt; &lt;configuration&gt; &lt;autoVersionSubmodules&gt;true&lt;/autoVersionSubmodules&gt; &lt;goals&gt;deploy&lt;/goals&gt; &lt;username&gt;mgkim&lt;/username&gt; &lt;password&gt;passwd&lt;/password&gt; &lt;/configuration&gt; &lt;!-- //필수 사항 --&gt; &lt;/plugin&gt; &lt;/plugins&gt; &lt;/build&gt; &lt;!-- 필수 사항 --&gt; &lt;scm&gt; &lt;connection&gt;scm:svn:svn://develop/test/trunk/proto.">
 
-<meta itemprop="wordCount" content="157">
+<meta itemprop="wordCount" content="160">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="maven"/>
 <meta name="twitter:description" content="release 명령어
@@ -139,7 +139,7 @@ $ mvn -B clean release:prepare release:perform deploy $M2_HOME/conf/settings.xml
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.17f2efb4be10076d4e643da7761e3132.json"
+  data-offline-search-index-json-src="/offline-search-index.e5962fff43344f5d8e292f2d2ec452d1.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -166,7 +166,7 @@ $ mvn -B clean release:prepare release:perform deploy $M2_HOME/conf/settings.xml
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.17f2efb4be10076d4e643da7761e3132.json"
+  data-offline-search-index-json-src="/offline-search-index.e5962fff43344f5d8e292f2d2ec452d1.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -408,11 +408,11 @@ $ mvn -B clean release:prepare release:perform deploy $M2_HOME/conf/settings.xml
 </code></pre></div><br>
 <h2 id="settingsxml">settings.xml</h2>
 <p>$M2_HOME/conf/settings.xml</p>
+<p><a href="/files/localenv/20211120-settings.xml" target="_blank">새 창 보기</a></p>
+<br>
 <h2 id="password">password</h2>
-<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">C:<span style="color:#a0a000">\Users\Administrator</span><span style="color:#408080;font-style:italic">&gt;mvn --encrypt-master-password mypassword</span>
-{ODOdTfm09eMHYfUVt4vkUfm9dw1pkSRC+HAXsuqE0p0=}
-
-C:<span style="color:#a0a000">\Users\Administrator</span><span style="color:#408080;font-style:italic">&gt;</span>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ mvn --encrypt-master-password mypassword
+<span style="color:#666">{</span>ODOdTfm09eMHYfUVt4vkUfm9dw1pkSRC+HAXsuqE0p0<span style="color:#666">=}</span>
 </code></pre></div>
 	
 	
