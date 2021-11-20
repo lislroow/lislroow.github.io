@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko" class="no-js">
+<html lang="en" class="no-js">
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -30,10 +30,10 @@ JAVA_OPTS=&quot; -Djava.net.preferIPv4Stack=true ${JAVA_OPTS} &quot;
 set …">
 <meta property="og:title" content="java" />
 <meta property="og:description" content="vmargs tomcat/bin/setenv.* 에 JAVA_OPTS 변수 선언
-#setenv.sh JAVA_OPTS=&quot; -Djava.net.preferIPv4Stack=true ${JAVA_OPTS} &quot; #setenv.bat set JAVA_OPTS=&quot; -Djava.net.preferIPv4Stack=true %JAVA_OPTS% &quot; request.getRemoteAddr() 반환이 IPv6 로 출력되는 경우
--Djava.net.preferIPv4Stack=true java.lang.ClassCastException: weblogic.net.http.SOAPHttpsURLConnection cannot be cast to javax.net.ssl.HttpsURLConnection
--DUseSunHttpHandler=true keytool 인증서 등록
-# 등록할 인증서 파일: hello.crt # java 환경 인증서 저장경로 이동 cd $JAVA_HOME/jre/lib/security # 인증서 등록 keytool -importcert -keystore cacerts -file &quot;hello.crt&quot; -alias &quot;hello&quot; 키 저장소 비밀번호 입력: (changeit 입력) 이 인증서를 신뢰합니까? [아니오]: (y 입력) 인증서가 키 저장소에 추가되었습니다." />
+#setenv.shJAVA_OPTS=&quot; -Djava.net.preferIPv4Stack=true ${JAVA_OPTS} &quot;#setenv.batset JAVA_OPTS=&quot; -Djava.net.preferIPv4Stack=true %JAVA_OPTS% &quot;request.getRemoteAddr() 반환이 IPv6 로 출력되는 경우
+-Djava.net.preferIPv4Stack=truejava.lang.ClassCastException: weblogic.net.http.SOAPHttpsURLConnection cannot be cast to javax.net.ssl.HttpsURLConnection
+-DUseSunHttpHandler=truekeytool 인증서 등록
+# 등록할 인증서 파일: hello.crt# java 환경 인증서 저장경로 이동cd $JAVA_HOME/jre/lib/security# 인증서 등록keytool -importcert -keystore cacerts -file &quot;hello.crt&quot; -alias &quot;hello&quot;키 저장소 비밀번호 입력: (changeit 입력)이 인증서를 신뢰합니까? [아니오]: (y 입력)인증서가 키 저장소에 추가되었습니다." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/localenv/java/" /><meta property="article:section" content="localenv" />
 
@@ -41,19 +41,19 @@ set …">
 
 <meta itemprop="name" content="java">
 <meta itemprop="description" content="vmargs tomcat/bin/setenv.* 에 JAVA_OPTS 변수 선언
-#setenv.sh JAVA_OPTS=&quot; -Djava.net.preferIPv4Stack=true ${JAVA_OPTS} &quot; #setenv.bat set JAVA_OPTS=&quot; -Djava.net.preferIPv4Stack=true %JAVA_OPTS% &quot; request.getRemoteAddr() 반환이 IPv6 로 출력되는 경우
--Djava.net.preferIPv4Stack=true java.lang.ClassCastException: weblogic.net.http.SOAPHttpsURLConnection cannot be cast to javax.net.ssl.HttpsURLConnection
--DUseSunHttpHandler=true keytool 인증서 등록
-# 등록할 인증서 파일: hello.crt # java 환경 인증서 저장경로 이동 cd $JAVA_HOME/jre/lib/security # 인증서 등록 keytool -importcert -keystore cacerts -file &quot;hello.crt&quot; -alias &quot;hello&quot; 키 저장소 비밀번호 입력: (changeit 입력) 이 인증서를 신뢰합니까? [아니오]: (y 입력) 인증서가 키 저장소에 추가되었습니다.">
+#setenv.shJAVA_OPTS=&quot; -Djava.net.preferIPv4Stack=true ${JAVA_OPTS} &quot;#setenv.batset JAVA_OPTS=&quot; -Djava.net.preferIPv4Stack=true %JAVA_OPTS% &quot;request.getRemoteAddr() 반환이 IPv6 로 출력되는 경우
+-Djava.net.preferIPv4Stack=truejava.lang.ClassCastException: weblogic.net.http.SOAPHttpsURLConnection cannot be cast to javax.net.ssl.HttpsURLConnection
+-DUseSunHttpHandler=truekeytool 인증서 등록
+# 등록할 인증서 파일: hello.crt# java 환경 인증서 저장경로 이동cd $JAVA_HOME/jre/lib/security# 인증서 등록keytool -importcert -keystore cacerts -file &quot;hello.crt&quot; -alias &quot;hello&quot;키 저장소 비밀번호 입력: (changeit 입력)이 인증서를 신뢰합니까? [아니오]: (y 입력)인증서가 키 저장소에 추가되었습니다.">
 
 <meta itemprop="wordCount" content="105">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="java"/>
 <meta name="twitter:description" content="vmargs tomcat/bin/setenv.* 에 JAVA_OPTS 변수 선언
-#setenv.sh JAVA_OPTS=&quot; -Djava.net.preferIPv4Stack=true ${JAVA_OPTS} &quot; #setenv.bat set JAVA_OPTS=&quot; -Djava.net.preferIPv4Stack=true %JAVA_OPTS% &quot; request.getRemoteAddr() 반환이 IPv6 로 출력되는 경우
--Djava.net.preferIPv4Stack=true java.lang.ClassCastException: weblogic.net.http.SOAPHttpsURLConnection cannot be cast to javax.net.ssl.HttpsURLConnection
--DUseSunHttpHandler=true keytool 인증서 등록
-# 등록할 인증서 파일: hello.crt # java 환경 인증서 저장경로 이동 cd $JAVA_HOME/jre/lib/security # 인증서 등록 keytool -importcert -keystore cacerts -file &quot;hello.crt&quot; -alias &quot;hello&quot; 키 저장소 비밀번호 입력: (changeit 입력) 이 인증서를 신뢰합니까? [아니오]: (y 입력) 인증서가 키 저장소에 추가되었습니다."/>
+#setenv.shJAVA_OPTS=&quot; -Djava.net.preferIPv4Stack=true ${JAVA_OPTS} &quot;#setenv.batset JAVA_OPTS=&quot; -Djava.net.preferIPv4Stack=true %JAVA_OPTS% &quot;request.getRemoteAddr() 반환이 IPv6 로 출력되는 경우
+-Djava.net.preferIPv4Stack=truejava.lang.ClassCastException: weblogic.net.http.SOAPHttpsURLConnection cannot be cast to javax.net.ssl.HttpsURLConnection
+-DUseSunHttpHandler=truekeytool 인증서 등록
+# 등록할 인증서 파일: hello.crt# java 환경 인증서 저장경로 이동cd $JAVA_HOME/jre/lib/security# 인증서 등록keytool -importcert -keystore cacerts -file &quot;hello.crt&quot; -alias &quot;hello&quot;키 저장소 비밀번호 입력: (changeit 입력)이 인증서를 신뢰합니까? [아니오]: (y 입력)인증서가 키 저장소에 추가되었습니다."/>
 
 
 
@@ -129,18 +129,6 @@ set …">
 				<a class="nav-link active" href="/localenv/" ><i class='fas fa-book'></i><span class="active">localenv</span></a>
 			</li>
 			
-			<li class="nav-item mr-4 mb-2 mb-lg-0">
-				
-				
-				
-				
-				
-				
-				
-				
-				<a class="nav-link" href="/terms/" ><i class='fas fa-book'></i><span>terms</span></a>
-			</li>
-			
 			
 			
 		</ul>
@@ -152,11 +140,11 @@ set …">
 <input
   type="search"
   class="form-control td-search-input"
-  placeholder="&#xf002; 사이트에서 검색…"
-  aria-label="사이트에서 검색…"
+  placeholder="&#xf002; Search this site…"
+  aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.c10b8c5da2c94175be67da873c181536.json"
+  data-offline-search-index-json-src="/offline-search-index.78524f73033249a9282b98d78421a240.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -179,11 +167,11 @@ set …">
 <input
   type="search"
   class="form-control td-search-input"
-  placeholder="&#xf002; 사이트에서 검색…"
-  aria-label="사이트에서 검색…"
+  placeholder="&#xf002; Search this site…"
+  aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.c10b8c5da2c94175be67da873c181536.json"
+  data-offline-search-index-json-src="/offline-search-index.78524f73033249a9282b98d78421a240.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -216,9 +204,6 @@ set …">
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-localenvwindows-li">
   
   <a href="/localenv/windows/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-localenvwindows"><span class="">windows</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-localenvwindows-cmd-li">
-  
-  <a href="/localenv/windows-cmd/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-localenvwindows-cmd"><span class="">windows cmd</span></a>
 </li>
   </ul>
 </li>
