@@ -300,9 +300,14 @@ SQL&amp;gt; select username, account_status, expiry_date from dba_users;
       <description>
         
         
-        &lt;h2 id=&#34;wol&#34;&gt;wol&lt;/h2&gt;
+        &lt;h2 id=&#34;vmware-cmd-실행&#34;&gt;vmware cmd 실행&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#34;VMWARE_HOME=C:\Program Files (x86)\VMware\VMware Workstation&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#34;PATH=&lt;/span&gt;&lt;span style=&#34;color:#19177c&#34;&gt;%PATH%&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;;&lt;/span&gt;&lt;span style=&#34;color:#19177c&#34;&gt;%VMWARE_HOME%&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#34;&lt;/span&gt;
+vmrun -T ws start &lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#34;Z:\centos7-develop\centos7-develop.vmx&amp;#34;&lt;/span&gt; nogui
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;wol&#34;&gt;wol&lt;/h2&gt;
 &lt;p&gt;절전 상태에서 wol 이 작동하려면 아래 옵션을 선택해야 합니다.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;/images/localenv/20211120-windows_wol_1.png&#34; /&gt;&lt;/p&gt;
+&lt;br&gt;
 &lt;h2 id=&#34;port-forwarding&#34;&gt;port-forwarding&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;# 설정
 netsh interface portproxy add v4tov4 listenport=8222 listenaddress=0.0.0.0 connectport=22 connectaddress=172.28.200.20
@@ -312,7 +317,8 @@ netsh interface portproxy delete v4tov4 listenport=8222 listenaddress=0.0.0.0
 
 # 확인
 netsh interface portproxy show v4tov4
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;파일-공유&#34;&gt;파일 공유&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;h2 id=&#34;파일-공유&#34;&gt;파일 공유&lt;/h2&gt;
 &lt;p&gt;windows 에서 파일 공유 시 권한이 없다는 메시지가 나오는 경우가 있음&lt;/p&gt;
 &lt;p&gt;windows 계정에 패스워드가 설정되어 있지 않으면 발생하는 사항&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;# 비밀번호 설정하기
