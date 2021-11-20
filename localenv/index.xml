@@ -206,7 +206,16 @@ keytool -delete -alias &amp;quot;hello&amp;quot; -keystore &amp;quot;cacerts&amp
 &lt;h2 id=&#34;helpevaluate&#34;&gt;help:evaluate&lt;/h2&gt;
 &lt;p&gt;명령어&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#19177c&#34;&gt;SNAPSHOT_NM&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;$(&lt;/span&gt;mvn -f pom.xml help:evaluate -Dexpression&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;project.version -q -DforceStdout&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;deploydeploy-file&#34;&gt;deploy:deploy-file&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;h2 id=&#34;dependency&#34;&gt;dependency&lt;/h2&gt;
+&lt;p&gt;명령어: dependency:resolve&lt;/p&gt;
+&lt;p&gt;javadoc 다운로드&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ mvn dependency:resolve -Dclassifier=javadoc
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;명령어: dependency:sources&lt;/p&gt;
+&lt;p&gt;sources 다운로드&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ mvn dependency:sources
+&lt;/code&gt;&lt;/pre&gt;&lt;br&gt;
+&lt;h2 id=&#34;deploydeploy-file&#34;&gt;deploy:deploy-file&lt;/h2&gt;
 &lt;p&gt;명령어&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#19177c&#34;&gt;JAVA_HOME&lt;/span&gt;=Z:\develop\java\openjdk-11.0.2
 &lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#19177c&#34;&gt;M2_HOME&lt;/span&gt;=Z:\develop\build\maven-3.6.3
