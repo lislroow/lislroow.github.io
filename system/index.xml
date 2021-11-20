@@ -730,7 +730,7 @@ systemctl restart httpd
       <description>
         
         
-        &lt;h2 id=&#34;plugins2&#34;&gt;plugins2&lt;/h2&gt;
+        &lt;h2 id=&#34;plugins&#34;&gt;plugins&lt;/h2&gt;
 &lt;h3 id=&#34;publish-over-ssh&#34;&gt;Publish Over SSH&lt;/h3&gt;
 &lt;p&gt;mvn 빌드 후 생성된 artifact 파일을 sftp 로 전송하고 ssh 로 command 를 실행하는 기능을 사용할 수 있습니다.&lt;/p&gt;
 &lt;ol&gt;
