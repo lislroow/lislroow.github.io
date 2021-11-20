@@ -279,16 +279,7 @@ Copyright (c) 1982, 2014, Oracle.  All rights reserved.
 
 SQL&amp;gt; conn SPADBA/password@develop:1521/SPADBP
 연결되었습니다.
-SQL&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;pdb&#34;&gt;PDB&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;[oracle@develop ~]$ sqlplus /nolog
 
-SQL*Plus: Release 12.1.0.2.0 Production on 목 9월 2 11:32:59 2021
-
-Copyright (c) 1982, 2014, Oracle.  All rights reserved.
-
-SQL&amp;gt; conn /as sysdba
-연결되었습니다.
 SQL&amp;gt; show con_name
 
 CON_NAME

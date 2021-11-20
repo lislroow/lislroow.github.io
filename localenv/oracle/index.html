@@ -35,7 +35,7 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\ORACLE\KEY_client …">
 HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\ORACLE\KEY_client
 새 창 보기
 tnsnames.ora 새 창 보기
-sqlplus connect C:\Users\Administrator&gt;sqlplus /nolog SQL*Plus: Release 12.1.0.2.0 Production on 목 9월 2 11:39:53 2021 Copyright (c) 1982, 2014, Oracle. All rights reserved. SQL&gt; conn SPADBA/password@develop:1521/SPADBP 연결되었습니다. SQL&gt; PDB [oracle@develop ~]$ sqlplus /nolog SQL*Plus: Release 12.1.0.2.0 Production on 목 9월 2 11:32:59 2021 Copyright (c) 1982, 2014, Oracle. All rights reserved. SQL&gt; conn /as sysdba 연결되었습니다." />
+sqlplus connect C:\Users\Administrator&gt;sqlplus /nolog SQL*Plus: Release 12.1.0.2.0 Production on 목 9월 2 11:39:53 2021 Copyright (c) 1982, 2014, Oracle. All rights reserved. SQL&gt; conn SPADBA/password@develop:1521/SPADBP 연결되었습니다. SQL&gt; show con_name CON_NAME ------------------------------ CDB$ROOT SQL&gt; set line 150 pages 1000 SQL&gt; col name for a30 SQL&gt; select con_id, dbid, name, open_mode from v$containers order by 1; CON_ID	DBID NAME	OPEN_MODE ---------- ---------- ------------------------------ ---------- 1 1588065228 CDB$ROOT	READ WRITE 2 2599163564 PDB$SEED	READ ONLY 3 673775647 SPADBP	READ WRITE SQL&gt; alter session set container=SPADBP; 세션이 변경되었습니다." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/localenv/oracle/" /><meta property="article:section" content="localenv" />
 
@@ -48,9 +48,9 @@ sqlplus connect C:\Users\Administrator&gt;sqlplus /nolog SQL*Plus: Release 12.1.
 HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\ORACLE\KEY_client
 새 창 보기
 tnsnames.ora 새 창 보기
-sqlplus connect C:\Users\Administrator&gt;sqlplus /nolog SQL*Plus: Release 12.1.0.2.0 Production on 목 9월 2 11:39:53 2021 Copyright (c) 1982, 2014, Oracle. All rights reserved. SQL&gt; conn SPADBA/password@develop:1521/SPADBP 연결되었습니다. SQL&gt; PDB [oracle@develop ~]$ sqlplus /nolog SQL*Plus: Release 12.1.0.2.0 Production on 목 9월 2 11:32:59 2021 Copyright (c) 1982, 2014, Oracle. All rights reserved. SQL&gt; conn /as sysdba 연결되었습니다.">
+sqlplus connect C:\Users\Administrator&gt;sqlplus /nolog SQL*Plus: Release 12.1.0.2.0 Production on 목 9월 2 11:39:53 2021 Copyright (c) 1982, 2014, Oracle. All rights reserved. SQL&gt; conn SPADBA/password@develop:1521/SPADBP 연결되었습니다. SQL&gt; show con_name CON_NAME ------------------------------ CDB$ROOT SQL&gt; set line 150 pages 1000 SQL&gt; col name for a30 SQL&gt; select con_id, dbid, name, open_mode from v$containers order by 1; CON_ID	DBID NAME	OPEN_MODE ---------- ---------- ------------------------------ ---------- 1 1588065228 CDB$ROOT	READ WRITE 2 2599163564 PDB$SEED	READ ONLY 3 673775647 SPADBP	READ WRITE SQL&gt; alter session set container=SPADBP; 세션이 변경되었습니다.">
 
-<meta itemprop="wordCount" content="191">
+<meta itemprop="wordCount" content="162">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="oracle"/>
 <meta name="twitter:description" content="oracle-client 시스템변수 새 창 보기
@@ -59,7 +59,7 @@ sqlplus connect C:\Users\Administrator&gt;sqlplus /nolog SQL*Plus: Release 12.1.
 HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\ORACLE\KEY_client
 새 창 보기
 tnsnames.ora 새 창 보기
-sqlplus connect C:\Users\Administrator&gt;sqlplus /nolog SQL*Plus: Release 12.1.0.2.0 Production on 목 9월 2 11:39:53 2021 Copyright (c) 1982, 2014, Oracle. All rights reserved. SQL&gt; conn SPADBA/password@develop:1521/SPADBP 연결되었습니다. SQL&gt; PDB [oracle@develop ~]$ sqlplus /nolog SQL*Plus: Release 12.1.0.2.0 Production on 목 9월 2 11:32:59 2021 Copyright (c) 1982, 2014, Oracle. All rights reserved. SQL&gt; conn /as sysdba 연결되었습니다."/>
+sqlplus connect C:\Users\Administrator&gt;sqlplus /nolog SQL*Plus: Release 12.1.0.2.0 Production on 목 9월 2 11:39:53 2021 Copyright (c) 1982, 2014, Oracle. All rights reserved. SQL&gt; conn SPADBA/password@develop:1521/SPADBP 연결되었습니다. SQL&gt; show con_name CON_NAME ------------------------------ CDB$ROOT SQL&gt; set line 150 pages 1000 SQL&gt; col name for a30 SQL&gt; select con_id, dbid, name, open_mode from v$containers order by 1; CON_ID	DBID NAME	OPEN_MODE ---------- ---------- ------------------------------ ---------- 1 1588065228 CDB$ROOT	READ WRITE 2 2599163564 PDB$SEED	READ ONLY 3 673775647 SPADBP	READ WRITE SQL&gt; alter session set container=SPADBP; 세션이 변경되었습니다."/>
 
 
 
@@ -150,7 +150,7 @@ sqlplus connect C:\Users\Administrator&gt;sqlplus /nolog SQL*Plus: Release 12.1.
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b07a67f3738c2a0a921a7bc56ac27cd6.json"
+  data-offline-search-index-json-src="/offline-search-index.30d50e9c19c5a90fb7dfb6d64b3b46d0.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -177,7 +177,7 @@ sqlplus connect C:\Users\Administrator&gt;sqlplus /nolog SQL*Plus: Release 12.1.
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b07a67f3738c2a0a921a7bc56ac27cd6.json"
+  data-offline-search-index-json-src="/offline-search-index.30d50e9c19c5a90fb7dfb6d64b3b46d0.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -247,7 +247,6 @@ sqlplus connect C:\Users\Administrator&gt;sqlplus /nolog SQL*Plus: Release 12.1.
     <li><a href="#sqlplus">sqlplus</a>
       <ul>
         <li><a href="#connect">connect</a></li>
-        <li><a href="#pdb">PDB</a></li>
       </ul>
     </li>
     <li><a href="#oracle-object-조회">oracle object 조회</a>
@@ -353,16 +352,7 @@ Copyright (c) 1982, 2014, Oracle.  All rights reserved.
 
 SQL&gt; conn SPADBA/password@develop:1521/SPADBP
 연결되었습니다.
-SQL&gt;
-</code></pre><h3 id="pdb">PDB</h3>
-<pre><code>[oracle@develop ~]$ sqlplus /nolog
 
-SQL*Plus: Release 12.1.0.2.0 Production on 목 9월 2 11:32:59 2021
-
-Copyright (c) 1982, 2014, Oracle.  All rights reserved.
-
-SQL&gt; conn /as sysdba
-연결되었습니다.
 SQL&gt; show con_name
 
 CON_NAME
