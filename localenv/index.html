@@ -22,11 +22,11 @@
 
 
   
-  <meta name="description" content="(java) vmargs (2개)
-# request.getRemoteAddr() 가 IPv6 로 출력되는 경우
--Djava.net.preferIPv4Stack=true
-
-# cannot be cast to javax.net.ssl.HttpsURLConnection …">
+  <meta name="description" content="(maven) release goal
+명령어
+$ mvn -B clean release:prepare release:perform deploy
+$M2_HOME/conf/settings.xml 파일
+&lt;?xml version=&#34;1.0&#34; …">
 <meta property="og:title" content="로컬 환경" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -114,7 +114,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.5615121870e086b0665a6a598eadd4b2.json"
+  data-offline-search-index-json-src="/offline-search-index.02bdf42090d8f3860cc52081bc960d66.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -141,7 +141,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.5615121870e086b0665a6a598eadd4b2.json"
+  data-offline-search-index-json-src="/offline-search-index.02bdf42090d8f3860cc52081bc960d66.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -152,15 +152,9 @@
   </form>
   <nav class="collapse td-sidebar-nav" id="td-section-nav">
     <ul class="td-sidebar-nav__section pr-md-3 ul-0">
-      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-localenv-li">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-localenv-li">
   
   <a href="/localenv/" title="로컬 환경" class="align-left pl-0 active td-sidebar-link td-sidebar-link__section tree-root" id="m-localenv"><span class="td-sidebar-nav-active-item">localenv</span></a>
-  <ul class="ul-1">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-localenvmaven-li">
-  
-  <a href="/localenv/maven/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-localenvmaven"><span class="">maven</span></a>
-</li>
-  </ul>
 </li>
     </ul>
   </nav>
@@ -186,6 +180,12 @@
 
 <div class="td-toc"><nav id="TableOfContents">
   <ul>
+    <li><a href="#maven-release-goal">(maven) release goal</a></li>
+    <li><a href="#maven-helpevaluate-goal">(maven) help:evaluate goal</a></li>
+    <li><a href="#maven-dependency-goal">(maven) dependency goal</a></li>
+    <li><a href="#maven-deploydeploy-file-goal">(maven) deploy:deploy-file goal</a></li>
+    <li><a href="#maven-settingsxml-파일">(maven) settings.xml 파일</a></li>
+    <li><a href="#maven-password-암호화">(maven) password 암호화</a></li>
     <li><a href="#java-vmargs-2개">(java) vmargs (2개)</a></li>
     <li><a href="#java-java-에-인증서-등록">(java) java 에 인증서 등록</a></li>
     <li><a href="#win-win11-system-tray-설정">(win) win11 system-tray 설정</a></li>
@@ -269,7 +269,116 @@
 		
 		
 	</header>
-	<h2 id="java-vmargs-2개">(java) vmargs (2개)</h2>
+	<h2 id="maven-release-goal">(maven) release goal</h2>
+<p>명령어</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ mvn -B clean release:prepare release:perform deploy
+</code></pre></div><p>$M2_HOME/conf/settings.xml 파일</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#bc7a00">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<span style="color:#008000;font-weight:bold">&lt;settings</span> <span style="color:#7d9029">xmlns=</span><span style="color:#ba2121">&#34;http://maven.apache.org/SETTINGS/1.0.0&#34;</span>
+          <span style="color:#7d9029">xmlns:xsi=</span><span style="color:#ba2121">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
+          <span style="color:#7d9029">xsi:schemaLocation=</span><span style="color:#ba2121">&#34;http://maven.apache.org/SETTINGS/1.0.0
+</span><span style="color:#ba2121">          http://maven.apache.org/xsd/settings-1.0.0.xsd&#34;</span><span style="color:#008000;font-weight:bold">&gt;</span>
+  <span style="color:#008000;font-weight:bold">&lt;servers&gt;</span>
+    <span style="color:#008000;font-weight:bold">&lt;server&gt;</span>
+      <span style="color:#008000;font-weight:bold">&lt;id&gt;</span>nexus-release<span style="color:#008000;font-weight:bold">&lt;/id&gt;</span>
+      <span style="color:#008000;font-weight:bold">&lt;username&gt;</span>admin<span style="color:#008000;font-weight:bold">&lt;/username&gt;</span>
+      <span style="color:#008000;font-weight:bold">&lt;password&gt;</span>passwd<span style="color:#008000;font-weight:bold">&lt;/password&gt;</span>
+    <span style="color:#008000;font-weight:bold">&lt;/server&gt;</span>
+    <span style="color:#008000;font-weight:bold">&lt;server&gt;</span>
+      <span style="color:#008000;font-weight:bold">&lt;id&gt;</span>nexus-snapshot<span style="color:#008000;font-weight:bold">&lt;/id&gt;</span>
+      <span style="color:#008000;font-weight:bold">&lt;username&gt;</span>admin<span style="color:#008000;font-weight:bold">&lt;/username&gt;</span>
+      <span style="color:#008000;font-weight:bold">&lt;password&gt;</span>passwd<span style="color:#008000;font-weight:bold">&lt;/password&gt;</span>
+    <span style="color:#008000;font-weight:bold">&lt;/server&gt;</span>
+  <span style="color:#008000;font-weight:bold">&lt;/servers&gt;</span>
+  <span style="color:#008000;font-weight:bold">&lt;mirrors&gt;</span>
+    <span style="color:#008000;font-weight:bold">&lt;mirror&gt;</span>
+      <span style="color:#008000;font-weight:bold">&lt;id&gt;</span>nexus<span style="color:#008000;font-weight:bold">&lt;/id&gt;</span>
+      <span style="color:#008000;font-weight:bold">&lt;name&gt;</span>nexus<span style="color:#008000;font-weight:bold">&lt;/name&gt;</span>
+      <span style="color:#008000;font-weight:bold">&lt;url&gt;</span>http://nexus/repository/maven-group/<span style="color:#008000;font-weight:bold">&lt;/url&gt;</span>
+      <span style="color:#008000;font-weight:bold">&lt;mirrorOf&gt;</span>*<span style="color:#008000;font-weight:bold">&lt;/mirrorOf&gt;</span>
+    <span style="color:#008000;font-weight:bold">&lt;/mirror&gt;</span>
+  <span style="color:#008000;font-weight:bold">&lt;/mirrors&gt;</span>
+<span style="color:#008000;font-weight:bold">&lt;/settings&gt;</span>
+</code></pre></div><p>pom.xml 파일</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#008000;font-weight:bold">&lt;build&gt;</span>
+  <span style="color:#008000;font-weight:bold">&lt;plugins&gt;</span>
+    <span style="color:#008000;font-weight:bold">&lt;plugin&gt;</span>
+      <span style="color:#008000;font-weight:bold">&lt;groupId&gt;</span>org.apache.maven.plugins<span style="color:#008000;font-weight:bold">&lt;/groupId&gt;</span>
+      <span style="color:#008000;font-weight:bold">&lt;artifactId&gt;</span>maven-release-plugin<span style="color:#008000;font-weight:bold">&lt;/artifactId&gt;</span>
+      <span style="color:#008000;font-weight:bold">&lt;version&gt;</span>3.0.0-M1<span style="color:#008000;font-weight:bold">&lt;/version&gt;</span>
+      <span style="color:#408080;font-style:italic">&lt;!-- 필수 사항 --&gt;</span>
+      <span style="color:#008000;font-weight:bold">&lt;configuration&gt;</span>
+        <span style="color:#008000;font-weight:bold">&lt;autoVersionSubmodules&gt;</span>true<span style="color:#008000;font-weight:bold">&lt;/autoVersionSubmodules&gt;</span>
+        <span style="color:#008000;font-weight:bold">&lt;goals&gt;</span>deploy<span style="color:#008000;font-weight:bold">&lt;/goals&gt;</span>
+        <span style="color:#008000;font-weight:bold">&lt;username&gt;</span>mgkim<span style="color:#008000;font-weight:bold">&lt;/username&gt;</span>
+        <span style="color:#008000;font-weight:bold">&lt;password&gt;</span>passwd<span style="color:#008000;font-weight:bold">&lt;/password&gt;</span>
+      <span style="color:#008000;font-weight:bold">&lt;/configuration&gt;</span>
+      <span style="color:#408080;font-style:italic">&lt;!-- //필수 사항 --&gt;</span>
+    <span style="color:#008000;font-weight:bold">&lt;/plugin&gt;</span>
+  <span style="color:#008000;font-weight:bold">&lt;/plugins&gt;</span>
+<span style="color:#008000;font-weight:bold">&lt;/build&gt;</span>
+
+<span style="color:#408080;font-style:italic">&lt;!-- 필수 사항 --&gt;</span>
+<span style="color:#008000;font-weight:bold">&lt;scm&gt;</span>
+  <span style="color:#008000;font-weight:bold">&lt;connection&gt;</span>scm:svn:svn://develop/test/trunk/proto.www<span style="color:#008000;font-weight:bold">&lt;/connection&gt;</span>
+<span style="color:#008000;font-weight:bold">&lt;/scm&gt;</span>
+<span style="color:#408080;font-style:italic">&lt;!-- //필수 사항 --&gt;</span>
+
+<span style="color:#008000;font-weight:bold">&lt;distributionManagement&gt;</span>
+  <span style="color:#008000;font-weight:bold">&lt;snapshotRepository&gt;</span>
+    <span style="color:#008000;font-weight:bold">&lt;id&gt;</span>mgkim-snapshot<span style="color:#008000;font-weight:bold">&lt;/id&gt;</span>
+    <span style="color:#008000;font-weight:bold">&lt;url&gt;</span>http://nexus/repository/maven-mgkim-snapshot/<span style="color:#008000;font-weight:bold">&lt;/url&gt;</span>
+  <span style="color:#008000;font-weight:bold">&lt;/snapshotRepository&gt;</span>
+  <span style="color:#008000;font-weight:bold">&lt;repository&gt;</span>
+    <span style="color:#008000;font-weight:bold">&lt;id&gt;</span>mgkim-release<span style="color:#008000;font-weight:bold">&lt;/id&gt;</span>
+    <span style="color:#008000;font-weight:bold">&lt;url&gt;</span>http://nexus/repository/maven-mgkim-release/<span style="color:#008000;font-weight:bold">&lt;/url&gt;</span>
+  <span style="color:#008000;font-weight:bold">&lt;/repository&gt;</span>
+<span style="color:#008000;font-weight:bold">&lt;/distributionManagement&gt;</span>
+</code></pre></div><br>
+<h2 id="maven-helpevaluate-goal">(maven) help:evaluate goal</h2>
+<p>명령어</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#19177c">SNAPSHOT_NM</span><span style="color:#666">=</span><span style="color:#008000;font-weight:bold">$(</span>mvn -f pom.xml help:evaluate -Dexpression<span style="color:#666">=</span>project.version -q -DforceStdout<span style="color:#008000;font-weight:bold">)</span>
+</code></pre></div><br>
+<h2 id="maven-dependency-goal">(maven) dependency goal</h2>
+<p>명령어: dependency:resolve</p>
+<p>javadoc 다운로드</p>
+<pre><code>$ mvn dependency:resolve -Dclassifier=javadoc
+</code></pre><p>명령어: dependency:sources</p>
+<p>sources 다운로드</p>
+<pre><code>$ mvn dependency:sources
+</code></pre><br>
+<h2 id="maven-deploydeploy-file-goal">(maven) deploy:deploy-file goal</h2>
+<p>명령어</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"><span style="color:#008000;font-weight:bold">set</span> <span style="color:#19177c">JAVA_HOME</span>=Z:\develop\java\openjdk-11.0.2
+<span style="color:#008000;font-weight:bold">set</span> <span style="color:#19177c">M2_HOME</span>=Z:\develop\build\maven-3.6.3
+<span style="color:#008000;font-weight:bold">set</span> <span style="color:#19177c">PATH</span>=<span style="color:#19177c">%JAVA_HOME%</span>\bin;<span style="color:#19177c">%M2_HOME%</span>\bin;<span style="color:#19177c">%PATH%</span>
+<span style="color:#008000;font-weight:bold">set</span> <span style="color:#19177c">NEXUS_REPO</span>=-DrepositoryId=nexus -Durl=http://nexus/repository/maven-public-hosted/
+<span style="color:#008000;font-weight:bold">set</span> <span style="color:#19177c">GROUP_ID</span>=net.mgkim
+<span style="color:#008000;font-weight:bold">set</span> <span style="color:#19177c">ARTIFACT_ID</span>=spring-core
+<span style="color:#008000;font-weight:bold">set</span> <span style="color:#19177c">VERSION</span>=1.0.0
+<span style="color:#008000;font-weight:bold">set</span> <span style="color:#19177c">FILE</span>=Z:\mgkim-spring-core-1.0.0.jar
+
+<span style="color:#19177c">%M2_HOME%</span>\bin\mvn.bat -U deploy:deploy-file -DgroupId=<span style="color:#19177c">%GROUP_ID%</span> -DartifactId=<span style="color:#19177c">%ARTIFACT_ID%</span> -Dversion=<span style="color:#19177c">%VERSION%</span> -Dpackaging=jar -Dfile=<span style="color:#19177c">%FILE%</span> <span style="color:#19177c">%NEXUS_REPO%</span>
+</code></pre></div><p>플러그인</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#008000;font-weight:bold">&lt;build&gt;</span>
+  <span style="color:#008000;font-weight:bold">&lt;plugins&gt;</span>
+    <span style="color:#008000;font-weight:bold">&lt;plugin&gt;</span>
+      <span style="color:#008000;font-weight:bold">&lt;groupId&gt;</span>org.apache.maven.plugins<span style="color:#008000;font-weight:bold">&lt;/groupId&gt;</span>
+      <span style="color:#008000;font-weight:bold">&lt;artifactId&gt;</span>maven-deploy-plugin<span style="color:#008000;font-weight:bold">&lt;/artifactId&gt;</span>
+      <span style="color:#008000;font-weight:bold">&lt;version&gt;</span>3.0.0-M1<span style="color:#008000;font-weight:bold">&lt;/version&gt;</span>
+    <span style="color:#008000;font-weight:bold">&lt;/plugin&gt;</span>
+  <span style="color:#008000;font-weight:bold">&lt;/plugins&gt;</span>
+<span style="color:#008000;font-weight:bold">&lt;/build&gt;</span>
+</code></pre></div><br>
+<h2 id="maven-settingsxml-파일">(maven) settings.xml 파일</h2>
+<p>$M2_HOME/conf/settings.xml</p>
+<p><a href="/files/localenv/20211120-settings.xml" target="_blank">새 창 보기</a></p>
+<br>
+<h2 id="maven-password-암호화">(maven) password 암호화</h2>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ mvn --encrypt-master-password mypassword
+<span style="color:#666">{</span>ODOdTfm09eMHYfUVt4vkUfm9dw1pkSRC+HAXsuqE0p0<span style="color:#666">=}</span>
+</code></pre></div><br>
+<h2 id="java-vmargs-2개">(java) vmargs (2개)</h2>
 <pre><code># request.getRemoteAddr() 가 IPv6 로 출력되는 경우
 -Djava.net.preferIPv4Stack=true
 
@@ -525,16 +634,6 @@ SQL&gt;
     
     
     
-    <hr class="panel-line">
-        
-            
-            <div class="entry">
-                <h5>
-                    <a href="/localenv/maven/">maven</a>
-                </h5>
-                <p></p>
-            </div>
-        
     
 </div>
 
