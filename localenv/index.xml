@@ -387,10 +387,10 @@ $ npm install -D --save postcss-cli
 &lt;span style=&#34;color:#408080;font-style:italic&#34;&gt;# `/resources/_gen/assets/scss/scss/main.scss_4853eb546e7a6c0898ed71feae7357c0.content`&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;system&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;Bitstream&lt;/code&gt; 은 coding 목적으로 많이 사용되는 font 입니다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/images/localenv/20211105_change-eclipse-font_1.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;/images/localenv/20211105_change-eclipse-font_1.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;a/&gt;&lt;/p&gt;
 &lt;p&gt;다운로드: &lt;a href=&#34;/file/localenv/BitstreamVeraSansMono.ttf&#34; download=&#34;tnsnames.ora&#34;&gt;BitstreamVeraSansMono.ttf&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;Colors and Fonts&lt;/code&gt; &amp;gt; &lt;code&gt;Basic&lt;/code&gt; &amp;gt; &lt;code&gt;Text Font&lt;/code&gt; 를 선택하고 &lt;code&gt;Edit&lt;/code&gt; 버튼을 클릭하면 변경할 수 있습니다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/images/localenv/20211105_change-eclipse-font.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;/images/localenv/20211105_change-eclipse-font.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;a/&gt;&lt;/p&gt;
 &lt;br&gt;
 &lt;h2 id=&#34;eclipse-hidpi&#34;&gt;eclipse hidpi&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;-Dswt.autoScale=150 # 150 == 1.5배
@@ -444,12 +444,6 @@ tmpfs                 781M     0  781M   0% /run/user/0
 $ vi /etc/fstab
 //172.28.200.1/share /share cifs username=administrator,password=1 0 0
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
-&lt;h2 id=&#34;hosts&#34;&gt;hosts&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;# C:\Windows\System32\drivers\etc\hosts
-
-172.28.200.20  develop nexus gitlab jenkins dlog
-172.28.200.20  prototype hugo
-&lt;/code&gt;&lt;/pre&gt;&lt;br&gt;
 &lt;h2 id=&#34;vmware-nat&#34;&gt;vmware nat&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;vmware&lt;/code&gt; &amp;gt; &lt;code&gt;Edit&lt;/code&gt; &amp;gt; &lt;code&gt;Virtual Network Editor&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;NAT Settings...&lt;/code&gt; &amp;gt; &lt;code&gt;Gateway IP&lt;/code&gt; 확인&lt;/p&gt;

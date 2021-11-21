@@ -47,7 +47,7 @@ font hugo-site
 $google_font_name: &#34;Bitstream Vera Sans Mono&#34; !default; $google_font_family: &#34;Bitstream Vera Sans Mono:300,300i,400,400i,700,700i&#34; !default; $web-font-path: &#34;http://fonts.cdnfonts.com/css/bitstream-vera-sans-mono&#34;; scss 파일의 수정된 내용이 적용되려면 npm 빌드 환경이 필요합니다.
 # 초기 구성을 위해 준비할 것 $ git submodule add -b master https://github.">
 
-<meta itemprop="wordCount" content="456">
+<meta itemprop="wordCount" content="450">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="windows"/>
 <meta name="twitter:description" content="windows 11 시스템 트레이 아이콘 cmd 창에서 아래 명령어를 입력하여 시스템 트레이에 모든 아이콘을 표시하도록 합니다.
@@ -147,7 +147,7 @@ $google_font_name: &#34;Bitstream Vera Sans Mono&#34; !default; $google_font_fam
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.678efea3c170d820cc7a8da7a120230e.json"
+  data-offline-search-index-json-src="/offline-search-index.2a57829f29c21bbed4a0c614084d35b5.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -174,7 +174,7 @@ $google_font_name: &#34;Bitstream Vera Sans Mono&#34; !default; $google_font_fam
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.678efea3c170d820cc7a8da7a120230e.json"
+  data-offline-search-index-json-src="/offline-search-index.2a57829f29c21bbed4a0c614084d35b5.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -242,7 +242,6 @@ $google_font_name: &#34;Bitstream Vera Sans Mono&#34; !default; $google_font_fam
     <li><a href="#wol">wol</a></li>
     <li><a href="#port-forwarding-cmd">port-forwarding cmd</a></li>
     <li><a href="#파일-공유">파일 공유</a></li>
-    <li><a href="#hosts">hosts</a></li>
     <li><a href="#vmware-nat">vmware nat</a></li>
     <li><a href="#7z-압축-cmd">7z 압축 cmd</a></li>
     <li><a href="#start-jmeter">start-jmeter</a></li>
@@ -347,10 +346,10 @@ $ npm install -D --save postcss-cli
 <span style="color:#408080;font-style:italic"># `/resources/_gen/assets/scss/scss/main.scss_4853eb546e7a6c0898ed71feae7357c0.content`</span>
 </code></pre></div><p><strong>system</strong></p>
 <p><code>Bitstream</code> 은 coding 목적으로 많이 사용되는 font 입니다.</p>
-<p><img src="/images/localenv/20211105_change-eclipse-font_1.png" /></p>
+<p><a href="/images/localenv/20211105_change-eclipse-font_1.png" target="_blank">새 창 보기<a/></p>
 <p>다운로드: <a href="/file/localenv/BitstreamVeraSansMono.ttf" download="tnsnames.ora">BitstreamVeraSansMono.ttf</a></p>
 <p><code>Colors and Fonts</code> &gt; <code>Basic</code> &gt; <code>Text Font</code> 를 선택하고 <code>Edit</code> 버튼을 클릭하면 변경할 수 있습니다.</p>
-<p><img src="/images/localenv/20211105_change-eclipse-font.png" /></p>
+<p><a href="/images/localenv/20211105_change-eclipse-font.png" target="_blank">새 창 보기<a/></p>
 <br>
 <h2 id="eclipse-hidpi">eclipse hidpi</h2>
 <pre><code>-Dswt.autoScale=150 # 150 == 1.5배
@@ -404,12 +403,6 @@ tmpfs                 781M     0  781M   0% /run/user/0
 $ vi /etc/fstab
 //172.28.200.1/share /share cifs username=administrator,password=1 0 0
 </code></pre></div><br>
-<h2 id="hosts">hosts</h2>
-<pre><code># C:\Windows\System32\drivers\etc\hosts
-
-172.28.200.20  develop nexus gitlab jenkins dlog
-172.28.200.20  prototype hugo
-</code></pre><br>
 <h2 id="vmware-nat">vmware nat</h2>
 <p><code>vmware</code> &gt; <code>Edit</code> &gt; <code>Virtual Network Editor</code></p>
 <p><code>NAT Settings...</code> &gt; <code>Gateway IP</code> 확인</p>
