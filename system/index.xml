@@ -24,7 +24,7 @@
         
         &lt;h2 id=&#34;configure&#34;&gt;configure&lt;/h2&gt;
 &lt;h3 id=&#34;httpdconf&#34;&gt;httpd.conf&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;ServerRoot &amp;quot;/etc/httpd&amp;quot;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;ServerRoot &amp;#34;/etc/httpd&amp;#34;
 
 Listen 80
 
@@ -41,30 +41,30 @@ ServerName develop:80
   Require all denied
 &amp;lt;/Directory&amp;gt;
 
-DocumentRoot &amp;quot;/var/www/html&amp;quot;
+DocumentRoot &amp;#34;/var/www/html&amp;#34;
 
-&amp;lt;Files &amp;quot;.ht*&amp;quot;&amp;gt;
+&amp;lt;Files &amp;#34;.ht*&amp;#34;&amp;gt;
   Require all denied
 &amp;lt;/Files&amp;gt;
 
-ErrorLog &amp;quot;/outlog/WEB/httpd/error.log&amp;quot;
+ErrorLog &amp;#34;/outlog/WEB/httpd/error.log&amp;#34;
 
 LogLevel warn
 
 &amp;lt;IfModule log_config_module&amp;gt;
-  LogFormat &amp;quot;%h %l %u %t \&amp;quot;%r\&amp;quot; %&amp;gt;s %b \&amp;quot;%{Referer}i\&amp;quot; \&amp;quot;%{User-Agent}i\&amp;quot;&amp;quot; combined
-  LogFormat &amp;quot;%h %l %u %t \&amp;quot;%r\&amp;quot; %&amp;gt;s %b&amp;quot; common
+  LogFormat &amp;#34;%h %l %u %t \&amp;#34;%r\&amp;#34; %&amp;gt;s %b \&amp;#34;%{Referer}i\&amp;#34; \&amp;#34;%{User-Agent}i\&amp;#34;&amp;#34; combined
+  LogFormat &amp;#34;%h %l %u %t \&amp;#34;%r\&amp;#34; %&amp;gt;s %b&amp;#34; common
   &amp;lt;IfModule logio_module&amp;gt;
-    LogFormat &amp;quot;%h %l %u %t \&amp;quot;%r\&amp;quot; %&amp;gt;s %b \&amp;quot;%{Referer}i\&amp;quot; \&amp;quot;%{User-Agent}i\&amp;quot; %I %O&amp;quot; combinedio
+    LogFormat &amp;#34;%h %l %u %t \&amp;#34;%r\&amp;#34; %&amp;gt;s %b \&amp;#34;%{Referer}i\&amp;#34; \&amp;#34;%{User-Agent}i\&amp;#34; %I %O&amp;#34; combinedio
   &amp;lt;/IfModule&amp;gt;
-  CustomLog &amp;quot;/outlog/WEB/httpd/access.log&amp;quot; combined
+  CustomLog &amp;#34;/outlog/WEB/httpd/access.log&amp;#34; combined
 &amp;lt;/IfModule&amp;gt;
 
 &amp;lt;IfModule alias_module&amp;gt;
-  ScriptAlias /cgi-bin/ &amp;quot;/var/www/cgi-bin/&amp;quot;
+  ScriptAlias /cgi-bin/ &amp;#34;/var/www/cgi-bin/&amp;#34;
 &amp;lt;/IfModule&amp;gt;
 
-&amp;lt;Directory &amp;quot;/var/www/cgi-bin&amp;quot;&amp;gt;
+&amp;lt;Directory &amp;#34;/var/www/cgi-bin&amp;#34;&amp;gt;
   AllowOverride None
   Options None
   Require all granted
@@ -86,8 +86,8 @@ AddDefaultCharset UTF-8
 
 EnableSendfile on
 IncludeOptional conf.d/*.conf
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;sslconf&#34;&gt;ssl.conf&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;Listen 443 https
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;sslconf&#34;&gt;ssl.conf&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;Listen 443 https
 
 SSLPassPhraseDialog exec:/usr/libexec/httpd-ssl-pass-dialog
 SSLSessionCache         shmcb:/run/httpd/sslcache(512000)
@@ -107,17 +107,17 @@ SSLCryptoDevice builtin
   SSLCipherSuite HIGH:3DES:!aNULL:!MD5:!SEED:!IDEA
   SSLCertificateFile /etc/httpd/conf.d/certs/develop.crt
   SSLCertificateKeyFile /etc/httpd/conf.d/certs/develop.key
-  &amp;lt;Files ~ &amp;quot;\.(cgi|shtml|phtml|php3?)$&amp;quot;&amp;gt;
+  &amp;lt;Files ~ &amp;#34;\.(cgi|shtml|phtml|php3?)$&amp;#34;&amp;gt;
     SSLOptions +StdEnvVars
   &amp;lt;/Files&amp;gt;
-  &amp;lt;Directory &amp;quot;/var/www/cgi-bin&amp;quot;&amp;gt;
+  &amp;lt;Directory &amp;#34;/var/www/cgi-bin&amp;#34;&amp;gt;
     SSLOptions +StdEnvVars
   &amp;lt;/Directory&amp;gt;
-  BrowserMatch &amp;quot;MSIE [2-5]&amp;quot; nokeepalive ssl-unclean-shutdown downgrade-1.0 force-response-1.0
-  CustomLog /outlog/WEB/httpd/default-request_ssl.log &amp;quot;%t %h %{SSL_PROTOCOL}x %{SSL_CIPHER}x \&amp;quot;%r\&amp;quot; %b&amp;quot;
+  BrowserMatch &amp;#34;MSIE [2-5]&amp;#34; nokeepalive ssl-unclean-shutdown downgrade-1.0 force-response-1.0
+  CustomLog /outlog/WEB/httpd/default-request_ssl.log &amp;#34;%t %h %{SSL_PROTOCOL}x %{SSL_CIPHER}x \&amp;#34;%r\&amp;#34; %b&amp;#34;
 &amp;lt;/VirtualHost&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;vhost-nexusconf&#34;&gt;vhost-nexus.conf&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;VirtualHost *:80&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;vhost-nexusconf&#34;&gt;vhost-nexus.conf&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&amp;lt;VirtualHost *:80&amp;gt;
   ServerName nexus
 
   RewriteEngine On
@@ -151,8 +151,8 @@ SSLCryptoDevice builtin
 &amp;lt;VirtualHost *:443&amp;gt;
   ServerName nexus.mgkim.net
 
-  ErrorLog &amp;quot;|/usr/sbin/rotatelogs /outlog/WEB/httpd/nexus.mgkim.net_ssl-error.log.%Y-%m-%d 86400 +540%&amp;quot;
-  CustomLog &amp;quot;|/usr/sbin/rotatelogs /outlog/WEB/httpd/nexus.mgkim.net_ssl-access.log.%Y-%m-%d 86400 +540%&amp;quot; combined
+  ErrorLog &amp;#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/nexus.mgkim.net_ssl-error.log.%Y-%m-%d 86400 +540%&amp;#34;
+  CustomLog &amp;#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/nexus.mgkim.net_ssl-access.log.%Y-%m-%d 86400 +540%&amp;#34; combined
 
   SSLEngine On
   SSLProtocol all -SSLv2
@@ -161,7 +161,7 @@ SSLCryptoDevice builtin
   SSLCertificateKeyFile /etc/httpd/conf.d/certs/STAR.mgkim.net.key
 
   AllowEncodedSlashes On
-  Header set Access-Control-Allow-Origin &amp;quot;*&amp;quot;
+  Header set Access-Control-Allow-Origin &amp;#34;*&amp;#34;
 
   ProxyRequests Off
   ProxyPreserveHost On
@@ -172,11 +172,11 @@ SSLCryptoDevice builtin
 
   ProxyPass / http://127.0.0.1:8100/
   ProxyPassReverse / http://127.0.0.1:8100/
-  RequestHeader set X-Forwarded-Proto &amp;quot;https&amp;quot;
+  RequestHeader set X-Forwarded-Proto &amp;#34;https&amp;#34;
   #ProxyPassMatch ^/(.*)$ http://127.0.0.1:8100/$1
 &amp;lt;/VirtualHost&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;vhost-gitlabconf&#34;&gt;vhost-gitlab.conf&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;VirtualHost *:80&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;vhost-gitlabconf&#34;&gt;vhost-gitlab.conf&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&amp;lt;VirtualHost *:80&amp;gt;
   ServerName gitlab
 
   RewriteEngine On
@@ -210,9 +210,9 @@ SSLCryptoDevice builtin
 &amp;lt;VirtualHost *:443&amp;gt;
   ServerName gitlab.mgkim.net
 
-  DocumentRoot &amp;quot;/opt/gitlab/embedded/service/gitlab-rails/public&amp;quot;
-  ErrorLog &amp;quot;|/usr/sbin/rotatelogs /outlog/WEB/httpd/gitlab.mgkim.net_ssl-error.log.%Y-%m-%d 86400 +540&amp;quot;
-  CustomLog &amp;quot;|/usr/sbin/rotatelogs /outlog/WEB/httpd/gitlab.mgkim.net_ssl-access.log.%Y-%m-%d 86400 +540&amp;quot; combined
+  DocumentRoot &amp;#34;/opt/gitlab/embedded/service/gitlab-rails/public&amp;#34;
+  ErrorLog &amp;#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/gitlab.mgkim.net_ssl-error.log.%Y-%m-%d 86400 +540&amp;#34;
+  CustomLog &amp;#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/gitlab.mgkim.net_ssl-access.log.%Y-%m-%d 86400 +540&amp;#34; combined
 
   SSLEngine On
   SSLProtocol all -SSLv2
@@ -228,13 +228,13 @@ SSLCryptoDevice builtin
   &amp;lt;/Proxy&amp;gt;
 
   AllowEncodedSlashes On
-  Header set Access-Control-Allow-Origin &amp;quot;*&amp;quot;
+  Header set Access-Control-Allow-Origin &amp;#34;*&amp;#34;
 
   ProxyPass / http://127.0.0.1:8200/
   ProxyPassReverse / http://127.0.0.1:8200/
 &amp;lt;/VirtualHost&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;vhost-jenkinsconf&#34;&gt;vhost-jenkins.conf&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;VirtualHost *:80&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;vhost-jenkinsconf&#34;&gt;vhost-jenkins.conf&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&amp;lt;VirtualHost *:80&amp;gt;
   ServerName jenkins
 
   RewriteEngine On
@@ -278,8 +278,8 @@ SSLCryptoDevice builtin
 &amp;lt;VirtualHost *:443&amp;gt;
   ServerName jenkins.mgkim.net
 
-  ErrorLog &amp;quot;|/usr/sbin/rotatelogs /outlog/WEB/httpd/jenkins.mgkim.net_ssl-error.log.%Y-%m-%d 86400 +540&amp;quot;
-  CustomLog &amp;quot;|/usr/sbin/rotatelogs /outlog/WEB/httpd/jenkins.mgkim.net_ssl-access.log.%Y-%m-%d 86400 +540&amp;quot; combined
+  ErrorLog &amp;#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/jenkins.mgkim.net_ssl-error.log.%Y-%m-%d 86400 +540&amp;#34;
+  CustomLog &amp;#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/jenkins.mgkim.net_ssl-access.log.%Y-%m-%d 86400 +540&amp;#34; combined
 
   SSLEngine On
   SSLProtocol all -SSLv2
@@ -288,7 +288,7 @@ SSLCryptoDevice builtin
   SSLCertificateKeyFile /etc/httpd/conf.d/certs/STAR.mgkim.net.key
 
   AllowEncodedSlashes On
-  Header set Access-Control-Allow-Origin &amp;quot;*&amp;quot;
+  Header set Access-Control-Allow-Origin &amp;#34;*&amp;#34;
 
   RewriteEngine On
   RewriteCond %{HTTP:Upgrade} =websocket [NC]
@@ -296,8 +296,8 @@ SSLCryptoDevice builtin
   RewriteCond %{HTTP:Upgrade} !=websocket [NC]
   RewriteRule /(.*) http://localhost:8400/$1 [P,L]
 &amp;lt;/VirtualHost&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;vhost-dlogconf&#34;&gt;vhost-dlog.conf&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;VirtualHost *:80&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;vhost-dlogconf&#34;&gt;vhost-dlog.conf&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&amp;lt;VirtualHost *:80&amp;gt;
   ServerName dlog
 
   RewriteEngine On
@@ -331,9 +331,9 @@ SSLCryptoDevice builtin
 &amp;lt;VirtualHost *:443&amp;gt;
   ServerName dlog.mgkim.net
 
-  #DocumentRoot &amp;quot;/opt/gitlab/embedded/service/gitlab-rails/public&amp;quot;
-  ErrorLog &amp;quot;|/usr/sbin/rotatelogs /outlog/WEB/httpd/dlog.mgkim.net_ssl-error.log.%Y-%m-%d 86400 +540&amp;quot;
-  CustomLog &amp;quot;|/usr/sbin/rotatelogs /outlog/WEB/httpd/dlog.mgkim.net_ssl-access.log.%Y-%m-%d 86400 +540&amp;quot; combined
+  #DocumentRoot &amp;#34;/opt/gitlab/embedded/service/gitlab-rails/public&amp;#34;
+  ErrorLog &amp;#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/dlog.mgkim.net_ssl-error.log.%Y-%m-%d 86400 +540&amp;#34;
+  CustomLog &amp;#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/dlog.mgkim.net_ssl-access.log.%Y-%m-%d 86400 +540&amp;#34; combined
 
   SSLEngine On
   SSLProtocol all -SSLv2
@@ -349,14 +349,14 @@ SSLCryptoDevice builtin
   &amp;lt;/Proxy&amp;gt;
 
   AllowEncodedSlashes On
-  Header set Access-Control-Allow-Origin &amp;quot;*&amp;quot;
+  Header set Access-Control-Allow-Origin &amp;#34;*&amp;#34;
 
   ProxyPass / http://127.0.0.1:1313/
   ProxyPassReverse / http://127.0.0.1:1313/
 &amp;lt;/VirtualHost&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;connector&#34;&gt;connector&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;connector&#34;&gt;connector&lt;/h2&gt;
 &lt;h3 id=&#34;weblogic&#34;&gt;weblogic&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;LoadModule weblogic_module modules/mod_wl_24.so
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;LoadModule weblogic_module modules/mod_wl_24.so
 
 &amp;lt;IfModule mod_weblogic.c&amp;gt;
   WebLogicCluster IP:PORT,IP:PORT,IP:PORT
@@ -374,15 +374,15 @@ SSLCryptoDevice builtin
   WebLogicCluster IP:PORT,IP:PORT,IP:PORT
   #Idempotent OFF
 &amp;lt;/Location&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;windows&#34;&gt;windows&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;windows&#34;&gt;windows&lt;/h2&gt;
 &lt;h3 id=&#34;install-command-apache-lounge&#34;&gt;install command (Apache Lounge)&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;httpd.exe -k install
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;httpd.exe -k install
 httpd.exe -k configtest
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;configure-1&#34;&gt;configure&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;configure-1&#34;&gt;configure&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;httpd.conf&lt;/li&gt;
 &lt;/ul&gt;
-&lt;pre&gt;&lt;code&gt;ServerRoot &amp;quot;Z:/www/httpd_2.4.25-win64-VC14/Apache24&amp;quot;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;ServerRoot &amp;#34;Z:/www/httpd_2.4.25-win64-VC14/Apache24&amp;#34;
 
 Listen 80
 
@@ -509,8 +509,8 @@ ServerName mgkim.net:50001
   Require all denied
 &amp;lt;/Directory&amp;gt;
 
-DocumentRoot &amp;quot;Z:/www/20210825_171631&amp;quot;
-&amp;lt;Directory &amp;quot;Z:/www/20210825_171631&amp;quot;&amp;gt;
+DocumentRoot &amp;#34;Z:/www/20210825_171631&amp;#34;
+&amp;lt;Directory &amp;#34;Z:/www/20210825_171631&amp;#34;&amp;gt;
   Options Indexes FollowSymLinks
   AllowOverride None
   Require all granted
@@ -520,26 +520,26 @@ DocumentRoot &amp;quot;Z:/www/20210825_171631&amp;quot;
   DirectoryIndex index.html
 &amp;lt;/IfModule&amp;gt;
 
-&amp;lt;Files &amp;quot;.ht*&amp;quot;&amp;gt;
+&amp;lt;Files &amp;#34;.ht*&amp;#34;&amp;gt;
   Require all denied
 &amp;lt;/Files&amp;gt;
 
-ErrorLog &amp;quot;logs/error.log&amp;quot;
+ErrorLog &amp;#34;logs/error.log&amp;#34;
 
 LogLevel warn
 
 &amp;lt;IfModule log_config_module&amp;gt;
-  LogFormat &amp;quot;%h %l %u %t \&amp;quot;%r\&amp;quot; %&amp;gt;s %b \&amp;quot;%{Referer}i\&amp;quot; \&amp;quot;%{User-Agent}i\&amp;quot;&amp;quot; combined
-  LogFormat &amp;quot;%h %l %u %t \&amp;quot;%r\&amp;quot; %&amp;gt;s %b&amp;quot; common
+  LogFormat &amp;#34;%h %l %u %t \&amp;#34;%r\&amp;#34; %&amp;gt;s %b \&amp;#34;%{Referer}i\&amp;#34; \&amp;#34;%{User-Agent}i\&amp;#34;&amp;#34; combined
+  LogFormat &amp;#34;%h %l %u %t \&amp;#34;%r\&amp;#34; %&amp;gt;s %b&amp;#34; common
 
   &amp;lt;IfModule logio_module&amp;gt;
-    LogFormat &amp;quot;%h %l %u %t \&amp;quot;%r\&amp;quot; %&amp;gt;s %b \&amp;quot;%{Referer}i\&amp;quot; \&amp;quot;%{User-Agent}i\&amp;quot; %I %O&amp;quot; combinedio
+    LogFormat &amp;#34;%h %l %u %t \&amp;#34;%r\&amp;#34; %&amp;gt;s %b \&amp;#34;%{Referer}i\&amp;#34; \&amp;#34;%{User-Agent}i\&amp;#34; %I %O&amp;#34; combinedio
   &amp;lt;/IfModule&amp;gt;
-  CustomLog &amp;quot;logs/access.log&amp;quot; common
+  CustomLog &amp;#34;logs/access.log&amp;#34; common
 &amp;lt;/IfModule&amp;gt;
 
 &amp;lt;IfModule alias_module&amp;gt;
-  ScriptAlias /cgi-bin/ &amp;quot;c:/Apache24/cgi-bin/&amp;quot;
+  ScriptAlias /cgi-bin/ &amp;#34;c:/Apache24/cgi-bin/&amp;#34;
 &amp;lt;/IfModule&amp;gt;
 
 &amp;lt;IfModule headers_module&amp;gt;
@@ -576,10 +576,10 @@ Include conf/extra/ssl.conf
   SSLRandomSeed connect builtin
 &amp;lt;/IfModule&amp;gt;
 
-&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;ssl.conf&lt;/li&gt;
 &lt;/ul&gt;
-&lt;pre&gt;&lt;code&gt;Listen 9443
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;Listen 9443
 #Listen 443
 
 SSLCipherSuite HIGH:MEDIUM:!MD5:!RC4
@@ -592,12 +592,12 @@ SSLProxyProtocol all -SSLv3
 
 SSLPassPhraseDialog  builtin
 
-SSLSessionCache         &amp;quot;shmcb:c:/Apache24/logs/ssl_scache(512000)&amp;quot;
+SSLSessionCache         &amp;#34;shmcb:c:/Apache24/logs/ssl_scache(512000)&amp;#34;
 SSLSessionCacheTimeout  300
-&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;vhost-dlog.conf&lt;/li&gt;
 &lt;/ul&gt;
-&lt;pre&gt;&lt;code&gt;#&amp;lt;VirtualHost *:80&amp;gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;#&amp;lt;VirtualHost *:80&amp;gt;
 #  ServerName vdlog.mgkim.net:80
 #
 #  RewriteEngine On
@@ -608,8 +608,8 @@ SSLSessionCacheTimeout  300
 #&amp;lt;VirtualHost *:9443&amp;gt;
 #  ServerName vdlog.mgkim.net:9443
 #
-#  ErrorLog &amp;quot;|bin/rotatelogs.exe logs/vdlog.mgkim.net_ssl-error.log.%Y-%m-%d 86400 +540&amp;quot;
-#  CustomLog &amp;quot;|bin/rotatelogs.exe logs/vdlog.mgkim.net_ssl-access.log.%Y-%m-%d 86400 +540&amp;quot; combined
+#  ErrorLog &amp;#34;|bin/rotatelogs.exe logs/vdlog.mgkim.net_ssl-error.log.%Y-%m-%d 86400 +540&amp;#34;
+#  CustomLog &amp;#34;|bin/rotatelogs.exe logs/vdlog.mgkim.net_ssl-access.log.%Y-%m-%d 86400 +540&amp;#34; combined
 #
 #  SSLEngine On
 #  SSLProxyEngine On
@@ -626,7 +626,7 @@ SSLSessionCacheTimeout  300
 #  &amp;lt;/Proxy&amp;gt;
 #
 #  AllowEncodedSlashes On
-#  Header set Access-Control-Allow-Origin &amp;quot;*&amp;quot;
+#  Header set Access-Control-Allow-Origin &amp;#34;*&amp;#34;
 #
 #  ProxyPass / http://127.0.0.1:1313/
 #  ProxyPassReverse / http://127.0.0.1:1313/
@@ -636,8 +636,8 @@ SSLSessionCacheTimeout  300
   ServerName vdlog.mgkim.net:80
   ServerAlias mgkim.net:80
 
-  ErrorLog &amp;quot;|bin/rotatelogs.exe logs/vdlog.mgkim.net-error.log.%Y-%m-%d 86400 +540&amp;quot;
-  CustomLog &amp;quot;|bin/rotatelogs.exe logs/vdlog.mgkim.net-access.log.%Y-%m-%d 86400 +540&amp;quot; combined
+  ErrorLog &amp;#34;|bin/rotatelogs.exe logs/vdlog.mgkim.net-error.log.%Y-%m-%d 86400 +540&amp;#34;
+  CustomLog &amp;#34;|bin/rotatelogs.exe logs/vdlog.mgkim.net-access.log.%Y-%m-%d 86400 +540&amp;#34; combined
 
   ProxyRequests Off
   ProxyPreserveHost On
@@ -647,7 +647,7 @@ SSLSessionCacheTimeout  300
   &amp;lt;/Proxy&amp;gt;
 
   AllowEncodedSlashes On
-  Header set Access-Control-Allow-Origin &amp;quot;*&amp;quot;
+  Header set Access-Control-Allow-Origin &amp;#34;*&amp;#34;
 
   ProxyPass / http://127.0.0.1:1313/
   ProxyPassReverse / http://127.0.0.1:1313/
@@ -678,7 +678,7 @@ SSLSessionCacheTimeout  300
   RewriteEngine On
   RewriteRule /(.*) https://dlog.mgkim.net:443/$1 [QSA,P,L]
 &amp;lt;/VirtualHost&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;openssl&#34;&gt;openssl&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;openssl&#34;&gt;openssl&lt;/h2&gt;
 &lt;h3 id=&#34;인증서-생성하기&#34;&gt;인증서 생성하기&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;개인키(key) 생성&lt;/li&gt;
@@ -712,12 +712,12 @@ openssl req -x509 -nodes -days &lt;span style=&#34;color:#ae81ff&#34;&gt;730&lt;
 
 &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;root@develop /etc/httpd/conf.d/certs&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;$
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;selinux&#34;&gt;selinux&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;chcon -Rt httpd_log_t /outlog/WEB
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;chcon -Rt httpd_log_t /outlog/WEB
 chcon -Rt httpd_sys_content_t /app/WEB/dlog
 setsebool -P httpd_can_network_connect on
 
 systemctl restart httpd
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       </description>
     </item>
     
@@ -739,7 +739,7 @@ systemctl restart httpd
 &lt;ul&gt;
 &lt;li&gt;선택되는 서버는 빌드 결과물인 artifact 파일을 전송하고, ssh 로 command 를 실행할 서버를 의미함&lt;/li&gt;
 &lt;li&gt;아래 &lt;code&gt;Transfer Set&lt;/code&gt; 에 설정되는 &lt;code&gt;Exec command&lt;/code&gt;의 내용이 빌드 로그에 출력되도록 &lt;code&gt;고급&lt;/code&gt;버튼을 눌러 &lt;code&gt;Verbose output in console&lt;/code&gt; 을 선택할 것&lt;br/&gt;
-&lt;pre&gt;&lt;code&gt;[INFO] ------------------------------------------------------------------------
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;[INFO] ------------------------------------------------------------------------
 SSH: Connecting from host [i9-9900K]
 SSH: Connecting with configuration [tomcat@develop] ...
 SSH: Creating session: username [tomcat], hostname [develop], port [22]
@@ -776,7 +776,7 @@ SSH: EXEC: completed after 1,202 ms
 SSH: Disconnecting configuration [tomcat@develop] ...
 SSH: Transferred 2 ( 1 + 1 ) file(s)
 Finished: SUCCESS
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;code&gt;Add Transfer Set&lt;/code&gt; 버튼을 클릭하여 &lt;code&gt;Transfers Set&lt;/code&gt; 입력
@@ -801,14 +801,14 @@ Finished: SUCCESS
 jenkins node 구성에서 slave-node 을 추가했다면 jenkins 를 호스팅하고 있는 서버에서 생성한 개인키 파일에 접근할 수 없기에 &lt;code&gt;Key&lt;/code&gt; 항목에 개인키를 설정하여 사용해야 함&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;Key&lt;/code&gt;: 개인키의 경로를 입력하지 않을 경우 개인키의 내용 추가로 설정할 수 있습니다. (키 경로 입력 시 생략할 것)&lt;br/&gt;
 개인키의 형태는 다음과 같으며 참고로 jenkins 에 설정할때에는 BEGIN 부터 END 까지 모두 입력해야 합니다.
-&lt;pre&gt;&lt;code&gt;-----BEGIN RSA PRIVATE KEY-----
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;-----BEGIN RSA PRIVATE KEY-----
 Proc-Type: 4,ENCRYPTED
 DEK-Info: AES-128-CBC,BB513C74CDF53133B6B805F08C716E14
 &lt;p&gt;lqXA6gIhaf3ztU1SoQVGvUtLWtXqINxbGzNfau3v+DIHRKJjVY1JvBj2mmADIxEq
 &amp;hellip;
 YqTPbiAOgnHAD9CgWg/v55Zl9zLrPKLakCJPYzGNrLo2BJ4qXR1ZX371JEsXq8tq
 &amp;mdash;&amp;ndash;END RSA PRIVATE KEY&amp;mdash;&amp;ndash;
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;&lt;/p&gt;
 &lt;li&gt;&lt;code&gt;SSH Servers&lt;/code&gt;에 추가 버튼을 클릭하여 hostname, username, remote directory 입력합니다.&lt;br/&gt;
 입력이 끝나고 &lt;code&gt;Test Configuration&lt;/code&gt; 버튼을 클릭하여 테스트를 해봅니다.&lt;/li&gt;
 &lt;/ul&gt;
@@ -875,7 +875,7 @@ YqTPbiAOgnHAD9CgWg/v55Zl9zLrPKLakCJPYzGNrLo2BJ4qXR1ZX371JEsXq8tq
 &lt;/div&gt;
 
 &lt;p&gt;slave-node 를 추가하면 slave-node에서 jenkins 와 연결하는 방법을 알려줍니다.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Connect agent to Jenkins one of these ways:
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;Connect agent to Jenkins one of these ways:
 
 Java Web Start is not available for the JVM version running Jenkins
 
@@ -884,26 +884,26 @@ Run from agent command line:
 javaws http://jenkins/computer/9900K/jenkins-agent.jnlp
 Or if the agent is headless:
 
-java -jar agent.jar -jnlpUrl http://jenkins/computer/9900K/jenkins-agent.jnlp -workDir &amp;quot;Z:\jenkins&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;slave-node 와 jenkins 연결하기&lt;/p&gt;
+java -jar agent.jar -jnlpUrl http://jenkins/computer/9900K/jenkins-agent.jnlp -workDir &amp;#34;Z:\jenkins&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;slave-node 와 jenkins 연결하기&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;code&gt;Z:\jenkins&lt;/code&gt; 에 agent.jar 를 다운로드 받음&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;code&gt;Z:\jenkins\start-agent.cmd&lt;/code&gt; 파일을 생성하고 아래 내용으로 설정&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;set JAVA_HOME=Z:\develop\java\openjdk-11.0.2
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;set JAVA_HOME=Z:\develop\java\openjdk-11.0.2
 set PATH=%JAVA_HOME%\bin;%PATH%
 
-java -jar agent.jar -jnlpUrl http://jenkins/computer/9900K/jenkins-agent.jnlp -workDir &amp;quot;Z:\jenkins&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+java -jar agent.jar -jnlpUrl http://jenkins/computer/9900K/jenkins-agent.jnlp -workDir &amp;#34;Z:\jenkins&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;code&gt;start-agent.cmd&lt;/code&gt; 실행 후 아래와 같이 console 로그가 출력되면 정상 실행&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Z:\jenkins&amp;gt;set JAVA_HOME=Z:\develop\java\openjdk-11.0.2
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;Z:\jenkins&amp;gt;set JAVA_HOME=Z:\develop\java\openjdk-11.0.2
 
 Z:\jenkins&amp;gt;set PATH=Z:\develop\java\openjdk-11.0.2\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;Z:\oracle\ora12c_32bit\client_12_1\bin;Z:\develop\java\openjdk-11.0.2\bin;Z:\develop\build\maven-3.6.3\bin;C:\Users\Administrator\AppData\Local\Programs\Microsoft VS Code\bin;Z:\develop\hugo\hugo-ext-0.87.0;C:\Users\Administrator\AppData\Roaming\npm;Z:\www\httpd_2.4.25-win64-VC14\openssl-0.9.8e_X64\bin;
 
-Z:\jenkins&amp;gt;java -jar agent.jar -jnlpUrl http://jenkins/computer/9900K/jenkins-agent.jnlp -workDir &amp;quot;Z:\jenkins&amp;quot;
+Z:\jenkins&amp;gt;java -jar agent.jar -jnlpUrl http://jenkins/computer/9900K/jenkins-agent.jnlp -workDir &amp;#34;Z:\jenkins&amp;#34;
 9월 13, 2021 11:55:53 오후 org.jenkinsci.remoting.engine.WorkDirManager initializeWorkDir
 INFO: Using Z:\jenkins\remoting as a remoting work directory
 9월 13, 2021 11:55:53 오후 org.jenkinsci.remoting.engine.WorkDirManager setupLogging
@@ -920,19 +920,19 @@ INFO: Using Z:\jenkins\remoting as a remoting work directory
 INFO: WebSocket connection open
 9월 13, 2021 11:55:53 오후 hudson.remoting.jnlp.Main$CuiListener status
 INFO: Connected
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;참고로 여기서 연결이 안되는 상황이 발생함&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;참고로 여기서 연결이 안되는 상황이 발생함&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;agent.jar 실행 시 jenkins 에 접속할 때 websocket 으로 접속을 하게되는데 ssl 이 적용된 프로토콜 https, wss 은 handshake 오류가 발생함&lt;br/&gt;
 httpd 설정에 http 를 https 로 redirect 하도록 mod_rewrite 를 설정했는데 오류로 인해 rewrite 설정은 제거함&lt;br/&gt;&lt;/li&gt;
 &lt;li&gt;jenkins 의 가상호스트 설정은 다음과 같습니다.
-&lt;pre&gt;&lt;code&gt;&amp;lt;VirtualHost *:80&amp;gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&amp;lt;VirtualHost *:80&amp;gt;
   ServerName jenkins
 
-  ErrorLog &amp;quot;|/usr/sbin/rotatelogs /outlog/WEB/httpd/jenkins-error.log.%Y-%m-%d 86400 +540&amp;quot;
-  CustomLog &amp;quot;|/usr/sbin/rotatelogs /outlog/WEB/httpd/jenkins-access.log.%Y-%m-%d 86400 +540&amp;quot; combined
+  ErrorLog &amp;#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/jenkins-error.log.%Y-%m-%d 86400 +540&amp;#34;
+  CustomLog &amp;#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/jenkins-access.log.%Y-%m-%d 86400 +540&amp;#34; combined
 
   AllowEncodedSlashes On
-  Header set Access-Control-Allow-Origin &amp;quot;*&amp;quot;
+  Header set Access-Control-Allow-Origin &amp;#34;*&amp;#34;
 
   RewriteEngine On
   RewriteCond %{HTTP:Upgrade} =websocket [NC]
@@ -940,7 +940,7 @@ httpd 설정에 http 를 https 로 redirect 하도록 mod_rewrite 를 설정했�
   RewriteCond %{HTTP:Upgrade} !=websocket [NC]
   RewriteRule /(.*) http://localhost:8400/$1 [P,L]
 &amp;lt;/VirtualHost&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
@@ -1029,7 +1029,7 @@ httpd 설정에 http 를 https 로 redirect 하도록 mod_rewrite 를 설정했�
 &lt;ul&gt;
 &lt;li&gt;파일경로: &lt;code&gt;/etc/systemd/system/{서비스명}.service&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;pre&gt;&lt;code&gt;[root@develop /etc/systemd/system]$ cat jenkins.service
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;[root@develop /etc/systemd/system]$ cat jenkins.service
 [Unit]
 Description=Jenkins
 After=network.target syslog.target
@@ -1047,8 +1047,8 @@ Restart=on-abort
 [Install]
 WantedBy=multi-user.target
 [root@develop /etc/systemd/system]$
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;yum 으로 패키지 설치시 systemctl 에 등록된 정보를 아래와 같은 방법으로 확인합니다.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;[root@develop /etc/systemd/system]$ systemctl --help
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;yum 으로 패키지 설치시 systemctl 에 등록된 정보를 아래와 같은 방법으로 확인합니다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;[root@develop /etc/systemd/system]$ systemctl --help
 systemctl [OPTIONS...] {COMMAND} ...
 
 Unit Commands:
@@ -1061,11 +1061,11 @@ httpd.service                                                                   
 ● httpd.service - The Apache HTTP Server
    Loaded: loaded (/usr/lib/systemd/system/httpd.service; enabled; vendor preset: disabled)
 [root@develop /etc/systemd/system]$
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;httpd 의 서비스 파일은 &lt;code&gt;/usr/lib/systemd/system/httpd.service&lt;/code&gt; 에 있음을 확인할 수 있습니다.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;httpd 의 서비스 파일은 &lt;code&gt;/usr/lib/systemd/system/httpd.service&lt;/code&gt; 에 있음을 확인할 수 있습니다.&lt;/p&gt;
 &lt;h3 id=&#34;서비스-등록&#34;&gt;서비스 등록&lt;/h3&gt;
 &lt;p&gt;서비스 파일을 생성한 다음 systemctl 에 등록을 해야 합니다.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;[root@develop /etc/systemd/system]$ systemctl --help | grep reload
-     --no-reload      Don&#39;t reload daemon after en-/dis-abling unit files
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;[root@develop /etc/systemd/system]$ systemctl --help | grep reload
+     --no-reload      Don&amp;#39;t reload daemon after en-/dis-abling unit files
   reload NAME...                  Reload one or more units
   reload-or-restart NAME...       Reload one or more units if possible,
   reload-or-try-restart NAME...   Reload one or more units if possible,
@@ -1073,10 +1073,10 @@ httpd.service                                                                   
 [root@develop /etc/systemd/system]$
 [root@develop /etc/systemd/system]$ systemctl daemon-reload
 [root@develop /etc/systemd/system]$
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;systemctl daemon-reload&lt;/code&gt; 명령으로 reload 를 합니다.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;systemctl daemon-reload&lt;/code&gt; 명령으로 reload 를 합니다.&lt;/p&gt;
 &lt;h3 id=&#34;서비스-활성화&#34;&gt;서비스 활성화&lt;/h3&gt;
 &lt;p&gt;서비스 활성화 상태로 설정을 하게되면 os booting 시 자동으로 실행이 됩니다.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;[root@develop /etc/systemd/system]$ systemctl --help | grep enable
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;[root@develop /etc/systemd/system]$ systemctl --help | grep enable
      --preset-mode=   Apply only enable, only disable, or all presets
   enable NAME...                  Enable one or more unit files
   reenable NAME...                Reenable one or more unit files
@@ -1087,7 +1087,7 @@ enabled
 [root@develop /etc/systemd/system]$ systemctl is-enabled httpd.service
 enabled
 [root@develop /etc/systemd/system]$
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;systemctl enable {서비스}&lt;/code&gt; 명령으로 enabled 상태로 설정합니다.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;systemctl enable {서비스}&lt;/code&gt; 명령으로 enabled 상태로 설정합니다.&lt;/p&gt;
 &lt;h2 id=&#34;network&#34;&gt;network&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;root@develop ~&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;$ cat /etc/sysconfig/network-scripts/ifcfg-ens32
 TYPE&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Ethernet&amp;#34;&lt;/span&gt;
@@ -1111,10 +1111,10 @@ GATEWAY&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#
 DNS1&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;8.8.8.8&amp;#34;&lt;/span&gt;
 &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;root@develop ~&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;$
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;hostname&#34;&gt;hostname&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;[root@develop ~]$ hostnamectl set-hostname develop
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;[root@develop ~]$ hostnamectl set-hostname develop
 [root@develop ~]$
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;shell&#34;&gt;shell&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;[ -z ] : 문자열의 길이가 0이면 참
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;shell&#34;&gt;shell&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;[ -z ] : 문자열의 길이가 0이면 참
 [ -n ] : 문자열의 길이가 0이 아니면 참
 [ -eq ] : 값이 같으면 참
 [ -ne ] : 값이 다르면 참
@@ -1134,7 +1134,7 @@ DNS1&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;
 [ 파일1 -nt 파일2 ] : 파일1이 파일2보다 최신파일이면 참
 [ 파일1 -ot 파일2 ] : 파일1이 파일2보다 이전파일이면 참
 [ 파일1 -ef 파일2 ] : 파일1이 파일2랑 같은 파일이면 참
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       </description>
     </item>
     
@@ -1148,7 +1148,7 @@ DNS1&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;
         
         
         &lt;h2 id=&#34;패키지-확인&#34;&gt;패키지 확인&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;[root@develop ~]$ yum list *openssh*
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;[root@develop ~]$ yum list *openssh*
 Loaded plugins: fastestmirror, langpacks
 Repodata is over 2 weeks old. Install yum-cron? Or run: yum makecache fast
 Loading mirror speeds from cached hostfile
@@ -1165,13 +1165,13 @@ openssh.x86_64                                               7.4p1-21.el7       
 /usr/bin/ssh-keygen
 
 [root@develop ~]$
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;key-생성&#34;&gt;key 생성&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;key-생성&#34;&gt;key 생성&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;ssh-keygen&lt;/code&gt; 인자 &lt;code&gt;-t rsa&lt;/code&gt; 는 rsa 타입으로 생성 입니다.
 key 생성 경로는 home 디렉토리의 &lt;code&gt;.ssh&lt;/code&gt; 디렉토리에 생성이 됩니다.
 &lt;code&gt;passphrase&lt;/code&gt; 는 key 의 비밀번호 입니다.&lt;/p&gt;
 &lt;p&gt;key 생성이 되면 &lt;code&gt;.ssh&lt;/code&gt; 디렉토리에는 &lt;code&gt;id_rsa&lt;/code&gt;(개인키), &lt;code&gt;id_rsa.pub&lt;/code&gt;(공개키) 2개의 파일이 있습니다.&lt;/p&gt;
 &lt;p&gt;공개키인 &lt;code&gt;id_rsa.pub&lt;/code&gt; 파일의 내용은 SSH로 접속하려는 대상 서버의 시스템계정 홈디렉토리의 .ssh/authorized_keys 파일에 추가하여 사용됩니다.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;[tomcat@develop ~]$ pwd
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;[tomcat@develop ~]$ pwd
 /home/tomcat
 [tomcat@develop ~]$ ls -al
 합계 28
@@ -1220,7 +1220,7 @@ Your identification has been saved in /home/tomcat/.ssh/id_rsa.
 Your public key has been saved in /home/tomcat/.ssh/id_rsa.pub.
 The key fingerprint is:
 SHA256:Lp68Qh20r1rnsr+IyTTayVl/pbd8VlEL3mWGuez3IYY tomcat@develop
-The key&#39;s randomart image is:
+The key&amp;#39;s randomart image is:
 +---[RSA 2048]----+
 |               o |
 |      .      .o =|
@@ -1240,7 +1240,7 @@ drwx------. 5 tomcat ap  152  9월 13 11:48 ..
 -rw-------  1 tomcat ap 1766  9월 13 11:51 id_rsa
 -rw-r--r--  1 tomcat ap  396  9월 13 11:51 id_rsa.pub
 [tomcat@develop ~]$
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       </description>
     </item>
     
