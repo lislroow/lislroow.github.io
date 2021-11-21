@@ -40,8 +40,8 @@ $M2_HOME/conf/settings.xml 파일
 
 
 
-<link rel="preload" href="/scss/main.scss" as="style">
-<link href="/scss/main.scss" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.765eeb84d62fcca61f5e4d419d4afe25763cd915428c4cf01712923b728da270.css" as="style">
+<link href="/scss/main.min.765eeb84d62fcca61f5e4d419d4afe25763cd915428c4cf01712923b728da270.css" rel="stylesheet" integrity="">
 
 
 <script
@@ -114,7 +114,7 @@ $M2_HOME/conf/settings.xml 파일
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.e4047179115d75beb10fe3e2cafe549f.json"
+  data-offline-search-index-json-src="/offline-search-index.43d62bb775fedce5d643101a739fb9a7.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -141,7 +141,7 @@ $M2_HOME/conf/settings.xml 파일
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.e4047179115d75beb10fe3e2cafe549f.json"
+  data-offline-search-index-json-src="/offline-search-index.43d62bb775fedce5d643101a739fb9a7.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -430,8 +430,9 @@ $ git submodule add -b master https://github.com/lislroow/lislroow.github.io.git
 $ git clone --recurse-submodules --depth <span style="color:#666">1</span> https://github.com/google/docsy.git themes/docsy
 
 <span style="color:#408080;font-style:italic"># 2개의 npm 패키지 설치</span>
-$ npm install -D --save autoprefixer
-$ npm install -D --save postcss-cli
+$ npm install autoprefixer -D --save
+$ npm install postcss-cli -D --save
+$ npm install postcss -D --save
 
 <span style="color:#408080;font-style:italic"># npm 패키지 설치 후 hugo -t docsy 로 build 하면 </span>
 <span style="color:#408080;font-style:italic"># `/assets/scss/_variables_project.scss` 파일에 수정된 내용을 포함하여</span>
