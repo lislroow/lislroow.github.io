@@ -435,7 +435,20 @@ apache-jmeter-5.4.1\bin\jmeter.bat -n -t jmeter-mgkim-core.jmx -l data\&lt;span 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
 &lt;h2 id=&#34;xcopy&#34;&gt;xcopy&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;xcopy C:\exp\*.* Z:\exp\ /d/i/s/c/y
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;h2 id=&#34;font&#34;&gt;font&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;hugo-site&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;/assets/scss/_variables_project.scss&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$google_font_name: &amp;quot;Bitstream Vera Sans Mono&amp;quot; !default;
+$google_font_family: &amp;quot;Bitstream Vera Sans Mono:300,300i,400,400i,700,700i&amp;quot; !default;
+$web-font-path: &amp;quot;http://fonts.cdnfonts.com/css/bitstream-vera-sans-mono&amp;quot;;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;system&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Bitstream&lt;/code&gt; 은 coding 목적으로 많이 사용되는 font 입니다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/images/localenv/20211105_change-eclipse-font_1.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;다운로드: &lt;a href=&#34;/file/localenv/BitstreamVeraSansMono.ttf&#34; download=&#34;tnsnames.ora&#34;&gt;BitstreamVeraSansMono.ttf&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Colors and Fonts&lt;/code&gt; &amp;gt; &lt;code&gt;Basic&lt;/code&gt; &amp;gt; &lt;code&gt;Text Font&lt;/code&gt; 를 선택하고 &lt;code&gt;Edit&lt;/code&gt; 버튼을 클릭하면 변경할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/images/localenv/20211105_change-eclipse-font.png&#34; /&gt;&lt;/p&gt;
+
       </description>
     </item>
     

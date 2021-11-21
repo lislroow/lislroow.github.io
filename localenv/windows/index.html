@@ -50,7 +50,7 @@ wol 절전 상태에서 wol 이 작동하려면 아래 옵션을 선택해야 �
 새 창 보기
 port-forwarding cmd # 설정 netsh interface portproxy add v4tov4 listenport=8222 listenaddress=0.0.0.0 connectport=22 connectaddress=172.28.200.20 # 해제 netsh interface portproxy delete v4tov4 listenport=8222 listenaddress=0.0.0.0 # 확인 netsh interface portproxy show v4tov4">
 
-<meta itemprop="wordCount" content="305">
+<meta itemprop="wordCount" content="349">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="windows"/>
 <meta name="twitter:description" content="eclipse hidpi -Dswt.autoScale=150 # 150 == 1.5배새 창 보기
@@ -63,8 +63,8 @@ port-forwarding cmd # 설정 netsh interface portproxy add v4tov4 listenport=822
 
 
 
-<link rel="preload" href="/scss/main.min.49935c5eb3f96e225026ec04fa18256b17f945124066cf7317bb40fab0c32ac4.css" as="style">
-<link href="/scss/main.min.49935c5eb3f96e225026ec04fa18256b17f945124066cf7317bb40fab0c32ac4.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.91b6d299ff6c1e2e2b65b300372037fabf8e69d15197755b28debe675fdada0d.css" as="style">
+<link href="/scss/main.min.91b6d299ff6c1e2e2b65b300372037fabf8e69d15197755b28debe675fdada0d.css" rel="stylesheet" integrity="">
 
 
 <script
@@ -149,7 +149,7 @@ port-forwarding cmd # 설정 netsh interface portproxy add v4tov4 listenport=822
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.44a074a0ec5dc32ee707864a06528288.json"
+  data-offline-search-index-json-src="/offline-search-index.e7d9a6a31b7f6553c4fe57f71c5eb472.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -176,7 +176,7 @@ port-forwarding cmd # 설정 netsh interface portproxy add v4tov4 listenport=822
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.44a074a0ec5dc32ee707864a06528288.json"
+  data-offline-search-index-json-src="/offline-search-index.e7d9a6a31b7f6553c4fe57f71c5eb472.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -247,6 +247,7 @@ port-forwarding cmd # 설정 netsh interface portproxy add v4tov4 listenport=822
     <li><a href="#7z-압축-cmd">7z 압축 cmd</a></li>
     <li><a href="#start-jmeter">start-jmeter</a></li>
     <li><a href="#xcopy">xcopy</a></li>
+    <li><a href="#font">font</a></li>
   </ul>
 </nav></div>
 
@@ -395,7 +396,20 @@ apache-jmeter-5.4.1\bin\jmeter.bat -n -t jmeter-mgkim-core.jmx -l data\<span sty
 </code></pre></div><br>
 <h2 id="xcopy">xcopy</h2>
 <div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">xcopy C:\exp\*.* Z:\exp\ /d/i/s/c/y
-</code></pre></div>
+</code></pre></div><br>
+<h2 id="font">font</h2>
+<p><strong>hugo-site</strong></p>
+<p>/assets/scss/_variables_project.scss</p>
+<pre><code>$google_font_name: &quot;Bitstream Vera Sans Mono&quot; !default;
+$google_font_family: &quot;Bitstream Vera Sans Mono:300,300i,400,400i,700,700i&quot; !default;
+$web-font-path: &quot;http://fonts.cdnfonts.com/css/bitstream-vera-sans-mono&quot;;
+</code></pre><p><strong>system</strong></p>
+<p><code>Bitstream</code> 은 coding 목적으로 많이 사용되는 font 입니다.</p>
+<p><img src="/images/localenv/20211105_change-eclipse-font_1.png" /></p>
+<p>다운로드: <a href="/file/localenv/BitstreamVeraSansMono.ttf" download="tnsnames.ora">BitstreamVeraSansMono.ttf</a></p>
+<p><code>Colors and Fonts</code> &gt; <code>Basic</code> &gt; <code>Text Font</code> 를 선택하고 <code>Edit</code> 버튼을 클릭하면 변경할 수 있습니다.</p>
+<p><img src="/images/localenv/20211105_change-eclipse-font.png" /></p>
+
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
