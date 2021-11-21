@@ -1,8 +1,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>dlog – 시스템 환경</title>
+    <title>dlog – system</title>
     <link>/system/</link>
-    <description>Recent content in 시스템 환경 on dlog</description>
+    <description>Recent content in system on dlog</description>
     <generator>Hugo -- gohugo.io</generator>
     
 	  <atom:link href="/system/index.xml" rel="self" type="application/rss+xml" />
@@ -1020,24 +1020,7 @@ httpd 설정에 http 를 https 로 redirect 하도록 mod_rewrite 를 설정했�
       <description>
         
         
-        &lt;h2 id=&#34;tar&#34;&gt;tar&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#408080;font-style:italic&#34;&gt;# split&lt;/span&gt;
-$ tar cvfz - target | split -b 3072m - target.tgz
-$ cat target.tgz.* | tar zxvf -
-
-&lt;span style=&#34;color:#408080;font-style:italic&#34;&gt;# exclude&lt;/span&gt;
-$ cat .tarexclude
-build.*
-run.*
-bin
-.svn/*
-.git/*
-.project
-.tarexclude
-backup.sh
-$ tar cvfz ../target.tgz * -X .tarexclude
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
-&lt;h2 id=&#34;systemd&#34;&gt;systemd&lt;/h2&gt;
+        &lt;h2 id=&#34;systemd&#34;&gt;systemd&lt;/h2&gt;
 &lt;p&gt;systemd 는 centos 7 부터 포함된 기능입니다.&lt;/p&gt;
 &lt;p&gt;/etc/init.d 에서 서비스를 관리했던 것을 systemd 로 관리하게 되었습니다.&lt;/p&gt;
 &lt;p&gt;실행 명령어는 systemctl 입니다.&lt;/p&gt;
@@ -1105,11 +1088,7 @@ enabled
 enabled
 [root@develop /etc/systemd/system]$
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;systemctl enable {서비스}&lt;/code&gt; 명령으로 enabled 상태로 설정합니다.&lt;/p&gt;
-&lt;h2 id=&#34;profile&#34;&gt;.profile&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#008000&#34;&gt;set&lt;/span&gt; -o vi
-&lt;span style=&#34;color:#008000&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#19177c&#34;&gt;PS1&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#34;[\u@\h \w]\\&lt;/span&gt;$&lt;span style=&#34;color:#ba2121&#34;&gt; &amp;#34;&lt;/span&gt;
-&lt;span style=&#34;color:#008000&#34;&gt;alias&lt;/span&gt; &lt;span style=&#34;color:#19177c&#34;&gt;vi&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#39;vim&amp;#39;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;network&#34;&gt;network&lt;/h2&gt;
+&lt;h2 id=&#34;network&#34;&gt;network&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#666&#34;&gt;[&lt;/span&gt;root@develop ~&lt;span style=&#34;color:#666&#34;&gt;]&lt;/span&gt;$ cat /etc/sysconfig/network-scripts/ifcfg-ens32
 &lt;span style=&#34;color:#19177c&#34;&gt;TYPE&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#34;Ethernet&amp;#34;&lt;/span&gt;
 &lt;span style=&#34;color:#19177c&#34;&gt;PROXY_METHOD&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#34;none&amp;#34;&lt;/span&gt;
@@ -1155,9 +1134,7 @@ enabled
 [ 파일1 -nt 파일2 ] : 파일1이 파일2보다 최신파일이면 참
 [ 파일1 -ot 파일2 ] : 파일1이 파일2보다 이전파일이면 참
 [ 파일1 -ef 파일2 ] : 파일1이 파일2랑 같은 파일이면 참
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;sed&#34;&gt;sed&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sed -i -e &lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#39;s/hello/world/g&amp;#39;&lt;/span&gt; test.txt
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;
       </description>
     </item>
     
@@ -1286,24 +1263,6 @@ drwx------. 5 tomcat ap  152  9월 13 11:48 ..
 &lt;pre&gt;&lt;code&gt;openssl rsa -des3 -in private_key.pem -out enc_private_key.pem
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;기존-개인키에-패스워드-제거&#34;&gt;기존 개인키에 패스워드 제거&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;openssl rsa -in enc_private_key.pem -out private_key.pem
-&lt;/code&gt;&lt;/pre&gt;
-      </description>
-    </item>
-    
-    <item>
-      <title>System: oracle</title>
-      <link>/system/oracle/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/system/oracle/</guid>
-      <description>
-        
-        
-        &lt;h2 id=&#34;max_string_size--extended&#34;&gt;MAX_STRING_SIZE = EXTENDED&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;alter system set MAX_STRING_SIZE=&#39;EXTENDED&#39; scope=spfile;
-
-# 설정을 하게 되면 varchar2(4000) 에서 varchar2(32767) 까지 사용이 가능 합니다.
-
 &lt;/code&gt;&lt;/pre&gt;
       </description>
     </item>

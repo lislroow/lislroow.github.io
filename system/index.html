@@ -18,19 +18,25 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>시스템 환경 | dlog</title>
+<title>system | dlog</title>
 
 
   
-  <meta name="description" content="">
-<meta property="og:title" content="시스템 환경" />
+  <meta name="description" content="(sed) 문자열 치환
+sed -i -e &#39;s/hello/world/g&#39; test.txt
+
+(tar) 분할 압축
+# split
+$ tar cvfz - target | split -b 3072m - target.tgz
+$ cat target.tgz.* | …">
+<meta property="og:title" content="system" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="/system/" />
 
-<meta itemprop="name" content="시스템 환경">
+<meta itemprop="name" content="system">
 <meta itemprop="description" content=""><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="시스템 환경"/>
+<meta name="twitter:title" content="system"/>
 <meta name="twitter:description" content=""/>
 
 
@@ -110,7 +116,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.087d001fde9b3866d691a52ac34e1073.json"
+  data-offline-search-index-json-src="/offline-search-index.9445cb5b2540002ba6ed79171b320eec.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -137,7 +143,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.087d001fde9b3866d691a52ac34e1073.json"
+  data-offline-search-index-json-src="/offline-search-index.9445cb5b2540002ba6ed79171b320eec.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -150,7 +156,7 @@
     <ul class="td-sidebar-nav__section pr-md-3 ul-0">
       <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-system-li">
   
-  <a href="/system/" title="시스템 환경" class="align-left pl-0 active td-sidebar-link td-sidebar-link__section tree-root" id="m-system"><span class="td-sidebar-nav-active-item">system</span></a>
+  <a href="/system/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__section tree-root" id="m-system"><span class="td-sidebar-nav-active-item">system</span></a>
   <ul class="ul-1">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemhttpd-li">
   
@@ -167,9 +173,6 @@
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemopenssl-li">
   
   <a href="/system/openssl/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemopenssl"><span class="">openssl</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemoracle-li">
-  
-  <a href="/system/oracle/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemoracle"><span class="">oracle</span></a>
 </li>
   </ul>
 </li>
@@ -195,7 +198,15 @@
             
 
 
-<div class="td-toc"><nav id="TableOfContents"></nav></div>
+<div class="td-toc"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#sed-문자열-치환">(sed) 문자열 치환</a></li>
+    <li><a href="#tar-분할-압축">(tar) 분할 압축</a></li>
+    <li><a href="#tar-exclude-설정">(tar) exclude 설정</a></li>
+    <li><a href="#httpd-설정">(httpd) 설정</a></li>
+    <li><a href="#jenkins-설정">(jenkins) 설정</a></li>
+  </ul>
+</nav></div>
 
 
 
@@ -240,7 +251,7 @@
 
             
 <div class="td-content">
-	<h1>시스템 환경</h1>
+	<h1>system</h1>
   
 	<header class="article-meta">
 		
@@ -257,7 +268,36 @@
 		
 		
 	</header>
-	
+	<h2 id="sed-문자열-치환">(sed) 문자열 치환</h2>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sed -i -e <span style="color:#ba2121">&#39;s/hello/world/g&#39;</span> test.txt
+</code></pre></div><br>
+<h2 id="tar-분할-압축">(tar) 분할 압축</h2>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#408080;font-style:italic"># split</span>
+$ tar cvfz - target | split -b 3072m - target.tgz
+$ cat target.tgz.* | tar zxvf -
+</code></pre></div><br>
+<h2 id="tar-exclude-설정">(tar) exclude 설정</h2>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#408080;font-style:italic"># exclude</span>
+$ cat .tarexclude
+build.*
+run.*
+bin
+.svn/*
+.git/*
+.project
+.tarexclude
+backup.sh
+$ tar cvfz ../target.tgz * -X .tarexclude
+</code></pre></div><br>
+<h2 id="httpd-설정">(httpd) 설정</h2>
+<p>httpd.conf, vhost 설정, ssl 적용에 대한 예시</p>
+<p><a href="/system/httpd" target="_blank">새 창 보기</a></p>
+<br>
+<h2 id="jenkins-설정">(jenkins) 설정</h2>
+<p>플러그인 <code>Publish Over SSH</code>, <code>GitLab Plugin</code>, <code>GitHub Integration Plugin</code>에 대한 사용법</p>
+<p><a href="/system/jenkins" target="_blank">새 창 보기</a></p>
+<br>
+
         <div class="section-index">
     
     
@@ -267,56 +307,6 @@
     
     
     
-    <hr class="panel-line">
-        
-            
-            <div class="entry">
-                <h5>
-                    <a href="/system/httpd/">httpd</a>
-                </h5>
-                <p></p>
-            </div>
-        
-            
-            <div class="entry">
-                <h5>
-                    <a href="/system/jenkins/">jenkins</a>
-                </h5>
-                <p></p>
-            </div>
-        
-            
-            <div class="entry">
-                <h5>
-                    <a href="/system/linux/">linux</a>
-                </h5>
-                <p></p>
-            </div>
-        
-            
-            <div class="entry">
-                <h5>
-                    <a href="/system/openssh/">openssh</a>
-                </h5>
-                <p></p>
-            </div>
-        
-            
-            <div class="entry">
-                <h5>
-                    <a href="/system/openssl/">openssl</a>
-                </h5>
-                <p></p>
-            </div>
-        
-            
-            <div class="entry">
-                <h5>
-                    <a href="/system/oracle/">oracle</a>
-                </h5>
-                <p></p>
-            </div>
-        
     
 </div>
 

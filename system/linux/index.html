@@ -21,43 +21,41 @@
 
 
   
-  <meta name="description" content="tar
-# split
-$ tar cvfz - target | split -b 3072m - target.tgz
-$ cat target.tgz.* | tar zxvf -
-
-# exclude
-$ cat .tarexclude
-build.*
-run.*
-bin
-.svn/* …">
-<meta property="og:title" content="linux" />
-<meta property="og:description" content="tar # split $ tar cvfz - target | split -b 3072m - target.tgz $ cat target.tgz.* | tar zxvf - # exclude $ cat .tarexclude build.* run.* bin .svn/* .git/* .project .tarexclude backup.sh $ tar cvfz ../target.tgz * -X .tarexclude 
-systemd systemd 는 centos 7 부터 포함된 기능입니다.
+  <meta name="description" content="systemd
+systemd 는 centos 7 부터 포함된 기능입니다.
 /etc/init.d 에서 서비스를 관리했던 것을 systemd 로 관리하게 되었습니다.
 실행 명령어는 systemctl 입니다.
-서비스 생성 새로운 서비스를 등록할 경우 아래 템플릿으로 파일을 생성합니다." />
+서비스 생성
+새로운 서비스를 등록할 경우 아래 템플릿으로 파일을  …">
+<meta property="og:title" content="linux" />
+<meta property="og:description" content="systemd systemd 는 centos 7 부터 포함된 기능입니다.
+/etc/init.d 에서 서비스를 관리했던 것을 systemd 로 관리하게 되었습니다.
+실행 명령어는 systemctl 입니다.
+서비스 생성 새로운 서비스를 등록할 경우 아래 템플릿으로 파일을 생성합니다.
+ 파일경로: /etc/systemd/system/{서비스명}.service  [root@develop /etc/systemd/system]$ cat jenkins.service [Unit] Description=Jenkins After=network.target syslog.target [Service] Type=forking User=jenkins Group=ci ExecStart=/prod/jenkins/jenkins.sh start ExecStop=/prod/jenkins/jenkins.sh stop Restart=on-abort [Install] WantedBy=multi-user.target [root@develop /etc/systemd/system]$ yum 으로 패키지 설치시 systemctl 에 등록된 정보를 아래와 같은 방법으로 확인합니다.
+[root@develop /etc/systemd/system]$ systemctl --help systemctl [OPTIONS." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/system/linux/" /><meta property="article:section" content="system" />
 
 
 
 <meta itemprop="name" content="linux">
-<meta itemprop="description" content="tar # split $ tar cvfz - target | split -b 3072m - target.tgz $ cat target.tgz.* | tar zxvf - # exclude $ cat .tarexclude build.* run.* bin .svn/* .git/* .project .tarexclude backup.sh $ tar cvfz ../target.tgz * -X .tarexclude 
-systemd systemd 는 centos 7 부터 포함된 기능입니다.
+<meta itemprop="description" content="systemd systemd 는 centos 7 부터 포함된 기능입니다.
 /etc/init.d 에서 서비스를 관리했던 것을 systemd 로 관리하게 되었습니다.
 실행 명령어는 systemctl 입니다.
-서비스 생성 새로운 서비스를 등록할 경우 아래 템플릿으로 파일을 생성합니다.">
+서비스 생성 새로운 서비스를 등록할 경우 아래 템플릿으로 파일을 생성합니다.
+ 파일경로: /etc/systemd/system/{서비스명}.service  [root@develop /etc/systemd/system]$ cat jenkins.service [Unit] Description=Jenkins After=network.target syslog.target [Service] Type=forking User=jenkins Group=ci ExecStart=/prod/jenkins/jenkins.sh start ExecStop=/prod/jenkins/jenkins.sh stop Restart=on-abort [Install] WantedBy=multi-user.target [root@develop /etc/systemd/system]$ yum 으로 패키지 설치시 systemctl 에 등록된 정보를 아래와 같은 방법으로 확인합니다.
+[root@develop /etc/systemd/system]$ systemctl --help systemctl [OPTIONS.">
 
-<meta itemprop="wordCount" content="528">
+<meta itemprop="wordCount" content="472">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="linux"/>
-<meta name="twitter:description" content="tar # split $ tar cvfz - target | split -b 3072m - target.tgz $ cat target.tgz.* | tar zxvf - # exclude $ cat .tarexclude build.* run.* bin .svn/* .git/* .project .tarexclude backup.sh $ tar cvfz ../target.tgz * -X .tarexclude 
-systemd systemd 는 centos 7 부터 포함된 기능입니다.
+<meta name="twitter:description" content="systemd systemd 는 centos 7 부터 포함된 기능입니다.
 /etc/init.d 에서 서비스를 관리했던 것을 systemd 로 관리하게 되었습니다.
 실행 명령어는 systemctl 입니다.
-서비스 생성 새로운 서비스를 등록할 경우 아래 템플릿으로 파일을 생성합니다."/>
+서비스 생성 새로운 서비스를 등록할 경우 아래 템플릿으로 파일을 생성합니다.
+ 파일경로: /etc/systemd/system/{서비스명}.service  [root@develop /etc/systemd/system]$ cat jenkins.service [Unit] Description=Jenkins After=network.target syslog.target [Service] Type=forking User=jenkins Group=ci ExecStart=/prod/jenkins/jenkins.sh start ExecStop=/prod/jenkins/jenkins.sh stop Restart=on-abort [Install] WantedBy=multi-user.target [root@develop /etc/systemd/system]$ yum 으로 패키지 설치시 systemctl 에 등록된 정보를 아래와 같은 방법으로 확인합니다.
+[root@develop /etc/systemd/system]$ systemctl --help systemctl [OPTIONS."/>
 
 
 
@@ -136,7 +134,7 @@ systemd systemd 는 centos 7 부터 포함된 기능입니다.
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.087d001fde9b3866d691a52ac34e1073.json"
+  data-offline-search-index-json-src="/offline-search-index.9445cb5b2540002ba6ed79171b320eec.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -163,7 +161,7 @@ systemd systemd 는 centos 7 부터 포함된 기능입니다.
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.087d001fde9b3866d691a52ac34e1073.json"
+  data-offline-search-index-json-src="/offline-search-index.9445cb5b2540002ba6ed79171b320eec.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -176,7 +174,7 @@ systemd systemd 는 centos 7 부터 포함된 기능입니다.
     <ul class="td-sidebar-nav__section pr-md-3 ul-0">
       <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-system-li">
   
-  <a href="/system/" title="시스템 환경" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-system"><span class="">system</span></a>
+  <a href="/system/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-system"><span class="">system</span></a>
   <ul class="ul-1">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemhttpd-li">
   
@@ -193,9 +191,6 @@ systemd systemd 는 centos 7 부터 포함된 기능입니다.
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemopenssl-li">
   
   <a href="/system/openssl/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemopenssl"><span class="">openssl</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemoracle-li">
-  
-  <a href="/system/oracle/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemoracle"><span class="">oracle</span></a>
 </li>
   </ul>
 </li>
@@ -223,7 +218,6 @@ systemd systemd 는 centos 7 부터 포함된 기능입니다.
 
 <div class="td-toc"><nav id="TableOfContents">
   <ul>
-    <li><a href="#tar">tar</a></li>
     <li><a href="#systemd">systemd</a>
       <ul>
         <li><a href="#서비스-생성">서비스 생성</a></li>
@@ -231,11 +225,9 @@ systemd systemd 는 centos 7 부터 포함된 기능입니다.
         <li><a href="#서비스-활성화">서비스 활성화</a></li>
       </ul>
     </li>
-    <li><a href="#profile">.profile</a></li>
     <li><a href="#network">network</a></li>
     <li><a href="#hostname">hostname</a></li>
     <li><a href="#shell">shell</a></li>
-    <li><a href="#sed">sed</a></li>
   </ul>
 </nav></div>
 
@@ -309,24 +301,7 @@ systemd systemd 는 centos 7 부터 포함된 기능입니다.
 		
 		
 	</header>    
-	<h2 id="tar">tar</h2>
-<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#408080;font-style:italic"># split</span>
-$ tar cvfz - target | split -b 3072m - target.tgz
-$ cat target.tgz.* | tar zxvf -
-
-<span style="color:#408080;font-style:italic"># exclude</span>
-$ cat .tarexclude
-build.*
-run.*
-bin
-.svn/*
-.git/*
-.project
-.tarexclude
-backup.sh
-$ tar cvfz ../target.tgz * -X .tarexclude
-</code></pre></div><br>
-<h2 id="systemd">systemd</h2>
+	<h2 id="systemd">systemd</h2>
 <p>systemd 는 centos 7 부터 포함된 기능입니다.</p>
 <p>/etc/init.d 에서 서비스를 관리했던 것을 systemd 로 관리하게 되었습니다.</p>
 <p>실행 명령어는 systemctl 입니다.</p>
@@ -394,11 +369,7 @@ enabled
 enabled
 [root@develop /etc/systemd/system]$
 </code></pre><p><code>systemctl enable {서비스}</code> 명령으로 enabled 상태로 설정합니다.</p>
-<h2 id="profile">.profile</h2>
-<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000">set</span> -o vi
-<span style="color:#008000">export</span> <span style="color:#19177c">PS1</span><span style="color:#666">=</span><span style="color:#ba2121">&#34;[\u@\h \w]\\</span>$<span style="color:#ba2121"> &#34;</span>
-<span style="color:#008000">alias</span> <span style="color:#19177c">vi</span><span style="color:#666">=</span><span style="color:#ba2121">&#39;vim&#39;</span>
-</code></pre></div><h2 id="network">network</h2>
+<h2 id="network">network</h2>
 <div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#666">[</span>root@develop ~<span style="color:#666">]</span>$ cat /etc/sysconfig/network-scripts/ifcfg-ens32
 <span style="color:#19177c">TYPE</span><span style="color:#666">=</span><span style="color:#ba2121">&#34;Ethernet&#34;</span>
 <span style="color:#19177c">PROXY_METHOD</span><span style="color:#666">=</span><span style="color:#ba2121">&#34;none&#34;</span>
@@ -444,9 +415,7 @@ enabled
 [ 파일1 -nt 파일2 ] : 파일1이 파일2보다 최신파일이면 참
 [ 파일1 -ot 파일2 ] : 파일1이 파일2보다 이전파일이면 참
 [ 파일1 -ef 파일2 ] : 파일1이 파일2랑 같은 파일이면 참
-</code></pre><h2 id="sed">sed</h2>
-<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sed -i -e <span style="color:#ba2121">&#39;s/hello/world/g&#39;</span> test.txt
-</code></pre></div>
+</code></pre>
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
