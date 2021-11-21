@@ -18,7 +18,7 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>로컬 환경 | dlog</title>
+<title>localenv | dlog</title>
 
 
   
@@ -27,21 +27,21 @@
 $ mvn -B clean release:prepare release:perform deploy
 $M2_HOME/conf/settings.xml 파일
 &lt;?xml version=&#34;1.0&#34; …">
-<meta property="og:title" content="로컬 환경" />
+<meta property="og:title" content="localenv" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="/localenv/" />
 
-<meta itemprop="name" content="로컬 환경">
+<meta itemprop="name" content="localenv">
 <meta itemprop="description" content=""><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="로컬 환경"/>
+<meta name="twitter:title" content="localenv"/>
 <meta name="twitter:description" content=""/>
 
 
 
 
-<link rel="preload" href="/scss/main.min.91b6d299ff6c1e2e2b65b300372037fabf8e69d15197755b28debe675fdada0d.css" as="style">
-<link href="/scss/main.min.91b6d299ff6c1e2e2b65b300372037fabf8e69d15197755b28debe675fdada0d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.scss" as="style">
+<link href="/scss/main.scss" rel="stylesheet" integrity="">
 
 
 <script
@@ -114,7 +114,7 @@ $M2_HOME/conf/settings.xml 파일
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.9445cb5b2540002ba6ed79171b320eec.json"
+  data-offline-search-index-json-src="/offline-search-index.e4047179115d75beb10fe3e2cafe549f.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -141,7 +141,7 @@ $M2_HOME/conf/settings.xml 파일
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.9445cb5b2540002ba6ed79171b320eec.json"
+  data-offline-search-index-json-src="/offline-search-index.e4047179115d75beb10fe3e2cafe549f.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -154,7 +154,7 @@ $M2_HOME/conf/settings.xml 파일
     <ul class="td-sidebar-nav__section pr-md-3 ul-0">
       <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-localenv-li">
   
-  <a href="/localenv/" title="로컬 환경" class="align-left pl-0 active td-sidebar-link td-sidebar-link__section tree-root" id="m-localenv"><span class="td-sidebar-nav-active-item">localenv</span></a>
+  <a href="/localenv/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__section tree-root" id="m-localenv"><span class="td-sidebar-nav-active-item">localenv</span></a>
 </li>
     </ul>
   </nav>
@@ -180,32 +180,40 @@ $M2_HOME/conf/settings.xml 파일
 
 <div class="td-toc"><nav id="TableOfContents">
   <ul>
-    <li><a href="#maven-release">(maven) release</a></li>
-    <li><a href="#maven-helpevaluate">(maven) help:evaluate</a></li>
-    <li><a href="#maven-dependency">(maven) dependency</a></li>
-    <li><a href="#maven-deploydeploy-file">(maven) deploy:deploy-file</a></li>
-    <li><a href="#maven-settingsxml-파일">(maven) settings.xml 파일</a></li>
-    <li><a href="#maven-password-암호화">(maven) password 암호화</a></li>
-    <li><a href="#java-vmargs-2개">(java) vmargs (2개)</a></li>
-    <li><a href="#java-java-에-인증서-등록">(java) java 에 인증서 등록</a></li>
-    <li><a href="#win-win11-system-tray-설정">(win) win11 system-tray 설정</a></li>
-    <li><a href="#win-font-추천">(win) font 추천</a></li>
-    <li><a href="#eclipse-hidpi-설정">(eclipse) hidpi 설정</a></li>
-    <li><a href="#win-절전-cmd">(win) 절전 cmd</a></li>
-    <li><a href="#vmware-실행-cmd">(vmware) 실행 cmd</a></li>
-    <li><a href="#win-wol-설정">(win) wol 설정</a></li>
-    <li><a href="#win-port-forwarding-cmd">(win) port-forwarding cmd</a></li>
-    <li><a href="#win-파일-공유-설정">(win) 파일 공유 설정</a></li>
-    <li><a href="#vmware-nat-설정">(vmware) nat 설정</a></li>
-    <li><a href="#7z-7z-압축-cmd">(7z) 7z 압축 cmd</a></li>
-    <li><a href="#jmeter-jmeter-실행-cmd">(jmeter) jmeter 실행 cmd</a></li>
-    <li><a href="#win-xcopy-cmd">(win) xcopy cmd</a></li>
-    <li><a href="#chrome-https-자동-접속-현상">(chrome) https 자동 접속 현상</a></li>
-    <li><a href="#git-config-cmd">(git) config cmd</a></li>
-    <li><a href="#git-pre-commit-shell">(git) pre-commit shell</a></li>
-    <li><a href="#oracle-client-무설치-설정">(oracle) client 무설치 설정</a></li>
-    <li><a href="#oracle-sqlplus">(oracle) sqlplus</a></li>
-    <li><a href="#oracle-object-조회-query">(oracle) object 조회 query</a></li>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#maven-release">(maven) release</a></li>
+            <li><a href="#maven-helpevaluate">(maven) help:evaluate</a></li>
+            <li><a href="#maven-dependency">(maven) dependency</a></li>
+            <li><a href="#maven-deploydeploy-file">(maven) deploy:deploy-file</a></li>
+            <li><a href="#maven-settingsxml-파일">(maven) settings.xml 파일</a></li>
+            <li><a href="#maven-password-암호화">(maven) password 암호화</a></li>
+            <li><a href="#java-vmargs-2개">(java) vmargs (2개)</a></li>
+            <li><a href="#java-java-에-인증서-등록">(java) java 에 인증서 등록</a></li>
+            <li><a href="#win-win11-system-tray-설정">(win) win11 system-tray 설정</a></li>
+            <li><a href="#win-font-추천">(win) font 추천</a></li>
+            <li><a href="#eclipse-hidpi-설정">(eclipse) hidpi 설정</a></li>
+            <li><a href="#win-절전-cmd">(win) 절전 cmd</a></li>
+            <li><a href="#vmware-실행-cmd">(vmware) 실행 cmd</a></li>
+            <li><a href="#win-wol-설정">(win) wol 설정</a></li>
+            <li><a href="#win-port-forwarding-cmd">(win) port-forwarding cmd</a></li>
+            <li><a href="#win-파일-공유-설정">(win) 파일 공유 설정</a></li>
+            <li><a href="#vmware-nat-설정">(vmware) nat 설정</a></li>
+            <li><a href="#7z-7z-압축-cmd">(7z) 7z 압축 cmd</a></li>
+            <li><a href="#jmeter-jmeter-실행-cmd">(jmeter) jmeter 실행 cmd</a></li>
+            <li><a href="#win-xcopy-cmd">(win) xcopy cmd</a></li>
+            <li><a href="#chrome-https-자동-접속-현상">(chrome) https 자동 접속 현상</a></li>
+            <li><a href="#git-config-cmd">(git) config cmd</a></li>
+            <li><a href="#git-pre-commit-shell">(git) pre-commit shell</a></li>
+            <li><a href="#oracle-client-무설치-설정">(oracle) client 무설치 설정</a></li>
+            <li><a href="#oracle-sqlplus">(oracle) sqlplus</a></li>
+            <li><a href="#oracle-object-조회-query">(oracle) object 조회 query</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
 
@@ -252,7 +260,7 @@ $M2_HOME/conf/settings.xml 파일
 
             
 <div class="td-content">
-	<h1>로컬 환경</h1>
+	<h1>localenv</h1>
   
 	<header class="article-meta">
 		
@@ -269,7 +277,7 @@ $M2_HOME/conf/settings.xml 파일
 		
 		
 	</header>
-	<h2 id="maven-release">(maven) release</h2>
+	<h4 id="maven-release">(maven) release</h4>
 <p>명령어</p>
 <div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ mvn -B clean release:prepare release:perform deploy
 </code></pre></div><p>$M2_HOME/conf/settings.xml 파일</p>
@@ -335,11 +343,11 @@ $M2_HOME/conf/settings.xml 파일
   <span style="color:#008000;font-weight:bold">&lt;/repository&gt;</span>
 <span style="color:#008000;font-weight:bold">&lt;/distributionManagement&gt;</span>
 </code></pre></div><br>
-<h2 id="maven-helpevaluate">(maven) help:evaluate</h2>
+<h4 id="maven-helpevaluate">(maven) help:evaluate</h4>
 <p>명령어</p>
 <div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#19177c">SNAPSHOT_NM</span><span style="color:#666">=</span><span style="color:#008000;font-weight:bold">$(</span>mvn -f pom.xml help:evaluate -Dexpression<span style="color:#666">=</span>project.version -q -DforceStdout<span style="color:#008000;font-weight:bold">)</span>
 </code></pre></div><br>
-<h2 id="maven-dependency">(maven) dependency</h2>
+<h4 id="maven-dependency">(maven) dependency</h4>
 <p>명령어: dependency:resolve</p>
 <p>javadoc 다운로드</p>
 <pre><code>$ mvn dependency:resolve -Dclassifier=javadoc
@@ -347,7 +355,7 @@ $M2_HOME/conf/settings.xml 파일
 <p>sources 다운로드</p>
 <pre><code>$ mvn dependency:sources
 </code></pre><br>
-<h2 id="maven-deploydeploy-file">(maven) deploy:deploy-file</h2>
+<h4 id="maven-deploydeploy-file">(maven) deploy:deploy-file</h4>
 <p>명령어</p>
 <div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"><span style="color:#008000;font-weight:bold">set</span> <span style="color:#19177c">JAVA_HOME</span>=Z:\develop\java\openjdk-11.0.2
 <span style="color:#008000;font-weight:bold">set</span> <span style="color:#19177c">M2_HOME</span>=Z:\develop\build\maven-3.6.3
@@ -370,15 +378,15 @@ $M2_HOME/conf/settings.xml 파일
   <span style="color:#008000;font-weight:bold">&lt;/plugins&gt;</span>
 <span style="color:#008000;font-weight:bold">&lt;/build&gt;</span>
 </code></pre></div><br>
-<h2 id="maven-settingsxml-파일">(maven) settings.xml 파일</h2>
+<h4 id="maven-settingsxml-파일">(maven) settings.xml 파일</h4>
 <p>$M2_HOME/conf/settings.xml</p>
 <p><a href="/files/localenv/20211120-settings.xml" target="_blank">새 창 보기</a></p>
 <br>
-<h2 id="maven-password-암호화">(maven) password 암호화</h2>
+<h4 id="maven-password-암호화">(maven) password 암호화</h4>
 <div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ mvn --encrypt-master-password mypassword
 <span style="color:#666">{</span>ODOdTfm09eMHYfUVt4vkUfm9dw1pkSRC+HAXsuqE0p0<span style="color:#666">=}</span>
 </code></pre></div><br>
-<h2 id="java-vmargs-2개">(java) vmargs (2개)</h2>
+<h4 id="java-vmargs-2개">(java) vmargs (2개)</h4>
 <pre><code># request.getRemoteAddr() 가 IPv6 로 출력되는 경우
 -Djava.net.preferIPv4Stack=true
 
@@ -386,7 +394,7 @@ $M2_HOME/conf/settings.xml 파일
 # URLConnection 객체를 사용할 때 HttpsURLConnection 이 반환되지 않는 경우
 -DUseSunHttpHandler=true
 </code></pre><br>
-<h2 id="java-java-에-인증서-등록">(java) java 에 인증서 등록</h2>
+<h4 id="java-java-에-인증서-등록">(java) java 에 인증서 등록</h4>
 <p>로컬 설치된 java 에 인증서 파일(*.crt) 등록을 하기 위해서는 $JAVA_HOME/bin/keytool 를 사용해야 합니다.</p>
 <p>ca 에 등록되지 않은 인증서로 https 통신을 하는 경우에는 ssl-handshake 과정에서 오류가 발생하므로</p>
 <p>해당 사이트의 인증서를 로컬 java 에 신뢰할 수 있는 인증서에 등록해야 합니다.</p>
@@ -404,13 +412,13 @@ hello, 2020. 5. 8, trustedCertEntry,
 
 # 인증서 삭제
 keytool -delete -alias &quot;hello&quot; -keystore &quot;cacerts&quot;
-</code></pre><h2 id="win-win11-system-tray-설정">(win) win11 system-tray 설정</h2>
+</code></pre><h4 id="win-win11-system-tray-설정">(win) win11 system-tray 설정</h4>
 <p>cmd 창에서 아래 명령어를 입력하여 시스템 트레이에 모든 아이콘을 표시하도록 합니다.</p>
 <p><code>시스템 아이콘 켜기 또는 끄기</code> 를 선택하여 시계를 표시할 수도 있습니다.</p>
 <div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">&gt; explorer shell:::{05d7b0f4-2121-4eff-bf6b-ed3f69b894d9}
 </code></pre></div><p><a href="/images/localenv/20211121_windows11_systemtray_show_all_icons.png" target="_blank">새 창 보기</a></p>
 <br>
-<h2 id="win-font-추천">(win) font 추천</h2>
+<h4 id="win-font-추천">(win) font 추천</h4>
 <p><strong>hugo-site</strong></p>
 <p>/assets/scss/_variables_project.scss</p>
 <div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css"><span style="color:#666">$</span><span style="color:#008000;font-weight:bold">google_font_name</span><span style="color:#666">:</span> <span style="color:#ba2121">&#34;Bitstream Vera Sans Mono&#34;</span> <span style="color:#666">!</span><span style="color:#008000;font-weight:bold">default</span><span style="color:#666">;</span>
@@ -436,23 +444,23 @@ $ npm install -D --save postcss-cli
 <p><code>Colors and Fonts</code> &gt; <code>Basic</code> &gt; <code>Text Font</code> 를 선택하고 <code>Edit</code> 버튼을 클릭하면 변경할 수 있습니다.</p>
 <p><a href="/images/localenv/20211105_change-eclipse-font.png" target="_blank">새 창 보기<a/></p>
 <br>
-<h2 id="eclipse-hidpi-설정">(eclipse) hidpi 설정</h2>
+<h4 id="eclipse-hidpi-설정">(eclipse) hidpi 설정</h4>
 <pre><code>-Dswt.autoScale=150 # 150 == 1.5배
 </code></pre><p><a href="/files/localenv/20211120-eclipse.ini" target="_blank">새 창 보기</a></p>
 <br>
-<h2 id="win-절전-cmd">(win) 절전 cmd</h2>
+<h4 id="win-절전-cmd">(win) 절전 cmd</h4>
 <div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"><span style="color:#19177c">%windir%</span>\System32\rundll32.exe powrprof.dll SetSuspendState
 </code></pre></div><br>
-<h2 id="vmware-실행-cmd">(vmware) 실행 cmd</h2>
+<h4 id="vmware-실행-cmd">(vmware) 실행 cmd</h4>
 <div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"><span style="color:#008000;font-weight:bold">set</span> <span style="color:#ba2121">&#34;VMWARE_HOME=C:\Program Files (x86)\VMware\VMware Workstation&#34;</span>
 <span style="color:#008000;font-weight:bold">set</span> <span style="color:#ba2121">&#34;PATH=</span><span style="color:#19177c">%PATH%</span><span style="color:#ba2121">;</span><span style="color:#19177c">%VMWARE_HOME%</span><span style="color:#ba2121">&#34;</span>
 vmrun -T ws start <span style="color:#ba2121">&#34;Z:\centos7-develop\centos7-develop.vmx&#34;</span> nogui
 </code></pre></div><br>
-<h2 id="win-wol-설정">(win) wol 설정</h2>
+<h4 id="win-wol-설정">(win) wol 설정</h4>
 <p>절전 상태에서 wol 이 작동하려면 아래 옵션을 선택해야 합니다.</p>
 <p><a href="/images/localenv/20211120-windows_wol_1.png" target="_blank">새 창 보기</a></p>
 <br>
-<h2 id="win-port-forwarding-cmd">(win) port-forwarding cmd</h2>
+<h4 id="win-port-forwarding-cmd">(win) port-forwarding cmd</h4>
 <div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"># 설정
 netsh interface portproxy add v4tov4 listenport=8222 listenaddress=0.0.0.0 connectport=22 connectaddress=172.28.200.20
 
@@ -462,7 +470,7 @@ netsh interface portproxy delete v4tov4 listenport=8222 listenaddress=0.0.0.0
 # 확인
 netsh interface portproxy show v4tov4
 </code></pre></div><br>
-<h2 id="win-파일-공유-설정">(win) 파일 공유 설정</h2>
+<h4 id="win-파일-공유-설정">(win) 파일 공유 설정</h4>
 <p>windows 에서 파일 공유 시 권한이 없다는 메시지가 나오는 경우가 있음</p>
 <p>windows 계정에 패스워드가 설정되어 있지 않으면 발생하는 사항</p>
 <div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"># 비밀번호 설정하기
@@ -488,37 +496,37 @@ tmpfs                 781M     0  781M   0% /run/user/0
 $ vi /etc/fstab
 //172.28.200.1/share /share cifs username=administrator,password=1 0 0
 </code></pre></div><br>
-<h2 id="vmware-nat-설정">(vmware) nat 설정</h2>
+<h4 id="vmware-nat-설정">(vmware) nat 설정</h4>
 <p><code>vmware</code> &gt; <code>Edit</code> &gt; <code>Virtual Network Editor</code></p>
 <p><code>NAT Settings...</code> &gt; <code>Gateway IP</code> 확인</p>
 <p>Subnet IP: 172.28.200.0, Subnet mask: 255.255.255.0</p>
 <p>vmware 의 guest os는 172.28.200.2~254 로 설정하고, host os(windows) 와 통신은 172.28.200.1 로 합니다.</p>
 <br>
-<h2 id="7z-7z-압축-cmd">(7z) 7z 압축 cmd</h2>
+<h4 id="7z-7z-압축-cmd">(7z) 7z 압축 cmd</h4>
 <div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"><span style="color:#ba2121">&#34;C:\Program Files\7-Zip\7z.exe&#34;</span> a -mx7 -mmt Z:\project.zip <span style="color:#ba2121">&#34;Z:\project&#34;</span>
 <span style="color:#ba2121">&#34;C:\Program Files\7-Zip\7z.exe&#34;</span> a -mx5 -t7z Z:\project.zip <span style="color:#ba2121">&#34;Z:\project&#34;</span> -xr!target -xr!node_modules
 </code></pre></div><p>target 디렉토리와 node_modules 디렉토리는 압축 대상에서 제외됩니다.</p>
 <br>
-<h2 id="jmeter-jmeter-실행-cmd">(jmeter) jmeter 실행 cmd</h2>
+<h4 id="jmeter-jmeter-실행-cmd">(jmeter) jmeter 실행 cmd</h4>
 <p>jmeter 실행 결과 디렉토리에 timestamp 변수 사용하기</p>
 <div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"><span style="color:#008000;font-weight:bold">set</span> <span style="color:#19177c">ts</span>=<span style="color:#19177c">%DATE:~0,4%%DATE:~5,2%%DATE:~8,2%</span>_<span style="color:#19177c">%TIME:~0,2%%TIME:~3,2%%TIME:~6,2%</span>
 apache-jmeter-5.4.1\bin\jmeter.bat -n -t jmeter-mgkim-core.jmx -l data\<span style="color:#19177c">%ts%</span>.csv -e -o data\<span style="color:#19177c">%ts%</span>
 </code></pre></div><br>
-<h2 id="win-xcopy-cmd">(win) xcopy cmd</h2>
+<h4 id="win-xcopy-cmd">(win) xcopy cmd</h4>
 <div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">xcopy C:\exp\*.* Z:\exp\ /d/i/s/c/y
 </code></pre></div><br>
-<h2 id="chrome-https-자동-접속-현상">(chrome) https 자동 접속 현상</h2>
+<h4 id="chrome-https-자동-접속-현상">(chrome) https 자동 접속 현상</h4>
 <ul>
 <li><code>chrome://net-internals/#hsts</code> 로 이동</li>
 <li><code>Delete domain security policies</code> 에서 해당 도메인 delete</li>
 </ul>
 <br>
-<h2 id="git-config-cmd">(git) config cmd</h2>
+<h4 id="git-config-cmd">(git) config cmd</h4>
 <div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">&gt; git config --global core.autocrlf true
 &gt; git config --global user.email hi@mgkim.net
 &gt; git config --global user.name 김명구
 </code></pre></div><br>
-<h2 id="git-pre-commit-shell">(git) pre-commit shell</h2>
+<h4 id="git-pre-commit-shell">(git) pre-commit shell</h4>
 <p>git-commit 을 하기 전에 사전 검사를 하기 위한 코드를 bash-shell 로 체크하는 방법입니다.</p>
 <div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#408080;font-style:italic"># project/.git/hooks/pre-commit</span>
 <span style="color:#408080;font-style:italic">#!/bin/sh</span>
@@ -533,7 +541,7 @@ apache-jmeter-5.4.1\bin\jmeter.bat -n -t jmeter-mgkim-core.jmx -l data\<span sty
 <span style="color:#008000;font-weight:bold">done</span>
 <span style="color:#008000">exit</span> <span style="color:#666">0</span>
 </code></pre></div><br>
-<h2 id="oracle-client-무설치-설정">(oracle) client 무설치 설정</h2>
+<h4 id="oracle-client-무설치-설정">(oracle) client 무설치 설정</h4>
 <p><strong>시스템변수</strong></p>
 <p><a href="/files/localenv/20211120-oracle_client_env.txt" target="_blank">새 창 보기</a></p>
 <p><strong>레지스트리</strong></p>
@@ -544,7 +552,7 @@ apache-jmeter-5.4.1\bin\jmeter.bat -n -t jmeter-mgkim-core.jmx -l data\<span sty
 <p><strong>tnsnames.ora</strong></p>
 <p><a href="/files/localenv/20211120-tnsnames.ora" target="_blank">새 창 보기</a></p>
 <br>
-<h2 id="oracle-sqlplus">(oracle) sqlplus</h2>
+<h4 id="oracle-sqlplus">(oracle) sqlplus</h4>
 <pre><code>C:\Users\Administrator&gt;sqlplus /nolog
 
 SQL*Plus: Release 12.1.0.2.0 Production on 목 9월 2 11:39:53 2021
@@ -580,7 +588,7 @@ CON_NAME
 SPADBP
 SQL&gt;
 </code></pre><br>
-<h2 id="oracle-object-조회-query">(oracle) object 조회 query</h2>
+<h4 id="oracle-object-조회-query">(oracle) object 조회 query</h4>
 <p>dictionary 뷰에서부터 object 정보를 확인하고 생성된 상태를 확인할 수 있습니다.</p>
 <p>sqlgate 에 단축키로 등록하고 사용하면 유용할 query 입니다.</p>
 <div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#666">#</span><span style="color:#bbb"> </span><span style="">테이블</span><span style="color:#bbb"> </span><span style="">검색</span><span style="color:#bbb">

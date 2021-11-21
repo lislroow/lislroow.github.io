@@ -22,13 +22,13 @@
 
 
   
-  <meta name="description" content="(sed) 문자열 치환
-sed -i -e &#39;s/hello/world/g&#39; test.txt
+  <meta name="description" content="(openssl) key 생성 cmd
+# 암호화하지 않은 개인키
+$ openssl genrsa -out private_key.pem 2048
 
-(tar) 분할 압축
-# split
-$ tar cvfz - target | split -b 3072m - target.tgz
-$ cat target.tgz.* | …">
+# 3des로 암호화된 개인키 생성
+# passphrase를 입력이 필요합니다.
+$ openssl genrsa -des3 …">
 <meta property="og:title" content="system" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -42,8 +42,8 @@ $ cat target.tgz.* | …">
 
 
 
-<link rel="preload" href="/scss/main.min.91b6d299ff6c1e2e2b65b300372037fabf8e69d15197755b28debe675fdada0d.css" as="style">
-<link href="/scss/main.min.91b6d299ff6c1e2e2b65b300372037fabf8e69d15197755b28debe675fdada0d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.scss" as="style">
+<link href="/scss/main.scss" rel="stylesheet" integrity="">
 
 
 <script
@@ -116,7 +116,7 @@ $ cat target.tgz.* | …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.9445cb5b2540002ba6ed79171b320eec.json"
+  data-offline-search-index-json-src="/offline-search-index.e4047179115d75beb10fe3e2cafe549f.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -143,7 +143,7 @@ $ cat target.tgz.* | …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.9445cb5b2540002ba6ed79171b320eec.json"
+  data-offline-search-index-json-src="/offline-search-index.e4047179115d75beb10fe3e2cafe549f.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -170,9 +170,6 @@ $ cat target.tgz.* | …">
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemopenssh-li">
   
   <a href="/system/openssh/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemopenssh"><span class="">openssh</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemopenssl-li">
-  
-  <a href="/system/openssl/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemopenssl"><span class="">openssl</span></a>
 </li>
   </ul>
 </li>
@@ -200,11 +197,20 @@ $ cat target.tgz.* | …">
 
 <div class="td-toc"><nav id="TableOfContents">
   <ul>
-    <li><a href="#sed-문자열-치환">(sed) 문자열 치환</a></li>
-    <li><a href="#tar-분할-압축">(tar) 분할 압축</a></li>
-    <li><a href="#tar-exclude-설정">(tar) exclude 설정</a></li>
-    <li><a href="#httpd-설정">(httpd) 설정</a></li>
-    <li><a href="#jenkins-설정">(jenkins) 설정</a></li>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#openssl-key-생성-cmd">(openssl) key 생성 cmd</a></li>
+            <li><a href="#sed-문자열-치환">(sed) 문자열 치환</a></li>
+            <li><a href="#tar-분할-압축">(tar) 분할 압축</a></li>
+            <li><a href="#tar-exclude-설정">(tar) exclude 설정</a></li>
+            <li><a href="#httpd-설정">(httpd) 설정</a></li>
+            <li><a href="#jenkins-설정">(jenkins) 설정</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
 
@@ -268,15 +274,29 @@ $ cat target.tgz.* | …">
 		
 		
 	</header>
-	<h2 id="sed-문자열-치환">(sed) 문자열 치환</h2>
-<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sed -i -e <span style="color:#ba2121">&#39;s/hello/world/g&#39;</span> test.txt
+	<h4 id="openssl-key-생성-cmd">(openssl) key 생성 cmd</h4>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#408080;font-style:italic"># 암호화하지 않은 개인키</span>
+$ openssl genrsa -out private_key.pem <span style="color:#666">2048</span>
+
+<span style="color:#408080;font-style:italic"># 3des로 암호화된 개인키 생성</span>
+<span style="color:#408080;font-style:italic"># passphrase를 입력이 필요합니다.</span>
+$ openssl genrsa -des3 -out enc_private_key.pem <span style="color:#666">2048</span>
+
+<span style="color:#408080;font-style:italic"># 기존 개인키에 패스워드 추가</span>
+$ openssl rsa -des3 -in private_key.pem -out enc_private_key.pem
+
+<span style="color:#408080;font-style:italic"># 기존 개인키에 패스워드 제거</span>
+$ openssl rsa -in enc_private_key.pem -out private_key.pem
 </code></pre></div><br>
-<h2 id="tar-분할-압축">(tar) 분할 압축</h2>
+<h4 id="sed-문자열-치환">(sed) 문자열 치환</h4>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sed -i -e <span style="color:#ba2121">&#39;s/hello/world/g&#39;</span> test.txt
+</code></pre></div><br>
+<h4 id="tar-분할-압축">(tar) 분할 압축</h4>
 <div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#408080;font-style:italic"># split</span>
 $ tar cvfz - target | split -b 3072m - target.tgz
 $ cat target.tgz.* | tar zxvf -
 </code></pre></div><br>
-<h2 id="tar-exclude-설정">(tar) exclude 설정</h2>
+<h4 id="tar-exclude-설정">(tar) exclude 설정</h4>
 <div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#408080;font-style:italic"># exclude</span>
 $ cat .tarexclude
 build.*
@@ -289,11 +309,11 @@ bin
 backup.sh
 $ tar cvfz ../target.tgz * -X .tarexclude
 </code></pre></div><br>
-<h2 id="httpd-설정">(httpd) 설정</h2>
+<h4 id="httpd-설정">(httpd) 설정</h4>
 <p>httpd.conf, vhost 설정, ssl 적용에 대한 예시</p>
 <p><a href="/system/httpd" target="_blank">새 창 보기</a></p>
 <br>
-<h2 id="jenkins-설정">(jenkins) 설정</h2>
+<h4 id="jenkins-설정">(jenkins) 설정</h4>
 <p>플러그인 <code>Publish Over SSH</code>, <code>GitLab Plugin</code>, <code>GitHub Integration Plugin</code>에 대한 사용법</p>
 <p><a href="/system/jenkins" target="_blank">새 창 보기</a></p>
 <br>
