@@ -26,7 +26,23 @@
 명령어
 $ mvn -B clean release:prepare release:perform deploy
 $M2_HOME/conf/settings.xml 파일
-&lt;?xml version=&#34;1.0&#34; …">
+
+
+ 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15 …">
 <meta property="og:title" content="localenv" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -114,7 +130,7 @@ $M2_HOME/conf/settings.xml 파일
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.43d62bb775fedce5d643101a739fb9a7.json"
+  data-offline-search-index-json-src="/offline-search-index.a620c3518f7dc2ad2b4c5eaa61b275c5.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -141,7 +157,7 @@ $M2_HOME/conf/settings.xml 파일
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.43d62bb775fedce5d643101a739fb9a7.json"
+  data-offline-search-index-json-src="/offline-search-index.a620c3518f7dc2ad2b4c5eaa61b275c5.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -281,33 +297,65 @@ $M2_HOME/conf/settings.xml 파일
 <p>명령어</p>
 <div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ mvn -B clean release:prepare release:perform deploy
 </code></pre></div><p>$M2_HOME/conf/settings.xml 파일</p>
-<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#bc7a00">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<div class="highlight"><div style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="display:block;width:100%;background-color:#e5e5e5"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span></span><span style="display:block;width:100%;background-color:#e5e5e5"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span></span><span style="display:block;width:100%;background-color:#e5e5e5"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span></span><span style="display:block;width:100%;background-color:#e5e5e5"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></span><span style="display:block;width:100%;background-color:#e5e5e5"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span></span><span style="display:block;width:100%;background-color:#e5e5e5"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span></span><span style="display:block;width:100%;background-color:#e5e5e5"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span></span><span style="display:block;width:100%;background-color:#e5e5e5"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span></span><span style="display:block;width:100%;background-color:#e5e5e5"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span></span><span style="display:block;width:100%;background-color:#e5e5e5"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span></span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="display:block;width:100%;background-color:#e5e5e5"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span></span><span style="display:block;width:100%;background-color:#e5e5e5"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span></span><span style="display:block;width:100%;background-color:#e5e5e5"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span></span><span style="display:block;width:100%;background-color:#e5e5e5"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span></span><span style="display:block;width:100%;background-color:#e5e5e5"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span></span><span style="display:block;width:100%;background-color:#e5e5e5"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span></span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#bc7a00">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
 <span style="color:#008000;font-weight:bold">&lt;settings</span> <span style="color:#7d9029">xmlns=</span><span style="color:#ba2121">&#34;http://maven.apache.org/SETTINGS/1.0.0&#34;</span>
           <span style="color:#7d9029">xmlns:xsi=</span><span style="color:#ba2121">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
           <span style="color:#7d9029">xsi:schemaLocation=</span><span style="color:#ba2121">&#34;http://maven.apache.org/SETTINGS/1.0.0
 </span><span style="color:#ba2121">          http://maven.apache.org/xsd/settings-1.0.0.xsd&#34;</span><span style="color:#008000;font-weight:bold">&gt;</span>
   <span style="color:#008000;font-weight:bold">&lt;servers&gt;</span>
-    <span style="color:#008000;font-weight:bold">&lt;server&gt;</span>
-      <span style="color:#008000;font-weight:bold">&lt;id&gt;</span>nexus-release<span style="color:#008000;font-weight:bold">&lt;/id&gt;</span>
-      <span style="color:#008000;font-weight:bold">&lt;username&gt;</span>admin<span style="color:#008000;font-weight:bold">&lt;/username&gt;</span>
-      <span style="color:#008000;font-weight:bold">&lt;password&gt;</span>passwd<span style="color:#008000;font-weight:bold">&lt;/password&gt;</span>
-    <span style="color:#008000;font-weight:bold">&lt;/server&gt;</span>
-    <span style="color:#008000;font-weight:bold">&lt;server&gt;</span>
-      <span style="color:#008000;font-weight:bold">&lt;id&gt;</span>nexus-snapshot<span style="color:#008000;font-weight:bold">&lt;/id&gt;</span>
-      <span style="color:#008000;font-weight:bold">&lt;username&gt;</span>admin<span style="color:#008000;font-weight:bold">&lt;/username&gt;</span>
-      <span style="color:#008000;font-weight:bold">&lt;password&gt;</span>passwd<span style="color:#008000;font-weight:bold">&lt;/password&gt;</span>
-    <span style="color:#008000;font-weight:bold">&lt;/server&gt;</span>
-  <span style="color:#008000;font-weight:bold">&lt;/servers&gt;</span>
+<span style="display:block;width:100%;background-color:#e5e5e5">    <span style="color:#008000;font-weight:bold">&lt;server&gt;</span>
+</span><span style="display:block;width:100%;background-color:#e5e5e5">      <span style="color:#008000;font-weight:bold">&lt;id&gt;</span>nexus-release<span style="color:#008000;font-weight:bold">&lt;/id&gt;</span>
+</span><span style="display:block;width:100%;background-color:#e5e5e5">      <span style="color:#008000;font-weight:bold">&lt;username&gt;</span>admin<span style="color:#008000;font-weight:bold">&lt;/username&gt;</span>
+</span><span style="display:block;width:100%;background-color:#e5e5e5">      <span style="color:#008000;font-weight:bold">&lt;password&gt;</span>passwd<span style="color:#008000;font-weight:bold">&lt;/password&gt;</span>
+</span><span style="display:block;width:100%;background-color:#e5e5e5">    <span style="color:#008000;font-weight:bold">&lt;/server&gt;</span>
+</span><span style="display:block;width:100%;background-color:#e5e5e5">    <span style="color:#008000;font-weight:bold">&lt;server&gt;</span>
+</span><span style="display:block;width:100%;background-color:#e5e5e5">      <span style="color:#008000;font-weight:bold">&lt;id&gt;</span>nexus-snapshot<span style="color:#008000;font-weight:bold">&lt;/id&gt;</span>
+</span><span style="display:block;width:100%;background-color:#e5e5e5">      <span style="color:#008000;font-weight:bold">&lt;username&gt;</span>admin<span style="color:#008000;font-weight:bold">&lt;/username&gt;</span>
+</span><span style="display:block;width:100%;background-color:#e5e5e5">      <span style="color:#008000;font-weight:bold">&lt;password&gt;</span>passwd<span style="color:#008000;font-weight:bold">&lt;/password&gt;</span>
+</span><span style="display:block;width:100%;background-color:#e5e5e5">    <span style="color:#008000;font-weight:bold">&lt;/server&gt;</span>
+</span>  <span style="color:#008000;font-weight:bold">&lt;/servers&gt;</span>
   <span style="color:#008000;font-weight:bold">&lt;mirrors&gt;</span>
-    <span style="color:#008000;font-weight:bold">&lt;mirror&gt;</span>
-      <span style="color:#008000;font-weight:bold">&lt;id&gt;</span>nexus<span style="color:#008000;font-weight:bold">&lt;/id&gt;</span>
-      <span style="color:#008000;font-weight:bold">&lt;name&gt;</span>nexus<span style="color:#008000;font-weight:bold">&lt;/name&gt;</span>
-      <span style="color:#008000;font-weight:bold">&lt;url&gt;</span>http://nexus/repository/maven-group/<span style="color:#008000;font-weight:bold">&lt;/url&gt;</span>
-      <span style="color:#008000;font-weight:bold">&lt;mirrorOf&gt;</span>*<span style="color:#008000;font-weight:bold">&lt;/mirrorOf&gt;</span>
-    <span style="color:#008000;font-weight:bold">&lt;/mirror&gt;</span>
-  <span style="color:#008000;font-weight:bold">&lt;/mirrors&gt;</span>
-<span style="color:#008000;font-weight:bold">&lt;/settings&gt;</span>
-</code></pre></div><p>pom.xml 파일</p>
+<span style="display:block;width:100%;background-color:#e5e5e5">    <span style="color:#008000;font-weight:bold">&lt;mirror&gt;</span>
+</span><span style="display:block;width:100%;background-color:#e5e5e5">      <span style="color:#008000;font-weight:bold">&lt;id&gt;</span>nexus<span style="color:#008000;font-weight:bold">&lt;/id&gt;</span>
+</span><span style="display:block;width:100%;background-color:#e5e5e5">      <span style="color:#008000;font-weight:bold">&lt;name&gt;</span>nexus<span style="color:#008000;font-weight:bold">&lt;/name&gt;</span>
+</span><span style="display:block;width:100%;background-color:#e5e5e5">      <span style="color:#008000;font-weight:bold">&lt;url&gt;</span>http://nexus/repository/maven-group/<span style="color:#008000;font-weight:bold">&lt;/url&gt;</span>
+</span><span style="display:block;width:100%;background-color:#e5e5e5">      <span style="color:#008000;font-weight:bold">&lt;mirrorOf&gt;</span>*<span style="color:#008000;font-weight:bold">&lt;/mirrorOf&gt;</span>
+</span><span style="display:block;width:100%;background-color:#e5e5e5">    <span style="color:#008000;font-weight:bold">&lt;/mirror&gt;</span>
+</span>  <span style="color:#008000;font-weight:bold">&lt;/mirrors&gt;</span>
+<span style="color:#008000;font-weight:bold">&lt;/settings&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>pom.xml 파일</p>
 <div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#008000;font-weight:bold">&lt;build&gt;</span>
   <span style="color:#008000;font-weight:bold">&lt;plugins&gt;</span>
     <span style="color:#008000;font-weight:bold">&lt;plugin&gt;</span>
