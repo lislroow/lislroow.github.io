@@ -22,7 +22,7 @@
 
 
   
-  <meta name="description" content="(maven) release goal
+  <meta name="description" content="(maven) release
 명령어
 $ mvn -B clean release:prepare release:perform deploy
 $M2_HOME/conf/settings.xml 파일
@@ -114,7 +114,7 @@ $M2_HOME/conf/settings.xml 파일
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.02bdf42090d8f3860cc52081bc960d66.json"
+  data-offline-search-index-json-src="/offline-search-index.087d001fde9b3866d691a52ac34e1073.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -141,7 +141,7 @@ $M2_HOME/conf/settings.xml 파일
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.02bdf42090d8f3860cc52081bc960d66.json"
+  data-offline-search-index-json-src="/offline-search-index.087d001fde9b3866d691a52ac34e1073.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -180,10 +180,10 @@ $M2_HOME/conf/settings.xml 파일
 
 <div class="td-toc"><nav id="TableOfContents">
   <ul>
-    <li><a href="#maven-release-goal">(maven) release goal</a></li>
-    <li><a href="#maven-helpevaluate-goal">(maven) help:evaluate goal</a></li>
-    <li><a href="#maven-dependency-goal">(maven) dependency goal</a></li>
-    <li><a href="#maven-deploydeploy-file-goal">(maven) deploy:deploy-file goal</a></li>
+    <li><a href="#maven-release">(maven) release</a></li>
+    <li><a href="#maven-helpevaluate">(maven) help:evaluate</a></li>
+    <li><a href="#maven-dependency">(maven) dependency</a></li>
+    <li><a href="#maven-deploydeploy-file">(maven) deploy:deploy-file</a></li>
     <li><a href="#maven-settingsxml-파일">(maven) settings.xml 파일</a></li>
     <li><a href="#maven-password-암호화">(maven) password 암호화</a></li>
     <li><a href="#java-vmargs-2개">(java) vmargs (2개)</a></li>
@@ -269,7 +269,7 @@ $M2_HOME/conf/settings.xml 파일
 		
 		
 	</header>
-	<h2 id="maven-release-goal">(maven) release goal</h2>
+	<h2 id="maven-release">(maven) release</h2>
 <p>명령어</p>
 <div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ mvn -B clean release:prepare release:perform deploy
 </code></pre></div><p>$M2_HOME/conf/settings.xml 파일</p>
@@ -335,11 +335,11 @@ $M2_HOME/conf/settings.xml 파일
   <span style="color:#008000;font-weight:bold">&lt;/repository&gt;</span>
 <span style="color:#008000;font-weight:bold">&lt;/distributionManagement&gt;</span>
 </code></pre></div><br>
-<h2 id="maven-helpevaluate-goal">(maven) help:evaluate goal</h2>
+<h2 id="maven-helpevaluate">(maven) help:evaluate</h2>
 <p>명령어</p>
 <div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#19177c">SNAPSHOT_NM</span><span style="color:#666">=</span><span style="color:#008000;font-weight:bold">$(</span>mvn -f pom.xml help:evaluate -Dexpression<span style="color:#666">=</span>project.version -q -DforceStdout<span style="color:#008000;font-weight:bold">)</span>
 </code></pre></div><br>
-<h2 id="maven-dependency-goal">(maven) dependency goal</h2>
+<h2 id="maven-dependency">(maven) dependency</h2>
 <p>명령어: dependency:resolve</p>
 <p>javadoc 다운로드</p>
 <pre><code>$ mvn dependency:resolve -Dclassifier=javadoc
@@ -347,7 +347,7 @@ $M2_HOME/conf/settings.xml 파일
 <p>sources 다운로드</p>
 <pre><code>$ mvn dependency:sources
 </code></pre><br>
-<h2 id="maven-deploydeploy-file-goal">(maven) deploy:deploy-file goal</h2>
+<h2 id="maven-deploydeploy-file">(maven) deploy:deploy-file</h2>
 <p>명령어</p>
 <div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"><span style="color:#008000;font-weight:bold">set</span> <span style="color:#19177c">JAVA_HOME</span>=Z:\develop\java\openjdk-11.0.2
 <span style="color:#008000;font-weight:bold">set</span> <span style="color:#19177c">M2_HOME</span>=Z:\develop\build\maven-3.6.3
