@@ -360,7 +360,12 @@ SQL&amp;gt; select username, account_status, expiry_date from dba_users;
       <description>
         
         
-        &lt;h2 id=&#34;font&#34;&gt;font&lt;/h2&gt;
+        &lt;h2 id=&#34;windows-11-시스템-트레이-아이콘&#34;&gt;windows 11 시스템 트레이 아이콘&lt;/h2&gt;
+&lt;p&gt;cmd 창에서 아래 명령어를 입력하여 시스템 트레이에 모든 아이콘을 표시하도록 합니다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;&amp;gt; explorer shell:::{05d7b0f4-2121-4eff-bf6b-ed3f69b894d9}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a href=&#34;/images/localenv/20211121_windows11_systemtray_show_all_icons.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
+&lt;br&gt;
+&lt;h2 id=&#34;font&#34;&gt;font&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;hugo-site&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;/assets/scss/_variables_project.scss&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-css&#34; data-lang=&#34;css&#34;&gt;&lt;span style=&#34;color:#666&#34;&gt;$&lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;google_font_name&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#34;Bitstream Vera Sans Mono&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#666&#34;&gt;!&lt;/span&gt;&lt;span style=&#34;color:#008000;font-weight:bold&#34;&gt;default&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;;&lt;/span&gt;
