@@ -687,30 +687,30 @@ SSLSessionCacheTimeout  300
 &lt;/ol&gt;
 &lt;h3 id=&#34;useful&#34;&gt;useful&lt;/h3&gt;
 &lt;p&gt;개인키(domain.key)와 인증서(domain.crt) 파일을 동시에 생성하는 스크립트 입니다.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#666&#34;&gt;[&lt;/span&gt;root@develop /etc/httpd/conf.d/certs&lt;span style=&#34;color:#666&#34;&gt;]&lt;/span&gt;$ cat create-cert.sh
-&lt;span style=&#34;color:#19177c&#34;&gt;DOMAIN&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#19177c&#34;&gt;$1&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;root@develop /etc/httpd/conf.d/certs&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;$ cat create-cert.sh
+DOMAIN&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;$1
 
-openssl req -x509 -nodes -days &lt;span style=&#34;color:#666&#34;&gt;730&lt;/span&gt; -newkey rsa:2048 -keyout &lt;span style=&#34;color:#19177c&#34;&gt;$DOMAIN&lt;/span&gt;.key -out &lt;span style=&#34;color:#19177c&#34;&gt;$DOMAIN&lt;/span&gt;.crt -config &amp;lt;&lt;span style=&#34;color:#666&#34;&gt;(&lt;/span&gt;cat &lt;span style=&#34;color:#ba2121&#34;&gt;&amp;lt;&amp;lt;- TEXT
-&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;[req]
-&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;distinguished_name = req_distinguished_name
-&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;x509_extensions = v3_req
-&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;prompt = no
-&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;[req_distinguished_name]
-&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;countryName             = KR
-&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;stateOrProvinceName     = Seoul
-&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;localityName            = Seonyudo
-&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;organizationName        = SPACESOFT
-&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;organizationalUnitName  = Dev Team
-&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;CN = $DOMAIN
-&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;[v3_req]
-&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;keyUsage = critical, digitalSignature, keyAgreement
-&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;extendedKeyUsage = serverAuth
-&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;subjectAltName = @alt_names
-&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;[alt_names]
-&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;DNS.1 = $DOMAIN
-&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;TEXT&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;)&lt;/span&gt; -sha256
+openssl req -x509 -nodes -days &lt;span style=&#34;color:#ae81ff&#34;&gt;730&lt;/span&gt; -newkey rsa:2048 -keyout $DOMAIN.key -out $DOMAIN.crt -config &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;cat &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;lt;&amp;lt;- TEXT
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;[req]
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;distinguished_name = req_distinguished_name
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;x509_extensions = v3_req
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;prompt = no
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;[req_distinguished_name]
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;countryName             = KR
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;stateOrProvinceName     = Seoul
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;localityName            = Seonyudo
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;organizationName        = SPACESOFT
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;organizationalUnitName  = Dev Team
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;CN = $DOMAIN
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;[v3_req]
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;keyUsage = critical, digitalSignature, keyAgreement
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;extendedKeyUsage = serverAuth
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;subjectAltName = @alt_names
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;[alt_names]
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;DNS.1 = $DOMAIN
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;TEXT&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; -sha256
 
-&lt;span style=&#34;color:#666&#34;&gt;[&lt;/span&gt;root@develop /etc/httpd/conf.d/certs&lt;span style=&#34;color:#666&#34;&gt;]&lt;/span&gt;$
+&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;root@develop /etc/httpd/conf.d/certs&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;$
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;selinux&#34;&gt;selinux&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;chcon -Rt httpd_log_t /outlog/WEB
 chcon -Rt httpd_sys_content_t /app/WEB/dlog
@@ -1089,27 +1089,27 @@ enabled
 [root@develop /etc/systemd/system]$
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;systemctl enable {서비스}&lt;/code&gt; 명령으로 enabled 상태로 설정합니다.&lt;/p&gt;
 &lt;h2 id=&#34;network&#34;&gt;network&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#666&#34;&gt;[&lt;/span&gt;root@develop ~&lt;span style=&#34;color:#666&#34;&gt;]&lt;/span&gt;$ cat /etc/sysconfig/network-scripts/ifcfg-ens32
-&lt;span style=&#34;color:#19177c&#34;&gt;TYPE&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#34;Ethernet&amp;#34;&lt;/span&gt;
-&lt;span style=&#34;color:#19177c&#34;&gt;PROXY_METHOD&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#34;none&amp;#34;&lt;/span&gt;
-&lt;span style=&#34;color:#19177c&#34;&gt;BROWSER_ONLY&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#34;no&amp;#34;&lt;/span&gt;
-&lt;span style=&#34;color:#19177c&#34;&gt;BOOTPROTO&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#34;none&amp;#34;&lt;/span&gt;
-&lt;span style=&#34;color:#19177c&#34;&gt;DEFROUTE&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#34;yes&amp;#34;&lt;/span&gt;
-&lt;span style=&#34;color:#19177c&#34;&gt;IPV4_FAILURE_FATAL&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#34;no&amp;#34;&lt;/span&gt;
-&lt;span style=&#34;color:#19177c&#34;&gt;IPV6INIT&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#34;no&amp;#34;&lt;/span&gt;
-&lt;span style=&#34;color:#19177c&#34;&gt;IPV6_AUTOCONF&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#34;yes&amp;#34;&lt;/span&gt;
-&lt;span style=&#34;color:#19177c&#34;&gt;IPV6_DEFROUTE&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#34;yes&amp;#34;&lt;/span&gt;
-&lt;span style=&#34;color:#19177c&#34;&gt;IPV6_FAILURE_FATAL&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#34;no&amp;#34;&lt;/span&gt;
-&lt;span style=&#34;color:#19177c&#34;&gt;IPV6_ADDR_GEN_MODE&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#34;stable-privacy&amp;#34;&lt;/span&gt;
-&lt;span style=&#34;color:#19177c&#34;&gt;NAME&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#34;ens32&amp;#34;&lt;/span&gt;
-&lt;span style=&#34;color:#19177c&#34;&gt;UUID&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#34;d18679f4-c760-4621-b73a-8e7b513594a7&amp;#34;&lt;/span&gt;
-&lt;span style=&#34;color:#19177c&#34;&gt;DEVICE&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#34;ens32&amp;#34;&lt;/span&gt;
-&lt;span style=&#34;color:#19177c&#34;&gt;ONBOOT&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#34;yes&amp;#34;&lt;/span&gt;
-&lt;span style=&#34;color:#19177c&#34;&gt;IPADDR&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#34;172.28.200.20&amp;#34;&lt;/span&gt;
-&lt;span style=&#34;color:#19177c&#34;&gt;PREFIX&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#34;24&amp;#34;&lt;/span&gt;
-&lt;span style=&#34;color:#19177c&#34;&gt;GATEWAY&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#34;172.28.200.2&amp;#34;&lt;/span&gt;
-&lt;span style=&#34;color:#19177c&#34;&gt;DNS1&lt;/span&gt;&lt;span style=&#34;color:#666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ba2121&#34;&gt;&amp;#34;8.8.8.8&amp;#34;&lt;/span&gt;
-&lt;span style=&#34;color:#666&#34;&gt;[&lt;/span&gt;root@develop ~&lt;span style=&#34;color:#666&#34;&gt;]&lt;/span&gt;$
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;root@develop ~&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;$ cat /etc/sysconfig/network-scripts/ifcfg-ens32
+TYPE&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Ethernet&amp;#34;&lt;/span&gt;
+PROXY_METHOD&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;none&amp;#34;&lt;/span&gt;
+BROWSER_ONLY&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;no&amp;#34;&lt;/span&gt;
+BOOTPROTO&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;none&amp;#34;&lt;/span&gt;
+DEFROUTE&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;yes&amp;#34;&lt;/span&gt;
+IPV4_FAILURE_FATAL&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;no&amp;#34;&lt;/span&gt;
+IPV6INIT&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;no&amp;#34;&lt;/span&gt;
+IPV6_AUTOCONF&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;yes&amp;#34;&lt;/span&gt;
+IPV6_DEFROUTE&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;yes&amp;#34;&lt;/span&gt;
+IPV6_FAILURE_FATAL&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;no&amp;#34;&lt;/span&gt;
+IPV6_ADDR_GEN_MODE&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;stable-privacy&amp;#34;&lt;/span&gt;
+NAME&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ens32&amp;#34;&lt;/span&gt;
+UUID&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;d18679f4-c760-4621-b73a-8e7b513594a7&amp;#34;&lt;/span&gt;
+DEVICE&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ens32&amp;#34;&lt;/span&gt;
+ONBOOT&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;yes&amp;#34;&lt;/span&gt;
+IPADDR&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;172.28.200.20&amp;#34;&lt;/span&gt;
+PREFIX&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;24&amp;#34;&lt;/span&gt;
+GATEWAY&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;172.28.200.2&amp;#34;&lt;/span&gt;
+DNS1&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;8.8.8.8&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;root@develop ~&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;$
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;hostname&#34;&gt;hostname&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;[root@develop ~]$ hostnamectl set-hostname develop
 [root@develop ~]$

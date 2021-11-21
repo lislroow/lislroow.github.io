@@ -125,7 +125,7 @@ ServerAdmin hi@mgkim.net …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.a620c3518f7dc2ad2b4c5eaa61b275c5.json"
+  data-offline-search-index-json-src="/offline-search-index.9e6b78771867e94e9f0141c36a109941.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -152,7 +152,7 @@ ServerAdmin hi@mgkim.net …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.a620c3518f7dc2ad2b4c5eaa61b275c5.json"
+  data-offline-search-index-json-src="/offline-search-index.9e6b78771867e94e9f0141c36a109941.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -972,30 +972,30 @@ SSLSessionCacheTimeout  300
 </ol>
 <h3 id="useful">useful</h3>
 <p>개인키(domain.key)와 인증서(domain.crt) 파일을 동시에 생성하는 스크립트 입니다.</p>
-<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#666">[</span>root@develop /etc/httpd/conf.d/certs<span style="color:#666">]</span>$ cat create-cert.sh
-<span style="color:#19177c">DOMAIN</span><span style="color:#666">=</span><span style="color:#19177c">$1</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#f92672">[</span>root@develop /etc/httpd/conf.d/certs<span style="color:#f92672">]</span>$ cat create-cert.sh
+DOMAIN<span style="color:#f92672">=</span>$1
 
-openssl req -x509 -nodes -days <span style="color:#666">730</span> -newkey rsa:2048 -keyout <span style="color:#19177c">$DOMAIN</span>.key -out <span style="color:#19177c">$DOMAIN</span>.crt -config &lt;<span style="color:#666">(</span>cat <span style="color:#ba2121">&lt;&lt;- TEXT
-</span><span style="color:#ba2121">[req]
-</span><span style="color:#ba2121">distinguished_name = req_distinguished_name
-</span><span style="color:#ba2121">x509_extensions = v3_req
-</span><span style="color:#ba2121">prompt = no
-</span><span style="color:#ba2121">[req_distinguished_name]
-</span><span style="color:#ba2121">countryName             = KR
-</span><span style="color:#ba2121">stateOrProvinceName     = Seoul
-</span><span style="color:#ba2121">localityName            = Seonyudo
-</span><span style="color:#ba2121">organizationName        = SPACESOFT
-</span><span style="color:#ba2121">organizationalUnitName  = Dev Team
-</span><span style="color:#ba2121">CN = $DOMAIN
-</span><span style="color:#ba2121">[v3_req]
-</span><span style="color:#ba2121">keyUsage = critical, digitalSignature, keyAgreement
-</span><span style="color:#ba2121">extendedKeyUsage = serverAuth
-</span><span style="color:#ba2121">subjectAltName = @alt_names
-</span><span style="color:#ba2121">[alt_names]
-</span><span style="color:#ba2121">DNS.1 = $DOMAIN
-</span><span style="color:#ba2121">TEXT</span><span style="color:#666">)</span> -sha256
+openssl req -x509 -nodes -days <span style="color:#ae81ff">730</span> -newkey rsa:2048 -keyout $DOMAIN.key -out $DOMAIN.crt -config &lt;<span style="color:#f92672">(</span>cat <span style="color:#e6db74">&lt;&lt;- TEXT
+</span><span style="color:#e6db74">[req]
+</span><span style="color:#e6db74">distinguished_name = req_distinguished_name
+</span><span style="color:#e6db74">x509_extensions = v3_req
+</span><span style="color:#e6db74">prompt = no
+</span><span style="color:#e6db74">[req_distinguished_name]
+</span><span style="color:#e6db74">countryName             = KR
+</span><span style="color:#e6db74">stateOrProvinceName     = Seoul
+</span><span style="color:#e6db74">localityName            = Seonyudo
+</span><span style="color:#e6db74">organizationName        = SPACESOFT
+</span><span style="color:#e6db74">organizationalUnitName  = Dev Team
+</span><span style="color:#e6db74">CN = $DOMAIN
+</span><span style="color:#e6db74">[v3_req]
+</span><span style="color:#e6db74">keyUsage = critical, digitalSignature, keyAgreement
+</span><span style="color:#e6db74">extendedKeyUsage = serverAuth
+</span><span style="color:#e6db74">subjectAltName = @alt_names
+</span><span style="color:#e6db74">[alt_names]
+</span><span style="color:#e6db74">DNS.1 = $DOMAIN
+</span><span style="color:#e6db74">TEXT</span><span style="color:#f92672">)</span> -sha256
 
-<span style="color:#666">[</span>root@develop /etc/httpd/conf.d/certs<span style="color:#666">]</span>$
+<span style="color:#f92672">[</span>root@develop /etc/httpd/conf.d/certs<span style="color:#f92672">]</span>$
 </code></pre></div><h2 id="selinux">selinux</h2>
 <pre><code>chcon -Rt httpd_log_t /outlog/WEB
 chcon -Rt httpd_sys_content_t /app/WEB/dlog

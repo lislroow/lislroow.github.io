@@ -116,7 +116,7 @@ $ openssl genrsa -des3 …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.a620c3518f7dc2ad2b4c5eaa61b275c5.json"
+  data-offline-search-index-json-src="/offline-search-index.9e6b78771867e94e9f0141c36a109941.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -143,7 +143,7 @@ $ openssl genrsa -des3 …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.a620c3518f7dc2ad2b4c5eaa61b275c5.json"
+  data-offline-search-index-json-src="/offline-search-index.9e6b78771867e94e9f0141c36a109941.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -275,29 +275,29 @@ $ openssl genrsa -des3 …">
 		
 	</header>
 	<h4 id="openssl-key-생성-cmd">(openssl) key 생성 cmd</h4>
-<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#408080;font-style:italic"># 암호화하지 않은 개인키</span>
-$ openssl genrsa -out private_key.pem <span style="color:#666">2048</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 암호화하지 않은 개인키</span>
+$ openssl genrsa -out private_key.pem <span style="color:#ae81ff">2048</span>
 
-<span style="color:#408080;font-style:italic"># 3des로 암호화된 개인키 생성</span>
-<span style="color:#408080;font-style:italic"># passphrase를 입력이 필요합니다.</span>
-$ openssl genrsa -des3 -out enc_private_key.pem <span style="color:#666">2048</span>
+<span style="color:#75715e"># 3des로 암호화된 개인키 생성</span>
+<span style="color:#75715e"># passphrase를 입력이 필요합니다.</span>
+$ openssl genrsa -des3 -out enc_private_key.pem <span style="color:#ae81ff">2048</span>
 
-<span style="color:#408080;font-style:italic"># 기존 개인키에 패스워드 추가</span>
+<span style="color:#75715e"># 기존 개인키에 패스워드 추가</span>
 $ openssl rsa -des3 -in private_key.pem -out enc_private_key.pem
 
-<span style="color:#408080;font-style:italic"># 기존 개인키에 패스워드 제거</span>
+<span style="color:#75715e"># 기존 개인키에 패스워드 제거</span>
 $ openssl rsa -in enc_private_key.pem -out private_key.pem
 </code></pre></div><br>
 <h4 id="sed-문자열-치환">(sed) 문자열 치환</h4>
-<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sed -i -e <span style="color:#ba2121">&#39;s/hello/world/g&#39;</span> test.txt
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sed -i -e <span style="color:#e6db74">&#39;s/hello/world/g&#39;</span> test.txt
 </code></pre></div><br>
 <h4 id="tar-분할-압축">(tar) 분할 압축</h4>
-<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#408080;font-style:italic"># split</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># split</span>
 $ tar cvfz - target | split -b 3072m - target.tgz
 $ cat target.tgz.* | tar zxvf -
 </code></pre></div><br>
 <h4 id="tar-exclude-설정">(tar) exclude 설정</h4>
-<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#408080;font-style:italic"># exclude</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># exclude</span>
 $ cat .tarexclude
 build.*
 run.*
