@@ -4,15 +4,9 @@
   <url>
     <loc>/categories/</loc>
   </url><url>
-    <loc>/localenv/chrome/</loc>
-  </url><url>
     <loc>/</loc>
   </url><url>
-    <loc>/localenv/git/</loc>
-  </url><url>
     <loc>/system/httpd/</loc>
-  </url><url>
-    <loc>/localenv/java/</loc>
   </url><url>
     <loc>/system/jenkins/</loc>
   </url><url>
@@ -26,8 +20,6 @@
   </url><url>
     <loc>/system/openssl/</loc>
   </url><url>
-    <loc>/localenv/oracle/</loc>
-  </url><url>
     <loc>/system/oracle/</loc>
   </url><url>
     <loc>/search/</loc>
@@ -35,7 +27,5 @@
     <loc>/system/</loc>
   </url><url>
     <loc>/tags/</loc>
-  </url><url>
-    <loc>/localenv/windows/</loc>
   </url>
 </urlset>

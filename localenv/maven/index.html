@@ -21,13 +21,15 @@
 
 
   
-  <meta name="description" content="release
+  <meta name="description" content="maven plugin 사용 방법
+release
 명령어
 $ mvn -B clean release:prepare release:perform deploy
 $M2_HOME/conf/settings.xml 파일
 &lt;?xml version=&#34;1.0&#34; …">
 <meta property="og:title" content="maven" />
-<meta property="og:description" content="release 명령어
+<meta property="og:description" content="maven plugin 사용 방법
+release 명령어
 $ mvn -B clean release:prepare release:perform deploy $M2_HOME/conf/settings.xml 파일
 &lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt; &lt;settings xmlns=&#34;http://maven.apache.org/SETTINGS/1.0.0&#34; xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34; xsi:schemaLocation=&#34;http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd&#34;&gt; &lt;servers&gt; &lt;server&gt; &lt;id&gt;nexus-release&lt;/id&gt; &lt;username&gt;admin&lt;/username&gt; &lt;password&gt;passwd&lt;/password&gt; &lt;/server&gt; &lt;server&gt; &lt;id&gt;nexus-snapshot&lt;/id&gt; &lt;username&gt;admin&lt;/username&gt; &lt;password&gt;passwd&lt;/password&gt; &lt;/server&gt; &lt;/servers&gt; &lt;mirrors&gt; &lt;mirror&gt; &lt;id&gt;nexus&lt;/id&gt; &lt;name&gt;nexus&lt;/name&gt; &lt;url&gt;http://nexus/repository/maven-group/&lt;/url&gt; &lt;mirrorOf&gt;*&lt;/mirrorOf&gt; &lt;/mirror&gt; &lt;/mirrors&gt; &lt;/settings&gt; pom.xml 파일
 &lt;build&gt; &lt;plugins&gt; &lt;plugin&gt; &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt; &lt;artifactId&gt;maven-release-plugin&lt;/artifactId&gt; &lt;version&gt;3.0.0-M1&lt;/version&gt; &lt;!-- 필수 사항 --&gt; &lt;configuration&gt; &lt;autoVersionSubmodules&gt;true&lt;/autoVersionSubmodules&gt; &lt;goals&gt;deploy&lt;/goals&gt; &lt;username&gt;mgkim&lt;/username&gt; &lt;password&gt;passwd&lt;/password&gt; &lt;/configuration&gt; &lt;!-- //필수 사항 --&gt; &lt;/plugin&gt; &lt;/plugins&gt; &lt;/build&gt; &lt;!-- 필수 사항 --&gt; &lt;scm&gt; &lt;connection&gt;scm:svn:svn://develop/test/trunk/proto." />
@@ -37,15 +39,17 @@ $ mvn -B clean release:prepare release:perform deploy $M2_HOME/conf/settings.xml
 
 
 <meta itemprop="name" content="maven">
-<meta itemprop="description" content="release 명령어
+<meta itemprop="description" content="maven plugin 사용 방법
+release 명령어
 $ mvn -B clean release:prepare release:perform deploy $M2_HOME/conf/settings.xml 파일
 &lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt; &lt;settings xmlns=&#34;http://maven.apache.org/SETTINGS/1.0.0&#34; xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34; xsi:schemaLocation=&#34;http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd&#34;&gt; &lt;servers&gt; &lt;server&gt; &lt;id&gt;nexus-release&lt;/id&gt; &lt;username&gt;admin&lt;/username&gt; &lt;password&gt;passwd&lt;/password&gt; &lt;/server&gt; &lt;server&gt; &lt;id&gt;nexus-snapshot&lt;/id&gt; &lt;username&gt;admin&lt;/username&gt; &lt;password&gt;passwd&lt;/password&gt; &lt;/server&gt; &lt;/servers&gt; &lt;mirrors&gt; &lt;mirror&gt; &lt;id&gt;nexus&lt;/id&gt; &lt;name&gt;nexus&lt;/name&gt; &lt;url&gt;http://nexus/repository/maven-group/&lt;/url&gt; &lt;mirrorOf&gt;*&lt;/mirrorOf&gt; &lt;/mirror&gt; &lt;/mirrors&gt; &lt;/settings&gt; pom.xml 파일
 &lt;build&gt; &lt;plugins&gt; &lt;plugin&gt; &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt; &lt;artifactId&gt;maven-release-plugin&lt;/artifactId&gt; &lt;version&gt;3.0.0-M1&lt;/version&gt; &lt;!-- 필수 사항 --&gt; &lt;configuration&gt; &lt;autoVersionSubmodules&gt;true&lt;/autoVersionSubmodules&gt; &lt;goals&gt;deploy&lt;/goals&gt; &lt;username&gt;mgkim&lt;/username&gt; &lt;password&gt;passwd&lt;/password&gt; &lt;/configuration&gt; &lt;!-- //필수 사항 --&gt; &lt;/plugin&gt; &lt;/plugins&gt; &lt;/build&gt; &lt;!-- 필수 사항 --&gt; &lt;scm&gt; &lt;connection&gt;scm:svn:svn://develop/test/trunk/proto.">
 
-<meta itemprop="wordCount" content="160">
+<meta itemprop="wordCount" content="164">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="maven"/>
-<meta name="twitter:description" content="release 명령어
+<meta name="twitter:description" content="maven plugin 사용 방법
+release 명령어
 $ mvn -B clean release:prepare release:perform deploy $M2_HOME/conf/settings.xml 파일
 &lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt; &lt;settings xmlns=&#34;http://maven.apache.org/SETTINGS/1.0.0&#34; xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34; xsi:schemaLocation=&#34;http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd&#34;&gt; &lt;servers&gt; &lt;server&gt; &lt;id&gt;nexus-release&lt;/id&gt; &lt;username&gt;admin&lt;/username&gt; &lt;password&gt;passwd&lt;/password&gt; &lt;/server&gt; &lt;server&gt; &lt;id&gt;nexus-snapshot&lt;/id&gt; &lt;username&gt;admin&lt;/username&gt; &lt;password&gt;passwd&lt;/password&gt; &lt;/server&gt; &lt;/servers&gt; &lt;mirrors&gt; &lt;mirror&gt; &lt;id&gt;nexus&lt;/id&gt; &lt;name&gt;nexus&lt;/name&gt; &lt;url&gt;http://nexus/repository/maven-group/&lt;/url&gt; &lt;mirrorOf&gt;*&lt;/mirrorOf&gt; &lt;/mirror&gt; &lt;/mirrors&gt; &lt;/settings&gt; pom.xml 파일
 &lt;build&gt; &lt;plugins&gt; &lt;plugin&gt; &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt; &lt;artifactId&gt;maven-release-plugin&lt;/artifactId&gt; &lt;version&gt;3.0.0-M1&lt;/version&gt; &lt;!-- 필수 사항 --&gt; &lt;configuration&gt; &lt;autoVersionSubmodules&gt;true&lt;/autoVersionSubmodules&gt; &lt;goals&gt;deploy&lt;/goals&gt; &lt;username&gt;mgkim&lt;/username&gt; &lt;password&gt;passwd&lt;/password&gt; &lt;/configuration&gt; &lt;!-- //필수 사항 --&gt; &lt;/plugin&gt; &lt;/plugins&gt; &lt;/build&gt; &lt;!-- 필수 사항 --&gt; &lt;scm&gt; &lt;connection&gt;scm:svn:svn://develop/test/trunk/proto."/>
@@ -127,7 +131,7 @@ $ mvn -B clean release:prepare release:perform deploy $M2_HOME/conf/settings.xml
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.4b7fb30c3fce77f08897fe5a853b49cf.json"
+  data-offline-search-index-json-src="/offline-search-index.5615121870e086b0665a6a598eadd4b2.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -154,7 +158,7 @@ $ mvn -B clean release:prepare release:perform deploy $M2_HOME/conf/settings.xml
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.4b7fb30c3fce77f08897fe5a853b49cf.json"
+  data-offline-search-index-json-src="/offline-search-index.5615121870e086b0665a6a598eadd4b2.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -169,24 +173,9 @@ $ mvn -B clean release:prepare release:perform deploy $M2_HOME/conf/settings.xml
   
   <a href="/localenv/" title="로컬 환경" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-localenv"><span class="">localenv</span></a>
   <ul class="ul-1">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-localenvchrome-li">
-  
-  <a href="/localenv/chrome/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-localenvchrome"><span class="">chrome</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-localenvgit-li">
-  
-  <a href="/localenv/git/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-localenvgit"><span class="">git</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-localenvjava-li">
-  
-  <a href="/localenv/java/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-localenvjava"><span class="">java</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-localenvmaven-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-localenvmaven-li">
   
   <a href="/localenv/maven/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-localenvmaven"><span class="td-sidebar-nav-active-item">maven</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-localenvoracle-li">
-  
-  <a href="/localenv/oracle/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-localenvoracle"><span class="">oracle</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-localenvwindows-li">
-  
-  <a href="/localenv/windows/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-localenvwindows"><span class="">windows</span></a>
 </li>
   </ul>
 </li>
@@ -293,7 +282,8 @@ $ mvn -B clean release:prepare release:perform deploy $M2_HOME/conf/settings.xml
 		
 		
 	</header>    
-	<h2 id="release">release</h2>
+	<p>maven plugin 사용 방법</p>
+<h2 id="release">release</h2>
 <p>명령어</p>
 <div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ mvn -B clean release:prepare release:perform deploy
 </code></pre></div><p>$M2_HOME/conf/settings.xml 파일</p>

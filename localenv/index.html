@@ -22,7 +22,11 @@
 
 
   
-  <meta name="description" content="">
+  <meta name="description" content="(java) vmargs (2개)
+# request.getRemoteAddr() 가 IPv6 로 출력되는 경우
+-Djava.net.preferIPv4Stack=true
+
+# cannot be cast to javax.net.ssl.HttpsURLConnection …">
 <meta property="og:title" content="로컬 환경" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -110,7 +114,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.4b7fb30c3fce77f08897fe5a853b49cf.json"
+  data-offline-search-index-json-src="/offline-search-index.5615121870e086b0665a6a598eadd4b2.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -137,7 +141,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.4b7fb30c3fce77f08897fe5a853b49cf.json"
+  data-offline-search-index-json-src="/offline-search-index.5615121870e086b0665a6a598eadd4b2.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -152,24 +156,9 @@
   
   <a href="/localenv/" title="로컬 환경" class="align-left pl-0 active td-sidebar-link td-sidebar-link__section tree-root" id="m-localenv"><span class="td-sidebar-nav-active-item">localenv</span></a>
   <ul class="ul-1">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-localenvchrome-li">
-  
-  <a href="/localenv/chrome/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-localenvchrome"><span class="">chrome</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-localenvgit-li">
-  
-  <a href="/localenv/git/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-localenvgit"><span class="">git</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-localenvjava-li">
-  
-  <a href="/localenv/java/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-localenvjava"><span class="">java</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-localenvmaven-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-localenvmaven-li">
   
   <a href="/localenv/maven/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-localenvmaven"><span class="">maven</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-localenvoracle-li">
-  
-  <a href="/localenv/oracle/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-localenvoracle"><span class="">oracle</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-localenvwindows-li">
-  
-  <a href="/localenv/windows/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-localenvwindows"><span class="">windows</span></a>
 </li>
   </ul>
 </li>
@@ -195,7 +184,30 @@
             
 
 
-<div class="td-toc"><nav id="TableOfContents"></nav></div>
+<div class="td-toc"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#java-vmargs-2개">(java) vmargs (2개)</a></li>
+    <li><a href="#java-java-에-인증서-등록">(java) java 에 인증서 등록</a></li>
+    <li><a href="#win-win11-system-tray-설정">(win) win11 system-tray 설정</a></li>
+    <li><a href="#win-font-추천">(win) font 추천</a></li>
+    <li><a href="#eclipse-hidpi-설정">(eclipse) hidpi 설정</a></li>
+    <li><a href="#win-절전-cmd">(win) 절전 cmd</a></li>
+    <li><a href="#vmware-실행-cmd">(vmware) 실행 cmd</a></li>
+    <li><a href="#win-wol-설정">(win) wol 설정</a></li>
+    <li><a href="#win-port-forwarding-cmd">(win) port-forwarding cmd</a></li>
+    <li><a href="#win-파일-공유-설정">(win) 파일 공유 설정</a></li>
+    <li><a href="#vmware-nat-설정">(vmware) nat 설정</a></li>
+    <li><a href="#7z-7z-압축-cmd">(7z) 7z 압축 cmd</a></li>
+    <li><a href="#jmeter-jmeter-실행-cmd">(jmeter) jmeter 실행 cmd</a></li>
+    <li><a href="#win-xcopy-cmd">(win) xcopy cmd</a></li>
+    <li><a href="#chrome-https-자동-접속-현상">(chrome) https 자동 접속 현상</a></li>
+    <li><a href="#git-config-cmd">(git) config cmd</a></li>
+    <li><a href="#git-pre-commit-shell">(git) pre-commit shell</a></li>
+    <li><a href="#oracle-client-무설치-설정">(oracle) client 무설치 설정</a></li>
+    <li><a href="#oracle-sqlplus">(oracle) sqlplus</a></li>
+    <li><a href="#oracle-object-조회-query">(oracle) object 조회 query</a></li>
+  </ul>
+</nav></div>
 
 
 
@@ -257,7 +269,254 @@
 		
 		
 	</header>
-	
+	<h2 id="java-vmargs-2개">(java) vmargs (2개)</h2>
+<pre><code># request.getRemoteAddr() 가 IPv6 로 출력되는 경우
+-Djava.net.preferIPv4Stack=true
+
+# cannot be cast to javax.net.ssl.HttpsURLConnection
+# URLConnection 객체를 사용할 때 HttpsURLConnection 이 반환되지 않는 경우
+-DUseSunHttpHandler=true
+</code></pre><br>
+<h2 id="java-java-에-인증서-등록">(java) java 에 인증서 등록</h2>
+<p>로컬 설치된 java 에 인증서 파일(*.crt) 등록을 하기 위해서는 $JAVA_HOME/bin/keytool 를 사용해야 합니다.</p>
+<p>ca 에 등록되지 않은 인증서로 https 통신을 하는 경우에는 ssl-handshake 과정에서 오류가 발생하므로</p>
+<p>해당 사이트의 인증서를 로컬 java 에 신뢰할 수 있는 인증서에 등록해야 합니다.</p>
+<p>아래는 <code>hello.crt</code> 라는 인증서를 등록하는 예시입니다.</p>
+<pre><code># 인증서 등록
+keytool -importcert -keystore $JAVA_HOME/jre/lib/security/cacerts -file &quot;hello.crt&quot; -alias &quot;hello&quot;
+키 저장소 비밀번호 입력: (changeit 입력)
+이 인증서를 신뢰합니까? [아니오]:  (y 입력)
+인증서가 키 저장소에 추가되었습니다.
+
+# 인증서 조회
+keytool -list -keystore cacerts | grep &quot;hello&quot;
+키 저장소 비밀번호 입력: (changeit 입력)
+hello, 2020. 5. 8, trustedCertEntry,
+
+# 인증서 삭제
+keytool -delete -alias &quot;hello&quot; -keystore &quot;cacerts&quot;
+</code></pre><h2 id="win-win11-system-tray-설정">(win) win11 system-tray 설정</h2>
+<p>cmd 창에서 아래 명령어를 입력하여 시스템 트레이에 모든 아이콘을 표시하도록 합니다.</p>
+<p><code>시스템 아이콘 켜기 또는 끄기</code> 를 선택하여 시계를 표시할 수도 있습니다.</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">&gt; explorer shell:::{05d7b0f4-2121-4eff-bf6b-ed3f69b894d9}
+</code></pre></div><p><a href="/images/localenv/20211121_windows11_systemtray_show_all_icons.png" target="_blank">새 창 보기</a></p>
+<br>
+<h2 id="win-font-추천">(win) font 추천</h2>
+<p><strong>hugo-site</strong></p>
+<p>/assets/scss/_variables_project.scss</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css"><span style="color:#666">$</span><span style="color:#008000;font-weight:bold">google_font_name</span><span style="color:#666">:</span> <span style="color:#ba2121">&#34;Bitstream Vera Sans Mono&#34;</span> <span style="color:#666">!</span><span style="color:#008000;font-weight:bold">default</span><span style="color:#666">;</span>
+<span style="color:#666">$</span><span style="color:#008000;font-weight:bold">google_font_family</span><span style="color:#666">:</span> <span style="color:#ba2121">&#34;Bitstream Vera Sans Mono:300,300i,400,400i,700,700i&#34;</span> <span style="color:#666">!</span><span style="color:#008000;font-weight:bold">default</span><span style="color:#666">;</span>
+<span style="color:#666">$</span><span style="color:#008000;font-weight:bold">web-font-path</span><span style="color:#666">:</span> <span style="color:#ba2121">&#34;http://fonts.cdnfonts.com/css/bitstream-vera-sans-mono&#34;</span><span style="color:#666">;</span>
+</code></pre></div><p>scss 파일의 수정된 내용이 적용되려면 npm 빌드 환경이 필요합니다.</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#408080;font-style:italic"># 초기 구성을 위해 준비할 것</span>
+$ git submodule add -b master https://github.com/lislroow/lislroow.github.io.git public
+$ git clone --recurse-submodules --depth <span style="color:#666">1</span> https://github.com/google/docsy.git themes/docsy
+
+<span style="color:#408080;font-style:italic"># 2개의 npm 패키지 설치</span>
+$ npm install -D --save autoprefixer
+$ npm install -D --save postcss-cli
+
+<span style="color:#408080;font-style:italic"># npm 패키지 설치 후 hugo -t docsy 로 build 하면 </span>
+<span style="color:#408080;font-style:italic"># `/assets/scss/_variables_project.scss` 파일에 수정된 내용을 포함하여</span>
+<span style="color:#408080;font-style:italic"># 아래 경로에 build 결과 파일을 생성합니다.</span>
+<span style="color:#408080;font-style:italic"># `/resources/_gen/assets/scss/scss/main.scss_4853eb546e7a6c0898ed71feae7357c0.content`</span>
+</code></pre></div><p><strong>system</strong></p>
+<p><code>Bitstream</code> 은 coding 목적으로 많이 사용되는 font 입니다.</p>
+<p><a href="/images/localenv/20211105_change-eclipse-font_1.png" target="_blank">새 창 보기<a/></p>
+<p>다운로드: <a href="/file/localenv/BitstreamVeraSansMono.ttf" download="tnsnames.ora">BitstreamVeraSansMono.ttf</a></p>
+<p><code>Colors and Fonts</code> &gt; <code>Basic</code> &gt; <code>Text Font</code> 를 선택하고 <code>Edit</code> 버튼을 클릭하면 변경할 수 있습니다.</p>
+<p><a href="/images/localenv/20211105_change-eclipse-font.png" target="_blank">새 창 보기<a/></p>
+<br>
+<h2 id="eclipse-hidpi-설정">(eclipse) hidpi 설정</h2>
+<pre><code>-Dswt.autoScale=150 # 150 == 1.5배
+</code></pre><p><a href="/files/localenv/20211120-eclipse.ini" target="_blank">새 창 보기</a></p>
+<br>
+<h2 id="win-절전-cmd">(win) 절전 cmd</h2>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"><span style="color:#19177c">%windir%</span>\System32\rundll32.exe powrprof.dll SetSuspendState
+</code></pre></div><br>
+<h2 id="vmware-실행-cmd">(vmware) 실행 cmd</h2>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"><span style="color:#008000;font-weight:bold">set</span> <span style="color:#ba2121">&#34;VMWARE_HOME=C:\Program Files (x86)\VMware\VMware Workstation&#34;</span>
+<span style="color:#008000;font-weight:bold">set</span> <span style="color:#ba2121">&#34;PATH=</span><span style="color:#19177c">%PATH%</span><span style="color:#ba2121">;</span><span style="color:#19177c">%VMWARE_HOME%</span><span style="color:#ba2121">&#34;</span>
+vmrun -T ws start <span style="color:#ba2121">&#34;Z:\centos7-develop\centos7-develop.vmx&#34;</span> nogui
+</code></pre></div><br>
+<h2 id="win-wol-설정">(win) wol 설정</h2>
+<p>절전 상태에서 wol 이 작동하려면 아래 옵션을 선택해야 합니다.</p>
+<p><a href="/images/localenv/20211120-windows_wol_1.png" target="_blank">새 창 보기</a></p>
+<br>
+<h2 id="win-port-forwarding-cmd">(win) port-forwarding cmd</h2>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"># 설정
+netsh interface portproxy add v4tov4 listenport=8222 listenaddress=0.0.0.0 connectport=22 connectaddress=172.28.200.20
+
+# 해제
+netsh interface portproxy delete v4tov4 listenport=8222 listenaddress=0.0.0.0
+
+# 확인
+netsh interface portproxy show v4tov4
+</code></pre></div><br>
+<h2 id="win-파일-공유-설정">(win) 파일 공유 설정</h2>
+<p>windows 에서 파일 공유 시 권한이 없다는 메시지가 나오는 경우가 있음</p>
+<p>windows 계정에 패스워드가 설정되어 있지 않으면 발생하는 사항</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"># 비밀번호 설정하기
+&gt; net user administrator *
+</code></pre></div><p>centos 에서 windows 공유 디렉토리 mount</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">$ mkdir /share
+$ mount -t cifs //172.28.200.1/share /share -o username=administrator,password=1
+$ df -h
+Filesystem            Size  Used Avail Use% Mounted on
+devtmpfs              3.8G     0  3.8G   0% /dev
+tmpfs                 3.9G   12K  3.9G   1% /dev/shm
+tmpfs                 3.9G   14M  3.8G   1% /run
+tmpfs                 3.9G     0  3.9G   0% /sys/fs/cgroup
+/dev/nvme0n1p9         76G   15G   61G  20% /
+/dev/nvme0n1p8        3.0G  2.7G  378M  88% /var
+/dev/nvme0n1p7        5.0G  2.6G  2.4G  53% /home
+/dev/nvme0n1p2        100G   27G   74G  27% /data
+/dev/nvme0n1p5         20G  5.0G   16G  25% /app
+/dev/nvme0n1p3         30G  9.8G   21G  33% /prod
+/dev/nvme0n1p1        474M  149M  326M  32% /boot
+tmpfs                 781M     0  781M   0% /run/user/0
+//172.28.200.1/share  345G  284G   62G  83% /share
+$ vi /etc/fstab
+//172.28.200.1/share /share cifs username=administrator,password=1 0 0
+</code></pre></div><br>
+<h2 id="vmware-nat-설정">(vmware) nat 설정</h2>
+<p><code>vmware</code> &gt; <code>Edit</code> &gt; <code>Virtual Network Editor</code></p>
+<p><code>NAT Settings...</code> &gt; <code>Gateway IP</code> 확인</p>
+<p>Subnet IP: 172.28.200.0, Subnet mask: 255.255.255.0</p>
+<p>vmware 의 guest os는 172.28.200.2~254 로 설정하고, host os(windows) 와 통신은 172.28.200.1 로 합니다.</p>
+<br>
+<h2 id="7z-7z-압축-cmd">(7z) 7z 압축 cmd</h2>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"><span style="color:#ba2121">&#34;C:\Program Files\7-Zip\7z.exe&#34;</span> a -mx7 -mmt Z:\project.zip <span style="color:#ba2121">&#34;Z:\project&#34;</span>
+<span style="color:#ba2121">&#34;C:\Program Files\7-Zip\7z.exe&#34;</span> a -mx5 -t7z Z:\project.zip <span style="color:#ba2121">&#34;Z:\project&#34;</span> -xr!target -xr!node_modules
+</code></pre></div><p>target 디렉토리와 node_modules 디렉토리는 압축 대상에서 제외됩니다.</p>
+<br>
+<h2 id="jmeter-jmeter-실행-cmd">(jmeter) jmeter 실행 cmd</h2>
+<p>jmeter 실행 결과 디렉토리에 timestamp 변수 사용하기</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"><span style="color:#008000;font-weight:bold">set</span> <span style="color:#19177c">ts</span>=<span style="color:#19177c">%DATE:~0,4%%DATE:~5,2%%DATE:~8,2%</span>_<span style="color:#19177c">%TIME:~0,2%%TIME:~3,2%%TIME:~6,2%</span>
+apache-jmeter-5.4.1\bin\jmeter.bat -n -t jmeter-mgkim-core.jmx -l data\<span style="color:#19177c">%ts%</span>.csv -e -o data\<span style="color:#19177c">%ts%</span>
+</code></pre></div><br>
+<h2 id="win-xcopy-cmd">(win) xcopy cmd</h2>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">xcopy C:\exp\*.* Z:\exp\ /d/i/s/c/y
+</code></pre></div><br>
+<h2 id="chrome-https-자동-접속-현상">(chrome) https 자동 접속 현상</h2>
+<ul>
+<li><code>chrome://net-internals/#hsts</code> 로 이동</li>
+<li><code>Delete domain security policies</code> 에서 해당 도메인 delete</li>
+</ul>
+<br>
+<h2 id="git-config-cmd">(git) config cmd</h2>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">&gt; git config --global core.autocrlf true
+&gt; git config --global user.email hi@mgkim.net
+&gt; git config --global user.name 김명구
+</code></pre></div><br>
+<h2 id="git-pre-commit-shell">(git) pre-commit shell</h2>
+<p>git-commit 을 하기 전에 사전 검사를 하기 위한 코드를 bash-shell 로 체크하는 방법입니다.</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#408080;font-style:italic"># project/.git/hooks/pre-commit</span>
+<span style="color:#408080;font-style:italic">#!/bin/sh</span>
+<span style="color:#19177c">LIST</span><span style="color:#666">=</span><span style="color:#008000;font-weight:bold">$(</span>git diff --cached --name-only --diff-filter<span style="color:#666">=</span>ACRM<span style="color:#008000;font-weight:bold">)</span>
+
+<span style="color:#008000;font-weight:bold">for</span> file in <span style="color:#19177c">$LIST</span>
+<span style="color:#008000;font-weight:bold">do</span>
+  <span style="color:#008000;font-weight:bold">if</span> <span style="color:#666">[</span> <span style="color:#19177c">$file</span> <span style="color:#666">=</span> <span style="color:#ba2121">&#34;.settings/org.eclipse.wst.common.component&#34;</span> <span style="color:#666">]</span>; <span style="color:#008000;font-weight:bold">then</span>
+    <span style="color:#008000">echo</span> <span style="color:#ba2121">&#34;이클립스 설정 파일(</span><span style="color:#19177c">$file</span><span style="color:#ba2121">)은 commit을 할 수 없습니다.&#34;</span>
+    <span style="color:#008000">exit</span> <span style="color:#666">1</span>
+  <span style="color:#008000;font-weight:bold">fi</span>
+<span style="color:#008000;font-weight:bold">done</span>
+<span style="color:#008000">exit</span> <span style="color:#666">0</span>
+</code></pre></div><br>
+<h2 id="oracle-client-무설치-설정">(oracle) client 무설치 설정</h2>
+<p><strong>시스템변수</strong></p>
+<p><a href="/files/localenv/20211120-oracle_client_env.txt" target="_blank">새 창 보기</a></p>
+<p><strong>레지스트리</strong></p>
+<p><strong>HKEY_LOCAL_MACHINE\SOFTWARE\ORACLE\KEY_client</strong></p>
+<p><a href="/files/localenv/20211120-HLM_SW_Oracle_key_client(Z).reg" target="_blank">새 창 보기</a></p>
+<p><strong>HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\ORACLE\KEY_client</strong></p>
+<p><a href="/files/localenv/20211120-HLM_SW_Wow6432Node_Oacle_key_client(Z).reg" target="_blank">새 창 보기</a></p>
+<p><strong>tnsnames.ora</strong></p>
+<p><a href="/files/localenv/20211120-tnsnames.ora" target="_blank">새 창 보기</a></p>
+<br>
+<h2 id="oracle-sqlplus">(oracle) sqlplus</h2>
+<pre><code>C:\Users\Administrator&gt;sqlplus /nolog
+
+SQL*Plus: Release 12.1.0.2.0 Production on 목 9월 2 11:39:53 2021
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+SQL&gt; conn SPADBA/password@develop:1521/SPADBP
+연결되었습니다.
+
+SQL&gt; show con_name
+
+CON_NAME
+------------------------------
+CDB$ROOT
+SQL&gt; set line 150 pages 1000
+SQL&gt; col name for a30
+SQL&gt; select con_id, dbid, name, open_mode from v$containers order by 1;
+
+    CON_ID   DBID NAME           OPEN_MODE
+---------- ---------- ------------------------------ ----------
+   1 1588065228 CDB$ROOT           READ WRITE
+   2 2599163564 PDB$SEED           READ ONLY
+   3  673775647 SPADBP           READ WRITE
+
+SQL&gt; alter session set container=SPADBP;
+
+세션이 변경되었습니다.
+
+SQL&gt; show con_name
+
+CON_NAME
+------------------------------
+SPADBP
+SQL&gt;
+</code></pre><br>
+<h2 id="oracle-object-조회-query">(oracle) object 조회 query</h2>
+<p>dictionary 뷰에서부터 object 정보를 확인하고 생성된 상태를 확인할 수 있습니다.</p>
+<p>sqlgate 에 단축키로 등록하고 사용하면 유용할 query 입니다.</p>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#666">#</span><span style="color:#bbb"> </span><span style="">테이블</span><span style="color:#bbb"> </span><span style="">검색</span><span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">SELECT</span><span style="color:#bbb"> </span><span style="color:#408080;font-style:italic">/* (Alt+1) 테이블 검색  */</span><span style="color:#bbb"> </span>A.<span style="color:#008000;font-weight:bold">OWNER</span>,<span style="color:#bbb"> </span>A.COMMENTS<span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">AS</span><span style="color:#bbb"> </span>T_COMMENT,<span style="color:#bbb"> </span>A.<span style="color:#008000;font-weight:bold">TABLE_NAME</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">AS</span><span style="color:#bbb"> </span>T_NAME,<span style="color:#bbb"> </span>B.<span style="color:#008000;font-weight:bold">COLUMN_NAME</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">AS</span><span style="color:#bbb"> </span>C_NAME,<span style="color:#bbb"> </span>B.COMMENTS<span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">AS</span><span style="color:#bbb"> </span>C_COMMENT,<span style="color:#bbb"> </span>B1.COLUMN_ID<span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">FROM</span><span style="color:#bbb">  </span>ALL_TAB_COMMENTS<span style="color:#bbb"> </span>A,<span style="color:#bbb"> </span>ALL_COL_COMMENTS<span style="color:#bbb"> </span>B,<span style="color:#bbb"> </span>ALL_TAB_COLS<span style="color:#bbb"> </span>B1<span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">WHERE</span><span style="color:#bbb"> </span><span style="color:#666">1</span><span style="color:#666">=</span><span style="color:#666">1</span><span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">AND</span><span style="color:#bbb"> </span>A.<span style="color:#008000;font-weight:bold">TABLE_NAME</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">LIKE</span><span style="color:#bbb"> </span><span style="color:#ba2121">&#39;%&amp;Var%&#39;</span><span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">AND</span><span style="color:#bbb"> </span>A.<span style="color:#008000;font-weight:bold">TABLE_NAME</span><span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span>B.<span style="color:#008000;font-weight:bold">TABLE_NAME</span><span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">AND</span><span style="color:#bbb"> </span>B.<span style="color:#008000;font-weight:bold">TABLE_NAME</span><span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span>B1.<span style="color:#008000;font-weight:bold">TABLE_NAME</span><span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">AND</span><span style="color:#bbb"> </span>B.<span style="color:#008000;font-weight:bold">COLUMN_NAME</span><span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span>B1.<span style="color:#008000;font-weight:bold">COLUMN_NAME</span><span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">AND</span><span style="color:#bbb"> </span>A.<span style="color:#008000;font-weight:bold">OWNER</span><span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span>B.<span style="color:#008000;font-weight:bold">OWNER</span><span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">AND</span><span style="color:#bbb"> </span>B.<span style="color:#008000;font-weight:bold">OWNER</span><span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span>B1.<span style="color:#008000;font-weight:bold">OWNER</span>(<span style="color:#666">+</span>)<span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">AND</span><span style="color:#bbb"> </span>A.<span style="color:#008000;font-weight:bold">OWNER</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">IN</span><span style="color:#bbb"> </span>(<span style="color:#ba2121">&#39;SPADBA&#39;</span>)<span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">ORDER</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">BY</span><span style="color:#bbb"> </span>A.<span style="color:#008000;font-weight:bold">OWNER</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">DESC</span>,<span style="color:#bbb"> </span>B1.COLUMN_ID,<span style="color:#bbb"> </span>A.COMMENTS<span style="color:#bbb">
+</span><span style="color:#bbb"></span>;<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#666">#</span><span style="color:#bbb"> </span><span style="">컬럼</span><span style="color:#bbb"> </span><span style="">검색</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">SELECT</span><span style="color:#bbb"> </span><span style="color:#408080;font-style:italic">/* (Alt+2) 컬럼 검색  */</span><span style="color:#bbb"> </span>A.<span style="color:#008000;font-weight:bold">OWNER</span>,<span style="color:#bbb"> </span>A.COMMENTS<span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">AS</span><span style="color:#bbb"> </span>T_COMMENT,<span style="color:#bbb"> </span>A.<span style="color:#008000;font-weight:bold">TABLE_NAME</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">AS</span><span style="color:#bbb"> </span>T_NAME,<span style="color:#bbb"> </span>B.<span style="color:#008000;font-weight:bold">COLUMN_NAME</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">AS</span><span style="color:#bbb"> </span>C_NAME,<span style="color:#bbb"> </span>B.COMMENTS<span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">AS</span><span style="color:#bbb"> </span>C_COMMENT,<span style="color:#bbb"> </span>B1.COLUMN_ID<span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">FROM</span><span style="color:#bbb">  </span>ALL_TAB_COMMENTS<span style="color:#bbb"> </span>A,<span style="color:#bbb"> </span>ALL_COL_COMMENTS<span style="color:#bbb"> </span>B,<span style="color:#bbb"> </span>ALL_TAB_COLS<span style="color:#bbb"> </span>B1,<span style="color:#bbb"> </span>ALL_CONS_COLUMNS<span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">C</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">WHERE</span><span style="color:#bbb"> </span><span style="color:#666">1</span><span style="color:#666">=</span><span style="color:#666">1</span><span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">AND</span><span style="color:#bbb"> </span>(B.<span style="color:#008000;font-weight:bold">COLUMN_NAME</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">LIKE</span><span style="color:#bbb"> </span><span style="color:#ba2121">&#39;%&amp;Var%&#39;</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">OR</span><span style="color:#bbb"> </span>B.COMMENTS<span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">LIKE</span><span style="color:#bbb"> </span><span style="color:#ba2121">&#39;%&amp;Var%&#39;</span>)<span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">AND</span><span style="color:#bbb"> </span>A.<span style="color:#008000;font-weight:bold">TABLE_NAME</span><span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span>B.<span style="color:#008000;font-weight:bold">TABLE_NAME</span><span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">AND</span><span style="color:#bbb"> </span>B.<span style="color:#008000;font-weight:bold">TABLE_NAME</span><span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">C</span>.<span style="color:#008000;font-weight:bold">TABLE_NAME</span>(<span style="color:#666">+</span>)<span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">AND</span><span style="color:#bbb"> </span>B.<span style="color:#008000;font-weight:bold">TABLE_NAME</span><span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span>B1.<span style="color:#008000;font-weight:bold">TABLE_NAME</span><span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">AND</span><span style="color:#bbb"> </span>B.<span style="color:#008000;font-weight:bold">COLUMN_NAME</span><span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span>B1.<span style="color:#008000;font-weight:bold">COLUMN_NAME</span><span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">AND</span><span style="color:#bbb"> </span>A.<span style="color:#008000;font-weight:bold">OWNER</span><span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span>B.<span style="color:#008000;font-weight:bold">OWNER</span><span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">AND</span><span style="color:#bbb"> </span>B.<span style="color:#008000;font-weight:bold">OWNER</span><span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span>B1.<span style="color:#008000;font-weight:bold">OWNER</span>(<span style="color:#666">+</span>)<span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">AND</span><span style="color:#bbb"> </span>B.<span style="color:#008000;font-weight:bold">OWNER</span><span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">C</span>.<span style="color:#008000;font-weight:bold">OWNER</span><span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">AND</span><span style="color:#bbb"> </span>B.<span style="color:#008000;font-weight:bold">COLUMN_NAME</span><span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">C</span>.<span style="color:#008000;font-weight:bold">COLUMN_NAME</span>(<span style="color:#666">+</span>)<span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">AND</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">C</span>.<span style="color:#008000;font-weight:bold">CONSTRAINT_NAME</span>(<span style="color:#666">+</span>)<span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">LIKE</span><span style="color:#bbb"> </span><span style="color:#ba2121">&#39;%PK&#39;</span><span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">AND</span><span style="color:#bbb"> </span>A.<span style="color:#008000;font-weight:bold">OWNER</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">IN</span><span style="color:#bbb"> </span>(<span style="color:#ba2121">&#39;SPADBA&#39;</span>)<span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">AND</span><span style="color:#bbb"> </span>(A.<span style="color:#008000;font-weight:bold">TABLE_NAME</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">LIKE</span><span style="color:#bbb"> </span><span style="color:#ba2121">&#39;E%&#39;</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">OR</span><span style="color:#bbb"> </span>A.<span style="color:#008000;font-weight:bold">TABLE_NAME</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">LIKE</span><span style="color:#bbb"> </span><span style="color:#ba2121">&#39;CB%&#39;</span>)<span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">ORDER</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">BY</span><span style="color:#bbb"> </span>A.<span style="color:#008000;font-weight:bold">OWNER</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">DESC</span>,<span style="color:#bbb"> </span>A.COMMENTS,<span style="color:#bbb"> </span>B1.COLUMN_ID,<span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">C</span>.<span style="color:#008000;font-weight:bold">POSITION</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span>;<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#666">#</span><span style="color:#bbb"> </span><span style="">테이블</span><span style="color:#bbb"> </span><span style="">조회</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">SELECT</span><span style="color:#bbb"> </span><span style="color:#408080;font-style:italic">/* (Alt+3) 테이블 조회 */</span><span style="color:#bbb"> </span><span style="color:#666">*</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">FROM</span><span style="color:#bbb"> </span><span style="color:#666">&amp;</span>Var<span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">WHERE</span><span style="color:#bbb"> </span>ROWNUM<span style="color:#bbb"> </span><span style="color:#666">&lt;</span><span style="color:#bbb"> </span><span style="color:#666">200</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span>;<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#666">#</span><span style="color:#bbb"> </span>dict<span style="color:#bbb"> </span><span style="">검색</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">SELECT</span><span style="color:#bbb"> </span><span style="color:#408080;font-style:italic">/* (Alt+4) DICT 검색 */</span><span style="color:#bbb"> </span><span style="color:#666">*</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">FROM</span><span style="color:#bbb"> </span>DICT<span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">WHERE</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">TABLE_NAME</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">LIKE</span><span style="color:#bbb"> </span><span style="color:#ba2121">&#39;%&#39;</span><span style="color:#666">||</span><span style="color:#ba2121">&#39;&amp;Var&#39;</span><span style="color:#666">||</span><span style="color:#ba2121">&#39;%&#39;</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">ORDER</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">BY</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">TABLE_NAME</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span>;<span style="color:#bbb">
+</span></code></pre></div><br>
         <div class="section-index">
     
     
@@ -272,47 +531,7 @@
             
             <div class="entry">
                 <h5>
-                    <a href="/localenv/chrome/">chrome</a>
-                </h5>
-                <p></p>
-            </div>
-        
-            
-            <div class="entry">
-                <h5>
-                    <a href="/localenv/git/">git</a>
-                </h5>
-                <p></p>
-            </div>
-        
-            
-            <div class="entry">
-                <h5>
-                    <a href="/localenv/java/">java</a>
-                </h5>
-                <p></p>
-            </div>
-        
-            
-            <div class="entry">
-                <h5>
                     <a href="/localenv/maven/">maven</a>
-                </h5>
-                <p></p>
-            </div>
-        
-            
-            <div class="entry">
-                <h5>
-                    <a href="/localenv/oracle/">oracle</a>
-                </h5>
-                <p></p>
-            </div>
-        
-            
-            <div class="entry">
-                <h5>
-                    <a href="/localenv/windows/">windows</a>
                 </h5>
                 <p></p>
             </div>
