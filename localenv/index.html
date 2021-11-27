@@ -22,14 +22,18 @@
 
 
   
-  <meta name="description" content="(win) win 11 taskbar 그룹해제
-아래 파일 다운로드 후 실행
-다운로드
-새 창 보기
+  <meta name="description" content="(eclipse) debugging 필수 옵션 확인
+디버깅 시 아래와 같은 오류가 발생할 경우 이클립스 옵션을 확인해보세요.
 
-(maven) release
-명령어
-$ mvn -B clean release:prepare release:perform deploy …">
+
+오류 상황
+
+
+
+경로: Preferences &gt; Java &gt; Debug
+
+
+체크사항: Use advanced source …">
 <meta property="og:title" content="localenv" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -117,7 +121,7 @@ $ mvn -B clean release:prepare release:perform deploy …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.91e9d301e814eb89c7f2e78afdb88fe2.json"
+  data-offline-search-index-json-src="/offline-search-index.26999b96a0a609a54b9d7b1c274a3342.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -144,7 +148,7 @@ $ mvn -B clean release:prepare release:perform deploy …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.91e9d301e814eb89c7f2e78afdb88fe2.json"
+  data-offline-search-index-json-src="/offline-search-index.26999b96a0a609a54b9d7b1c274a3342.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -187,6 +191,7 @@ $ mvn -B clean release:prepare release:perform deploy …">
       <ul>
         <li>
           <ul>
+            <li><a href="#eclipse-debugging-필수-옵션-확인">(eclipse) debugging 필수 옵션 확인</a></li>
             <li><a href="#win-win-11-taskbar-그룹해제">(win) win 11 taskbar 그룹해제</a></li>
             <li><a href="#maven-release">(maven) release</a></li>
             <li><a href="#maven-helpevaluate">(maven) help:evaluate</a></li>
@@ -282,7 +287,27 @@ $ mvn -B clean release:prepare release:perform deploy …">
 		
 		
 	</header>
-	<h4 id="win-win-11-taskbar-그룹해제">(win) win 11 taskbar 그룹해제</h4>
+	<h4 id="eclipse-debugging-필수-옵션-확인">(eclipse) debugging 필수 옵션 확인</h4>
+<p>디버깅 시 아래와 같은 오류가 발생할 경우 이클립스 옵션을 확인해보세요.</p>
+<ul>
+<li>
+<p>오류 상황</p>
+<p><img src="/images/dev-note/20211126-eclipse_debug_error.png" /></p>
+</li>
+<li>
+<p>경로: <code>Preferences</code> &gt; <code>Java</code> &gt; <code>Debug</code></p>
+</li>
+<li>
+<p>체크사항: <code>Use advanced source lookup (JRE 1.5 and higher)</code> 체크를 반드시 해제해주셔야 합니다.</p>
+<p><a href="/images/dev-note/20211126-eclipse_debug_config.png" target="_blank">새 창 보기</a></p>
+</li>
+<li>
+<p>체크 유무에 따라 정상/오류 상황을 캡처한 이미지 입니다.</p>
+<p><a href="/images/dev-note/20211126-eclipse_debug_use_advanced_source_lookup_unchecked.png" target="_blank">새 창 보기</a></p>
+</li>
+</ul>
+<br>
+<h4 id="win-win-11-taskbar-그룹해제">(win) win 11 taskbar 그룹해제</h4>
 <p>아래 파일 다운로드 후 실행</p>
 <p><a href="/files/localenv/20211126-ep_setup.7z" download="ep_setup.7z" target="_blank">다운로드</a></p>
 <p><a href="https://github.com/valinet/ExplorerPatcher/releases/tag/22000.348.39.1_493cf27" target="_blank">새 창 보기</a></p>
