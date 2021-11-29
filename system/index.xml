@@ -1253,7 +1253,7 @@ drwx------. 5 tomcat ap  152  9월 13 11:48 ..
       <description>
         
         
-        &lt;h4 id=&#34;sysctl-설정---kernel&#34;&gt;(sysctl) 설정 - kernel&lt;/h4&gt;
+        &lt;h4 id=&#34;sysctl-설정&#34;&gt;sysctl 설정&lt;/h4&gt;
 &lt;p&gt;파일: /etc/sysctl.conf&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;fs.aio-max-nr &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1048576&lt;/span&gt;
 fs.file-max &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;6815744&lt;/span&gt;
@@ -1269,7 +1269,7 @@ net.core.wmem_max &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;s
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;반영: &lt;code&gt;sysctl -p&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;확인: &lt;code&gt;sysctl -a&lt;/code&gt;&lt;/p&gt;
 &lt;br&gt;
-&lt;h4 id=&#34;limits-설정---open-file-설정&#34;&gt;(limits) 설정 - open file 설정&lt;/h4&gt;
+&lt;h4 id=&#34;limits-설정&#34;&gt;limits 설정&lt;/h4&gt;
 &lt;p&gt;/etc/security/limits.conf&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;oracle soft nproc &lt;span style=&#34;color:#ae81ff&#34;&gt;2047&lt;/span&gt;
 oracle hard nproc &lt;span style=&#34;color:#ae81ff&#34;&gt;16384&lt;/span&gt;
