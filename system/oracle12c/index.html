@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.87.0" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
+
+<title>oracle12c | dlog</title>
+
+
+  
+  <meta name="description" content="(sysctl) 설정 - kernel
+파일: /etc/sysctl.conf
+fs.aio-max-nr = 1048576
+fs.file-max = 6815744
+kernel.shmall = 2097152
+kernel.shmmax = 4056393728 …">
+<meta property="og:title" content="oracle12c" />
+<meta property="og:description" content="(sysctl) 설정 - kernel 파일: /etc/sysctl.conf
+fs.aio-max-nr = 1048576 fs.file-max = 6815744 kernel.shmall = 2097152 kernel.shmmax = 4056393728 kernel.shmmni = 4096 kernel.sem = 250 32000 100 128 net.ipv4.ip_local_port_range = 9000 65500 net.core.rmem_default = 262144 net.core.rmem_max = 4194304 net.core.wmem_default = 262144 net.core.wmem_max = 1048586 반영: sysctl -p
+확인: sysctl -a
+(limits) 설정 - open file 설정 /etc/security/limits.conf
+oracle soft nproc 2047 oracle hard nproc 16384 oracle soft nofile 1024 oracle hard nofile 65536" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/system/oracle12c/" /><meta property="article:section" content="system" />
+
+
+
+<meta itemprop="name" content="oracle12c">
+<meta itemprop="description" content="(sysctl) 설정 - kernel 파일: /etc/sysctl.conf
+fs.aio-max-nr = 1048576 fs.file-max = 6815744 kernel.shmall = 2097152 kernel.shmmax = 4056393728 kernel.shmmni = 4096 kernel.sem = 250 32000 100 128 net.ipv4.ip_local_port_range = 9000 65500 net.core.rmem_default = 262144 net.core.rmem_max = 4194304 net.core.wmem_default = 262144 net.core.wmem_max = 1048586 반영: sysctl -p
+확인: sysctl -a
+(limits) 설정 - open file 설정 /etc/security/limits.conf
+oracle soft nproc 2047 oracle hard nproc 16384 oracle soft nofile 1024 oracle hard nofile 65536">
+
+<meta itemprop="wordCount" content="482">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="oracle12c"/>
+<meta name="twitter:description" content="(sysctl) 설정 - kernel 파일: /etc/sysctl.conf
+fs.aio-max-nr = 1048576 fs.file-max = 6815744 kernel.shmall = 2097152 kernel.shmmax = 4056393728 kernel.shmmni = 4096 kernel.sem = 250 32000 100 128 net.ipv4.ip_local_port_range = 9000 65500 net.core.rmem_default = 262144 net.core.rmem_max = 4194304 net.core.wmem_default = 262144 net.core.wmem_max = 1048586 반영: sysctl -p
+확인: sysctl -a
+(limits) 설정 - open file 설정 /etc/security/limits.conf
+oracle soft nproc 2047 oracle hard nproc 16384 oracle soft nofile 1024 oracle hard nofile 65536"/>
+
+
+
+
+<link rel="preload" href="/scss/main.min.8687086175d05311263990c4798ea2faa02da94d422e446278b8c8acfbda930b.css" as="style">
+<link href="/scss/main.min.8687086175d05311263990c4798ea2faa02da94d422e446278b8c8acfbda930b.css" rel="stylesheet" integrity="">
+
+
+<script
+  src="https://code.jquery.com/jquery-3.5.1.min.js"
+  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous"></script>
+
+<script
+  src="https://unpkg.com/lunr@2.3.8/lunr.min.js"
+  integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
+  crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+  </head>
+  <body class="td-page">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="/">
+		<span class="navbar-logo"></span><span class="text-uppercase font-weight-bold">dlog</span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				
+				
+				<a class="nav-link active" href="/system/" ><i class='fas fa-book'></i><span class="active">system</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/localenv/" ><i class='fas fa-book'></i><span>localenv</span></a>
+			</li>
+			
+			
+			
+		</ul>
+	</div>
+	<div class="navbar-nav d-none d-lg-block">
+
+
+
+<input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Search this site…"
+  aria-label="Search this site…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="/offline-search-index.92c3465f84de8a1864d84e952fe7da50.json"
+  data-offline-search-base-href="/"
+  data-offline-search-max-results="10"
+>
+
+</div>
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+
+
+
+<input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Search this site…"
+  aria-label="Search this site…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="/offline-search-index.92c3465f84de8a1864d84e952fe7da50.json"
+  data-offline-search-base-href="/"
+  data-offline-search-max-results="10"
+>
+
+
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  <nav class="collapse td-sidebar-nav" id="td-section-nav">
+    <ul class="td-sidebar-nav__section pr-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-system-li">
+  
+  <a href="/system/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-system"><span class="">system</span></a>
+  <ul class="ul-1">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemhttpd-li">
+  
+  <a href="/system/httpd/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemhttpd"><span class="">httpd</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemjenkins-li">
+  
+  <a href="/system/jenkins/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemjenkins"><span class="">jenkins</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemlinux-li">
+  
+  <a href="/system/linux/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemlinux"><span class="">linux</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemopenssh-li">
+  
+  <a href="/system/openssh/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemopenssh"><span class="">openssh</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-systemoracle12c-li">
+  
+  <a href="/system/oracle12c/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-systemoracle12c"><span class="td-sidebar-nav-active-item">oracle12c</span></a>
+</li>
+  </ul>
+</li>
+    </ul>
+  </nav>
+</div>
+
+          </aside>
+          <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+            
+  
+  
+  
+  
+  
+  
+  <div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
+  
+  
+  </div>
+
+
+            
+
+
+<div class="td-toc"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#sysctl-설정---kernel">(sysctl) 설정 - kernel</a></li>
+            <li><a href="#limits-설정---open-file-설정">(limits) 설정 - open file 설정</a></li>
+            <li><a href="#시스템-계정">시스템 계정</a></li>
+            <li><a href="#설치-디렉토리">설치 디렉토리</a></li>
+            <li><a href="#시스템-변수">시스템 변수</a></li>
+            <li><a href="#gui-패키지-설치">gui 패키지 설치</a></li>
+            <li><a href="#oracle12c-ee-설치">oracle12c-ee 설치</a></li>
+            <li><a href="#각종-오류">각종 오류</a></li>
+            <li><a href="#systemctl-등록">systemctl 등록</a></li>
+            <li><a href="#oratab-파일">oratab 파일</a></li>
+            <li><a href="#max_string_size--extended">max_string_size = EXTENDED</a></li>
+            <li><a href="#pdb-자동-시작">PDB 자동 시작</a></li>
+            <li><a href="#oracle-계정-생성">oracle 계정 생성</a></li>
+            <li><a href="#oracle-impexp">oracle imp/exp</a></li>
+            <li><a href="#drop-table-문">drop table 문</a></li>
+            <li><a href="#oracle-character-set-설정">oracle character-set 설정</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+
+
+
+            
+
+	
+		
+
+
+
+  
+  
+
+	
+		
+
+
+
+  
+  
+
+	
+
+          </aside>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="d-none d-md-block d-print-none">
+	<ol class="breadcrumb spb-1">
+		
+
+
+
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="/system/">system</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item active" aria-current="page">
+	<a href="/system/oracle12c/">oracle12c</a>
+</li>
+
+	</ol>
+</nav	>
+
+            
+<div class="td-content">
+	<h1>oracle12c</h1>
+	
+	<header class="article-meta">
+		
+		
+			
+				
+
+
+			
+				
+
+
+			
+		
+		
+	</header>    
+	<h4 id="sysctl-설정---kernel">(sysctl) 설정 - kernel</h4>
+<p>파일: /etc/sysctl.conf</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">fs.aio-max-nr <span style="color:#f92672">=</span> <span style="color:#ae81ff">1048576</span>
+fs.file-max <span style="color:#f92672">=</span> <span style="color:#ae81ff">6815744</span>
+kernel.shmall <span style="color:#f92672">=</span> <span style="color:#ae81ff">2097152</span>
+kernel.shmmax <span style="color:#f92672">=</span> <span style="color:#ae81ff">4056393728</span>
+kernel.shmmni <span style="color:#f92672">=</span> <span style="color:#ae81ff">4096</span>
+kernel.sem <span style="color:#f92672">=</span> <span style="color:#ae81ff">250</span> <span style="color:#ae81ff">32000</span> <span style="color:#ae81ff">100</span> <span style="color:#ae81ff">128</span>
+net.ipv4.ip_local_port_range <span style="color:#f92672">=</span> <span style="color:#ae81ff">9000</span> <span style="color:#ae81ff">65500</span>
+net.core.rmem_default <span style="color:#f92672">=</span> <span style="color:#ae81ff">262144</span>
+net.core.rmem_max <span style="color:#f92672">=</span> <span style="color:#ae81ff">4194304</span>
+net.core.wmem_default <span style="color:#f92672">=</span> <span style="color:#ae81ff">262144</span>
+net.core.wmem_max <span style="color:#f92672">=</span> <span style="color:#ae81ff">1048586</span>
+</code></pre></div><p>반영: <code>sysctl -p</code></p>
+<p>확인: <code>sysctl -a</code></p>
+<br>
+<h4 id="limits-설정---open-file-설정">(limits) 설정 - open file 설정</h4>
+<p>/etc/security/limits.conf</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">oracle soft nproc <span style="color:#ae81ff">2047</span>
+oracle hard nproc <span style="color:#ae81ff">16384</span>
+oracle soft nofile <span style="color:#ae81ff">1024</span>
+oracle hard nofile <span style="color:#ae81ff">65536</span>
+</code></pre></div><br>
+<h4 id="시스템-계정">시스템 계정</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">groupadd oinstall
+groupadd dba
+useradd -g oinstall -G dba oracle
+</code></pre></div><br>
+<h4 id="설치-디렉토리">설치 디렉토리</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mkdir -p /prod/oracle12/app
+mkdir -p /prod/oracle12/oraInventory
+chown -R oracle:oinstall /prod/oracle12/app
+chown -R oracle:oinstall /prod/oracle12/oraInventory
+chmod -R <span style="color:#ae81ff">775</span> /prod/oracle12/app
+chmod -R <span style="color:#ae81ff">775</span> /prod/oracle12/oraInventory
+chmod g+s /prod/oracle12/app
+chmod g+s /prod/oracle12/oraInventory
+</code></pre></div><br>
+<h4 id="시스템-변수">시스템 변수</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">export TMPDIR<span style="color:#f92672">=</span>$TMP
+export ORACLE_BASE<span style="color:#f92672">=</span>/prod/oracle12/app/
+export ORACLE_HOME<span style="color:#f92672">=</span>$ORACLE_BASE/product/12.2.0/dbhome_1
+export ORACLE_HOME_LISTNER<span style="color:#f92672">=</span>$ORACLE_HOME/bin/lsnrctl
+export ORACLE_SID<span style="color:#f92672">=</span>orcl
+export LD_LIBRARY_PATH<span style="color:#f92672">=</span>/lib:/usr/lib:/usr/lib64:$ORACLE_HOME/lib
+export CLASSPATH<span style="color:#f92672">=</span>$ORACLE_HOME/jlib:$ORACLE_HOME/rdbms/jlib
+export PATH<span style="color:#f92672">=</span>$ORACLE_HOME/bin:$PATH:$HOME/.local/bin:$HOME/bin
+</code></pre></div><br>
+<h4 id="gui-패키지-설치">gui 패키지 설치</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ yum grouplist
+사용 가능한 환경 그룹 :
+   서버 - GUI 사용
+   최소 설치
+   워크스테이션
+   가상화 호스트
+   사용자 정의 운영 체제
+$ yum groupinstall <span style="color:#e6db74">&#34;서버 - GUI 사용&#34;</span>
+</code></pre></div><p>설치 후 runlevel 변경: <code>$ systemctl set-default graphical.target</code></p>
+<br>
+<h4 id="oracle12c-ee-설치">oracle12c-ee 설치</h4>
+<p>gui 환경으로 booting 후 oracle 계정으로 로그인하고 runInstaller 실행</p>
+<p>설치 파일: <code>oracle-ee_12102_linux_x64_1of2.zip</code>, <code>oracle-ee_12102_linux_x64_2of2.zip</code></p>
+<br>
+<h4 id="각종-오류">각종 오류</h4>
+<ul>
+<li>ORA-01102: cannot mount database in EXCLUSIVE mode</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat $ORACLE_BASE/admin/ora12c/pfile/init.ora.1028202115570
+cp $ORACLE_BASE/admin/ora12c/pfile/init.ora.1028202115570 $ORACLE_HOME/dbs/initora12c.ora
+</code></pre></div><ul>
+<li>ORA-01033: ORACLE initialization or shutdown in progress</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">alter</span> pluggable <span style="color:#66d9ef">database</span> pdborcl <span style="color:#66d9ef">open</span> <span style="color:#66d9ef">read</span> <span style="color:#66d9ef">write</span>;
+</code></pre></div><br>
+<h4 id="systemctl-등록">systemctl 등록</h4>
+<p>systemctl 환경변수 파일: /etc/sysconfig/ora12c.env</p>
+<p>소유자(oracle) 설정: <code>chown oracle:db /etc/sysconfig/ora12c.env</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ORACLE_BASE<span style="color:#f92672">=</span>/prod/oracle12/app
+ORACLE_HOME<span style="color:#f92672">=</span>$ORACLE_BASE/product/12.2.0/dbhome_1
+ORACLE_SID<span style="color:#f92672">=</span>ora12c
+</code></pre></div><br>
+<p>systemctl service 파일 생성</p>
+<p>service 파일에는 환경변수 파일을 적용할 것</p>
+<p><code>ora12c@lsnrctl.service</code>, <code>ora12c@dbms.service</code></p>
+<br>
+<h4 id="oratab-파일">oratab 파일</h4>
+<p>파일: /etc/oratab</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">ora12c:/prod/oracle12/app/product/12.2.0/dbhome_1:Y
+</code></pre></div><p>소유자(oracle) 설정: <code>chown oracle:db /etc/oratab</code></p>
+<br>
+<h4 id="max_string_size--extended">max_string_size = EXTENDED</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">startup mount;
+<span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">database</span> <span style="color:#66d9ef">open</span> migrate;
+<span style="color:#66d9ef">select</span> con_id, name, open_mode <span style="color:#66d9ef">from</span> v$pdbs;
+<span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">session</span> <span style="color:#66d9ef">set</span> container<span style="color:#f92672">=</span>PDB$SEED;
+<span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">system</span> <span style="color:#66d9ef">set</span> max_string_size<span style="color:#f92672">=</span>extended <span style="color:#66d9ef">scope</span><span style="color:#f92672">=</span>spfile;
+<span style="color:#f92672">@?/</span>rdbms<span style="color:#f92672">/</span><span style="color:#66d9ef">admin</span><span style="color:#f92672">/</span>utl32k.<span style="color:#66d9ef">sql</span>;
+<span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">session</span> <span style="color:#66d9ef">set</span> container<span style="color:#f92672">=</span>SPADBP;
+<span style="color:#66d9ef">alter</span> pluggable <span style="color:#66d9ef">database</span> SPADBP <span style="color:#66d9ef">open</span> upgrade;
+<span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">system</span> <span style="color:#66d9ef">set</span> max_string_size<span style="color:#f92672">=</span>extended <span style="color:#66d9ef">scope</span><span style="color:#f92672">=</span>spfile;
+<span style="color:#f92672">@?/</span>rdbms<span style="color:#f92672">/</span><span style="color:#66d9ef">admin</span><span style="color:#f92672">/</span>utl32k.<span style="color:#66d9ef">sql</span>;
+<span style="color:#f92672">@?/</span>rdbms<span style="color:#f92672">/</span><span style="color:#66d9ef">admin</span><span style="color:#f92672">/</span>utlrp.<span style="color:#66d9ef">sql</span>;
+<span style="color:#66d9ef">alter</span> pluggable <span style="color:#66d9ef">database</span> SPADBP <span style="color:#66d9ef">close</span> <span style="color:#66d9ef">immediate</span>;
+</code></pre></div><br>
+<h4 id="pdb-자동-시작">PDB 자동 시작</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span> con_id, name, open_mode <span style="color:#66d9ef">from</span> v$pdbs;
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">OR</span> <span style="color:#66d9ef">REPLACE</span> <span style="color:#66d9ef">TRIGGER</span> open_pdbs 
+  <span style="color:#66d9ef">AFTER</span> STARTUP <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">DATABASE</span> 
+<span style="color:#66d9ef">BEGIN</span> 
+  <span style="color:#66d9ef">EXECUTE</span> <span style="color:#66d9ef">IMMEDIATE</span> <span style="color:#e6db74">&#39;ALTER PLUGGABLE DATABASE ALL OPEN&#39;</span>; 
+<span style="color:#66d9ef">END</span> open_pdbs;
+<span style="color:#f92672">/</span>
+<span style="color:#66d9ef">commit</span>;
+</code></pre></div><br>
+<h4 id="oracle-계정-생성">oracle 계정 생성</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">session</span> <span style="color:#66d9ef">set</span> <span style="color:#e6db74">&#34;_oracle_script&#34;</span><span style="color:#f92672">=</span><span style="color:#66d9ef">true</span>;
+<span style="color:#66d9ef">CREATE</span> TABLESPACE TS_DATA01 DATAFILE <span style="color:#e6db74">&#39;/data/DB/oradata/ora12c/SPADBP/TS_DATA01.dbf&#39;</span> <span style="color:#66d9ef">SIZE</span> <span style="color:#ae81ff">1</span><span style="color:#66d9ef">G</span> AUTOEXTEND <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">NEXT</span> <span style="color:#ae81ff">10</span>M;
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">USER</span> SPADBA IDENTIFIED <span style="color:#66d9ef">BY</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">DEFAULT</span> TABLESPACE TS_DATA01;
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">USER</span> SPAAPP IDENTIFIED <span style="color:#66d9ef">BY</span> SPAAPP1234 <span style="color:#66d9ef">DEFAULT</span> TABLESPACE TS_DATA01;
+<span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">USER</span> SPADBA QUOTA UNLIMITED <span style="color:#66d9ef">ON</span> TS_DATA01;
+<span style="color:#66d9ef">GRANT</span> <span style="color:#66d9ef">CONNECT</span>, RESOURCE, <span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">VIEW</span>, EXP_FULL_DATABASE, IMP_FULL_DATABASE, DBA <span style="color:#66d9ef">TO</span> SPADBA;
+<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">ROLE</span> RL_SPA_APP;
+<span style="color:#66d9ef">GRANT</span> <span style="color:#66d9ef">CONNECT</span>, RESOURCE <span style="color:#66d9ef">TO</span> RL_SPA_APP;
+<span style="color:#66d9ef">GRANT</span> RL_SPA_APP <span style="color:#66d9ef">TO</span> SPAAPP;
+</code></pre></div><br>
+<h4 id="oracle-impexp">oracle imp/exp</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">exp.exe SPADBA/1@SPADBP FILE=&#39;Z:\SPADBP.dmp&#39; GRANTS=Y INDEXES=Y ROWS=Y CONSTRAINTS=Y TRIGGERS=N COMPRESS=Y DIRECT=N CONSISTENT=N OWNER=(SPADBA)
+imp.exe SPADBA/1@SPADBP FILE=&#39;Z:\SPADBP.dmp&#39; FEEDBACK=1000 GRANTS=Y INDEXES=Y ROWS=Y CONSTRAINTS=Y IGNORE=N SHOW=N DESTROY=N ANALYZE=Y SKIP_UNUSABLE_INDEXES=N RECALCULATE_STATISTICS=N FROMUSER=SPADBA TOUSER=SPADBA
+</code></pre></div><br>
+<h4 id="drop-table-문">drop table 문</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span> <span style="color:#e6db74">&#39;drop table &#39;</span><span style="color:#f92672">||</span><span style="color:#66d9ef">table_name</span><span style="color:#f92672">||</span><span style="color:#e6db74">&#39; cascade constraints;&#39;</span> <span style="color:#66d9ef">from</span> user_tables;
+</code></pre></div><h4 id="oracle-character-set-설정">oracle character-set 설정</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> nls_database_parameters <span style="color:#66d9ef">where</span> <span style="color:#66d9ef">parameter</span> <span style="color:#66d9ef">like</span> <span style="color:#e6db74">&#39;%NLS_CHARACTERSET%&#39;</span>;
+<span style="color:#75715e">/**
+</span><span style="color:#75715e">NLS_CHARACTERSET  WE8MSWIN1252
+</span><span style="color:#75715e">**/</span>
+<span style="color:#75715e">/**
+</span><span style="color:#75715e">NLS_CHARACTERSET  AL32UTF8
+</span><span style="color:#75715e">*/</span>
+
+SHUTDOWN <span style="color:#66d9ef">IMMEDIATE</span>;
+STARTUP MOUNT;
+<span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">SYSTEM</span> ENABLE RESTRICTED <span style="color:#66d9ef">SESSION</span>;
+<span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">SYSTEM</span> <span style="color:#66d9ef">SET</span> JOB_QUEUE_PROCESSES<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
+<span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">SYSTEM</span> <span style="color:#66d9ef">SET</span> AQ_TM_PROCESSES<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
+<span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">DATABASE</span> <span style="color:#66d9ef">OPEN</span>;
+<span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">DATABASE</span> CHARACTER <span style="color:#66d9ef">SET</span> INTERNAL_USE AL32UTF8;
+SHUTDOWN <span style="color:#66d9ef">IMMEDIATE</span>;
+STARTUP;
+</code></pre></div><br>
+
+	
+	
+	<div class="text-muted mt-5 pt-3 border-top">
+
+</div>
+
+</div>
+
+
+          </main>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@8.11.2/dist/mermaid.min.js" integrity="sha384-m8Pdaep6Qk8sW3J6XhPOiwUww3maU9HxZTLvEfSEB4e1UVvTdHyfJsYmEfYqvwLC" crossorigin="anonymous"></script>
+
+
+
+<style>
+.markmap > svg {
+  width: 100%;
+  height: 300px;
+}
+</style>
+<script>
+window.markmap = {
+  autoLoader: { manual: true },
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
+
+
+<script src='/js/tabpane-persist.js'></script>
+
+
+
+<script src='/js/deflate.js'></script>
+
+
+ 
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.css" integrity="sha384-Cqd8ihRLum0CCg8rz0hYKPoLZ3uw+gES2rXQXycqnL5pgVQIflxAUDS7ZSjITLb5" crossorigin="anonymous">
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.js" integrity="sha384-1Or6BdeNQb0ezrmtGeqQHFpppNd7a/gw29xeiSikBbsb44xu3uAo8c7FwbF5jhbd" crossorigin="anonymous"></script>
+ 
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/mhchem.min.js" integrity="sha384-LIgAiYlGSAdpNC9+YDjDPF6JeS/RRIumtNo0CmyQERZ/+g0h9MbuYQwf/5pQ4Y4M"  crossorigin="anonymous"></script>
+
+
+<script defer src='https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/auto-render.min.js' integrity='sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl' crossorigin='anonymous' onload='renderMathInElement(document.body, null);'></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.min.c1b8f3c373b85f900699a7ea81c2038ebbbebcac1a5a4b6e5ef96c24c31790d6.js" integrity="sha256-wbjzw3O4X5AGmafqgcIDjru&#43;vKwaWktuXvlsJMMXkNY=" crossorigin="anonymous"></script>
+
+
+
+
+  </body>
+</html>

@@ -1244,5 +1244,168 @@ drwx------. 5 tomcat ap  152  9월 13 11:48 ..
       </description>
     </item>
     
+    <item>
+      <title>System: oracle12c</title>
+      <link>/system/oracle12c/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/system/oracle12c/</guid>
+      <description>
+        
+        
+        &lt;h4 id=&#34;sysctl-설정---kernel&#34;&gt;(sysctl) 설정 - kernel&lt;/h4&gt;
+&lt;p&gt;파일: /etc/sysctl.conf&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;fs.aio-max-nr &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1048576&lt;/span&gt;
+fs.file-max &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;6815744&lt;/span&gt;
+kernel.shmall &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2097152&lt;/span&gt;
+kernel.shmmax &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;4056393728&lt;/span&gt;
+kernel.shmmni &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;4096&lt;/span&gt;
+kernel.sem &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;250&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;32000&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;100&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;128&lt;/span&gt;
+net.ipv4.ip_local_port_range &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;9000&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;65500&lt;/span&gt;
+net.core.rmem_default &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;262144&lt;/span&gt;
+net.core.rmem_max &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;4194304&lt;/span&gt;
+net.core.wmem_default &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;262144&lt;/span&gt;
+net.core.wmem_max &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1048586&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;반영: &lt;code&gt;sysctl -p&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;확인: &lt;code&gt;sysctl -a&lt;/code&gt;&lt;/p&gt;
+&lt;br&gt;
+&lt;h4 id=&#34;limits-설정---open-file-설정&#34;&gt;(limits) 설정 - open file 설정&lt;/h4&gt;
+&lt;p&gt;/etc/security/limits.conf&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;oracle soft nproc &lt;span style=&#34;color:#ae81ff&#34;&gt;2047&lt;/span&gt;
+oracle hard nproc &lt;span style=&#34;color:#ae81ff&#34;&gt;16384&lt;/span&gt;
+oracle soft nofile &lt;span style=&#34;color:#ae81ff&#34;&gt;1024&lt;/span&gt;
+oracle hard nofile &lt;span style=&#34;color:#ae81ff&#34;&gt;65536&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;h4 id=&#34;시스템-계정&#34;&gt;시스템 계정&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;groupadd oinstall
+groupadd dba
+useradd -g oinstall -G dba oracle
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;h4 id=&#34;설치-디렉토리&#34;&gt;설치 디렉토리&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;mkdir -p /prod/oracle12/app
+mkdir -p /prod/oracle12/oraInventory
+chown -R oracle:oinstall /prod/oracle12/app
+chown -R oracle:oinstall /prod/oracle12/oraInventory
+chmod -R &lt;span style=&#34;color:#ae81ff&#34;&gt;775&lt;/span&gt; /prod/oracle12/app
+chmod -R &lt;span style=&#34;color:#ae81ff&#34;&gt;775&lt;/span&gt; /prod/oracle12/oraInventory
+chmod g+s /prod/oracle12/app
+chmod g+s /prod/oracle12/oraInventory
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;h4 id=&#34;시스템-변수&#34;&gt;시스템 변수&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;export TMPDIR&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;$TMP
+export ORACLE_BASE&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/prod/oracle12/app/
+export ORACLE_HOME&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;$ORACLE_BASE/product/12.2.0/dbhome_1
+export ORACLE_HOME_LISTNER&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;$ORACLE_HOME/bin/lsnrctl
+export ORACLE_SID&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;orcl
+export LD_LIBRARY_PATH&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/lib:/usr/lib:/usr/lib64:$ORACLE_HOME/lib
+export CLASSPATH&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;$ORACLE_HOME/jlib:$ORACLE_HOME/rdbms/jlib
+export PATH&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;$ORACLE_HOME/bin:$PATH:$HOME/.local/bin:$HOME/bin
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;h4 id=&#34;gui-패키지-설치&#34;&gt;gui 패키지 설치&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;$ yum grouplist
+사용 가능한 환경 그룹 :
+   서버 - GUI 사용
+   최소 설치
+   워크스테이션
+   가상화 호스트
+   사용자 정의 운영 체제
+$ yum groupinstall &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;서버 - GUI 사용&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;설치 후 runlevel 변경: &lt;code&gt;$ systemctl set-default graphical.target&lt;/code&gt;&lt;/p&gt;
+&lt;br&gt;
+&lt;h4 id=&#34;oracle12c-ee-설치&#34;&gt;oracle12c-ee 설치&lt;/h4&gt;
+&lt;p&gt;gui 환경으로 booting 후 oracle 계정으로 로그인하고 runInstaller 실행&lt;/p&gt;
+&lt;p&gt;설치 파일: &lt;code&gt;oracle-ee_12102_linux_x64_1of2.zip&lt;/code&gt;, &lt;code&gt;oracle-ee_12102_linux_x64_2of2.zip&lt;/code&gt;&lt;/p&gt;
+&lt;br&gt;
+&lt;h4 id=&#34;각종-오류&#34;&gt;각종 오류&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;ORA-01102: cannot mount database in EXCLUSIVE mode&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;cat $ORACLE_BASE/admin/ora12c/pfile/init.ora.1028202115570
+cp $ORACLE_BASE/admin/ora12c/pfile/init.ora.1028202115570 $ORACLE_HOME/dbs/initora12c.ora
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;ORA-01033: ORACLE initialization or shutdown in progress&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;alter&lt;/span&gt; pluggable &lt;span style=&#34;color:#66d9ef&#34;&gt;database&lt;/span&gt; pdborcl &lt;span style=&#34;color:#66d9ef&#34;&gt;open&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;read&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;write&lt;/span&gt;;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;h4 id=&#34;systemctl-등록&#34;&gt;systemctl 등록&lt;/h4&gt;
+&lt;p&gt;systemctl 환경변수 파일: /etc/sysconfig/ora12c.env&lt;/p&gt;
+&lt;p&gt;소유자(oracle) 설정: &lt;code&gt;chown oracle:db /etc/sysconfig/ora12c.env&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;ORACLE_BASE&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/prod/oracle12/app
+ORACLE_HOME&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;$ORACLE_BASE/product/12.2.0/dbhome_1
+ORACLE_SID&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;ora12c
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;p&gt;systemctl service 파일 생성&lt;/p&gt;
+&lt;p&gt;service 파일에는 환경변수 파일을 적용할 것&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ora12c@lsnrctl.service&lt;/code&gt;, &lt;code&gt;ora12c@dbms.service&lt;/code&gt;&lt;/p&gt;
+&lt;br&gt;
+&lt;h4 id=&#34;oratab-파일&#34;&gt;oratab 파일&lt;/h4&gt;
+&lt;p&gt;파일: /etc/oratab&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;ora12c:/prod/oracle12/app/product/12.2.0/dbhome_1:Y
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;소유자(oracle) 설정: &lt;code&gt;chown oracle:db /etc/oratab&lt;/code&gt;&lt;/p&gt;
+&lt;br&gt;
+&lt;h4 id=&#34;max_string_size--extended&#34;&gt;max_string_size = EXTENDED&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;startup mount;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;alter&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;database&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;open&lt;/span&gt; migrate;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; con_id, name, open_mode &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; v$pdbs;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;alter&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;session&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; container&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;PDB$SEED;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;alter&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;system&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; max_string_size&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;extended &lt;span style=&#34;color:#66d9ef&#34;&gt;scope&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;spfile;
+&lt;span style=&#34;color:#f92672&#34;&gt;@?/&lt;/span&gt;rdbms&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;admin&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;utl32k.&lt;span style=&#34;color:#66d9ef&#34;&gt;sql&lt;/span&gt;;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;alter&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;session&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; container&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;SPADBP;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;alter&lt;/span&gt; pluggable &lt;span style=&#34;color:#66d9ef&#34;&gt;database&lt;/span&gt; SPADBP &lt;span style=&#34;color:#66d9ef&#34;&gt;open&lt;/span&gt; upgrade;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;alter&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;system&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; max_string_size&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;extended &lt;span style=&#34;color:#66d9ef&#34;&gt;scope&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;spfile;
+&lt;span style=&#34;color:#f92672&#34;&gt;@?/&lt;/span&gt;rdbms&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;admin&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;utl32k.&lt;span style=&#34;color:#66d9ef&#34;&gt;sql&lt;/span&gt;;
+&lt;span style=&#34;color:#f92672&#34;&gt;@?/&lt;/span&gt;rdbms&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;admin&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;utlrp.&lt;span style=&#34;color:#66d9ef&#34;&gt;sql&lt;/span&gt;;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;alter&lt;/span&gt; pluggable &lt;span style=&#34;color:#66d9ef&#34;&gt;database&lt;/span&gt; SPADBP &lt;span style=&#34;color:#66d9ef&#34;&gt;close&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;immediate&lt;/span&gt;;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;h4 id=&#34;pdb-자동-시작&#34;&gt;PDB 자동 시작&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; con_id, name, open_mode &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; v$pdbs;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;CREATE&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;OR&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;REPLACE&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;TRIGGER&lt;/span&gt; open_pdbs 
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;AFTER&lt;/span&gt; STARTUP &lt;span style=&#34;color:#66d9ef&#34;&gt;ON&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;DATABASE&lt;/span&gt; 
+&lt;span style=&#34;color:#66d9ef&#34;&gt;BEGIN&lt;/span&gt; 
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;EXECUTE&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;IMMEDIATE&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;ALTER PLUGGABLE DATABASE ALL OPEN&amp;#39;&lt;/span&gt;; 
+&lt;span style=&#34;color:#66d9ef&#34;&gt;END&lt;/span&gt; open_pdbs;
+&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;commit&lt;/span&gt;;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;h4 id=&#34;oracle-계정-생성&#34;&gt;oracle 계정 생성&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;alter&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;session&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;_oracle_script&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;CREATE&lt;/span&gt; TABLESPACE TS_DATA01 DATAFILE &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;/data/DB/oradata/ora12c/SPADBP/TS_DATA01.dbf&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;SIZE&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;G&lt;/span&gt; AUTOEXTEND &lt;span style=&#34;color:#66d9ef&#34;&gt;ON&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;NEXT&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;M;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;CREATE&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;USER&lt;/span&gt; SPADBA IDENTIFIED &lt;span style=&#34;color:#66d9ef&#34;&gt;BY&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;DEFAULT&lt;/span&gt; TABLESPACE TS_DATA01;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;CREATE&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;USER&lt;/span&gt; SPAAPP IDENTIFIED &lt;span style=&#34;color:#66d9ef&#34;&gt;BY&lt;/span&gt; SPAAPP1234 &lt;span style=&#34;color:#66d9ef&#34;&gt;DEFAULT&lt;/span&gt; TABLESPACE TS_DATA01;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;ALTER&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;USER&lt;/span&gt; SPADBA QUOTA UNLIMITED &lt;span style=&#34;color:#66d9ef&#34;&gt;ON&lt;/span&gt; TS_DATA01;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;GRANT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;CONNECT&lt;/span&gt;, RESOURCE, &lt;span style=&#34;color:#66d9ef&#34;&gt;CREATE&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;VIEW&lt;/span&gt;, EXP_FULL_DATABASE, IMP_FULL_DATABASE, DBA &lt;span style=&#34;color:#66d9ef&#34;&gt;TO&lt;/span&gt; SPADBA;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;CREATE&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;ROLE&lt;/span&gt; RL_SPA_APP;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;GRANT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;CONNECT&lt;/span&gt;, RESOURCE &lt;span style=&#34;color:#66d9ef&#34;&gt;TO&lt;/span&gt; RL_SPA_APP;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;GRANT&lt;/span&gt; RL_SPA_APP &lt;span style=&#34;color:#66d9ef&#34;&gt;TO&lt;/span&gt; SPAAPP;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;h4 id=&#34;oracle-impexp&#34;&gt;oracle imp/exp&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;exp.exe SPADBA/1@SPADBP FILE=&amp;#39;Z:\SPADBP.dmp&amp;#39; GRANTS=Y INDEXES=Y ROWS=Y CONSTRAINTS=Y TRIGGERS=N COMPRESS=Y DIRECT=N CONSISTENT=N OWNER=(SPADBA)
+imp.exe SPADBA/1@SPADBP FILE=&amp;#39;Z:\SPADBP.dmp&amp;#39; FEEDBACK=1000 GRANTS=Y INDEXES=Y ROWS=Y CONSTRAINTS=Y IGNORE=N SHOW=N DESTROY=N ANALYZE=Y SKIP_UNUSABLE_INDEXES=N RECALCULATE_STATISTICS=N FROMUSER=SPADBA TOUSER=SPADBA
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;h4 id=&#34;drop-table-문&#34;&gt;drop table 문&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;drop table &amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;table_name&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39; cascade constraints;&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; user_tables;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;oracle-character-set-설정&#34;&gt;oracle character-set 설정&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; nls_database_parameters &lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;parameter&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;like&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;%NLS_CHARACTERSET%&amp;#39;&lt;/span&gt;;
+&lt;span style=&#34;color:#75715e&#34;&gt;/**
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;NLS_CHARACTERSET  WE8MSWIN1252
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;**/&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;/**
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;NLS_CHARACTERSET  AL32UTF8
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;*/&lt;/span&gt;
+
+SHUTDOWN &lt;span style=&#34;color:#66d9ef&#34;&gt;IMMEDIATE&lt;/span&gt;;
+STARTUP MOUNT;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;ALTER&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;SYSTEM&lt;/span&gt; ENABLE RESTRICTED &lt;span style=&#34;color:#66d9ef&#34;&gt;SESSION&lt;/span&gt;;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;ALTER&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;SYSTEM&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;SET&lt;/span&gt; JOB_QUEUE_PROCESSES&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;ALTER&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;SYSTEM&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;SET&lt;/span&gt; AQ_TM_PROCESSES&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;ALTER&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;DATABASE&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;OPEN&lt;/span&gt;;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;ALTER&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;DATABASE&lt;/span&gt; CHARACTER &lt;span style=&#34;color:#66d9ef&#34;&gt;SET&lt;/span&gt; INTERNAL_USE AL32UTF8;
+SHUTDOWN &lt;span style=&#34;color:#66d9ef&#34;&gt;IMMEDIATE&lt;/span&gt;;
+STARTUP;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+
+      </description>
+    </item>
+    
   </channel>
 </rss>

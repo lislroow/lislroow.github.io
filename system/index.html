@@ -22,13 +22,13 @@
 
 
   
-  <meta name="description" content="(openssl) key 생성 cmd
-# 암호화하지 않은 개인키
-$ openssl genrsa -out private_key.pem 2048
+  <meta name="description" content="(oracle) 12c 설치
+oracle 12c ee 버전 설치
+pluggable database 설정, MAX_STRING_SIZE 설정, character-set 설정, oracle 계정 설정
+새 창 보기
 
-# 3des로 암호화된 개인키 생성
-# passphrase를 입력이 필요합니다.
-$ openssl genrsa -des3 …">
+(yum) 설치된 목록 확인
+yum list …">
 <meta property="og:title" content="system" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -116,7 +116,7 @@ $ openssl genrsa -des3 …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.e4297ca52773d3c22c3f3d4b9dcca5c7.json"
+  data-offline-search-index-json-src="/offline-search-index.92c3465f84de8a1864d84e952fe7da50.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -143,7 +143,7 @@ $ openssl genrsa -des3 …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.e4297ca52773d3c22c3f3d4b9dcca5c7.json"
+  data-offline-search-index-json-src="/offline-search-index.92c3465f84de8a1864d84e952fe7da50.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -170,6 +170,9 @@ $ openssl genrsa -des3 …">
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemopenssh-li">
   
   <a href="/system/openssh/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemopenssh"><span class="">openssh</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemoracle12c-li">
+  
+  <a href="/system/oracle12c/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemoracle12c"><span class="">oracle12c</span></a>
 </li>
   </ul>
 </li>
@@ -201,6 +204,11 @@ $ openssl genrsa -des3 …">
       <ul>
         <li>
           <ul>
+            <li><a href="#oracle-12c-설치">(oracle) 12c 설치</a></li>
+            <li><a href="#yum-설치된-목록-확인">(yum) 설치된 목록 확인</a></li>
+            <li><a href="#firewall-disabled">(firewall) disabled</a></li>
+            <li><a href="#selinux-disabled">(selinux) disabled</a></li>
+            <li><a href="#network-ip-설정">(network) ip 설정</a></li>
             <li><a href="#openssl-key-생성-cmd">(openssl) key 생성 cmd</a></li>
             <li><a href="#sed-문자열-치환">(sed) 문자열 치환</a></li>
             <li><a href="#tar-분할-압축">(tar) 분할 압축</a></li>
@@ -274,7 +282,34 @@ $ openssl genrsa -des3 …">
 		
 		
 	</header>
-	<h4 id="openssl-key-생성-cmd">(openssl) key 생성 cmd</h4>
+	<h4 id="oracle-12c-설치">(oracle) 12c 설치</h4>
+<p>oracle 12c ee 버전 설치</p>
+<p>pluggable database 설정, MAX_STRING_SIZE 설정, character-set 설정, oracle 계정 설정</p>
+<p><a href="/system/oracle12c" target="_blank">새 창 보기</a></p>
+<br>
+<h4 id="yum-설치된-목록-확인">(yum) 설치된 목록 확인</h4>
+<p><code>yum list installed</code></p>
+<br>
+<h4 id="firewall-disabled">(firewall) disabled</h4>
+<p>추가된 목록: /etc/firewalld/zones/public.xml</p>
+<p>서비스명: <code>firewalld</code></p>
+<br>
+<h4 id="selinux-disabled">(selinux) disabled</h4>
+<p>파일: /etc/selinux/config</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">SELINUX<span style="color:#f92672">=</span>disabled
+</code></pre></div><p>적용: <code>shutdown -r now</code></p>
+<br>
+<h4 id="network-ip-설정">(network) ip 설정</h4>
+<p>파일: /etc/sysconfig/network-scripts/ifcfg-ens33</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">BOOTPROTO<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;none&#34;</span>
+IPV6INIT<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;no&#34;</span>
+IPADDR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;172.28.200.30&#34;</span>
+PREFIX<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;24&#34;</span>
+GATEWAY<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;172.28.200.2&#34;</span>
+DNS1<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;8.8.8.8&#34;</span>
+</code></pre></div><p>적용: <code>systemctl restart NetworkManager</code></p>
+<br>
+<h4 id="openssl-key-생성-cmd">(openssl) key 생성 cmd</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 암호화하지 않은 개인키</span>
 $ openssl genrsa -out private_key.pem <span style="color:#ae81ff">2048</span>
 
