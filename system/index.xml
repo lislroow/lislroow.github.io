@@ -1313,19 +1313,15 @@ $ yum groupinstall &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;서버 - G
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;설치 후 runlevel 변경: &lt;code&gt;$ systemctl set-default graphical.target&lt;/code&gt;&lt;/p&gt;
 &lt;br&gt;
 &lt;h4 id=&#34;oracle12c-ee-설치&#34;&gt;oracle12c-ee 설치&lt;/h4&gt;
-&lt;p&gt;gui 환경으로 booting 후 oracle 계정으로 로그인하고 runInstaller 실행&lt;/p&gt;
+&lt;p&gt;gui 환경으로 booting 후 oracle 계정으로 로그인하고 &lt;code&gt;runInstaller&lt;/code&gt; 실행&lt;/p&gt;
 &lt;p&gt;설치 파일: &lt;code&gt;oracle-ee_12102_linux_x64_1of2.zip&lt;/code&gt;, &lt;code&gt;oracle-ee_12102_linux_x64_2of2.zip&lt;/code&gt;&lt;/p&gt;
-&lt;br&gt;
-&lt;h4 id=&#34;각종-오류&#34;&gt;각종 오류&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;ORA-01102: cannot mount database in EXCLUSIVE mode&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;cat $ORACLE_BASE/admin/ora12c/pfile/init.ora.1028202115570
-cp $ORACLE_BASE/admin/ora12c/pfile/init.ora.1028202115570 $ORACLE_HOME/dbs/initora12c.ora
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
-&lt;li&gt;ORA-01033: ORACLE initialization or shutdown in progress&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;alter&lt;/span&gt; pluggable &lt;span style=&#34;color:#66d9ef&#34;&gt;database&lt;/span&gt; pdborcl &lt;span style=&#34;color:#66d9ef&#34;&gt;open&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;read&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;write&lt;/span&gt;;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;install
+response
+rpm
+runInstaller
+sshsetup
+stage
+welcome.html
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
 &lt;h4 id=&#34;systemctl-등록&#34;&gt;systemctl 등록&lt;/h4&gt;
 &lt;p&gt;systemctl 환경변수 파일: /etc/sysconfig/ora12c.env&lt;/p&gt;
@@ -1334,6 +1330,19 @@ cp $ORACLE_BASE/admin/ora12c/pfile/init.ora.1028202115570 $ORACLE_HOME/dbs/inito
 ORACLE_HOME&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;$ORACLE_BASE/product/12.2.0/dbhome_1
 ORACLE_SID&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;ora12c
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;h4 id=&#34;각종-오류&#34;&gt;각종 오류&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;ORA-01102: cannot mount database in EXCLUSIVE mode&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;cat $ORACLE_BASE/admin/ora12c/pfile/init.ora.1028202115570
+cp $ORACLE_BASE/admin/ora12c/pfile/init.ora.1028202115570 $ORACLE_HOME/dbs/initora12c.ora
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ORA-01033: ORACLE initialization or shutdown in progress&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;alter&lt;/span&gt; pluggable &lt;span style=&#34;color:#66d9ef&#34;&gt;database&lt;/span&gt; pdborcl &lt;span style=&#34;color:#66d9ef&#34;&gt;open&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;read&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;write&lt;/span&gt;;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br&gt;
 &lt;p&gt;systemctl service 파일 생성&lt;/p&gt;
 &lt;p&gt;service 파일에는 환경변수 파일을 적용할 것&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;ora12c@lsnrctl.service&lt;/code&gt;, &lt;code&gt;ora12c@dbms.service&lt;/code&gt;&lt;/p&gt;
