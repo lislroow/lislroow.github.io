@@ -6,6 +6,8 @@
   </url><url>
     <loc>/</loc>
   </url><url>
+    <loc>/develop/</loc>
+  </url><url>
     <loc>/system/httpd/</loc>
   </url><url>
     <loc>/system/jenkins/</loc>
@@ -13,6 +15,8 @@
     <loc>/system/linux/</loc>
   </url><url>
     <loc>/localenv/</loc>
+  </url><url>
+    <loc>/develop/log4j2/</loc>
   </url><url>
     <loc>/system/openssh/</loc>
   </url><url>
