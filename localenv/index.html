@@ -22,9 +22,12 @@
 
 
   
-  <meta name="description" content="(github) Personal access tokens
-Settings &gt; Developer settings &gt; Personal access tokens 이동 후
-Generate new token 버튼 클릭으로 token 생성 (repo …">
+  <meta name="description" content="(github) unable to read askpass 오류
+오류 상황입니다.
+$ git push origin
+
+(gnome-ssh-askpass:19816): Gtk-WARNING **: 10:22:08.209: cannot open display: 
+error: …">
 <meta property="og:title" content="localenv" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -124,7 +127,7 @@ Generate new token 버튼 클릭으로 token 생성 (repo …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.7b5bdec43b5fa9a88cd1344df4be9b62.json"
+  data-offline-search-index-json-src="/offline-search-index.3e8b1ebc08fa3086bddcc19cbfb43205.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -151,7 +154,7 @@ Generate new token 버튼 클릭으로 token 생성 (repo …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.7b5bdec43b5fa9a88cd1344df4be9b62.json"
+  data-offline-search-index-json-src="/offline-search-index.3e8b1ebc08fa3086bddcc19cbfb43205.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -194,6 +197,7 @@ Generate new token 버튼 클릭으로 token 생성 (repo …">
       <ul>
         <li>
           <ul>
+            <li><a href="#github-unable-to-read-askpass-오류">(github) unable to read askpass 오류</a></li>
             <li><a href="#github-personal-access-tokens">(github) Personal access tokens</a></li>
             <li><a href="#eclipse-debugging-필수-옵션">(eclipse) debugging 필수 옵션</a></li>
             <li><a href="#win-win-11-taskbar-그룹해제">(win) win 11 taskbar 그룹해제</a></li>
@@ -291,11 +295,23 @@ Generate new token 버튼 클릭으로 token 생성 (repo …">
 		
 		
 	</header>
-	<h4 id="github-personal-access-tokens">(github) Personal access tokens</h4>
+	<h4 id="github-unable-to-read-askpass-오류">(github) unable to read askpass 오류</h4>
+<p>오류 상황입니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ git push origin
+
+(gnome-ssh-askpass:19816): Gtk-WARNING **: 10:22:08.209: cannot open display: 
+error: unable to read askpass response from &#39;/usr/libexec/openssh/gnome-ssh-askpass&#39;
+Username for &#39;https://github.com&#39;: 
+</code></pre></div><p><code>SSH_ASKPASS</code> 변수를 unset 하면 됩니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ echo $SSH_ASKPASS
+/usr/libexec/openssh/gnome-ssh-askpass
+$ unset SSH_ASKPASS
+</code></pre></div><h4 id="github-personal-access-tokens">(github) Personal access tokens</h4>
 <p><code>Settings</code> &gt; <code>Developer settings</code> &gt; <code>Personal access tokens</code> 이동 후</p>
 <p><code>Generate new token</code> 버튼 클릭으로 token 생성 (<code>repo</code> 만 체크하면 push 할 수 있음)</p>
 <p>token 생성 후 이클립스에서 id에 email 입력, password 에 생성된 토큰 입력</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">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
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># token-name: centos
+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
 </code></pre></div><br>
 <h4 id="eclipse-debugging-필수-옵션">(eclipse) debugging 필수 옵션</h4>
 <p>디버깅 시 아래와 같은 오류가 발생할 경우 이클립스 옵션을 확인해보세요.</p>

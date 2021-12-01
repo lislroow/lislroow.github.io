@@ -50,7 +50,7 @@ log4j-slf4j-impl:2.14.1
 &lt;Routing&gt;을 사용하여 ThreadContext 의 값에 따라 &lt;File&gt; 혹은 &lt;RollingFile&gt; 을 routing 할 수 있습니다.
 &lt;Appenders&gt; &lt;Console&gt; .">
 
-<meta itemprop="wordCount" content="140">
+<meta itemprop="wordCount" content="200">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="log4j2"/>
 <meta name="twitter:description" content="maven-dependency (Mar, 2021) 기준 log4j 는 2.14.1 버전이 최신입니다.
@@ -149,7 +149,7 @@ log4j-slf4j-impl:2.14.1
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.7b5bdec43b5fa9a88cd1344df4be9b62.json"
+  data-offline-search-index-json-src="/offline-search-index.3e8b1ebc08fa3086bddcc19cbfb43205.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -176,7 +176,7 @@ log4j-slf4j-impl:2.14.1
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.7b5bdec43b5fa9a88cd1344df4be9b62.json"
+  data-offline-search-index-json-src="/offline-search-index.3e8b1ebc08fa3086bddcc19cbfb43205.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -229,6 +229,7 @@ log4j-slf4j-impl:2.14.1
             <li><a href="#log4j2xml">log4j2.xml</a></li>
             <li><a href="#appenders-설정">&lt;Appenders&gt; 설정</a></li>
             <li><a href="#routing-과-threadcontext">&lt;Routing&gt; 과 ThreadContext</a></li>
+            <li><a href="#log-format">log-format</a></li>
           </ul>
         </li>
       </ul>
@@ -360,7 +361,70 @@ log4j:1.2.17
     <span style="color:#f92672">&lt;/Route&gt;</span>
   <span style="color:#f92672">&lt;/Routes&gt;</span>
 <span style="color:#f92672">&lt;/Routing&gt;</span>
-</code></pre></div>
+</code></pre></div><h4 id="log-format">log-format</h4>
+<table>
+<thead>
+<tr>
+<th>포맷</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%m</td>
+<td>내용</td>
+</tr>
+<tr>
+<td>%d</td>
+<td>시각 %d{HH:mm:ss, SSS}, %d{yyyy MMM dd HH:mm:ss, SSS}</td>
+</tr>
+<tr>
+<td>%t</td>
+<td>쓰레드</td>
+</tr>
+<tr>
+<td>%n</td>
+<td>개행 문자</td>
+</tr>
+<tr>
+<td>%c</td>
+<td>카테고리(패키지명), %c{2}일 경우 <code>a.b.c</code> 패키지는 <code>b.c</code> 로 출력</td>
+</tr>
+<tr>
+<td>%C</td>
+<td>클래스, %c{2}일 경우 <code>a.b.c.Clazz</code> 는 <code>c.Clazz</code> 로 출력</td>
+</tr>
+<tr>
+<td>%F</td>
+<td>파일명</td>
+</tr>
+<tr>
+<td>%l</td>
+<td>caller 정보</td>
+</tr>
+<tr>
+<td>%L</td>
+<td>caller 의 line number</td>
+</tr>
+<tr>
+<td>%M</td>
+<td>메소드명</td>
+</tr>
+<tr>
+<td>%r</td>
+<td>uptime (msec)</td>
+</tr>
+<tr>
+<td>%x</td>
+<td>NDC(Nested Diagnostic Context)</td>
+</tr>
+<tr>
+<td>%X</td>
+<td>MDC(Mapped Diagnostic Context)</td>
+</tr>
+</tbody>
+</table>
+
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
