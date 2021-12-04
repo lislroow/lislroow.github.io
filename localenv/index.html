@@ -22,12 +22,9 @@
 
 
   
-  <meta name="description" content="(github) unable to read askpass 오류
-오류 상황입니다.
-$ git push origin
-
-(gnome-ssh-askpass:19816): Gtk-WARNING **: 10:22:08.209: cannot open display: 
-error: …">
+  <meta name="description" content="(github) ssh key 등록
+ssh-keygen -t ed25519 -C &quot;hi@mgkim.net&quot;
+생성된 공개키 파일, C:\Users\Administrator\.ssh\id_ed25519.pub 의 내용을 github 에 등록합니다. …">
 <meta property="og:title" content="localenv" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -41,8 +38,8 @@ error: …">
 
 
 
-<link rel="preload" href="/scss/main.min.17a05366002e1ca47d5c37390d9b0d919399545c7d4edb9f91c766f14a186727.css" as="style">
-<link href="/scss/main.min.17a05366002e1ca47d5c37390d9b0d919399545c7d4edb9f91c766f14a186727.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.1f861d065398c88219fc317598d260b310e1d29b4fded8c05305f546ecc0046e.css" as="style">
+<link href="/scss/main.min.1f861d065398c88219fc317598d260b310e1d29b4fded8c05305f546ecc0046e.css" rel="stylesheet" integrity="">
 
 
 <script
@@ -127,7 +124,7 @@ error: …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.3e8b1ebc08fa3086bddcc19cbfb43205.json"
+  data-offline-search-index-json-src="/offline-search-index.a209ef6648a7b68b784c949415a10cdb.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -154,7 +151,7 @@ error: …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.3e8b1ebc08fa3086bddcc19cbfb43205.json"
+  data-offline-search-index-json-src="/offline-search-index.a209ef6648a7b68b784c949415a10cdb.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -165,9 +162,15 @@ error: …">
   </form>
   <nav class="collapse td-sidebar-nav" id="td-section-nav">
     <ul class="td-sidebar-nav__section pr-md-3 ul-0">
-      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-localenv-li">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-localenv-li">
   
   <a href="/localenv/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__section tree-root" id="m-localenv"><span class="td-sidebar-nav-active-item">localenv</span></a>
+  <ul class="ul-1">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-localenv04_ecb0b8eab3a0_eclipse-eb8ba8ecb695ed82a4-li">
+  
+  <a href="/localenv/04_%EC%B0%B8%EA%B3%A0_eclipse-%EB%8B%A8%EC%B6%95%ED%82%A4/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-localenv04_ecb0b8eab3a0_eclipse-eb8ba8ecb695ed82a4"><span class="">04_참고_eclipse-단축키</span></a>
+</li>
+  </ul>
 </li>
     </ul>
   </nav>
@@ -197,6 +200,7 @@ error: …">
       <ul>
         <li>
           <ul>
+            <li><a href="#github-ssh-key-등록">(github) ssh key 등록</a></li>
             <li><a href="#github-unable-to-read-askpass-오류">(github) unable to read askpass 오류</a></li>
             <li><a href="#github-personal-access-tokens">(github) Personal access tokens</a></li>
             <li><a href="#eclipse-debugging-필수-옵션">(eclipse) debugging 필수 옵션</a></li>
@@ -295,7 +299,25 @@ error: …">
 		
 		
 	</header>
-	<h4 id="github-unable-to-read-askpass-오류">(github) unable to read askpass 오류</h4>
+	<h4 id="github-ssh-key-등록">(github) ssh key 등록</h4>
+<p><code>ssh-keygen -t ed25519 -C &quot;hi@mgkim.net&quot;</code></p>
+<p>생성된 공개키 파일, <code>C:\Users\Administrator\.ssh\id_ed25519.pub</code> 의 내용을 github 에 등록합니다.</p>
+<p>github 메뉴 경로: <code>Settings</code> &gt; <code>SSH and GPG keys</code></p>
+<p><code>remote origin</code> 변경</p>
+<p><code>ssh-agent</code> 는 공개키 인증을 위한 개인키를 보관하는 프로그램으로 여러 서버에 인증이 필요할 경우 사용할 수 있습니다.</p>
+<p>등록된 공개키 정상여부 확인을 하기 위해, 키 생성을 한 곳에서 <code>ssh -T git@github.com</code> 명령을 실행을 해봅니다.</p>
+<p>키 파일의 경로를 명시적으로 지정</p>
+<p><code>ssh -v -i /C/Users/Administrator/.ssh/id_ed25519.pub -T git@github.com</code></p>
+<p><code>ssh -i C:\Users\Administrator\.ssh\id_ed25519.pub -T git@github.com</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Administrator@I5-1135G7 MINGW64 /
+$ ssh -T git@github.com
+The authenticity of host &#39;github.com (15.164.81.167)&#39; can&#39;t be established.
+ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added &#39;github.com&#39; (ED25519) to the list of known hosts.
+Hi lislroow! You&#39;ve successfully authenticated, but GitHub does not provide shell access.
+</code></pre></div><h4 id="github-unable-to-read-askpass-오류">(github) unable to read askpass 오류</h4>
 <p>오류 상황입니다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ git push origin
 
@@ -720,6 +742,16 @@ SQL&gt;
     
     
     
+    <hr class="panel-line">
+        
+            
+            <div class="entry">
+                <h5>
+                    <a href="/localenv/04_%EC%B0%B8%EA%B3%A0_eclipse-%EB%8B%A8%EC%B6%95%ED%82%A4/">04_참고_eclipse-단축키</a>
+                </h5>
+                <p></p>
+            </div>
+        
     
 </div>
 
