@@ -22,9 +22,12 @@
 
 
   
-  <meta name="description" content="(github) ssh key 등록
-ssh-keygen -t ed25519 -C &quot;hi@mgkim.net&quot;
-생성된 공개키 파일, C:\Users\Administrator\.ssh\id_ed25519.pub 의 내용을 github 에 등록합니다. …">
+  <meta name="description" content="(eclipse) scm ignore
+Preferences &gt; Version Control (Team) &gt; Ignored Resources
+아래 항목들을 추가 합니다.
+*target*
+*target*/*
+pom.xml.releaseBackup …">
 <meta property="og:title" content="localenv" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -124,7 +127,7 @@ ssh-keygen -t ed25519 -C &quot;hi@mgkim.net&quot;
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.8898cdb8c89522c6d86ffcf899c0878e.json"
+  data-offline-search-index-json-src="/offline-search-index.0ebdfb375f92c3ac7a92ff3e3b264ecc.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -151,7 +154,7 @@ ssh-keygen -t ed25519 -C &quot;hi@mgkim.net&quot;
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.8898cdb8c89522c6d86ffcf899c0878e.json"
+  data-offline-search-index-json-src="/offline-search-index.0ebdfb375f92c3ac7a92ff3e3b264ecc.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -200,6 +203,7 @@ ssh-keygen -t ed25519 -C &quot;hi@mgkim.net&quot;
       <ul>
         <li>
           <ul>
+            <li><a href="#eclipse-scm-ignore">(eclipse) scm ignore</a></li>
             <li><a href="#github-ssh-key-등록">(github) ssh key 등록</a></li>
             <li><a href="#github-unable-to-read-askpass-오류">(github) unable to read askpass 오류</a></li>
             <li><a href="#github-personal-access-tokens">(github) Personal access tokens</a></li>
@@ -299,7 +303,17 @@ ssh-keygen -t ed25519 -C &quot;hi@mgkim.net&quot;
 		
 		
 	</header>
-	<h4 id="github-ssh-key-등록">(github) ssh key 등록</h4>
+	<h4 id="eclipse-scm-ignore">(eclipse) scm ignore</h4>
+<p><code>Preferences</code> &gt; <code>Version Control (Team)</code> &gt; <code>Ignored Resources</code></p>
+<p>아래 항목들을 추가 합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">*target*
+*target*/*
+pom.xml.releaseBackup
+release.properties
+</code></pre></div><img src="/images/localenv/20211214-svn-ignore_target.png" width="600">
+<p><a href="/images/localenv/20211214-svn-ignore_target.png" target="_blank">새 창 보기</a></p>
+<br>
+<h4 id="github-ssh-key-등록">(github) ssh key 등록</h4>
 <p><code>ssh-keygen -t ed25519 -C &quot;hi@mgkim.net&quot;</code></p>
 <p>생성된 공개키 파일, <code>C:\Users\Administrator\.ssh\id_ed25519.pub</code> 의 내용을 github 에 등록합니다.</p>
 <p>github 메뉴 경로: <code>Settings</code> &gt; <code>SSH and GPG keys</code></p>
