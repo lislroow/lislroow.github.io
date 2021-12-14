@@ -22,12 +22,9 @@
 
 
   
-  <meta name="description" content="(eclipse) scm ignore
-Preferences &gt; Version Control (Team) &gt; Ignored Resources
-아래 항목들을 추가 합니다.
-*target*
-*target*/*
-pom.xml.releaseBackup …">
+  <meta name="description" content="(eclipse) eclipse-update
+이클립스를 업데이트 할 경우(플러그인 업데이트가 아닌), Can not remove ... eclipse.exe 오류가 발생할 수 있습니다.
+이 경우에는 아래 이미지와 같이 업데이트 진행 중에 eclipse.exe …">
 <meta property="og:title" content="localenv" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -127,7 +124,7 @@ pom.xml.releaseBackup …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.0ebdfb375f92c3ac7a92ff3e3b264ecc.json"
+  data-offline-search-index-json-src="/offline-search-index.d1824bef6f71f64ea3ba0196a0a045d3.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -154,7 +151,7 @@ pom.xml.releaseBackup …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.0ebdfb375f92c3ac7a92ff3e3b264ecc.json"
+  data-offline-search-index-json-src="/offline-search-index.d1824bef6f71f64ea3ba0196a0a045d3.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -203,6 +200,7 @@ pom.xml.releaseBackup …">
       <ul>
         <li>
           <ul>
+            <li><a href="#eclipse-eclipse-update">(eclipse) eclipse-update</a></li>
             <li><a href="#eclipse-scm-ignore">(eclipse) scm ignore</a></li>
             <li><a href="#github-ssh-key-등록">(github) ssh key 등록</a></li>
             <li><a href="#github-unable-to-read-askpass-오류">(github) unable to read askpass 오류</a></li>
@@ -303,7 +301,13 @@ pom.xml.releaseBackup …">
 		
 		
 	</header>
-	<h4 id="eclipse-scm-ignore">(eclipse) scm ignore</h4>
+	<h4 id="eclipse-eclipse-update">(eclipse) eclipse-update</h4>
+<p>이클립스를 업데이트 할 경우<del>(플러그인 업데이트가 아닌)</del>, <code>Can not remove ... eclipse.exe</code> 오류가 발생할 수 있습니다.</p>
+<p>이 경우에는 아래 이미지와 같이 업데이트 진행 중에 <code>eclipse.exe</code> 파일을 <code>eclipse.exe.bak</code> 로 변경하면 업데이트가 오류없이 진행됩니다.</p>
+<img src="/images/localenv/20211214-eclipse-update-Can_not_remove_eclipse.exe.png" width="600">
+<p><a href="/images/localenv/20211214-eclipse-update-Can_not_remove_eclipse.exe.png" target="_blank">새 창 보기</a></p>
+<br>
+<h4 id="eclipse-scm-ignore">(eclipse) scm ignore</h4>
 <p><code>Preferences</code> &gt; <code>Version Control (Team)</code> &gt; <code>Ignored Resources</code></p>
 <p>아래 항목들을 추가 합니다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">*target*
