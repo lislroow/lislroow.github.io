@@ -22,12 +22,10 @@
 
 
   
-  <meta name="description" content="(eclipse) STS Boot Dashboard filter
-
-새 창 보기
-
-(eclipse) eclipse-update
-이클립스를 업데이트 할 경우(플러그인 업데이트가 아닌), Can not remove ... eclipse.exe 오류가 발생할 수 있습니다. …">
+  <meta name="description" content="(maven) version ranges
+artifact 의 scope 가 import 일 경우에는 [0.1,) 형태로 ranges 를 적용할 수 없습니다.
+&lt;dependencyManagement&gt;
+  &lt;dependencies&gt; …">
 <meta property="og:title" content="localenv" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -127,7 +125,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.cde4a2c11dc9a85be187a2af240de536.json"
+  data-offline-search-index-json-src="/offline-search-index.dd5f8750e4da5ee6d895140beacab40c.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -154,7 +152,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.cde4a2c11dc9a85be187a2af240de536.json"
+  data-offline-search-index-json-src="/offline-search-index.dd5f8750e4da5ee6d895140beacab40c.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -203,6 +201,7 @@
       <ul>
         <li>
           <ul>
+            <li><a href="#maven-version-ranges">(maven) version ranges</a></li>
             <li><a href="#eclipse-sts-boot-dashboard-filter">(eclipse) STS Boot Dashboard filter</a></li>
             <li><a href="#eclipse-eclipse-update">(eclipse) eclipse-update</a></li>
             <li><a href="#eclipse-scm-ignore">(eclipse) scm ignore</a></li>
@@ -305,7 +304,24 @@
 		
 		
 	</header>
-	<h4 id="eclipse-sts-boot-dashboard-filter">(eclipse) STS Boot Dashboard filter</h4>
+	<h4 id="maven-version-ranges">(maven) version ranges</h4>
+<p>artifact 의 scope 가 <code>import</code> 일 경우에는 <code>[0.1,)</code> 형태로 ranges 를 적용할 수 없습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;dependencyManagement&gt;</span>
+  <span style="color:#f92672">&lt;dependencies&gt;</span>
+    <span style="color:#75715e">&lt;!-- mgkim.proto --&gt;</span>
+    <span style="color:#f92672">&lt;dependency&gt;</span>
+      <span style="color:#f92672">&lt;groupId&gt;</span>mgkim.proto<span style="color:#f92672">&lt;/groupId&gt;</span>
+      <span style="color:#f92672">&lt;artifactId&gt;</span>proto<span style="color:#f92672">&lt;/artifactId&gt;</span>
+      <span style="color:#f92672">&lt;version&gt;</span>[0.1,)<span style="color:#f92672">&lt;/version&gt;</span>  <span style="color:#75715e">&lt;!-- 오류 --&gt;</span>
+      <span style="color:#f92672">&lt;version&gt;</span>0.1<span style="color:#f92672">&lt;/version&gt;</span>     <span style="color:#75715e">&lt;!-- 정상 --&gt;</span>
+      <span style="color:#f92672">&lt;type&gt;</span>pom<span style="color:#f92672">&lt;/type&gt;</span>
+      <span style="color:#f92672">&lt;scope&gt;</span>import<span style="color:#f92672">&lt;/scope&gt;</span>
+    <span style="color:#f92672">&lt;/dependency&gt;</span>
+    <span style="color:#75715e">&lt;!-- //mgkim.proto --&gt;</span>
+  <span style="color:#f92672">&lt;/dependencies&gt;</span>
+<span style="color:#f92672">&lt;/dependencyManagement&gt;</span>
+</code></pre></div><br>
+<h4 id="eclipse-sts-boot-dashboard-filter">(eclipse) STS Boot Dashboard filter</h4>
 <img src="/images/localenv/20211215-STS-boot_dashboard-filter.png" width="300">
 <p><a href="/images/localenv/20211215-STS-boot_dashboard-filter.png" target="_blank">새 창 보기</a></p>
 <br>
