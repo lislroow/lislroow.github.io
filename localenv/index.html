@@ -22,10 +22,11 @@
 
 
   
-  <meta name="description" content="(maven) version ranges
-artifact 의 scope 가 import 일 경우에는 [0.1,) 형태로 ranges 를 적용할 수 없습니다.
-&lt;dependencyManagement&gt;
-  &lt;dependencies&gt; …">
+  <meta name="description" content="(git) tag 삭제 하기
+$ git tag -d framework-bom-0.2
+&#39;framework-bom-0.2&#39; 태그 삭제함 (과거 2c5b9f1)
+$ git push origin :framework-bom-0.2
+fatal: (현재 폴더 또는 상 …">
 <meta property="og:title" content="localenv" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -125,7 +126,7 @@ artifact 의 scope 가 import 일 경우에는 [0.1,) 형태로 ranges 를 적�
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.dd5f8750e4da5ee6d895140beacab40c.json"
+  data-offline-search-index-json-src="/offline-search-index.5e093509eb2179368c3905ceee16d54f.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -152,7 +153,7 @@ artifact 의 scope 가 import 일 경우에는 [0.1,) 형태로 ranges 를 적�
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.dd5f8750e4da5ee6d895140beacab40c.json"
+  data-offline-search-index-json-src="/offline-search-index.5e093509eb2179368c3905ceee16d54f.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -201,6 +202,8 @@ artifact 의 scope 가 import 일 경우에는 [0.1,) 형태로 ranges 를 적�
       <ul>
         <li>
           <ul>
+            <li><a href="#git-tag-삭제-하기">(git) tag 삭제 하기</a></li>
+            <li><a href="#git-특정-경로만-checkout-하기">(git) 특정 경로만 checkout 하기</a></li>
             <li><a href="#maven-version-ranges">(maven) version ranges</a></li>
             <li><a href="#eclipse-sts-boot-dashboard-filter">(eclipse) STS Boot Dashboard filter</a></li>
             <li><a href="#eclipse-eclipse-update">(eclipse) eclipse-update</a></li>
@@ -304,7 +307,25 @@ artifact 의 scope 가 import 일 경우에는 [0.1,) 형태로 ranges 를 적�
 		
 		
 	</header>
-	<h4 id="maven-version-ranges">(maven) version ranges</h4>
+	<h4 id="git-tag-삭제-하기">(git) tag 삭제 하기</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ git tag -d framework-bom-0.2
+<span style="color:#e6db74">&#39;framework-bom-0.2&#39;</span> 태그 삭제함 <span style="color:#f92672">(</span>과거 2c5b9f1<span style="color:#f92672">)</span>
+$ git push origin :framework-bom-0.2
+fatal: <span style="color:#f92672">(</span>현재 폴더 또는 상위 폴더 중 일부가<span style="color:#f92672">)</span> 깃 저장소가 아닙니다: .git
+$ git push origin :framework-bom-0.2
+To github.com:lislroow/pilot.git
+ - <span style="color:#f92672">[</span>deleted<span style="color:#f92672">]</span>         framework-bom-0.2
+$
+</code></pre></div><br>
+<h4 id="git-특정-경로만-checkout-하기">(git) 특정 경로만 checkout 하기</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ git init
+$ git config core.sparseCheckout true
+<span style="color:#75715e">#git config --local credential.helper &#34;&#34;</span>
+$ git remote add -f origin git@github.com:lislroow/pilot.git
+$ echo <span style="color:#e6db74">&#34;bom/framework-bom/*&#34;</span> &gt; .git/info/sparse-checkout
+$ git pull origin main
+</code></pre></div><br>
+<h4 id="maven-version-ranges">(maven) version ranges</h4>
 <p>artifact 의 scope 가 <code>import</code> 일 경우에는 <code>[0.1,)</code> 형태로 ranges 를 적용할 수 없습니다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;dependencyManagement&gt;</span>
   <span style="color:#f92672">&lt;dependencies&gt;</span>
@@ -359,7 +380,18 @@ This key is not known by any other names
 Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 Warning: Permanently added &#39;github.com&#39; (ED25519) to the list of known hosts.
 Hi lislroow! You&#39;ve successfully authenticated, but GitHub does not provide shell access.
-</code></pre></div><h4 id="github-unable-to-read-askpass-오류">(github) unable to read askpass 오류</h4>
+</code></pre></div><p>github 에 key를 등록한 다음 cli 환경에서 사용하려면 아래 명령을 실행합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ eval <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>ssh-agent -s<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+Agent pid <span style="color:#ae81ff">126681</span>
+$ ps -ef | grep ssh-agent
+root       <span style="color:#ae81ff">31343</span>       <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">0</span> 12월14 ?      00:00:00 ssh-agent -s
+jenkins   <span style="color:#ae81ff">126681</span>       <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">0</span> 17:12 ?        00:00:00 ssh-agent -s
+jenkins   <span style="color:#ae81ff">126683</span>  <span style="color:#ae81ff">126640</span>  <span style="color:#ae81ff">0</span> 17:12 pts/1    00:00:00 grep --color<span style="color:#f92672">=</span>auto ssh-agent
+$ ssh-add ~/.ssh/id_ed25519
+Identity added: /home/jenkins/.ssh/id_ed25519 <span style="color:#f92672">(</span>jenkins@mgkim.net<span style="color:#f92672">)</span>
+$ 
+</code></pre></div><br>
+<h4 id="github-unable-to-read-askpass-오류">(github) unable to read askpass 오류</h4>
 <p>오류 상황입니다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ git push origin
 
@@ -370,7 +402,8 @@ Username for &#39;https://github.com&#39;:
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ echo $SSH_ASKPASS
 /usr/libexec/openssh/gnome-ssh-askpass
 $ unset SSH_ASKPASS
-</code></pre></div><h4 id="github-personal-access-tokens">(github) Personal access tokens</h4>
+</code></pre></div><br>
+<h4 id="github-personal-access-tokens">(github) Personal access tokens</h4>
 <p><code>Settings</code> &gt; <code>Developer settings</code> &gt; <code>Personal access tokens</code> 이동 후</p>
 <p><code>Generate new token</code> 버튼 클릭으로 token 생성 (<code>repo</code> 만 체크하면 push 할 수 있음)</p>
 <p>token 생성 후 이클립스에서 id에 email 입력, password 에 생성된 토큰 입력</p>

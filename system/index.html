@@ -22,13 +22,12 @@
 
 
   
-  <meta name="description" content="(oracle) 12c 설치
-oracle 12c ee 버전 설치
-pluggable database 설정, MAX_STRING_SIZE 설정, character-set 설정, oracle 계정 설정
-새 창 보기
-
-(yum) 설치된 목록 확인
-yum list …">
+  <meta name="description" content="(xmlstarlet)
+설치
+$ dnf install epel-release
+$ yum search xmlstarlet
+사용법
+xmlstarlet sel -N x=&#34;http://maven.apache.org/POM/4.0.0&#34; -t -v …">
 <meta property="og:title" content="system" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -128,7 +127,7 @@ yum list …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.dd5f8750e4da5ee6d895140beacab40c.json"
+  data-offline-search-index-json-src="/offline-search-index.5e093509eb2179368c3905ceee16d54f.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -155,7 +154,7 @@ yum list …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.dd5f8750e4da5ee6d895140beacab40c.json"
+  data-offline-search-index-json-src="/offline-search-index.5e093509eb2179368c3905ceee16d54f.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -216,6 +215,7 @@ yum list …">
       <ul>
         <li>
           <ul>
+            <li><a href="#xmlstarlet">(xmlstarlet)</a></li>
             <li><a href="#oracle-12c-설치">(oracle) 12c 설치</a></li>
             <li><a href="#yum-설치된-목록-확인">(yum) 설치된 목록 확인</a></li>
             <li><a href="#firewall-disabled">(firewall) disabled</a></li>
@@ -294,7 +294,14 @@ yum list …">
 		
 		
 	</header>
-	<h4 id="oracle-12c-설치">(oracle) 12c 설치</h4>
+	<h4 id="xmlstarlet">(xmlstarlet)</h4>
+<p>설치</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ dnf install epel-release
+$ yum search xmlstarlet
+</code></pre></div><p>사용법</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">xmlstarlet sel -N x<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://maven.apache.org/POM/4.0.0&#34;</span> -t -v <span style="color:#e6db74">&#34;x:project/x:version&#34;</span> ./pom.xml
+</code></pre></div><br>
+<h4 id="oracle-12c-설치">(oracle) 12c 설치</h4>
 <p>oracle 12c ee 버전 설치</p>
 <p>pluggable database 설정, MAX_STRING_SIZE 설정, character-set 설정, oracle 계정 설정</p>
 <p><a href="/system/oracle12c" target="_blank">새 창 보기</a></p>
