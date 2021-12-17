@@ -22,11 +22,18 @@
 
 
   
-  <meta name="description" content="(maven) release github
+  <meta name="description" content="(regex) not matched word
+# string
+say
+hello
+world
+
+# regex
+\b(?!hello)\b\w&#43;
+
+(maven) release github
 &lt;scm&gt;
-	&lt;connection&gt;scm:git:git@github.com:lislroow/pilot.git&lt;/connection&gt;
-&lt;/scm&gt;
-&lt;plugin&gt; …">
+	&lt;connection&gt; …">
 <meta property="og:title" content="localenv" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -126,7 +133,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.a3569ee6e1a43e751eb256a18d76824e.json"
+  data-offline-search-index-json-src="/offline-search-index.7c767e1b66802bcc5926160fb8b6b2f8.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -153,7 +160,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.a3569ee6e1a43e751eb256a18d76824e.json"
+  data-offline-search-index-json-src="/offline-search-index.7c767e1b66802bcc5926160fb8b6b2f8.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -202,8 +209,9 @@
       <ul>
         <li>
           <ul>
+            <li><a href="#regex-not-matched-word">(regex) not matched word</a></li>
             <li><a href="#maven-release-github">(maven) release github</a></li>
-            <li><a href="#git-tag-삭제-하기">(git) tag 삭제 하기</a></li>
+            <li><a href="#git-tag">(git) tag</a></li>
             <li><a href="#git-특정-경로만-checkout-하기">(git) 특정 경로만 checkout 하기</a></li>
             <li><a href="#maven-version-ranges">(maven) version ranges</a></li>
             <li><a href="#eclipse-sts-boot-dashboard-filter">(eclipse) STS Boot Dashboard filter</a></li>
@@ -308,7 +316,16 @@
 		
 		
 	</header>
-	<h4 id="maven-release-github">(maven) release github</h4>
+	<h4 id="regex-not-matched-word">(regex) not matched word</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># string
+say
+hello
+world
+
+# regex
+\b(?!hello)\b\w+
+</code></pre></div><br>
+<h4 id="maven-release-github">(maven) release github</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;scm&gt;</span>
 	<span style="color:#f92672">&lt;connection&gt;</span>scm:git:git@github.com:lislroow/pilot.git<span style="color:#f92672">&lt;/connection&gt;</span>
 <span style="color:#f92672">&lt;/scm&gt;</span>
@@ -323,15 +340,30 @@
 	<span style="color:#f92672">&lt;/configuration&gt;</span>
 <span style="color:#f92672">&lt;/plugin&gt;</span>
 </code></pre></div><br>
-<h4 id="git-tag-삭제-하기">(git) tag 삭제 하기</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ git tag -d framework-bom-0.2
+<h4 id="git-tag">(git) tag</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 태그 삭제</span>
+$ git tag -d framework-bom-0.2
 <span style="color:#e6db74">&#39;framework-bom-0.2&#39;</span> 태그 삭제함 <span style="color:#f92672">(</span>과거 2c5b9f1<span style="color:#f92672">)</span>
-$ git push origin :framework-bom-0.2
-fatal: <span style="color:#f92672">(</span>현재 폴더 또는 상위 폴더 중 일부가<span style="color:#f92672">)</span> 깃 저장소가 아닙니다: .git
 $ git push origin :framework-bom-0.2
 To github.com:lislroow/pilot.git
  - <span style="color:#f92672">[</span>deleted<span style="color:#f92672">]</span>         framework-bom-0.2
 $
+
+<span style="color:#75715e"># 태그 조회</span>
+$ git tag -l framework-*
+framework-bom-0.1
+
+<span style="color:#75715e"># 태그 추가 (Lightweight 태그)</span>
+$ git tag framework-bom-0.2
+
+<span style="color:#75715e"># 태그 추가 (Annotated 태그)</span>
+$ git tag -a framework-bom-0.2 -m <span style="color:#e6db74">&#34;Release framework-bom-0.2&#34;</span>
+
+<span style="color:#75715e"># 태그 보기</span>
+$ git show framework-bom-0.2
+
+<span style="color:#75715e"># 태그 원격저장소 push (모두 올리기)</span>
+$ git push origin --tags
 </code></pre></div><br>
 <h4 id="git-특정-경로만-checkout-하기">(git) 특정 경로만 checkout 하기</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ git init
