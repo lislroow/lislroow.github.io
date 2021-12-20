@@ -22,19 +22,10 @@
 
 
   
-  <meta name="description" content="(regex) not matched word
-# string
-say
-hello
-world
-
-# regex
-\b(?!hello)\b\w&#43;
-
-# string
-release-service-bom
-release-service-www
-snapshot-service-bom …">
+  <meta name="description" content="(erwin) database connection
+우선 display 를 물리 모델로 변경합니다.
+상단 메뉴 Database &gt; Database Connection 선택하면 아래 팝업 창이 열립니다.
+Connection String: …">
 <meta property="og:title" content="localenv" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -134,7 +125,7 @@ snapshot-service-bom …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.f837208395679fb7270b735b781df55f.json"
+  data-offline-search-index-json-src="/offline-search-index.787426374907eb124520fdbe43f4ab47.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -161,7 +152,7 @@ snapshot-service-bom …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.f837208395679fb7270b735b781df55f.json"
+  data-offline-search-index-json-src="/offline-search-index.787426374907eb124520fdbe43f4ab47.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -210,6 +201,7 @@ snapshot-service-bom …">
       <ul>
         <li>
           <ul>
+            <li><a href="#erwin-database-connection">(erwin) database connection</a></li>
             <li><a href="#regex-not-matched-word">(regex) not matched word</a></li>
             <li><a href="#maven-release-github">(maven) release github</a></li>
             <li><a href="#git-tag">(git) tag</a></li>
@@ -317,7 +309,14 @@ snapshot-service-bom …">
 		
 		
 	</header>
-	<h4 id="regex-not-matched-word">(regex) not matched word</h4>
+	<h4 id="erwin-database-connection">(erwin) database connection</h4>
+<p>우선 display 를 <code>물리 모델</code>로 변경합니다.</p>
+<p>상단 메뉴 <code>Database</code> &gt; <code>Database Connection</code> 선택하면 아래 팝업 창이 열립니다.</p>
+<p><code>Connection String:</code> 의 값은 tnsnames.ora 에 등록된 항목으로 입력합니다.</p>
+<img src="/images/localenv/20211220-erwin_database-connection.png" width="800">
+<p><a href="/images/localenv/20211220-erwin_database-connection.png" target="_blank">새 창 보기</a></p>
+<br>
+<h4 id="regex-not-matched-word">(regex) not matched word</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># string
 say
 hello
