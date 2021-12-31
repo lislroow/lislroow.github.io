@@ -22,12 +22,14 @@
 
 
   
-  <meta name="description" content="(xmlstarlet)
+  <meta name="description" content="(mosh)
 설치
-$ dnf install epel-release
-$ yum search xmlstarlet
-사용법
-xmlstarlet sel -N x=&#34;http://maven.apache.org/POM/4.0.0&#34; -t -v …">
+$ yum install mosh
+상태
+# 접속 후 netstat 상태 보기
+$ mosh root@172.28.200.30
+$ netstat -ntplu | grep 3253
+udp        0      0 172.28.200.30:60001 …">
 <meta property="og:title" content="system" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -127,7 +129,7 @@ xmlstarlet sel -N x=&#34;http://maven.apache.org/POM/4.0.0&#34; -t -v …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.e5d939f54faa95513d47c9b2ef00d747.json"
+  data-offline-search-index-json-src="/offline-search-index.dbb024454c66d5f7dee22c71531ae82e.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -154,7 +156,7 @@ xmlstarlet sel -N x=&#34;http://maven.apache.org/POM/4.0.0&#34; -t -v …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.e5d939f54faa95513d47c9b2ef00d747.json"
+  data-offline-search-index-json-src="/offline-search-index.dbb024454c66d5f7dee22c71531ae82e.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -215,6 +217,7 @@ xmlstarlet sel -N x=&#34;http://maven.apache.org/POM/4.0.0&#34; -t -v …">
       <ul>
         <li>
           <ul>
+            <li><a href="#mosh">(mosh)</a></li>
             <li><a href="#xmlstarlet">(xmlstarlet)</a></li>
             <li><a href="#oracle-12c-설치">(oracle) 12c 설치</a></li>
             <li><a href="#yum-설치된-목록-확인">(yum) 설치된 목록 확인</a></li>
@@ -294,10 +297,22 @@ xmlstarlet sel -N x=&#34;http://maven.apache.org/POM/4.0.0&#34; -t -v …">
 		
 		
 	</header>
-	<h4 id="xmlstarlet">(xmlstarlet)</h4>
+	<h4 id="mosh">(mosh)</h4>
+<p>설치</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ yum install mosh
+</code></pre></div><p>상태</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># 접속 후 netstat 상태 보기
+$ mosh root@172.28.200.30
+$ netstat -ntplu | grep 3253
+udp        0      0 172.28.200.30:60001     0.0.0.0:*                           3253/mosh-server    
+$ netstat -ntplu | grep 3217
+udp        0      0 0.0.0.0:19001           0.0.0.0:*                           3217/mosh-client    
+$ 
+</code></pre></div><br>
+<h4 id="xmlstarlet">(xmlstarlet)</h4>
 <p>설치</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ dnf install epel-release
-$ yum search xmlstarlet
+$ yum install xmlstarlet
 </code></pre></div><p>사용법</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">xmlstarlet sel -N x<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://maven.apache.org/POM/4.0.0&#34;</span> -t -v <span style="color:#e6db74">&#34;x:project/x:version&#34;</span> ./pom.xml
 </code></pre></div><br>
