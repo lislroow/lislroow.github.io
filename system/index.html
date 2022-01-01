@@ -22,14 +22,16 @@
 
 
   
-  <meta name="description" content="(mosh)
+  <meta name="description" content="(centos) web console 설치
+$ dnf install cockpit
+$ systemctl enable --now cockpit.socket
+$ netstat -ntplu | grep 9090
+
+(mosh)
 설치
 $ yum install mosh
 상태
-# 접속 후 netstat 상태 보기
-$ mosh root@172.28.200.30
-$ netstat -ntplu | grep 3253
-udp        0      0 172.28.200.30:60001 …">
+# …">
 <meta property="og:title" content="system" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -129,7 +131,7 @@ udp        0      0 172.28.200.30:60001 …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.d3ad26f9f67845c7a43b6bb9ea8fcb6e.json"
+  data-offline-search-index-json-src="/offline-search-index.7d95ec7cfc1afc9a928e3ff48e3dcff7.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -156,7 +158,7 @@ udp        0      0 172.28.200.30:60001 …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.d3ad26f9f67845c7a43b6bb9ea8fcb6e.json"
+  data-offline-search-index-json-src="/offline-search-index.7d95ec7cfc1afc9a928e3ff48e3dcff7.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -217,6 +219,7 @@ udp        0      0 172.28.200.30:60001 …">
       <ul>
         <li>
           <ul>
+            <li><a href="#centos-web-console-설치">(centos) web console 설치</a></li>
             <li><a href="#mosh">(mosh)</a></li>
             <li><a href="#xmlstarlet">(xmlstarlet)</a></li>
             <li><a href="#oracle-12c-설치">(oracle) 12c 설치</a></li>
@@ -297,7 +300,12 @@ udp        0      0 172.28.200.30:60001 …">
 		
 		
 	</header>
-	<h4 id="mosh">(mosh)</h4>
+	<h4 id="centos-web-console-설치">(centos) web console 설치</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ dnf install cockpit
+$ systemctl enable --now cockpit.socket
+$ netstat -ntplu | grep 9090
+</code></pre></div><br>
+<h4 id="mosh">(mosh)</h4>
 <p>설치</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ yum install mosh
 </code></pre></div><p>상태</p>
