@@ -22,8 +22,11 @@
 
 
   
-  <meta name="description" content="(nexus) curl PUT
-curl -u {id}:{passwd} -X PUT -v -T org/apache/poi/poi/3.10-FINAL/poi-3.10-FINAL.jar …">
+  <meta name="description" content="(plex) DaumMovie.bundle
+%LOCALAPPDATA%\Plex Media Server\Plug-ins 에서 압축 해제합니다.
+
+(nexus) curl PUT
+curl -u {id}:{passwd} -X PUT -v -T …">
 <meta property="og:title" content="localenv" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -123,7 +126,7 @@ curl -u {id}:{passwd} -X PUT -v -T org/apache/poi/poi/3.10-FINAL/poi-3.10-FINAL.
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.1d3dd0f95790d697d897a866dc680cb9.json"
+  data-offline-search-index-json-src="/offline-search-index.b01f959057f9f377d4251a694d82099e.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -150,7 +153,7 @@ curl -u {id}:{passwd} -X PUT -v -T org/apache/poi/poi/3.10-FINAL/poi-3.10-FINAL.
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.1d3dd0f95790d697d897a866dc680cb9.json"
+  data-offline-search-index-json-src="/offline-search-index.b01f959057f9f377d4251a694d82099e.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -199,6 +202,7 @@ curl -u {id}:{passwd} -X PUT -v -T org/apache/poi/poi/3.10-FINAL/poi-3.10-FINAL.
       <ul>
         <li>
           <ul>
+            <li><a href="#plex-daummoviebundle">(plex) DaumMovie.bundle</a></li>
             <li><a href="#nexus-curl-put">(nexus) curl PUT</a></li>
             <li><a href="#windows-dism">(windows) dism</a></li>
             <li><a href="#eclipse-xml-editor-tab-to-space">(eclipse) xml editor: tab to space</a></li>
@@ -311,7 +315,10 @@ curl -u {id}:{passwd} -X PUT -v -T org/apache/poi/poi/3.10-FINAL/poi-3.10-FINAL.
 		
 		
 	</header>
-	<h4 id="nexus-curl-put">(nexus) curl PUT</h4>
+	<h4 id="plex-daummoviebundle">(plex) DaumMovie.bundle</h4>
+<p><code>%LOCALAPPDATA%\Plex Media Server\Plug-ins</code> 에서 압축 해제합니다.</p>
+<br>
+<h4 id="nexus-curl-put">(nexus) curl PUT</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">curl -u {id}:{passwd} -X PUT -v -T org/apache/poi/poi/3.10-FINAL/poi-3.10-FINAL.jar http://nexus/repository/maven-public-hosted/org/apache/poi/poi/3.10-FINAL/poi-3.10-FINAL.jar
 </code></pre></div><br>
 <h4 id="windows-dism">(windows) dism</h4>
