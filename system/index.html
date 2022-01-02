@@ -23,15 +23,11 @@
 
   
   <meta name="description" content="(centos) web console 설치
+cockpit 은 centos 의 web console 을 제공하는 패키지 입니다.
+설치
 $ dnf install cockpit
 $ systemctl enable --now cockpit.socket
-$ netstat -ntplu | grep 9090
-
-(mosh)
-설치
-$ yum install mosh
-상태
-# …">
+$ netstat …">
 <meta property="og:title" content="system" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -131,7 +127,7 @@ $ yum install mosh
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.074db66f313535e53a7e9251e3ff7f2c.json"
+  data-offline-search-index-json-src="/offline-search-index.96d638e710b2b4c96760466cebb43cb2.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -158,7 +154,7 @@ $ yum install mosh
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.074db66f313535e53a7e9251e3ff7f2c.json"
+  data-offline-search-index-json-src="/offline-search-index.96d638e710b2b4c96760466cebb43cb2.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -301,10 +297,51 @@ $ yum install mosh
 		
 	</header>
 	<h4 id="centos-web-console-설치">(centos) web console 설치</h4>
+<p>cockpit 은 centos 의 web console 을 제공하는 패키지 입니다.</p>
+<p>설치</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ dnf install cockpit
 $ systemctl enable --now cockpit.socket
 $ netstat -ntplu | grep 9090
+</code></pre></div><p>cockpit 에 ssl 인증서 교체하기</p>
+<p>참고: <a href="/files/system/create-cert.sh" target="_blank">create-cert.sh</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># create-cert.sh 로 인증서를 생성합니다.
+# 인자는 web console 에 접근할 도메인으로 생성하면 됩니다.
+# 예시는 centos8 이라는 도메인으로 생성합니다.
+$ ./create-cert.sh centos8
+$ ls -al 
+-rw-r--r--  1 root root 1310  1월  2 14:58 centos8.crt
+-rw-------  1 root root 1708  1월  2 14:58 centos8.key
+$ cd /etc/cockpit/ws-certs.d
+$ ls -al
+-rw-r--r--  1 root root       2094  1월  2 00:46 0-self-signed-ca.pem
+-rw-r--r--  1 root root       1684  1월  2 00:46 0-self-signed.cert
+-rw-r-----  1 root cockpit-ws 1704  1월  2 00:46 0-self-signed.key
+$ cp centos8.crt centos8.key /etc/cockpit/ws-certs.d
+$ chmod 640 centos8.key
+$ chown root:cockpit-ws centos8.key
+$ chmod 644 centos8.crt
+$ remotectl certificate centos8.crt centos8.key
+generated combined certificate file: /etc/cockpit/ws-certs.d/centos8.cert
+$ remotectl certificate
+certificate: /etc/cockpit/ws-certs.d/centos8.crt
+$ systemctl restart cockpit
 </code></pre></div><br>
+<p>centos8 인증서 등록하기</p>
+<p><code>https://centos8:9090/</code> 링크로 이동하면 신뢰할 수 없는 사이트라고 표시됩니다.</p>
+<p>인증서를 내보내기 한 다음 아래 절차대로 인증서를 등록합니다.</p>
+<ul>
+<li>chrome 에서 <code>chrome://settings/security?q=enhanced</code> 링크로 이동합니다.</li>
+<li><code>인증서 관리</code> 메뉴를 클릭하면 팝업이 열립니다.</li>
+<li><code>신뢰할 수 있는 루트 인증 기관</code> 탭에서 가져오기를 클릭 합니다.</li>
+<li>내보내기 한 인증서를 선택하고 가져오기를 합니다.</li>
+<li>chrome 에서 <code>chrome://net-internals/#hsts</code> 링크로 이동합니다.</li>
+<li><code>Delete domain security policies</code> 에서 <code>centos8</code> 을 입력하고 <code>Delete</code> 버튼을 클릭합니다.</li>
+<li>chrome 에서 <code>chrome://restart</code> 링크 이동으로 chrome 을 재시작합니다.</li>
+<li>chrome 에서 <code>https://centos8:9090/</code> 링크로 이동하여 정상 작동하는지를 확인합니다.</li>
+</ul>
+<p>정상 예시</p>
+<p><a href="/images/system/20220102-centos-web_console-cockpit.png" target="_blank">새 창 보기</a></p>
+<br>
 <h4 id="mosh">(mosh)</h4>
 <p>설치</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ yum install mosh
