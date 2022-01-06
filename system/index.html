@@ -129,7 +129,7 @@ export …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.f8f74f9007ebef5027ee6d72939e4bbf.json"
+  data-offline-search-index-json-src="/offline-search-index.a089b31cf63a0769a45d1985525c38da.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -156,7 +156,7 @@ export …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.f8f74f9007ebef5027ee6d72939e4bbf.json"
+  data-offline-search-index-json-src="/offline-search-index.a089b31cf63a0769a45d1985525c38da.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -171,7 +171,10 @@ export …">
   
   <a href="/system/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__section tree-root" id="m-system"><span class="td-sidebar-nav-active-item">system</span></a>
   <ul class="ul-1">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemhttpd-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemcentos8-li">
+  
+  <a href="/system/centos8/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemcentos8"><span class="">centos8</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemhttpd-li">
   
   <a href="/system/httpd/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemhttpd"><span class="">httpd</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemjenkins-li">
@@ -460,7 +463,29 @@ $ systemctl restart cockpit
 <p>정상 예시</p>
 <p><a href="/images/system/20220102-centos-web_console-cockpit.png" target="_blank">새 창 보기</a></p>
 <br>
-<h4 id="mosh">(mosh)</h4>
+<p>listen-port 변경하기</p>
+<p><code>/etc/systemd/system/sockets.target.wants/cockpit.socket</code> 파일을 아래와 같이 편집합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[Unit]
+Description=Cockpit Web Service Socket
+Documentation=man:cockpit-ws(8)
+Wants=cockpit-motd.service
+
+[Socket]
+#ListenStream=9090 # 기본값
+ListenStream=8000  # 변경값
+ExecStartPost=-/usr/share/cockpit/motd/update-motd &#39;&#39; localhost
+ExecStartPost=-/bin/ln -snf active.motd /run/cockpit/motd
+ExecStopPost=-/bin/ln -snf inactive.motd /run/cockpit/motd
+
+[Install]
+WantedBy=sockets.target
+</code></pre></div><p>편집 후 아래 명령어를 실행합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ systemctl disable --now cockpit.socket
+$ systemctl enable --now cockpit.socket
+$ systemctl restart cockpit.socket
+<span style="color:#75715e"># 변경 상태를 확인합니다.</span>
+$ netstat -ntplu | grep <span style="color:#ae81ff">8000</span>
+</code></pre></div><h4 id="mosh">(mosh)</h4>
 <p>설치</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ yum install mosh
 </code></pre></div><p>상태</p>

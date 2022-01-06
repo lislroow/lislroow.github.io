@@ -21,7 +21,12 @@
 
 
   
-  <meta name="description" content="configure
+  <meta name="description" content="command
+loaded 모듈 목록 확인
+httpd -M
+새 창 보기
+
+configure
 httpd.conf
 ServerRoot &#34;/etc/httpd&#34;
 
@@ -29,24 +34,27 @@ Listen 80
 
 Include conf.modules.d/*.conf
 
-User apache
-Group web
-
-ServerAdmin hi@mgkim.net …">
+User apache …">
 <meta property="og:title" content="httpd" />
-<meta property="og:description" content="configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modules.d/*.conf User apache Group web ServerAdmin hi@mgkim.net ServerName develop:80 &lt;Directory /&gt; AllowOverride none Require all denied &lt;/Directory&gt; DocumentRoot &#34;/var/www/html&#34; &lt;Files &#34;.ht*&#34;&gt; Require all denied &lt;/Files&gt; ErrorLog &#34;/outlog/WEB/httpd/error.log&#34; LogLevel warn &lt;IfModule log_config_module&gt; LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34;&#34; combined LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b&#34; common &lt;IfModule logio_module&gt; LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34; %I %O&#34; combinedio &lt;/IfModule&gt; CustomLog &#34;/outlog/WEB/httpd/access." />
+<meta property="og:description" content="command loaded 모듈 목록 확인 httpd -M
+새 창 보기
+configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modules.d/*.conf User apache Group web ServerAdmin hi@mgkim.net ServerName develop:80 &lt;Directory /&gt; AllowOverride none Require all denied &lt;/Directory&gt; DocumentRoot &#34;/var/www/html&#34; &lt;Files &#34;.ht*&#34;&gt; Require all denied &lt;/Files&gt; ErrorLog &#34;/outlog/WEB/httpd/error.log&#34; LogLevel warn &lt;IfModule log_config_module&gt; LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34;&#34; combined LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b&#34; common &lt;IfModule logio_module&gt; LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34; %I %O&#34; combinedio &lt;/IfModule&gt; CustomLog &#34;/outlog/WEB/httpd/access." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/system/httpd/" /><meta property="article:section" content="system" />
 
 
 
 <meta itemprop="name" content="httpd">
-<meta itemprop="description" content="configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modules.d/*.conf User apache Group web ServerAdmin hi@mgkim.net ServerName develop:80 &lt;Directory /&gt; AllowOverride none Require all denied &lt;/Directory&gt; DocumentRoot &#34;/var/www/html&#34; &lt;Files &#34;.ht*&#34;&gt; Require all denied &lt;/Files&gt; ErrorLog &#34;/outlog/WEB/httpd/error.log&#34; LogLevel warn &lt;IfModule log_config_module&gt; LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34;&#34; combined LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b&#34; common &lt;IfModule logio_module&gt; LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34; %I %O&#34; combinedio &lt;/IfModule&gt; CustomLog &#34;/outlog/WEB/httpd/access.">
+<meta itemprop="description" content="command loaded 모듈 목록 확인 httpd -M
+새 창 보기
+configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modules.d/*.conf User apache Group web ServerAdmin hi@mgkim.net ServerName develop:80 &lt;Directory /&gt; AllowOverride none Require all denied &lt;/Directory&gt; DocumentRoot &#34;/var/www/html&#34; &lt;Files &#34;.ht*&#34;&gt; Require all denied &lt;/Files&gt; ErrorLog &#34;/outlog/WEB/httpd/error.log&#34; LogLevel warn &lt;IfModule log_config_module&gt; LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34;&#34; combined LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b&#34; common &lt;IfModule logio_module&gt; LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34; %I %O&#34; combinedio &lt;/IfModule&gt; CustomLog &#34;/outlog/WEB/httpd/access.">
 
-<meta itemprop="wordCount" content="1475">
+<meta itemprop="wordCount" content="1594">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="httpd"/>
-<meta name="twitter:description" content="configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modules.d/*.conf User apache Group web ServerAdmin hi@mgkim.net ServerName develop:80 &lt;Directory /&gt; AllowOverride none Require all denied &lt;/Directory&gt; DocumentRoot &#34;/var/www/html&#34; &lt;Files &#34;.ht*&#34;&gt; Require all denied &lt;/Files&gt; ErrorLog &#34;/outlog/WEB/httpd/error.log&#34; LogLevel warn &lt;IfModule log_config_module&gt; LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34;&#34; combined LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b&#34; common &lt;IfModule logio_module&gt; LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34; %I %O&#34; combinedio &lt;/IfModule&gt; CustomLog &#34;/outlog/WEB/httpd/access."/>
+<meta name="twitter:description" content="command loaded 모듈 목록 확인 httpd -M
+새 창 보기
+configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modules.d/*.conf User apache Group web ServerAdmin hi@mgkim.net ServerName develop:80 &lt;Directory /&gt; AllowOverride none Require all denied &lt;/Directory&gt; DocumentRoot &#34;/var/www/html&#34; &lt;Files &#34;.ht*&#34;&gt; Require all denied &lt;/Files&gt; ErrorLog &#34;/outlog/WEB/httpd/error.log&#34; LogLevel warn &lt;IfModule log_config_module&gt; LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34;&#34; combined LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b&#34; common &lt;IfModule logio_module&gt; LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34; %I %O&#34; combinedio &lt;/IfModule&gt; CustomLog &#34;/outlog/WEB/httpd/access."/>
 
 
 
@@ -137,7 +145,7 @@ ServerAdmin hi@mgkim.net …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.f8f74f9007ebef5027ee6d72939e4bbf.json"
+  data-offline-search-index-json-src="/offline-search-index.a089b31cf63a0769a45d1985525c38da.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -164,7 +172,7 @@ ServerAdmin hi@mgkim.net …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.f8f74f9007ebef5027ee6d72939e4bbf.json"
+  data-offline-search-index-json-src="/offline-search-index.a089b31cf63a0769a45d1985525c38da.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -179,7 +187,10 @@ ServerAdmin hi@mgkim.net …">
   
   <a href="/system/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-system"><span class="">system</span></a>
   <ul class="ul-1">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-systemhttpd-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemcentos8-li">
+  
+  <a href="/system/centos8/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemcentos8"><span class="">centos8</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-systemhttpd-li">
   
   <a href="/system/httpd/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-systemhttpd"><span class="td-sidebar-nav-active-item">httpd</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemjenkins-li">
@@ -221,34 +232,44 @@ ServerAdmin hi@mgkim.net …">
 
 <div class="td-toc"><nav id="TableOfContents">
   <ul>
-    <li><a href="#configure">configure</a>
+    <li>
       <ul>
-        <li><a href="#httpdconf">httpd.conf</a></li>
-        <li><a href="#sslconf">ssl.conf</a></li>
-        <li><a href="#vhost-nexusconf">vhost-nexus.conf</a></li>
-        <li><a href="#vhost-gitlabconf">vhost-gitlab.conf</a></li>
-        <li><a href="#vhost-jenkinsconf">vhost-jenkins.conf</a></li>
-        <li><a href="#vhost-dlogconf">vhost-dlog.conf</a></li>
+        <li><a href="#command">command</a>
+          <ul>
+            <li><a href="#loaded-모듈-목록-확인">loaded 모듈 목록 확인</a></li>
+          </ul>
+        </li>
+        <li><a href="#configure">configure</a>
+          <ul>
+            <li><a href="#httpdconf">httpd.conf</a></li>
+            <li><a href="#sslconf">ssl.conf</a></li>
+            <li><a href="#vhost-centos8conf">vhost-centos8.conf</a></li>
+            <li><a href="#vhost-nexusconf">vhost-nexus.conf</a></li>
+            <li><a href="#vhost-gitlabconf">vhost-gitlab.conf</a></li>
+            <li><a href="#vhost-jenkinsconf">vhost-jenkins.conf</a></li>
+            <li><a href="#vhost-dlogconf">vhost-dlog.conf</a></li>
+          </ul>
+        </li>
+        <li><a href="#connector">connector</a>
+          <ul>
+            <li><a href="#weblogic">weblogic</a></li>
+          </ul>
+        </li>
+        <li><a href="#windows">windows</a>
+          <ul>
+            <li><a href="#install-command-apache-lounge">install command (Apache Lounge)</a></li>
+            <li><a href="#configure-1">configure</a></li>
+          </ul>
+        </li>
+        <li><a href="#openssl">openssl</a>
+          <ul>
+            <li><a href="#인증서-생성하기">인증서 생성하기</a></li>
+            <li><a href="#useful">useful</a></li>
+          </ul>
+        </li>
+        <li><a href="#selinux">selinux</a></li>
       </ul>
     </li>
-    <li><a href="#connector">connector</a>
-      <ul>
-        <li><a href="#weblogic">weblogic</a></li>
-      </ul>
-    </li>
-    <li><a href="#windows">windows</a>
-      <ul>
-        <li><a href="#install-command-apache-lounge">install command (Apache Lounge)</a></li>
-        <li><a href="#configure-1">configure</a></li>
-      </ul>
-    </li>
-    <li><a href="#openssl">openssl</a>
-      <ul>
-        <li><a href="#인증서-생성하기">인증서 생성하기</a></li>
-        <li><a href="#useful">useful</a></li>
-      </ul>
-    </li>
-    <li><a href="#selinux">selinux</a></li>
   </ul>
 </nav></div>
 
@@ -322,8 +343,13 @@ ServerAdmin hi@mgkim.net …">
 		
 		
 	</header>    
-	<h2 id="configure">configure</h2>
-<h3 id="httpdconf">httpd.conf</h3>
+	<h3 id="command">command</h3>
+<h4 id="loaded-모듈-목록-확인">loaded 모듈 목록 확인</h4>
+<p><code>httpd -M</code></p>
+<p><a href="/files/system/20220106-httpd-loaded_modules.txt" target="_blank">새 창 보기</a></p>
+<br>
+<h3 id="configure">configure</h3>
+<h4 id="httpdconf">httpd.conf</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">ServerRoot &#34;/etc/httpd&#34;
 
 Listen 80
@@ -386,7 +412,7 @@ AddDefaultCharset UTF-8
 
 EnableSendfile on
 IncludeOptional conf.d/*.conf
-</code></pre></div><h3 id="sslconf">ssl.conf</h3>
+</code></pre></div><h4 id="sslconf">ssl.conf</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Listen 443 https
 
 SSLPassPhraseDialog exec:/usr/libexec/httpd-ssl-pass-dialog
@@ -416,7 +442,54 @@ SSLCryptoDevice builtin
   BrowserMatch &#34;MSIE [2-5]&#34; nokeepalive ssl-unclean-shutdown downgrade-1.0 force-response-1.0
   CustomLog /outlog/WEB/httpd/default-request_ssl.log &#34;%t %h %{SSL_PROTOCOL}x %{SSL_CIPHER}x \&#34;%r\&#34; %b&#34;
 &lt;/VirtualHost&gt;
-</code></pre></div><h3 id="vhost-nexusconf">vhost-nexus.conf</h3>
+</code></pre></div><br>
+<h4 id="vhost-centos8conf">vhost-centos8.conf</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&lt;VirtualHost *:80&gt;
+  ServerName centos8
+
+  RewriteEngine On
+  RewriteCond %{HTTPS} !=On [NC]
+  RewriteRule /(.*) https://centos8/$1 [P,L]
+  #RewriteCond %{HTTP:Upgrade} =websocket [NC]
+  #RewriteRule /(.*) wss://centos8/$1 [P,L]
+  #RewriteCond %{HTTP:Upgrade} !=websocket [NC]
+  #RewriteRule /(.*) https://centos8/$1 [P,L]
+&lt;/VirtualHost&gt;
+
+&lt;VirtualHost *:443&gt;
+  ServerName centos8
+
+  SSLEngine On
+  SSLProtocol all -SSLv2
+  SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5
+  SSLCertificateFile /etc/cockpit/ws-certs.d/centos8.crt
+  SSLCertificateKeyFile /etc/cockpit/ws-certs.d/centos8.key
+
+  ErrorLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/centos8-error.log.%Y-%m-%d 86400 +540&#34;
+  CustomLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/centos8-access.log.%Y-%m-%d 86400 +540&#34; combined
+
+  ProxyRequests Off
+  ProxyPreserveHost On
+  # AH01961: SSL Proxy requested for centos8:443 but not enabled [Hint: SSLProxyEngine]
+  SSLProxyEngine On
+
+  AllowEncodedSlashes On
+  Header set Access-Control-Allow-Origin &#34;*&#34;
+  RequestHeader set X-Forwarded-Proto https
+
+  &lt;Proxy balancer://cluster1&gt;
+    BalancerMember https://127.0.0.1:8000
+  &lt;/Proxy&gt;
+  
+  ProxyPass / balancer://cluster1/ stickysession=JSESSIONID|jsessionid
+  ProxyPassReverse / balancer://cluster1/
+
+  RewriteEngine On
+  RewriteCond %{HTTP:Upgrade} =websocket [NC]
+  RewriteRule /(.*)           wss://127.0.0.1:8000/$1 [P,L]
+&lt;/VirtualHost&gt;
+</code></pre></div><br>
+<h4 id="vhost-nexusconf">vhost-nexus.conf</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&lt;VirtualHost *:80&gt;
   ServerName nexus
 
@@ -475,7 +548,7 @@ SSLCryptoDevice builtin
   RequestHeader set X-Forwarded-Proto &#34;https&#34;
   #ProxyPassMatch ^/(.*)$ http://127.0.0.1:8100/$1
 &lt;/VirtualHost&gt;
-</code></pre></div><h3 id="vhost-gitlabconf">vhost-gitlab.conf</h3>
+</code></pre></div><h4 id="vhost-gitlabconf">vhost-gitlab.conf</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&lt;VirtualHost *:80&gt;
   ServerName gitlab
 
@@ -533,7 +606,7 @@ SSLCryptoDevice builtin
   ProxyPass / http://127.0.0.1:8200/
   ProxyPassReverse / http://127.0.0.1:8200/
 &lt;/VirtualHost&gt;
-</code></pre></div><h3 id="vhost-jenkinsconf">vhost-jenkins.conf</h3>
+</code></pre></div><h4 id="vhost-jenkinsconf">vhost-jenkins.conf</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&lt;VirtualHost *:80&gt;
   ServerName jenkins
 
@@ -596,7 +669,7 @@ SSLCryptoDevice builtin
   RewriteCond %{HTTP:Upgrade} !=websocket [NC]
   RewriteRule /(.*) http://localhost:8400/$1 [P,L]
 &lt;/VirtualHost&gt;
-</code></pre></div><h3 id="vhost-dlogconf">vhost-dlog.conf</h3>
+</code></pre></div><h4 id="vhost-dlogconf">vhost-dlog.conf</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&lt;VirtualHost *:80&gt;
   ServerName dlog
 
@@ -654,8 +727,8 @@ SSLCryptoDevice builtin
   ProxyPass / http://127.0.0.1:1313/
   ProxyPassReverse / http://127.0.0.1:1313/
 &lt;/VirtualHost&gt;
-</code></pre></div><h2 id="connector">connector</h2>
-<h3 id="weblogic">weblogic</h3>
+</code></pre></div><h3 id="connector">connector</h3>
+<h4 id="weblogic">weblogic</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">LoadModule weblogic_module modules/mod_wl_24.so
 
 &lt;IfModule mod_weblogic.c&gt;
@@ -674,11 +747,11 @@ SSLCryptoDevice builtin
   WebLogicCluster IP:PORT,IP:PORT,IP:PORT
   #Idempotent OFF
 &lt;/Location&gt;
-</code></pre></div><h2 id="windows">windows</h2>
-<h3 id="install-command-apache-lounge">install command (Apache Lounge)</h3>
+</code></pre></div><h3 id="windows">windows</h3>
+<h4 id="install-command-apache-lounge">install command (Apache Lounge)</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">httpd.exe -k install
 httpd.exe -k configtest
-</code></pre></div><h3 id="configure-1">configure</h3>
+</code></pre></div><h4 id="configure-1">configure</h4>
 <ul>
 <li>httpd.conf</li>
 </ul>
@@ -978,14 +1051,14 @@ SSLSessionCacheTimeout  300
   RewriteEngine On
   RewriteRule /(.*) https://dlog.mgkim.net:443/$1 [QSA,P,L]
 &lt;/VirtualHost&gt;
-</code></pre></div><h2 id="openssl">openssl</h2>
-<h3 id="인증서-생성하기">인증서 생성하기</h3>
+</code></pre></div><h3 id="openssl">openssl</h3>
+<h4 id="인증서-생성하기">인증서 생성하기</h4>
 <ol>
 <li>개인키(key) 생성</li>
 <li>인증서발급신청서(CSR) 생성</li>
 <li>인증서(CRT) 생성</li>
 </ol>
-<h3 id="useful">useful</h3>
+<h4 id="useful">useful</h4>
 <p>개인키(domain.key)와 인증서(domain.crt) 파일을 동시에 생성하는 스크립트 입니다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#f92672">[</span>root@develop /etc/httpd/conf.d/certs<span style="color:#f92672">]</span>$ cat create-cert.sh
 DOMAIN<span style="color:#f92672">=</span>$1
@@ -1011,7 +1084,7 @@ openssl req -x509 -nodes -days <span style="color:#ae81ff">730</span> -newkey rs
 </span><span style="color:#e6db74">TEXT</span><span style="color:#f92672">)</span> -sha256
 
 <span style="color:#f92672">[</span>root@develop /etc/httpd/conf.d/certs<span style="color:#f92672">]</span>$
-</code></pre></div><h2 id="selinux">selinux</h2>
+</code></pre></div><h3 id="selinux">selinux</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">chcon -Rt httpd_log_t /outlog/WEB
 chcon -Rt httpd_sys_content_t /app/WEB/dlog
 setsebool -P httpd_can_network_connect on

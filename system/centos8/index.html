@@ -17,28 +17,47 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>openssh | dlog</title>
+<title>centos8 | dlog</title>
 
 
   
-  <meta name="description" content="패키지 확인
-[root@develop ~]$ yum list *openssh*
-Loaded plugins: fastestmirror, langpacks
-Repodata is over 2 weeks old. Install yum-cron? Or run: yum …">
-<meta property="og:title" content="openssh" />
-<meta property="og:description" content="패키지 확인 [root@develop ~]$ yum list *openssh* Loaded plugins: fastestmirror, langpacks Repodata is over 2 weeks old. Install yum-cron? Or run: yum makecache fast Loading mirror speeds from cached hostfile * base: mirror.kakao.com * epel: ftp.yz.yamagata-u.ac.jp * extras: mirror.kakao.com * updates: mirror.kakao.com Installed Packages openssh.x86_64 7.4p1-21.el7 @anaconda [root@develop ~]$ [root@develop ~]$ rpm -ql openssh.x86_64 /etc/ssh /etc/ssh/moduli /usr/bin/ssh-keygen [root@develop ~]$ key 생성 ssh-keygen 인자 -t rsa 는 rsa 타입으로 생성 입니다. key 생성 경로는 home 디렉토리의 ." />
+  <meta name="description" content="1. 서비스
+1.1 port
+systemd: /etc/systemd/system/*.service
+
+
+
+service
+port
+user
+running
+execute
+connect
+
+
+
+
+httpd
+80
+apache:web
+automatically …">
+<meta property="og:title" content="centos8" />
+<meta property="og:description" content="1. 서비스 1.1 port systemd: /etc/systemd/system/*.service
+   service port user running execute connect     httpd 80 apache:web automatically httpd.service -   cockpit 8000 root:root automatically cockpit.socket https://centos8/   nexus 8100 nexus:ci automatically nexus.service http://nexus/   jenkins 8400 jenkins:ci automatically jenkins.service http://jenkins/   oracle(dbms) - oracle:oinstall automatically ora12c@dbms.service -   oracle(lsnrctl) 1521 oracle:oinstall automatically ora12c@lsnrctl.service -   svn 3690 root:root manually start-svn." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/system/openssh/" /><meta property="article:section" content="system" />
+<meta property="og:url" content="/system/centos8/" /><meta property="article:section" content="system" />
 
 
 
-<meta itemprop="name" content="openssh">
-<meta itemprop="description" content="패키지 확인 [root@develop ~]$ yum list *openssh* Loaded plugins: fastestmirror, langpacks Repodata is over 2 weeks old. Install yum-cron? Or run: yum makecache fast Loading mirror speeds from cached hostfile * base: mirror.kakao.com * epel: ftp.yz.yamagata-u.ac.jp * extras: mirror.kakao.com * updates: mirror.kakao.com Installed Packages openssh.x86_64 7.4p1-21.el7 @anaconda [root@develop ~]$ [root@develop ~]$ rpm -ql openssh.x86_64 /etc/ssh /etc/ssh/moduli /usr/bin/ssh-keygen [root@develop ~]$ key 생성 ssh-keygen 인자 -t rsa 는 rsa 타입으로 생성 입니다. key 생성 경로는 home 디렉토리의 .">
+<meta itemprop="name" content="centos8">
+<meta itemprop="description" content="1. 서비스 1.1 port systemd: /etc/systemd/system/*.service
+   service port user running execute connect     httpd 80 apache:web automatically httpd.service -   cockpit 8000 root:root automatically cockpit.socket https://centos8/   nexus 8100 nexus:ci automatically nexus.service http://nexus/   jenkins 8400 jenkins:ci automatically jenkins.service http://jenkins/   oracle(dbms) - oracle:oinstall automatically ora12c@dbms.service -   oracle(lsnrctl) 1521 oracle:oinstall automatically ora12c@lsnrctl.service -   svn 3690 root:root manually start-svn.">
 
-<meta itemprop="wordCount" content="514">
+<meta itemprop="wordCount" content="104">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="openssh"/>
-<meta name="twitter:description" content="패키지 확인 [root@develop ~]$ yum list *openssh* Loaded plugins: fastestmirror, langpacks Repodata is over 2 weeks old. Install yum-cron? Or run: yum makecache fast Loading mirror speeds from cached hostfile * base: mirror.kakao.com * epel: ftp.yz.yamagata-u.ac.jp * extras: mirror.kakao.com * updates: mirror.kakao.com Installed Packages openssh.x86_64 7.4p1-21.el7 @anaconda [root@develop ~]$ [root@develop ~]$ rpm -ql openssh.x86_64 /etc/ssh /etc/ssh/moduli /usr/bin/ssh-keygen [root@develop ~]$ key 생성 ssh-keygen 인자 -t rsa 는 rsa 타입으로 생성 입니다. key 생성 경로는 home 디렉토리의 ."/>
+<meta name="twitter:title" content="centos8"/>
+<meta name="twitter:description" content="1. 서비스 1.1 port systemd: /etc/systemd/system/*.service
+   service port user running execute connect     httpd 80 apache:web automatically httpd.service -   cockpit 8000 root:root automatically cockpit.socket https://centos8/   nexus 8100 nexus:ci automatically nexus.service http://nexus/   jenkins 8400 jenkins:ci automatically jenkins.service http://jenkins/   oracle(dbms) - oracle:oinstall automatically ora12c@dbms.service -   oracle(lsnrctl) 1521 oracle:oinstall automatically ora12c@lsnrctl.service -   svn 3690 root:root manually start-svn."/>
 
 
 
@@ -171,9 +190,9 @@ Repodata is over 2 weeks old. Install yum-cron? Or run: yum …">
   
   <a href="/system/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-system"><span class="">system</span></a>
   <ul class="ul-1">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemcentos8-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-systemcentos8-li">
   
-  <a href="/system/centos8/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemcentos8"><span class="">centos8</span></a>
+  <a href="/system/centos8/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-systemcentos8"><span class="td-sidebar-nav-active-item">centos8</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemhttpd-li">
   
   <a href="/system/httpd/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemhttpd"><span class="">httpd</span></a>
@@ -183,9 +202,9 @@ Repodata is over 2 weeks old. Install yum-cron? Or run: yum …">
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemlinux-li">
   
   <a href="/system/linux/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemlinux"><span class="">linux</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-systemopenssh-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemopenssh-li">
   
-  <a href="/system/openssh/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-systemopenssh"><span class="td-sidebar-nav-active-item">openssh</span></a>
+  <a href="/system/openssh/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemopenssh"><span class="">openssh</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemoracle12c-li">
   
   <a href="/system/oracle12c/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemoracle12c"><span class="">oracle12c</span></a>
@@ -216,8 +235,17 @@ Repodata is over 2 weeks old. Install yum-cron? Or run: yum …">
 
 <div class="td-toc"><nav id="TableOfContents">
   <ul>
-    <li><a href="#패키지-확인">패키지 확인</a></li>
-    <li><a href="#key-생성">key 생성</a></li>
+    <li>
+      <ul>
+        <li><a href="#1-서비스">1. 서비스</a>
+          <ul>
+            <li><a href="#11-port">1.1 port</a></li>
+            <li><a href="#12-주요-파일">1.2 주요 파일</a></li>
+          </ul>
+        </li>
+        <li><a href="#2-패키지">2. 패키지</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
 
@@ -266,7 +294,7 @@ Repodata is over 2 weeks old. Install yum-cron? Or run: yum …">
 
 
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="/system/openssh/">openssh</a>
+	<a href="/system/centos8/">centos8</a>
 </li>
 
 	</ol>
@@ -274,7 +302,7 @@ Repodata is over 2 weeks old. Install yum-cron? Or run: yum …">
 
             
 <div class="td-content">
-	<h1>openssh</h1>
+	<h1>centos8</h1>
 	
 	<header class="article-meta">
 		
@@ -291,100 +319,151 @@ Repodata is over 2 weeks old. Install yum-cron? Or run: yum …">
 		
 		
 	</header>    
-	<h2 id="패키지-확인">패키지 확인</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@develop ~]$ yum list *openssh*
-Loaded plugins: fastestmirror, langpacks
-Repodata is over 2 weeks old. Install yum-cron? Or run: yum makecache fast
-Loading mirror speeds from cached hostfile
- * base: mirror.kakao.com
- * epel: ftp.yz.yamagata-u.ac.jp
- * extras: mirror.kakao.com
- * updates: mirror.kakao.com
-Installed Packages
-openssh.x86_64                                               7.4p1-21.el7                                                @anaconda
-[root@develop ~]$
-[root@develop ~]$ rpm -ql openssh.x86_64
-/etc/ssh
-/etc/ssh/moduli
-/usr/bin/ssh-keygen
+	<h3 id="1-서비스">1. 서비스</h3>
+<h4 id="11-port">1.1 port</h4>
+<p><code>systemd</code>: /etc/systemd/system/*.service</p>
+<table>
+<thead>
+<tr>
+<th>service</th>
+<th>port</th>
+<th>user</th>
+<th>running</th>
+<th>execute</th>
+<th>connect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>httpd</td>
+<td>80</td>
+<td>apache:web</td>
+<td>automatically</td>
+<td>httpd.service</td>
+<td>-</td>
+</tr>
+<tr>
+<td>cockpit</td>
+<td>8000</td>
+<td>root:root</td>
+<td>automatically</td>
+<td>cockpit.socket</td>
+<td>https://centos8/</td>
+</tr>
+<tr>
+<td>nexus</td>
+<td>8100</td>
+<td>nexus:ci</td>
+<td>automatically</td>
+<td>nexus.service</td>
+<td>http://nexus/</td>
+</tr>
+<tr>
+<td>jenkins</td>
+<td>8400</td>
+<td>jenkins:ci</td>
+<td>automatically</td>
+<td>jenkins.service</td>
+<td>http://jenkins/</td>
+</tr>
+<tr>
+<td>oracle(dbms)</td>
+<td>-</td>
+<td>oracle:oinstall</td>
+<td>automatically</td>
+<td>ora12c@dbms.service</td>
+<td>-</td>
+</tr>
+<tr>
+<td>oracle(lsnrctl)</td>
+<td>1521</td>
+<td>oracle:oinstall</td>
+<td>automatically</td>
+<td>ora12c@lsnrctl.service</td>
+<td>-</td>
+</tr>
+<tr>
+<td>svn</td>
+<td>3690</td>
+<td>root:root</td>
+<td>manually</td>
+<td>start-svn.sh</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<br>
+<h4 id="12-주요-파일">1.2 주요 파일</h4>
+<table>
+<thead>
+<tr>
+<th>service</th>
+<th>경로</th>
+<th>내용 보기</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>httpd</td>
+<td>/etc/httpd/conf.d/*.conf</td>
+<td><a href="/files/system/20220106-httpd-conf.zip">다운로드</a></td>
+</tr>
+<tr>
+<td>cockpit</td>
+<td>/etc/systemd/system/sockets.target.wants/cockpit.socket</td>
+<td><a href="/files/system/20220106-cockpit.socket.txt" target="_blank">새 창 보기</a></td>
+</tr>
+<tr>
+<td>nexus</td>
+<td>/prod/nexus/nexus-3.28.1-01/*</td>
+<td><a href="/files/system/20210106-nexus-conf-list.txt" target="_blank">새 창 보기</a></td>
+</tr>
+<tr>
+<td>jenkins</td>
+<td>/prod/jenkins/jenkins.sh</td>
+<td><a href="/files/system/20220106-jenkins.sh.txt" target="_blank">새 창 보기</a></td>
+</tr>
+<tr>
+<td>oracle(dbms)</td>
+<td>-</td>
+<td>생략</td>
+</tr>
+<tr>
+<td>oracle(lsnrctl)</td>
+<td>-</td>
+<td>생략</td>
+</tr>
+<tr>
+<td>svn</td>
+<td>/root/bin/start-svn.sh</td>
+<td><a href="/files/system/20220106-start-svn.sh.txt" target="_blank">새 창 보기</a></td>
+</tr>
+</tbody>
+</table>
+<br>
+<br>
+<h3 id="2-패키지">2. 패키지</h3>
+<table>
+<thead>
+<tr>
+<th>패키지</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cockpit</td>
+</tr>
+<tr>
+<td>mosh</td>
+</tr>
+<tr>
+<td>xmlstarlet</td>
+</tr>
+</tbody>
+</table>
+<p>전체 목록(yum): <code>yum list installed</code></p>
+<p><a href="/files/system/yum-list-installed_20220106.txt" target="_blank">새 창 보기</a></p>
 
-[root@develop ~]$
-</code></pre></div><h2 id="key-생성">key 생성</h2>
-<p><code>ssh-keygen</code> 인자 <code>-t rsa</code> 는 rsa 타입으로 생성 입니다.
-key 생성 경로는 home 디렉토리의 <code>.ssh</code> 디렉토리에 생성이 됩니다.
-<code>passphrase</code> 는 key 의 비밀번호 입니다.</p>
-<p>key 생성이 되면 <code>.ssh</code> 디렉토리에는 <code>id_rsa</code>(개인키), <code>id_rsa.pub</code>(공개키) 2개의 파일이 있습니다.</p>
-<p>공개키인 <code>id_rsa.pub</code> 파일의 내용은 SSH로 접속하려는 대상 서버의 시스템계정 홈디렉토리의 .ssh/authorized_keys 파일에 추가하여 사용됩니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[tomcat@develop ~]$ pwd
-/home/tomcat
-[tomcat@develop ~]$ ls -al
-합계 28
-drwx------. 4 tomcat ap    140  9월 13 11:41 .
-drwxr-xr-x. 7 root   root   74 11월 22  2020 ..
--rw-------. 1 tomcat ap   1357  9월 13 11:41 .bash_history
--rw-r--r--. 1 tomcat ap     18  4월  1  2020 .bash_logout
--rw-r--r--. 1 tomcat ap    616 12월 24  2020 .bash_profile
--rw-r--r--. 1 tomcat ap    231  4월  1  2020 .bashrc
-drwxr-xr-x. 3 tomcat ap     18 12월 24  2020 .cache
-drwxr-xr-x. 3 tomcat ap     18 12월 24  2020 .config
--rw-------  1 tomcat ap   1024  9월 13 11:39 .rnd
--rw-------  1 tomcat ap   5762  9월 13 11:39 .viminfo
-[tomcat@develop ~]$ ssh-keygen --help
-unknown option -- -
-usage: ssh-keygen [-q] [-b bits] [-t dsa | ecdsa | ed25519 | rsa | rsa1]
-                  [-N new_passphrase] [-C comment] [-f output_keyfile]
-       ssh-keygen -p [-P old_passphrase] [-N new_passphrase] [-f keyfile]
-       ssh-keygen -i [-m key_format] [-f input_keyfile]
-       ssh-keygen -e [-m key_format] [-f input_keyfile]
-       ssh-keygen -y [-f input_keyfile]
-       ssh-keygen -c [-P passphrase] [-C comment] [-f keyfile]
-       ssh-keygen -l [-v] [-E fingerprint_hash] [-f input_keyfile]
-       ssh-keygen -B [-f input_keyfile]
-       ssh-keygen -D pkcs11
-       ssh-keygen -F hostname [-f known_hosts_file] [-l]
-       ssh-keygen -H [-f known_hosts_file]
-       ssh-keygen -R hostname [-f known_hosts_file]
-       ssh-keygen -r hostname [-f input_keyfile] [-g]
-       ssh-keygen -G output_file [-v] [-b bits] [-M memory] [-S start_point]
-       ssh-keygen -T output_file -f input_file [-v] [-a rounds] [-J num_lines]
-                  [-j start_line] [-K checkpt] [-W generator]
-       ssh-keygen -s ca_key -I certificate_identity [-h] [-n principals]
-                  [-O option] [-V validity_interval] [-z serial_number] file ...
-       ssh-keygen -L [-f input_keyfile]
-       ssh-keygen -A
-       ssh-keygen -k -f krl_file [-u] [-s ca_public] [-z version_number]
-                  file ...
-       ssh-keygen -Q -f krl_file file ...
-[tomcat@develop ~]$ ssh-keygen -t rsa
-Generating public/private rsa key pair.
-Enter file in which to save the key (/home/tomcat/.ssh/id_rsa):
-Enter passphrase (empty for no passphrase):
-Enter same passphrase again:
-Your identification has been saved in /home/tomcat/.ssh/id_rsa.
-Your public key has been saved in /home/tomcat/.ssh/id_rsa.pub.
-The key fingerprint is:
-SHA256:Lp68Qh20r1rnsr+IyTTayVl/pbd8VlEL3mWGuez3IYY tomcat@develop
-The key&#39;s randomart image is:
-+---[RSA 2048]----+
-|               o |
-|      .      .o =|
-|     . .    ..o++|
-|      o      .o+ |
-|     . oS   ..  .|
-|    . ...  E.o..o|
-|   .o +.o  o. .oo|
-|   *.@oB  o.. o .|
-|  . XoB==o .o+   |
-+----[SHA256]-----+
-[tomcat@develop ~]$
-[tomcat@develop ~]$ ls -al /home/tomcat/.ssh
-합계 8
-drwx------  2 tomcat ap   38  9월 13 11:51 .
-drwx------. 5 tomcat ap  152  9월 13 11:48 ..
--rw-------  1 tomcat ap 1766  9월 13 11:51 id_rsa
--rw-r--r--  1 tomcat ap  396  9월 13 11:51 id_rsa.pub
-[tomcat@develop ~]$
-</code></pre></div>
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">

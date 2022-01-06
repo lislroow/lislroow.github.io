@@ -14,6 +14,163 @@
     
     
     <item>
+      <title>System: centos8</title>
+      <link>/system/centos8/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/system/centos8/</guid>
+      <description>
+        
+        
+        &lt;h3 id=&#34;1-서비스&#34;&gt;1. 서비스&lt;/h3&gt;
+&lt;h4 id=&#34;11-port&#34;&gt;1.1 port&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;systemd&lt;/code&gt;: /etc/systemd/system/*.service&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;service&lt;/th&gt;
+&lt;th&gt;port&lt;/th&gt;
+&lt;th&gt;user&lt;/th&gt;
+&lt;th&gt;running&lt;/th&gt;
+&lt;th&gt;execute&lt;/th&gt;
+&lt;th&gt;connect&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;httpd&lt;/td&gt;
+&lt;td&gt;80&lt;/td&gt;
+&lt;td&gt;apache:web&lt;/td&gt;
+&lt;td&gt;automatically&lt;/td&gt;
+&lt;td&gt;httpd.service&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;cockpit&lt;/td&gt;
+&lt;td&gt;8000&lt;/td&gt;
+&lt;td&gt;root:root&lt;/td&gt;
+&lt;td&gt;automatically&lt;/td&gt;
+&lt;td&gt;cockpit.socket&lt;/td&gt;
+&lt;td&gt;https://centos8/&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;nexus&lt;/td&gt;
+&lt;td&gt;8100&lt;/td&gt;
+&lt;td&gt;nexus:ci&lt;/td&gt;
+&lt;td&gt;automatically&lt;/td&gt;
+&lt;td&gt;nexus.service&lt;/td&gt;
+&lt;td&gt;http://nexus/&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;jenkins&lt;/td&gt;
+&lt;td&gt;8400&lt;/td&gt;
+&lt;td&gt;jenkins:ci&lt;/td&gt;
+&lt;td&gt;automatically&lt;/td&gt;
+&lt;td&gt;jenkins.service&lt;/td&gt;
+&lt;td&gt;http://jenkins/&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;oracle(dbms)&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;oracle:oinstall&lt;/td&gt;
+&lt;td&gt;automatically&lt;/td&gt;
+&lt;td&gt;ora12c@dbms.service&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;oracle(lsnrctl)&lt;/td&gt;
+&lt;td&gt;1521&lt;/td&gt;
+&lt;td&gt;oracle:oinstall&lt;/td&gt;
+&lt;td&gt;automatically&lt;/td&gt;
+&lt;td&gt;ora12c@lsnrctl.service&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;svn&lt;/td&gt;
+&lt;td&gt;3690&lt;/td&gt;
+&lt;td&gt;root:root&lt;/td&gt;
+&lt;td&gt;manually&lt;/td&gt;
+&lt;td&gt;start-svn.sh&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;br&gt;
+&lt;h4 id=&#34;12-주요-파일&#34;&gt;1.2 주요 파일&lt;/h4&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;service&lt;/th&gt;
+&lt;th&gt;경로&lt;/th&gt;
+&lt;th&gt;내용 보기&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;httpd&lt;/td&gt;
+&lt;td&gt;/etc/httpd/conf.d/*.conf&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;/files/system/20220106-httpd-conf.zip&#34;&gt;다운로드&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;cockpit&lt;/td&gt;
+&lt;td&gt;/etc/systemd/system/sockets.target.wants/cockpit.socket&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;/files/system/20220106-cockpit.socket.txt&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;nexus&lt;/td&gt;
+&lt;td&gt;/prod/nexus/nexus-3.28.1-01/*&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;/files/system/20210106-nexus-conf-list.txt&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;jenkins&lt;/td&gt;
+&lt;td&gt;/prod/jenkins/jenkins.sh&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;/files/system/20220106-jenkins.sh.txt&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;oracle(dbms)&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;생략&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;oracle(lsnrctl)&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;생략&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;svn&lt;/td&gt;
+&lt;td&gt;/root/bin/start-svn.sh&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;/files/system/20220106-start-svn.sh.txt&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;h3 id=&#34;2-패키지&#34;&gt;2. 패키지&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;패키지&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;cockpit&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;mosh&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;xmlstarlet&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;전체 목록(yum): &lt;code&gt;yum list installed&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;/files/system/yum-list-installed_20220106.txt&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
       <title>System: httpd</title>
       <link>/system/httpd/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -22,8 +179,13 @@
       <description>
         
         
-        &lt;h2 id=&#34;configure&#34;&gt;configure&lt;/h2&gt;
-&lt;h3 id=&#34;httpdconf&#34;&gt;httpd.conf&lt;/h3&gt;
+        &lt;h3 id=&#34;command&#34;&gt;command&lt;/h3&gt;
+&lt;h4 id=&#34;loaded-모듈-목록-확인&#34;&gt;loaded 모듈 목록 확인&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;httpd -M&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;/files/system/20220106-httpd-loaded_modules.txt&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
+&lt;br&gt;
+&lt;h3 id=&#34;configure&#34;&gt;configure&lt;/h3&gt;
+&lt;h4 id=&#34;httpdconf&#34;&gt;httpd.conf&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;ServerRoot &amp;#34;/etc/httpd&amp;#34;
 
 Listen 80
@@ -86,7 +248,7 @@ AddDefaultCharset UTF-8
 
 EnableSendfile on
 IncludeOptional conf.d/*.conf
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;sslconf&#34;&gt;ssl.conf&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;sslconf&#34;&gt;ssl.conf&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;Listen 443 https
 
 SSLPassPhraseDialog exec:/usr/libexec/httpd-ssl-pass-dialog
@@ -116,7 +278,54 @@ SSLCryptoDevice builtin
   BrowserMatch &amp;#34;MSIE [2-5]&amp;#34; nokeepalive ssl-unclean-shutdown downgrade-1.0 force-response-1.0
   CustomLog /outlog/WEB/httpd/default-request_ssl.log &amp;#34;%t %h %{SSL_PROTOCOL}x %{SSL_CIPHER}x \&amp;#34;%r\&amp;#34; %b&amp;#34;
 &amp;lt;/VirtualHost&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;vhost-nexusconf&#34;&gt;vhost-nexus.conf&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;h4 id=&#34;vhost-centos8conf&#34;&gt;vhost-centos8.conf&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&amp;lt;VirtualHost *:80&amp;gt;
+  ServerName centos8
+
+  RewriteEngine On
+  RewriteCond %{HTTPS} !=On [NC]
+  RewriteRule /(.*) https://centos8/$1 [P,L]
+  #RewriteCond %{HTTP:Upgrade} =websocket [NC]
+  #RewriteRule /(.*) wss://centos8/$1 [P,L]
+  #RewriteCond %{HTTP:Upgrade} !=websocket [NC]
+  #RewriteRule /(.*) https://centos8/$1 [P,L]
+&amp;lt;/VirtualHost&amp;gt;
+
+&amp;lt;VirtualHost *:443&amp;gt;
+  ServerName centos8
+
+  SSLEngine On
+  SSLProtocol all -SSLv2
+  SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5
+  SSLCertificateFile /etc/cockpit/ws-certs.d/centos8.crt
+  SSLCertificateKeyFile /etc/cockpit/ws-certs.d/centos8.key
+
+  ErrorLog &amp;#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/centos8-error.log.%Y-%m-%d 86400 +540&amp;#34;
+  CustomLog &amp;#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/centos8-access.log.%Y-%m-%d 86400 +540&amp;#34; combined
+
+  ProxyRequests Off
+  ProxyPreserveHost On
+  # AH01961: SSL Proxy requested for centos8:443 but not enabled [Hint: SSLProxyEngine]
+  SSLProxyEngine On
+
+  AllowEncodedSlashes On
+  Header set Access-Control-Allow-Origin &amp;#34;*&amp;#34;
+  RequestHeader set X-Forwarded-Proto https
+
+  &amp;lt;Proxy balancer://cluster1&amp;gt;
+    BalancerMember https://127.0.0.1:8000
+  &amp;lt;/Proxy&amp;gt;
+  
+  ProxyPass / balancer://cluster1/ stickysession=JSESSIONID|jsessionid
+  ProxyPassReverse / balancer://cluster1/
+
+  RewriteEngine On
+  RewriteCond %{HTTP:Upgrade} =websocket [NC]
+  RewriteRule /(.*)           wss://127.0.0.1:8000/$1 [P,L]
+&amp;lt;/VirtualHost&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;h4 id=&#34;vhost-nexusconf&#34;&gt;vhost-nexus.conf&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&amp;lt;VirtualHost *:80&amp;gt;
   ServerName nexus
 
@@ -175,7 +384,7 @@ SSLCryptoDevice builtin
   RequestHeader set X-Forwarded-Proto &amp;#34;https&amp;#34;
   #ProxyPassMatch ^/(.*)$ http://127.0.0.1:8100/$1
 &amp;lt;/VirtualHost&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;vhost-gitlabconf&#34;&gt;vhost-gitlab.conf&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;vhost-gitlabconf&#34;&gt;vhost-gitlab.conf&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&amp;lt;VirtualHost *:80&amp;gt;
   ServerName gitlab
 
@@ -233,7 +442,7 @@ SSLCryptoDevice builtin
   ProxyPass / http://127.0.0.1:8200/
   ProxyPassReverse / http://127.0.0.1:8200/
 &amp;lt;/VirtualHost&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;vhost-jenkinsconf&#34;&gt;vhost-jenkins.conf&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;vhost-jenkinsconf&#34;&gt;vhost-jenkins.conf&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&amp;lt;VirtualHost *:80&amp;gt;
   ServerName jenkins
 
@@ -296,7 +505,7 @@ SSLCryptoDevice builtin
   RewriteCond %{HTTP:Upgrade} !=websocket [NC]
   RewriteRule /(.*) http://localhost:8400/$1 [P,L]
 &amp;lt;/VirtualHost&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;vhost-dlogconf&#34;&gt;vhost-dlog.conf&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;vhost-dlogconf&#34;&gt;vhost-dlog.conf&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&amp;lt;VirtualHost *:80&amp;gt;
   ServerName dlog
 
@@ -354,8 +563,8 @@ SSLCryptoDevice builtin
   ProxyPass / http://127.0.0.1:1313/
   ProxyPassReverse / http://127.0.0.1:1313/
 &amp;lt;/VirtualHost&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;connector&#34;&gt;connector&lt;/h2&gt;
-&lt;h3 id=&#34;weblogic&#34;&gt;weblogic&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;connector&#34;&gt;connector&lt;/h3&gt;
+&lt;h4 id=&#34;weblogic&#34;&gt;weblogic&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;LoadModule weblogic_module modules/mod_wl_24.so
 
 &amp;lt;IfModule mod_weblogic.c&amp;gt;
@@ -374,11 +583,11 @@ SSLCryptoDevice builtin
   WebLogicCluster IP:PORT,IP:PORT,IP:PORT
   #Idempotent OFF
 &amp;lt;/Location&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;windows&#34;&gt;windows&lt;/h2&gt;
-&lt;h3 id=&#34;install-command-apache-lounge&#34;&gt;install command (Apache Lounge)&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;windows&#34;&gt;windows&lt;/h3&gt;
+&lt;h4 id=&#34;install-command-apache-lounge&#34;&gt;install command (Apache Lounge)&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;httpd.exe -k install
 httpd.exe -k configtest
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;configure-1&#34;&gt;configure&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;configure-1&#34;&gt;configure&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;httpd.conf&lt;/li&gt;
 &lt;/ul&gt;
@@ -678,14 +887,14 @@ SSLSessionCacheTimeout  300
   RewriteEngine On
   RewriteRule /(.*) https://dlog.mgkim.net:443/$1 [QSA,P,L]
 &amp;lt;/VirtualHost&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;openssl&#34;&gt;openssl&lt;/h2&gt;
-&lt;h3 id=&#34;인증서-생성하기&#34;&gt;인증서 생성하기&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;openssl&#34;&gt;openssl&lt;/h3&gt;
+&lt;h4 id=&#34;인증서-생성하기&#34;&gt;인증서 생성하기&lt;/h4&gt;
 &lt;ol&gt;
 &lt;li&gt;개인키(key) 생성&lt;/li&gt;
 &lt;li&gt;인증서발급신청서(CSR) 생성&lt;/li&gt;
 &lt;li&gt;인증서(CRT) 생성&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 id=&#34;useful&#34;&gt;useful&lt;/h3&gt;
+&lt;h4 id=&#34;useful&#34;&gt;useful&lt;/h4&gt;
 &lt;p&gt;개인키(domain.key)와 인증서(domain.crt) 파일을 동시에 생성하는 스크립트 입니다.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;root@develop /etc/httpd/conf.d/certs&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;$ cat create-cert.sh
 DOMAIN&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;$1
@@ -711,7 +920,7 @@ openssl req -x509 -nodes -days &lt;span style=&#34;color:#ae81ff&#34;&gt;730&lt;
 &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;TEXT&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; -sha256
 
 &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;root@develop /etc/httpd/conf.d/certs&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;$
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;selinux&#34;&gt;selinux&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;selinux&#34;&gt;selinux&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;chcon -Rt httpd_log_t /outlog/WEB
 chcon -Rt httpd_sys_content_t /app/WEB/dlog
 setsebool -P httpd_can_network_connect on
@@ -730,8 +939,67 @@ systemctl restart httpd
       <description>
         
         
-        &lt;h2 id=&#34;plugins&#34;&gt;plugins&lt;/h2&gt;
-&lt;h3 id=&#34;publish-over-ssh&#34;&gt;Publish Over SSH&lt;/h3&gt;
+        &lt;h3 id=&#34;installation&#34;&gt;installation&lt;/h3&gt;
+&lt;h4 id=&#34;start-스크립트&#34;&gt;start 스크립트&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#!/bin/sh
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;#JAVA_HOME=/prod/java/jdk1.8.0_202&lt;/span&gt;
+JAVA_HOME&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/prod/java/openjdk-11.0.2
+export PATH&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;$JAVA_HOME/bin:$PATH
+
+JAVA_OPTS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;JAVA_OPTS&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; -Dapp.id=jenkins&amp;#34;&lt;/span&gt;
+JAVA_OPTS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;JAVA_OPTS&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; -Dcom.sun.akuma.Daemon=daemonized&amp;#34;&lt;/span&gt;
+JAVA_OPTS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;JAVA_OPTS&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; -Djava.awt.headless=true&amp;#34;&lt;/span&gt;
+JAVA_OPTS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;JAVA_OPTS&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; -DJENKINS_HOME=/data/PROD/jenkins&amp;#34;&lt;/span&gt;
+
+JENKINS_ARGS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;JENKINS_ARGS&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; --logfile=/outlog/PROD/jenkins/default.log&amp;#34;&lt;/span&gt;
+JENKINS_ARGS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;JENKINS_ARGS&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; --webroot=/prod/jenkins/jenkins/cache-war&amp;#34;&lt;/span&gt;
+JENKINS_ARGS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;JENKINS_ARGS&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; --daemon&amp;#34;&lt;/span&gt;
+JENKINS_ARGS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;JENKINS_ARGS&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; --httpPort=8400&amp;#34;&lt;/span&gt;
+JENKINS_ARGS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;JENKINS_ARGS&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; --debug=5&amp;#34;&lt;/span&gt;
+JENKINS_ARGS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;JENKINS_ARGS&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; --handlerCountMax=100&amp;#34;&lt;/span&gt;
+JENKINS_ARGS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;JENKINS_ARGS&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; --handlerCountMaxIdle=20&amp;#34;&lt;/span&gt;
+JENKINS_ARGS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;JENKINS_ARGS&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; --accessLoggerClassName=winstone.accesslog.SimpleAccessLogger&amp;#34;&lt;/span&gt;
+JENKINS_ARGS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;JENKINS_ARGS&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; --simpleAccessLogger.format=combined&amp;#34;&lt;/span&gt;
+JENKINS_ARGS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;JENKINS_ARGS&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; --simpleAccessLogger.file=/outlog/PROD/jenkins/access.log&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;#JENKINS_ARGS=&amp;#34;${JENKINS_ARGS} --httpsCertificate=/etc/pki/tls/mgkim/jenkins.crt&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;#JENKINS_ARGS=&amp;#34;${JENKINS_ARGS} --httpsPrivateKey=/etc/pki/tls/mgkim/jenkins.key&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;case&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$1&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; in
+  start&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+    echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;starting jenkins&amp;#34;&lt;/span&gt;
+    nohup $JAVA_HOME/bin/java $JAVA_OPTS -jar /prod/jenkins/jenkins/jenkins.war $JENKINS_ARGS &amp;gt; /dev/null 2&amp;gt;&amp;amp;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; &amp;amp;
+    ;;
+  stop&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+    echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;stopping jenkins&amp;#34;&lt;/span&gt;
+    ps -ef | grep java | grep -v grep | grep jenkins | awk &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;{ print $2 }&amp;#39;&lt;/span&gt; | xargs kill -9 
+    ;;
+  *&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+    echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Usage: &lt;/span&gt;$0&lt;span style=&#34;color:#e6db74&#34;&gt; {start|stop}&amp;#34;&lt;/span&gt;
+    exit &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
+    ;;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;esac&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;h4 id=&#34;systemd-등록&#34;&gt;systemd 등록&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;Unit&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
+Description&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;Jenkins
+After&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;network.target syslog.target
+
+&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;Service&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
+Type&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;forking
+User&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;jenkins
+Group&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;ci
+
+ExecStart&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/prod/jenkins/jenkins.sh start
+ExecStop&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/prod/jenkins/jenkins.sh stop
+
+Restart&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;on-abort
+
+&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;Install&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
+WantedBy&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;multi-user.target
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;h3 id=&#34;plugins&#34;&gt;plugins&lt;/h3&gt;
+&lt;h4 id=&#34;publish-over-ssh&#34;&gt;Publish Over SSH&lt;/h4&gt;
 &lt;p&gt;mvn 빌드 후 생성된 artifact 파일을 sftp 로 전송하고 ssh 로 command 를 실행하는 기능을 사용할 수 있습니다.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;프로젝트 구성에서 &lt;code&gt;빌드 후 조치&lt;/code&gt; &amp;gt; &lt;code&gt;Send build artifacts over SSH&lt;/code&gt; 선택&lt;/li&gt;
@@ -816,7 +1084,7 @@ YqTPbiAOgnHAD9CgWg/v55Zl9zLrPKLakCJPYzGNrLo2BJ4qXR1ZX371JEsXq8tq
 
 &lt;/div&gt;
 
-&lt;h3 id=&#34;gitlab-plugin&#34;&gt;GitLab Plugin&lt;/h3&gt;
+&lt;h4 id=&#34;gitlab-plugin&#34;&gt;GitLab Plugin&lt;/h4&gt;
 &lt;p&gt;gitlab 과 연동하기 위한 플러그인입니다.&lt;/p&gt;
 &lt;p&gt;gitlab 에서 push 이벤트가 발생했을 경우 jenkins 에서 build 가 실행되도록 하기위해 사용됩니다.&lt;/p&gt;
 &lt;ol&gt;
@@ -849,11 +1117,11 @@ YqTPbiAOgnHAD9CgWg/v55Zl9zLrPKLakCJPYzGNrLo2BJ4qXR1ZX371JEsXq8tq
 
 &lt;/div&gt;
 
-&lt;h3 id=&#34;github-integration-plugin&#34;&gt;GitHub Integration Plugin&lt;/h3&gt;
+&lt;h4 id=&#34;github-integration-plugin&#34;&gt;GitHub Integration Plugin&lt;/h4&gt;
 &lt;p&gt;github 저장소에서 webhook 으로 push 이벤트를 받아서 jenkins build가 실행되도록 할 때 사용합니다.&lt;/p&gt;
 &lt;p&gt;활용법: &lt;a href=&#34;#github-연결&#34;&gt;github 연결&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;build&#34;&gt;build&lt;/h2&gt;
-&lt;h3 id=&#34;분산-빌드-환경&#34;&gt;분산 빌드 환경&lt;/h3&gt;
+&lt;h3 id=&#34;build&#34;&gt;build&lt;/h3&gt;
+&lt;h4 id=&#34;분산-빌드-환경&#34;&gt;분산 빌드 환경&lt;/h4&gt;
 &lt;p&gt;&lt;code&gt;jenkins 관리&lt;/code&gt; 에서 &lt;code&gt;노드 관리&lt;/code&gt; 메뉴로 이동하면 &lt;code&gt;분산 빌드 환경&lt;/code&gt;을 위한 노드를 추가할 수 있습니다.&lt;/p&gt;
 &lt;p&gt;이 환경을 구성하면 jenkins 가 설치된 서버에서는 더 이상 빌드를 수행하지 않고 추가된 노드에서 빌드가 수행됩니다.&lt;/p&gt;
 &lt;p&gt;다음은 windows 환경의 slave-node를 추가하는 예시입니다.
@@ -950,7 +1218,7 @@ httpd 설정에 http 를 https 로 redirect 하도록 mod_rewrite 를 설정했�
 &lt;ul&gt;
 &lt;li&gt;이후 &lt;code&gt;Publish Over SSH&lt;/code&gt; 플러그인을 사용하여 was 서버에 war 파일을 publish 를 하고 was 를 재시작하는 command 를 ssh 로 수행하도록 설정하면 됩니다.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;github-연결&#34;&gt;github 연결&lt;/h3&gt;
+&lt;h4 id=&#34;github-연결&#34;&gt;github 연결&lt;/h4&gt;
 &lt;p&gt;required plugin: &lt;code&gt;GitHub Integration Plugin&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;jenkins 프로젝트의 &lt;code&gt;소스 코드 관리&lt;/code&gt; 섹션에서 github 저장소와 연결하는 설정입니다.&lt;/p&gt;
 &lt;ul&gt;

@@ -1,0 +1,20 @@
+$ find /prod/nexus/nexus/ -type f -a ! -name '*.jar' | xargs egrep -n '(/data|/outlog|application-port)'
+/prod/nexus/nexus/bin/contrib/karaf-service.sh:23:        -d KARAF_SERVICE_DATA       # Karaf data path (default to \${KARAF_SERVICE_PATH}/data)
+/prod/nexus/nexus/bin/contrib/karaf-service.sh:82:    export KARAF_SERVICE_DATA="${KARAF_SERVICE_PATH}/data"
+/prod/nexus/nexus/bin/nexus.vmoptions:6:-XX:LogFile=/outlog/PROD/nexus/nexus-3.28.1-01/jvm.log
+/prod/nexus/nexus/bin/nexus.vmoptions:13:-Dkaraf.data=/data/PROD/nexus
+/prod/nexus/nexus/bin/nexus.vmoptions:14:-Dkaraf.log=/outlog/PROD/nexus/nexus-3.28.1-01/karaf
+/prod/nexus/nexus/bin/nexus.vmoptions:15:-Djava.io.tmpdir=/data/PROD/nexus/tmp
+/prod/nexus/nexus/etc/fabric/elasticsearch.yml:55:# path.data: /path/to/data
+/prod/nexus/nexus/etc/karaf/custom.properties:14:karaf.bootstrap.log=/outlog/PROD/nexus/nexus-3.28.1-01/karaf.log
+/prod/nexus/nexus/etc/logback/logback-access.xml:4:    <File>/outlog/PROD/nexus/nexus-3.28.1-01/request.log</File>
+/prod/nexus/nexus/etc/logback/logback-access.xml:10:      <fileNamePattern>/outlog/PROD/nexus/nexus-3.28.1-01/request-%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+/prod/nexus/nexus/etc/logback/logback.xml:21:    <File>/outlog/PROD/nexus/nexus-3.28.1-01/nexus.log</File>
+/prod/nexus/nexus/etc/logback/logback.xml:27:      <fileNamePattern>/outlog/PROD/nexus/nexus-3.28.1-01/nexus-%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+/prod/nexus/nexus/etc/logback/logback.xml:34:    <File>/outlog/PROD/nexus/nexus-3.28.1-01/nexus_cluster.log</File>
+/prod/nexus/nexus/etc/logback/logback.xml:40:      <fileNamePattern>/outlog/PROD/nexus/nexus-3.28.1-01/nexus_cluster-%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+/prod/nexus/nexus/etc/logback/logback.xml:54:        <file>/outlog/PROD/nexus/nexus-3.28.1-01/tasks/${taskIdAndDate}.log</file>
+/prod/nexus/nexus/etc/logback/logback.xml:63:    <File>/outlog/PROD/nexus/nexus-3.28.1-01/audit/audit.log</File>
+/prod/nexus/nexus/etc/logback/logback.xml:70:      <fileNamePattern>/outlog/PROD/nexus/nexus-3.28.1-01/audit/audit-%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+/prod/nexus/nexus/etc/nexus-default.properties:4:application-port=8100
+$ 

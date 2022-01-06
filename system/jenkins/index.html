@@ -21,28 +21,29 @@
 
 
   
-  <meta name="description" content="plugins
-Publish Over SSH
-mvn 빌드 후 생성된 artifact 파일을 sftp 로 전송하고 ssh 로 command 를 실행하는 기능을 사용할 수 있습니다.
+  <meta name="description" content="installation
+start 스크립트
+#!/bin/sh
 
-프로젝트 구성에서 빌드 후 조치 &gt; Send build artifacts over …">
+#JAVA_HOME=/prod/java/jdk1.8.0_202
+JAVA_HOME=/prod/java/openjdk-11.0.2
+export PATH=$JAVA_HOME/bin:$PATH
+
+JAVA_OPTS= …">
 <meta property="og:title" content="jenkins" />
-<meta property="og:description" content="plugins Publish Over SSH mvn 빌드 후 생성된 artifact 파일을 sftp 로 전송하고 ssh 로 command 를 실행하는 기능을 사용할 수 있습니다.
- 프로젝트 구성에서 빌드 후 조치 &gt; Send build artifacts over SSH 선택 Add Server 버튼을 클릭하여 SSH Server 선택  선택되는 서버는 빌드 결과물인 artifact 파일을 전송하고, ssh 로 command 를 실행할 서버를 의미함 아래 Transfer Set 에 설정되는 Exec command의 내용이 빌드 로그에 출력되도록 고급버튼을 눌러 Verbose output in console 을 선택할 것 [INFO] ------------------------------------------------------------------------ SSH: Connecting from host [i9-9900K] SSH: Connecting with configuration [tomcat@develop] ." />
+<meta property="og:description" content="installation start 스크립트 #!/bin/sh  #JAVA_HOME=/prod/java/jdk1.8.0_202 JAVA_HOME=/prod/java/openjdk-11.0.2 export PATH=$JAVA_HOME/bin:$PATH JAVA_OPTS=&#34;${JAVA_OPTS}-Dapp.id=jenkins&#34; JAVA_OPTS=&#34;${JAVA_OPTS}-Dcom.sun.akuma.Daemon=daemonized&#34; JAVA_OPTS=&#34;${JAVA_OPTS}-Djava.awt.headless=true&#34; JAVA_OPTS=&#34;${JAVA_OPTS}-DJENKINS_HOME=/data/PROD/jenkins&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--logfile=/outlog/PROD/jenkins/default.log&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--webroot=/prod/jenkins/jenkins/cache-war&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--daemon&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--httpPort=8400&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--debug=5&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--handlerCountMax=100&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--handlerCountMaxIdle=20&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--accessLoggerClassName=winstone.accesslog.SimpleAccessLogger&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--simpleAccessLogger.format=combined&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--simpleAccessLogger.file=/outlog/PROD/jenkins/access.log&#34; #JENKINS_ARGS=&#34;${JENKINS_ARGS} --httpsCertificate=/etc/pki/tls/mgkim/jenkins.crt&#34; #JENKINS_ARGS=&#34;${JENKINS_ARGS} --httpsPrivateKey=/etc/pki/tls/mgkim/jenkins.key&#34; case &#34;$1&#34; in start) echo &#34;starting jenkins&#34; nohup $JAVA_HOME/bin/java $JAVA_OPTS -jar /prod/jenkins/jenkins/jenkins.war $JENKINS_ARGS &gt; /dev/null 2&gt;&amp;1 &amp; ;; stop) echo &#34;stopping jenkins&#34; ps -ef | grep java | grep -v grep | grep jenkins | awk &#39;{ print $2 }&#39; | xargs kill -9 ;; *) echo &#34;Usage: $0{start|stop}&#34; exit 1 ;; esac" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/system/jenkins/" /><meta property="article:section" content="system" />
 
 
 
 <meta itemprop="name" content="jenkins">
-<meta itemprop="description" content="plugins Publish Over SSH mvn 빌드 후 생성된 artifact 파일을 sftp 로 전송하고 ssh 로 command 를 실행하는 기능을 사용할 수 있습니다.
- 프로젝트 구성에서 빌드 후 조치 &gt; Send build artifacts over SSH 선택 Add Server 버튼을 클릭하여 SSH Server 선택  선택되는 서버는 빌드 결과물인 artifact 파일을 전송하고, ssh 로 command 를 실행할 서버를 의미함 아래 Transfer Set 에 설정되는 Exec command의 내용이 빌드 로그에 출력되도록 고급버튼을 눌러 Verbose output in console 을 선택할 것 [INFO] ------------------------------------------------------------------------ SSH: Connecting from host [i9-9900K] SSH: Connecting with configuration [tomcat@develop] .">
+<meta itemprop="description" content="installation start 스크립트 #!/bin/sh  #JAVA_HOME=/prod/java/jdk1.8.0_202 JAVA_HOME=/prod/java/openjdk-11.0.2 export PATH=$JAVA_HOME/bin:$PATH JAVA_OPTS=&#34;${JAVA_OPTS}-Dapp.id=jenkins&#34; JAVA_OPTS=&#34;${JAVA_OPTS}-Dcom.sun.akuma.Daemon=daemonized&#34; JAVA_OPTS=&#34;${JAVA_OPTS}-Djava.awt.headless=true&#34; JAVA_OPTS=&#34;${JAVA_OPTS}-DJENKINS_HOME=/data/PROD/jenkins&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--logfile=/outlog/PROD/jenkins/default.log&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--webroot=/prod/jenkins/jenkins/cache-war&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--daemon&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--httpPort=8400&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--debug=5&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--handlerCountMax=100&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--handlerCountMaxIdle=20&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--accessLoggerClassName=winstone.accesslog.SimpleAccessLogger&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--simpleAccessLogger.format=combined&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--simpleAccessLogger.file=/outlog/PROD/jenkins/access.log&#34; #JENKINS_ARGS=&#34;${JENKINS_ARGS} --httpsCertificate=/etc/pki/tls/mgkim/jenkins.crt&#34; #JENKINS_ARGS=&#34;${JENKINS_ARGS} --httpsPrivateKey=/etc/pki/tls/mgkim/jenkins.key&#34; case &#34;$1&#34; in start) echo &#34;starting jenkins&#34; nohup $JAVA_HOME/bin/java $JAVA_OPTS -jar /prod/jenkins/jenkins/jenkins.war $JENKINS_ARGS &gt; /dev/null 2&gt;&amp;1 &amp; ;; stop) echo &#34;stopping jenkins&#34; ps -ef | grep java | grep -v grep | grep jenkins | awk &#39;{ print $2 }&#39; | xargs kill -9 ;; *) echo &#34;Usage: $0{start|stop}&#34; exit 1 ;; esac">
 
-<meta itemprop="wordCount" content="1317">
+<meta itemprop="wordCount" content="1413">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="jenkins"/>
-<meta name="twitter:description" content="plugins Publish Over SSH mvn 빌드 후 생성된 artifact 파일을 sftp 로 전송하고 ssh 로 command 를 실행하는 기능을 사용할 수 있습니다.
- 프로젝트 구성에서 빌드 후 조치 &gt; Send build artifacts over SSH 선택 Add Server 버튼을 클릭하여 SSH Server 선택  선택되는 서버는 빌드 결과물인 artifact 파일을 전송하고, ssh 로 command 를 실행할 서버를 의미함 아래 Transfer Set 에 설정되는 Exec command의 내용이 빌드 로그에 출력되도록 고급버튼을 눌러 Verbose output in console 을 선택할 것 [INFO] ------------------------------------------------------------------------ SSH: Connecting from host [i9-9900K] SSH: Connecting with configuration [tomcat@develop] ."/>
+<meta name="twitter:description" content="installation start 스크립트 #!/bin/sh  #JAVA_HOME=/prod/java/jdk1.8.0_202 JAVA_HOME=/prod/java/openjdk-11.0.2 export PATH=$JAVA_HOME/bin:$PATH JAVA_OPTS=&#34;${JAVA_OPTS}-Dapp.id=jenkins&#34; JAVA_OPTS=&#34;${JAVA_OPTS}-Dcom.sun.akuma.Daemon=daemonized&#34; JAVA_OPTS=&#34;${JAVA_OPTS}-Djava.awt.headless=true&#34; JAVA_OPTS=&#34;${JAVA_OPTS}-DJENKINS_HOME=/data/PROD/jenkins&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--logfile=/outlog/PROD/jenkins/default.log&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--webroot=/prod/jenkins/jenkins/cache-war&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--daemon&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--httpPort=8400&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--debug=5&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--handlerCountMax=100&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--handlerCountMaxIdle=20&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--accessLoggerClassName=winstone.accesslog.SimpleAccessLogger&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--simpleAccessLogger.format=combined&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--simpleAccessLogger.file=/outlog/PROD/jenkins/access.log&#34; #JENKINS_ARGS=&#34;${JENKINS_ARGS} --httpsCertificate=/etc/pki/tls/mgkim/jenkins.crt&#34; #JENKINS_ARGS=&#34;${JENKINS_ARGS} --httpsPrivateKey=/etc/pki/tls/mgkim/jenkins.key&#34; case &#34;$1&#34; in start) echo &#34;starting jenkins&#34; nohup $JAVA_HOME/bin/java $JAVA_OPTS -jar /prod/jenkins/jenkins/jenkins.war $JENKINS_ARGS &gt; /dev/null 2&gt;&amp;1 &amp; ;; stop) echo &#34;stopping jenkins&#34; ps -ef | grep java | grep -v grep | grep jenkins | awk &#39;{ print $2 }&#39; | xargs kill -9 ;; *) echo &#34;Usage: $0{start|stop}&#34; exit 1 ;; esac"/>
 
 
 
@@ -133,7 +134,7 @@ mvn 빌드 후 생성된 artifact 파일을 sftp 로 전송하고 ssh 로 comman
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.f8f74f9007ebef5027ee6d72939e4bbf.json"
+  data-offline-search-index-json-src="/offline-search-index.a089b31cf63a0769a45d1985525c38da.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -160,7 +161,7 @@ mvn 빌드 후 생성된 artifact 파일을 sftp 로 전송하고 ssh 로 comman
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.f8f74f9007ebef5027ee6d72939e4bbf.json"
+  data-offline-search-index-json-src="/offline-search-index.a089b31cf63a0769a45d1985525c38da.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -175,7 +176,10 @@ mvn 빌드 후 생성된 artifact 파일을 sftp 로 전송하고 ssh 로 comman
   
   <a href="/system/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-system"><span class="">system</span></a>
   <ul class="ul-1">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemhttpd-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemcentos8-li">
+  
+  <a href="/system/centos8/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemcentos8"><span class="">centos8</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemhttpd-li">
   
   <a href="/system/httpd/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemhttpd"><span class="">httpd</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-systemjenkins-li">
@@ -217,17 +221,27 @@ mvn 빌드 후 생성된 artifact 파일을 sftp 로 전송하고 ssh 로 comman
 
 <div class="td-toc"><nav id="TableOfContents">
   <ul>
-    <li><a href="#plugins">plugins</a>
+    <li>
       <ul>
-        <li><a href="#publish-over-ssh">Publish Over SSH</a></li>
-        <li><a href="#gitlab-plugin">GitLab Plugin</a></li>
-        <li><a href="#github-integration-plugin">GitHub Integration Plugin</a></li>
-      </ul>
-    </li>
-    <li><a href="#build">build</a>
-      <ul>
-        <li><a href="#분산-빌드-환경">분산 빌드 환경</a></li>
-        <li><a href="#github-연결">github 연결</a></li>
+        <li><a href="#installation">installation</a>
+          <ul>
+            <li><a href="#start-스크립트">start 스크립트</a></li>
+            <li><a href="#systemd-등록">systemd 등록</a></li>
+          </ul>
+        </li>
+        <li><a href="#plugins">plugins</a>
+          <ul>
+            <li><a href="#publish-over-ssh">Publish Over SSH</a></li>
+            <li><a href="#gitlab-plugin">GitLab Plugin</a></li>
+            <li><a href="#github-integration-plugin">GitHub Integration Plugin</a></li>
+          </ul>
+        </li>
+        <li><a href="#build">build</a>
+          <ul>
+            <li><a href="#분산-빌드-환경">분산 빌드 환경</a></li>
+            <li><a href="#github-연결">github 연결</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -303,8 +317,67 @@ mvn 빌드 후 생성된 artifact 파일을 sftp 로 전송하고 ssh 로 comman
 		
 		
 	</header>    
-	<h2 id="plugins">plugins</h2>
-<h3 id="publish-over-ssh">Publish Over SSH</h3>
+	<h3 id="installation">installation</h3>
+<h4 id="start-스크립트">start 스크립트</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#!/bin/sh
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">#JAVA_HOME=/prod/java/jdk1.8.0_202</span>
+JAVA_HOME<span style="color:#f92672">=</span>/prod/java/openjdk-11.0.2
+export PATH<span style="color:#f92672">=</span>$JAVA_HOME/bin:$PATH
+
+JAVA_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JAVA_OPTS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -Dapp.id=jenkins&#34;</span>
+JAVA_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JAVA_OPTS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -Dcom.sun.akuma.Daemon=daemonized&#34;</span>
+JAVA_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JAVA_OPTS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -Djava.awt.headless=true&#34;</span>
+JAVA_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JAVA_OPTS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -DJENKINS_HOME=/data/PROD/jenkins&#34;</span>
+
+JENKINS_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JENKINS_ARGS<span style="color:#e6db74">}</span><span style="color:#e6db74"> --logfile=/outlog/PROD/jenkins/default.log&#34;</span>
+JENKINS_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JENKINS_ARGS<span style="color:#e6db74">}</span><span style="color:#e6db74"> --webroot=/prod/jenkins/jenkins/cache-war&#34;</span>
+JENKINS_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JENKINS_ARGS<span style="color:#e6db74">}</span><span style="color:#e6db74"> --daemon&#34;</span>
+JENKINS_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JENKINS_ARGS<span style="color:#e6db74">}</span><span style="color:#e6db74"> --httpPort=8400&#34;</span>
+JENKINS_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JENKINS_ARGS<span style="color:#e6db74">}</span><span style="color:#e6db74"> --debug=5&#34;</span>
+JENKINS_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JENKINS_ARGS<span style="color:#e6db74">}</span><span style="color:#e6db74"> --handlerCountMax=100&#34;</span>
+JENKINS_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JENKINS_ARGS<span style="color:#e6db74">}</span><span style="color:#e6db74"> --handlerCountMaxIdle=20&#34;</span>
+JENKINS_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JENKINS_ARGS<span style="color:#e6db74">}</span><span style="color:#e6db74"> --accessLoggerClassName=winstone.accesslog.SimpleAccessLogger&#34;</span>
+JENKINS_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JENKINS_ARGS<span style="color:#e6db74">}</span><span style="color:#e6db74"> --simpleAccessLogger.format=combined&#34;</span>
+JENKINS_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JENKINS_ARGS<span style="color:#e6db74">}</span><span style="color:#e6db74"> --simpleAccessLogger.file=/outlog/PROD/jenkins/access.log&#34;</span>
+<span style="color:#75715e">#JENKINS_ARGS=&#34;${JENKINS_ARGS} --httpsCertificate=/etc/pki/tls/mgkim/jenkins.crt&#34;</span>
+<span style="color:#75715e">#JENKINS_ARGS=&#34;${JENKINS_ARGS} --httpsPrivateKey=/etc/pki/tls/mgkim/jenkins.key&#34;</span>
+
+<span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;</span>$1<span style="color:#e6db74">&#34;</span> in
+  start<span style="color:#f92672">)</span>
+    echo <span style="color:#e6db74">&#34;starting jenkins&#34;</span>
+    nohup $JAVA_HOME/bin/java $JAVA_OPTS -jar /prod/jenkins/jenkins/jenkins.war $JENKINS_ARGS &gt; /dev/null 2&gt;&amp;<span style="color:#ae81ff">1</span> &amp;
+    ;;
+  stop<span style="color:#f92672">)</span>
+    echo <span style="color:#e6db74">&#34;stopping jenkins&#34;</span>
+    ps -ef | grep java | grep -v grep | grep jenkins | awk <span style="color:#e6db74">&#39;{ print $2 }&#39;</span> | xargs kill -9 
+    ;;
+  *<span style="color:#f92672">)</span>
+    echo <span style="color:#e6db74">&#34;Usage: </span>$0<span style="color:#e6db74"> {start|stop}&#34;</span>
+    exit <span style="color:#ae81ff">1</span>
+    ;;
+<span style="color:#66d9ef">esac</span>
+</code></pre></div><br>
+<h4 id="systemd-등록">systemd 등록</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#f92672">[</span>Unit<span style="color:#f92672">]</span>
+Description<span style="color:#f92672">=</span>Jenkins
+After<span style="color:#f92672">=</span>network.target syslog.target
+
+<span style="color:#f92672">[</span>Service<span style="color:#f92672">]</span>
+Type<span style="color:#f92672">=</span>forking
+User<span style="color:#f92672">=</span>jenkins
+Group<span style="color:#f92672">=</span>ci
+
+ExecStart<span style="color:#f92672">=</span>/prod/jenkins/jenkins.sh start
+ExecStop<span style="color:#f92672">=</span>/prod/jenkins/jenkins.sh stop
+
+Restart<span style="color:#f92672">=</span>on-abort
+
+<span style="color:#f92672">[</span>Install<span style="color:#f92672">]</span>
+WantedBy<span style="color:#f92672">=</span>multi-user.target
+</code></pre></div><br>
+<h3 id="plugins">plugins</h3>
+<h4 id="publish-over-ssh">Publish Over SSH</h4>
 <p>mvn 빌드 후 생성된 artifact 파일을 sftp 로 전송하고 ssh 로 command 를 실행하는 기능을 사용할 수 있습니다.</p>
 <ol>
 <li>프로젝트 구성에서 <code>빌드 후 조치</code> &gt; <code>Send build artifacts over SSH</code> 선택</li>
@@ -389,7 +462,7 @@ YqTPbiAOgnHAD9CgWg/v55Zl9zLrPKLakCJPYzGNrLo2BJ4qXR1ZX371JEsXq8tq
 
 </div>
 
-<h3 id="gitlab-plugin">GitLab Plugin</h3>
+<h4 id="gitlab-plugin">GitLab Plugin</h4>
 <p>gitlab 과 연동하기 위한 플러그인입니다.</p>
 <p>gitlab 에서 push 이벤트가 발생했을 경우 jenkins 에서 build 가 실행되도록 하기위해 사용됩니다.</p>
 <ol>
@@ -422,11 +495,11 @@ YqTPbiAOgnHAD9CgWg/v55Zl9zLrPKLakCJPYzGNrLo2BJ4qXR1ZX371JEsXq8tq
 
 </div>
 
-<h3 id="github-integration-plugin">GitHub Integration Plugin</h3>
+<h4 id="github-integration-plugin">GitHub Integration Plugin</h4>
 <p>github 저장소에서 webhook 으로 push 이벤트를 받아서 jenkins build가 실행되도록 할 때 사용합니다.</p>
 <p>활용법: <a href="#github-연결">github 연결</a></p>
-<h2 id="build">build</h2>
-<h3 id="분산-빌드-환경">분산 빌드 환경</h3>
+<h3 id="build">build</h3>
+<h4 id="분산-빌드-환경">분산 빌드 환경</h4>
 <p><code>jenkins 관리</code> 에서 <code>노드 관리</code> 메뉴로 이동하면 <code>분산 빌드 환경</code>을 위한 노드를 추가할 수 있습니다.</p>
 <p>이 환경을 구성하면 jenkins 가 설치된 서버에서는 더 이상 빌드를 수행하지 않고 추가된 노드에서 빌드가 수행됩니다.</p>
 <p>다음은 windows 환경의 slave-node를 추가하는 예시입니다.
@@ -523,7 +596,7 @@ httpd 설정에 http 를 https 로 redirect 하도록 mod_rewrite 를 설정했�
 <ul>
 <li>이후 <code>Publish Over SSH</code> 플러그인을 사용하여 was 서버에 war 파일을 publish 를 하고 was 를 재시작하는 command 를 ssh 로 수행하도록 설정하면 됩니다.</li>
 </ul>
-<h3 id="github-연결">github 연결</h3>
+<h4 id="github-연결">github 연결</h4>
 <p>required plugin: <code>GitHub Integration Plugin</code></p>
 <p>jenkins 프로젝트의 <code>소스 코드 관리</code> 섹션에서 github 저장소와 연결하는 설정입니다.</p>
 <ul>
