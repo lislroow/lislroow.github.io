@@ -29,7 +29,7 @@ jamwiki 라는 webapp 을 서비스하는 tomcat 설정 기본입니다.
 start.sh 파일
 #!/bin/sh
 
-export …">
+PROD_HOME= …">
 <meta property="og:title" content="system" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -129,7 +129,7 @@ export …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.a089b31cf63a0769a45d1985525c38da.json"
+  data-offline-search-index-json-src="/offline-search-index.a818f309f4557fa690e7d8e63690cb37.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -156,7 +156,7 @@ export …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.a089b31cf63a0769a45d1985525c38da.json"
+  data-offline-search-index-json-src="/offline-search-index.a818f309f4557fa690e7d8e63690cb37.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -309,16 +309,21 @@ export …">
 <p><code>start.sh</code> 파일</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#!/bin/sh
 </span><span style="color:#75715e"></span>
-export PROD_HOME<span style="color:#f92672">=</span>/prod/<span style="color:#e6db74">${</span>INST_ID<span style="color:#e6db74">}</span>
-export DATA_HOME<span style="color:#f92672">=</span>/data/PROD/<span style="color:#e6db74">${</span>INST_ID<span style="color:#e6db74">}</span>
-export LOG_HOME<span style="color:#f92672">=</span>/outlog/PROD/<span style="color:#e6db74">${</span>INST_ID<span style="color:#e6db74">}</span>
-export EXE_USER<span style="color:#f92672">=</span>tomcat
+PROD_HOME<span style="color:#f92672">=</span>/prod/<span style="color:#e6db74">${</span>INST_ID<span style="color:#e6db74">}</span>
+DATA_HOME<span style="color:#f92672">=</span>/data/PROD/<span style="color:#e6db74">${</span>INST_ID<span style="color:#e6db74">}</span>
+LOG_HOME<span style="color:#f92672">=</span>/outlog/PROD/<span style="color:#e6db74">${</span>INST_ID<span style="color:#e6db74">}</span>
+EXE_USER<span style="color:#f92672">=</span>tomcat
 
-export CATALINA_BASE<span style="color:#f92672">=</span>/prod/<span style="color:#e6db74">${</span>INST_ID<span style="color:#e6db74">}</span>/config
-export CATALINA_OUT<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>LOG_HOME<span style="color:#e6db74">}</span>/catalina.out
-export CATALINA_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;-Djava.net.preferIPv4Stack=true &#34;</span>
-export JAVA_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;-Xms256m -Xmx256m&#34;</span>
-export PS_CMD<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ps -ef | grep -v grep | grep -v &#39;.sh&#39; | grep -v rotatelogs | grep -v tail | grep </span><span style="color:#e6db74">${</span>INST_ID<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+CATALINA_BASE<span style="color:#f92672">=</span>/prod/<span style="color:#e6db74">${</span>INST_ID<span style="color:#e6db74">}</span>/config
+CATALINA_OUT<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>LOG_HOME<span style="color:#e6db74">}</span>/catalina.out
+JAVA_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JAVA_OPTS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -Xms256m -Xmx256m&#34;</span>
+JAVA_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JAVA_OPTS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -Djava.net.preferIPv4Stack=true&#34;</span>
+
+export CATALINA_BASE
+export CATALINA_OUT
+export JAVA_OPTS
+
+PS_CMD<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ps -ef | grep -v grep | grep -v &#39;.sh&#39; | grep -v rotatelogs | grep -v tail | grep </span><span style="color:#e6db74">${</span>INST_ID<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
 
 <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> ! -e <span style="color:#e6db74">${</span>LOG_HOME<span style="color:#e6db74">}</span>/backup <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
   su <span style="color:#e6db74">${</span>EXE_USER<span style="color:#e6db74">}</span> -c <span style="color:#e6db74">&#39;mkdir -p ${LOG_HOME}/backup&#39;</span>
