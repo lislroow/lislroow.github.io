@@ -22,11 +22,9 @@
 
 
   
-  <meta name="description" content="(maven) Malformed \uxxxx encoding.
-maven 빌드 시 Malformed \uxxxx encoding. 가 발생하면 로컬 저장소를 삭제하고 빌드해주세요.
-
-(git) turn off crlf warning
-warning: LF will be …">
+  <meta name="description" content="(maven) spring-boot:repackage
+packaging 이 jar 인 프로젝트를 mvn package 으로 jar 를 생성한 다음에 mvn spring-boot:repackage 을 실행해야 합니다.
+리패키징이되면 jar …">
 <meta property="og:title" content="localenv" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -126,7 +124,7 @@ warning: LF will be …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b6074268f32d410958dd14bf694098ee.json"
+  data-offline-search-index-json-src="/offline-search-index.6d73b5e77d24a9c40f5b2827da343dea.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -153,7 +151,7 @@ warning: LF will be …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b6074268f32d410958dd14bf694098ee.json"
+  data-offline-search-index-json-src="/offline-search-index.6d73b5e77d24a9c40f5b2827da343dea.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -202,6 +200,7 @@ warning: LF will be …">
       <ul>
         <li>
           <ul>
+            <li><a href="#maven-spring-bootrepackage">(maven) spring-boot:repackage</a></li>
             <li><a href="#maven-malformed-uxxxx-encoding">(maven) Malformed \uxxxx encoding.</a></li>
             <li><a href="#git-turn-off-crlf-warning">(git) turn off crlf warning</a></li>
             <li><a href="#hugo-전체-rebuild">(hugo) 전체 rebuild</a></li>
@@ -320,7 +319,14 @@ warning: LF will be …">
 		
 		
 	</header>
-	<h4 id="maven-malformed-uxxxx-encoding">(maven) Malformed \uxxxx encoding.</h4>
+	<h4 id="maven-spring-bootrepackage">(maven) spring-boot:repackage</h4>
+<p>packaging 이 jar 인 프로젝트를 <code>mvn package</code> 으로 jar 를 생성한 다음에 <code>mvn spring-boot:repackage</code> 을 실행해야 합니다.</p>
+<p>리패키징이되면 jar 아티팩트에 의존성으로 설정된 jar 파일들이 포함됩니다.</p>
+<p>아래는 리패키징이 정상이면 볼 수 있는 로그 입니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">[<span style="color:#a6e22e">INFO</span>] <span style="color:#f92672">---</span> <span style="color:#a6e22e">spring</span><span style="color:#f92672">-</span><span style="color:#a6e22e">boot</span><span style="color:#f92672">-</span><span style="color:#a6e22e">maven</span><span style="color:#f92672">-</span><span style="color:#a6e22e">plugin</span>:<span style="color:#ae81ff">2.6.1</span>:<span style="color:#a6e22e">repackage</span> (<span style="color:#66d9ef">default</span><span style="color:#f92672">-</span><span style="color:#a6e22e">cli</span>) <span style="color:#960050;background-color:#1e0010">@</span> <span style="color:#a6e22e">service</span><span style="color:#f92672">-</span><span style="color:#a6e22e">www</span> <span style="color:#f92672">---</span>
+[<span style="color:#a6e22e">INFO</span>] <span style="color:#a6e22e">Replacing</span> <span style="color:#a6e22e">main</span> <span style="color:#a6e22e">artifact</span> <span style="color:#a6e22e">with</span> <span style="color:#a6e22e">repackaged</span> <span style="color:#a6e22e">archive</span>
+</code></pre></div><br>
+<h4 id="maven-malformed-uxxxx-encoding">(maven) Malformed \uxxxx encoding.</h4>
 <p>maven 빌드 시 <code>Malformed \uxxxx encoding.</code> 가 발생하면 로컬 저장소를 삭제하고 빌드해주세요.</p>
 <br>
 <h4 id="git-turn-off-crlf-warning">(git) turn off crlf warning</h4>
