@@ -22,10 +22,9 @@
 
 
   
-  <meta name="description" content="(git) pull.ff only
-git config --global pull.ff only 설정을 추가하면 됩니다.
-$ git pull origin main
-warning: Pulling without specifying how to reconcile …">
+  <meta name="description" content="(maven) deploy:deploy-file 시 저장소 지정
+pom.xml 에 포함되어있는 version 에 -SNAPSHOT 이 있으면 release 저장소에 deploy 할 수 없다는 오류가 발생하므로 주의가 필요합니다.
+MVN_ARGS=&#34;&#34; …">
 <meta property="og:title" content="localenv" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -125,7 +124,7 @@ warning: Pulling without specifying how to reconcile …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.85fdc1a5da71993e272a002f96f6284a.json"
+  data-offline-search-index-json-src="/offline-search-index.46f6c01f8053a673b520eed227060f2e.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -152,7 +151,7 @@ warning: Pulling without specifying how to reconcile …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.85fdc1a5da71993e272a002f96f6284a.json"
+  data-offline-search-index-json-src="/offline-search-index.46f6c01f8053a673b520eed227060f2e.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -201,6 +200,7 @@ warning: Pulling without specifying how to reconcile …">
       <ul>
         <li>
           <ul>
+            <li><a href="#maven-deploydeploy-file-시-저장소-지정">(maven) deploy:deploy-file 시 저장소 지정</a></li>
             <li><a href="#git-pullff-only">(git) pull.ff only</a></li>
             <li><a href="#maven-spring-bootrepackage">(maven) spring-boot:repackage</a></li>
             <li><a href="#maven-malformed-uxxxx-encoding">(maven) Malformed \uxxxx encoding.</a></li>
@@ -321,7 +321,24 @@ warning: Pulling without specifying how to reconcile …">
 		
 		
 	</header>
-	<h4 id="git-pullff-only">(git) pull.ff only</h4>
+	<h4 id="maven-deploydeploy-file-시-저장소-지정">(maven) deploy:deploy-file 시 저장소 지정</h4>
+<p>pom.xml 에 포함되어있는 version 에 <code>-SNAPSHOT</code> 이 있으면 release 저장소에 deploy 할 수 없다는 오류가 발생하므로 주의가 필요합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">MVN_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>
+MVN_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>MVN_ARGS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -DpomFile=</span><span style="color:#e6db74">${</span>PROJECT_BASE<span style="color:#e6db74">}</span><span style="color:#e6db74">/pom.xml&#34;</span>
+MVN_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>MVN_ARGS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -Dfile=</span><span style="color:#e6db74">${</span>PROJECT_BASE<span style="color:#e6db74">}</span><span style="color:#e6db74">/target/</span><span style="color:#e6db74">${</span>JAR_FILE<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+
+<span style="color:#75715e"># jar 파일명에 &#34;-SNAPSHOT&#34; 이 있으면 snapshot 저장소에 deploy 되어야 합니다. </span>
+<span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JAR_FILE<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">=</span> *<span style="color:#e6db74">&#34;-SNAPSHOT&#34;</span>* <span style="color:#f92672">]]</span>; <span style="color:#66d9ef">then</span>
+  MVN_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>MVN_ARGS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -DrepositoryId=maven-snapshot&#34;</span>
+  MVN_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>MVN_ARGS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -Durl=http://nexus/repository/maven-snapshot/&#34;</span>
+<span style="color:#66d9ef">else</span>
+  MVN_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>MVN_ARGS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -DrepositoryId=maven-release&#34;</span>
+  MVN_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>MVN_ARGS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -Durl=http://nexus/repository/maven-release/&#34;</span>
+<span style="color:#66d9ef">fi</span>
+
+mvn deploy:deploy-file $MVN_ARGS
+</code></pre></div><br>
+<h4 id="git-pullff-only">(git) pull.ff only</h4>
 <p><code>git config --global pull.ff only</code> 설정을 추가하면 됩니다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ git pull origin main
 warning: Pulling without specifying how to reconcile divergent branches is
