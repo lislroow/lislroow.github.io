@@ -22,9 +22,10 @@
 
 
   
-  <meta name="description" content="(maven) spring-boot:repackage
-packaging 이 jar 인 프로젝트를 mvn package 으로 jar 를 생성한 다음에 mvn spring-boot:repackage 을 실행해야 합니다.
-리패키징이되면 jar …">
+  <meta name="description" content="(git) pull.ff only
+git config --global pull.ff only 설정을 추가하면 됩니다.
+$ git pull origin main
+warning: Pulling without specifying how to reconcile …">
 <meta property="og:title" content="localenv" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -124,7 +125,7 @@ packaging 이 jar 인 프로젝트를 mvn package 으로 jar 를 생성한 다�
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.6d73b5e77d24a9c40f5b2827da343dea.json"
+  data-offline-search-index-json-src="/offline-search-index.85fdc1a5da71993e272a002f96f6284a.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -151,7 +152,7 @@ packaging 이 jar 인 프로젝트를 mvn package 으로 jar 를 생성한 다�
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.6d73b5e77d24a9c40f5b2827da343dea.json"
+  data-offline-search-index-json-src="/offline-search-index.85fdc1a5da71993e272a002f96f6284a.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -200,6 +201,7 @@ packaging 이 jar 인 프로젝트를 mvn package 으로 jar 를 생성한 다�
       <ul>
         <li>
           <ul>
+            <li><a href="#git-pullff-only">(git) pull.ff only</a></li>
             <li><a href="#maven-spring-bootrepackage">(maven) spring-boot:repackage</a></li>
             <li><a href="#maven-malformed-uxxxx-encoding">(maven) Malformed \uxxxx encoding.</a></li>
             <li><a href="#git-turn-off-crlf-warning">(git) turn off crlf warning</a></li>
@@ -319,7 +321,23 @@ packaging 이 jar 인 프로젝트를 mvn package 으로 jar 를 생성한 다�
 		
 		
 	</header>
-	<h4 id="maven-spring-bootrepackage">(maven) spring-boot:repackage</h4>
+	<h4 id="git-pullff-only">(git) pull.ff only</h4>
+<p><code>git config --global pull.ff only</code> 설정을 추가하면 됩니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ git pull origin main
+warning: Pulling without specifying how to reconcile divergent branches is
+discouraged. You can squelch this message by running one of the following
+commands sometime before your next pull:
+
+  git config pull.rebase false  <span style="color:#75715e"># merge (the default strategy)</span>
+  git config pull.rebase true   <span style="color:#75715e"># rebase</span>
+  git config pull.ff only       <span style="color:#75715e"># fast-forward only</span>
+
+You can replace <span style="color:#e6db74">&#34;git config&#34;</span> with <span style="color:#e6db74">&#34;git config --global&#34;</span> to set a default
+preference <span style="color:#66d9ef">for</span> all repositories. You can also pass --rebase, --no-rebase,
+or --ff-only on the command line to override the configured default per
+invocation.
+</code></pre></div><br>
+<h4 id="maven-spring-bootrepackage">(maven) spring-boot:repackage</h4>
 <p>packaging 이 jar 인 프로젝트를 <code>mvn package</code> 으로 jar 를 생성한 다음에 <code>mvn spring-boot:repackage</code> 을 실행해야 합니다.</p>
 <p>리패키징이되면 jar 아티팩트에 의존성으로 설정된 jar 파일들이 포함됩니다.</p>
 <p>아래는 리패키징이 정상이면 볼 수 있는 로그 입니다.</p>
