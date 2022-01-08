@@ -22,14 +22,12 @@
 
 
   
-  <meta name="description" content="(tomcat) start/stop
-jamwiki 라는 webapp 을 서비스하는 tomcat 설정 기본입니다.
-아래 sh 파일을 포함하여 tomcat 설정에 필요한 파일들만 tgz 로 압축했습니다.
-다운로드
-start.sh 파일
-#!/bin/sh
+  <meta name="description" content="(shell) while 문
+_PID=`ps -ef | grep -v grep | egrep service-www.*\.jar | awk &#39;{ print $2 }&#39;`
+# kill -15 실행
+kill -15 $_PID
 
-PROD_HOME= …">
+# …">
 <meta property="og:title" content="system" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -129,7 +127,7 @@ PROD_HOME= …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.e5e3127e83c622ca2aed0a380ea13cce.json"
+  data-offline-search-index-json-src="/offline-search-index.86347898cea22b1042c77ebc2767a6ab.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -156,7 +154,7 @@ PROD_HOME= …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.e5e3127e83c622ca2aed0a380ea13cce.json"
+  data-offline-search-index-json-src="/offline-search-index.86347898cea22b1042c77ebc2767a6ab.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -220,6 +218,9 @@ PROD_HOME= …">
       <ul>
         <li>
           <ul>
+            <li><a href="#shell-while-문">(shell) while 문</a></li>
+            <li><a href="#shell-for-문">(shell) for 문</a></li>
+            <li><a href="#shell-case-문">(shell) case 문</a></li>
             <li><a href="#tomcat-startstop">(tomcat) start/stop</a></li>
             <li><a href="#cockpit">(cockpit)</a></li>
             <li><a href="#mosh">(mosh)</a></li>
@@ -302,7 +303,48 @@ PROD_HOME= …">
 		
 		
 	</header>
-	<h4 id="tomcat-startstop">(tomcat) start/stop</h4>
+	<h4 id="shell-while-문">(shell) while 문</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">_PID<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>ps -ef | grep -v grep | egrep service-www.*<span style="color:#ae81ff">\.</span>jar | awk <span style="color:#e6db74">&#39;{ print $2 }&#39;</span><span style="color:#e6db74">`</span>
+<span style="color:#75715e"># kill -15 실행</span>
+kill -15 $_PID
+
+<span style="color:#75715e"># 프로세스가 종료되었는지 while 문에서 확인</span>
+<span style="color:#66d9ef">while</span> <span style="color:#f92672">[</span> $i -lt <span style="color:#ae81ff">600</span> <span style="color:#f92672">]</span>;
+<span style="color:#66d9ef">do</span>
+  _PID<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>ps -ef | grep -v grep | egrep service-www.*<span style="color:#ae81ff">\.</span>jar | awk <span style="color:#e6db74">&#39;{ print $2 }&#39;</span><span style="color:#e6db74">`</span>
+  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>_PID<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+    break
+  <span style="color:#66d9ef">fi</span>
+  i<span style="color:#f92672">=</span><span style="color:#66d9ef">$((</span> $i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">))</span>
+<span style="color:#66d9ef">done</span>
+</code></pre></div><br>
+<h4 id="shell-for-문">(shell) for 문</h4>
+<p>배열을 생성하고 for 문으로 출력하는 예시 입니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">SVR_LIST<span style="color:#f92672">=(</span>
+  <span style="color:#e6db74">&#39;172.28.200.20&#39;</span>
+  <span style="color:#e6db74">&#39;172.28.200.30&#39;</span>
+<span style="color:#f92672">)</span>
+echo <span style="color:#e6db74">&#34;SVR_LIST=</span><span style="color:#e6db74">${</span>SVR_LIST[*]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+
+total<span style="color:#f92672">=</span><span style="color:#e6db74">${#</span>SVR_LIST[*]<span style="color:#e6db74">}</span>
+idx<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+<span style="color:#66d9ef">for</span> SVR in <span style="color:#e6db74">${</span>SVR_LIST[*]<span style="color:#e6db74">}</span>
+<span style="color:#66d9ef">do</span>
+  idx<span style="color:#f92672">=</span><span style="color:#66d9ef">$((</span> $idx <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">))</span>
+  echo <span style="color:#e6db74">&#34;[</span><span style="color:#e6db74">${</span>idx<span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">${</span>total<span style="color:#e6db74">}</span><span style="color:#e6db74">]SVR=</span><span style="color:#e6db74">${</span>SVR<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#66d9ef">done</span>
+</code></pre></div><br>
+<h4 id="shell-case-문">(shell) case 문</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#66d9ef">case</span> $var in
+  a*<span style="color:#f92672">)</span> <span style="color:#75715e"># a로 시작하는 문자열일 경우</span>
+    ;;
+  a?<span style="color:#f92672">)</span> <span style="color:#75715e"># a뒤에 1개의 문자가 올 경우</span>
+    ;;
+  a<span style="color:#f92672">[</span>bc<span style="color:#f92672">])</span> <span style="color:#75715e"># ab 혹은 ac 일 경우</span>
+    ;;
+<span style="color:#66d9ef">esac</span>
+</code></pre></div><br>
+<h4 id="tomcat-startstop">(tomcat) start/stop</h4>
 <p>jamwiki 라는 webapp 을 서비스하는 tomcat 설정 기본입니다.</p>
 <p>아래 sh 파일을 포함하여 tomcat 설정에 필요한 파일들만 tgz 로 압축했습니다.</p>
 <p><a href="/files/system/20220105-jamwiki.zip" target="_blank">다운로드</a></p>
