@@ -22,15 +22,14 @@
 
 
   
-  <meta name="description" content="(shell) here-document 줄바꿈 출력
-printf &#39;%s\n&#39; $(cat &lt;&lt; EOF
-OS_NAME=${OS_NAME}
-M2_HOME=${M2_HOME}
-JAVA_HOME=${JAVA_HOME}
-EOF
-)
+  <meta name="description" content="(tomcat) start/stop
+jamwiki 라는 webapp 을 서비스하는 tomcat 설정 기본입니다.
+아래 sh 파일을 포함하여 tomcat 설정에 필요한 파일들만 tgz 로 압축했습니다.
+다운로드
+start.sh 파일
+#!/bin/sh
 
-(tomcat) …">
+PROD_HOME= …">
 <meta property="og:title" content="system" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -130,7 +129,7 @@ EOF
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.e1cd4d50cea2ad95a7b850bc85622e24.json"
+  data-offline-search-index-json-src="/offline-search-index.e5e3127e83c622ca2aed0a380ea13cce.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -157,7 +156,7 @@ EOF
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.e1cd4d50cea2ad95a7b850bc85622e24.json"
+  data-offline-search-index-json-src="/offline-search-index.e5e3127e83c622ca2aed0a380ea13cce.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -221,7 +220,6 @@ EOF
       <ul>
         <li>
           <ul>
-            <li><a href="#shell-here-document-줄바꿈-출력">(shell) here-document 줄바꿈 출력</a></li>
             <li><a href="#tomcat-startstop">(tomcat) start/stop</a></li>
             <li><a href="#cockpit">(cockpit)</a></li>
             <li><a href="#mosh">(mosh)</a></li>
@@ -304,15 +302,7 @@ EOF
 		
 		
 	</header>
-	<h4 id="shell-here-document-줄바꿈-출력">(shell) here-document 줄바꿈 출력</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">printf <span style="color:#e6db74">&#39;%s\n&#39;</span> <span style="color:#66d9ef">$(</span>cat <span style="color:#e6db74">&lt;&lt; EOF
-</span><span style="color:#e6db74">OS_NAME=${OS_NAME}
-</span><span style="color:#e6db74">M2_HOME=${M2_HOME}
-</span><span style="color:#e6db74">JAVA_HOME=${JAVA_HOME}
-</span><span style="color:#e6db74">EOF</span>
-<span style="color:#66d9ef">)</span>
-</code></pre></div><br>
-<h4 id="tomcat-startstop">(tomcat) start/stop</h4>
+	<h4 id="tomcat-startstop">(tomcat) start/stop</h4>
 <p>jamwiki 라는 webapp 을 서비스하는 tomcat 설정 기본입니다.</p>
 <p>아래 sh 파일을 포함하여 tomcat 설정에 필요한 파일들만 tgz 로 압축했습니다.</p>
 <p><a href="/files/system/20220105-jamwiki.zip" target="_blank">다운로드</a></p>
