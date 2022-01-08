@@ -23,10 +23,8 @@
 
   
   <meta name="description" content="(shell) while 문
-_PID=`ps -ef | grep -v grep | egrep service-www.*\.jar | awk &#39;{ print $2 }&#39;`
-# kill -15 실행
-kill -15 $_PID
-
+PS_CMD=&#34;ps -ef | grep -v grep | egrep ${INST_ID}.*\\.jar | awk &#39;{ print \$2 }&#39;&#34;
+_PID=$(eval &#34;${PS_CMD}&#34;)
 # …">
 <meta property="og:title" content="system" />
 <meta property="og:description" content="" />
@@ -127,7 +125,7 @@ kill -15 $_PID
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.86347898cea22b1042c77ebc2767a6ab.json"
+  data-offline-search-index-json-src="/offline-search-index.2abf5e1de9da350afc8959bb98635c85.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -154,7 +152,7 @@ kill -15 $_PID
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.86347898cea22b1042c77ebc2767a6ab.json"
+  data-offline-search-index-json-src="/offline-search-index.2abf5e1de9da350afc8959bb98635c85.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -304,15 +302,17 @@ kill -15 $_PID
 		
 	</header>
 	<h4 id="shell-while-문">(shell) while 문</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">_PID<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>ps -ef | grep -v grep | egrep service-www.*<span style="color:#ae81ff">\.</span>jar | awk <span style="color:#e6db74">&#39;{ print $2 }&#39;</span><span style="color:#e6db74">`</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">PS_CMD<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ps -ef | grep -v grep | egrep </span><span style="color:#e6db74">${</span>INST_ID<span style="color:#e6db74">}</span><span style="color:#e6db74">.*\\.jar | awk &#39;{ print \$2 }&#39;&#34;</span>
+_PID<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>eval <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>PS_CMD<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">)</span>
 <span style="color:#75715e"># kill -15 실행</span>
 kill -15 $_PID
 
 <span style="color:#75715e"># 프로세스가 종료되었는지 while 문에서 확인</span>
 <span style="color:#66d9ef">while</span> <span style="color:#f92672">[</span> $i -lt <span style="color:#ae81ff">600</span> <span style="color:#f92672">]</span>;
 <span style="color:#66d9ef">do</span>
-  _PID<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>ps -ef | grep -v grep | egrep service-www.*<span style="color:#ae81ff">\.</span>jar | awk <span style="color:#e6db74">&#39;{ print $2 }&#39;</span><span style="color:#e6db74">`</span>
-  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>_PID<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+  _CHECK_PID<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>eval <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>PS_CMD<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">)</span>
+  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>_CHECK_PID<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+    echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>INST_ID<span style="color:#e6db74">}</span><span style="color:#e6db74">(pid:&#39;</span><span style="color:#e6db74">${</span>_PID<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;) killed&#34;</span>
     break
   <span style="color:#66d9ef">fi</span>
   i<span style="color:#f92672">=</span><span style="color:#66d9ef">$((</span> $i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">))</span>
