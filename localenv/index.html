@@ -22,9 +22,9 @@
 
 
   
-  <meta name="description" content="(maven) deploy:deploy-file 시 저장소 지정
-pom.xml 에 포함되어있는 version 에 -SNAPSHOT 이 있으면 release 저장소에 deploy 할 수 없다는 오류가 발생하므로 주의가 필요합니다.
-MVN_ARGS=&#34;&#34; …">
+  <meta name="description" content="(maven) help:evaluate 로컬 저장소 경로
+mvn 명령으로 현재 설정된 로컬 저장소를 반환하는 goal 입니다.
+$ mvn help:evaluate -Dexpression=settings.localRepository -q -DforceStdout …">
 <meta property="og:title" content="localenv" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -124,7 +124,7 @@ MVN_ARGS=&#34;&#34; …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.46f6c01f8053a673b520eed227060f2e.json"
+  data-offline-search-index-json-src="/offline-search-index.dcf00a4d55f7a76b293dcf654a60b29c.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -151,7 +151,7 @@ MVN_ARGS=&#34;&#34; …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.46f6c01f8053a673b520eed227060f2e.json"
+  data-offline-search-index-json-src="/offline-search-index.dcf00a4d55f7a76b293dcf654a60b29c.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -200,6 +200,7 @@ MVN_ARGS=&#34;&#34; …">
       <ul>
         <li>
           <ul>
+            <li><a href="#maven-helpevaluate-로컬-저장소-경로">(maven) help:evaluate 로컬 저장소 경로</a></li>
             <li><a href="#maven-deploydeploy-file-시-저장소-지정">(maven) deploy:deploy-file 시 저장소 지정</a></li>
             <li><a href="#git-pullff-only">(git) pull.ff only</a></li>
             <li><a href="#maven-spring-bootrepackage">(maven) spring-boot:repackage</a></li>
@@ -321,7 +322,11 @@ MVN_ARGS=&#34;&#34; …">
 		
 		
 	</header>
-	<h4 id="maven-deploydeploy-file-시-저장소-지정">(maven) deploy:deploy-file 시 저장소 지정</h4>
+	<h4 id="maven-helpevaluate-로컬-저장소-경로">(maven) help:evaluate 로컬 저장소 경로</h4>
+<p>mvn 명령으로 현재 설정된 로컬 저장소를 반환하는 goal 입니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ mvn help:evaluate -Dexpression=settings.localRepository -q -DforceStdout
+</code></pre></div><br>
+<h4 id="maven-deploydeploy-file-시-저장소-지정">(maven) deploy:deploy-file 시 저장소 지정</h4>
 <p>pom.xml 에 포함되어있는 version 에 <code>-SNAPSHOT</code> 이 있으면 release 저장소에 deploy 할 수 없다는 오류가 발생하므로 주의가 필요합니다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">MVN_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>
 MVN_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>MVN_ARGS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -DpomFile=</span><span style="color:#e6db74">${</span>PROJECT_BASE<span style="color:#e6db74">}</span><span style="color:#e6db74">/pom.xml&#34;</span>
