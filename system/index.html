@@ -22,9 +22,9 @@
 
 
   
-  <meta name="description" content="(shell) script 현재 경로
-a.sh 라는 파일이 /home/user/a.sh 에 존재하고, a.sh 가 실행될 때 현재 디렉토리를 확인하는 방법입니다.
-$ DIR=&#34;$( cd &#39;$( dirname &#34;$0&#34; )&#39; …">
+  <meta name="description" content="(shell) script 파일 디렉토리
+build.sh 라는 파일이 /project/script/build.sh 에 존재하고, a.sh 가 실행될 때 현재 디렉토리/project/script/를 확인하는 방법입니다.
+# build.sh 가 존재하는 디렉토리를 반환합니 …">
 <meta property="og:title" content="system" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -124,7 +124,7 @@ $ DIR=&#34;$( cd &#39;$( dirname &#34;$0&#34; )&#39; …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.224ffd9d0c6feb9ddd339d4cca2b9d7d.json"
+  data-offline-search-index-json-src="/offline-search-index.e8e79518a059f959a29ee2e6f516cbf7.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -151,7 +151,7 @@ $ DIR=&#34;$( cd &#39;$( dirname &#34;$0&#34; )&#39; …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.224ffd9d0c6feb9ddd339d4cca2b9d7d.json"
+  data-offline-search-index-json-src="/offline-search-index.e8e79518a059f959a29ee2e6f516cbf7.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -215,7 +215,7 @@ $ DIR=&#34;$( cd &#39;$( dirname &#34;$0&#34; )&#39; …">
       <ul>
         <li>
           <ul>
-            <li><a href="#shell-script-현재-경로">(shell) script 현재 경로</a></li>
+            <li><a href="#shell-script-파일-디렉토리">(shell) script 파일 디렉토리</a></li>
             <li><a href="#shell-process-및-port-체크">(shell) process 및 port 체크</a></li>
             <li><a href="#shell-find-newer-samefile">(shell) find newer samefile</a></li>
             <li><a href="#shell-curl">(shell) curl</a></li>
@@ -305,10 +305,17 @@ $ DIR=&#34;$( cd &#39;$( dirname &#34;$0&#34; )&#39; …">
 		
 		
 	</header>
-	<h4 id="shell-script-현재-경로">(shell) script 현재 경로</h4>
-<p>a.sh 라는 파일이 /home/user/a.sh 에 존재하고, a.sh 가 실행될 때 현재 디렉토리를 확인하는 방법입니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ DIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span> cd <span style="color:#e6db74">&#39;$( dirname &#34;$0&#34; )&#39;</span> <span style="color:#f92672">&amp;&amp;</span> pwd -P <span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+	<h4 id="shell-script-파일-디렉토리">(shell) script 파일 디렉토리</h4>
+<p>build.sh 라는 파일이 <code>/project/script/build.sh</code> 에 존재하고, a.sh 가 실행될 때 현재 디렉토리<code>/project/script/</code>를 확인하는 방법입니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># build.sh 가 존재하는 디렉토리를 반환합니다.</span>
+$ DIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span> cd <span style="color:#66d9ef">$(</span> dirname <span style="color:#e6db74">&#34;</span>$0<span style="color:#e6db74">&#34;</span> <span style="color:#66d9ef">)</span> <span style="color:#f92672">&amp;&amp;</span> pwd -P <span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
 $ echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>DIR<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+/home/user/
+
+<span style="color:#75715e"># build.sh 의 parent 디렉토리를 반환합니다.</span>
+$ DIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span> cd <span style="color:#66d9ef">$(</span> dirname <span style="color:#e6db74">&#34;</span>$0<span style="color:#e6db74">&#34;</span> <span style="color:#66d9ef">)</span>/.. <span style="color:#f92672">&amp;&amp;</span> pwd -P <span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+$ echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>DIR<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+/home
 </code></pre></div><br>
 <h4 id="shell-process-및-port-체크">(shell) process 및 port 체크</h4>
 <img src="/images/system/20220110-shell-process-port-check.png" width="800">
