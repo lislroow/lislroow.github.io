@@ -22,10 +22,15 @@
 
 
   
-  <meta name="description" content="(shell) while 문
-PS_CMD=&#34;ps -ef | grep -v grep | egrep ${INST_ID}.*\\.jar | awk &#39;{ print \$2 }&#39;&#34;
-_PID=$(eval &#34;${PS_CMD}&#34;)
-# …">
+  <meta name="description" content="(shell) 파일명 문자열
+$ FILE_NAME=service-www-2.0-SNAPSHOT.jar
+# 파일명
+$ echo ${FILE_NAME%.*}
+service-www-2.0-SNAPSHOT
+# 확장자
+$ echo ${FILE_NAME##*.}
+jar
+# 파일경 …">
 <meta property="og:title" content="system" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -125,7 +130,7 @@ _PID=$(eval &#34;${PS_CMD}&#34;)
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.728d200d603c610fbe3f6616bb9b16cc.json"
+  data-offline-search-index-json-src="/offline-search-index.ee2845722f60eec0a6970fbb3b9970ac.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -152,7 +157,7 @@ _PID=$(eval &#34;${PS_CMD}&#34;)
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.728d200d603c610fbe3f6616bb9b16cc.json"
+  data-offline-search-index-json-src="/offline-search-index.ee2845722f60eec0a6970fbb3b9970ac.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -216,6 +221,7 @@ _PID=$(eval &#34;${PS_CMD}&#34;)
       <ul>
         <li>
           <ul>
+            <li><a href="#shell-파일명-문자열">(shell) 파일명 문자열</a></li>
             <li><a href="#shell-while-문">(shell) while 문</a></li>
             <li><a href="#shell-for-문">(shell) for 문</a></li>
             <li><a href="#shell-case-문">(shell) case 문</a></li>
@@ -301,7 +307,20 @@ _PID=$(eval &#34;${PS_CMD}&#34;)
 		
 		
 	</header>
-	<h4 id="shell-while-문">(shell) while 문</h4>
+	<h4 id="shell-파일명-문자열">(shell) 파일명 문자열</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ FILE_NAME<span style="color:#f92672">=</span>service-www-2.0-SNAPSHOT.jar
+<span style="color:#75715e"># 파일명</span>
+$ echo <span style="color:#e6db74">${</span>FILE_NAME%.*<span style="color:#e6db74">}</span>
+service-www-2.0-SNAPSHOT
+<span style="color:#75715e"># 확장자</span>
+$ echo <span style="color:#e6db74">${</span>FILE_NAME##*.<span style="color:#e6db74">}</span>
+jar
+<span style="color:#75715e"># 파일경로에서 파일명</span>
+$ FILE_PATH<span style="color:#f92672">=</span>/app/WAS/pilot/service-www-2.0-SNAPSHOT.jar
+$ echo <span style="color:#e6db74">${</span>FILE_PATH##*/<span style="color:#e6db74">}</span>
+service-www-2.0-SNAPSHOT.jar
+</code></pre></div><br>
+<h4 id="shell-while-문">(shell) while 문</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">PS_CMD<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ps -ef | grep -v grep | egrep </span><span style="color:#e6db74">${</span>INST_ID<span style="color:#e6db74">}</span><span style="color:#e6db74">.*\\.jar | awk &#39;{ print \$2 }&#39;&#34;</span>
 _PID<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>eval <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>PS_CMD<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">)</span>
 <span style="color:#75715e"># kill -15 실행</span>
