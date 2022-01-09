@@ -575,18 +575,19 @@ SSLCryptoDevice builtin
   ProxyRequests Off
   ProxyPreserveHost On
   # BALANCER_WORKER_ROUTE: BalancerMember 의 route 값을 쿠키에 포함 (cluster1, cluster2)
-  Header add Set-Cookie &amp;#34;ROUTEID=%{BALANCER_WORKER_ROUTE}e; path=/&amp;#34; env=BALANCER_ROUTE_CHANGED
+  Header add Set-Cookie &amp;#34;ROUTEID=.%{BALANCER_WORKER_ROUTE}e; path=/&amp;#34; env=BALANCER_ROUTE_CHANGED
   Header set Access-Control-Allow-Origin &amp;#34;*&amp;#34;
 
   &amp;lt;Proxy balancer://cluster&amp;gt;
     BalancerMember http://127.0.0.1:7100 route=cluster1
     BalancerMember http://127.0.0.1:7101 route=cluster2
+    
+    ProxySet stickysession=ROUTEID
     ## lbmethod
     # byrequests: 요청별 분배
     # bytraffic: byte 트래픽 가중치 분배
     # bybusyness: 보류중 요청 분배
-    ProxySet lbmethod=byrequests
-    ProxySet stickysession=ROUTEID
+    #ProxySet lbmethod=byrequests
   &amp;lt;/Proxy&amp;gt;
   
   ProxyPass / balancer://cluster/

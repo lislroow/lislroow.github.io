@@ -145,7 +145,7 @@ configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modu
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.6fff76210480b1a5ec436ba2dbb7d419.json"
+  data-offline-search-index-json-src="/offline-search-index.e403b883fd65013b4f919ad105e4ae57.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -172,7 +172,7 @@ configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modu
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.6fff76210480b1a5ec436ba2dbb7d419.json"
+  data-offline-search-index-json-src="/offline-search-index.e403b883fd65013b4f919ad105e4ae57.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -740,18 +740,19 @@ SSLCryptoDevice builtin
   ProxyRequests Off
   ProxyPreserveHost On
   # BALANCER_WORKER_ROUTE: BalancerMember 의 route 값을 쿠키에 포함 (cluster1, cluster2)
-  Header add Set-Cookie &#34;ROUTEID=%{BALANCER_WORKER_ROUTE}e; path=/&#34; env=BALANCER_ROUTE_CHANGED
+  Header add Set-Cookie &#34;ROUTEID=.%{BALANCER_WORKER_ROUTE}e; path=/&#34; env=BALANCER_ROUTE_CHANGED
   Header set Access-Control-Allow-Origin &#34;*&#34;
 
   &lt;Proxy balancer://cluster&gt;
     BalancerMember http://127.0.0.1:7100 route=cluster1
     BalancerMember http://127.0.0.1:7101 route=cluster2
+    
+    ProxySet stickysession=ROUTEID
     ## lbmethod
     # byrequests: 요청별 분배
     # bytraffic: byte 트래픽 가중치 분배
     # bybusyness: 보류중 요청 분배
-    ProxySet lbmethod=byrequests
-    ProxySet stickysession=ROUTEID
+    #ProxySet lbmethod=byrequests
   &lt;/Proxy&gt;
   
   ProxyPass / balancer://cluster/
