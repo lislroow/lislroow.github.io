@@ -22,9 +22,10 @@
 
 
   
-  <meta name="description" content="(eclipse) ANSI Escape in Console 플러그인
-ANSI Escape in Console 플러그인은 console 에 ANSI 색상 코드를 해당 색상으로 표시해주는 플러그인입니다.
-다른 ANSI 관련 플러그인은 console 의 텍스트를 복 …">
+  <meta name="description" content="(git-bash) /etc/profile.d
+git-bash 에서 alias 를 추가하는 예시입니다.
+파일: /etc/profile.d/aliases.sh
+#alias ls=&#39;ls -F --color=auto --show-control-chars&#39; …">
 <meta property="og:title" content="localenv" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -124,7 +125,7 @@ ANSI Escape in Console 플러그인은 console 에 ANSI 색상 코드를 해당 
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.fffcb10b3379c5006028ef8a33ccc9d9.json"
+  data-offline-search-index-json-src="/offline-search-index.8710f70cf82aabe61b490e7db75c4988.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -151,7 +152,7 @@ ANSI Escape in Console 플러그인은 console 에 ANSI 색상 코드를 해당 
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.fffcb10b3379c5006028ef8a33ccc9d9.json"
+  data-offline-search-index-json-src="/offline-search-index.8710f70cf82aabe61b490e7db75c4988.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -200,6 +201,7 @@ ANSI Escape in Console 플러그인은 console 에 ANSI 색상 코드를 해당 
       <ul>
         <li>
           <ul>
+            <li><a href="#git-bash-etcprofiled">(git-bash) /etc/profile.d</a></li>
             <li><a href="#eclipse-ansi-escape-in-console-플러그인">(eclipse) ANSI Escape in Console 플러그인</a></li>
             <li><a href="#eclipse-bash-editor-플러그인">(eclipse) Bash Editor 플러그인</a></li>
             <li><a href="#eclipse-md-파일-add-bookmark">(eclipse) .md 파일 add bookmark</a></li>
@@ -325,7 +327,13 @@ ANSI Escape in Console 플러그인은 console 에 ANSI 색상 코드를 해당 
 		
 		
 	</header>
-	<h4 id="eclipse-ansi-escape-in-console-플러그인">(eclipse) ANSI Escape in Console 플러그인</h4>
+	<h4 id="git-bash-etcprofiled">(git-bash) /etc/profile.d</h4>
+<p>git-bash 에서 alias 를 추가하는 예시입니다.</p>
+<p>파일: <code>/etc/profile.d/aliases.sh</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#alias ls=&#39;ls -F --color=auto --show-control-chars&#39;</span>
+alias ls<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;ls -F --color=auto --show-control-chars --time-style=long-iso &#39;</span>
+</code></pre></div><br>
+<h4 id="eclipse-ansi-escape-in-console-플러그인">(eclipse) ANSI Escape in Console 플러그인</h4>
 <p>ANSI Escape in Console 플러그인은 console 에 ANSI 색상 코드를 해당 색상으로 표시해주는 플러그인입니다.</p>
 <p>다른 ANSI 관련 플러그인은 console 의 텍스트를 복사(ctrl+c)할 때 색상코드까지 같이 복사되어 불편했는데 이 플러그인은 그런 부분이 개선되었습니다.</p>
 <img src="/images/localenv/20220109-eclipse-ansi_escape_in_console_1.png" width="800">

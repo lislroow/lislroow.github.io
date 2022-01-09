@@ -22,16 +22,10 @@
 
 
   
-  <meta name="description" content="(shell) process 및 port 체크
-
-새 창 보기
-APP_HOME=/app/WAS/pilot
-APP_NAME=service-www
-
-LIST=(
-  &#34;dwww11&#34;
-  &#34;dwww12&#34;
-  &#34;swww11&#34; …">
+  <meta name="description" content="(shell) script 현재 경로
+a.sh 라는 파일이 /home/user/a.sh 에 존재하고, a.sh 스크립트 내에서
+$ DIR=&#34;$( cd &#39;$( dirname &#34;$0&#34; )&#39; &amp;&amp; pwd -P )&#34;
+$ …">
 <meta property="og:title" content="system" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -131,7 +125,7 @@ LIST=(
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.fffcb10b3379c5006028ef8a33ccc9d9.json"
+  data-offline-search-index-json-src="/offline-search-index.8710f70cf82aabe61b490e7db75c4988.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -158,7 +152,7 @@ LIST=(
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.fffcb10b3379c5006028ef8a33ccc9d9.json"
+  data-offline-search-index-json-src="/offline-search-index.8710f70cf82aabe61b490e7db75c4988.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -222,6 +216,7 @@ LIST=(
       <ul>
         <li>
           <ul>
+            <li><a href="#shell-script-현재-경로">(shell) script 현재 경로</a></li>
             <li><a href="#shell-process-및-port-체크">(shell) process 및 port 체크</a></li>
             <li><a href="#shell-find-newer-samefile">(shell) find newer samefile</a></li>
             <li><a href="#shell-curl">(shell) curl</a></li>
@@ -311,7 +306,12 @@ LIST=(
 		
 		
 	</header>
-	<h4 id="shell-process-및-port-체크">(shell) process 및 port 체크</h4>
+	<h4 id="shell-script-현재-경로">(shell) script 현재 경로</h4>
+<p>a.sh 라는 파일이 /home/user/a.sh 에 존재하고, a.sh 스크립트 내에서</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ DIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span> cd <span style="color:#e6db74">&#39;$( dirname &#34;$0&#34; )&#39;</span> <span style="color:#f92672">&amp;&amp;</span> pwd -P <span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+$ echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>DIR<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</code></pre></div><br>
+<h4 id="shell-process-및-port-체크">(shell) process 및 port 체크</h4>
 <img src="/images/system/20220110-shell-process-port-check.png" width="800">
 <p><a href="/images/system/20220110-shell-process-port-check.png" target="_blank">새 창 보기</a></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">APP_HOME<span style="color:#f92672">=</span>/app/WAS/pilot
