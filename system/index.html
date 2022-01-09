@@ -22,15 +22,10 @@
 
 
   
-  <meta name="description" content="(shell) 파일명 문자열
-# 파일명에서 확장자 분리
-$ FILE_NAME=service-www-2.0-SNAPSHOT.jar
-$ echo ${FILE_NAME%.*}
-service-www-2.0-SNAPSHOT
-$ echo ${FILE_NAME##*.}
-jar
-
-# …">
+  <meta name="description" content="(shell) curl
+curl 로 http_code 를 받아오는 예시 입니다.
+이 예시는 was 가 정상 기동되었는지 확인하는데 활용할 수 있습니다.
+$ curl --write-out &#34;%{http_code}&#34; --silent --output …">
 <meta property="og:title" content="system" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -130,7 +125,7 @@ jar
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.e403b883fd65013b4f919ad105e4ae57.json"
+  data-offline-search-index-json-src="/offline-search-index.135dd82ab4adf8129667d503a73d6e55.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -157,7 +152,7 @@ jar
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.e403b883fd65013b4f919ad105e4ae57.json"
+  data-offline-search-index-json-src="/offline-search-index.135dd82ab4adf8129667d503a73d6e55.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -221,6 +216,7 @@ jar
       <ul>
         <li>
           <ul>
+            <li><a href="#shell-curl">(shell) curl</a></li>
             <li><a href="#shell-파일명-문자열">(shell) 파일명 문자열</a></li>
             <li><a href="#shell-while-문">(shell) while 문</a></li>
             <li><a href="#shell-for-문">(shell) for 문</a></li>
@@ -307,7 +303,13 @@ jar
 		
 		
 	</header>
-	<h4 id="shell-파일명-문자열">(shell) 파일명 문자열</h4>
+	<h4 id="shell-curl">(shell) curl</h4>
+<p>curl 로 http_code 를 받아오는 예시 입니다.</p>
+<p>이 예시는 was 가 정상 기동되었는지 확인하는데 활용할 수 있습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ curl --write-out <span style="color:#e6db74">&#34;%{http_code}&#34;</span> --silent --output /dev/null <span style="color:#e6db74">&#34;http://localhost:7100/&#34;</span>
+<span style="color:#ae81ff">200</span> <span style="color:#75715e"># 서버가 기동되지 않은 상태이면 즉시 응답이 오며, http_code 는 000 가 반환됩니다.</span>
+</code></pre></div><br>
+<h4 id="shell-파일명-문자열">(shell) 파일명 문자열</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 파일명에서 확장자 분리</span>
 $ FILE_NAME<span style="color:#f92672">=</span>service-www-2.0-SNAPSHOT.jar
 $ echo <span style="color:#e6db74">${</span>FILE_NAME%.*<span style="color:#e6db74">}</span>
