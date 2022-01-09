@@ -22,11 +22,16 @@
 
 
   
-  <meta name="description" content="(shell) find newer samefile
-오래된 파일을 찾을 경우, 기준이되는 파일은 제외하는 예시입니다.
-# 기준이 되는 파일을 생성 (e.g 1981년 07월 19일)
-$ touch -t 198107190000.00 a.txt
-$ ls -al a.txt …">
+  <meta name="description" content="(shell) process 및 port 체크
+
+새 창 보기
+APP_HOME=/app/WAS/pilot
+APP_NAME=service-www
+
+LIST=(
+  &#34;dwww11&#34;
+  &#34;dwww12&#34;
+  &#34;swww11&#34; …">
 <meta property="og:title" content="system" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -126,7 +131,7 @@ $ ls -al a.txt …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.e6e94cd1daa61c7750033854016a9374.json"
+  data-offline-search-index-json-src="/offline-search-index.fffcb10b3379c5006028ef8a33ccc9d9.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -153,7 +158,7 @@ $ ls -al a.txt …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.e6e94cd1daa61c7750033854016a9374.json"
+  data-offline-search-index-json-src="/offline-search-index.fffcb10b3379c5006028ef8a33ccc9d9.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -217,6 +222,7 @@ $ ls -al a.txt …">
       <ul>
         <li>
           <ul>
+            <li><a href="#shell-process-및-port-체크">(shell) process 및 port 체크</a></li>
             <li><a href="#shell-find-newer-samefile">(shell) find newer samefile</a></li>
             <li><a href="#shell-curl">(shell) curl</a></li>
             <li><a href="#shell-파일명-문자열">(shell) 파일명 문자열</a></li>
@@ -305,7 +311,44 @@ $ ls -al a.txt …">
 		
 		
 	</header>
-	<h4 id="shell-find-newer-samefile">(shell) find newer samefile</h4>
+	<h4 id="shell-process-및-port-체크">(shell) process 및 port 체크</h4>
+<img src="/images/system/20220110-shell-process-port-check.png" width="800">
+<p><a href="/images/system/20220110-shell-process-port-check.png" target="_blank">새 창 보기</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">APP_HOME<span style="color:#f92672">=</span>/app/WAS/pilot
+APP_NAME<span style="color:#f92672">=</span>service-www
+
+LIST<span style="color:#f92672">=(</span>
+  <span style="color:#e6db74">&#34;dwww11&#34;</span>
+  <span style="color:#e6db74">&#34;dwww12&#34;</span>
+  <span style="color:#e6db74">&#34;swww11&#34;</span>
+  <span style="color:#e6db74">&#34;swww12&#34;</span>
+<span style="color:#f92672">)</span>
+
+<span style="color:#66d9ef">for</span> APP_ID in <span style="color:#e6db74">${</span>LIST[*]<span style="color:#e6db74">}</span>
+<span style="color:#66d9ef">do</span>
+  echo <span style="color:#e6db74">&#34;--- </span><span style="color:#e6db74">${</span>APP_ID<span style="color:#e6db74">}</span><span style="color:#e6db74"> ---&#34;</span>
+  PS_CMD<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ps aux | grep -v grep | grep -v tail |  grep -v .sh | grep </span><span style="color:#e6db74">${</span>APP_ID<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+  eval <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>PS_CMD<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+  _PID<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>eval <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>PS_CMD<span style="color:#e6db74">}</span><span style="color:#e6db74"> | awk &#39;{ print \$2}&#39;&#34;</span><span style="color:#66d9ef">)</span>
+  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>_PID<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> !<span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+    netstat -ntplu | grep <span style="color:#e6db74">${</span>_PID<span style="color:#e6db74">}</span>
+    SERVER_PORT<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>netstat -tnplu | grep <span style="color:#e6db74">${</span>_PID<span style="color:#e6db74">}</span> | awk <span style="color:#e6db74">&#39;{ if (match($4, /([0-9]*)$/, m)) print m[0] }&#39;</span><span style="color:#66d9ef">)</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>SERVER_PORT<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> !<span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+      HTTP_CODE<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>curl --write-out <span style="color:#e6db74">&#34;%{http_code}&#34;</span> --silent --output /dev/null <span style="color:#e6db74">&#34;http://localhost:</span><span style="color:#e6db74">${</span>SERVER_PORT<span style="color:#e6db74">}</span><span style="color:#e6db74">/&#34;</span><span style="color:#66d9ef">)</span>
+      <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>HTTP_CODE<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;200&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+        echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>APP_ID<span style="color:#e6db74">}</span><span style="color:#e6db74"> is avaiable. (SERVER_PORT=</span><span style="color:#e6db74">${</span>SERVER_PORT<span style="color:#e6db74">}</span><span style="color:#e6db74">)&#34;</span>
+      <span style="color:#66d9ef">else</span>
+        echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>APP_ID<span style="color:#e6db74">}</span><span style="color:#e6db74"> is not avaiable. (SERVER_PORT=</span><span style="color:#e6db74">${</span>SERVER_PORT<span style="color:#e6db74">}</span><span style="color:#e6db74">)&#34;</span>
+      <span style="color:#66d9ef">fi</span>
+    <span style="color:#66d9ef">else</span>
+      echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>APP_ID<span style="color:#e6db74">}</span><span style="color:#e6db74"> is not avaiable.&#34;</span>
+    <span style="color:#66d9ef">fi</span>
+  <span style="color:#66d9ef">else</span>
+    echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>APP_ID<span style="color:#e6db74">}</span><span style="color:#e6db74"> is not running&#34;</span>
+  <span style="color:#66d9ef">fi</span>
+  echo <span style="color:#e6db74">&#34;&#34;</span>
+<span style="color:#66d9ef">done</span>
+</code></pre></div><h4 id="shell-find-newer-samefile">(shell) find newer samefile</h4>
 <p>오래된 파일을 찾을 경우, 기준이되는 파일은 제외하는 예시입니다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 기준이 되는 파일을 생성 (e.g 1981년 07월 19일)</span>
 $ touch -t 198107190000.00 a.txt
