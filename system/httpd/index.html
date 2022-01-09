@@ -49,7 +49,7 @@ configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modu
 새 창 보기
 configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modules.d/*.conf User apache Group web ServerAdmin hi@mgkim.net ServerName develop:80 &lt;Directory /&gt; AllowOverride none Require all denied &lt;/Directory&gt; DocumentRoot &#34;/var/www/html&#34; &lt;Files &#34;.ht*&#34;&gt; Require all denied &lt;/Files&gt; ErrorLog &#34;/outlog/WEB/httpd/error.log&#34; LogLevel warn &lt;IfModule log_config_module&gt; LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34;&#34; combined LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b&#34; common &lt;IfModule logio_module&gt; LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34; %I %O&#34; combinedio &lt;/IfModule&gt; CustomLog &#34;/outlog/WEB/httpd/access.">
 
-<meta itemprop="wordCount" content="1594">
+<meta itemprop="wordCount" content="1679">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="httpd"/>
 <meta name="twitter:description" content="command loaded 모듈 목록 확인 httpd -M
@@ -145,7 +145,7 @@ configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modu
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.4d8908a8ea5227d211e256b36ff4a8ac.json"
+  data-offline-search-index-json-src="/offline-search-index.728d200d603c610fbe3f6616bb9b16cc.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -172,7 +172,7 @@ configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modu
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.4d8908a8ea5227d211e256b36ff4a8ac.json"
+  data-offline-search-index-json-src="/offline-search-index.728d200d603c610fbe3f6616bb9b16cc.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -248,6 +248,7 @@ configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modu
             <li><a href="#vhost-gitlabconf">vhost-gitlab.conf</a></li>
             <li><a href="#vhost-jenkinsconf">vhost-jenkins.conf</a></li>
             <li><a href="#vhost-dlogconf">vhost-dlog.conf</a></li>
+            <li><a href="#vhost-dwwwconf">vhost-dwww.conf</a></li>
           </ul>
         </li>
         <li><a href="#connector">connector</a>
@@ -726,6 +727,36 @@ SSLCryptoDevice builtin
 
   ProxyPass / http://127.0.0.1:1313/
   ProxyPassReverse / http://127.0.0.1:1313/
+&lt;/VirtualHost&gt;
+</code></pre></div><h4 id="vhost-dwwwconf">vhost-dwww.conf</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&lt;VirtualHost *:80&gt;
+  ServerName dwww
+
+  ErrorLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/dwww-error.log.%Y-%m-%d 86400 +540&#34;
+  CustomLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/dwww-access.log.%Y-%m-%d 86400 +540&#34; combined
+
+  AllowEncodedSlashes On
+  # reverse proxy 사용 시 Off
+  ProxyRequests Off
+  ProxyPreserveHost On
+  # BALANCER_WORKER_ROUTE: BalancerMember 의 route 값을 쿠키에 포함 (cluster1, cluster2)
+  Header add Set-Cookie &#34;ROUTEID=%{BALANCER_WORKER_ROUTE}e; path=/&#34; env=BALANCER_ROUTE_CHANGED
+  Header set Access-Control-Allow-Origin &#34;*&#34;
+
+  &lt;Proxy balancer://cluster&gt;
+    BalancerMember http://127.0.0.1:7100 route=cluster1
+    BalancerMember http://127.0.0.1:7101 route=cluster2
+    ## lbmethod
+    # byrequests: 요청별 분배
+    # bytraffic: byte 트래픽 가중치 분배
+    # bybusyness: 보류중 요청 분배
+    ProxySet lbmethod=byrequests
+    ProxySet stickysession=ROUTEID
+  &lt;/Proxy&gt;
+  
+  ProxyPass / balancer://cluster/
+  ProxyPassReverse / balancer://cluster/
+
 &lt;/VirtualHost&gt;
 </code></pre></div><h3 id="connector">connector</h3>
 <h4 id="weblogic">weblogic</h4>
