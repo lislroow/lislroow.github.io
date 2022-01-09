@@ -23,9 +23,8 @@
 
   
   <meta name="description" content="(shell) script 현재 경로
-a.sh 라는 파일이 /home/user/a.sh 에 존재하고, a.sh 스크립트 내에서
-$ DIR=&#34;$( cd &#39;$( dirname &#34;$0&#34; )&#39; &amp;&amp; pwd -P )&#34;
-$ …">
+a.sh 라는 파일이 /home/user/a.sh 에 존재하고, a.sh 가 실행될 때 현재 디렉토리를 확인하는 방법입니다.
+$ DIR=&#34;$( cd &#39;$( dirname &#34;$0&#34; )&#39; …">
 <meta property="og:title" content="system" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -125,7 +124,7 @@ $ …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.8710f70cf82aabe61b490e7db75c4988.json"
+  data-offline-search-index-json-src="/offline-search-index.224ffd9d0c6feb9ddd339d4cca2b9d7d.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -152,7 +151,7 @@ $ …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.8710f70cf82aabe61b490e7db75c4988.json"
+  data-offline-search-index-json-src="/offline-search-index.224ffd9d0c6feb9ddd339d4cca2b9d7d.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -307,7 +306,7 @@ $ …">
 		
 	</header>
 	<h4 id="shell-script-현재-경로">(shell) script 현재 경로</h4>
-<p>a.sh 라는 파일이 /home/user/a.sh 에 존재하고, a.sh 스크립트 내에서</p>
+<p>a.sh 라는 파일이 /home/user/a.sh 에 존재하고, a.sh 가 실행될 때 현재 디렉토리를 확인하는 방법입니다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ DIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span> cd <span style="color:#e6db74">&#39;$( dirname &#34;$0&#34; )&#39;</span> <span style="color:#f92672">&amp;&amp;</span> pwd -P <span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
 $ echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>DIR<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
 </code></pre></div><br>
