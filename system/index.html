@@ -22,10 +22,11 @@
 
 
   
-  <meta name="description" content="(shell) curl
-curl 로 http_code 를 받아오는 예시 입니다.
-이 예시는 was 가 정상 기동되었는지 확인하는데 활용할 수 있습니다.
-$ curl --write-out &#34;%{http_code}&#34; --silent --output …">
+  <meta name="description" content="(shell) find newer samefile
+오래된 파일을 찾을 경우, 기준이되는 파일은 제외하는 예시입니다.
+# 기준이 되는 파일을 생성 (e.g 1981년 07월 19일)
+$ touch -t 198107190000.00 a.txt
+$ ls -al a.txt …">
 <meta property="og:title" content="system" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -125,7 +126,7 @@ $ curl --write-out &#34;%{http_code}&#34; --silent --output …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.135dd82ab4adf8129667d503a73d6e55.json"
+  data-offline-search-index-json-src="/offline-search-index.e6e94cd1daa61c7750033854016a9374.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -152,7 +153,7 @@ $ curl --write-out &#34;%{http_code}&#34; --silent --output …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.135dd82ab4adf8129667d503a73d6e55.json"
+  data-offline-search-index-json-src="/offline-search-index.e6e94cd1daa61c7750033854016a9374.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -216,6 +217,7 @@ $ curl --write-out &#34;%{http_code}&#34; --silent --output …">
       <ul>
         <li>
           <ul>
+            <li><a href="#shell-find-newer-samefile">(shell) find newer samefile</a></li>
             <li><a href="#shell-curl">(shell) curl</a></li>
             <li><a href="#shell-파일명-문자열">(shell) 파일명 문자열</a></li>
             <li><a href="#shell-while-문">(shell) while 문</a></li>
@@ -303,7 +305,29 @@ $ curl --write-out &#34;%{http_code}&#34; --silent --output …">
 		
 		
 	</header>
-	<h4 id="shell-curl">(shell) curl</h4>
+	<h4 id="shell-find-newer-samefile">(shell) find newer samefile</h4>
+<p>오래된 파일을 찾을 경우, 기준이되는 파일은 제외하는 예시입니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 기준이 되는 파일을 생성 (e.g 1981년 07월 19일)</span>
+$ touch -t 198107190000.00 a.txt
+$ ls -al a.txt     <span style="color:#75715e"># alias ls=&#39;ls --time-style long-iso &#39; 일 경우 시각까지 표시됨</span>
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">0</span> 1981-07-19 00:00 a.txt
+
+<span style="color:#75715e"># 기준보다 오래된 파일 생성</span>
+$ touch -t <span style="color:#ae81ff">198101010000</span> old.txt
+$ ls -al old.txt 
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">0</span> 1981-01-01 00:00 old.txt
+
+<span style="color:#75715e"># find 검색 (a.txt 파일보다 오래된 파일을 찾음)</span>
+$ find . -maxdepth <span style="color:#ae81ff">1</span> -type f ! -newer a.txt -name <span style="color:#e6db74">&#39;*.txt&#39;</span>
+./a.txt
+./old.txt
+
+<span style="color:#75715e"># find 검색 (기준이 되는 파일을 제외하고 찾음)</span>
+<span style="color:#75715e"># -samefile 혹은 -name 해도됨</span>
+$ find . -maxdepth <span style="color:#ae81ff">1</span> -type f ! -newer a.txt -name <span style="color:#e6db74">&#39;*.txt&#39;</span> ! -samefile a.txt
+./old.txt
+</code></pre></div><br>
+<h4 id="shell-curl">(shell) curl</h4>
 <p>curl 로 http_code 를 받아오는 예시 입니다.</p>
 <p>이 예시는 was 가 정상 기동되었는지 확인하는데 활용할 수 있습니다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ curl --write-out <span style="color:#e6db74">&#34;%{http_code}&#34;</span> --silent --output /dev/null <span style="color:#e6db74">&#34;http://localhost:7100/&#34;</span>
