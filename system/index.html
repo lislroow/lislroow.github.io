@@ -124,7 +124,7 @@ ca 에 등록되지 않은 인증서로 https 통신을 하는 경우에는 ssl-
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.682fbf154ae9430435565468fb5163d8.json"
+  data-offline-search-index-json-src="/offline-search-index.2e5ae32c1e36639bba062576450c95d5.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -151,7 +151,7 @@ ca 에 등록되지 않은 인증서로 https 통신을 하는 경우에는 ssl-
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.682fbf154ae9430435565468fb5163d8.json"
+  data-offline-search-index-json-src="/offline-search-index.2e5ae32c1e36639bba062576450c95d5.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -313,18 +313,64 @@ ca 에 등록되지 않은 인증서로 https 통신을 하는 경우에는 ssl-
 <p>해당 사이트의 인증서를 로컬 java 에 신뢰할 수 있는 인증서에 등록해야 합니다.</p>
 <p>아래는 <code>hello.crt</code> 라는 인증서를 등록하는 예시입니다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 인증서 등록</span>
-$ keytool -importcert -keystore $JAVA_HOME/jre/lib/security/cacerts -file <span style="color:#e6db74">&#34;hello.crt&#34;</span> -alias <span style="color:#e6db74">&#34;hello&#34;</span>
+<span style="color:#75715e"># oracle java8 에서 cacerts 파일 위치</span>
+<span style="color:#75715e"># CACERTS=$JAVA_HOME/jre/lib/security/cacerts</span>
+<span style="color:#75715e"># temurin java11 에서 cacerts 파일 위치</span>
+$ CACERTS<span style="color:#f92672">=</span>$JAVA_HOME/lib/security/cacerts
+$ keytool -importcert -keystore $CACERTS -file <span style="color:#e6db74">&#34;hello.crt&#34;</span> -alias <span style="color:#e6db74">&#34;hello&#34;</span>
 키 저장소 비밀번호 입력: <span style="color:#f92672">(</span>changeit 입력<span style="color:#f92672">)</span>
 이 인증서를 신뢰합니까? <span style="color:#f92672">[</span>아니오<span style="color:#f92672">]</span>:  <span style="color:#f92672">(</span>y 입력<span style="color:#f92672">)</span>
 인증서가 키 저장소에 추가되었습니다.
 
 <span style="color:#75715e"># 인증서 조회</span>
-$ keytool -list -keystore cacerts | grep <span style="color:#e6db74">&#34;hello&#34;</span>
+$ keytool -list -keystore $CACERTS | grep <span style="color:#e6db74">&#34;hello&#34;</span>
 키 저장소 비밀번호 입력: <span style="color:#f92672">(</span>changeit 입력<span style="color:#f92672">)</span>
 hello, 2020. 5. 8, trustedCertEntry,
 
 <span style="color:#75715e"># 인증서 삭제</span>
-$ keytool -delete -alias <span style="color:#e6db74">&#34;hello&#34;</span> -keystore <span style="color:#e6db74">&#34;cacerts&#34;</span>
+$ keytool -delete -alias <span style="color:#e6db74">&#34;hello&#34;</span> -keystore $CACERTS
+</code></pre></div><p>nexus 를 https 로 서비스 중인 상태에서 java에 인증서를 등록하지 않았을 경우 아래와 같은 오류가 발생합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Transfer failed for http://nexus/repository/maven-snapshot/mgkim/service/service-www/2.0-SNAPSHOT/maven-metadata.xml: 
+PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target -&gt; [Help 1]
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ CACERTS<span style="color:#f92672">=</span>$JAVA_HOME/lib/security/cacerts
+$ keytool -importcert -keystore $CACERTS -file /z/nexus.crt -alias <span style="color:#e6db74">&#39;nexus&#39;</span>
+
+<span style="color:#75715e">### `키 저장소 비밀번호` 에는 changeit 으로 입력해야 합니다. ###</span>
+$ keytool -importcert -keystore $CACERTS -file /etc/httpd/conf.d/certs/nexus.crt -alias <span style="color:#e6db74">&#39;nexus&#39;</span>
+경고: -cacerts 옵션을 사용하여 cacerts 키 저장소에 액세스하십시오.
+키 저장소 비밀번호 입력:  
+소유자: CN<span style="color:#f92672">=</span>nexus, OU<span style="color:#f92672">=</span>Dev Team, O<span style="color:#f92672">=</span>SPACESOFT, L<span style="color:#f92672">=</span>Seonyudo, ST<span style="color:#f92672">=</span>Seoul, C<span style="color:#f92672">=</span>KR
+발행자: CN<span style="color:#f92672">=</span>nexus, OU<span style="color:#f92672">=</span>Dev Team, O<span style="color:#f92672">=</span>SPACESOFT, L<span style="color:#f92672">=</span>Seonyudo, ST<span style="color:#f92672">=</span>Seoul, C<span style="color:#f92672">=</span>KR
+일련 번호: 7aa1637941794c08365e9f9a3c531189b87f0b5e
+적합한 시작 날짜: Mon Jan <span style="color:#ae81ff">10</span> 12:15:12 KST <span style="color:#ae81ff">2022</span> 종료 날짜: Wed Jan <span style="color:#ae81ff">10</span> 12:15:12 KST <span style="color:#ae81ff">2024</span>
+인증서 지문:
+   SHA1: D4:A6:92:2A:0C:97:1F:56:93:03:EC:8C:50:B3:27:5D:51:BD:30:63
+   SHA256: 62:BA:47:E9:3F:A6:A7:7D:78:99:87:E1:9B:E7:23:D5:B6:6B:2A:CC:5E:D9:BF:4A:DB:95:AD:67:47:70:86:96
+서명 알고리즘 이름: SHA256withRSA
+주체 공용 키 알고리즘: 2048비트 RSA 키
+버전: <span style="color:#ae81ff">3</span>
+
+확장: 
+
+<span style="color:#75715e">#1: ObjectId: 2.5.29.37 Criticality=false</span>
+ExtendedKeyUsages <span style="color:#f92672">[</span>
+  serverAuth
+<span style="color:#f92672">]</span>
+
+<span style="color:#75715e">#2: ObjectId: 2.5.29.15 Criticality=true</span>
+KeyUsage <span style="color:#f92672">[</span>
+  DigitalSignature
+  Key_Agreement
+<span style="color:#f92672">]</span>
+
+<span style="color:#75715e">#3: ObjectId: 2.5.29.17 Criticality=false</span>
+SubjectAlternativeName <span style="color:#f92672">[</span>
+  DNSName: nexus
+<span style="color:#f92672">]</span>
+
+이 인증서를 신뢰합니까? <span style="color:#f92672">[</span>아니오<span style="color:#f92672">]</span>:  y
+인증서가 키 저장소에 추가되었습니다.
+$ 
 </code></pre></div><br>
 <h4 id="centos-centos-인증서-등록">(centos) centos 인증서 등록</h4>
 <ul>
