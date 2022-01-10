@@ -124,7 +124,7 @@ ca 에 등록되지 않은 인증서로 https 통신을 하는 경우에는 ssl-
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.2e5ae32c1e36639bba062576450c95d5.json"
+  data-offline-search-index-json-src="/offline-search-index.57976d94cad011d4f5e721300b6ce7e8.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -151,7 +151,7 @@ ca 에 등록되지 않은 인증서로 https 통신을 하는 경우에는 ssl-
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.2e5ae32c1e36639bba062576450c95d5.json"
+  data-offline-search-index-json-src="/offline-search-index.57976d94cad011d4f5e721300b6ce7e8.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -332,7 +332,8 @@ $ keytool -delete -alias <span style="color:#e6db74">&#34;hello&#34;</span> -key
 </code></pre></div><p>nexus 를 https 로 서비스 중인 상태에서 java에 인증서를 등록하지 않았을 경우 아래와 같은 오류가 발생합니다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Transfer failed for http://nexus/repository/maven-snapshot/mgkim/service/service-www/2.0-SNAPSHOT/maven-metadata.xml: 
 PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target -&gt; [Help 1]
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ CACERTS<span style="color:#f92672">=</span>$JAVA_HOME/lib/security/cacerts
+</code></pre></div><p>jenkins 에서 빌드 시 오류가 발생하여 java 에 인증서를 추가합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ CACERTS<span style="color:#f92672">=</span>$JAVA_HOME/lib/security/cacerts
 $ keytool -importcert -keystore $CACERTS -file /z/nexus.crt -alias <span style="color:#e6db74">&#39;nexus&#39;</span>
 
 <span style="color:#75715e">### `키 저장소 비밀번호` 에는 changeit 으로 입력해야 합니다. ###</span>
@@ -377,7 +378,9 @@ $
 <li><code>/etc/pki/ca-trust/source/anchors/</code> 경로에 crt 파일을 복사</li>
 <li><code>update-ca-trust extract</code> 실행으로 신뢰할 수 있는 인증서를 추가</li>
 </ul>
-<br>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ cp /etc/httpd/conf.d/certs/nexus.crt /etc/pki/ca-trust/source/anchors/
+$ update-ca-trust extract
+</code></pre></div><br>
 <h4 id="shell-script-파일-디렉토리">(shell) script 파일 디렉토리</h4>
 <p><code>/project/script/build.sh</code> 파일이 실행될 때 현재 디렉토리<code>/project/script/</code>를 확인하는 방법입니다.</p>
 <p>maven 프로젝트의 build.sh 파일이 pom.xml 과 같은 디렉토리가 아닐 경우 활용할 수 있습니다.</p>
