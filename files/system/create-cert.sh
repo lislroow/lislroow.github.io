@@ -18,5 +18,6 @@ extendedKeyUsage = serverAuth
 subjectAltName = @alt_names
 [alt_names]
 DNS.1 = $DOMAIN
-TEXT) -sha256
+TEXT
+) -sha256
 
