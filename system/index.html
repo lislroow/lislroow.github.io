@@ -23,8 +23,8 @@
 
   
   <meta name="description" content="(shell) script 파일 디렉토리
-build.sh 라는 파일이 /project/script/build.sh 에 존재하고, a.sh 가 실행될 때 현재 디렉토리/project/script/를 확인하는 방법입니다.
-# build.sh 가 존재하는 디렉토리를 반환합니 …">
+/project/script/build.sh 파일이 실행될 때 현재 디렉토리/project/script/를 확인하는 방법입니다.
+maven 프로젝트의 build.sh 파일이 pom.xml …">
 <meta property="og:title" content="system" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -124,7 +124,7 @@ build.sh 라는 파일이 /project/script/build.sh 에 존재하고, a.sh 가 �
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.e8e79518a059f959a29ee2e6f516cbf7.json"
+  data-offline-search-index-json-src="/offline-search-index.e4a63725ae2e0777d1c3316d28a75ae7.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -151,7 +151,7 @@ build.sh 라는 파일이 /project/script/build.sh 에 존재하고, a.sh 가 �
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.e8e79518a059f959a29ee2e6f516cbf7.json"
+  data-offline-search-index-json-src="/offline-search-index.e4a63725ae2e0777d1c3316d28a75ae7.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -306,7 +306,8 @@ build.sh 라는 파일이 /project/script/build.sh 에 존재하고, a.sh 가 �
 		
 	</header>
 	<h4 id="shell-script-파일-디렉토리">(shell) script 파일 디렉토리</h4>
-<p>build.sh 라는 파일이 <code>/project/script/build.sh</code> 에 존재하고, a.sh 가 실행될 때 현재 디렉토리<code>/project/script/</code>를 확인하는 방법입니다.</p>
+<p><code>/project/script/build.sh</code> 파일이 실행될 때 현재 디렉토리<code>/project/script/</code>를 확인하는 방법입니다.</p>
+<p>maven 프로젝트의 build.sh 파일이 pom.xml 과 같은 디렉토리가 아닐 경우 활용할 수 있습니다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># build.sh 가 존재하는 디렉토리를 반환합니다.</span>
 $ DIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span> cd <span style="color:#66d9ef">$(</span> dirname <span style="color:#e6db74">&#34;</span>$0<span style="color:#e6db74">&#34;</span> <span style="color:#66d9ef">)</span> <span style="color:#f92672">&amp;&amp;</span> pwd -P <span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
 $ echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>DIR<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
