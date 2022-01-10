@@ -22,9 +22,9 @@
 
 
   
-  <meta name="description" content="(shell) script 파일 디렉토리
-/project/script/build.sh 파일이 실행될 때 현재 디렉토리/project/script/를 확인하는 방법입니다.
-maven 프로젝트의 build.sh 파일이 pom.xml …">
+  <meta name="description" content="(java) java 인증서 등록
+로컬 설치된 java 에 인증서 파일(*.crt) 등록을 하기 위해서는 $JAVA_HOME/bin/keytool 를 사용해야 합니다.
+ca 에 등록되지 않은 인증서로 https 통신을 하는 경우에는 ssl-handshake 과정에서 오 …">
 <meta property="og:title" content="system" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -124,7 +124,7 @@ maven 프로젝트의 build.sh 파일이 pom.xml …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.e4a63725ae2e0777d1c3316d28a75ae7.json"
+  data-offline-search-index-json-src="/offline-search-index.682fbf154ae9430435565468fb5163d8.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -151,7 +151,7 @@ maven 프로젝트의 build.sh 파일이 pom.xml …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.e4a63725ae2e0777d1c3316d28a75ae7.json"
+  data-offline-search-index-json-src="/offline-search-index.682fbf154ae9430435565468fb5163d8.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -215,6 +215,8 @@ maven 프로젝트의 build.sh 파일이 pom.xml …">
       <ul>
         <li>
           <ul>
+            <li><a href="#java-java-인증서-등록">(java) java 인증서 등록</a></li>
+            <li><a href="#centos-centos-인증서-등록">(centos) centos 인증서 등록</a></li>
             <li><a href="#shell-script-파일-디렉토리">(shell) script 파일 디렉토리</a></li>
             <li><a href="#shell-process-및-port-체크">(shell) process 및 port 체크</a></li>
             <li><a href="#shell-find-newer-samefile">(shell) find newer samefile</a></li>
@@ -305,7 +307,32 @@ maven 프로젝트의 build.sh 파일이 pom.xml …">
 		
 		
 	</header>
-	<h4 id="shell-script-파일-디렉토리">(shell) script 파일 디렉토리</h4>
+	<h4 id="java-java-인증서-등록">(java) java 인증서 등록</h4>
+<p>로컬 설치된 java 에 인증서 파일(*.crt) 등록을 하기 위해서는 $JAVA_HOME/bin/keytool 를 사용해야 합니다.</p>
+<p>ca 에 등록되지 않은 인증서로 https 통신을 하는 경우에는 ssl-handshake 과정에서 오류가 발생하므로</p>
+<p>해당 사이트의 인증서를 로컬 java 에 신뢰할 수 있는 인증서에 등록해야 합니다.</p>
+<p>아래는 <code>hello.crt</code> 라는 인증서를 등록하는 예시입니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 인증서 등록</span>
+$ keytool -importcert -keystore $JAVA_HOME/jre/lib/security/cacerts -file <span style="color:#e6db74">&#34;hello.crt&#34;</span> -alias <span style="color:#e6db74">&#34;hello&#34;</span>
+키 저장소 비밀번호 입력: <span style="color:#f92672">(</span>changeit 입력<span style="color:#f92672">)</span>
+이 인증서를 신뢰합니까? <span style="color:#f92672">[</span>아니오<span style="color:#f92672">]</span>:  <span style="color:#f92672">(</span>y 입력<span style="color:#f92672">)</span>
+인증서가 키 저장소에 추가되었습니다.
+
+<span style="color:#75715e"># 인증서 조회</span>
+$ keytool -list -keystore cacerts | grep <span style="color:#e6db74">&#34;hello&#34;</span>
+키 저장소 비밀번호 입력: <span style="color:#f92672">(</span>changeit 입력<span style="color:#f92672">)</span>
+hello, 2020. 5. 8, trustedCertEntry,
+
+<span style="color:#75715e"># 인증서 삭제</span>
+$ keytool -delete -alias <span style="color:#e6db74">&#34;hello&#34;</span> -keystore <span style="color:#e6db74">&#34;cacerts&#34;</span>
+</code></pre></div><br>
+<h4 id="centos-centos-인증서-등록">(centos) centos 인증서 등록</h4>
+<ul>
+<li><code>/etc/pki/ca-trust/source/anchors/</code> 경로에 crt 파일을 복사</li>
+<li><code>update-ca-trust extract</code> 실행으로 신뢰할 수 있는 인증서를 추가</li>
+</ul>
+<br>
+<h4 id="shell-script-파일-디렉토리">(shell) script 파일 디렉토리</h4>
 <p><code>/project/script/build.sh</code> 파일이 실행될 때 현재 디렉토리<code>/project/script/</code>를 확인하는 방법입니다.</p>
 <p>maven 프로젝트의 build.sh 파일이 pom.xml 과 같은 디렉토리가 아닐 경우 활용할 수 있습니다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># build.sh 가 존재하는 디렉토리를 반환합니다.</span>
