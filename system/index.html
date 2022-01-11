@@ -22,9 +22,9 @@
 
 
   
-  <meta name="description" content="(java) java 인증서 등록
-로컬 설치된 java 에 인증서 파일(*.crt) 등록을 하기 위해서는 $JAVA_HOME/bin/keytool 를 사용해야 합니다.
-ca 에 등록되지 않은 인증서로 https 통신을 하는 경우에는 ssl-handshake 과정에서 오 …">
+  <meta name="description" content="(self-signed-cert) git-bash 등록
+git-bash 에서 curl 을 사용할 때 ssl 인증 문제가 발생할 경우입니다.
+$ curl …">
 <meta property="og:title" content="system" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -124,7 +124,7 @@ ca 에 등록되지 않은 인증서로 https 통신을 하는 경우에는 ssl-
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.57976d94cad011d4f5e721300b6ce7e8.json"
+  data-offline-search-index-json-src="/offline-search-index.8fe6c1193a1fde655b2a0d77768e7b7e.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -151,7 +151,7 @@ ca 에 등록되지 않은 인증서로 https 통신을 하는 경우에는 ssl-
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.57976d94cad011d4f5e721300b6ce7e8.json"
+  data-offline-search-index-json-src="/offline-search-index.8fe6c1193a1fde655b2a0d77768e7b7e.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -215,8 +215,9 @@ ca 에 등록되지 않은 인증서로 https 통신을 하는 경우에는 ssl-
       <ul>
         <li>
           <ul>
-            <li><a href="#java-java-인증서-등록">(java) java 인증서 등록</a></li>
-            <li><a href="#centos-centos-인증서-등록">(centos) centos 인증서 등록</a></li>
+            <li><a href="#self-signed-cert-git-bash-등록">(self-signed-cert) git-bash 등록</a></li>
+            <li><a href="#self-signed-cert-java-등록">(self-signed-cert) java 등록</a></li>
+            <li><a href="#self-signed-cert-centos-등록">(self-signed-cert) centos 등록</a></li>
             <li><a href="#shell-script-파일-디렉토리">(shell) script 파일 디렉토리</a></li>
             <li><a href="#shell-process-및-port-체크">(shell) process 및 port 체크</a></li>
             <li><a href="#shell-find-newer-samefile">(shell) find newer samefile</a></li>
@@ -307,7 +308,19 @@ ca 에 등록되지 않은 인증서로 https 통신을 하는 경우에는 ssl-
 		
 		
 	</header>
-	<h4 id="java-java-인증서-등록">(java) java 인증서 등록</h4>
+	<h4 id="self-signed-cert-git-bash-등록">(self-signed-cert) git-bash 등록</h4>
+<p>git-bash 에서 curl 을 사용할 때 ssl 인증 문제가 발생할 경우입니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ curl https://nexus/repository/maven-release/mgkim/service/service-www/maven-metadata.xml
+curl: (60) SSL certificate problem: self signed certificate
+More details here: https://curl.se/docs/sslcerts.html
+
+curl failed to verify the legitimacy of the server and therefore could not
+establish a secure connection to it. To learn more about this situation and
+how to fix it, please visit the web page mentioned above.
+</code></pre></div><p>해당 사이트(<code>https://nexus/</code>)의 crt 파일을 저장하고 git-bash 에서 관리하는 ca-bundle.crt 의 끝부분에 내용을 추가합니다.</p>
+<p>파일 경로: <code>C:\Program Files\Git\mingw64\ssl\certs\ca-bundle.crt</code></p>
+<br>
+<h4 id="self-signed-cert-java-등록">(self-signed-cert) java 등록</h4>
 <p>로컬 설치된 java 에 인증서 파일(*.crt) 등록을 하기 위해서는 $JAVA_HOME/bin/keytool 를 사용해야 합니다.</p>
 <p>ca 에 등록되지 않은 인증서로 https 통신을 하는 경우에는 ssl-handshake 과정에서 오류가 발생하므로</p>
 <p>해당 사이트의 인증서를 로컬 java 에 신뢰할 수 있는 인증서에 등록해야 합니다.</p>
@@ -373,7 +386,7 @@ SubjectAlternativeName <span style="color:#f92672">[</span>
 인증서가 키 저장소에 추가되었습니다.
 $ 
 </code></pre></div><br>
-<h4 id="centos-centos-인증서-등록">(centos) centos 인증서 등록</h4>
+<h4 id="self-signed-cert-centos-등록">(self-signed-cert) centos 등록</h4>
 <ul>
 <li><code>/etc/pki/ca-trust/source/anchors/</code> 경로에 crt 파일을 복사</li>
 <li><code>update-ca-trust extract</code> 실행으로 신뢰할 수 있는 인증서를 추가</li>
