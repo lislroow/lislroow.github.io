@@ -22,9 +22,9 @@
 
 
   
-  <meta name="description" content="(self-signed-cert) git-bash 등록
-git-bash 에서 curl 을 사용할 때 ssl 인증 문제가 발생할 경우입니다.
-$ curl …">
+  <meta name="description" content="(libxml2) xmllint
+xmllint 를 이용하여 nexus 의 maven-metadata.xml 을 파싱하는 예시입니다.
+$ XML_URL= …">
 <meta property="og:title" content="system" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -124,7 +124,7 @@ $ curl …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.8fe6c1193a1fde655b2a0d77768e7b7e.json"
+  data-offline-search-index-json-src="/offline-search-index.8b600c64b6fcbaeaa289be4d9ee4e590.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -151,7 +151,7 @@ $ curl …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.8fe6c1193a1fde655b2a0d77768e7b7e.json"
+  data-offline-search-index-json-src="/offline-search-index.8b600c64b6fcbaeaa289be4d9ee4e590.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -215,6 +215,7 @@ $ curl …">
       <ul>
         <li>
           <ul>
+            <li><a href="#libxml2-xmllint">(libxml2) xmllint</a></li>
             <li><a href="#self-signed-cert-git-bash-등록">(self-signed-cert) git-bash 등록</a></li>
             <li><a href="#self-signed-cert-java-등록">(self-signed-cert) java 등록</a></li>
             <li><a href="#self-signed-cert-centos-등록">(self-signed-cert) centos 등록</a></li>
@@ -308,7 +309,70 @@ $ curl …">
 		
 		
 	</header>
-	<h4 id="self-signed-cert-git-bash-등록">(self-signed-cert) git-bash 등록</h4>
+	<h4 id="libxml2-xmllint">(libxml2) xmllint</h4>
+<p>xmllint 를 이용하여 nexus 의 maven-metadata.xml 을 파싱하는 예시입니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ XML_URL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://nexus/repository/maven-snapshot/mgkim/framework/framework-online/maven-metadata.xml&#34;</span>
+$ curl -s <span style="color:#e6db74">${</span>XML_URL<span style="color:#e6db74">}</span> | cat -
+&lt;?xml version<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1.0&#34;</span> encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span>?&gt;
+&lt;metadata&gt;
+  &lt;groupId&gt;mgkim.framework&lt;/groupId&gt;
+  &lt;artifactId&gt;framework-online&lt;/artifactId&gt;
+  &lt;versioning&gt;
+    &lt;versions&gt;
+      &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+      &lt;version&gt;2.0-SNAPSHOT&lt;/version&gt;
+    &lt;/versions&gt;
+    &lt;lastUpdated&gt;20220110062815&lt;/lastUpdated&gt;
+  &lt;/versioning&gt;
+&lt;/metadata&gt;
+<span style="color:#75715e"># --xpath 에 존재하지 않는 node 명을 입력했을 경우 &#39;XPath set is empty&#39; 가 표시됨</span>
+$ echo <span style="color:#66d9ef">$(</span>curl -s <span style="color:#e6db74">${</span>XML_URL<span style="color:#e6db74">}</span> | xmllint --xpath <span style="color:#e6db74">&#34;//aaa/text()&#34;</span> -<span style="color:#66d9ef">)</span>
+XPath set is empty
+<span style="color:#75715e"># node명 &#34;&lt;groupId&gt;&#34; 의 값을 가져오는 2가지 예시</span>
+$ echo <span style="color:#66d9ef">$(</span>curl -s <span style="color:#e6db74">${</span>XML_URL<span style="color:#e6db74">}</span> | xmllint --xpath <span style="color:#e6db74">&#34;metadata/groupId/text()&#34;</span> -<span style="color:#66d9ef">)</span>
+mgkim.framework
+$ echo <span style="color:#66d9ef">$(</span>curl -s <span style="color:#e6db74">${</span>XML_URL<span style="color:#e6db74">}</span> | xmllint --xpath <span style="color:#e6db74">&#34;//groupId/text()&#34;</span> -<span style="color:#66d9ef">)</span>
+mgkim.framework
+<span style="color:#75715e"># node명 &#34;&lt;version&gt;&#34; 이 여러개일 경우 마지막만 반환하는 예시</span>
+$ echo <span style="color:#66d9ef">$(</span>curl -s <span style="color:#e6db74">${</span>XML_URL<span style="color:#e6db74">}</span> | xmllint --xpath <span style="color:#e6db74">&#34;//version[last()]/text()&#34;</span> -<span style="color:#66d9ef">)</span> 
+2.0-SNAPSHOT
+<span style="color:#75715e"># curl 의 결과를 xmllint 에 전달하기 위해 </span>
+<span style="color:#75715e"># xmllint 의 마지막에 dash`-` 문자가 반드시 포함되어야 함</span>
+</code></pre></div><p><code>--xpath</code> 는 쌍따옴표<code>&quot;</code>로 해주세요. (<code>'</code>일 경우 변수를 포함한 값으로 표현이 안됩니다.)</p>
+<p>아래는 여러 node 가 select 되는 예시에서 index 변수로 접근하는 예시입니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ XML_URL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://nexus/repository/maven-snapshot/mgkim/framework/framework-online/maven-metadata.xml&#34;</span>
+$ curl -s <span style="color:#e6db74">${</span>XML_URL<span style="color:#e6db74">}</span> | cat -
+&lt;?xml version<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1.0&#34;</span> encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span>?&gt;
+&lt;metadata&gt;
+  &lt;groupId&gt;mgkim.framework&lt;/groupId&gt;
+  &lt;artifactId&gt;framework-online&lt;/artifactId&gt;
+  &lt;versioning&gt;
+    &lt;versions&gt;
+      &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+      &lt;version&gt;2.0-SNAPSHOT&lt;/version&gt;
+    &lt;/versions&gt;
+    &lt;lastUpdated&gt;20220110062815&lt;/lastUpdated&gt;
+  &lt;/versioning&gt;
+&lt;/metadata&gt;
+$ count<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>curl -s <span style="color:#e6db74">${</span>XML_URL<span style="color:#e6db74">}</span> | xmllint --xpath <span style="color:#e6db74">&#34;count(//version)&#34;</span> -<span style="color:#66d9ef">)</span>
+$ echo <span style="color:#e6db74">&#34;count=</span><span style="color:#e6db74">${</span>count<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+count<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>
+$ <span style="color:#66d9ef">for</span> <span style="color:#f92672">((</span>i<span style="color:#f92672">=</span>1; i&lt;<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>count<span style="color:#e6db74">}</span>; i++<span style="color:#f92672">))</span>; <span style="color:#66d9ef">do</span>
+  <span style="color:#75715e"># --xpath &#39;//version[$i]/text()&#39; 일 경우</span>
+  <span style="color:#75715e"># &#34;XPath error : Undefined variable&#34; 오류가 발생합니다.</span>
+  echo <span style="color:#66d9ef">$(</span>curl -s <span style="color:#e6db74">${</span>XML_URL<span style="color:#e6db74">}</span> | xmllint --xpath <span style="color:#e6db74">&#34;//version[</span>$i<span style="color:#e6db74">]/text()&#34;</span> -<span style="color:#66d9ef">)</span>
+<span style="color:#66d9ef">done</span>
+1.0-SNAPSHOT
+2.0-SNAPSHOT
+</code></pre></div><p>xmllint 는 libxml2 패키지에 포함되어 있습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ yum provides xmllint
+마지막 메타자료 만료확인 17:42:56 이전인: 2022년 01월 11일 <span style="color:#f92672">(</span>화<span style="color:#f92672">)</span> 오후 04시 01분 22초.
+libxml2-2.9.7-9.el8_4.2.x86_64 : Library providing XML and HTML support
+리포지토리      : baseos
+일치하는 항목 :
+파일 이름 : /usr/bin/xmllint
+</code></pre></div><br>
+<h4 id="self-signed-cert-git-bash-등록">(self-signed-cert) git-bash 등록</h4>
 <p>git-bash 에서 curl 을 사용할 때 ssl 인증 문제가 발생할 경우입니다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ curl https://nexus/repository/maven-release/mgkim/service/service-www/maven-metadata.xml
 curl: (60) SSL certificate problem: self signed certificate
