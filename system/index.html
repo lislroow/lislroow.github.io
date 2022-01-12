@@ -22,9 +22,13 @@
 
 
   
-  <meta name="description" content="(libxml2) xmllint
-xmllint 를 이용하여 nexus 의 maven-metadata.xml 을 파싱하는 예시입니다.
-$ XML_URL= …">
+  <meta name="description" content="(shell) script 정보
+bash 에서 script 파일을 실행할 때 기본 정보를 출력했습니다.
+#!/bin/bash
+
+echo
+echo &#34;# arguments called with ----&gt;  ${@}     &#34;
+echo &#34;# \$1 …">
 <meta property="og:title" content="system" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -124,7 +128,7 @@ $ XML_URL= …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.141b068073b9648f5a1688c55a043fb0.json"
+  data-offline-search-index-json-src="/offline-search-index.e58ef3fbb2a84d69c2499be16cf92e0f.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -151,7 +155,7 @@ $ XML_URL= …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.141b068073b9648f5a1688c55a043fb0.json"
+  data-offline-search-index-json-src="/offline-search-index.e58ef3fbb2a84d69c2499be16cf92e0f.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -215,6 +219,7 @@ $ XML_URL= …">
       <ul>
         <li>
           <ul>
+            <li><a href="#shell-script-정보">(shell) script 정보</a></li>
             <li><a href="#libxml2-xmllint">(libxml2) xmllint</a></li>
             <li><a href="#vim-vimrc">(vim) .vimrc</a></li>
             <li><a href="#self-signed-cert-git-bash-등록">(self-signed-cert) git-bash 등록</a></li>
@@ -310,7 +315,31 @@ $ XML_URL= …">
 		
 		
 	</header>
-	<h4 id="libxml2-xmllint">(libxml2) xmllint</h4>
+	<h4 id="shell-script-정보">(shell) script 정보</h4>
+<p>bash 에서 script 파일을 실행할 때 기본 정보를 출력했습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#!/bin/bash
+</span><span style="color:#75715e"></span>
+echo
+echo <span style="color:#e6db74">&#34;# arguments called with ----&gt;  </span><span style="color:#e6db74">${</span>@<span style="color:#e6db74">}</span><span style="color:#e6db74">     &#34;</span>
+echo <span style="color:#e6db74">&#34;# \$1 ----------------------&gt;  </span>$1<span style="color:#e6db74">       &#34;</span>
+echo <span style="color:#e6db74">&#34;# \$2 ----------------------&gt;  </span>$2<span style="color:#e6db74">       &#34;</span>
+echo <span style="color:#e6db74">&#34;# path to me ---------------&gt;  </span><span style="color:#e6db74">${</span>0<span style="color:#e6db74">}</span><span style="color:#e6db74">     &#34;</span>
+echo <span style="color:#e6db74">&#34;# parent path --------------&gt;  </span><span style="color:#e6db74">${</span>0%/*<span style="color:#e6db74">}</span><span style="color:#e6db74">  &#34;</span>
+echo <span style="color:#e6db74">&#34;# my name ------------------&gt;  </span><span style="color:#e6db74">${</span>0##*/<span style="color:#e6db74">}</span><span style="color:#e6db74"> &#34;</span>
+echo
+exit
+
+
+$ /z/project/pilot/service/service-www/a.sh
+
+<span style="color:#75715e"># arguments called with ----&gt;</span>
+<span style="color:#75715e"># $1 ----------------------&gt;</span>
+<span style="color:#75715e"># $2 ----------------------&gt;</span>
+<span style="color:#75715e"># path to me ---------------&gt;  /z/project/pilot/service/service-www/a.sh</span>
+<span style="color:#75715e"># parent path --------------&gt;  /z/project/pilot/service/service-www</span>
+<span style="color:#75715e"># my name ------------------&gt;  a.sh</span>
+</code></pre></div><br>
+<h4 id="libxml2-xmllint">(libxml2) xmllint</h4>
 <p>xmllint 를 이용하여 nexus 의 maven-metadata.xml 을 파싱하는 예시입니다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ XML_URL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://nexus/repository/maven-snapshot/mgkim/framework/framework-online/maven-metadata.xml&#34;</span>
 $ curl -s <span style="color:#e6db74">${</span>XML_URL<span style="color:#e6db74">}</span> | cat -
