@@ -124,7 +124,7 @@ $ XML_URL= …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.12a4639c2c0bff51df1a444b84bc571a.json"
+  data-offline-search-index-json-src="/offline-search-index.141b068073b9648f5a1688c55a043fb0.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -151,7 +151,7 @@ $ XML_URL= …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.12a4639c2c0bff51df1a444b84bc571a.json"
+  data-offline-search-index-json-src="/offline-search-index.141b068073b9648f5a1688c55a043fb0.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -486,6 +486,12 @@ $
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ cp /etc/httpd/conf.d/certs/nexus.crt /etc/pki/ca-trust/source/anchors/
 $ update-ca-trust extract
+</code></pre></div><br>
+<p><code>update-ca-trust</code> 명령으로 등록이 안될 경우 직접 추가하는 방법입니다.</p>
+<p><code>/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem</code> 파일에 crt 파일의 내용을 직접 추가합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ chmod u+w /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem
+$ cat nexus.crt &gt;&gt; /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem
+$ chmod u-w /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem
 </code></pre></div><br>
 <h4 id="shell-script-파일-디렉토리">(shell) script 파일 디렉토리</h4>
 <p><code>/project/script/build.sh</code> 파일이 실행될 때 현재 디렉토리<code>/project/script/</code>를 확인하는 방법입니다.</p>
