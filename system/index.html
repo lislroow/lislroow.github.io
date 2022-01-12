@@ -124,7 +124,7 @@ $ XML_URL= …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.8b600c64b6fcbaeaa289be4d9ee4e590.json"
+  data-offline-search-index-json-src="/offline-search-index.12a4639c2c0bff51df1a444b84bc571a.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -151,7 +151,7 @@ $ XML_URL= …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.8b600c64b6fcbaeaa289be4d9ee4e590.json"
+  data-offline-search-index-json-src="/offline-search-index.12a4639c2c0bff51df1a444b84bc571a.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -216,6 +216,7 @@ $ XML_URL= …">
         <li>
           <ul>
             <li><a href="#libxml2-xmllint">(libxml2) xmllint</a></li>
+            <li><a href="#vim-vimrc">(vim) .vimrc</a></li>
             <li><a href="#self-signed-cert-git-bash-등록">(self-signed-cert) git-bash 등록</a></li>
             <li><a href="#self-signed-cert-java-등록">(self-signed-cert) java 등록</a></li>
             <li><a href="#self-signed-cert-centos-등록">(self-signed-cert) centos 등록</a></li>
@@ -371,6 +372,34 @@ libxml2-2.9.7-9.el8_4.2.x86_64 : Library providing XML and HTML support
 리포지토리      : baseos
 일치하는 항목 :
 파일 이름 : /usr/bin/xmllint
+</code></pre></div><br>
+<h4 id="vim-vimrc">(vim) .vimrc</h4>
+<p><code>vi ~/.vimrc</code> 로 아래 기본 설정을 등록합니다.</p>
+<p>.vimrc 에는 # 주석이 오류를 일으키니 설정 시 제거해야 합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ vi ~/.vimrc
+if has(&#34;syntax&#34;)
+  syntax on
+endif
+
+set paste
+
+# / 검색 강조
+set hlsearch
+
+# 자동 들여쓰기
+set autoindent
+set cindent
+
+# tab 설정
+set ts=2
+set sts=2
+set shiftwidth=2
+
+# 커서 위 괄호 강조
+set showmatch
+
+# 줄번호와 행번호 표시
+set ruler
 </code></pre></div><br>
 <h4 id="self-signed-cert-git-bash-등록">(self-signed-cert) git-bash 등록</h4>
 <p>git-bash 에서 curl 을 사용할 때 ssl 인증 문제가 발생할 경우입니다.</p>
