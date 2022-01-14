@@ -22,10 +22,10 @@
 
 
   
-  <meta name="description" content="(git-bash) /etc/profile.d
-git-bash 에서 alias 를 추가하는 예시입니다.
-파일: /etc/profile.d/aliases.sh
-#alias ls=&#39;ls -F --color=auto --show-control-chars&#39; …">
+  <meta name="description" content="(git-bash) /etc/bash.bashrc
+alias pilot=&#39;cd /z/project/pilot&#39;
+alias dlog=&#39;cd /z/project/dlog&#39;
+alias deploy-dlog= …">
 <meta property="og:title" content="localenv" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -125,7 +125,7 @@ git-bash 에서 alias 를 추가하는 예시입니다.
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.0a2dbcec261ed6a35496e2159553e0b6.json"
+  data-offline-search-index-json-src="/offline-search-index.9e9159269fb83008ae8ee7ef38072a18.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -152,7 +152,7 @@ git-bash 에서 alias 를 추가하는 예시입니다.
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.0a2dbcec261ed6a35496e2159553e0b6.json"
+  data-offline-search-index-json-src="/offline-search-index.9e9159269fb83008ae8ee7ef38072a18.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -201,7 +201,7 @@ git-bash 에서 alias 를 추가하는 예시입니다.
       <ul>
         <li>
           <ul>
-            <li><a href="#git-bash-etcprofiled">(git-bash) /etc/profile.d</a></li>
+            <li><a href="#git-bash-etcbashbashrc">(git-bash) /etc/bash.bashrc</a></li>
             <li><a href="#eclipse-ansi-escape-in-console-플러그인">(eclipse) ANSI Escape in Console 플러그인</a></li>
             <li><a href="#eclipse-bash-editor-플러그인">(eclipse) Bash Editor 플러그인</a></li>
             <li><a href="#eclipse-md-파일-add-bookmark">(eclipse) .md 파일 add bookmark</a></li>
@@ -325,10 +325,11 @@ git-bash 에서 alias 를 추가하는 예시입니다.
 		
 		
 	</header>
-	<h4 id="git-bash-etcprofiled">(git-bash) /etc/profile.d</h4>
-<p>git-bash 에서 alias 를 추가하는 예시입니다.</p>
-<p>파일: <code>/etc/profile.d/aliases.sh</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#alias ls=&#39;ls -F --color=auto --show-control-chars&#39;</span>
+	<h4 id="git-bash-etcbashbashrc">(git-bash) /etc/bash.bashrc</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">alias pilot<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;cd /z/project/pilot&#39;</span>
+alias dlog<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;cd /z/project/dlog&#39;</span>
+alias deploy-dlog<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;/z/project/dlog/deploy.sh &#39;</span>
+alias run-dlog<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;/z/project/dlog/run.sh &#39;</span>
 alias ls<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;ls -F --color=auto --show-control-chars --time-style=long-iso &#39;</span>
 </code></pre></div><br>
 <h4 id="eclipse-ansi-escape-in-console-플러그인">(eclipse) ANSI Escape in Console 플러그인</h4>
