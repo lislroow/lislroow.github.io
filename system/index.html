@@ -22,14 +22,9 @@
 
 
   
-  <meta name="description" content="(shell) script arguments iterator
-argc=$#
-argv=(&#34;$@&#34;)
-
-echo &#34;argc=${argc}&#34;
-echo &#34;argv=${argv[*]}&#34;
-
-for ((i=0; i&lt;argc; i&#43;&#43;)) …">
+  <meta name="description" content="(nexus) cleanup / compact blob
+nexus 저장소에 오래된 snapshot 이 많아져서 공간이 부족해지면 아래 2가지 작업을 등록합니다.
+cleanup policy 및 cleanup task 만 등록할 경우 실제 blob …">
 <meta property="og:title" content="system" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -129,7 +124,7 @@ for ((i=0; i&lt;argc; i&#43;&#43;)) …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.af40903f233b2bdb9e779a80b02f57b7.json"
+  data-offline-search-index-json-src="/offline-search-index.3f033d3ce3709e70f9beeb694e311d36.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -156,7 +151,7 @@ for ((i=0; i&lt;argc; i&#43;&#43;)) …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.af40903f233b2bdb9e779a80b02f57b7.json"
+  data-offline-search-index-json-src="/offline-search-index.3f033d3ce3709e70f9beeb694e311d36.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -220,6 +215,7 @@ for ((i=0; i&lt;argc; i&#43;&#43;)) …">
       <ul>
         <li>
           <ul>
+            <li><a href="#nexus-cleanup--compact-blob">(nexus) cleanup / compact blob</a></li>
             <li><a href="#shell-script-arguments-iterator">(shell) script arguments iterator</a></li>
             <li><a href="#shell-script-정보">(shell) script 정보</a></li>
             <li><a href="#libxml2-xmllint">(libxml2) xmllint</a></li>
@@ -317,7 +313,23 @@ for ((i=0; i&lt;argc; i&#43;&#43;)) …">
 		
 		
 	</header>
-	<h4 id="shell-script-arguments-iterator">(shell) script arguments iterator</h4>
+	<h4 id="nexus-cleanup--compact-blob">(nexus) cleanup / compact blob</h4>
+<p>nexus 저장소에 오래된 snapshot 이 많아져서 공간이 부족해지면 아래 2가지 작업을 등록합니다.</p>
+<p>cleanup policy 및 cleanup task 만 등록할 경우 실제 blob 파일은 삭제되지 않기에 <code>compact blob task</code> 까지 등록해야 합니다.</p>
+<p>task 등록이 된 다음에는 해당 task 에서 <code>Run</code> 버튼을 클릭하여 실행하고 du 명령어로 공간이 확보된 것을 확인할 수 있을 것입니다.</p>
+<ul>
+<li>
+<p><code>Repository</code> &gt; <code>Cleanup Policies</code> 메뉴에서 정책 등록</p>
+<p>cleanup policy 등록: <a href="/images/system/20220114-nexus-cleanup-policy.png" target="_blank">새 창 보기</a></p>
+</li>
+<li>
+<p><code>System</code> &gt; <code>Task</code> 메뉴에서 작업 등록</p>
+<p>cleanup task 등록: <a href="/images/system/20220114-nexus-cleanup-task.png" target="_blank">새 창 보기</a></p>
+<p>compact blob task 등록: <a href="/images/system/20220114-nexus-compact-blob-task.png" target="_blank">새 창 보기</a></p>
+</li>
+</ul>
+<br>
+<h4 id="shell-script-arguments-iterator">(shell) script arguments iterator</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">argc<span style="color:#f92672">=</span>$#
 argv<span style="color:#f92672">=(</span><span style="color:#e6db74">&#34;</span>$@<span style="color:#e6db74">&#34;</span><span style="color:#f92672">)</span>
 
