@@ -22,13 +22,14 @@
 
 
   
-  <meta name="description" content="(shell) script 정보
-bash 에서 script 파일을 실행할 때 기본 정보를 출력했습니다.
-#!/bin/bash
+  <meta name="description" content="(shell) script arguments iterator
+argc=$#
+argv=(&#34;$@&#34;)
 
-echo
-echo &#34;# arguments called with ----&gt;  ${@}     &#34;
-echo &#34;# \$1 …">
+echo &#34;argc=${argc}&#34;
+echo &#34;argv=${argv[*]}&#34;
+
+for ((i=0; i&lt;argc; i&#43;&#43;)) …">
 <meta property="og:title" content="system" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -128,7 +129,7 @@ echo &#34;# \$1 …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.bf3a34aa7178ee7d4f40eb87382ae51b.json"
+  data-offline-search-index-json-src="/offline-search-index.0a2dbcec261ed6a35496e2159553e0b6.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -155,7 +156,7 @@ echo &#34;# \$1 …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.bf3a34aa7178ee7d4f40eb87382ae51b.json"
+  data-offline-search-index-json-src="/offline-search-index.0a2dbcec261ed6a35496e2159553e0b6.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -219,6 +220,7 @@ echo &#34;# \$1 …">
       <ul>
         <li>
           <ul>
+            <li><a href="#shell-script-arguments-iterator">(shell) script arguments iterator</a></li>
             <li><a href="#shell-script-정보">(shell) script 정보</a></li>
             <li><a href="#libxml2-xmllint">(libxml2) xmllint</a></li>
             <li><a href="#vim-vimrc">(vim) .vimrc</a></li>
@@ -315,7 +317,28 @@ echo &#34;# \$1 …">
 		
 		
 	</header>
-	<h4 id="shell-script-정보">(shell) script 정보</h4>
+	<h4 id="shell-script-arguments-iterator">(shell) script arguments iterator</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">argc<span style="color:#f92672">=</span>$#
+argv<span style="color:#f92672">=(</span><span style="color:#e6db74">&#34;</span>$@<span style="color:#e6db74">&#34;</span><span style="color:#f92672">)</span>
+
+echo <span style="color:#e6db74">&#34;argc=</span><span style="color:#e6db74">${</span>argc<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+echo <span style="color:#e6db74">&#34;argv=</span><span style="color:#e6db74">${</span>argv[*]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+
+<span style="color:#66d9ef">for</span> <span style="color:#f92672">((</span>i<span style="color:#f92672">=</span>0; i&lt;argc; i++<span style="color:#f92672">))</span>; <span style="color:#66d9ef">do</span>
+  echo <span style="color:#e6db74">&#34;argv[</span>$i<span style="color:#e6db74">]=</span><span style="color:#e6db74">${</span>argv[$i]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#66d9ef">done</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ ./test.sh a b <span style="color:#e6db74">&#39;c d&#39;</span> <span style="color:#ae81ff">3</span>
+<span style="color:#75715e">### [start] test.sh a b c d 3 ###</span>
++++ <span style="color:#f92672">(</span>system-env<span style="color:#f92672">)</span> +++
+SCRIPT_DIR<span style="color:#f92672">=</span>/z/project/pilot/service
+argc<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>
+argv<span style="color:#f92672">=</span>a b c d <span style="color:#ae81ff">3</span>
+argv<span style="color:#f92672">[</span>0<span style="color:#f92672">]=</span>a
+argv<span style="color:#f92672">[</span>1<span style="color:#f92672">]=</span>b
+argv<span style="color:#f92672">[</span>2<span style="color:#f92672">]=</span>c d
+argv<span style="color:#f92672">[</span>3<span style="color:#f92672">]=</span><span style="color:#ae81ff">3</span>
+</code></pre></div><br>
+<h4 id="shell-script-정보">(shell) script 정보</h4>
 <p>bash 에서 script 파일을 실행할 때 기본 정보를 출력했습니다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#!/bin/bash
 </span><span style="color:#75715e"></span>
