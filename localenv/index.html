@@ -22,12 +22,9 @@
 
 
   
-  <meta name="description" content="(eclipse) path-tools (git-bash)
-이클립스 Command Line Shell 버튼을 클릭할때 cmd 창이 아닌 git-bash 터미널이 열리도록 설정을 바꿀 수 있습니다.
-
-새 창 보기
-
-(git-bash) bash_profile.sh …">
+  <meta name="description" content="(maven) deploy, release 관련 플러그인
+spring-boot 를 배포할 때 의존성 라이브러리를 포함하여 executable-jar 파일을 생성하는 spring-boot:repackage 플러그인을 추가했습니다.
+maven …">
 <meta property="og:title" content="localenv" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -127,7 +124,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.f7f6a8af1826166a1247d887dd11660f.json"
+  data-offline-search-index-json-src="/offline-search-index.10b766adba54be6ed60268c11e9300ba.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -154,7 +151,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.f7f6a8af1826166a1247d887dd11660f.json"
+  data-offline-search-index-json-src="/offline-search-index.10b766adba54be6ed60268c11e9300ba.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -203,6 +200,7 @@
       <ul>
         <li>
           <ul>
+            <li><a href="#maven-deploy-release-관련-플러그인">(maven) deploy, release 관련 플러그인</a></li>
             <li><a href="#eclipse-path-tools-git-bash">(eclipse) path-tools (git-bash)</a></li>
             <li><a href="#git-bash-bash_profilesh">(git-bash) bash_profile.sh</a></li>
             <li><a href="#eclipse-ansi-escape-in-console-플러그인">(eclipse) ANSI Escape in Console 플러그인</a></li>
@@ -328,7 +326,67 @@
 		
 		
 	</header>
-	<h4 id="eclipse-path-tools-git-bash">(eclipse) path-tools (git-bash)</h4>
+	<h4 id="maven-deploy-release-관련-플러그인">(maven) deploy, release 관련 플러그인</h4>
+<p>spring-boot 를 배포할 때 의존성 라이브러리를 포함하여 executable-jar 파일을 생성하는 <code>spring-boot:repackage</code> 플러그인을 추가했습니다.</p>
+<p>maven 기존 플러그인 maven-deploy-plugin 를 <code>nexus-staging-maven-plugin</code> 로 교체했습니다.</p>
+<p>release 버전의 아티팩트를 nexus 에 배포하고 버전을 올려주는 기능을 위해 <code>maven-release-plugin</code> 설정을 했습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;plugins&gt;</span>
+  <span style="color:#f92672">&lt;plugin&gt;</span>
+    <span style="color:#f92672">&lt;groupId&gt;</span>org.apache.maven.plugins<span style="color:#f92672">&lt;/groupId&gt;</span>
+    <span style="color:#f92672">&lt;artifactId&gt;</span>maven-deploy-plugin<span style="color:#f92672">&lt;/artifactId&gt;</span>
+    <span style="color:#f92672">&lt;configuration&gt;</span>
+      <span style="color:#75715e">&lt;!-- nexus-staging-maven-plugin 로 인해 skip 설정을 해야 합니다. --&gt;</span>
+      <span style="color:#f92672">&lt;skip&gt;</span>true<span style="color:#f92672">&lt;/skip&gt;</span>
+    <span style="color:#f92672">&lt;/configuration&gt;</span>
+  <span style="color:#f92672">&lt;/plugin&gt;</span>
+  <span style="color:#f92672">&lt;plugin&gt;</span>
+    <span style="color:#f92672">&lt;groupId&gt;</span>org.sonatype.plugins<span style="color:#f92672">&lt;/groupId&gt;</span>
+    <span style="color:#f92672">&lt;artifactId&gt;</span>nexus-staging-maven-plugin<span style="color:#f92672">&lt;/artifactId&gt;</span>
+    <span style="color:#f92672">&lt;executions&gt;</span>
+      <span style="color:#f92672">&lt;execution&gt;</span>
+        <span style="color:#75715e">&lt;!-- default-deploy 에 추가합니다. --&gt;</span>
+        <span style="color:#f92672">&lt;id&gt;</span>default-deploy<span style="color:#f92672">&lt;/id&gt;</span>
+        <span style="color:#f92672">&lt;phase&gt;</span>deploy<span style="color:#f92672">&lt;/phase&gt;</span>
+        <span style="color:#f92672">&lt;goals&gt;</span>
+           <span style="color:#f92672">&lt;goal&gt;</span>deploy<span style="color:#f92672">&lt;/goal&gt;</span>
+        <span style="color:#f92672">&lt;/goals&gt;</span>
+      <span style="color:#f92672">&lt;/execution&gt;</span>
+    <span style="color:#f92672">&lt;/executions&gt;</span>
+    <span style="color:#f92672">&lt;configuration&gt;</span>
+      <span style="color:#75715e">&lt;!-- nexus pro 버전에만 staging-repository 기능을 사용할 수 있습니다. --&gt;</span>
+      <span style="color:#f92672">&lt;skipStaging&gt;</span>true<span style="color:#f92672">&lt;/skipStaging&gt;</span>
+    <span style="color:#f92672">&lt;/configuration&gt;</span>
+  <span style="color:#f92672">&lt;/plugin&gt;</span>
+  <span style="color:#f92672">&lt;plugin&gt;</span>
+    <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.boot<span style="color:#f92672">&lt;/groupId&gt;</span>
+    <span style="color:#f92672">&lt;artifactId&gt;</span>spring-boot-maven-plugin<span style="color:#f92672">&lt;/artifactId&gt;</span>
+    <span style="color:#f92672">&lt;executions&gt;</span>
+      <span style="color:#f92672">&lt;execution&gt;</span>
+        <span style="color:#75715e">&lt;!-- default-install 에 추가합니다. --&gt;</span>
+        <span style="color:#75715e">&lt;!-- deploy 을 실행하면 실행됩니다. --&gt;</span>
+        <span style="color:#f92672">&lt;id&gt;</span>default-install<span style="color:#f92672">&lt;/id&gt;</span>
+        <span style="color:#f92672">&lt;phase&gt;</span>install<span style="color:#f92672">&lt;/phase&gt;</span>
+        <span style="color:#f92672">&lt;goals&gt;</span>
+          <span style="color:#75715e">&lt;!-- spring-boot-maven-plugin 의 repackage 가 실행되도록 합니다. --&gt;</span>
+          <span style="color:#f92672">&lt;goal&gt;</span>repackage<span style="color:#f92672">&lt;/goal&gt;</span>
+        <span style="color:#f92672">&lt;/goals&gt;</span>
+      <span style="color:#f92672">&lt;/execution&gt;</span>
+    <span style="color:#f92672">&lt;/executions&gt;</span>
+  <span style="color:#f92672">&lt;/plugin&gt;</span>
+  <span style="color:#f92672">&lt;plugin&gt;</span>
+    <span style="color:#f92672">&lt;groupId&gt;</span>org.apache.maven.plugins<span style="color:#f92672">&lt;/groupId&gt;</span>
+    <span style="color:#f92672">&lt;artifactId&gt;</span>maven-release-plugin<span style="color:#f92672">&lt;/artifactId&gt;</span>
+    <span style="color:#f92672">&lt;configuration&gt;</span>
+      <span style="color:#f92672">&lt;autoVersionSubmodules&gt;</span>false<span style="color:#f92672">&lt;/autoVersionSubmodules&gt;</span>
+      <span style="color:#75715e">&lt;!-- release:perform 이 실행될 때 deploy 를 실행하여 --&gt;</span>
+      <span style="color:#75715e">&lt;!-- spring-boot:repackage 까지 같이 실행되도록 합니다. --&gt;</span>
+      <span style="color:#f92672">&lt;goals&gt;</span>deploy<span style="color:#f92672">&lt;/goals&gt;</span>
+      <span style="color:#f92672">&lt;scmCommentPrefix&gt;</span>[build]<span style="color:#f92672">&lt;/scmCommentPrefix&gt;</span>
+    <span style="color:#f92672">&lt;/configuration&gt;</span>
+  <span style="color:#f92672">&lt;/plugin&gt;</span>
+<span style="color:#f92672">&lt;/plugins&gt;</span>
+</code></pre></div><br>
+<h4 id="eclipse-path-tools-git-bash">(eclipse) path-tools (git-bash)</h4>
 <p>이클립스 <code>Command Line Shell</code> 버튼을 클릭할때 cmd 창이 아닌 git-bash 터미널이 열리도록 설정을 바꿀 수 있습니다.</p>
 <img src="/images/localenv/20220114-eclipse-path-tools-gitbash.png" width="600">
 <p><a href="/images/localenv/20220114-eclipse-path-tools-gitbash.png" target="_blank">새 창 보기</a></p>
