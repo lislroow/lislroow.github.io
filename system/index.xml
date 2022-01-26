@@ -216,7 +216,8 @@ $ curl http://127.0.0.1:9200
   &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;tagline&amp;#34;&lt;/span&gt; : &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;You Know, for Search&amp;#34;&lt;/span&gt;
 &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
 $
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;elasticsearch-설정&#34;&gt;elasticsearch 설정&lt;/h5&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;h5 id=&#34;elasticsearch-설정&#34;&gt;elasticsearch 설정&lt;/h5&gt;
 &lt;p&gt;설정 파일 &lt;code&gt;/etc/elasticsearch/elasticsearch.yml&lt;/code&gt;에서 데이터/로그 디렉토리 변경&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;##&lt;/span&gt;
 $ mkdir -p /data/PROD/es &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; chown elasticsearch:elasticsearch /data/PROD/es
@@ -231,7 +232,8 @@ $ mkdir -p /data/PROD/es &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp
  &lt;span style=&#34;color:#ae81ff&#34;&gt;59&lt;/span&gt; network.host: 0.0.0.0
  &lt;span style=&#34;color:#ae81ff&#34;&gt;73&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;#discovery.seed_hosts: [&amp;#34;host1&amp;#34;, &amp;#34;host2&amp;#34;]&lt;/span&gt;
  &lt;span style=&#34;color:#ae81ff&#34;&gt;74&lt;/span&gt; discovery.seed_hosts: &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;0.0.0.0&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;kibana-설치&#34;&gt;kibana 설치&lt;/h5&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;h5 id=&#34;kibana-설치&#34;&gt;kibana 설치&lt;/h5&gt;
 &lt;p&gt;&lt;code&gt;artifacts.elastic.co&lt;/code&gt;에서 tar.gz 다운로드 후 아카이브 해제&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;$ curl -L -O https://artifacts.elastic.co/downloads/kibana/kibana-7.16.3-linux-x86_64.tar.gz
 $ tar zxvf kibana-7.16.3-linux-x86_64.tar.gz
@@ -258,13 +260,16 @@ $ chown -R tomcat:ap /prod/kibana
 
 &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt; directories, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt; files
 $
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;kibana-설정&#34;&gt;kibana 설정&lt;/h5&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;h5 id=&#34;kibana-설정&#34;&gt;kibana 설정&lt;/h5&gt;
 &lt;p&gt;설정 파일 &lt;code&gt;/prod/kibana/kibana/config/kibana.yml&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 기본 설정 파일로 실행 시 `server.publicBaseUrl` 에 대한 경고가 표시 됩니다.&lt;/span&gt;
 &lt;span style=&#34;color:#75715e&#34;&gt;# &amp;#34;server.publicBaseUrl&amp;#34; 는 &amp;#34;server.basePath&amp;#34; 의 경로를 반드시 포함해야 합니다.&lt;/span&gt;
  &lt;span style=&#34;color:#ae81ff&#34;&gt;24&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;#server.publicBaseUrl: &amp;#34;&amp;#34;&lt;/span&gt;
  &lt;span style=&#34;color:#ae81ff&#34;&gt;25&lt;/span&gt; server.publicBaseUrl: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;http://localhost:5601&amp;#34;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;httpd 가상호스트 설정&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a href=&#34;https://www.elastic.co/guide/en/kibana/master/settings.html&#34; target=&#34;_blank&#34;&gt;&lt;a href=&#34;http://www.elastic.co&#34;&gt;www.elastic.co&lt;/a&gt; kibana 설정 가이드&lt;/a&gt;&lt;/p&gt;
+&lt;br&gt;
+&lt;p&gt;httpd 가상호스트 설정&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&amp;lt;VirtualHost *:80&amp;gt;
   ServerName kibana
 
@@ -284,8 +289,7 @@ $
   ProxyPass / http://localhost:5601/        &lt;span style=&#34;color:#75715e&#34;&gt;# &amp;#34;kibana.yml&amp;#34; 파일 &amp;#34;server.host&amp;#34; 에 설정된 호스트로 할 것&lt;/span&gt;
   ProxyPassReverse / http://localhost:5601/
 &amp;lt;/VirtualHost&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a href=&#34;https://www.elastic.co/guide/en/kibana/master/settings.html&#34; target=&#34;_blank&#34;&gt;&lt;a href=&#34;http://www.elastic.co&#34;&gt;www.elastic.co&lt;/a&gt; kibana 설정 가이드&lt;/a&gt;&lt;/p&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       </description>
     </item>
     
