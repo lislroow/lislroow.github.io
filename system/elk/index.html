@@ -131,7 +131,7 @@ $ curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b40defe6858ebe538c9823109feb15c7.json"
+  data-offline-search-index-json-src="/offline-search-index.6fd93cde89df107e0b69a13cf627a0de.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -158,7 +158,7 @@ $ curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b40defe6858ebe538c9823109feb15c7.json"
+  data-offline-search-index-json-src="/offline-search-index.6fd93cde89df107e0b69a13cf627a0de.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -412,8 +412,8 @@ $
     Require all granted
   &lt;/Proxy&gt;
 
-  ProxyPass / http://develop:5601/        <span style="color:#75715e"># &#34;kibana.yml&#34; 파일 &#34;server.host&#34; 에 설정된 호스트로 할 것</span>
-  ProxyPassReverse / http://develop:5601/
+  ProxyPass / http://localhost:5601/        <span style="color:#75715e"># &#34;kibana.yml&#34; 파일 &#34;server.host&#34; 에 설정된 호스트로 할 것</span>
+  ProxyPassReverse / http://localhost:5601/
 &lt;/VirtualHost&gt;
 </code></pre></div><p><a href="https://www.elastic.co/guide/en/kibana/master/settings.html" target="_blank"><a href="http://www.elastic.co">www.elastic.co</a> kibana 설정 가이드</a></p>
 

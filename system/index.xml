@@ -281,8 +281,8 @@ $
     Require all granted
   &amp;lt;/Proxy&amp;gt;
 
-  ProxyPass / http://develop:5601/        &lt;span style=&#34;color:#75715e&#34;&gt;# &amp;#34;kibana.yml&amp;#34; 파일 &amp;#34;server.host&amp;#34; 에 설정된 호스트로 할 것&lt;/span&gt;
-  ProxyPassReverse / http://develop:5601/
+  ProxyPass / http://localhost:5601/        &lt;span style=&#34;color:#75715e&#34;&gt;# &amp;#34;kibana.yml&amp;#34; 파일 &amp;#34;server.host&amp;#34; 에 설정된 호스트로 할 것&lt;/span&gt;
+  ProxyPassReverse / http://localhost:5601/
 &amp;lt;/VirtualHost&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a href=&#34;https://www.elastic.co/guide/en/kibana/master/settings.html&#34; target=&#34;_blank&#34;&gt;&lt;a href=&#34;http://www.elastic.co&#34;&gt;www.elastic.co&lt;/a&gt; kibana 설정 가이드&lt;/a&gt;&lt;/p&gt;
 
