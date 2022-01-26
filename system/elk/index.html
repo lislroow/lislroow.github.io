@@ -36,7 +36,7 @@ $ curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-
 <meta itemprop="description" content="elasticsearch 설치 artifacts.elastic.co 에서 rpm 다운로드 후 설치
 $ curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.16.3-x86_64.rpm $ rpm -i elasticsearch-7.16.3-x86_64.rpm $ systemctl restart elasticsearch $ curl -L -O https://artifacts.elastic.co/downloads/kibana/kibana-7.16.3-linux-x86_64.tar.gz $ rpm -i elasticsearch-7.16.3-x86_64.rpm 경고: elasticsearch-7.16.3-x86_64.rpm: Header V4 RSA/SHA512 Signature, key ID d88e42b4: NOKEY Creating elasticsearch group... OK Creating elasticsearch user... OK ### NOT starting on installation, please execute the following statements to configure elasticsearch service to start automatically using systemd sudo systemctl daemon-reload sudo systemctl enable elasticsearch.">
 
-<meta itemprop="wordCount" content="294">
+<meta itemprop="wordCount" content="385">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="ELK"/>
 <meta name="twitter:description" content="elasticsearch 설치 artifacts.elastic.co 에서 rpm 다운로드 후 설치
@@ -131,7 +131,7 @@ $ curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.372dedee07f23a08445d41cce0ab181d.json"
+  data-offline-search-index-json-src="/offline-search-index.b40defe6858ebe538c9823109feb15c7.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -158,7 +158,7 @@ $ curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.372dedee07f23a08445d41cce0ab181d.json"
+  data-offline-search-index-json-src="/offline-search-index.b40defe6858ebe538c9823109feb15c7.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -358,6 +358,10 @@ $ mkdir -p /data/PROD/es <span style="color:#f92672">&amp;&amp;</span> chown ela
  <span style="color:#ae81ff">34</span> path.data: /data/PROD/es
  <span style="color:#ae81ff">38</span> <span style="color:#75715e">#path.logs: /var/log/elasticsearch</span>
  <span style="color:#ae81ff">39</span> path.logs: /outlog/PROD/es
+ <span style="color:#ae81ff">58</span> <span style="color:#75715e">#network.host: 192.168.0.1</span>
+ <span style="color:#ae81ff">59</span> network.host: 0.0.0.0
+ <span style="color:#ae81ff">73</span> <span style="color:#75715e">#discovery.seed_hosts: [&#34;host1&#34;, &#34;host2&#34;]</span>
+ <span style="color:#ae81ff">74</span> discovery.seed_hosts: <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;0.0.0.0&#34;</span><span style="color:#f92672">]</span>
 </code></pre></div><h5 id="kibana-설치">kibana 설치</h5>
 <p><code>artifacts.elastic.co</code>에서 tar.gz 다운로드 후 아카이브 해제</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ curl -L -O https://artifacts.elastic.co/downloads/kibana/kibana-7.16.3-linux-x86_64.tar.gz
@@ -386,9 +390,33 @@ $ chown -R tomcat:ap /prod/kibana
 <span style="color:#ae81ff">10</span> directories, <span style="color:#ae81ff">4</span> files
 $
 </code></pre></div><h5 id="kibana-설정">kibana 설정</h5>
-<p>설정 파일 <code>/prod/kibana/kibana/config/kibana.yml</code>에서 데이터/로그 디렉토리 변경</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-</code></pre></div>
+<p>설정 파일 <code>/prod/kibana/kibana/config/kibana.yml</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 기본 설정 파일로 실행 시 `server.publicBaseUrl` 에 대한 경고가 표시 됩니다.</span>
+<span style="color:#75715e"># &#34;server.publicBaseUrl&#34; 는 &#34;server.basePath&#34; 의 경로를 반드시 포함해야 합니다.</span>
+ <span style="color:#ae81ff">24</span> <span style="color:#75715e">#server.publicBaseUrl: &#34;&#34;</span>
+ <span style="color:#ae81ff">25</span> server.publicBaseUrl: <span style="color:#e6db74">&#34;http://localhost:5601&#34;</span>
+</code></pre></div><p>httpd 가상호스트 설정</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">&lt;VirtualHost *:80&gt;
+  ServerName kibana
+
+  ErrorLog <span style="color:#e6db74">&#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/kibana-error.log.%Y-%m-%d 86400 +540%&#34;</span>
+  CustomLog <span style="color:#e6db74">&#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/kibana-access.log.%Y-%m-%d 86400 +540%&#34;</span> combined
+
+  AllowEncodedSlashes On
+  Header set Access-Control-Allow-Origin <span style="color:#e6db74">&#34;*&#34;</span>
+
+  ProxyRequests Off
+  ProxyPreserveHost On
+
+  &lt;Proxy *&gt;
+    Require all granted
+  &lt;/Proxy&gt;
+
+  ProxyPass / http://develop:5601/        <span style="color:#75715e"># &#34;kibana.yml&#34; 파일 &#34;server.host&#34; 에 설정된 호스트로 할 것</span>
+  ProxyPassReverse / http://develop:5601/
+&lt;/VirtualHost&gt;
+</code></pre></div><p><a href="https://www.elastic.co/guide/en/kibana/master/settings.html" target="_blank"><a href="http://www.elastic.co">www.elastic.co</a> kibana 설정 가이드</a></p>
+
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
