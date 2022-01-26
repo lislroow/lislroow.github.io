@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.87.0" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
+
+<title>ELK | dlog</title>
+
+
+  
+  <meta name="description" content="elasticsearch 설치
+artifacts.elastic.co 에서 rpm 다운로드 후 설치
+$ curl -L -O …">
+<meta property="og:title" content="ELK" />
+<meta property="og:description" content="elasticsearch 설치 artifacts.elastic.co 에서 rpm 다운로드 후 설치
+$ curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.16.3-x86_64.rpm $ rpm -i elasticsearch-7.16.3-x86_64.rpm $ systemctl restart elasticsearch $ curl -L -O https://artifacts.elastic.co/downloads/kibana/kibana-7.16.3-linux-x86_64.tar.gz $ rpm -i elasticsearch-7.16.3-x86_64.rpm 경고: elasticsearch-7.16.3-x86_64.rpm: Header V4 RSA/SHA512 Signature, key ID d88e42b4: NOKEY Creating elasticsearch group... OK Creating elasticsearch user... OK ### NOT starting on installation, please execute the following statements to configure elasticsearch service to start automatically using systemd sudo systemctl daemon-reload sudo systemctl enable elasticsearch." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/system/elk/" /><meta property="article:section" content="system" />
+
+
+
+<meta itemprop="name" content="ELK">
+<meta itemprop="description" content="elasticsearch 설치 artifacts.elastic.co 에서 rpm 다운로드 후 설치
+$ curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.16.3-x86_64.rpm $ rpm -i elasticsearch-7.16.3-x86_64.rpm $ systemctl restart elasticsearch $ curl -L -O https://artifacts.elastic.co/downloads/kibana/kibana-7.16.3-linux-x86_64.tar.gz $ rpm -i elasticsearch-7.16.3-x86_64.rpm 경고: elasticsearch-7.16.3-x86_64.rpm: Header V4 RSA/SHA512 Signature, key ID d88e42b4: NOKEY Creating elasticsearch group... OK Creating elasticsearch user... OK ### NOT starting on installation, please execute the following statements to configure elasticsearch service to start automatically using systemd sudo systemctl daemon-reload sudo systemctl enable elasticsearch.">
+
+<meta itemprop="wordCount" content="294">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ELK"/>
+<meta name="twitter:description" content="elasticsearch 설치 artifacts.elastic.co 에서 rpm 다운로드 후 설치
+$ curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.16.3-x86_64.rpm $ rpm -i elasticsearch-7.16.3-x86_64.rpm $ systemctl restart elasticsearch $ curl -L -O https://artifacts.elastic.co/downloads/kibana/kibana-7.16.3-linux-x86_64.tar.gz $ rpm -i elasticsearch-7.16.3-x86_64.rpm 경고: elasticsearch-7.16.3-x86_64.rpm: Header V4 RSA/SHA512 Signature, key ID d88e42b4: NOKEY Creating elasticsearch group... OK Creating elasticsearch user... OK ### NOT starting on installation, please execute the following statements to configure elasticsearch service to start automatically using systemd sudo systemctl daemon-reload sudo systemctl enable elasticsearch."/>
+
+
+
+
+<link rel="preload" href="/scss/main.min.1f861d065398c88219fc317598d260b310e1d29b4fded8c05305f546ecc0046e.css" as="style">
+<link href="/scss/main.min.1f861d065398c88219fc317598d260b310e1d29b4fded8c05305f546ecc0046e.css" rel="stylesheet" integrity="">
+
+
+<script
+  src="https://code.jquery.com/jquery-3.5.1.min.js"
+  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous"></script>
+
+<script
+  src="https://unpkg.com/lunr@2.3.8/lunr.min.js"
+  integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
+  crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+  </head>
+  <body class="td-page">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="/">
+		<span class="navbar-logo"></span><span class="text-uppercase font-weight-bold">dlog</span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				
+				
+				<a class="nav-link active" href="/system/" ><i class='fas fa-book'></i><span class="active">system</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/localenv/" ><i class='fas fa-book'></i><span>localenv</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/develop/" ><i class='fas fa-book'></i><span>develop</span></a>
+			</li>
+			
+			
+			
+		</ul>
+	</div>
+	<div class="navbar-nav d-none d-lg-block">
+
+
+
+<input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Search this site…"
+  aria-label="Search this site…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="/offline-search-index.d0695faa46d0d7124cb8dd415c2813f6.json"
+  data-offline-search-base-href="/"
+  data-offline-search-max-results="10"
+>
+
+</div>
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+
+
+
+<input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Search this site…"
+  aria-label="Search this site…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="/offline-search-index.d0695faa46d0d7124cb8dd415c2813f6.json"
+  data-offline-search-base-href="/"
+  data-offline-search-max-results="10"
+>
+
+
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  <nav class="collapse td-sidebar-nav" id="td-section-nav">
+    <ul class="td-sidebar-nav__section pr-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-system-li">
+  
+  <a href="/system/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-system"><span class="">system</span></a>
+  <ul class="ul-1">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemcentos8-li">
+  
+  <a href="/system/centos8/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemcentos8"><span class="">centos8</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-systemelk-li">
+  
+  <a href="/system/elk/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-systemelk"><span class="td-sidebar-nav-active-item">ELK</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemhttpd-li">
+  
+  <a href="/system/httpd/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemhttpd"><span class="">httpd</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemjenkins-li">
+  
+  <a href="/system/jenkins/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemjenkins"><span class="">jenkins</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemlinux-li">
+  
+  <a href="/system/linux/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemlinux"><span class="">linux</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemopenssh-li">
+  
+  <a href="/system/openssh/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemopenssh"><span class="">openssh</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemoracle12c-li">
+  
+  <a href="/system/oracle12c/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemoracle12c"><span class="">oracle12c</span></a>
+</li>
+  </ul>
+</li>
+    </ul>
+  </nav>
+</div>
+
+          </aside>
+          <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+            
+  
+  
+  
+  
+  
+  
+  <div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
+  
+  
+  </div>
+
+
+            
+
+
+<div class="td-toc"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li>
+              <ul>
+                <li><a href="#elasticsearch-설치">elasticsearch 설치</a></li>
+                <li><a href="#elasticsearch-설정">elasticsearch 설정</a></li>
+                <li><a href="#kibana-설치">kibana 설치</a></li>
+                <li><a href="#kibana-설정">kibana 설정</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+
+
+
+            
+
+	
+		
+
+
+
+  
+  
+
+	
+		
+
+
+
+  
+  
+
+	
+
+          </aside>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="d-none d-md-block d-print-none">
+	<ol class="breadcrumb spb-1">
+		
+
+
+
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="/system/">system</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item active" aria-current="page">
+	<a href="/system/elk/">ELK</a>
+</li>
+
+	</ol>
+</nav	>
+
+            
+<div class="td-content">
+	<h1>ELK</h1>
+	
+	<header class="article-meta">
+		
+		
+			
+				
+
+
+			
+				
+
+
+			
+		
+		
+	</header>    
+	<h5 id="elasticsearch-설치">elasticsearch 설치</h5>
+<p><code>artifacts.elastic.co</code> 에서 rpm 다운로드 후 설치</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.16.3-x86_64.rpm
+$ rpm -i elasticsearch-7.16.3-x86_64.rpm
+$ systemctl restart elasticsearch
+$ curl -L -O https://artifacts.elastic.co/downloads/kibana/kibana-7.16.3-linux-x86_64.tar.gz
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ rpm -i elasticsearch-7.16.3-x86_64.rpm
+경고: elasticsearch-7.16.3-x86_64.rpm: Header V4 RSA/SHA512 Signature, key ID d88e42b4: NOKEY
+Creating elasticsearch group... OK
+Creating elasticsearch user... OK
+<span style="color:#75715e">### NOT starting on installation, please execute the following statements to configure elasticsearch service to start automatically using systemd</span>
+ sudo systemctl daemon-reload
+ sudo systemctl enable elasticsearch.service
+<span style="color:#75715e">### You can start elasticsearch service by executing</span>
+ sudo systemctl start elasticsearch.service
+warning: usage of JAVA_HOME is deprecated, use ES_JAVA_HOME
+Created elasticsearch keystore in /etc/elasticsearch/elasticsearch.keystore
+<span style="color:#f92672">[</span>/usr/lib/tmpfiles.d/elasticsearch.conf:1<span style="color:#f92672">]</span> Line references path below legacy directory /var/run/, updating /var/run/elasticsearch → /run/elasticsearch; please update the tmpfiles.d/ drop-in file accordingly.
+$ curl http://127.0.0.1:9200
+<span style="color:#f92672">{</span>
+  <span style="color:#e6db74">&#34;name&#34;</span> : <span style="color:#e6db74">&#34;centos8&#34;</span>,
+  <span style="color:#e6db74">&#34;cluster_name&#34;</span> : <span style="color:#e6db74">&#34;elasticsearch&#34;</span>,
+  <span style="color:#e6db74">&#34;cluster_uuid&#34;</span> : <span style="color:#e6db74">&#34;_e3hsZBwTtS2aAyJvCfqbA&#34;</span>,
+  <span style="color:#e6db74">&#34;version&#34;</span> : <span style="color:#f92672">{</span>
+    <span style="color:#e6db74">&#34;number&#34;</span> : <span style="color:#e6db74">&#34;7.16.3&#34;</span>,
+    <span style="color:#e6db74">&#34;build_flavor&#34;</span> : <span style="color:#e6db74">&#34;default&#34;</span>,
+    <span style="color:#e6db74">&#34;build_type&#34;</span> : <span style="color:#e6db74">&#34;rpm&#34;</span>,
+    <span style="color:#e6db74">&#34;build_hash&#34;</span> : <span style="color:#e6db74">&#34;4e6e4eab2297e949ec994e688dad46290d018022&#34;</span>,
+    <span style="color:#e6db74">&#34;build_date&#34;</span> : <span style="color:#e6db74">&#34;2022-01-06T23:43:02.825887787Z&#34;</span>,
+    <span style="color:#e6db74">&#34;build_snapshot&#34;</span> : false,
+    <span style="color:#e6db74">&#34;lucene_version&#34;</span> : <span style="color:#e6db74">&#34;8.10.1&#34;</span>,
+    <span style="color:#e6db74">&#34;minimum_wire_compatibility_version&#34;</span> : <span style="color:#e6db74">&#34;6.8.0&#34;</span>,
+    <span style="color:#e6db74">&#34;minimum_index_compatibility_version&#34;</span> : <span style="color:#e6db74">&#34;6.0.0-beta1&#34;</span>
+  <span style="color:#f92672">}</span>,
+  <span style="color:#e6db74">&#34;tagline&#34;</span> : <span style="color:#e6db74">&#34;You Know, for Search&#34;</span>
+<span style="color:#f92672">}</span>
+$
+</code></pre></div><h5 id="elasticsearch-설정">elasticsearch 설정</h5>
+<p>설정 파일 <code>/etc/elasticsearch/elasticsearch.yml</code>에서 데이터/로그 디렉토리 변경</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">##</span>
+$ mkdir -p /data/PROD/es <span style="color:#f92672">&amp;&amp;</span> chown elasticsearch:elasticsearch /data/PROD/es
+$ mkdir -p /data/PROD/es <span style="color:#f92672">&amp;&amp;</span> chown elasticsearch:elasticsearch /outlog/PROD/es
+
+<span style="color:#75715e">## </span>
+ <span style="color:#ae81ff">33</span> <span style="color:#75715e">#path.data: /var/lib/elasticsearch</span>
+ <span style="color:#ae81ff">34</span> path.data: /data/PROD/es
+ <span style="color:#ae81ff">38</span> <span style="color:#75715e">#path.logs: /var/log/elasticsearch</span>
+ <span style="color:#ae81ff">39</span> path.logs: /outlog/PROD/es
+</code></pre></div><h5 id="kibana-설치">kibana 설치</h5>
+<p><code>artifacts.elastic.co</code>에서 tar.gz 다운로드 후 아카이브 해제</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ curl -L -O https://artifacts.elastic.co/downloads/kibana/kibana-7.16.3-linux-x86_64.tar.gz
+$ tar zxvf kibana-7.16.3-linux-x86_64.tar.gz
+$ mkdir -p /prod/kibana
+$ mv kibana-7.16.3-linux-x86_64 /prod/kibana
+$ cd /prod/kibana <span style="color:#f92672">&amp;&amp;</span> ln -s kibana-7.16.3-linux-x86_64 kibana
+$ chown -R tomcat:ap /prod/kibana
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ tree -L <span style="color:#ae81ff">2</span>
+.
+├── kibana -&gt; kibana-7.16.3-linux-x86_64/
+└── kibana-7.16.3-linux-x86_64
+    ├── LICENSE.txt
+    ├── NOTICE.txt
+    ├── README.txt
+    ├── bin
+    ├── config
+    ├── data
+    ├── node
+    ├── node_modules
+    ├── package.json
+    ├── plugins
+    ├── src
+    └── x-pack
+
+<span style="color:#ae81ff">10</span> directories, <span style="color:#ae81ff">4</span> files
+$
+</code></pre></div><h5 id="kibana-설정">kibana 설정</h5>
+<p>설정 파일 <code>/prod/kibana/kibana/config/kibana.yml</code>에서 데이터/로그 디렉토리 변경</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
+</code></pre></div>
+	
+	
+	<div class="text-muted mt-5 pt-3 border-top">
+
+</div>
+
+</div>
+
+
+          </main>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@8.11.2/dist/mermaid.min.js" integrity="sha384-m8Pdaep6Qk8sW3J6XhPOiwUww3maU9HxZTLvEfSEB4e1UVvTdHyfJsYmEfYqvwLC" crossorigin="anonymous"></script>
+
+
+
+<style>
+.markmap > svg {
+  width: 100%;
+  height: 300px;
+}
+</style>
+<script>
+window.markmap = {
+  autoLoader: { manual: true },
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
+
+
+<script src='/js/tabpane-persist.js'></script>
+
+
+
+<script src='/js/deflate.js'></script>
+
+
+ 
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.css" integrity="sha384-Cqd8ihRLum0CCg8rz0hYKPoLZ3uw+gES2rXQXycqnL5pgVQIflxAUDS7ZSjITLb5" crossorigin="anonymous">
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.js" integrity="sha384-1Or6BdeNQb0ezrmtGeqQHFpppNd7a/gw29xeiSikBbsb44xu3uAo8c7FwbF5jhbd" crossorigin="anonymous"></script>
+ 
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/mhchem.min.js" integrity="sha384-LIgAiYlGSAdpNC9+YDjDPF6JeS/RRIumtNo0CmyQERZ/+g0h9MbuYQwf/5pQ4Y4M"  crossorigin="anonymous"></script>
+
+
+<script defer src='https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/auto-render.min.js' integrity='sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl' crossorigin='anonymous' onload='renderMathInElement(document.body, null);'></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.min.c1b8f3c373b85f900699a7ea81c2038ebbbebcac1a5a4b6e5ef96c24c31790d6.js" integrity="sha256-wbjzw3O4X5AGmafqgcIDjru&#43;vKwaWktuXvlsJMMXkNY=" crossorigin="anonymous"></script>
+
+
+
+
+  </body>
+</html>

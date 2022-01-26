@@ -12,6 +12,8 @@
   </url><url>
     <loc>/develop/</loc>
   </url><url>
+    <loc>/system/elk/</loc>
+  </url><url>
     <loc>/system/httpd/</loc>
   </url><url>
     <loc>/system/jenkins/</loc>

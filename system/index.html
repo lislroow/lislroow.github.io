@@ -22,9 +22,12 @@
 
 
   
-  <meta name="description" content="(jenkins) Role-based Authorization Strategy 플러그인
-플러그인 설치 후 Jenkins 관리 &gt; Configure Global Security 메뉴로 이동합니다.
-Authorization 영역에 Role-Based Strategy  …">
+  <meta name="description" content="(centos) 디스크 size 확장
+lsblk 명령으로 디스크 size 를 확인합니다.
+(디스크 sda 가 70G 로 되어있습니다.)
+$ lsblk 
+NAME                MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda …">
 <meta property="og:title" content="system" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -124,7 +127,7 @@ Authorization 영역에 Role-Based Strategy  …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.10b766adba54be6ed60268c11e9300ba.json"
+  data-offline-search-index-json-src="/offline-search-index.d0695faa46d0d7124cb8dd415c2813f6.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -151,7 +154,7 @@ Authorization 영역에 Role-Based Strategy  …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.10b766adba54be6ed60268c11e9300ba.json"
+  data-offline-search-index-json-src="/offline-search-index.d0695faa46d0d7124cb8dd415c2813f6.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -169,6 +172,9 @@ Authorization 영역에 Role-Based Strategy  …">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemcentos8-li">
   
   <a href="/system/centos8/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemcentos8"><span class="">centos8</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemelk-li">
+  
+  <a href="/system/elk/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemelk"><span class="">ELK</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemhttpd-li">
   
   <a href="/system/httpd/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemhttpd"><span class="">httpd</span></a>
@@ -215,6 +221,7 @@ Authorization 영역에 Role-Based Strategy  …">
       <ul>
         <li>
           <ul>
+            <li><a href="#centos-디스크-size-확장">(centos) 디스크 size 확장</a></li>
             <li><a href="#jenkins-role-based-authorization-strategy-플러그인">(jenkins) Role-based Authorization Strategy 플러그인</a></li>
             <li><a href="#jenkins-ansicolor-플러그인">(jenkins) AnsiColor 플러그인</a></li>
             <li><a href="#ansible">(ansible)</a></li>
@@ -316,7 +323,287 @@ Authorization 영역에 Role-Based Strategy  …">
 		
 		
 	</header>
-	<h4 id="jenkins-role-based-authorization-strategy-플러그인">(jenkins) Role-based Authorization Strategy 플러그인</h4>
+	<h4 id="centos-디스크-size-확장">(centos) 디스크 size 확장</h4>
+<p><code>lsblk</code> 명령으로 디스크 size 를 확인합니다.</p>
+<p>(디스크 sda 가 70G 로 되어있습니다.)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ lsblk 
+NAME                MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda                   8:0    <span style="color:#ae81ff">0</span>   70G  <span style="color:#ae81ff">0</span> disk 
+├─sda1                8:1    <span style="color:#ae81ff">0</span>    1G  <span style="color:#ae81ff">0</span> part /boot
+└─sda2                8:2    <span style="color:#ae81ff">0</span>   69G  <span style="color:#ae81ff">0</span> part 
+  ├─cl_centos8-root 253:0    <span style="color:#ae81ff">0</span> 56.7G  <span style="color:#ae81ff">0</span> lvm  /
+  ├─cl_centos8-swap 253:1    <span style="color:#ae81ff">0</span>    7G  <span style="color:#ae81ff">0</span> lvm  <span style="color:#f92672">[</span>SWAP<span style="color:#f92672">]</span>
+  └─cl_centos8-home 253:2    <span style="color:#ae81ff">0</span>  5.3G  <span style="color:#ae81ff">0</span> lvm  /home
+sr0                  11:0    <span style="color:#ae81ff">1</span> 1024M  <span style="color:#ae81ff">0</span> rom  
+$
+</code></pre></div><p>guest-os 를 shutdown 하고, vmware 에서 디스크 capacity 를 확장합니다.</p>
+<p>(디스크 sda 를 80G 확장합니다.)</p>
+<img src="/images/system/20220126-vmware_expand-disk-capacity.png" width="600">
+<br>
+<br>
+<p>guest-os 를 startup 하고 lsblk 로 확장된 크기를 확인합니다.</p>
+<p>(디스크 sda 가 80G 로 확장된 것을 확인할 수 있습니다.)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ lsblk
+NAME                MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda                   8:0    <span style="color:#ae81ff">0</span>   80G  <span style="color:#ae81ff">0</span> disk 
+├─sda1                8:1    <span style="color:#ae81ff">0</span>    1G  <span style="color:#ae81ff">0</span> part /boot
+└─sda2                8:2    <span style="color:#ae81ff">0</span>   69G  <span style="color:#ae81ff">0</span> part 
+  ├─cl_centos8-root 253:0    <span style="color:#ae81ff">0</span> 56.7G  <span style="color:#ae81ff">0</span> lvm  /
+  ├─cl_centos8-swap 253:1    <span style="color:#ae81ff">0</span>    7G  <span style="color:#ae81ff">0</span> lvm  <span style="color:#f92672">[</span>SWAP<span style="color:#f92672">]</span>
+  └─cl_centos8-home 253:2    <span style="color:#ae81ff">0</span>  5.3G  <span style="color:#ae81ff">0</span> lvm  /home
+sr0                  11:0    <span style="color:#ae81ff">1</span> 1024M  <span style="color:#ae81ff">0</span> rom  
+$
+</code></pre></div><p>sda2 를 69G 에서 79G 로 확장합니다. 확장에 사용될 명령어는 <code>growpart</code> 입니다.</p>
+<p>패키지가 설치되어 있지 않으면 yum 으로 설치를 합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ yum install cloud-utils-growpart
+$ which growpart
+/usr/bin/growpart
+</code></pre></div><p>growpart 명령으로 피지컬 파티션<code>sda2</code>의 size를 확장합니다.</p>
+<p>확장 전에 피지컬 파티션을 상태를 확인합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ vgdisplay 
+  --- Volume group ---
+  VG Name               cl_centos8
+  System ID             
+  Format                lvm2
+  Metadata Areas        <span style="color:#ae81ff">1</span>
+  Metadata Sequence No  <span style="color:#ae81ff">4</span>
+  VG Access             read/write
+  VG Status             resizable
+  MAX LV                <span style="color:#ae81ff">0</span>
+  Cur LV                <span style="color:#ae81ff">3</span>
+  Open LV               <span style="color:#ae81ff">3</span>
+  Max PV                <span style="color:#ae81ff">0</span>
+  Cur PV                <span style="color:#ae81ff">1</span>
+  Act PV                <span style="color:#ae81ff">1</span>
+  VG Size               &lt;69.00 GiB
+  PE Size               4.00 MiB
+  Total PE              <span style="color:#ae81ff">17663</span>
+  Alloc PE / Size       <span style="color:#ae81ff">17663</span> / &lt;69.00 GiB
+  Free  PE / Size       <span style="color:#ae81ff">0</span> / <span style="color:#ae81ff">0</span>   
+  VG UUID               tJ9xgp-NhNP-7kPQ-JwKe-y1TQ-8jkP-1U5ox4
+   
+$
+</code></pre></div><p>growpart 명령으로 size 를 확장합니다.</p>
+<p>확장 후 <code>lsblk</code>, <code>vgdisplay</code> 로 변경된 사항을 확인합니다.</p>
+<p>(lsblk 에서 sda2 의 size가 +10G 된 것을 볼 수 있습니다.)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ growpart /dev/sda <span style="color:#ae81ff">2</span>
+CHANGED: partition<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span> start<span style="color:#f92672">=</span><span style="color:#ae81ff">2099200</span> old: size<span style="color:#f92672">=</span><span style="color:#ae81ff">144701440</span> end<span style="color:#f92672">=</span><span style="color:#ae81ff">146800640</span> new: size<span style="color:#f92672">=</span><span style="color:#ae81ff">165672927</span> end<span style="color:#f92672">=</span><span style="color:#ae81ff">167772127</span>
+$ lsblk 
+NAME                MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda                   8:0    <span style="color:#ae81ff">0</span>   80G  <span style="color:#ae81ff">0</span> disk 
+├─sda1                8:1    <span style="color:#ae81ff">0</span>    1G  <span style="color:#ae81ff">0</span> part /boot
+└─sda2                8:2    <span style="color:#ae81ff">0</span>   79G  <span style="color:#ae81ff">0</span> part 
+  ├─cl_centos8-root 253:0    <span style="color:#ae81ff">0</span> 56.7G  <span style="color:#ae81ff">0</span> lvm  /
+  ├─cl_centos8-swap 253:1    <span style="color:#ae81ff">0</span>    7G  <span style="color:#ae81ff">0</span> lvm  <span style="color:#f92672">[</span>SWAP<span style="color:#f92672">]</span>
+  └─cl_centos8-home 253:2    <span style="color:#ae81ff">0</span>  5.3G  <span style="color:#ae81ff">0</span> lvm  /home
+sr0                  11:0    <span style="color:#ae81ff">1</span> 1024M  <span style="color:#ae81ff">0</span> rom  
+$ 
+</code></pre></div><p>피지컬 파티션<code>sda2</code> 에 추가된 용량을 할당해야 합니다. (명령어 <code>pvresize /dev/sda2</code>)</p>
+<p>할당 후 vgdisplay 에서 <code>Free PE / Size</code> 에서 변경된 것을 확인할 수 있습니다.</p>
+<p>(<code>Free  PE / Size       0 / 0   </code> &gt; <code>Free  PE / Size       2560 / 10.00 GiB</code>)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ vgdisplay 
+  --- Volume group ---
+  VG Name               cl_centos8
+  System ID             
+  Format                lvm2
+  Metadata Areas        <span style="color:#ae81ff">1</span>
+  Metadata Sequence No  <span style="color:#ae81ff">4</span>
+  VG Access             read/write
+  VG Status             resizable
+  MAX LV                <span style="color:#ae81ff">0</span>
+  Cur LV                <span style="color:#ae81ff">3</span>
+  Open LV               <span style="color:#ae81ff">3</span>
+  Max PV                <span style="color:#ae81ff">0</span>
+  Cur PV                <span style="color:#ae81ff">1</span>
+  Act PV                <span style="color:#ae81ff">1</span>
+  VG Size               &lt;69.00 GiB
+  PE Size               4.00 MiB
+  Total PE              <span style="color:#ae81ff">17663</span>
+  Alloc PE / Size       <span style="color:#ae81ff">17663</span> / &lt;69.00 GiB
+  Free  PE / Size       <span style="color:#ae81ff">0</span> / <span style="color:#ae81ff">0</span>   
+  VG UUID               tJ9xgp-NhNP-7kPQ-JwKe-y1TQ-8jkP-1U5ox4
+
+$ pvresize /dev/sda2
+  Physical volume <span style="color:#e6db74">&#34;/dev/sda2&#34;</span> changed
+  <span style="color:#ae81ff">1</span> physical volume<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span> resized or updated / <span style="color:#ae81ff">0</span> physical volume<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span> not resized
+$ 
+$ vgdisplay
+  --- Volume group ---
+  VG Name               cl_centos8
+  System ID             
+  Format                lvm2
+  Metadata Areas        <span style="color:#ae81ff">1</span>
+  Metadata Sequence No  <span style="color:#ae81ff">5</span>
+  VG Access             read/write
+  VG Status             resizable
+  MAX LV                <span style="color:#ae81ff">0</span>
+  Cur LV                <span style="color:#ae81ff">3</span>
+  Open LV               <span style="color:#ae81ff">3</span>
+  Max PV                <span style="color:#ae81ff">0</span>
+  Cur PV                <span style="color:#ae81ff">1</span>
+  Act PV                <span style="color:#ae81ff">1</span>
+  VG Size               &lt;79.00 GiB
+  PE Size               4.00 MiB
+  Total PE              <span style="color:#ae81ff">20223</span>
+  Alloc PE / Size       <span style="color:#ae81ff">17663</span> / &lt;69.00 GiB
+  Free  PE / Size       <span style="color:#ae81ff">2560</span> / 10.00 GiB
+  VG UUID               tJ9xgp-NhNP-7kPQ-JwKe-y1TQ-8jkP-1U5ox4
+
+$ 
+&lt;br&gt;
+</code></pre></div><p>로지컬 파티션<code>cl_centos8-root</code>을 확장해야 합니다.</p>
+<p>로지컬 파티션을 확인부터 합니다. (명령어 <code>lvdisplay</code> 혹은 <code>df</code>로 확인할 수 있습니다.)</p>
+<p>(확장할 로지컬 파티션은 <code>/dev/cl_centos8/root</code> 입니다.)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ df -h
+Filesystem                   Size  Used Avail Use% Mounted on
+devtmpfs                     3.8G     <span style="color:#ae81ff">0</span>  3.8G   0% /dev
+tmpfs                        3.8G     <span style="color:#ae81ff">0</span>  3.8G   0% /dev/shm
+tmpfs                        3.8G  9.5M  3.8G   1% /run
+tmpfs                        3.8G     <span style="color:#ae81ff">0</span>  3.8G   0% /sys/fs/cgroup
+/dev/mapper/cl_centos8-root   57G   43G   15G  75% /
+/dev/sda1                   1014M  378M  637M  38% /boot
+/dev/mapper/cl_centos8-home  5.4G  372M  5.0G   7% /home
+//172.28.200.1/share         345G  234G  112G  68% /share
+tmpfs                        775M     <span style="color:#ae81ff">0</span>  775M   0% /run/user/0
+$ 
+$ lvdisplay 
+  --- Logical volume ---
+  LV Path                /dev/cl_centos8/root
+  LV Name                root
+  VG Name                cl_centos8
+  LV UUID                DzRXf6-roJe-0He9-MBow-ccu0-bWjk-qPxfZS
+  LV Write Access        read/write
+  LV Creation host, time centos8, 2021-11-28 12:38:35 +0900
+  LV Status              available
+  <span style="color:#75715e"># open                 1</span>
+  LV Size                &lt;56.66 GiB
+  Current LE             <span style="color:#ae81ff">14504</span>
+  Segments               <span style="color:#ae81ff">1</span>
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     <span style="color:#ae81ff">8192</span>
+  Block device           253:0
+   
+  --- Logical volume ---
+  LV Path                /dev/cl_centos8/home
+  LV Name                home
+  VG Name                cl_centos8
+  LV UUID                9dT8j9-MTd1-dlO2-ceHH-vnpS-KtGJ-je2ReA
+  LV Write Access        read/write
+  LV Creation host, time centos8, 2021-11-28 12:38:35 +0900
+  LV Status              available
+  <span style="color:#75715e"># open                 1</span>
+  LV Size                &lt;5.34 GiB
+  Current LE             <span style="color:#ae81ff">1367</span>
+  Segments               <span style="color:#ae81ff">1</span>
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     <span style="color:#ae81ff">8192</span>
+  Block device           253:2
+   
+  --- Logical volume ---
+  LV Path                /dev/cl_centos8/swap
+  LV Name                swap
+  VG Name                cl_centos8
+  LV UUID                VSq1ve-Dn73-RLjq-q2GP-wa0r-De07-CO7edF
+  LV Write Access        read/write
+  LV Creation host, time centos8, 2021-11-28 12:38:36 +0900
+  LV Status              available
+  <span style="color:#75715e"># open                 2</span>
+  LV Size                7.00 GiB
+  Current LE             <span style="color:#ae81ff">1792</span>
+  Segments               <span style="color:#ae81ff">1</span>
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     <span style="color:#ae81ff">8192</span>
+  Block device           253:1
+   
+$
+</code></pre></div><p>로지컬 파티션의 size 확장 명령어 <code>lvextend</code> 를 사용하여 확장합니다.</p>
+<p>로지컬 파티션명은 lvdisplay 에 표시되는 <code>/dev/cl_centos8/root</code>를 사용해도되고, df 에 표시되는 <code>/dev/mapper/cl_centos8-root</code>를 사용해도 됩니다.</p>
+<p>(df 에서 <code>/dev/mapper/cl_centos8-root</code> 의 size 가 +10G 된 것을 확인할 수 있고, lvdisplay에서도 <code>LV Size                &lt;56.66 GiB</code> &gt; <code>LV Size                &lt;66.66 GiB</code> 로 변경된 것을 확인할 수 있습니다.)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ lvextend -r -l +100%FREE /dev/cl_centos8/root
+  Size of logical volume cl_centos8/root changed from &lt;56.66 GiB <span style="color:#f92672">(</span><span style="color:#ae81ff">14504</span> extents<span style="color:#f92672">)</span> to &lt;66.66 GiB <span style="color:#f92672">(</span><span style="color:#ae81ff">17064</span> extents<span style="color:#f92672">)</span>.
+  Logical volume cl_centos8/root successfully resized.
+meta-data<span style="color:#f92672">=</span>/dev/mapper/cl_centos8-root isize<span style="color:#f92672">=</span><span style="color:#ae81ff">512</span>    agcount<span style="color:#f92672">=</span>4, agsize<span style="color:#f92672">=</span><span style="color:#ae81ff">3713024</span> blks
+         <span style="color:#f92672">=</span>                       sectsz<span style="color:#f92672">=</span><span style="color:#ae81ff">512</span>   attr<span style="color:#f92672">=</span>2, projid32bit<span style="color:#f92672">=</span>1
+         <span style="color:#f92672">=</span>                       crc<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>        finobt<span style="color:#f92672">=</span>1, sparse<span style="color:#f92672">=</span>1, rmapbt<span style="color:#f92672">=</span>0
+         <span style="color:#f92672">=</span>                       reflink<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+data     <span style="color:#f92672">=</span>                       bsize<span style="color:#f92672">=</span><span style="color:#ae81ff">4096</span>   blocks<span style="color:#f92672">=</span>14852096, imaxpct<span style="color:#f92672">=</span>25
+         <span style="color:#f92672">=</span>                       sunit<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>      swidth<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> blks
+naming   <span style="color:#f92672">=</span>version <span style="color:#ae81ff">2</span>              bsize<span style="color:#f92672">=</span><span style="color:#ae81ff">4096</span>   ascii-ci<span style="color:#f92672">=</span>0, ftype<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+log      <span style="color:#f92672">=</span>internal log           bsize<span style="color:#f92672">=</span><span style="color:#ae81ff">4096</span>   blocks<span style="color:#f92672">=</span>7252, version<span style="color:#f92672">=</span>2
+         <span style="color:#f92672">=</span>                       sectsz<span style="color:#f92672">=</span><span style="color:#ae81ff">512</span>   sunit<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> blks, lazy-count<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+realtime <span style="color:#f92672">=</span>none                   extsz<span style="color:#f92672">=</span><span style="color:#ae81ff">4096</span>   blocks<span style="color:#f92672">=</span>0, rtextents<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+data blocks changed from <span style="color:#ae81ff">14852096</span> to <span style="color:#ae81ff">17473536</span>
+$ 
+$ df -h
+Filesystem                   Size  Used Avail Use% Mounted on
+devtmpfs                     3.8G     <span style="color:#ae81ff">0</span>  3.8G   0% /dev
+tmpfs                        3.8G     <span style="color:#ae81ff">0</span>  3.8G   0% /dev/shm
+tmpfs                        3.8G  9.5M  3.8G   1% /run
+tmpfs                        3.8G     <span style="color:#ae81ff">0</span>  3.8G   0% /sys/fs/cgroup
+/dev/mapper/cl_centos8-root   67G   43G   25G  64% /
+/dev/sda1                   1014M  378M  637M  38% /boot
+/dev/mapper/cl_centos8-home  5.4G  372M  5.0G   7% /home
+//172.28.200.1/share         345G  234G  112G  68% /share
+tmpfs                        775M     <span style="color:#ae81ff">0</span>  775M   0% /run/user/0
+$ 
+$ lvdisplay 
+  --- Logical volume ---
+  LV Path                /dev/cl_centos8/root
+  LV Name                root
+  VG Name                cl_centos8
+  LV UUID                DzRXf6-roJe-0He9-MBow-ccu0-bWjk-qPxfZS
+  LV Write Access        read/write
+  LV Creation host, time centos8, 2021-11-28 12:38:35 +0900
+  LV Status              available
+  <span style="color:#75715e"># open                 1</span>
+  LV Size                &lt;66.66 GiB
+  Current LE             <span style="color:#ae81ff">17064</span>
+  Segments               <span style="color:#ae81ff">2</span>
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     <span style="color:#ae81ff">8192</span>
+  Block device           253:0
+   
+  --- Logical volume ---
+  LV Path                /dev/cl_centos8/home
+  LV Name                home
+  VG Name                cl_centos8
+  LV UUID                9dT8j9-MTd1-dlO2-ceHH-vnpS-KtGJ-je2ReA
+  LV Write Access        read/write
+  LV Creation host, time centos8, 2021-11-28 12:38:35 +0900
+  LV Status              available
+  <span style="color:#75715e"># open                 1</span>
+  LV Size                &lt;5.34 GiB
+  Current LE             <span style="color:#ae81ff">1367</span>
+  Segments               <span style="color:#ae81ff">1</span>
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     <span style="color:#ae81ff">8192</span>
+  Block device           253:2
+   
+  --- Logical volume ---
+  LV Path                /dev/cl_centos8/swap
+  LV Name                swap
+  VG Name                cl_centos8
+  LV UUID                VSq1ve-Dn73-RLjq-q2GP-wa0r-De07-CO7edF
+  LV Write Access        read/write
+  LV Creation host, time centos8, 2021-11-28 12:38:36 +0900
+  LV Status              available
+  <span style="color:#75715e"># open                 2</span>
+  LV Size                7.00 GiB
+  Current LE             <span style="color:#ae81ff">1792</span>
+  Segments               <span style="color:#ae81ff">1</span>
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     <span style="color:#ae81ff">8192</span>
+  Block device           253:1
+   
+$
+</code></pre></div><br>
+<h4 id="jenkins-role-based-authorization-strategy-플러그인">(jenkins) Role-based Authorization Strategy 플러그인</h4>
 <p>플러그인 설치 후 <code>Jenkins 관리</code> &gt; <code>Configure Global Security</code> 메뉴로 이동합니다.</p>
 <p><code>Authorization</code> 영역에 <code>Role-Based Strategy</code> 를 체크합니다.</p>
 <p><a href="/images/system/20220117-jenkins_role-based-authorization-strategy_plugin.png" target="_blank">새 창 보기</a></p>

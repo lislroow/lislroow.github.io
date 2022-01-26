@@ -171,6 +171,97 @@
     </item>
     
     <item>
+      <title>System: ELK</title>
+      <link>/system/elk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/system/elk/</guid>
+      <description>
+        
+        
+        &lt;h5 id=&#34;elasticsearch-설치&#34;&gt;elasticsearch 설치&lt;/h5&gt;
+&lt;p&gt;&lt;code&gt;artifacts.elastic.co&lt;/code&gt; 에서 rpm 다운로드 후 설치&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;$ curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.16.3-x86_64.rpm
+$ rpm -i elasticsearch-7.16.3-x86_64.rpm
+$ systemctl restart elasticsearch
+$ curl -L -O https://artifacts.elastic.co/downloads/kibana/kibana-7.16.3-linux-x86_64.tar.gz
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;$ rpm -i elasticsearch-7.16.3-x86_64.rpm
+경고: elasticsearch-7.16.3-x86_64.rpm: Header V4 RSA/SHA512 Signature, key ID d88e42b4: NOKEY
+Creating elasticsearch group... OK
+Creating elasticsearch user... OK
+&lt;span style=&#34;color:#75715e&#34;&gt;### NOT starting on installation, please execute the following statements to configure elasticsearch service to start automatically using systemd&lt;/span&gt;
+ sudo systemctl daemon-reload
+ sudo systemctl enable elasticsearch.service
+&lt;span style=&#34;color:#75715e&#34;&gt;### You can start elasticsearch service by executing&lt;/span&gt;
+ sudo systemctl start elasticsearch.service
+warning: usage of JAVA_HOME is deprecated, use ES_JAVA_HOME
+Created elasticsearch keystore in /etc/elasticsearch/elasticsearch.keystore
+&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;/usr/lib/tmpfiles.d/elasticsearch.conf:1&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; Line references path below legacy directory /var/run/, updating /var/run/elasticsearch → /run/elasticsearch; please update the tmpfiles.d/ drop-in file accordingly.
+$ curl http://127.0.0.1:9200
+&lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+  &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt; : &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;centos8&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;cluster_name&amp;#34;&lt;/span&gt; : &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;elasticsearch&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;cluster_uuid&amp;#34;&lt;/span&gt; : &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;_e3hsZBwTtS2aAyJvCfqbA&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;version&amp;#34;&lt;/span&gt; : &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;number&amp;#34;&lt;/span&gt; : &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;7.16.3&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;build_flavor&amp;#34;&lt;/span&gt; : &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;default&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;build_type&amp;#34;&lt;/span&gt; : &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;rpm&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;build_hash&amp;#34;&lt;/span&gt; : &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;4e6e4eab2297e949ec994e688dad46290d018022&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;build_date&amp;#34;&lt;/span&gt; : &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2022-01-06T23:43:02.825887787Z&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;build_snapshot&amp;#34;&lt;/span&gt; : false,
+    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;lucene_version&amp;#34;&lt;/span&gt; : &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;8.10.1&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;minimum_wire_compatibility_version&amp;#34;&lt;/span&gt; : &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;6.8.0&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;minimum_index_compatibility_version&amp;#34;&lt;/span&gt; : &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;6.0.0-beta1&amp;#34;&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;,
+  &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;tagline&amp;#34;&lt;/span&gt; : &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;You Know, for Search&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+$
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;elasticsearch-설정&#34;&gt;elasticsearch 설정&lt;/h5&gt;
+&lt;p&gt;설정 파일 &lt;code&gt;/etc/elasticsearch/elasticsearch.yml&lt;/code&gt;에서 데이터/로그 디렉토리 변경&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;##&lt;/span&gt;
+$ mkdir -p /data/PROD/es &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; chown elasticsearch:elasticsearch /data/PROD/es
+$ mkdir -p /data/PROD/es &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; chown elasticsearch:elasticsearch /outlog/PROD/es
+
+&lt;span style=&#34;color:#75715e&#34;&gt;## &lt;/span&gt;
+ &lt;span style=&#34;color:#ae81ff&#34;&gt;33&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;#path.data: /var/lib/elasticsearch&lt;/span&gt;
+ &lt;span style=&#34;color:#ae81ff&#34;&gt;34&lt;/span&gt; path.data: /data/PROD/es
+ &lt;span style=&#34;color:#ae81ff&#34;&gt;38&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;#path.logs: /var/log/elasticsearch&lt;/span&gt;
+ &lt;span style=&#34;color:#ae81ff&#34;&gt;39&lt;/span&gt; path.logs: /outlog/PROD/es
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;kibana-설치&#34;&gt;kibana 설치&lt;/h5&gt;
+&lt;p&gt;&lt;code&gt;artifacts.elastic.co&lt;/code&gt;에서 tar.gz 다운로드 후 아카이브 해제&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;$ curl -L -O https://artifacts.elastic.co/downloads/kibana/kibana-7.16.3-linux-x86_64.tar.gz
+$ tar zxvf kibana-7.16.3-linux-x86_64.tar.gz
+$ mkdir -p /prod/kibana
+$ mv kibana-7.16.3-linux-x86_64 /prod/kibana
+$ cd /prod/kibana &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; ln -s kibana-7.16.3-linux-x86_64 kibana
+$ chown -R tomcat:ap /prod/kibana
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;$ tree -L &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;
+.
+├── kibana -&amp;gt; kibana-7.16.3-linux-x86_64/
+└── kibana-7.16.3-linux-x86_64
+    ├── LICENSE.txt
+    ├── NOTICE.txt
+    ├── README.txt
+    ├── bin
+    ├── config
+    ├── data
+    ├── node
+    ├── node_modules
+    ├── package.json
+    ├── plugins
+    ├── src
+    └── x-pack
+
+&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt; directories, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt; files
+$
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;kibana-설정&#34;&gt;kibana 설정&lt;/h5&gt;
+&lt;p&gt;설정 파일 &lt;code&gt;/prod/kibana/kibana/config/kibana.yml&lt;/code&gt;에서 데이터/로그 디렉토리 변경&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      </description>
+    </item>
+    
+    <item>
       <title>System: httpd</title>
       <link>/system/httpd/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
