@@ -22,9 +22,9 @@
 
 
   
-  <meta name="description" content="(maven) deploy, release 관련 플러그인
-spring-boot 를 배포할 때 의존성 라이브러리를 포함하여 executable-jar 파일을 생성하는 spring-boot:repackage 플러그인을 추가했습니다.
-maven …">
+  <meta name="description" content="(windows) vbs MsgBox 사용하기
+vbs 내용을 별도 파일MessageBox.vbs로 저장하고, cmd 창에서 cscript Z:/develop/script/MessageBox.vbs &quot;팝업 메시지&quot; 형태로 사용할 수 있습니다.
+(윈도우즈 …">
 <meta property="og:title" content="localenv" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -124,7 +124,7 @@ maven …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.d0695faa46d0d7124cb8dd415c2813f6.json"
+  data-offline-search-index-json-src="/offline-search-index.372dedee07f23a08445d41cce0ab181d.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -151,7 +151,7 @@ maven …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.d0695faa46d0d7124cb8dd415c2813f6.json"
+  data-offline-search-index-json-src="/offline-search-index.372dedee07f23a08445d41cce0ab181d.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -200,6 +200,7 @@ maven …">
       <ul>
         <li>
           <ul>
+            <li><a href="#windows-vbs-msgbox-사용하기">(windows) vbs MsgBox 사용하기</a></li>
             <li><a href="#maven-deploy-release-관련-플러그인">(maven) deploy, release 관련 플러그인</a></li>
             <li><a href="#eclipse-path-tools-git-bash">(eclipse) path-tools (git-bash)</a></li>
             <li><a href="#git-bash-bash_profilesh">(git-bash) bash_profile.sh</a></li>
@@ -326,7 +327,15 @@ maven …">
 		
 		
 	</header>
-	<h4 id="maven-deploy-release-관련-플러그인">(maven) deploy, release 관련 플러그인</h4>
+	<h4 id="windows-vbs-msgbox-사용하기">(windows) vbs MsgBox 사용하기</h4>
+<p>vbs 내용을 별도 파일<code>MessageBox.vbs</code>로 저장하고, cmd 창에서 <code>cscript Z:/develop/script/MessageBox.vbs &quot;팝업 메시지&quot;</code> 형태로 사용할 수 있습니다.</p>
+<p>(윈도우즈에서 백업 스크립트가 처리 완료되었음을 알릴 때 활용할 수 있습니다.)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Set objArgs = WScript.Arguments
+messageText = objArgs(0)
+MsgBox messageText
+</code></pre></div><p>백업 스크립트 <a href="/files/localenv/20220126-backup.sh" target="_blank">새 창 보기</a></p>
+<br>
+<h4 id="maven-deploy-release-관련-플러그인">(maven) deploy, release 관련 플러그인</h4>
 <p>spring-boot 를 배포할 때 의존성 라이브러리를 포함하여 executable-jar 파일을 생성하는 <code>spring-boot:repackage</code> 플러그인을 추가했습니다.</p>
 <p>maven 기존 플러그인 maven-deploy-plugin 를 <code>nexus-staging-maven-plugin</code> 로 교체했습니다.</p>
 <p>release 버전의 아티팩트를 nexus 에 배포하고 버전을 올려주는 기능을 위해 <code>maven-release-plugin</code> 설정을 했습니다.</p>
