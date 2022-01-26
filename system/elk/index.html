@@ -36,7 +36,7 @@ $ curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-
 <meta itemprop="description" content="elasticsearch 설치 artifacts.elastic.co 에서 rpm 다운로드 후 설치
 $ curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.16.3-x86_64.rpm $ rpm -i elasticsearch-7.16.3-x86_64.rpm $ systemctl restart elasticsearch $ curl -L -O https://artifacts.elastic.co/downloads/kibana/kibana-7.16.3-linux-x86_64.tar.gz $ rpm -i elasticsearch-7.16.3-x86_64.rpm 경고: elasticsearch-7.16.3-x86_64.rpm: Header V4 RSA/SHA512 Signature, key ID d88e42b4: NOKEY Creating elasticsearch group... OK Creating elasticsearch user... OK ### NOT starting on installation, please execute the following statements to configure elasticsearch service to start automatically using systemd sudo systemctl daemon-reload sudo systemctl enable elasticsearch.">
 
-<meta itemprop="wordCount" content="385">
+<meta itemprop="wordCount" content="822">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="ELK"/>
 <meta name="twitter:description" content="elasticsearch 설치 artifacts.elastic.co 에서 rpm 다운로드 후 설치
@@ -131,7 +131,7 @@ $ curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.8a677adfce1ad39b048f3a18a7e4dcd1.json"
+  data-offline-search-index-json-src="/offline-search-index.32f692caf1b5e850cee0feb7b950dad2.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -158,7 +158,7 @@ $ curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.8a677adfce1ad39b048f3a18a7e4dcd1.json"
+  data-offline-search-index-json-src="/offline-search-index.32f692caf1b5e850cee0feb7b950dad2.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -229,8 +229,14 @@ $ curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-
               <ul>
                 <li><a href="#elasticsearch-설치">elasticsearch 설치</a></li>
                 <li><a href="#elasticsearch-설정">elasticsearch 설정</a></li>
-                <li><a href="#kibana-설치">kibana 설치</a></li>
-                <li><a href="#kibana-설정">kibana 설정</a></li>
+                <li><a href="#kibana-설치-binary">kibana 설치 (binary)</a></li>
+                <li><a href="#kibana-설치-yum">kibana 설치 (yum)</a></li>
+                <li><a href="#kibana-설정-binary">kibana 설정 (binary)</a></li>
+                <li><a href="#kibana-설정-yum">kibana 설정 (yum)</a></li>
+                <li><a href="#logstash-설치">logstash 설치</a></li>
+                <li><a href="#filebeat-설치">filebeat 설치</a></li>
+                <li><a href="#filebeat-설정">filebeat 설정</a></li>
+                <li><a href="#filebeat-apache-module">filebeat) apache module</a></li>
               </ul>
             </li>
           </ul>
@@ -364,7 +370,7 @@ $ mkdir -p /data/PROD/es <span style="color:#f92672">&amp;&amp;</span> chown ela
  <span style="color:#ae81ff">73</span> <span style="color:#75715e">#discovery.seed_hosts: [&#34;host1&#34;, &#34;host2&#34;]</span>
  <span style="color:#ae81ff">74</span> discovery.seed_hosts: <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;0.0.0.0&#34;</span><span style="color:#f92672">]</span>
 </code></pre></div><br>
-<h5 id="kibana-설치">kibana 설치</h5>
+<h5 id="kibana-설치-binary">kibana 설치 (binary)</h5>
 <p><code>artifacts.elastic.co</code>에서 tar.gz 다운로드 후 아카이브 해제</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ curl -L -O https://artifacts.elastic.co/downloads/kibana/kibana-7.16.3-linux-x86_64.tar.gz
 $ tar zxvf kibana-7.16.3-linux-x86_64.tar.gz
@@ -392,13 +398,46 @@ $ chown -R tomcat:ap /prod/kibana
 <span style="color:#ae81ff">10</span> directories, <span style="color:#ae81ff">4</span> files
 $
 </code></pre></div><br>
-<h5 id="kibana-설정">kibana 설정</h5>
+<h5 id="kibana-설치-yum">kibana 설치 (yum)</h5>
+<p>PGP 를 추가합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+</code></pre></div><p><code>vi /etc/yum.repos.d/kibana.repo</code> 아래 내용을 추가합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#f92672">[</span>kibana-7.x<span style="color:#f92672">]</span>
+name<span style="color:#f92672">=</span>Kibana repository <span style="color:#66d9ef">for</span> 7.x packages
+baseurl<span style="color:#f92672">=</span>https://artifacts.elastic.co/packages/7.x/yum
+gpgcheck<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+gpgkey<span style="color:#f92672">=</span>https://artifacts.elastic.co/GPG-KEY-elasticsearch
+enabled<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+autorefresh<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+type<span style="color:#f92672">=</span>rpm-md
+</code></pre></div><p>yum 으로 kibana 를 설치합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ yum install kibana
+</code></pre></div><p>systemd</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ systemctl enable kibana
+$ systemctl start kibana
+</code></pre></div><br>
+<h5 id="kibana-설정-binary">kibana 설정 (binary)</h5>
 <p>설정 파일 <code>/prod/kibana/kibana/config/kibana.yml</code></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 기본 설정 파일로 실행 시 `server.publicBaseUrl` 에 대한 경고가 표시 됩니다.</span>
 <span style="color:#75715e"># &#34;server.publicBaseUrl&#34; 는 &#34;server.basePath&#34; 의 경로를 반드시 포함해야 합니다.</span>
  <span style="color:#ae81ff">24</span> <span style="color:#75715e">#server.publicBaseUrl: &#34;&#34;</span>
  <span style="color:#ae81ff">25</span> server.publicBaseUrl: <span style="color:#e6db74">&#34;http://localhost:5601&#34;</span>
+<span style="color:#75715e"># logging off</span>
+ <span style="color:#ae81ff">103</span> <span style="color:#75715e">#logging.silent: false</span>
+ <span style="color:#ae81ff">104</span> logging.silent: true
 </code></pre></div><p><a href="https://www.elastic.co/guide/en/kibana/master/settings.html" target="_blank"><a href="http://www.elastic.co">www.elastic.co</a> kibana 설정 가이드</a></p>
+<br>
+<h5 id="kibana-설정-yum">kibana 설정 (yum)</h5>
+<p>설정 파일 <code>/etc/kibana/kibana.yml</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">server.port: <span style="color:#ae81ff">5601</span>
+server.publicBaseUrl: <span style="color:#e6db74">&#34;http://localhost:5601&#34;</span>
+logging.silent: true
+</code></pre></div><p><a href="https://www.elastic.co/guide/en/kibana/7.16/rpm.html#rpm-layout" target="_blank">rpm-layout</a></p>
+<ul>
+<li>설정: /etc/kibana</li>
+<li>로그: /var/log/kibana</li>
+<li>데이터: /var/lib/kibana</li>
+</ul>
 <br>
 <p>httpd 가상호스트 설정</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">&lt;VirtualHost *:80&gt;
@@ -420,7 +459,112 @@ $
   ProxyPass / http://localhost:5601/        <span style="color:#75715e"># &#34;kibana.yml&#34; 파일 &#34;server.host&#34; 에 설정된 호스트로 할 것</span>
   ProxyPassReverse / http://localhost:5601/
 &lt;/VirtualHost&gt;
-</code></pre></div>
+</code></pre></div><br>
+<h5 id="logstash-설치">logstash 설치</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ yum install logstash
+</code></pre></div><p>systemd</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ systemctl enable logstash
+$ systemctl start logstash
+</code></pre></div><br>
+<h5 id="filebeat-설치">filebeat 설치</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ yum list filebeat
+</code></pre></div><h5 id="filebeat-설정">filebeat 설정</h5>
+<p>filebeat 와 elasticsearch 의 관계를 설명하는 다이어그램입니다.</p>
+<p>filebeat의 주요 기능은 는 로그파일을 읽어들이고(<code>input</code>) elasticsearch 혹은 logstash 로 출력(<code>output</code>)하는 것입니다.</p>
+<img src="/images/system/20220126-ELK-basic.png" width="600">
+<p><a href="/images/system/20220126-ELK-basic.png" target="_blank">새 창 보기</a></p>
+<br>
+<br>
+<p>filebeat 설정 파일<code>/etc/filebeat/filebeat.yml</code>에 기본 설정된 상태를 보면 <code>output.elasticsearch</code> 가 활성화 되어있고, <code>output.logstash</code>는  비활성화로 되어있습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#ae81ff">132</span> output.elasticsearch:
+<span style="color:#ae81ff">133</span>   <span style="color:#75715e"># Array of hosts to connect to.</span>
+<span style="color:#ae81ff">134</span>   hosts: <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;localhost:9200&#34;</span><span style="color:#f92672">]</span>
+...
+<span style="color:#ae81ff">145</span> <span style="color:#75715e">#output.logstash:</span>
+<span style="color:#ae81ff">146</span>   <span style="color:#75715e"># The Logstash hosts</span>
+<span style="color:#ae81ff">147</span>   <span style="color:#75715e">#hosts: [&#34;localhost:5044&#34;]</span>
+</code></pre></div><br>
+<p>filebeat 를 yum 으로 설치했을 경우 systemd 에 추가할 수 있습니다.</p>
+<p>기본적인 운용 개념은 다음과 같습니다.</p>
+<ul>
+<li>filebeat 서비스 실행</li>
+<li>filebeat 설정 변경 및 모듈 추가</li>
+<li>filebeat 서비스 재시작</li>
+<li>kibana 에서 filebeat 가 elasticsearch 로 출력(<code>output</code>)한 내용 확인</li>
+<li>filebeat 모듈 설정 (예: 활성화 상태 변경)</li>
+<li>filebeat 서비스 재시작으로 모듈 설정된 내용 반영</li>
+</ul>
+<p>주요 내용은 설정을 변경하면 filebeat 서비스를 재시작해야 반영된다는 사항이 있습니다.</p>
+<br>
+<h5 id="filebeat-apache-module">filebeat) apache module</h5>
+<p>filebeat 가 읽어들일 로그파일이 잘 알려진 프로그램의 로그일 경우 modules 에 포함 되어있습니다.</p>
+<p>그 중 apache 모듈에 access_log 를 읽어들이도록 모듈을 설정하고 활성화하는 예시입니다.</p>
+<p>(활성화된 모듈 목록을 확인하고 apache 모듈을 enable 해봅니다.)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ filebeat modules list
+Enabled:
+
+Disabled:
+activemq
+apache
+auditd
+...
+$ 
+$ filebeat modules enable apache
+Enabled apache
+$ 
+$ filebeat modules list
+Enabled:
+apache
+
+Disabled:
+activemq
+auditd
+$ 
+</code></pre></div><p>filebeat 의 module 설정은 아래 경로에 있습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ ls /etc/filebeat/modules.d/
+activemq.yml.disabled     cylance.yml.disabled           iptables.yml.disabled         o365.yml.disabled        sophos.yml.disabled
+apache.yml                elasticsearch.yml.disabled     juniper.yml.disabled          okta.yml.disabled        squid.yml.disabled
+auditd.yml.disabled       envoyproxy.yml.disabled        kafka.yml.disabled            oracle.yml.disabled      suricata.yml.disabled
+aws.yml.disabled          f5.yml.disabled                kibana.yml.disabled           osquery.yml.disabled     system.yml.disabled
+awsfargate.yml.disabled   fortinet.yml.disabled          logstash.yml.disabled         panw.yml.disabled        threatintel.yml.disabled
+azure.yml.disabled        gcp.yml.disabled               microsoft.yml.disabled        pensando.yml.disabled    tomcat.yml.disabled
+barracuda.yml.disabled    google_workspace.yml.disabled  misp.yml.disabled             postgresql.yml.disabled  traefik.yml.disabled
+bluecoat.yml.disabled     googlecloud.yml.disabled       mongodb.yml.disabled          proofpoint.yml.disabled  zeek.yml.disabled
+cef.yml.disabled          gsuite.yml.disabled            mssql.yml.disabled            rabbitmq.yml.disabled    zookeeper.yml.disabled
+checkpoint.yml.disabled   haproxy.yml.disabled           mysql.yml.disabled            radware.yml.disabled     zoom.yml.disabled
+cisco.yml.disabled        ibmmq.yml.disabled             mysqlenterprise.yml.disabled  redis.yml.disabled       zscaler.yml.disabled
+coredns.yml.disabled      icinga.yml.disabled            nats.yml.disabled             santa.yml.disabled
+crowdstrike.yml.disabled  iis.yml.disabled               netflow.yml.disabled          snort.yml.disabled
+cyberark.yml.disabled     imperva.yml.disabled           netscout.yml.disabled         snyk.yml.disabled
+cyberarkpas.yml.disabled  infoblox.yml.disabled          nginx.yml.disabled            sonicwall.yml.disabled
+$ 
+$ ls -al /etc/filebeat/modules.d/apache.yml
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">476</span> 2022-01-07 09:36 /etc/filebeat/modules.d/apache.yml
+</code></pre></div><p><code>apache.yml</code>에 access_log, error_log 를 수집할 수 있도록 설정합니다.</p>
+<p>설정 전 확인할 사항</p>
+<ul>
+<li>access_log 경로: (예) <code>/outlog/WEB/httpd/nexus_ssl-access.log.2022-01-26</code></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">- module: apache
+  access:
+    enabled: true
+    input:
+      fields:
+        server_name: develop-httpd
+        log_type: nexus_access
+    var.paths: <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;/outlog/WEB/httpd/nexus_ssl-access.log.2022-01-26&#34;</span><span style="color:#f92672">]</span>
+
+  error:
+    enabled: true
+    <span style="color:#75715e">#var.paths: []</span>
+</code></pre></div><p><code>filebeat modules enable apache</code> 명령으로 모듈을 활성화 상태로 설정합니다.</p>
+<p><code>systemctl restart filebeat</code> 명령으로 서비스를 재시작합니다.</p>
+<p>아래와 같이 kibana 에서 access_log 를 확인합니다.</p>
+<img src="/images/system/20220126-kibana_basic.png" width="600">
+<p><a href="/images/system/20220126-kibana_basic.png" target="_blank">새 창 보기</a></p>
+<br>
+<br>
+
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
