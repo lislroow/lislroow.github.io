@@ -43,8 +43,8 @@ Repodata is over 2 weeks old. Install yum-cron? Or run: yum …">
 
 
 
-<link rel="preload" href="/scss/main.min.1f861d065398c88219fc317598d260b310e1d29b4fded8c05305f546ecc0046e.css" as="style">
-<link href="/scss/main.min.1f861d065398c88219fc317598d260b310e1d29b4fded8c05305f546ecc0046e.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.7bab5b53ce3a6e9d0beb97d70df0f5bd91bedfa2f6e2037ec8f9d3b5e3f7a384.css" as="style">
+<link href="/scss/main.min.7bab5b53ce3a6e9d0beb97d70df0f5bd91bedfa2f6e2037ec8f9d3b5e3f7a384.css" rel="stylesheet" integrity="">
 
 
 <script
@@ -57,9 +57,6 @@ Repodata is over 2 weeks old. Install yum-cron? Or run: yum …">
   integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
   crossorigin="anonymous"></script>
 
-
-
-<link rel="stylesheet" href="/css/prism.css"/>
 
 
 
@@ -132,7 +129,7 @@ Repodata is over 2 weeks old. Install yum-cron? Or run: yum …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.9108037f01fa74764d27918328ce969d.json"
+  data-offline-search-index-json-src="/offline-search-index.14df443270e87b55e82ca0e74fde32c0.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -159,7 +156,7 @@ Repodata is over 2 weeks old. Install yum-cron? Or run: yum …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.9108037f01fa74764d27918328ce969d.json"
+  data-offline-search-index-json-src="/offline-search-index.14df443270e87b55e82ca0e74fde32c0.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -186,6 +183,9 @@ Repodata is over 2 weeks old. Install yum-cron? Or run: yum …">
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemjenkins-li">
   
   <a href="/system/jenkins/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemjenkins"><span class="">jenkins</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemkibana-li">
+  
+  <a href="/system/kibana/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemkibana"><span class="">kibana</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemlinux-li">
   
   <a href="/system/linux/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemlinux"><span class="">linux</span></a>
@@ -298,7 +298,7 @@ Repodata is over 2 weeks old. Install yum-cron? Or run: yum …">
 		
 	</header>    
 	<h2 id="패키지-확인">패키지 확인</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@develop ~]$ yum list *openssh*
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@develop ~]$ yum list *openssh*
 Loaded plugins: fastestmirror, langpacks
 Repodata is over 2 weeks old. Install yum-cron? Or run: yum makecache fast
 Loading mirror speeds from cached hostfile
@@ -321,7 +321,7 @@ key 생성 경로는 home 디렉토리의 <code>.ssh</code> 디렉토리에 생�
 <code>passphrase</code> 는 key 의 비밀번호 입니다.</p>
 <p>key 생성이 되면 <code>.ssh</code> 디렉토리에는 <code>id_rsa</code>(개인키), <code>id_rsa.pub</code>(공개키) 2개의 파일이 있습니다.</p>
 <p>공개키인 <code>id_rsa.pub</code> 파일의 내용은 SSH로 접속하려는 대상 서버의 시스템계정 홈디렉토리의 .ssh/authorized_keys 파일에 추가하여 사용됩니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[tomcat@develop ~]$ pwd
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[tomcat@develop ~]$ pwd
 /home/tomcat
 [tomcat@develop ~]$ ls -al
 합계 28
@@ -461,9 +461,6 @@ window.markmap = {
 
 <script src="/js/main.min.c1b8f3c373b85f900699a7ea81c2038ebbbebcac1a5a4b6e5ef96c24c31790d6.js" integrity="sha256-wbjzw3O4X5AGmafqgcIDjru&#43;vKwaWktuXvlsJMMXkNY=" crossorigin="anonymous"></script>
 
-
-
-<script src='/js/prism.js'></script>
 
 
 

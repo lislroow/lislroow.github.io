@@ -18,6 +18,8 @@
   </url><url>
     <loc>/system/jenkins/</loc>
   </url><url>
+    <loc>/system/kibana/</loc>
+  </url><url>
     <loc>/system/linux/</loc>
   </url><url>
     <loc>/localenv/</loc>

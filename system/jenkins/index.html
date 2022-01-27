@@ -48,8 +48,8 @@ JAVA_OPTS= …">
 
 
 
-<link rel="preload" href="/scss/main.min.1f861d065398c88219fc317598d260b310e1d29b4fded8c05305f546ecc0046e.css" as="style">
-<link href="/scss/main.min.1f861d065398c88219fc317598d260b310e1d29b4fded8c05305f546ecc0046e.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.7bab5b53ce3a6e9d0beb97d70df0f5bd91bedfa2f6e2037ec8f9d3b5e3f7a384.css" as="style">
+<link href="/scss/main.min.7bab5b53ce3a6e9d0beb97d70df0f5bd91bedfa2f6e2037ec8f9d3b5e3f7a384.css" rel="stylesheet" integrity="">
 
 
 <script
@@ -62,9 +62,6 @@ JAVA_OPTS= …">
   integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
   crossorigin="anonymous"></script>
 
-
-
-<link rel="stylesheet" href="/css/prism.css"/>
 
 
 
@@ -137,7 +134,7 @@ JAVA_OPTS= …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.9108037f01fa74764d27918328ce969d.json"
+  data-offline-search-index-json-src="/offline-search-index.14df443270e87b55e82ca0e74fde32c0.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -164,7 +161,7 @@ JAVA_OPTS= …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.9108037f01fa74764d27918328ce969d.json"
+  data-offline-search-index-json-src="/offline-search-index.14df443270e87b55e82ca0e74fde32c0.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -191,6 +188,9 @@ JAVA_OPTS= …">
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-systemjenkins-li">
   
   <a href="/system/jenkins/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-systemjenkins"><span class="td-sidebar-nav-active-item">jenkins</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemkibana-li">
+  
+  <a href="/system/kibana/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemkibana"><span class="">kibana</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemlinux-li">
   
   <a href="/system/linux/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemlinux"><span class="">linux</span></a>
@@ -325,62 +325,62 @@ JAVA_OPTS= …">
 	</header>    
 	<h3 id="installation">installation</h3>
 <h4 id="start-스크립트">start 스크립트</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#!/bin/sh
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">#JAVA_HOME=/prod/java/jdk1.8.0_202</span>
-JAVA_HOME<span style="color:#f92672">=</span>/prod/java/openjdk-11.0.2
-export PATH<span style="color:#f92672">=</span>$JAVA_HOME/bin:$PATH
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#8f5902;font-style:italic">#!/bin/sh
+</span><span style="color:#8f5902;font-style:italic"></span>
+<span style="color:#8f5902;font-style:italic">#JAVA_HOME=/prod/java/jdk1.8.0_202</span>
+<span style="color:#000">JAVA_HOME</span><span style="color:#ce5c00;font-weight:bold">=</span>/prod/java/openjdk-11.0.2
+<span style="color:#204a87">export</span> <span style="color:#000">PATH</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">$JAVA_HOME</span>/bin:<span style="color:#000">$PATH</span>
 
-JAVA_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JAVA_OPTS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -Dapp.id=jenkins&#34;</span>
-JAVA_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JAVA_OPTS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -Dcom.sun.akuma.Daemon=daemonized&#34;</span>
-JAVA_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JAVA_OPTS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -Djava.awt.headless=true&#34;</span>
-JAVA_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JAVA_OPTS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -DJENKINS_HOME=/data/PROD/jenkins&#34;</span>
+<span style="color:#000">JAVA_OPTS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;</span><span style="color:#4e9a06">${</span><span style="color:#000">JAVA_OPTS</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06"> -Dapp.id=jenkins&#34;</span>
+<span style="color:#000">JAVA_OPTS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;</span><span style="color:#4e9a06">${</span><span style="color:#000">JAVA_OPTS</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06"> -Dcom.sun.akuma.Daemon=daemonized&#34;</span>
+<span style="color:#000">JAVA_OPTS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;</span><span style="color:#4e9a06">${</span><span style="color:#000">JAVA_OPTS</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06"> -Djava.awt.headless=true&#34;</span>
+<span style="color:#000">JAVA_OPTS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;</span><span style="color:#4e9a06">${</span><span style="color:#000">JAVA_OPTS</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06"> -DJENKINS_HOME=/data/PROD/jenkins&#34;</span>
 
-JENKINS_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JENKINS_ARGS<span style="color:#e6db74">}</span><span style="color:#e6db74"> --logfile=/outlog/PROD/jenkins/default.log&#34;</span>
-JENKINS_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JENKINS_ARGS<span style="color:#e6db74">}</span><span style="color:#e6db74"> --webroot=/prod/jenkins/jenkins/cache-war&#34;</span>
-JENKINS_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JENKINS_ARGS<span style="color:#e6db74">}</span><span style="color:#e6db74"> --daemon&#34;</span>
-JENKINS_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JENKINS_ARGS<span style="color:#e6db74">}</span><span style="color:#e6db74"> --httpPort=8400&#34;</span>
-JENKINS_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JENKINS_ARGS<span style="color:#e6db74">}</span><span style="color:#e6db74"> --debug=5&#34;</span>
-JENKINS_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JENKINS_ARGS<span style="color:#e6db74">}</span><span style="color:#e6db74"> --handlerCountMax=100&#34;</span>
-JENKINS_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JENKINS_ARGS<span style="color:#e6db74">}</span><span style="color:#e6db74"> --handlerCountMaxIdle=20&#34;</span>
-JENKINS_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JENKINS_ARGS<span style="color:#e6db74">}</span><span style="color:#e6db74"> --accessLoggerClassName=winstone.accesslog.SimpleAccessLogger&#34;</span>
-JENKINS_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JENKINS_ARGS<span style="color:#e6db74">}</span><span style="color:#e6db74"> --simpleAccessLogger.format=combined&#34;</span>
-JENKINS_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JENKINS_ARGS<span style="color:#e6db74">}</span><span style="color:#e6db74"> --simpleAccessLogger.file=/outlog/PROD/jenkins/access.log&#34;</span>
-<span style="color:#75715e">#JENKINS_ARGS=&#34;${JENKINS_ARGS} --httpsCertificate=/etc/pki/tls/mgkim/jenkins.crt&#34;</span>
-<span style="color:#75715e">#JENKINS_ARGS=&#34;${JENKINS_ARGS} --httpsPrivateKey=/etc/pki/tls/mgkim/jenkins.key&#34;</span>
+<span style="color:#000">JENKINS_ARGS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;</span><span style="color:#4e9a06">${</span><span style="color:#000">JENKINS_ARGS</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06"> --logfile=/outlog/PROD/jenkins/default.log&#34;</span>
+<span style="color:#000">JENKINS_ARGS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;</span><span style="color:#4e9a06">${</span><span style="color:#000">JENKINS_ARGS</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06"> --webroot=/prod/jenkins/jenkins/cache-war&#34;</span>
+<span style="color:#000">JENKINS_ARGS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;</span><span style="color:#4e9a06">${</span><span style="color:#000">JENKINS_ARGS</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06"> --daemon&#34;</span>
+<span style="color:#000">JENKINS_ARGS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;</span><span style="color:#4e9a06">${</span><span style="color:#000">JENKINS_ARGS</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06"> --httpPort=8400&#34;</span>
+<span style="color:#000">JENKINS_ARGS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;</span><span style="color:#4e9a06">${</span><span style="color:#000">JENKINS_ARGS</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06"> --debug=5&#34;</span>
+<span style="color:#000">JENKINS_ARGS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;</span><span style="color:#4e9a06">${</span><span style="color:#000">JENKINS_ARGS</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06"> --handlerCountMax=100&#34;</span>
+<span style="color:#000">JENKINS_ARGS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;</span><span style="color:#4e9a06">${</span><span style="color:#000">JENKINS_ARGS</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06"> --handlerCountMaxIdle=20&#34;</span>
+<span style="color:#000">JENKINS_ARGS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;</span><span style="color:#4e9a06">${</span><span style="color:#000">JENKINS_ARGS</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06"> --accessLoggerClassName=winstone.accesslog.SimpleAccessLogger&#34;</span>
+<span style="color:#000">JENKINS_ARGS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;</span><span style="color:#4e9a06">${</span><span style="color:#000">JENKINS_ARGS</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06"> --simpleAccessLogger.format=combined&#34;</span>
+<span style="color:#000">JENKINS_ARGS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;</span><span style="color:#4e9a06">${</span><span style="color:#000">JENKINS_ARGS</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06"> --simpleAccessLogger.file=/outlog/PROD/jenkins/access.log&#34;</span>
+<span style="color:#8f5902;font-style:italic">#JENKINS_ARGS=&#34;${JENKINS_ARGS} --httpsCertificate=/etc/pki/tls/mgkim/jenkins.crt&#34;</span>
+<span style="color:#8f5902;font-style:italic">#JENKINS_ARGS=&#34;${JENKINS_ARGS} --httpsPrivateKey=/etc/pki/tls/mgkim/jenkins.key&#34;</span>
 
-<span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;</span>$1<span style="color:#e6db74">&#34;</span> in
-  start<span style="color:#f92672">)</span>
-    echo <span style="color:#e6db74">&#34;starting jenkins&#34;</span>
-    nohup $JAVA_HOME/bin/java $JAVA_OPTS -jar /prod/jenkins/jenkins/jenkins.war $JENKINS_ARGS &gt; /dev/null 2&gt;&amp;<span style="color:#ae81ff">1</span> &amp;
-    ;;
-  stop<span style="color:#f92672">)</span>
-    echo <span style="color:#e6db74">&#34;stopping jenkins&#34;</span>
-    ps -ef | grep java | grep -v grep | grep jenkins | awk <span style="color:#e6db74">&#39;{ print $2 }&#39;</span> | xargs kill -9 
-    ;;
-  *<span style="color:#f92672">)</span>
-    echo <span style="color:#e6db74">&#34;Usage: </span>$0<span style="color:#e6db74"> {start|stop}&#34;</span>
-    exit <span style="color:#ae81ff">1</span>
-    ;;
-<span style="color:#66d9ef">esac</span>
+<span style="color:#204a87;font-weight:bold">case</span> <span style="color:#4e9a06">&#34;</span><span style="color:#000">$1</span><span style="color:#4e9a06">&#34;</span> in
+  start<span style="color:#ce5c00;font-weight:bold">)</span>
+    <span style="color:#204a87">echo</span> <span style="color:#4e9a06">&#34;starting jenkins&#34;</span>
+    nohup <span style="color:#000">$JAVA_HOME</span>/bin/java <span style="color:#000">$JAVA_OPTS</span> -jar /prod/jenkins/jenkins/jenkins.war <span style="color:#000">$JENKINS_ARGS</span> &gt; /dev/null 2&gt;<span style="color:#000;font-weight:bold">&amp;</span><span style="color:#0000cf;font-weight:bold">1</span> <span style="color:#000;font-weight:bold">&amp;</span>
+    <span style="color:#000;font-weight:bold">;;</span>
+  stop<span style="color:#ce5c00;font-weight:bold">)</span>
+    <span style="color:#204a87">echo</span> <span style="color:#4e9a06">&#34;stopping jenkins&#34;</span>
+    ps -ef <span style="color:#000;font-weight:bold">|</span> grep java <span style="color:#000;font-weight:bold">|</span> grep -v grep <span style="color:#000;font-weight:bold">|</span> grep jenkins <span style="color:#000;font-weight:bold">|</span> awk <span style="color:#4e9a06">&#39;{ print $2 }&#39;</span> <span style="color:#000;font-weight:bold">|</span> xargs <span style="color:#204a87">kill</span> -9 
+    <span style="color:#000;font-weight:bold">;;</span>
+  *<span style="color:#ce5c00;font-weight:bold">)</span>
+    <span style="color:#204a87">echo</span> <span style="color:#4e9a06">&#34;Usage: </span><span style="color:#000">$0</span><span style="color:#4e9a06"> {start|stop}&#34;</span>
+    <span style="color:#204a87">exit</span> <span style="color:#0000cf;font-weight:bold">1</span>
+    <span style="color:#000;font-weight:bold">;;</span>
+<span style="color:#204a87;font-weight:bold">esac</span>
 </code></pre></div><br>
 <h4 id="systemd-등록">systemd 등록</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#f92672">[</span>Unit<span style="color:#f92672">]</span>
-Description<span style="color:#f92672">=</span>Jenkins
-After<span style="color:#f92672">=</span>network.target syslog.target
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#ce5c00;font-weight:bold">[</span>Unit<span style="color:#ce5c00;font-weight:bold">]</span>
+<span style="color:#000">Description</span><span style="color:#ce5c00;font-weight:bold">=</span>Jenkins
+<span style="color:#000">After</span><span style="color:#ce5c00;font-weight:bold">=</span>network.target syslog.target
 
-<span style="color:#f92672">[</span>Service<span style="color:#f92672">]</span>
-Type<span style="color:#f92672">=</span>forking
-User<span style="color:#f92672">=</span>jenkins
-Group<span style="color:#f92672">=</span>ci
+<span style="color:#ce5c00;font-weight:bold">[</span>Service<span style="color:#ce5c00;font-weight:bold">]</span>
+<span style="color:#000">Type</span><span style="color:#ce5c00;font-weight:bold">=</span>forking
+<span style="color:#000">User</span><span style="color:#ce5c00;font-weight:bold">=</span>jenkins
+<span style="color:#000">Group</span><span style="color:#ce5c00;font-weight:bold">=</span>ci
 
-ExecStart<span style="color:#f92672">=</span>/prod/jenkins/jenkins.sh start
-ExecStop<span style="color:#f92672">=</span>/prod/jenkins/jenkins.sh stop
+<span style="color:#000">ExecStart</span><span style="color:#ce5c00;font-weight:bold">=</span>/prod/jenkins/jenkins.sh start
+<span style="color:#000">ExecStop</span><span style="color:#ce5c00;font-weight:bold">=</span>/prod/jenkins/jenkins.sh stop
 
-Restart<span style="color:#f92672">=</span>on-abort
+<span style="color:#000">Restart</span><span style="color:#ce5c00;font-weight:bold">=</span>on-abort
 
-<span style="color:#f92672">[</span>Install<span style="color:#f92672">]</span>
-WantedBy<span style="color:#f92672">=</span>multi-user.target
+<span style="color:#ce5c00;font-weight:bold">[</span>Install<span style="color:#ce5c00;font-weight:bold">]</span>
+<span style="color:#000">WantedBy</span><span style="color:#ce5c00;font-weight:bold">=</span>multi-user.target
 </code></pre></div><br>
 <h3 id="plugins">plugins</h3>
 <h4 id="publish-over-ssh">Publish Over SSH</h4>
@@ -391,7 +391,7 @@ WantedBy<span style="color:#f92672">=</span>multi-user.target
 <ul>
 <li>선택되는 서버는 빌드 결과물인 artifact 파일을 전송하고, ssh 로 command 를 실행할 서버를 의미함</li>
 <li>아래 <code>Transfer Set</code> 에 설정되는 <code>Exec command</code>의 내용이 빌드 로그에 출력되도록 <code>고급</code>버튼을 눌러 <code>Verbose output in console</code> 을 선택할 것<br/>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[INFO] ------------------------------------------------------------------------
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[INFO] ------------------------------------------------------------------------
 SSH: Connecting from host [i9-9900K]
 SSH: Connecting with configuration [tomcat@develop] ...
 SSH: Creating session: username [tomcat], hostname [develop], port [22]
@@ -453,7 +453,7 @@ Finished: SUCCESS
 jenkins node 구성에서 slave-node 을 추가했다면 jenkins 를 호스팅하고 있는 서버에서 생성한 개인키 파일에 접근할 수 없기에 <code>Key</code> 항목에 개인키를 설정하여 사용해야 함</li>
 <li><code>Key</code>: 개인키의 경로를 입력하지 않을 경우 개인키의 내용 추가로 설정할 수 있습니다. (키 경로 입력 시 생략할 것)<br/>
 개인키의 형태는 다음과 같으며 참고로 jenkins 에 설정할때에는 BEGIN 부터 END 까지 모두 입력해야 합니다.
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">-----BEGIN RSA PRIVATE KEY-----
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">-----BEGIN RSA PRIVATE KEY-----
 Proc-Type: 4,ENCRYPTED
 DEK-Info: AES-128-CBC,BB513C74CDF53133B6B805F08C716E14
 <p>lqXA6gIhaf3ztU1SoQVGvUtLWtXqINxbGzNfau3v+DIHRKJjVY1JvBj2mmADIxEq
@@ -527,7 +527,7 @@ YqTPbiAOgnHAD9CgWg/v55Zl9zLrPKLakCJPYzGNrLo2BJ4qXR1ZX371JEsXq8tq
 </div>
 
 <p>slave-node 를 추가하면 slave-node에서 jenkins 와 연결하는 방법을 알려줍니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Connect agent to Jenkins one of these ways:
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Connect agent to Jenkins one of these ways:
 
 Java Web Start is not available for the JVM version running Jenkins
 
@@ -544,14 +544,14 @@ java -jar agent.jar -jnlpUrl http://jenkins/computer/9900K/jenkins-agent.jnlp -w
 </li>
 <li>
 <p><code>Z:\jenkins\start-agent.cmd</code> 파일을 생성하고 아래 내용으로 설정</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">set JAVA_HOME=Z:\develop\java\openjdk-11.0.2
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">set JAVA_HOME=Z:\develop\java\openjdk-11.0.2
 set PATH=%JAVA_HOME%\bin;%PATH%
 
 java -jar agent.jar -jnlpUrl http://jenkins/computer/9900K/jenkins-agent.jnlp -workDir &#34;Z:\jenkins&#34;
 </code></pre></div></li>
 <li>
 <p><code>start-agent.cmd</code> 실행 후 아래와 같이 console 로그가 출력되면 정상 실행</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Z:\jenkins&gt;set JAVA_HOME=Z:\develop\java\openjdk-11.0.2
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Z:\jenkins&gt;set JAVA_HOME=Z:\develop\java\openjdk-11.0.2
 
 Z:\jenkins&gt;set PATH=Z:\develop\java\openjdk-11.0.2\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;Z:\oracle\ora12c_32bit\client_12_1\bin;Z:\develop\java\openjdk-11.0.2\bin;Z:\develop\build\maven-3.6.3\bin;C:\Users\Administrator\AppData\Local\Programs\Microsoft VS Code\bin;Z:\develop\hugo\hugo-ext-0.87.0;C:\Users\Administrator\AppData\Roaming\npm;Z:\www\httpd_2.4.25-win64-VC14\openssl-0.9.8e_X64\bin;
 
@@ -577,7 +577,7 @@ INFO: Connected
 <li>agent.jar 실행 시 jenkins 에 접속할 때 websocket 으로 접속을 하게되는데 ssl 이 적용된 프로토콜 https, wss 은 handshake 오류가 발생함<br/>
 httpd 설정에 http 를 https 로 redirect 하도록 mod_rewrite 를 설정했는데 오류로 인해 rewrite 설정은 제거함<br/></li>
 <li>jenkins 의 가상호스트 설정은 다음과 같습니다.
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&lt;VirtualHost *:80&gt;
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&lt;VirtualHost *:80&gt;
   ServerName jenkins
 
   ErrorLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/jenkins-error.log.%Y-%m-%d 86400 +540&#34;
@@ -730,9 +730,6 @@ window.markmap = {
 
 <script src="/js/main.min.c1b8f3c373b85f900699a7ea81c2038ebbbebcac1a5a4b6e5ef96c24c31790d6.js" integrity="sha256-wbjzw3O4X5AGmafqgcIDjru&#43;vKwaWktuXvlsJMMXkNY=" crossorigin="anonymous"></script>
 
-
-
-<script src='/js/prism.js'></script>
 
 
 

@@ -48,7 +48,7 @@ limits 설정 /etc/security/limits.conf
 oracle soft nproc 2047 oracle hard nproc 16384 oracle soft nofile 1024 oracle hard nofile 65536 
 시스템 계정 groupadd oinstall groupadd dba useradd -g oinstall -G dba oracle">
 
-<meta itemprop="wordCount" content="483">
+<meta itemprop="wordCount" content="308">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="oracle12c"/>
 <meta name="twitter:description" content="sysctl 설정 파일: /etc/sysctl.conf
@@ -61,8 +61,8 @@ oracle soft nproc 2047 oracle hard nproc 16384 oracle soft nofile 1024 oracle ha
 
 
 
-<link rel="preload" href="/scss/main.min.1f861d065398c88219fc317598d260b310e1d29b4fded8c05305f546ecc0046e.css" as="style">
-<link href="/scss/main.min.1f861d065398c88219fc317598d260b310e1d29b4fded8c05305f546ecc0046e.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.7bab5b53ce3a6e9d0beb97d70df0f5bd91bedfa2f6e2037ec8f9d3b5e3f7a384.css" as="style">
+<link href="/scss/main.min.7bab5b53ce3a6e9d0beb97d70df0f5bd91bedfa2f6e2037ec8f9d3b5e3f7a384.css" rel="stylesheet" integrity="">
 
 
 <script
@@ -75,9 +75,6 @@ oracle soft nproc 2047 oracle hard nproc 16384 oracle soft nofile 1024 oracle ha
   integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
   crossorigin="anonymous"></script>
 
-
-
-<link rel="stylesheet" href="/css/prism.css"/>
 
 
 
@@ -150,7 +147,7 @@ oracle soft nproc 2047 oracle hard nproc 16384 oracle soft nofile 1024 oracle ha
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.9108037f01fa74764d27918328ce969d.json"
+  data-offline-search-index-json-src="/offline-search-index.14df443270e87b55e82ca0e74fde32c0.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -177,7 +174,7 @@ oracle soft nproc 2047 oracle hard nproc 16384 oracle soft nofile 1024 oracle ha
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.9108037f01fa74764d27918328ce969d.json"
+  data-offline-search-index-json-src="/offline-search-index.14df443270e87b55e82ca0e74fde32c0.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -204,6 +201,9 @@ oracle soft nproc 2047 oracle hard nproc 16384 oracle soft nofile 1024 oracle ha
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemjenkins-li">
   
   <a href="/system/jenkins/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemjenkins"><span class="">jenkins</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemkibana-li">
+  
+  <a href="/system/kibana/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemkibana"><span class="">kibana</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemlinux-li">
   
   <a href="/system/linux/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemlinux"><span class="">linux</span></a>
@@ -339,67 +339,67 @@ oracle soft nproc 2047 oracle hard nproc 16384 oracle soft nofile 1024 oracle ha
 	</header>    
 	<h4 id="sysctl-설정">sysctl 설정</h4>
 <p>파일: /etc/sysctl.conf</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">fs.aio-max-nr <span style="color:#f92672">=</span> <span style="color:#ae81ff">1048576</span>
-fs.file-max <span style="color:#f92672">=</span> <span style="color:#ae81ff">6815744</span>
-kernel.shmall <span style="color:#f92672">=</span> <span style="color:#ae81ff">2097152</span>
-kernel.shmmax <span style="color:#f92672">=</span> <span style="color:#ae81ff">4056393728</span>
-kernel.shmmni <span style="color:#f92672">=</span> <span style="color:#ae81ff">4096</span>
-kernel.sem <span style="color:#f92672">=</span> <span style="color:#ae81ff">250</span> <span style="color:#ae81ff">32000</span> <span style="color:#ae81ff">100</span> <span style="color:#ae81ff">128</span>
-net.ipv4.ip_local_port_range <span style="color:#f92672">=</span> <span style="color:#ae81ff">9000</span> <span style="color:#ae81ff">65500</span>
-net.core.rmem_default <span style="color:#f92672">=</span> <span style="color:#ae81ff">262144</span>
-net.core.rmem_max <span style="color:#f92672">=</span> <span style="color:#ae81ff">4194304</span>
-net.core.wmem_default <span style="color:#f92672">=</span> <span style="color:#ae81ff">262144</span>
-net.core.wmem_max <span style="color:#f92672">=</span> <span style="color:#ae81ff">1048586</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">fs.aio-max-nr <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">1048576</span>
+fs.file-max <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">6815744</span>
+kernel.shmall <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">2097152</span>
+kernel.shmmax <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">4056393728</span>
+kernel.shmmni <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">4096</span>
+kernel.sem <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">250</span> <span style="color:#0000cf;font-weight:bold">32000</span> <span style="color:#0000cf;font-weight:bold">100</span> <span style="color:#0000cf;font-weight:bold">128</span>
+net.ipv4.ip_local_port_range <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">9000</span> <span style="color:#0000cf;font-weight:bold">65500</span>
+net.core.rmem_default <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">262144</span>
+net.core.rmem_max <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">4194304</span>
+net.core.wmem_default <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">262144</span>
+net.core.wmem_max <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">1048586</span>
 </code></pre></div><p>반영: <code>sysctl -p</code></p>
 <p>확인: <code>sysctl -a</code></p>
 <br>
 <h4 id="limits-설정">limits 설정</h4>
 <p>/etc/security/limits.conf</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">oracle soft nproc <span style="color:#ae81ff">2047</span>
-oracle hard nproc <span style="color:#ae81ff">16384</span>
-oracle soft nofile <span style="color:#ae81ff">1024</span>
-oracle hard nofile <span style="color:#ae81ff">65536</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">oracle soft nproc <span style="color:#0000cf;font-weight:bold">2047</span>
+oracle hard nproc <span style="color:#0000cf;font-weight:bold">16384</span>
+oracle soft nofile <span style="color:#0000cf;font-weight:bold">1024</span>
+oracle hard nofile <span style="color:#0000cf;font-weight:bold">65536</span>
 </code></pre></div><br>
 <h4 id="시스템-계정">시스템 계정</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">groupadd oinstall
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">groupadd oinstall
 groupadd dba
 useradd -g oinstall -G dba oracle
 </code></pre></div><br>
 <h4 id="설치-디렉토리">설치 디렉토리</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mkdir -p /prod/oracle12/app
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mkdir -p /prod/oracle12/app
 mkdir -p /prod/oracle12/oraInventory
 chown -R oracle:oinstall /prod/oracle12/app
 chown -R oracle:oinstall /prod/oracle12/oraInventory
-chmod -R <span style="color:#ae81ff">775</span> /prod/oracle12/app
-chmod -R <span style="color:#ae81ff">775</span> /prod/oracle12/oraInventory
+chmod -R <span style="color:#0000cf;font-weight:bold">775</span> /prod/oracle12/app
+chmod -R <span style="color:#0000cf;font-weight:bold">775</span> /prod/oracle12/oraInventory
 chmod g+s /prod/oracle12/app
 chmod g+s /prod/oracle12/oraInventory
 </code></pre></div><br>
 <h4 id="시스템-변수">시스템 변수</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">export TMPDIR<span style="color:#f92672">=</span>$TMP
-export ORACLE_BASE<span style="color:#f92672">=</span>/prod/oracle12/app/
-export ORACLE_HOME<span style="color:#f92672">=</span>$ORACLE_BASE/product/12.2.0/dbhome_1
-export ORACLE_HOME_LISTNER<span style="color:#f92672">=</span>$ORACLE_HOME/bin/lsnrctl
-export ORACLE_SID<span style="color:#f92672">=</span>orcl
-export LD_LIBRARY_PATH<span style="color:#f92672">=</span>/lib:/usr/lib:/usr/lib64:$ORACLE_HOME/lib
-export CLASSPATH<span style="color:#f92672">=</span>$ORACLE_HOME/jlib:$ORACLE_HOME/rdbms/jlib
-export PATH<span style="color:#f92672">=</span>$ORACLE_HOME/bin:$PATH:$HOME/.local/bin:$HOME/bin
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#204a87">export</span> <span style="color:#000">TMPDIR</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">$TMP</span>
+<span style="color:#204a87">export</span> <span style="color:#000">ORACLE_BASE</span><span style="color:#ce5c00;font-weight:bold">=</span>/prod/oracle12/app/
+<span style="color:#204a87">export</span> <span style="color:#000">ORACLE_HOME</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">$ORACLE_BASE</span>/product/12.2.0/dbhome_1
+<span style="color:#204a87">export</span> <span style="color:#000">ORACLE_HOME_LISTNER</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">$ORACLE_HOME</span>/bin/lsnrctl
+<span style="color:#204a87">export</span> <span style="color:#000">ORACLE_SID</span><span style="color:#ce5c00;font-weight:bold">=</span>orcl
+<span style="color:#204a87">export</span> <span style="color:#000">LD_LIBRARY_PATH</span><span style="color:#ce5c00;font-weight:bold">=</span>/lib:/usr/lib:/usr/lib64:<span style="color:#000">$ORACLE_HOME</span>/lib
+<span style="color:#204a87">export</span> <span style="color:#000">CLASSPATH</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">$ORACLE_HOME</span>/jlib:<span style="color:#000">$ORACLE_HOME</span>/rdbms/jlib
+<span style="color:#204a87">export</span> <span style="color:#000">PATH</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">$ORACLE_HOME</span>/bin:<span style="color:#000">$PATH</span>:<span style="color:#000">$HOME</span>/.local/bin:<span style="color:#000">$HOME</span>/bin
 </code></pre></div><br>
 <h4 id="gui-패키지-설치">gui 패키지 설치</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ yum grouplist
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ yum grouplist
 사용 가능한 환경 그룹 :
    서버 - GUI 사용
    최소 설치
    워크스테이션
    가상화 호스트
    사용자 정의 운영 체제
-$ yum groupinstall <span style="color:#e6db74">&#34;서버 - GUI 사용&#34;</span>
+$ yum groupinstall <span style="color:#4e9a06">&#34;서버 - GUI 사용&#34;</span>
 </code></pre></div><p>설치 후 runlevel 변경: <code>$ systemctl set-default graphical.target</code></p>
 <br>
 <h4 id="oracle12c-ee-설치">oracle12c-ee 설치</h4>
 <p>gui 환경으로 booting 후 oracle 계정으로 로그인하고 <code>runInstaller</code> 실행</p>
 <p>설치 파일: <code>oracle-ee_12102_linux_x64_1of2.zip</code>, <code>oracle-ee_12102_linux_x64_2of2.zip</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">install
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">install
 response
 rpm
 runInstaller
@@ -410,21 +410,21 @@ welcome.html
 <h4 id="systemctl-등록">systemctl 등록</h4>
 <p>systemctl 환경변수 파일: /etc/sysconfig/ora12c.env</p>
 <p>소유자(oracle) 설정: <code>chown oracle:db /etc/sysconfig/ora12c.env</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ORACLE_BASE<span style="color:#f92672">=</span>/prod/oracle12/app
-ORACLE_HOME<span style="color:#f92672">=</span>$ORACLE_BASE/product/12.2.0/dbhome_1
-ORACLE_SID<span style="color:#f92672">=</span>ora12c
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#000">ORACLE_BASE</span><span style="color:#ce5c00;font-weight:bold">=</span>/prod/oracle12/app
+<span style="color:#000">ORACLE_HOME</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">$ORACLE_BASE</span>/product/12.2.0/dbhome_1
+<span style="color:#000">ORACLE_SID</span><span style="color:#ce5c00;font-weight:bold">=</span>ora12c
 </code></pre></div><br>
 <h4 id="각종-오류">각종 오류</h4>
 <ul>
 <li>
 <p>ORA-01102: cannot mount database in EXCLUSIVE mode</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat $ORACLE_BASE/admin/ora12c/pfile/init.ora.1028202115570
-cp $ORACLE_BASE/admin/ora12c/pfile/init.ora.1028202115570 $ORACLE_HOME/dbs/initora12c.ora
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat <span style="color:#000">$ORACLE_BASE</span>/admin/ora12c/pfile/init.ora.1028202115570
+cp <span style="color:#000">$ORACLE_BASE</span>/admin/ora12c/pfile/init.ora.1028202115570 <span style="color:#000">$ORACLE_HOME</span>/dbs/initora12c.ora
 </code></pre></div></li>
 <li>
 <p>ORA-01033: ORACLE initialization or shutdown in progress</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">alter</span> pluggable <span style="color:#66d9ef">database</span> pdborcl <span style="color:#66d9ef">open</span> <span style="color:#66d9ef">read</span> <span style="color:#66d9ef">write</span>;
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">alter</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">pluggable</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">database</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">pdborcl</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">open</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">read</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">write</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div></li>
 </ul>
 <br>
 <p>systemctl service 파일 생성</p>
@@ -433,69 +433,69 @@ cp $ORACLE_BASE/admin/ora12c/pfile/init.ora.1028202115570 $ORACLE_HOME/dbs/inito
 <br>
 <h4 id="oratab-파일">oratab 파일</h4>
 <p>파일: /etc/oratab</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">ora12c:/prod/oracle12/app/product/12.2.0/dbhome_1:Y
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">ora12c:/prod/oracle12/app/product/12.2.0/dbhome_1:Y
 </code></pre></div><p>소유자(oracle) 설정: <code>chown oracle:db /etc/oratab</code></p>
 <br>
 <h4 id="max_string_size--extended">max_string_size = EXTENDED</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">startup mount;
-<span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">database</span> <span style="color:#66d9ef">open</span> migrate;
-<span style="color:#66d9ef">select</span> con_id, name, open_mode <span style="color:#66d9ef">from</span> v$pdbs;
-<span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">session</span> <span style="color:#66d9ef">set</span> container<span style="color:#f92672">=</span>PDB$SEED;
-<span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">system</span> <span style="color:#66d9ef">set</span> max_string_size<span style="color:#f92672">=</span>extended <span style="color:#66d9ef">scope</span><span style="color:#f92672">=</span>spfile;
-<span style="color:#f92672">@?/</span>rdbms<span style="color:#f92672">/</span><span style="color:#66d9ef">admin</span><span style="color:#f92672">/</span>utl32k.<span style="color:#66d9ef">sql</span>;
-<span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">session</span> <span style="color:#66d9ef">set</span> container<span style="color:#f92672">=</span>SPADBP;
-<span style="color:#66d9ef">alter</span> pluggable <span style="color:#66d9ef">database</span> SPADBP <span style="color:#66d9ef">open</span> upgrade;
-<span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">system</span> <span style="color:#66d9ef">set</span> max_string_size<span style="color:#f92672">=</span>extended <span style="color:#66d9ef">scope</span><span style="color:#f92672">=</span>spfile;
-<span style="color:#f92672">@?/</span>rdbms<span style="color:#f92672">/</span><span style="color:#66d9ef">admin</span><span style="color:#f92672">/</span>utl32k.<span style="color:#66d9ef">sql</span>;
-<span style="color:#f92672">@?/</span>rdbms<span style="color:#f92672">/</span><span style="color:#66d9ef">admin</span><span style="color:#f92672">/</span>utlrp.<span style="color:#66d9ef">sql</span>;
-<span style="color:#66d9ef">alter</span> pluggable <span style="color:#66d9ef">database</span> SPADBP <span style="color:#66d9ef">close</span> <span style="color:#66d9ef">immediate</span>;
-</code></pre></div><br>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000">startup</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">mount</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">alter</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">database</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">open</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">migrate</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">select</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">con_id</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">name</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">open_mode</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">from</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">v$pdbs</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">alter</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">session</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">set</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">container</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">PDB$SEED</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">alter</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">system</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">set</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">max_string_size</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">extended</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">scope</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">spfile</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#ce5c00;font-weight:bold">@?/</span><span style="color:#000">rdbms</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#204a87;font-weight:bold">admin</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">utl32k</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">sql</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">alter</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">session</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">set</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">container</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">SPADBP</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">alter</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">pluggable</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">database</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">SPADBP</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">open</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">upgrade</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">alter</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">system</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">set</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">max_string_size</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">extended</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">scope</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">spfile</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#ce5c00;font-weight:bold">@?/</span><span style="color:#000">rdbms</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#204a87;font-weight:bold">admin</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">utl32k</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">sql</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#ce5c00;font-weight:bold">@?/</span><span style="color:#000">rdbms</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#204a87;font-weight:bold">admin</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">utlrp</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">sql</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">alter</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">pluggable</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">database</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">SPADBP</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">close</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">immediate</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div><br>
 <h4 id="pdb-자동-시작">PDB 자동 시작</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span> con_id, name, open_mode <span style="color:#66d9ef">from</span> v$pdbs;
-<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">OR</span> <span style="color:#66d9ef">REPLACE</span> <span style="color:#66d9ef">TRIGGER</span> open_pdbs 
-  <span style="color:#66d9ef">AFTER</span> STARTUP <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">DATABASE</span> 
-<span style="color:#66d9ef">BEGIN</span> 
-  <span style="color:#66d9ef">EXECUTE</span> <span style="color:#66d9ef">IMMEDIATE</span> <span style="color:#e6db74">&#39;ALTER PLUGGABLE DATABASE ALL OPEN&#39;</span>; 
-<span style="color:#66d9ef">END</span> open_pdbs;
-<span style="color:#f92672">/</span>
-<span style="color:#66d9ef">commit</span>;
-</code></pre></div><br>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">select</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">con_id</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">name</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">open_mode</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">from</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">v$pdbs</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">OR</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">REPLACE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TRIGGER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">open_pdbs</span><span style="color:#f8f8f8;text-decoration:underline"> 
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">AFTER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">STARTUP</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">ON</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">DATABASE</span><span style="color:#f8f8f8;text-decoration:underline"> 
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">BEGIN</span><span style="color:#f8f8f8;text-decoration:underline"> 
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">EXECUTE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">IMMEDIATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;ALTER PLUGGABLE DATABASE ALL OPEN&#39;</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline"> 
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">END</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">open_pdbs</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">commit</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div><br>
 <h4 id="oracle-계정-생성">oracle 계정 생성</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">session</span> <span style="color:#66d9ef">set</span> <span style="color:#e6db74">&#34;_oracle_script&#34;</span><span style="color:#f92672">=</span><span style="color:#66d9ef">true</span>;
-<span style="color:#66d9ef">CREATE</span> TABLESPACE TS_DATA01 DATAFILE <span style="color:#e6db74">&#39;/data/DB/oradata/ora12c/SPADBP/TS_DATA01.dbf&#39;</span> <span style="color:#66d9ef">SIZE</span> <span style="color:#ae81ff">1</span><span style="color:#66d9ef">G</span> AUTOEXTEND <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">NEXT</span> <span style="color:#ae81ff">10</span>M;
-<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">USER</span> SPADBA IDENTIFIED <span style="color:#66d9ef">BY</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">DEFAULT</span> TABLESPACE TS_DATA01;
-<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">USER</span> SPAAPP IDENTIFIED <span style="color:#66d9ef">BY</span> SPAAPP1234 <span style="color:#66d9ef">DEFAULT</span> TABLESPACE TS_DATA01;
-<span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">USER</span> SPADBA QUOTA UNLIMITED <span style="color:#66d9ef">ON</span> TS_DATA01;
-<span style="color:#66d9ef">GRANT</span> <span style="color:#66d9ef">CONNECT</span>, RESOURCE, <span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">VIEW</span>, EXP_FULL_DATABASE, IMP_FULL_DATABASE, DBA <span style="color:#66d9ef">TO</span> SPADBA;
-<span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">ROLE</span> RL_SPA_APP;
-<span style="color:#66d9ef">GRANT</span> <span style="color:#66d9ef">CONNECT</span>, RESOURCE <span style="color:#66d9ef">TO</span> RL_SPA_APP;
-<span style="color:#66d9ef">GRANT</span> RL_SPA_APP <span style="color:#66d9ef">TO</span> SPAAPP;
-</code></pre></div><br>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">alter</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">session</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">set</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;_oracle_script&#34;</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">TABLESPACE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">TS_DATA01</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">DATAFILE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;/data/DB/oradata/ora12c/SPADBP/TS_DATA01.dbf&#39;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">SIZE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#204a87;font-weight:bold">G</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">AUTOEXTEND</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">ON</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">NEXT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">10</span><span style="color:#000">M</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">USER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">SPADBA</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">IDENTIFIED</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">DEFAULT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">TABLESPACE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">TS_DATA01</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">USER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">SPAAPP</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">IDENTIFIED</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">SPAAPP1234</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">DEFAULT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">TABLESPACE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">TS_DATA01</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">ALTER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">USER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">SPADBA</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">QUOTA</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">UNLIMITED</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">ON</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">TS_DATA01</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">GRANT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">CONNECT</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">RESOURCE</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">VIEW</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">EXP_FULL_DATABASE</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">IMP_FULL_DATABASE</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">DBA</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TO</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">SPADBA</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">ROLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">RL_SPA_APP</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">GRANT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">CONNECT</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">RESOURCE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TO</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">RL_SPA_APP</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">GRANT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">RL_SPA_APP</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TO</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">SPAAPP</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div><br>
 <h4 id="oracle-impexp">oracle imp/exp</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">exp.exe SPADBA/1@SPADBP FILE=&#39;Z:\SPADBP.dmp&#39; GRANTS=Y INDEXES=Y ROWS=Y CONSTRAINTS=Y TRIGGERS=N COMPRESS=Y DIRECT=N CONSISTENT=N OWNER=(SPADBA)
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">exp.exe SPADBA/1@SPADBP FILE=&#39;Z:\SPADBP.dmp&#39; GRANTS=Y INDEXES=Y ROWS=Y CONSTRAINTS=Y TRIGGERS=N COMPRESS=Y DIRECT=N CONSISTENT=N OWNER=(SPADBA)
 imp.exe SPADBA/1@SPADBP FILE=&#39;Z:\SPADBP.dmp&#39; FEEDBACK=1000 GRANTS=Y INDEXES=Y ROWS=Y CONSTRAINTS=Y IGNORE=N SHOW=N DESTROY=N ANALYZE=Y SKIP_UNUSABLE_INDEXES=N RECALCULATE_STATISTICS=N FROMUSER=SPADBA TOUSER=SPADBA
 </code></pre></div><br>
 <h4 id="drop-table-문">drop table 문</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span> <span style="color:#e6db74">&#39;drop table &#39;</span><span style="color:#f92672">||</span><span style="color:#66d9ef">table_name</span><span style="color:#f92672">||</span><span style="color:#e6db74">&#39; cascade constraints;&#39;</span> <span style="color:#66d9ef">from</span> user_tables;
-</code></pre></div><h4 id="oracle-character-set-설정">oracle character-set 설정</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> nls_database_parameters <span style="color:#66d9ef">where</span> <span style="color:#66d9ef">parameter</span> <span style="color:#66d9ef">like</span> <span style="color:#e6db74">&#39;%NLS_CHARACTERSET%&#39;</span>;
-<span style="color:#75715e">/**
-</span><span style="color:#75715e">NLS_CHARACTERSET  WE8MSWIN1252
-</span><span style="color:#75715e">**/</span>
-<span style="color:#75715e">/**
-</span><span style="color:#75715e">NLS_CHARACTERSET  AL32UTF8
-</span><span style="color:#75715e">*/</span>
-
-SHUTDOWN <span style="color:#66d9ef">IMMEDIATE</span>;
-STARTUP MOUNT;
-<span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">SYSTEM</span> ENABLE RESTRICTED <span style="color:#66d9ef">SESSION</span>;
-<span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">SYSTEM</span> <span style="color:#66d9ef">SET</span> JOB_QUEUE_PROCESSES<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
-<span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">SYSTEM</span> <span style="color:#66d9ef">SET</span> AQ_TM_PROCESSES<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
-<span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">DATABASE</span> <span style="color:#66d9ef">OPEN</span>;
-<span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">DATABASE</span> CHARACTER <span style="color:#66d9ef">SET</span> INTERNAL_USE AL32UTF8;
-SHUTDOWN <span style="color:#66d9ef">IMMEDIATE</span>;
-STARTUP;
-</code></pre></div><br>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">select</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;drop table &#39;</span><span style="color:#ce5c00;font-weight:bold">||</span><span style="color:#204a87;font-weight:bold">table_name</span><span style="color:#ce5c00;font-weight:bold">||</span><span style="color:#4e9a06">&#39; cascade constraints;&#39;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">from</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">user_tables</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div><h4 id="oracle-character-set-설정">oracle character-set 설정</h4>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">select</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">from</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">nls_database_parameters</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">where</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">parameter</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">like</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;%NLS_CHARACTERSET%&#39;</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">/**
+</span><span style="color:#8f5902;font-style:italic">NLS_CHARACTERSET  WE8MSWIN1252
+</span><span style="color:#8f5902;font-style:italic">**/</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">/**
+</span><span style="color:#8f5902;font-style:italic">NLS_CHARACTERSET  AL32UTF8
+</span><span style="color:#8f5902;font-style:italic">*/</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">SHUTDOWN</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">IMMEDIATE</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">STARTUP</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">MOUNT</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">ALTER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">SYSTEM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ENABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">RESTRICTED</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">SESSION</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">ALTER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">SYSTEM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">SET</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">JOB_QUEUE_PROCESSES</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">ALTER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">SYSTEM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">SET</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">AQ_TM_PROCESSES</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">ALTER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">DATABASE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">OPEN</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">ALTER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">DATABASE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87">CHARACTER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">SET</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">INTERNAL_USE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">AL32UTF8</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">SHUTDOWN</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">IMMEDIATE</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">STARTUP</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div><br>
 
 	
 	
@@ -567,9 +567,6 @@ window.markmap = {
 
 <script src="/js/main.min.c1b8f3c373b85f900699a7ea81c2038ebbbebcac1a5a4b6e5ef96c24c31790d6.js" integrity="sha256-wbjzw3O4X5AGmafqgcIDjru&#43;vKwaWktuXvlsJMMXkNY=" crossorigin="anonymous"></script>
 
-
-
-<script src='/js/prism.js'></script>
 
 
 

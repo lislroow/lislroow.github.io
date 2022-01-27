@@ -59,8 +59,8 @@ configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modu
 
 
 
-<link rel="preload" href="/scss/main.min.1f861d065398c88219fc317598d260b310e1d29b4fded8c05305f546ecc0046e.css" as="style">
-<link href="/scss/main.min.1f861d065398c88219fc317598d260b310e1d29b4fded8c05305f546ecc0046e.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.7bab5b53ce3a6e9d0beb97d70df0f5bd91bedfa2f6e2037ec8f9d3b5e3f7a384.css" as="style">
+<link href="/scss/main.min.7bab5b53ce3a6e9d0beb97d70df0f5bd91bedfa2f6e2037ec8f9d3b5e3f7a384.css" rel="stylesheet" integrity="">
 
 
 <script
@@ -73,9 +73,6 @@ configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modu
   integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
   crossorigin="anonymous"></script>
 
-
-
-<link rel="stylesheet" href="/css/prism.css"/>
 
 
 
@@ -148,7 +145,7 @@ configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modu
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.9108037f01fa74764d27918328ce969d.json"
+  data-offline-search-index-json-src="/offline-search-index.14df443270e87b55e82ca0e74fde32c0.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -175,7 +172,7 @@ configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modu
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.9108037f01fa74764d27918328ce969d.json"
+  data-offline-search-index-json-src="/offline-search-index.14df443270e87b55e82ca0e74fde32c0.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -202,6 +199,9 @@ configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modu
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemjenkins-li">
   
   <a href="/system/jenkins/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemjenkins"><span class="">jenkins</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemkibana-li">
+  
+  <a href="/system/kibana/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemkibana"><span class="">kibana</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemlinux-li">
   
   <a href="/system/linux/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemlinux"><span class="">linux</span></a>
@@ -357,7 +357,7 @@ configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modu
 <br>
 <h3 id="configure">configure</h3>
 <h4 id="httpdconf">httpd.conf</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">ServerRoot &#34;/etc/httpd&#34;
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">ServerRoot &#34;/etc/httpd&#34;
 
 Listen 80
 
@@ -420,7 +420,7 @@ AddDefaultCharset UTF-8
 EnableSendfile on
 IncludeOptional conf.d/*.conf
 </code></pre></div><h4 id="sslconf">ssl.conf</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Listen 443 https
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Listen 443 https
 
 SSLPassPhraseDialog exec:/usr/libexec/httpd-ssl-pass-dialog
 SSLSessionCache         shmcb:/run/httpd/sslcache(512000)
@@ -451,7 +451,7 @@ SSLCryptoDevice builtin
 &lt;/VirtualHost&gt;
 </code></pre></div><br>
 <h4 id="vhost-centos8conf">vhost-centos8.conf</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&lt;VirtualHost *:80&gt;
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&lt;VirtualHost *:80&gt;
   ServerName centos8
 
   RewriteEngine On
@@ -497,7 +497,7 @@ SSLCryptoDevice builtin
 &lt;/VirtualHost&gt;
 </code></pre></div><br>
 <h4 id="vhost-nexusconf">vhost-nexus.conf</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&lt;VirtualHost *:80&gt;
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&lt;VirtualHost *:80&gt;
   ServerName nexus
 
   RewriteEngine On
@@ -556,7 +556,7 @@ SSLCryptoDevice builtin
   #ProxyPassMatch ^/(.*)$ http://127.0.0.1:8100/$1
 &lt;/VirtualHost&gt;
 </code></pre></div><h4 id="vhost-gitlabconf">vhost-gitlab.conf</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&lt;VirtualHost *:80&gt;
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&lt;VirtualHost *:80&gt;
   ServerName gitlab
 
   RewriteEngine On
@@ -614,7 +614,7 @@ SSLCryptoDevice builtin
   ProxyPassReverse / http://127.0.0.1:8200/
 &lt;/VirtualHost&gt;
 </code></pre></div><h4 id="vhost-jenkinsconf">vhost-jenkins.conf</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&lt;VirtualHost *:80&gt;
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&lt;VirtualHost *:80&gt;
   ServerName jenkins
 
   RewriteEngine On
@@ -677,7 +677,7 @@ SSLCryptoDevice builtin
   RewriteRule /(.*) http://localhost:8400/$1 [P,L]
 &lt;/VirtualHost&gt;
 </code></pre></div><h4 id="vhost-dlogconf">vhost-dlog.conf</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&lt;VirtualHost *:80&gt;
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&lt;VirtualHost *:80&gt;
   ServerName dlog
 
   RewriteEngine On
@@ -735,7 +735,7 @@ SSLCryptoDevice builtin
   ProxyPassReverse / http://127.0.0.1:1313/
 &lt;/VirtualHost&gt;
 </code></pre></div><h4 id="vhost-dwwwconf">vhost-dwww.conf</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&lt;VirtualHost *:80&gt;
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&lt;VirtualHost *:80&gt;
   ServerName dwww
 
   ErrorLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/dwww-error.log.%Y-%m-%d 86400 +540&#34;
@@ -767,7 +767,7 @@ SSLCryptoDevice builtin
 &lt;/VirtualHost&gt;
 </code></pre></div><h3 id="connector">connector</h3>
 <h4 id="weblogic">weblogic</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">LoadModule weblogic_module modules/mod_wl_24.so
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">LoadModule weblogic_module modules/mod_wl_24.so
 
 &lt;IfModule mod_weblogic.c&gt;
   WebLogicCluster IP:PORT,IP:PORT,IP:PORT
@@ -787,13 +787,13 @@ SSLCryptoDevice builtin
 &lt;/Location&gt;
 </code></pre></div><h3 id="windows">windows</h3>
 <h4 id="install-command-apache-lounge">install command (Apache Lounge)</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">httpd.exe -k install
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">httpd.exe -k install
 httpd.exe -k configtest
 </code></pre></div><h4 id="configure-1">configure</h4>
 <ul>
 <li>httpd.conf</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">ServerRoot &#34;Z:/www/httpd_2.4.25-win64-VC14/Apache24&#34;
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">ServerRoot &#34;Z:/www/httpd_2.4.25-win64-VC14/Apache24&#34;
 
 Listen 80
 
@@ -990,7 +990,7 @@ Include conf/extra/ssl.conf
 </code></pre></div><ul>
 <li>ssl.conf</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Listen 9443
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Listen 9443
 #Listen 443
 
 SSLCipherSuite HIGH:MEDIUM:!MD5:!RC4
@@ -1008,7 +1008,7 @@ SSLSessionCacheTimeout  300
 </code></pre></div><ul>
 <li>vhost-dlog.conf</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">#&lt;VirtualHost *:80&gt;
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">#&lt;VirtualHost *:80&gt;
 #  ServerName vdlog.mgkim.net:80
 #
 #  RewriteEngine On
@@ -1098,32 +1098,32 @@ SSLSessionCacheTimeout  300
 </ol>
 <h4 id="useful">useful</h4>
 <p>개인키(domain.key)와 인증서(domain.crt) 파일을 동시에 생성하는 스크립트 입니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#f92672">[</span>root@develop /etc/httpd/conf.d/certs<span style="color:#f92672">]</span>$ cat create-cert.sh
-DOMAIN<span style="color:#f92672">=</span>$1
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#ce5c00;font-weight:bold">[</span>root@develop /etc/httpd/conf.d/certs<span style="color:#ce5c00;font-weight:bold">]</span>$ cat create-cert.sh
+<span style="color:#000">DOMAIN</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">$1</span>
 
-openssl req -x509 -nodes -days <span style="color:#ae81ff">730</span> -newkey rsa:2048 -keyout $DOMAIN.key -out $DOMAIN.crt -config &lt;<span style="color:#f92672">(</span>cat <span style="color:#e6db74">&lt;&lt;- TEXT
-</span><span style="color:#e6db74">[req]
-</span><span style="color:#e6db74">distinguished_name = req_distinguished_name
-</span><span style="color:#e6db74">x509_extensions = v3_req
-</span><span style="color:#e6db74">prompt = no
-</span><span style="color:#e6db74">[req_distinguished_name]
-</span><span style="color:#e6db74">countryName             = KR
-</span><span style="color:#e6db74">stateOrProvinceName     = Seoul
-</span><span style="color:#e6db74">localityName            = Seonyudo
-</span><span style="color:#e6db74">organizationName        = SPACESOFT
-</span><span style="color:#e6db74">organizationalUnitName  = Dev Team
-</span><span style="color:#e6db74">CN = $DOMAIN
-</span><span style="color:#e6db74">[v3_req]
-</span><span style="color:#e6db74">keyUsage = critical, digitalSignature, keyAgreement
-</span><span style="color:#e6db74">extendedKeyUsage = serverAuth
-</span><span style="color:#e6db74">subjectAltName = @alt_names
-</span><span style="color:#e6db74">[alt_names]
-</span><span style="color:#e6db74">DNS.1 = $DOMAIN
-</span><span style="color:#e6db74">TEXT</span><span style="color:#f92672">)</span> -sha256
+openssl req -x509 -nodes -days <span style="color:#0000cf;font-weight:bold">730</span> -newkey rsa:2048 -keyout <span style="color:#000">$DOMAIN</span>.key -out <span style="color:#000">$DOMAIN</span>.crt -config &lt;<span style="color:#ce5c00;font-weight:bold">(</span>cat <span style="color:#4e9a06">&lt;&lt;- TEXT
+</span><span style="color:#4e9a06">[req]
+</span><span style="color:#4e9a06">distinguished_name = req_distinguished_name
+</span><span style="color:#4e9a06">x509_extensions = v3_req
+</span><span style="color:#4e9a06">prompt = no
+</span><span style="color:#4e9a06">[req_distinguished_name]
+</span><span style="color:#4e9a06">countryName             = KR
+</span><span style="color:#4e9a06">stateOrProvinceName     = Seoul
+</span><span style="color:#4e9a06">localityName            = Seonyudo
+</span><span style="color:#4e9a06">organizationName        = SPACESOFT
+</span><span style="color:#4e9a06">organizationalUnitName  = Dev Team
+</span><span style="color:#4e9a06">CN = $DOMAIN
+</span><span style="color:#4e9a06">[v3_req]
+</span><span style="color:#4e9a06">keyUsage = critical, digitalSignature, keyAgreement
+</span><span style="color:#4e9a06">extendedKeyUsage = serverAuth
+</span><span style="color:#4e9a06">subjectAltName = @alt_names
+</span><span style="color:#4e9a06">[alt_names]
+</span><span style="color:#4e9a06">DNS.1 = $DOMAIN
+</span><span style="color:#4e9a06">TEXT</span><span style="color:#ce5c00;font-weight:bold">)</span> -sha256
 
-<span style="color:#f92672">[</span>root@develop /etc/httpd/conf.d/certs<span style="color:#f92672">]</span>$
+<span style="color:#ce5c00;font-weight:bold">[</span>root@develop /etc/httpd/conf.d/certs<span style="color:#ce5c00;font-weight:bold">]</span>$
 </code></pre></div><h3 id="selinux">selinux</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">chcon -Rt httpd_log_t /outlog/WEB
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">chcon -Rt httpd_log_t /outlog/WEB
 chcon -Rt httpd_sys_content_t /app/WEB/dlog
 setsebool -P httpd_can_network_connect on
 
@@ -1199,9 +1199,6 @@ window.markmap = {
 
 <script src="/js/main.min.c1b8f3c373b85f900699a7ea81c2038ebbbebcac1a5a4b6e5ef96c24c31790d6.js" integrity="sha256-wbjzw3O4X5AGmafqgcIDjru&#43;vKwaWktuXvlsJMMXkNY=" crossorigin="anonymous"></script>
 
-
-
-<script src='/js/prism.js'></script>
 
 
 

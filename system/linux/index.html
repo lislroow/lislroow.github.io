@@ -60,8 +60,8 @@ systemd 는 centos 7 부터 포함된 기능입니다.
 
 
 
-<link rel="preload" href="/scss/main.min.1f861d065398c88219fc317598d260b310e1d29b4fded8c05305f546ecc0046e.css" as="style">
-<link href="/scss/main.min.1f861d065398c88219fc317598d260b310e1d29b4fded8c05305f546ecc0046e.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.7bab5b53ce3a6e9d0beb97d70df0f5bd91bedfa2f6e2037ec8f9d3b5e3f7a384.css" as="style">
+<link href="/scss/main.min.7bab5b53ce3a6e9d0beb97d70df0f5bd91bedfa2f6e2037ec8f9d3b5e3f7a384.css" rel="stylesheet" integrity="">
 
 
 <script
@@ -74,9 +74,6 @@ systemd 는 centos 7 부터 포함된 기능입니다.
   integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
   crossorigin="anonymous"></script>
 
-
-
-<link rel="stylesheet" href="/css/prism.css"/>
 
 
 
@@ -149,7 +146,7 @@ systemd 는 centos 7 부터 포함된 기능입니다.
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.9108037f01fa74764d27918328ce969d.json"
+  data-offline-search-index-json-src="/offline-search-index.14df443270e87b55e82ca0e74fde32c0.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -176,7 +173,7 @@ systemd 는 centos 7 부터 포함된 기능입니다.
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.9108037f01fa74764d27918328ce969d.json"
+  data-offline-search-index-json-src="/offline-search-index.14df443270e87b55e82ca0e74fde32c0.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -203,6 +200,9 @@ systemd 는 centos 7 부터 포함된 기능입니다.
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemjenkins-li">
   
   <a href="/system/jenkins/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemjenkins"><span class="">jenkins</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemkibana-li">
+  
+  <a href="/system/kibana/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemkibana"><span class="">kibana</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-systemlinux-li">
   
   <a href="/system/linux/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-systemlinux"><span class="td-sidebar-nav-active-item">linux</span></a>
@@ -331,7 +331,7 @@ systemd 는 centos 7 부터 포함된 기능입니다.
 <ul>
 <li>파일경로: <code>/etc/systemd/system/{서비스명}.service</code></li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@develop /etc/systemd/system]$ cat jenkins.service
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@develop /etc/systemd/system]$ cat jenkins.service
 [Unit]
 Description=Jenkins
 After=network.target syslog.target
@@ -350,7 +350,7 @@ Restart=on-abort
 WantedBy=multi-user.target
 [root@develop /etc/systemd/system]$
 </code></pre></div><p>yum 으로 패키지 설치시 systemctl 에 등록된 정보를 아래와 같은 방법으로 확인합니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@develop /etc/systemd/system]$ systemctl --help
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@develop /etc/systemd/system]$ systemctl --help
 systemctl [OPTIONS...] {COMMAND} ...
 
 Unit Commands:
@@ -366,7 +366,7 @@ httpd.service                                                                   
 </code></pre></div><p>httpd 의 서비스 파일은 <code>/usr/lib/systemd/system/httpd.service</code> 에 있음을 확인할 수 있습니다.</p>
 <h3 id="서비스-등록">서비스 등록</h3>
 <p>서비스 파일을 생성한 다음 systemctl 에 등록을 해야 합니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@develop /etc/systemd/system]$ systemctl --help | grep reload
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@develop /etc/systemd/system]$ systemctl --help | grep reload
      --no-reload      Don&#39;t reload daemon after en-/dis-abling unit files
   reload NAME...                  Reload one or more units
   reload-or-restart NAME...       Reload one or more units if possible,
@@ -378,7 +378,7 @@ httpd.service                                                                   
 </code></pre></div><p><code>systemctl daemon-reload</code> 명령으로 reload 를 합니다.</p>
 <h3 id="서비스-활성화">서비스 활성화</h3>
 <p>서비스 활성화 상태로 설정을 하게되면 os booting 시 자동으로 실행이 됩니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@develop /etc/systemd/system]$ systemctl --help | grep enable
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@develop /etc/systemd/system]$ systemctl --help | grep enable
      --preset-mode=   Apply only enable, only disable, or all presets
   enable NAME...                  Enable one or more unit files
   reenable NAME...                Reenable one or more unit files
@@ -391,32 +391,32 @@ enabled
 [root@develop /etc/systemd/system]$
 </code></pre></div><p><code>systemctl enable {서비스}</code> 명령으로 enabled 상태로 설정합니다.</p>
 <h2 id="network">network</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@develop ~<span style="color:#f92672">]</span>$ cat /etc/sysconfig/network-scripts/ifcfg-ens32
-TYPE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Ethernet&#34;</span>
-PROXY_METHOD<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;none&#34;</span>
-BROWSER_ONLY<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;no&#34;</span>
-BOOTPROTO<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;none&#34;</span>
-DEFROUTE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;yes&#34;</span>
-IPV4_FAILURE_FATAL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;no&#34;</span>
-IPV6INIT<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;no&#34;</span>
-IPV6_AUTOCONF<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;yes&#34;</span>
-IPV6_DEFROUTE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;yes&#34;</span>
-IPV6_FAILURE_FATAL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;no&#34;</span>
-IPV6_ADDR_GEN_MODE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stable-privacy&#34;</span>
-NAME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ens32&#34;</span>
-UUID<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;d18679f4-c760-4621-b73a-8e7b513594a7&#34;</span>
-DEVICE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ens32&#34;</span>
-ONBOOT<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;yes&#34;</span>
-IPADDR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;172.28.200.20&#34;</span>
-PREFIX<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;24&#34;</span>
-GATEWAY<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;172.28.200.2&#34;</span>
-DNS1<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;8.8.8.8&#34;</span>
-<span style="color:#f92672">[</span>root@develop ~<span style="color:#f92672">]</span>$
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#ce5c00;font-weight:bold">[</span>root@develop ~<span style="color:#ce5c00;font-weight:bold">]</span>$ cat /etc/sysconfig/network-scripts/ifcfg-ens32
+<span style="color:#000">TYPE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;Ethernet&#34;</span>
+<span style="color:#000">PROXY_METHOD</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;none&#34;</span>
+<span style="color:#000">BROWSER_ONLY</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;no&#34;</span>
+<span style="color:#000">BOOTPROTO</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;none&#34;</span>
+<span style="color:#000">DEFROUTE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;yes&#34;</span>
+<span style="color:#000">IPV4_FAILURE_FATAL</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;no&#34;</span>
+<span style="color:#000">IPV6INIT</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;no&#34;</span>
+<span style="color:#000">IPV6_AUTOCONF</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;yes&#34;</span>
+<span style="color:#000">IPV6_DEFROUTE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;yes&#34;</span>
+<span style="color:#000">IPV6_FAILURE_FATAL</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;no&#34;</span>
+<span style="color:#000">IPV6_ADDR_GEN_MODE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;stable-privacy&#34;</span>
+<span style="color:#000">NAME</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;ens32&#34;</span>
+<span style="color:#000">UUID</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;d18679f4-c760-4621-b73a-8e7b513594a7&#34;</span>
+<span style="color:#000">DEVICE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;ens32&#34;</span>
+<span style="color:#000">ONBOOT</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;yes&#34;</span>
+<span style="color:#000">IPADDR</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;172.28.200.20&#34;</span>
+<span style="color:#000">PREFIX</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;24&#34;</span>
+<span style="color:#000">GATEWAY</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;172.28.200.2&#34;</span>
+<span style="color:#000">DNS1</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;8.8.8.8&#34;</span>
+<span style="color:#ce5c00;font-weight:bold">[</span>root@develop ~<span style="color:#ce5c00;font-weight:bold">]</span>$
 </code></pre></div><h2 id="hostname">hostname</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@develop ~]$ hostnamectl set-hostname develop
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@develop ~]$ hostnamectl set-hostname develop
 [root@develop ~]$
 </code></pre></div><h2 id="shell">shell</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[ -z ] : 문자열의 길이가 0이면 참
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[ -z ] : 문자열의 길이가 0이면 참
 [ -n ] : 문자열의 길이가 0이 아니면 참
 [ -eq ] : 값이 같으면 참
 [ -ne ] : 값이 다르면 참
@@ -507,9 +507,6 @@ window.markmap = {
 
 <script src="/js/main.min.c1b8f3c373b85f900699a7ea81c2038ebbbebcac1a5a4b6e5ef96c24c31790d6.js" integrity="sha256-wbjzw3O4X5AGmafqgcIDjru&#43;vKwaWktuXvlsJMMXkNY=" crossorigin="anonymous"></script>
 
-
-
-<script src='/js/prism.js'></script>
 
 
 

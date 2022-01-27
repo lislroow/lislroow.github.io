@@ -39,8 +39,8 @@ java 에 포함되어 있는 keytool 명령으로 아래 절차로 인증서를 
 
 
 
-<link rel="preload" href="/scss/main.min.1f861d065398c88219fc317598d260b310e1d29b4fded8c05305f546ecc0046e.css" as="style">
-<link href="/scss/main.min.1f861d065398c88219fc317598d260b310e1d29b4fded8c05305f546ecc0046e.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.7bab5b53ce3a6e9d0beb97d70df0f5bd91bedfa2f6e2037ec8f9d3b5e3f7a384.css" as="style">
+<link href="/scss/main.min.7bab5b53ce3a6e9d0beb97d70df0f5bd91bedfa2f6e2037ec8f9d3b5e3f7a384.css" rel="stylesheet" integrity="">
 
 
 <script
@@ -53,9 +53,6 @@ java 에 포함되어 있는 keytool 명령으로 아래 절차로 인증서를 
   integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
   crossorigin="anonymous"></script>
 
-
-
-<link rel="stylesheet" href="/css/prism.css"/>
 
 
 
@@ -128,7 +125,7 @@ java 에 포함되어 있는 keytool 명령으로 아래 절차로 인증서를 
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.9108037f01fa74764d27918328ce969d.json"
+  data-offline-search-index-json-src="/offline-search-index.14df443270e87b55e82ca0e74fde32c0.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -155,7 +152,7 @@ java 에 포함되어 있는 keytool 명령으로 아래 절차로 인증서를 
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.9108037f01fa74764d27918328ce969d.json"
+  data-offline-search-index-json-src="/offline-search-index.14df443270e87b55e82ca0e74fde32c0.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -337,55 +334,55 @@ java 에 포함되어 있는 keytool 명령으로 아래 절차로 인증서를 
 	<h4 id="java-keytool-인증서-생성">(java) keytool 인증서 생성</h4>
 <p>java 에 포함되어 있는 <code>keytool</code> 명령으로 아래 절차로 인증서를 생성합니다.</p>
 <p>생성된 인증서는 spring-boot 어플리케이션 설정파일인 <code>application.yaml</code> 주요 설정값을 암복호화를 할 때 사용하려 합니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># keytool 경로 확인</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#8f5902;font-style:italic"># keytool 경로 확인</span>
 $ which keytool
 /z/develop/java/openjdk-11.0.13.8-temurin/bin/keytool
 
-<span style="color:#75715e"># private-key 파일 생성 (mgkim-pc.jks)</span>
-$ keytool -genkeypair -alias mgkim-pc -keyalg RSA -dname <span style="color:#e6db74">&#34;CN=mgkim, OU=API Development, O=mgkim.net, L=Seoul, C=KR&#34;</span> -keypass <span style="color:#e6db74">&#34;votmdnjem&#34;</span> -keystore mgkim-pc.jks -storepass <span style="color:#e6db74">&#34;votmdnjem&#34;</span>
+<span style="color:#8f5902;font-style:italic"># private-key 파일 생성 (mgkim-pc.jks)</span>
+$ keytool -genkeypair -alias mgkim-pc -keyalg RSA -dname <span style="color:#4e9a06">&#34;CN=mgkim, OU=API Development, O=mgkim.net, L=Seoul, C=KR&#34;</span> -keypass <span style="color:#4e9a06">&#34;votmdnjem&#34;</span> -keystore mgkim-pc.jks -storepass <span style="color:#4e9a06">&#34;votmdnjem&#34;</span>
 $ ls -al mgkim-pc.*
--rw-r--r-- <span style="color:#ae81ff">1</span> Administrator <span style="color:#ae81ff">197121</span> <span style="color:#ae81ff">2733</span> 2022-01-27 21:56 mgkim-pc.jks
+-rw-r--r-- <span style="color:#0000cf;font-weight:bold">1</span> Administrator <span style="color:#0000cf;font-weight:bold">197121</span> <span style="color:#0000cf;font-weight:bold">2733</span> 2022-01-27 21:56 mgkim-pc.jks
 
-<span style="color:#75715e"># 인증서 파일 생성 (mgkim-pc.cer)</span>
+<span style="color:#8f5902;font-style:italic"># 인증서 파일 생성 (mgkim-pc.cer)</span>
 $ keytool -export -alias mgkim-pc -keystore mgkim-pc.jks -rfc -file mgkim-pc.cer
 키 저장소 비밀번호 입력:  votmdnjem
 인증서가 &lt;mgkim-pc.cer&gt; 파일에 저장되었습니다.
 $ ls -al mgkim-pc.*
--rw-r--r-- <span style="color:#ae81ff">1</span> Administrator <span style="color:#ae81ff">197121</span> <span style="color:#ae81ff">1236</span> 2022-01-27 21:58 mgkim-pc.cer
--rw-r--r-- <span style="color:#ae81ff">1</span> Administrator <span style="color:#ae81ff">197121</span> <span style="color:#ae81ff">2733</span> 2022-01-27 21:56 mgkim-pc.jks
+-rw-r--r-- <span style="color:#0000cf;font-weight:bold">1</span> Administrator <span style="color:#0000cf;font-weight:bold">197121</span> <span style="color:#0000cf;font-weight:bold">1236</span> 2022-01-27 21:58 mgkim-pc.cer
+-rw-r--r-- <span style="color:#0000cf;font-weight:bold">1</span> Administrator <span style="color:#0000cf;font-weight:bold">197121</span> <span style="color:#0000cf;font-weight:bold">2733</span> 2022-01-27 21:56 mgkim-pc.jks
 
-<span style="color:#75715e"># public-key 파일 생성 (mgkim-pc.jks.pub)</span>
+<span style="color:#8f5902;font-style:italic"># public-key 파일 생성 (mgkim-pc.jks.pub)</span>
 $ keytool -import -alias mgkim-pc -file mgkim-pc.cer -keystore mgkim-pc.jks.pub
 키 저장소 비밀번호 입력:  votmdnjem
 새 비밀번호 다시 입력: votmdnjem
-소유자: CN<span style="color:#f92672">=</span>mgkim, OU<span style="color:#f92672">=</span>API Development, O<span style="color:#f92672">=</span>mgkim.net, L<span style="color:#f92672">=</span>Seoul, C<span style="color:#f92672">=</span>KR
-발행자: CN<span style="color:#f92672">=</span>mgkim, OU<span style="color:#f92672">=</span>API Development, O<span style="color:#f92672">=</span>mgkim.net, L<span style="color:#f92672">=</span>Seoul, C<span style="color:#f92672">=</span>KR
+소유자: <span style="color:#000">CN</span><span style="color:#ce5c00;font-weight:bold">=</span>mgkim, <span style="color:#000">OU</span><span style="color:#ce5c00;font-weight:bold">=</span>API Development, <span style="color:#000">O</span><span style="color:#ce5c00;font-weight:bold">=</span>mgkim.net, <span style="color:#000">L</span><span style="color:#ce5c00;font-weight:bold">=</span>Seoul, <span style="color:#000">C</span><span style="color:#ce5c00;font-weight:bold">=</span>KR
+발행자: <span style="color:#000">CN</span><span style="color:#ce5c00;font-weight:bold">=</span>mgkim, <span style="color:#000">OU</span><span style="color:#ce5c00;font-weight:bold">=</span>API Development, <span style="color:#000">O</span><span style="color:#ce5c00;font-weight:bold">=</span>mgkim.net, <span style="color:#000">L</span><span style="color:#ce5c00;font-weight:bold">=</span>Seoul, <span style="color:#000">C</span><span style="color:#ce5c00;font-weight:bold">=</span>KR
 일련 번호: 59e8ce89
-적합한 시작 날짜: Thu Jan <span style="color:#ae81ff">27</span> 21:56:38 KST <span style="color:#ae81ff">2022</span> 종료 날짜: Wed Apr <span style="color:#ae81ff">27</span> 21:56:38 KST <span style="color:#ae81ff">2022</span>
+적합한 시작 날짜: Thu Jan <span style="color:#0000cf;font-weight:bold">27</span> 21:56:38 KST <span style="color:#0000cf;font-weight:bold">2022</span> 종료 날짜: Wed Apr <span style="color:#0000cf;font-weight:bold">27</span> 21:56:38 KST <span style="color:#0000cf;font-weight:bold">2022</span>
 인증서 지문:
          SHA1: 1D:5F:AF:4A:BE:13:E8:2C:3A:17:3D:DF:D4:0B:32:31:8C:FA:F2:88
          SHA256: CC:89:1A:2A:E0:2E:6D:E5:82:12:57:B7:95:30:C8:09:F5:4D:46:13:C1:06:D1:3B:FB:A1:68:72:24:5E:18:A3
 서명 알고리즘 이름: SHA256withRSA
 주체 공용 키 알고리즘: 2048비트 RSA 키
-버전: <span style="color:#ae81ff">3</span>
+버전: <span style="color:#0000cf;font-weight:bold">3</span>
 
 확장:
 
-<span style="color:#75715e">#1: ObjectId: 2.5.29.14 Criticality=false</span>
-SubjectKeyIdentifier <span style="color:#f92672">[</span>
-KeyIdentifier <span style="color:#f92672">[</span>
-0000: <span style="color:#ae81ff">89</span> <span style="color:#ae81ff">34</span> C5 D9 <span style="color:#ae81ff">38</span> <span style="color:#ae81ff">29</span> <span style="color:#ae81ff">88</span> <span style="color:#ae81ff">26</span>   <span style="color:#ae81ff">43</span> 6B DF B8 <span style="color:#ae81ff">34</span> E7 AE <span style="color:#ae81ff">74</span>  .4..8<span style="color:#f92672">)</span>.&amp;Ck..4..t
-0010: FD <span style="color:#ae81ff">35</span> 0B 8F                                        .5..
-<span style="color:#f92672">]</span>
-<span style="color:#f92672">]</span>
+<span style="color:#8f5902;font-style:italic">#1: ObjectId: 2.5.29.14 Criticality=false</span>
+SubjectKeyIdentifier <span style="color:#ce5c00;font-weight:bold">[</span>
+KeyIdentifier <span style="color:#ce5c00;font-weight:bold">[</span>
+0000: <span style="color:#0000cf;font-weight:bold">89</span> <span style="color:#0000cf;font-weight:bold">34</span> C5 D9 <span style="color:#0000cf;font-weight:bold">38</span> <span style="color:#0000cf;font-weight:bold">29</span> <span style="color:#0000cf;font-weight:bold">88</span> <span style="color:#0000cf;font-weight:bold">26</span>   <span style="color:#0000cf;font-weight:bold">43</span> 6B DF B8 <span style="color:#0000cf;font-weight:bold">34</span> E7 AE <span style="color:#0000cf;font-weight:bold">74</span>  .4..8<span style="color:#ce5c00;font-weight:bold">)</span>.<span style="color:#000;font-weight:bold">&amp;</span>Ck..4..t
+0010: FD <span style="color:#0000cf;font-weight:bold">35</span> 0B 8F                                        .5..
+<span style="color:#ce5c00;font-weight:bold">]</span>
+<span style="color:#ce5c00;font-weight:bold">]</span>
 
-이 인증서를 신뢰합니까? <span style="color:#f92672">[</span>아니오<span style="color:#f92672">]</span>:  y
+이 인증서를 신뢰합니까? <span style="color:#ce5c00;font-weight:bold">[</span>아니오<span style="color:#ce5c00;font-weight:bold">]</span>:  y
 인증서가 키 저장소에 추가되었습니다.
 
 $ ls -al mgkim-pc.*
--rw-r--r-- <span style="color:#ae81ff">1</span> Administrator <span style="color:#ae81ff">197121</span> <span style="color:#ae81ff">1236</span> 2022-01-27 21:58 mgkim-pc.cer
--rw-r--r-- <span style="color:#ae81ff">1</span> Administrator <span style="color:#ae81ff">197121</span> <span style="color:#ae81ff">2733</span> 2022-01-27 21:56 mgkim-pc.jks
--rw-r--r-- <span style="color:#ae81ff">1</span> Administrator <span style="color:#ae81ff">197121</span> <span style="color:#ae81ff">1239</span> 2022-01-27 22:00 mgkim-pc.jks.pub
+-rw-r--r-- <span style="color:#0000cf;font-weight:bold">1</span> Administrator <span style="color:#0000cf;font-weight:bold">197121</span> <span style="color:#0000cf;font-weight:bold">1236</span> 2022-01-27 21:58 mgkim-pc.cer
+-rw-r--r-- <span style="color:#0000cf;font-weight:bold">1</span> Administrator <span style="color:#0000cf;font-weight:bold">197121</span> <span style="color:#0000cf;font-weight:bold">2733</span> 2022-01-27 21:56 mgkim-pc.jks
+-rw-r--r-- <span style="color:#0000cf;font-weight:bold">1</span> Administrator <span style="color:#0000cf;font-weight:bold">197121</span> <span style="color:#0000cf;font-weight:bold">1239</span> 2022-01-27 22:00 mgkim-pc.jks.pub
 $ 
 </code></pre></div><ul>
 <li>mgkim-pc.jks: private-key 파일</li>
@@ -400,43 +397,44 @@ $
 <li>prismjs.com 에서 스타일을 선택한 다음 <code>prism.js</code>, <code>prism.css</code> 파일 다운로드</li>
 <li><code>prism.js</code>, <code>prism.css</code> 파일은 각 <code>/static/js/prism.js</code>, <code>/static/css/prism.css</code> 에 복사</li>
 </ul>
+<p>supported languages: <a href="/files/localenv/20220128-prismjs_supported_languages.txt" target="_blank">새 창 보기</a></p>
 <br>
 <h4 id="maven-패스워드-암호화">(maven) 패스워드 암호화</h4>
 <p><code>settings.xml</code>에는 nexus 저장소에 deploy 를 할 때 아래와 같이 nexus 의 계정정보를 포함하고 있어야 합니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;servers&gt;</span>
-  <span style="color:#f92672">&lt;server&gt;</span>
-    <span style="color:#f92672">&lt;id&gt;</span>nexus-release<span style="color:#f92672">&lt;/id&gt;</span>
-    <span style="color:#f92672">&lt;username&gt;</span>admin<span style="color:#f92672">&lt;/username&gt;</span>
-    <span style="color:#f92672">&lt;password&gt;</span>패스워드<span style="color:#f92672">&lt;/password&gt;</span>
-  <span style="color:#f92672">&lt;/server&gt;</span>
-  <span style="color:#f92672">&lt;server&gt;</span>
-    <span style="color:#f92672">&lt;id&gt;</span>nexus-snapshot<span style="color:#f92672">&lt;/id&gt;</span>
-    <span style="color:#f92672">&lt;username&gt;</span>admin<span style="color:#f92672">&lt;/username&gt;</span>
-    <span style="color:#f92672">&lt;password&gt;</span>패스워드<span style="color:#f92672">&lt;/password&gt;</span>
-  <span style="color:#f92672">&lt;/server&gt;</span>
-<span style="color:#f92672">&lt;/servers&gt;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#204a87;font-weight:bold">&lt;servers&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;server&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;id&gt;</span>nexus-release<span style="color:#204a87;font-weight:bold">&lt;/id&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;username&gt;</span>admin<span style="color:#204a87;font-weight:bold">&lt;/username&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;password&gt;</span>패스워드<span style="color:#204a87;font-weight:bold">&lt;/password&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;/server&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;server&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;id&gt;</span>nexus-snapshot<span style="color:#204a87;font-weight:bold">&lt;/id&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;username&gt;</span>admin<span style="color:#204a87;font-weight:bold">&lt;/username&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;password&gt;</span>패스워드<span style="color:#204a87;font-weight:bold">&lt;/password&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;/server&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/servers&gt;</span>
 </code></pre></div><p>패스워드를 암호화하여 설정하는 방법입니다. (<code>settings-security.xml</code> 파일은 로컬 저장소 .m2 디렉토리에 있어야 합니다.)</p>
 <ul>
 <li><code>mvn -emp 마스터패스워드</code>명령으로 master 패스워드 문자열을 생성하고, <code>~/.m2/settings-security.xml</code> 파일을 아래와 같이 생성하고 저장합니다.
 <br>(참고로 <code>-emp</code> 는 <code>--encrypt-master-password</code> 입니다.)
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ mvn -emp 마스터패스워드
-<span style="color:#f92672">{</span>h/JmfOxXj2IH/whyc5/7wpvOT5AeBmlHV/nzmk7rzY+i7vEvpg46lHddfEwHFtN1<span style="color:#f92672">}</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ mvn -emp 마스터패스워드
+<span style="color:#ce5c00;font-weight:bold">{</span>h/JmfOxXj2IH/whyc5/7wpvOT5AeBmlHV/nzmk7rzY+i7vEvpg46lHddfEwHFtN1<span style="color:#ce5c00;font-weight:bold">}</span>
 $
-$ cat <span style="color:#e6db74">&lt;&lt; EOF &gt; ~/.m2/settings-security.xml
-</span><span style="color:#e6db74">&lt;settingsSecurity&gt;
-</span><span style="color:#e6db74">  &lt;master&gt;{h/JmfOxXj2IH/whyc5/7wpvOT5AeBmlHV/nzmk7rzY+i7vEvpg46lHddfEwHFtN1}&lt;/master&gt;
-</span><span style="color:#e6db74">&lt;/settingsSecurity&gt;
-</span><span style="color:#e6db74">EOF</span>
+$ cat <span style="color:#4e9a06">&lt;&lt; EOF &gt; ~/.m2/settings-security.xml
+</span><span style="color:#4e9a06">&lt;settingsSecurity&gt;
+</span><span style="color:#4e9a06">  &lt;master&gt;{h/JmfOxXj2IH/whyc5/7wpvOT5AeBmlHV/nzmk7rzY+i7vEvpg46lHddfEwHFtN1}&lt;/master&gt;
+</span><span style="color:#4e9a06">&lt;/settingsSecurity&gt;
+</span><span style="color:#4e9a06">EOF</span>
 $ 
 </code></pre></div></li>
 <li><code>mvn -ep 패스워드</code>명령으로 nexus 의 계정에 해당되는 패스워드 문자열을 생성하고 <code>$M2_HOME/conf/settings.xml</code>의 <code>&lt;password&gt;</code>에 추가합니다.
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ mvn -ep 패스워드
-<span style="color:#f92672">{</span>nvTOxUicu5EHTqNwVFkrSKjAQnANDMwZy6sCuPND00w<span style="color:#f92672">=}</span>
-$ vi $M2_HOME/conf/settings.xml
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ mvn -ep 패스워드
+<span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">nvTOxUicu5EHTqNwVFkrSKjAQnANDMwZy6sCuPND00w</span><span style="color:#ce5c00;font-weight:bold">=}</span>
+$ vi <span style="color:#000">$M2_HOME</span>/conf/settings.xml
 &lt;server&gt;
   &lt;id&gt;nexus-snapshot&lt;/id&gt;
   &lt;username&gt;admin&lt;/username&gt;
-  &lt;password&gt;<span style="color:#f92672">{</span>nvTOxUicu5EHTqNwVFkrSKjAQnANDMwZy6sCuPND00w<span style="color:#f92672">=}</span>&lt;/password&gt;
+  &lt;password&gt;<span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">nvTOxUicu5EHTqNwVFkrSKjAQnANDMwZy6sCuPND00w</span><span style="color:#ce5c00;font-weight:bold">=}</span>&lt;/password&gt;
 &lt;/server&gt;
 </code></pre></div></li>
 </ul>
@@ -444,7 +442,7 @@ $ vi $M2_HOME/conf/settings.xml
 <h4 id="windows-vbs-msgbox-사용하기">(windows) vbs MsgBox 사용하기</h4>
 <p>vbs 내용을 별도 파일<code>MessageBox.vbs</code>로 저장하고, cmd 창에서 <code>cscript Z:/develop/script/MessageBox.vbs &quot;팝업 메시지&quot;</code> 형태로 사용할 수 있습니다.</p>
 <p>(윈도우즈에서 백업 스크립트가 처리 완료되었음을 알릴 때 활용할 수 있습니다.)</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Set objArgs = WScript.Arguments
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Set objArgs = WScript.Arguments
 messageText = objArgs(0)
 MsgBox messageText
 </code></pre></div><p>백업 스크립트 <a href="/files/localenv/20220126-backup.sh" target="_blank">새 창 보기</a></p>
@@ -453,61 +451,61 @@ MsgBox messageText
 <p>spring-boot 를 배포할 때 의존성 라이브러리를 포함하여 executable-jar 파일을 생성하는 <code>spring-boot:repackage</code> 플러그인을 추가했습니다.</p>
 <p>maven 기존 플러그인 maven-deploy-plugin 를 <code>nexus-staging-maven-plugin</code> 로 교체했습니다.</p>
 <p>release 버전의 아티팩트를 nexus 에 배포하고 버전을 올려주는 기능을 위해 <code>maven-release-plugin</code> 설정을 했습니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;plugins&gt;</span>
-  <span style="color:#f92672">&lt;plugin&gt;</span>
-    <span style="color:#f92672">&lt;groupId&gt;</span>org.apache.maven.plugins<span style="color:#f92672">&lt;/groupId&gt;</span>
-    <span style="color:#f92672">&lt;artifactId&gt;</span>maven-deploy-plugin<span style="color:#f92672">&lt;/artifactId&gt;</span>
-    <span style="color:#f92672">&lt;configuration&gt;</span>
-      <span style="color:#75715e">&lt;!-- nexus-staging-maven-plugin 로 인해 skip 설정을 해야 합니다. --&gt;</span>
-      <span style="color:#f92672">&lt;skip&gt;</span>true<span style="color:#f92672">&lt;/skip&gt;</span>
-    <span style="color:#f92672">&lt;/configuration&gt;</span>
-  <span style="color:#f92672">&lt;/plugin&gt;</span>
-  <span style="color:#f92672">&lt;plugin&gt;</span>
-    <span style="color:#f92672">&lt;groupId&gt;</span>org.sonatype.plugins<span style="color:#f92672">&lt;/groupId&gt;</span>
-    <span style="color:#f92672">&lt;artifactId&gt;</span>nexus-staging-maven-plugin<span style="color:#f92672">&lt;/artifactId&gt;</span>
-    <span style="color:#f92672">&lt;executions&gt;</span>
-      <span style="color:#f92672">&lt;execution&gt;</span>
-        <span style="color:#75715e">&lt;!-- default-deploy 에 추가합니다. --&gt;</span>
-        <span style="color:#f92672">&lt;id&gt;</span>default-deploy<span style="color:#f92672">&lt;/id&gt;</span>
-        <span style="color:#f92672">&lt;phase&gt;</span>deploy<span style="color:#f92672">&lt;/phase&gt;</span>
-        <span style="color:#f92672">&lt;goals&gt;</span>
-           <span style="color:#f92672">&lt;goal&gt;</span>deploy<span style="color:#f92672">&lt;/goal&gt;</span>
-        <span style="color:#f92672">&lt;/goals&gt;</span>
-      <span style="color:#f92672">&lt;/execution&gt;</span>
-    <span style="color:#f92672">&lt;/executions&gt;</span>
-    <span style="color:#f92672">&lt;configuration&gt;</span>
-      <span style="color:#75715e">&lt;!-- nexus pro 버전에만 staging-repository 기능을 사용할 수 있습니다. --&gt;</span>
-      <span style="color:#f92672">&lt;skipStaging&gt;</span>true<span style="color:#f92672">&lt;/skipStaging&gt;</span>
-    <span style="color:#f92672">&lt;/configuration&gt;</span>
-  <span style="color:#f92672">&lt;/plugin&gt;</span>
-  <span style="color:#f92672">&lt;plugin&gt;</span>
-    <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.boot<span style="color:#f92672">&lt;/groupId&gt;</span>
-    <span style="color:#f92672">&lt;artifactId&gt;</span>spring-boot-maven-plugin<span style="color:#f92672">&lt;/artifactId&gt;</span>
-    <span style="color:#f92672">&lt;executions&gt;</span>
-      <span style="color:#f92672">&lt;execution&gt;</span>
-        <span style="color:#75715e">&lt;!-- default-install 에 추가합니다. --&gt;</span>
-        <span style="color:#75715e">&lt;!-- deploy 을 실행하면 실행됩니다. --&gt;</span>
-        <span style="color:#f92672">&lt;id&gt;</span>default-install<span style="color:#f92672">&lt;/id&gt;</span>
-        <span style="color:#f92672">&lt;phase&gt;</span>install<span style="color:#f92672">&lt;/phase&gt;</span>
-        <span style="color:#f92672">&lt;goals&gt;</span>
-          <span style="color:#75715e">&lt;!-- spring-boot-maven-plugin 의 repackage 가 실행되도록 합니다. --&gt;</span>
-          <span style="color:#f92672">&lt;goal&gt;</span>repackage<span style="color:#f92672">&lt;/goal&gt;</span>
-        <span style="color:#f92672">&lt;/goals&gt;</span>
-      <span style="color:#f92672">&lt;/execution&gt;</span>
-    <span style="color:#f92672">&lt;/executions&gt;</span>
-  <span style="color:#f92672">&lt;/plugin&gt;</span>
-  <span style="color:#f92672">&lt;plugin&gt;</span>
-    <span style="color:#f92672">&lt;groupId&gt;</span>org.apache.maven.plugins<span style="color:#f92672">&lt;/groupId&gt;</span>
-    <span style="color:#f92672">&lt;artifactId&gt;</span>maven-release-plugin<span style="color:#f92672">&lt;/artifactId&gt;</span>
-    <span style="color:#f92672">&lt;configuration&gt;</span>
-      <span style="color:#f92672">&lt;autoVersionSubmodules&gt;</span>false<span style="color:#f92672">&lt;/autoVersionSubmodules&gt;</span>
-      <span style="color:#75715e">&lt;!-- release:perform 이 실행될 때 deploy 를 실행하여 --&gt;</span>
-      <span style="color:#75715e">&lt;!-- spring-boot:repackage 까지 같이 실행되도록 합니다. --&gt;</span>
-      <span style="color:#f92672">&lt;goals&gt;</span>deploy<span style="color:#f92672">&lt;/goals&gt;</span>
-      <span style="color:#f92672">&lt;scmCommentPrefix&gt;</span>[build]<span style="color:#f92672">&lt;/scmCommentPrefix&gt;</span>
-    <span style="color:#f92672">&lt;/configuration&gt;</span>
-  <span style="color:#f92672">&lt;/plugin&gt;</span>
-<span style="color:#f92672">&lt;/plugins&gt;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#204a87;font-weight:bold">&lt;plugins&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;plugin&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;groupId&gt;</span>org.apache.maven.plugins<span style="color:#204a87;font-weight:bold">&lt;/groupId&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;artifactId&gt;</span>maven-deploy-plugin<span style="color:#204a87;font-weight:bold">&lt;/artifactId&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;configuration&gt;</span>
+      <span style="color:#8f5902;font-style:italic">&lt;!-- nexus-staging-maven-plugin 로 인해 skip 설정을 해야 합니다. --&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;skip&gt;</span>true<span style="color:#204a87;font-weight:bold">&lt;/skip&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;/configuration&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;/plugin&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;plugin&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;groupId&gt;</span>org.sonatype.plugins<span style="color:#204a87;font-weight:bold">&lt;/groupId&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;artifactId&gt;</span>nexus-staging-maven-plugin<span style="color:#204a87;font-weight:bold">&lt;/artifactId&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;executions&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;execution&gt;</span>
+        <span style="color:#8f5902;font-style:italic">&lt;!-- default-deploy 에 추가합니다. --&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;id&gt;</span>default-deploy<span style="color:#204a87;font-weight:bold">&lt;/id&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;phase&gt;</span>deploy<span style="color:#204a87;font-weight:bold">&lt;/phase&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;goals&gt;</span>
+           <span style="color:#204a87;font-weight:bold">&lt;goal&gt;</span>deploy<span style="color:#204a87;font-weight:bold">&lt;/goal&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;/goals&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;/execution&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;/executions&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;configuration&gt;</span>
+      <span style="color:#8f5902;font-style:italic">&lt;!-- nexus pro 버전에만 staging-repository 기능을 사용할 수 있습니다. --&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;skipStaging&gt;</span>true<span style="color:#204a87;font-weight:bold">&lt;/skipStaging&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;/configuration&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;/plugin&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;plugin&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;groupId&gt;</span>org.springframework.boot<span style="color:#204a87;font-weight:bold">&lt;/groupId&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;artifactId&gt;</span>spring-boot-maven-plugin<span style="color:#204a87;font-weight:bold">&lt;/artifactId&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;executions&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;execution&gt;</span>
+        <span style="color:#8f5902;font-style:italic">&lt;!-- default-install 에 추가합니다. --&gt;</span>
+        <span style="color:#8f5902;font-style:italic">&lt;!-- deploy 을 실행하면 실행됩니다. --&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;id&gt;</span>default-install<span style="color:#204a87;font-weight:bold">&lt;/id&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;phase&gt;</span>install<span style="color:#204a87;font-weight:bold">&lt;/phase&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;goals&gt;</span>
+          <span style="color:#8f5902;font-style:italic">&lt;!-- spring-boot-maven-plugin 의 repackage 가 실행되도록 합니다. --&gt;</span>
+          <span style="color:#204a87;font-weight:bold">&lt;goal&gt;</span>repackage<span style="color:#204a87;font-weight:bold">&lt;/goal&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;/goals&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;/execution&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;/executions&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;/plugin&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;plugin&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;groupId&gt;</span>org.apache.maven.plugins<span style="color:#204a87;font-weight:bold">&lt;/groupId&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;artifactId&gt;</span>maven-release-plugin<span style="color:#204a87;font-weight:bold">&lt;/artifactId&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;configuration&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;autoVersionSubmodules&gt;</span>false<span style="color:#204a87;font-weight:bold">&lt;/autoVersionSubmodules&gt;</span>
+      <span style="color:#8f5902;font-style:italic">&lt;!-- release:perform 이 실행될 때 deploy 를 실행하여 --&gt;</span>
+      <span style="color:#8f5902;font-style:italic">&lt;!-- spring-boot:repackage 까지 같이 실행되도록 합니다. --&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;goals&gt;</span>deploy<span style="color:#204a87;font-weight:bold">&lt;/goals&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;scmCommentPrefix&gt;</span>[build]<span style="color:#204a87;font-weight:bold">&lt;/scmCommentPrefix&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;/configuration&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;/plugin&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/plugins&gt;</span>
 </code></pre></div><br>
 <h4 id="eclipse-path-tools-git-bash">(eclipse) path-tools (git-bash)</h4>
 <p>이클립스 <code>Command Line Shell</code> 버튼을 클릭할때 cmd 창이 아닌 git-bash 터미널이 열리도록 설정을 바꿀 수 있습니다.</p>
@@ -516,11 +514,11 @@ MsgBox messageText
 <br>
 <h4 id="git-bash-bash_profilesh">(git-bash) bash_profile.sh</h4>
 <p>/etc/profile.d/bash_profile.sh</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">alias dlog<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;cd /z/project/dlog&#39;</span>
-alias pilot<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;cd /z/project/pilot&#39;</span>
-alias deploy-dlog<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;/z/project/dlog/deploy.sh &#39;</span>
-alias run-dlog<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;/z/project/dlog/run.sh &#39;</span>
-alias ls<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;ls -F --color=auto --show-control-chars --time-style=long-iso &#39;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#204a87">alias</span> <span style="color:#000">dlog</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;cd /z/project/dlog&#39;</span>
+<span style="color:#204a87">alias</span> <span style="color:#000">pilot</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;cd /z/project/pilot&#39;</span>
+<span style="color:#204a87">alias</span> deploy-dlog<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;/z/project/dlog/deploy.sh &#39;</span>
+<span style="color:#204a87">alias</span> run-dlog<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;/z/project/dlog/run.sh &#39;</span>
+<span style="color:#204a87">alias</span> <span style="color:#000">ls</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;ls -F --color=auto --show-control-chars --time-style=long-iso &#39;</span>
 </code></pre></div><br>
 <h4 id="eclipse-ansi-escape-in-console-플러그인">(eclipse) ANSI Escape in Console 플러그인</h4>
 <p>ANSI Escape in Console 플러그인은 console 에 ANSI 색상 코드를 해당 색상으로 표시해주는 플러그인입니다.</p>
@@ -541,73 +539,73 @@ alias ls<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;ls 
 <br>
 <h4 id="maven-helpevaluate-로컬-저장소-경로">(maven) help:evaluate 로컬 저장소 경로</h4>
 <p>mvn 명령으로 현재 설정된 로컬 저장소를 반환하는 goal 입니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ mvn help:evaluate -Dexpression=settings.localRepository -q -DforceStdout
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ mvn help:evaluate -Dexpression=settings.localRepository -q -DforceStdout
 </code></pre></div><br>
 <h4 id="maven-deploydeploy-file-시-저장소-지정">(maven) deploy:deploy-file 시 저장소 지정</h4>
 <p>pom.xml 에 포함되어있는 version 에 <code>-SNAPSHOT</code> 이 있으면 release 저장소에 deploy 할 수 없다는 오류가 발생하므로 주의가 필요합니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">MVN_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>
-MVN_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>MVN_ARGS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -DpomFile=</span><span style="color:#e6db74">${</span>PROJECT_BASE<span style="color:#e6db74">}</span><span style="color:#e6db74">/pom.xml&#34;</span>
-MVN_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>MVN_ARGS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -Dfile=</span><span style="color:#e6db74">${</span>PROJECT_BASE<span style="color:#e6db74">}</span><span style="color:#e6db74">/target/</span><span style="color:#e6db74">${</span>JAR_FILE<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#000">MVN_ARGS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;&#34;</span>
+<span style="color:#000">MVN_ARGS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;</span><span style="color:#4e9a06">${</span><span style="color:#000">MVN_ARGS</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06"> -DpomFile=</span><span style="color:#4e9a06">${</span><span style="color:#000">PROJECT_BASE</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">/pom.xml&#34;</span>
+<span style="color:#000">MVN_ARGS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;</span><span style="color:#4e9a06">${</span><span style="color:#000">MVN_ARGS</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06"> -Dfile=</span><span style="color:#4e9a06">${</span><span style="color:#000">PROJECT_BASE</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">/target/</span><span style="color:#4e9a06">${</span><span style="color:#000">JAR_FILE</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span>
 
-<span style="color:#75715e"># jar 파일명에 &#34;-SNAPSHOT&#34; 이 있으면 snapshot 저장소에 deploy 되어야 합니다. </span>
-<span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JAR_FILE<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">=</span> *<span style="color:#e6db74">&#34;-SNAPSHOT&#34;</span>* <span style="color:#f92672">]]</span>; <span style="color:#66d9ef">then</span>
-  MVN_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>MVN_ARGS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -DrepositoryId=maven-snapshot&#34;</span>
-  MVN_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>MVN_ARGS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -Durl=http://nexus/repository/maven-snapshot/&#34;</span>
-<span style="color:#66d9ef">else</span>
-  MVN_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>MVN_ARGS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -DrepositoryId=maven-release&#34;</span>
-  MVN_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>MVN_ARGS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -Durl=http://nexus/repository/maven-release/&#34;</span>
-<span style="color:#66d9ef">fi</span>
+<span style="color:#8f5902;font-style:italic"># jar 파일명에 &#34;-SNAPSHOT&#34; 이 있으면 snapshot 저장소에 deploy 되어야 합니다. </span>
+<span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">[[</span> <span style="color:#4e9a06">&#34;</span><span style="color:#4e9a06">${</span><span style="color:#000">JAR_FILE</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#ce5c00;font-weight:bold">=</span> *<span style="color:#4e9a06">&#34;-SNAPSHOT&#34;</span>* <span style="color:#ce5c00;font-weight:bold">]]</span><span style="color:#000;font-weight:bold">;</span> <span style="color:#204a87;font-weight:bold">then</span>
+  <span style="color:#000">MVN_ARGS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;</span><span style="color:#4e9a06">${</span><span style="color:#000">MVN_ARGS</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06"> -DrepositoryId=maven-snapshot&#34;</span>
+  <span style="color:#000">MVN_ARGS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;</span><span style="color:#4e9a06">${</span><span style="color:#000">MVN_ARGS</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06"> -Durl=http://nexus/repository/maven-snapshot/&#34;</span>
+<span style="color:#204a87;font-weight:bold">else</span>
+  <span style="color:#000">MVN_ARGS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;</span><span style="color:#4e9a06">${</span><span style="color:#000">MVN_ARGS</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06"> -DrepositoryId=maven-release&#34;</span>
+  <span style="color:#000">MVN_ARGS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;</span><span style="color:#4e9a06">${</span><span style="color:#000">MVN_ARGS</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06"> -Durl=http://nexus/repository/maven-release/&#34;</span>
+<span style="color:#204a87;font-weight:bold">fi</span>
 
-mvn deploy:deploy-file $MVN_ARGS
+mvn deploy:deploy-file <span style="color:#000">$MVN_ARGS</span>
 </code></pre></div><br>
 <h4 id="git-pullff-only">(git) pull.ff only</h4>
 <p><code>git config --global pull.ff only</code> 설정을 추가하면 됩니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ git pull origin main
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ git pull origin main
 warning: Pulling without specifying how to reconcile divergent branches is
 discouraged. You can squelch this message by running one of the following
 commands sometime before your next pull:
 
-  git config pull.rebase false  <span style="color:#75715e"># merge (the default strategy)</span>
-  git config pull.rebase true   <span style="color:#75715e"># rebase</span>
-  git config pull.ff only       <span style="color:#75715e"># fast-forward only</span>
+  git config pull.rebase <span style="color:#204a87">false</span>  <span style="color:#8f5902;font-style:italic"># merge (the default strategy)</span>
+  git config pull.rebase <span style="color:#204a87">true</span>   <span style="color:#8f5902;font-style:italic"># rebase</span>
+  git config pull.ff only       <span style="color:#8f5902;font-style:italic"># fast-forward only</span>
 
-You can replace <span style="color:#e6db74">&#34;git config&#34;</span> with <span style="color:#e6db74">&#34;git config --global&#34;</span> to set a default
-preference <span style="color:#66d9ef">for</span> all repositories. You can also pass --rebase, --no-rebase,
-or --ff-only on the command line to override the configured default per
+You can replace <span style="color:#4e9a06">&#34;git config&#34;</span> with <span style="color:#4e9a06">&#34;git config --global&#34;</span> to <span style="color:#204a87">set</span> a default
+preference <span style="color:#204a87;font-weight:bold">for</span> all repositories. You can also pass --rebase, --no-rebase,
+or --ff-only on the <span style="color:#204a87">command</span> line to override the configured default per
 invocation.
 </code></pre></div><br>
 <h4 id="maven-spring-bootrepackage">(maven) spring-boot:repackage</h4>
 <p>packaging 이 jar 인 프로젝트를 <code>mvn package</code> 으로 jar 를 생성한 다음에 <code>mvn spring-boot:repackage</code> 을 실행해야 합니다.</p>
 <p>리패키징이되면 jar 아티팩트에 의존성으로 설정된 jar 파일들이 포함됩니다.</p>
 <p>아래는 리패키징이 정상이면 볼 수 있는 로그 입니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">[<span style="color:#a6e22e">INFO</span>] <span style="color:#f92672">---</span> <span style="color:#a6e22e">spring</span><span style="color:#f92672">-</span><span style="color:#a6e22e">boot</span><span style="color:#f92672">-</span><span style="color:#a6e22e">maven</span><span style="color:#f92672">-</span><span style="color:#a6e22e">plugin</span>:<span style="color:#ae81ff">2.6.1</span>:<span style="color:#a6e22e">repackage</span> (<span style="color:#66d9ef">default</span><span style="color:#f92672">-</span><span style="color:#a6e22e">cli</span>) <span style="color:#960050;background-color:#1e0010">@</span> <span style="color:#a6e22e">service</span><span style="color:#f92672">-</span><span style="color:#a6e22e">www</span> <span style="color:#f92672">---</span>
-[<span style="color:#a6e22e">INFO</span>] <span style="color:#a6e22e">Replacing</span> <span style="color:#a6e22e">main</span> <span style="color:#a6e22e">artifact</span> <span style="color:#a6e22e">with</span> <span style="color:#a6e22e">repackaged</span> <span style="color:#a6e22e">archive</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#000;font-weight:bold">[</span><span style="color:#000">INFO</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">---</span> <span style="color:#000">spring</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">boot</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">maven</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">plugin</span><span style="color:#000;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">2.6.1</span><span style="color:#000;font-weight:bold">:</span><span style="color:#000">repackage</span> <span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">default</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">cli</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#a40000">@</span> <span style="color:#000">service</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">www</span> <span style="color:#ce5c00;font-weight:bold">---</span>
+<span style="color:#000;font-weight:bold">[</span><span style="color:#000">INFO</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#000">Replacing</span> <span style="color:#000">main</span> <span style="color:#000">artifact</span> <span style="color:#000">with</span> <span style="color:#000">repackaged</span> <span style="color:#000">archive</span>
 </code></pre></div><br>
 <h4 id="maven-malformed-uxxxx-encoding">(maven) Malformed \uxxxx encoding.</h4>
 <p>maven 빌드 시 <code>Malformed \uxxxx encoding.</code> 가 발생하면 로컬 저장소를 삭제하고 빌드해주세요.</p>
 <br>
 <h4 id="git-turn-off-crlf-warning">(git) turn off crlf warning</h4>
 <p><code>warning: LF will be replaced by CRLF in</code> 메시지를 보고 싶지 않을 경우 아래 옵션을 추가합니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ git config --global core.safecrlf false
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ git config --global core.safecrlf false
 </code></pre></div><br>
 <h4 id="hugo-전체-rebuild">(hugo) 전체 rebuild</h4>
 <p>아래 2개의 디렉토리의 파일들을 모두 삭제하고 빌드를 합니다.</p>
 <p><code>/resources</code>, <code>/public</code></p>
 <br>
 <h4 id="eclipse-이클립스-로그">(eclipse) 이클립스 로그</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Z:\develop\eclipse\eclipse-jee-R-win32-x86_64\workspace\.metadata\.plugins\org.eclipse.m2e.logback.configuration
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Z:\develop\eclipse\eclipse-jee-R-win32-x86_64\workspace\.metadata\.plugins\org.eclipse.m2e.logback.configuration
 </code></pre></div><p><a href="/files/localenv/WinTail.exe.zip" target="_blank">wintail 다운로드</a></p>
 <br>
 <h4 id="windows-setx">(windows) setx</h4>
 <p><code>cmd</code> 에서 아래 명령을 실행하면 <code>시스템 변수</code> 에 추가됩니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">setx /m JAVA_HOME &#34;D:\develop\java\openjdk-11.0.2&#34;
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">setx /m JAVA_HOME &#34;D:\develop\java\openjdk-11.0.2&#34;
 </code></pre></div><br>
 <h4 id="plex-daummoviebundle">(plex) DaumMovie.bundle</h4>
 <p><a href="https://github.com/axfree/DaumMovie.bundle">https://github.com/axfree/DaumMovie.bundle</a></p>
 <p><code>%LOCALAPPDATA%\Plex Media Server\Plug-ins</code> 에서 압축 해제합니다.</p>
 <br>
 <h4 id="nexus-curl-put">(nexus) curl PUT</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">curl -u {id}:{passwd} -X PUT -v -T org/apache/poi/poi/3.10-FINAL/poi-3.10-FINAL.jar http://nexus/repository/maven-public-hosted/org/apache/poi/poi/3.10-FINAL/poi-3.10-FINAL.jar
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">curl -u {id}:{passwd} -X PUT -v -T org/apache/poi/poi/3.10-FINAL/poi-3.10-FINAL.jar http://nexus/repository/maven-public-hosted/org/apache/poi/poi/3.10-FINAL/poi-3.10-FINAL.jar
 </code></pre></div><br>
 <h4 id="windows-dism">(windows) dism</h4>
 <p><code>dism</code>(배포 이미지 서비스 및 관리) 이미지 생성, 분할, 추가, 삭제, 추출, 적용, 마운트, 언 마운트, 커밋들이 가능하다.</p>
@@ -632,7 +630,7 @@ invocation.
 <p><a href="/images/localenv/20211220-erwin_database-connection.png" target="_blank">새 창 보기</a></p>
 <br>
 <h4 id="regex-not-matched-word">(regex) not matched word</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># string
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># string
 say
 hello
 world
@@ -650,69 +648,69 @@ snapshot-service-www
 ^release\-(?!.*\-bom).*
 </code></pre></div><br>
 <h4 id="maven-release-github">(maven) release github</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;scm&gt;</span>
-	<span style="color:#f92672">&lt;connection&gt;</span>scm:git:git@github.com:lislroow/pilot.git<span style="color:#f92672">&lt;/connection&gt;</span>
-<span style="color:#f92672">&lt;/scm&gt;</span>
-<span style="color:#f92672">&lt;plugin&gt;</span>
-	<span style="color:#f92672">&lt;groupId&gt;</span>org.apache.maven.plugins<span style="color:#f92672">&lt;/groupId&gt;</span>
-	<span style="color:#f92672">&lt;artifactId&gt;</span>maven-release-plugin<span style="color:#f92672">&lt;/artifactId&gt;</span>
-	<span style="color:#f92672">&lt;version&gt;</span>3.0.0-M1<span style="color:#f92672">&lt;/version&gt;</span>
-	<span style="color:#f92672">&lt;configuration&gt;</span>
-		<span style="color:#f92672">&lt;autoVersionSubmodules&gt;</span>true<span style="color:#f92672">&lt;/autoVersionSubmodules&gt;</span>
-		<span style="color:#f92672">&lt;goals&gt;</span>deploy<span style="color:#f92672">&lt;/goals&gt;</span>
-		<span style="color:#f92672">&lt;scmCommentPrefix&gt;</span>[jenkins]<span style="color:#f92672">&lt;/scmCommentPrefix&gt;</span>
-	<span style="color:#f92672">&lt;/configuration&gt;</span>
-<span style="color:#f92672">&lt;/plugin&gt;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#204a87;font-weight:bold">&lt;scm&gt;</span>
+	<span style="color:#204a87;font-weight:bold">&lt;connection&gt;</span>scm:git:git@github.com:lislroow/pilot.git<span style="color:#204a87;font-weight:bold">&lt;/connection&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/scm&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;plugin&gt;</span>
+	<span style="color:#204a87;font-weight:bold">&lt;groupId&gt;</span>org.apache.maven.plugins<span style="color:#204a87;font-weight:bold">&lt;/groupId&gt;</span>
+	<span style="color:#204a87;font-weight:bold">&lt;artifactId&gt;</span>maven-release-plugin<span style="color:#204a87;font-weight:bold">&lt;/artifactId&gt;</span>
+	<span style="color:#204a87;font-weight:bold">&lt;version&gt;</span>3.0.0-M1<span style="color:#204a87;font-weight:bold">&lt;/version&gt;</span>
+	<span style="color:#204a87;font-weight:bold">&lt;configuration&gt;</span>
+		<span style="color:#204a87;font-weight:bold">&lt;autoVersionSubmodules&gt;</span>true<span style="color:#204a87;font-weight:bold">&lt;/autoVersionSubmodules&gt;</span>
+		<span style="color:#204a87;font-weight:bold">&lt;goals&gt;</span>deploy<span style="color:#204a87;font-weight:bold">&lt;/goals&gt;</span>
+		<span style="color:#204a87;font-weight:bold">&lt;scmCommentPrefix&gt;</span>[jenkins]<span style="color:#204a87;font-weight:bold">&lt;/scmCommentPrefix&gt;</span>
+	<span style="color:#204a87;font-weight:bold">&lt;/configuration&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/plugin&gt;</span>
 </code></pre></div><br>
 <h4 id="git-tag">(git) tag</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 태그 삭제</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#8f5902;font-style:italic"># 태그 삭제</span>
 $ git tag -d framework-bom-0.2
-<span style="color:#e6db74">&#39;framework-bom-0.2&#39;</span> 태그 삭제함 <span style="color:#f92672">(</span>과거 2c5b9f1<span style="color:#f92672">)</span>
+<span style="color:#4e9a06">&#39;framework-bom-0.2&#39;</span> 태그 삭제함 <span style="color:#ce5c00;font-weight:bold">(</span>과거 2c5b9f1<span style="color:#ce5c00;font-weight:bold">)</span>
 $ git push origin :framework-bom-0.2
 To github.com:lislroow/pilot.git
- - <span style="color:#f92672">[</span>deleted<span style="color:#f92672">]</span>         framework-bom-0.2
+ - <span style="color:#ce5c00;font-weight:bold">[</span>deleted<span style="color:#ce5c00;font-weight:bold">]</span>         framework-bom-0.2
 $
 
-<span style="color:#75715e"># 태그 조회</span>
+<span style="color:#8f5902;font-style:italic"># 태그 조회</span>
 $ git tag -l framework-*
 framework-bom-0.1
 
-<span style="color:#75715e"># 태그 추가 (Lightweight 태그)</span>
+<span style="color:#8f5902;font-style:italic"># 태그 추가 (Lightweight 태그)</span>
 $ git tag framework-bom-0.2
 
-<span style="color:#75715e"># 태그 추가 (Annotated 태그)</span>
-$ git tag -a framework-bom-0.2 -m <span style="color:#e6db74">&#34;Release framework-bom-0.2&#34;</span>
+<span style="color:#8f5902;font-style:italic"># 태그 추가 (Annotated 태그)</span>
+$ git tag -a framework-bom-0.2 -m <span style="color:#4e9a06">&#34;Release framework-bom-0.2&#34;</span>
 
-<span style="color:#75715e"># 태그 보기</span>
+<span style="color:#8f5902;font-style:italic"># 태그 보기</span>
 $ git show framework-bom-0.2
 
-<span style="color:#75715e"># 태그 원격저장소 push (모두 올리기)</span>
+<span style="color:#8f5902;font-style:italic"># 태그 원격저장소 push (모두 올리기)</span>
 $ git push origin --tags
 </code></pre></div><br>
 <h4 id="git-특정-경로만-checkout-하기">(git) 특정 경로만 checkout 하기</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ git init
-$ git config core.sparseCheckout true
-<span style="color:#75715e">#git config --local credential.helper &#34;&#34;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ git init
+$ git config core.sparseCheckout <span style="color:#204a87">true</span>
+<span style="color:#8f5902;font-style:italic">#git config --local credential.helper &#34;&#34;</span>
 $ git remote add -f origin git@github.com:lislroow/pilot.git
-$ echo <span style="color:#e6db74">&#34;bom/framework-bom/*&#34;</span> &gt; .git/info/sparse-checkout
+$ <span style="color:#204a87">echo</span> <span style="color:#4e9a06">&#34;bom/framework-bom/*&#34;</span> &gt; .git/info/sparse-checkout
 $ git pull origin main
 </code></pre></div><br>
 <h4 id="maven-version-ranges">(maven) version ranges</h4>
 <p>artifact 의 scope 가 <code>import</code> 일 경우에는 <code>[0.1,)</code> 형태로 ranges 를 적용할 수 없습니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;dependencyManagement&gt;</span>
-  <span style="color:#f92672">&lt;dependencies&gt;</span>
-    <span style="color:#75715e">&lt;!-- mgkim.proto --&gt;</span>
-    <span style="color:#f92672">&lt;dependency&gt;</span>
-      <span style="color:#f92672">&lt;groupId&gt;</span>mgkim.proto<span style="color:#f92672">&lt;/groupId&gt;</span>
-      <span style="color:#f92672">&lt;artifactId&gt;</span>proto<span style="color:#f92672">&lt;/artifactId&gt;</span>
-      <span style="color:#f92672">&lt;version&gt;</span>[0.1,)<span style="color:#f92672">&lt;/version&gt;</span>  <span style="color:#75715e">&lt;!-- 오류 --&gt;</span>
-      <span style="color:#f92672">&lt;version&gt;</span>0.1<span style="color:#f92672">&lt;/version&gt;</span>     <span style="color:#75715e">&lt;!-- 정상 --&gt;</span>
-      <span style="color:#f92672">&lt;type&gt;</span>pom<span style="color:#f92672">&lt;/type&gt;</span>
-      <span style="color:#f92672">&lt;scope&gt;</span>import<span style="color:#f92672">&lt;/scope&gt;</span>
-    <span style="color:#f92672">&lt;/dependency&gt;</span>
-    <span style="color:#75715e">&lt;!-- //mgkim.proto --&gt;</span>
-  <span style="color:#f92672">&lt;/dependencies&gt;</span>
-<span style="color:#f92672">&lt;/dependencyManagement&gt;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#204a87;font-weight:bold">&lt;dependencyManagement&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;dependencies&gt;</span>
+    <span style="color:#8f5902;font-style:italic">&lt;!-- mgkim.proto --&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;dependency&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;groupId&gt;</span>mgkim.proto<span style="color:#204a87;font-weight:bold">&lt;/groupId&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;artifactId&gt;</span>proto<span style="color:#204a87;font-weight:bold">&lt;/artifactId&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;version&gt;</span>[0.1,)<span style="color:#204a87;font-weight:bold">&lt;/version&gt;</span>  <span style="color:#8f5902;font-style:italic">&lt;!-- 오류 --&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;version&gt;</span>0.1<span style="color:#204a87;font-weight:bold">&lt;/version&gt;</span>     <span style="color:#8f5902;font-style:italic">&lt;!-- 정상 --&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;type&gt;</span>pom<span style="color:#204a87;font-weight:bold">&lt;/type&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;scope&gt;</span>import<span style="color:#204a87;font-weight:bold">&lt;/scope&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;/dependency&gt;</span>
+    <span style="color:#8f5902;font-style:italic">&lt;!-- //mgkim.proto --&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;/dependencies&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/dependencyManagement&gt;</span>
 </code></pre></div><br>
 <h4 id="eclipse-sts-boot-dashboard-filter">(eclipse) STS Boot Dashboard filter</h4>
 <img src="/images/localenv/20211215-STS-boot_dashboard-filter.png" width="300">
@@ -727,7 +725,7 @@ $ git pull origin main
 <h4 id="eclipse-scm-ignore">(eclipse) scm ignore</h4>
 <p><code>Preferences</code> &gt; <code>Version Control (Team)</code> &gt; <code>Ignored Resources</code></p>
 <p>아래 항목들을 추가 합니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">*target*
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">*target*
 *target*/*
 pom.xml.releaseBackup
 release.properties
@@ -744,7 +742,7 @@ release.properties
 <p>키 파일의 경로를 명시적으로 지정</p>
 <p><code>ssh -v -i /C/Users/Administrator/.ssh/id_ed25519.pub -T git@github.com</code></p>
 <p><code>ssh -i C:\Users\Administrator\.ssh\id_ed25519.pub -T git@github.com</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Administrator@I5-1135G7 MINGW64 /
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Administrator@I5-1135G7 MINGW64 /
 $ ssh -T git@github.com
 The authenticity of host &#39;github.com (15.164.81.167)&#39; can&#39;t be established.
 ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
@@ -753,25 +751,25 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 Warning: Permanently added &#39;github.com&#39; (ED25519) to the list of known hosts.
 Hi lislroow! You&#39;ve successfully authenticated, but GitHub does not provide shell access.
 </code></pre></div><p>github 에 key를 등록한 다음 cli 환경에서 사용하려면 아래 명령을 실행합니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ eval <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>ssh-agent -s<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
-Agent pid <span style="color:#ae81ff">126681</span>
-$ ps -ef | grep ssh-agent
-root       <span style="color:#ae81ff">31343</span>       <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">0</span> 12월14 ?      00:00:00 ssh-agent -s
-jenkins   <span style="color:#ae81ff">126681</span>       <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">0</span> 17:12 ?        00:00:00 ssh-agent -s
-jenkins   <span style="color:#ae81ff">126683</span>  <span style="color:#ae81ff">126640</span>  <span style="color:#ae81ff">0</span> 17:12 pts/1    00:00:00 grep --color<span style="color:#f92672">=</span>auto ssh-agent
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ <span style="color:#204a87">eval</span> <span style="color:#4e9a06">&#34;</span><span style="color:#204a87;font-weight:bold">$(</span>ssh-agent -s<span style="color:#204a87;font-weight:bold">)</span><span style="color:#4e9a06">&#34;</span>
+Agent pid <span style="color:#0000cf;font-weight:bold">126681</span>
+$ ps -ef <span style="color:#000;font-weight:bold">|</span> grep ssh-agent
+root       <span style="color:#0000cf;font-weight:bold">31343</span>       <span style="color:#0000cf;font-weight:bold">1</span>  <span style="color:#0000cf;font-weight:bold">0</span> 12월14 ?      00:00:00 ssh-agent -s
+jenkins   <span style="color:#0000cf;font-weight:bold">126681</span>       <span style="color:#0000cf;font-weight:bold">1</span>  <span style="color:#0000cf;font-weight:bold">0</span> 17:12 ?        00:00:00 ssh-agent -s
+jenkins   <span style="color:#0000cf;font-weight:bold">126683</span>  <span style="color:#0000cf;font-weight:bold">126640</span>  <span style="color:#0000cf;font-weight:bold">0</span> 17:12 pts/1    00:00:00 grep --color<span style="color:#ce5c00;font-weight:bold">=</span>auto ssh-agent
 $ ssh-add ~/.ssh/id_ed25519
-Identity added: /home/jenkins/.ssh/id_ed25519 <span style="color:#f92672">(</span>jenkins@mgkim.net<span style="color:#f92672">)</span>
+Identity added: /home/jenkins/.ssh/id_ed25519 <span style="color:#ce5c00;font-weight:bold">(</span>jenkins@mgkim.net<span style="color:#ce5c00;font-weight:bold">)</span>
 $ 
 </code></pre></div><br>
 <h4 id="github-unable-to-read-askpass-오류">(github) unable to read askpass 오류</h4>
 <p>오류 상황입니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ git push origin
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ git push origin
 
 (gnome-ssh-askpass:19816): Gtk-WARNING **: 10:22:08.209: cannot open display: 
 error: unable to read askpass response from &#39;/usr/libexec/openssh/gnome-ssh-askpass&#39;
 Username for &#39;https://github.com&#39;: 
 </code></pre></div><p><code>SSH_ASKPASS</code> 변수를 unset 하면 됩니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ echo $SSH_ASKPASS
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ echo $SSH_ASKPASS
 /usr/libexec/openssh/gnome-ssh-askpass
 $ unset SSH_ASKPASS
 </code></pre></div><br>
@@ -779,7 +777,7 @@ $ unset SSH_ASKPASS
 <p><code>Settings</code> &gt; <code>Developer settings</code> &gt; <code>Personal access tokens</code> 이동 후</p>
 <p><code>Generate new token</code> 버튼 클릭으로 token 생성 (<code>repo</code> 만 체크하면 push 할 수 있음)</p>
 <p>token 생성 후 이클립스에서 id에 email 입력, password 에 생성된 토큰 입력</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># token-name: centos
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># token-name: centos
 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
 </code></pre></div><br>
 <h4 id="eclipse-debugging-필수-옵션">(eclipse) debugging 필수 옵션</h4>
@@ -809,116 +807,116 @@ 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
 <br>
 <h4 id="maven-release">(maven) release</h4>
 <p>명령어</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ mvn -B clean release:prepare release:perform deploy
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ mvn -B clean release:prepare release:perform deploy
 </code></pre></div><p>$M2_HOME/conf/settings.xml 파일</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
-<span style="color:#f92672">&lt;settings</span> <span style="color:#a6e22e">xmlns=</span><span style="color:#e6db74">&#34;http://maven.apache.org/SETTINGS/1.0.0&#34;</span>
-  <span style="color:#a6e22e">xmlns:xsi=</span><span style="color:#e6db74">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
-  <span style="color:#a6e22e">xsi:schemaLocation=</span><span style="color:#e6db74">&#34;http://maven.apache.org/SETTINGS/1.0.0
-</span><span style="color:#e6db74">  http://maven.apache.org/xsd/settings-1.0.0.xsd&#34;</span><span style="color:#f92672">&gt;</span>
-  <span style="color:#f92672">&lt;servers&gt;</span>
-    <span style="color:#f92672">&lt;server&gt;</span>
-      <span style="color:#f92672">&lt;id&gt;</span>nexus-release<span style="color:#f92672">&lt;/id&gt;</span>
-      <span style="color:#f92672">&lt;username&gt;</span>admin<span style="color:#f92672">&lt;/username&gt;</span>
-      <span style="color:#f92672">&lt;password&gt;</span>passwd<span style="color:#f92672">&lt;/password&gt;</span>
-    <span style="color:#f92672">&lt;/server&gt;</span>
-    <span style="color:#f92672">&lt;server&gt;</span>
-      <span style="color:#f92672">&lt;id&gt;</span>nexus-snapshot<span style="color:#f92672">&lt;/id&gt;</span>
-      <span style="color:#f92672">&lt;username&gt;</span>admin<span style="color:#f92672">&lt;/username&gt;</span>
-      <span style="color:#f92672">&lt;password&gt;</span>passwd<span style="color:#f92672">&lt;/password&gt;</span>
-    <span style="color:#f92672">&lt;/server&gt;</span>
-  <span style="color:#f92672">&lt;/servers&gt;</span>
-  <span style="color:#f92672">&lt;mirrors&gt;</span>
-    <span style="color:#f92672">&lt;mirror&gt;</span>
-      <span style="color:#f92672">&lt;id&gt;</span>nexus<span style="color:#f92672">&lt;/id&gt;</span>
-      <span style="color:#f92672">&lt;name&gt;</span>nexus<span style="color:#f92672">&lt;/name&gt;</span>
-      <span style="color:#f92672">&lt;url&gt;</span>http://nexus/repository/maven-group/<span style="color:#f92672">&lt;/url&gt;</span>
-      <span style="color:#f92672">&lt;mirrorOf&gt;</span>*<span style="color:#f92672">&lt;/mirrorOf&gt;</span>
-    <span style="color:#f92672">&lt;/mirror&gt;</span>
-  <span style="color:#f92672">&lt;/mirrors&gt;</span>
-<span style="color:#f92672">&lt;/settings&gt;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#8f5902;font-style:italic">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;settings</span> <span style="color:#c4a000">xmlns=</span><span style="color:#4e9a06">&#34;http://maven.apache.org/SETTINGS/1.0.0&#34;</span>
+  <span style="color:#c4a000">xmlns:xsi=</span><span style="color:#4e9a06">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
+  <span style="color:#c4a000">xsi:schemaLocation=</span><span style="color:#4e9a06">&#34;http://maven.apache.org/SETTINGS/1.0.0
+</span><span style="color:#4e9a06">  http://maven.apache.org/xsd/settings-1.0.0.xsd&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;servers&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;server&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;id&gt;</span>nexus-release<span style="color:#204a87;font-weight:bold">&lt;/id&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;username&gt;</span>admin<span style="color:#204a87;font-weight:bold">&lt;/username&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;password&gt;</span>passwd<span style="color:#204a87;font-weight:bold">&lt;/password&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;/server&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;server&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;id&gt;</span>nexus-snapshot<span style="color:#204a87;font-weight:bold">&lt;/id&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;username&gt;</span>admin<span style="color:#204a87;font-weight:bold">&lt;/username&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;password&gt;</span>passwd<span style="color:#204a87;font-weight:bold">&lt;/password&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;/server&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;/servers&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;mirrors&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;mirror&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;id&gt;</span>nexus<span style="color:#204a87;font-weight:bold">&lt;/id&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;name&gt;</span>nexus<span style="color:#204a87;font-weight:bold">&lt;/name&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;url&gt;</span>http://nexus/repository/maven-group/<span style="color:#204a87;font-weight:bold">&lt;/url&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;mirrorOf&gt;</span>*<span style="color:#204a87;font-weight:bold">&lt;/mirrorOf&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;/mirror&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;/mirrors&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/settings&gt;</span>
 </code></pre></div><p>pom.xml 파일</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;build&gt;</span>
-  <span style="color:#f92672">&lt;plugins&gt;</span>
-    <span style="color:#f92672">&lt;plugin&gt;</span>
-      <span style="color:#f92672">&lt;groupId&gt;</span>org.apache.maven.plugins<span style="color:#f92672">&lt;/groupId&gt;</span>
-      <span style="color:#f92672">&lt;artifactId&gt;</span>maven-release-plugin<span style="color:#f92672">&lt;/artifactId&gt;</span>
-      <span style="color:#f92672">&lt;version&gt;</span>3.0.0-M1<span style="color:#f92672">&lt;/version&gt;</span>
-      <span style="color:#75715e">&lt;!-- 필수 사항 --&gt;</span>
-      <span style="color:#f92672">&lt;configuration&gt;</span>
-        <span style="color:#f92672">&lt;autoVersionSubmodules&gt;</span>true<span style="color:#f92672">&lt;/autoVersionSubmodules&gt;</span>
-        <span style="color:#f92672">&lt;goals&gt;</span>deploy<span style="color:#f92672">&lt;/goals&gt;</span>
-        <span style="color:#f92672">&lt;username&gt;</span>mgkim<span style="color:#f92672">&lt;/username&gt;</span>
-        <span style="color:#f92672">&lt;password&gt;</span>passwd<span style="color:#f92672">&lt;/password&gt;</span>
-      <span style="color:#f92672">&lt;/configuration&gt;</span>
-      <span style="color:#75715e">&lt;!-- //필수 사항 --&gt;</span>
-    <span style="color:#f92672">&lt;/plugin&gt;</span>
-  <span style="color:#f92672">&lt;/plugins&gt;</span>
-<span style="color:#f92672">&lt;/build&gt;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#204a87;font-weight:bold">&lt;build&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;plugins&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;plugin&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;groupId&gt;</span>org.apache.maven.plugins<span style="color:#204a87;font-weight:bold">&lt;/groupId&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;artifactId&gt;</span>maven-release-plugin<span style="color:#204a87;font-weight:bold">&lt;/artifactId&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;version&gt;</span>3.0.0-M1<span style="color:#204a87;font-weight:bold">&lt;/version&gt;</span>
+      <span style="color:#8f5902;font-style:italic">&lt;!-- 필수 사항 --&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;configuration&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;autoVersionSubmodules&gt;</span>true<span style="color:#204a87;font-weight:bold">&lt;/autoVersionSubmodules&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;goals&gt;</span>deploy<span style="color:#204a87;font-weight:bold">&lt;/goals&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;username&gt;</span>mgkim<span style="color:#204a87;font-weight:bold">&lt;/username&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;password&gt;</span>passwd<span style="color:#204a87;font-weight:bold">&lt;/password&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;/configuration&gt;</span>
+      <span style="color:#8f5902;font-style:italic">&lt;!-- //필수 사항 --&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;/plugin&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;/plugins&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/build&gt;</span>
 
-<span style="color:#75715e">&lt;!-- 필수 사항 --&gt;</span>
-<span style="color:#f92672">&lt;scm&gt;</span>
-  <span style="color:#f92672">&lt;connection&gt;</span>scm:svn:svn://develop/test/trunk/proto.www<span style="color:#f92672">&lt;/connection&gt;</span>
-<span style="color:#f92672">&lt;/scm&gt;</span>
-<span style="color:#75715e">&lt;!-- //필수 사항 --&gt;</span>
+<span style="color:#8f5902;font-style:italic">&lt;!-- 필수 사항 --&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;scm&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;connection&gt;</span>scm:svn:svn://develop/test/trunk/proto.www<span style="color:#204a87;font-weight:bold">&lt;/connection&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/scm&gt;</span>
+<span style="color:#8f5902;font-style:italic">&lt;!-- //필수 사항 --&gt;</span>
 
-<span style="color:#f92672">&lt;distributionManagement&gt;</span>
-  <span style="color:#f92672">&lt;snapshotRepository&gt;</span>
-    <span style="color:#f92672">&lt;id&gt;</span>mgkim-snapshot<span style="color:#f92672">&lt;/id&gt;</span>
-    <span style="color:#f92672">&lt;url&gt;</span>http://nexus/repository/maven-mgkim-snapshot/<span style="color:#f92672">&lt;/url&gt;</span>
-  <span style="color:#f92672">&lt;/snapshotRepository&gt;</span>
-  <span style="color:#f92672">&lt;repository&gt;</span>
-    <span style="color:#f92672">&lt;id&gt;</span>mgkim-release<span style="color:#f92672">&lt;/id&gt;</span>
-    <span style="color:#f92672">&lt;url&gt;</span>http://nexus/repository/maven-mgkim-release/<span style="color:#f92672">&lt;/url&gt;</span>
-  <span style="color:#f92672">&lt;/repository&gt;</span>
-<span style="color:#f92672">&lt;/distributionManagement&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;distributionManagement&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;snapshotRepository&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;id&gt;</span>mgkim-snapshot<span style="color:#204a87;font-weight:bold">&lt;/id&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;url&gt;</span>http://nexus/repository/maven-mgkim-snapshot/<span style="color:#204a87;font-weight:bold">&lt;/url&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;/snapshotRepository&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;repository&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;id&gt;</span>mgkim-release<span style="color:#204a87;font-weight:bold">&lt;/id&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;url&gt;</span>http://nexus/repository/maven-mgkim-release/<span style="color:#204a87;font-weight:bold">&lt;/url&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;/repository&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/distributionManagement&gt;</span>
 </code></pre></div><br>
 <h4 id="maven-helpevaluate">(maven) help:evaluate</h4>
 <p>명령어</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">SNAPSHOT_NM<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>mvn -f pom.xml help:evaluate -Dexpression<span style="color:#f92672">=</span>project.version -q -DforceStdout<span style="color:#66d9ef">)</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#000">SNAPSHOT_NM</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">$(</span>mvn -f pom.xml help:evaluate -Dexpression<span style="color:#ce5c00;font-weight:bold">=</span>project.version -q -DforceStdout<span style="color:#204a87;font-weight:bold">)</span>
 </code></pre></div><br>
 <h4 id="maven-dependency">(maven) dependency</h4>
 <p>명령어: dependency:resolve</p>
 <p>javadoc 다운로드</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ mvn dependency:resolve -Dclassifier<span style="color:#f92672">=</span>javadoc
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ mvn dependency:resolve -Dclassifier<span style="color:#ce5c00;font-weight:bold">=</span>javadoc
 </code></pre></div><p>명령어: dependency:sources</p>
 <p>sources 다운로드</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ mvn dependency:sources
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ mvn dependency:sources
 </code></pre></div><br>
 <h4 id="maven-deploydeploy-file">(maven) deploy:deploy-file</h4>
 <p>명령어</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"><span style="color:#66d9ef">set</span> JAVA_HOME=Z:\develop\java\openjdk-11.0.2
-<span style="color:#66d9ef">set</span> M2_HOME=Z:\develop\build\maven-3.6.3
-<span style="color:#66d9ef">set</span> PATH=%JAVA_HOME%\bin;%M2_HOME%\bin;%PATH%
-<span style="color:#66d9ef">set</span> NEXUS_REPO=-DrepositoryId=nexus-release -Durl=http://nexus/repository/maven-public-hosted/
-<span style="color:#66d9ef">set</span> GROUP_ID=net.mgkim
-<span style="color:#66d9ef">set</span> ARTIFACT_ID=spring-core
-<span style="color:#66d9ef">set</span> VERSION=1.0.0
-<span style="color:#66d9ef">set</span> FILE=Z:\mgkim-spring-core-1.0.0.jar
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"><span style="color:#204a87;font-weight:bold">set</span> <span style="color:#000">JAVA_HOME</span><span style="color:#000;font-weight:bold">=</span>Z:\develop\java\openjdk-11.0.2
+<span style="color:#204a87;font-weight:bold">set</span> <span style="color:#000">M2_HOME</span><span style="color:#000;font-weight:bold">=</span>Z:\develop\build\maven-3.6.3
+<span style="color:#204a87;font-weight:bold">set</span> <span style="color:#000">PATH</span><span style="color:#000;font-weight:bold">=</span><span style="color:#000">%JAVA_HOME%</span>\bin;<span style="color:#000">%M2_HOME%</span>\bin;<span style="color:#000">%PATH%</span>
+<span style="color:#204a87;font-weight:bold">set</span> <span style="color:#000">NEXUS_REPO</span><span style="color:#000;font-weight:bold">=</span>-DrepositoryId=nexus-release -Durl=http://nexus/repository/maven-public-hosted/
+<span style="color:#204a87;font-weight:bold">set</span> <span style="color:#000">GROUP_ID</span><span style="color:#000;font-weight:bold">=</span>net.mgkim
+<span style="color:#204a87;font-weight:bold">set</span> <span style="color:#000">ARTIFACT_ID</span><span style="color:#000;font-weight:bold">=</span>spring-core
+<span style="color:#204a87;font-weight:bold">set</span> <span style="color:#000">VERSION</span><span style="color:#000;font-weight:bold">=</span>1.0.0
+<span style="color:#204a87;font-weight:bold">set</span> <span style="color:#000">FILE</span><span style="color:#000;font-weight:bold">=</span>Z:\mgkim-spring-core-1.0.0.jar
 
-%M2_HOME%\bin\mvn.cmd -U deploy:deploy-file -DgroupId=%GROUP_ID% -DartifactId=%ARTIFACT_ID% -Dversion=%VERSION% -Dpackaging=jar -Dfile=%FILE% %NEXUS_REPO%
+<span style="color:#000">%M2_HOME%</span>\bin\mvn.cmd -U deploy:deploy-file -DgroupId=<span style="color:#000">%GROUP_ID%</span> -DartifactId=<span style="color:#000">%ARTIFACT_ID%</span> -Dversion=<span style="color:#000">%VERSION%</span> -Dpackaging=jar -Dfile=<span style="color:#000">%FILE%</span> <span style="color:#000">%NEXUS_REPO%</span>
 </code></pre></div><p>플러그인</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;build&gt;</span>
-  <span style="color:#f92672">&lt;plugins&gt;</span>
-    <span style="color:#f92672">&lt;plugin&gt;</span>
-      <span style="color:#f92672">&lt;groupId&gt;</span>org.apache.maven.plugins<span style="color:#f92672">&lt;/groupId&gt;</span>
-      <span style="color:#f92672">&lt;artifactId&gt;</span>maven-deploy-plugin<span style="color:#f92672">&lt;/artifactId&gt;</span>
-      <span style="color:#f92672">&lt;version&gt;</span>3.0.0-M1<span style="color:#f92672">&lt;/version&gt;</span>
-    <span style="color:#f92672">&lt;/plugin&gt;</span>
-  <span style="color:#f92672">&lt;/plugins&gt;</span>
-<span style="color:#f92672">&lt;/build&gt;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#204a87;font-weight:bold">&lt;build&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;plugins&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;plugin&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;groupId&gt;</span>org.apache.maven.plugins<span style="color:#204a87;font-weight:bold">&lt;/groupId&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;artifactId&gt;</span>maven-deploy-plugin<span style="color:#204a87;font-weight:bold">&lt;/artifactId&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;version&gt;</span>3.0.0-M1<span style="color:#204a87;font-weight:bold">&lt;/version&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;/plugin&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;/plugins&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/build&gt;</span>
 </code></pre></div><br>
 <p><strong>2021.12.14 nexus deploy 401 unauthorized</strong></p>
 <p>mvn deploy 에 전달된 인자 <code>-DrepositoryId=nexus-release</code> 이 참조하는 settings.xml 의 <code>&lt;Servers&gt;</code> 의 id/passwd 정보가 있어야 합니다.</p>
 <img src="/images/localenv/20211214-maven-deploy_401_unauthorized.png" width="800">
 <p><a href="/images/localenv/20211214-maven-deploy_401_unauthorized.png" target="_blank">새 창 보기</a></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">  <span style="color:#f92672">&lt;servers&gt;</span>
-    <span style="color:#f92672">&lt;server&gt;</span>
-      <span style="color:#f92672">&lt;id&gt;</span>nexus-release<span style="color:#f92672">&lt;/id&gt;</span>
-      <span style="color:#f92672">&lt;username&gt;</span>admin<span style="color:#f92672">&lt;/username&gt;</span>
-      <span style="color:#f92672">&lt;password&gt;</span>***(passwd)***<span style="color:#f92672">&lt;/password&gt;</span>
-    <span style="color:#f92672">&lt;/server&gt;</span>
-  <span style="color:#f92672">&lt;/servers&gt;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">  <span style="color:#204a87;font-weight:bold">&lt;servers&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;server&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;id&gt;</span>nexus-release<span style="color:#204a87;font-weight:bold">&lt;/id&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;username&gt;</span>admin<span style="color:#204a87;font-weight:bold">&lt;/username&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;password&gt;</span>***(passwd)***<span style="color:#204a87;font-weight:bold">&lt;/password&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;/server&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;/servers&gt;</span>
 </code></pre></div><br>
 <p><strong>2021.12.14 nexacro 라이브러리 추가</strong></p>
 <p><a href="/files/localenv/2021-12-14-maven-deploy-nexacro.txt" target="_blank">스크립트 보기</a></p>
@@ -928,44 +926,44 @@ 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
 <p><a href="/files/localenv/20211120-settings.xml.txt" target="_blank">새 창 보기</a></p>
 <br>
 <h4 id="maven-password-암호화">(maven) password 암호화</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 평문 `mypassword` 는 `{ODOdTfm09eMHYfUVt4vkUfm9dw1pkSRC+HAXsuqE0p0=}` 문자열로 암호화됨</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#8f5902;font-style:italic"># 평문 `mypassword` 는 `{ODOdTfm09eMHYfUVt4vkUfm9dw1pkSRC+HAXsuqE0p0=}` 문자열로 암호화됨</span>
 $ mvn --encrypt-master-password mypassword
-<span style="color:#f92672">{</span>ODOdTfm09eMHYfUVt4vkUfm9dw1pkSRC+HAXsuqE0p0<span style="color:#f92672">=}</span>
+<span style="color:#ce5c00;font-weight:bold">{</span>ODOdTfm09eMHYfUVt4vkUfm9dw1pkSRC+HAXsuqE0p0<span style="color:#ce5c00;font-weight:bold">=}</span>
 </code></pre></div><br>
 <h4 id="java-vmargs-2개">(java) vmargs (2개)</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># request.getRemoteAddr() 가 IPv6 로 출력되는 경우</span>
-JAVA_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JAVA_OPTS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -Djava.net.preferIPv4Stack=true&#34;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#8f5902;font-style:italic"># request.getRemoteAddr() 가 IPv6 로 출력되는 경우</span>
+<span style="color:#000">JAVA_OPTS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;</span><span style="color:#4e9a06">${</span><span style="color:#000">JAVA_OPTS</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06"> -Djava.net.preferIPv4Stack=true&#34;</span>
 
-<span style="color:#75715e"># cannot be cast to javax.net.ssl.HttpsURLConnection</span>
-<span style="color:#75715e"># URLConnection 객체를 사용할 때 HttpsURLConnection 이 반환되지 않는 경우</span>
-JAVA_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JAVA_OPTS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -DUseSunHttpHandler=true&#34;</span>
+<span style="color:#8f5902;font-style:italic"># cannot be cast to javax.net.ssl.HttpsURLConnection</span>
+<span style="color:#8f5902;font-style:italic"># URLConnection 객체를 사용할 때 HttpsURLConnection 이 반환되지 않는 경우</span>
+<span style="color:#000">JAVA_OPTS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;</span><span style="color:#4e9a06">${</span><span style="color:#000">JAVA_OPTS</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06"> -DUseSunHttpHandler=true&#34;</span>
 </code></pre></div><br>
 <h4 id="win-win11-system-tray-설정">(win) win11 system-tray 설정</h4>
 <p>cmd 창에서 아래 명령어를 입력하여 시스템 트레이에 모든 아이콘을 표시하도록 합니다.</p>
 <p><code>시스템 아이콘 켜기 또는 끄기</code> 를 선택하여 시계를 표시할 수도 있습니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">&gt; explorer shell:::{05d7b0f4-2121-4eff-bf6b-ed3f69b894d9}
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"><span style="color:#000;font-weight:bold">&gt;</span> explorer shell:::{05d7b0f4-2121-4eff-bf6b-ed3f69b894d9}
 </code></pre></div><p><a href="/images/localenv/20211121_windows11_systemtray_show_all_icons.png" target="_blank">새 창 보기</a></p>
 <br>
 <h4 id="win-font-추천">(win) font 추천</h4>
 <p><strong>hugo-site</strong></p>
 <p>/assets/scss/_variables_project.scss</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css"><span style="color:#f92672">$</span><span style="color:#f92672">google_font_name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Bitstream Vera Sans Mono&#34;</span> <span style="color:#f92672">!</span><span style="color:#f92672">default</span><span style="color:#f92672">;</span>
-<span style="color:#f92672">$</span><span style="color:#f92672">google_font_family</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Bitstream Vera Sans Mono:300,300i,400,400i,700,700i&#34;</span> <span style="color:#f92672">!</span><span style="color:#f92672">default</span><span style="color:#f92672">;</span>
-<span style="color:#f92672">$</span><span style="color:#f92672">web-font-path</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;http://fonts.cdnfonts.com/css/bitstream-vera-sans-mono&#34;</span><span style="color:#f92672">;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css"><span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#204a87;font-weight:bold">google_font_name</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Bitstream Vera Sans Mono&#34;</span> <span style="color:#ce5c00;font-weight:bold">!</span><span style="color:#204a87;font-weight:bold">default</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#204a87;font-weight:bold">google_font_family</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Bitstream Vera Sans Mono:300,300i,400,400i,700,700i&#34;</span> <span style="color:#ce5c00;font-weight:bold">!</span><span style="color:#204a87;font-weight:bold">default</span><span style="color:#ce5c00;font-weight:bold">;</span>
+<span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#204a87;font-weight:bold">web-font-path</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;http://fonts.cdnfonts.com/css/bitstream-vera-sans-mono&#34;</span><span style="color:#ce5c00;font-weight:bold">;</span>
 </code></pre></div><p>scss 파일의 수정된 내용이 적용되려면 npm 빌드 환경이 필요합니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 초기 구성을 위해 준비할 것</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#8f5902;font-style:italic"># 초기 구성을 위해 준비할 것</span>
 $ git submodule add -b master https://github.com/lislroow/lislroow.github.io.git public
-$ git clone --recurse-submodules --depth <span style="color:#ae81ff">1</span> https://github.com/google/docsy.git themes/docsy
+$ git clone --recurse-submodules --depth <span style="color:#0000cf;font-weight:bold">1</span> https://github.com/google/docsy.git themes/docsy
 
-<span style="color:#75715e"># 2개의 npm 패키지 설치</span>
+<span style="color:#8f5902;font-style:italic"># 2개의 npm 패키지 설치</span>
 $ npm install autoprefixer -D --save
 $ npm install postcss-cli -D --save
 $ npm install postcss -D --save
 
-<span style="color:#75715e"># npm 패키지 설치 후 hugo -t docsy 로 build 하면 </span>
-<span style="color:#75715e"># `/assets/scss/_variables_project.scss` 파일에 수정된 내용을 포함하여</span>
-<span style="color:#75715e"># 아래 경로에 build 결과 파일을 생성합니다.</span>
-<span style="color:#75715e"># `/resources/_gen/assets/scss/scss/main.scss_4853eb546e7a6c0898ed71feae7357c0.content`</span>
+<span style="color:#8f5902;font-style:italic"># npm 패키지 설치 후 hugo -t docsy 로 build 하면 </span>
+<span style="color:#8f5902;font-style:italic"># `/assets/scss/_variables_project.scss` 파일에 수정된 내용을 포함하여</span>
+<span style="color:#8f5902;font-style:italic"># 아래 경로에 build 결과 파일을 생성합니다.</span>
+<span style="color:#8f5902;font-style:italic"># `/resources/_gen/assets/scss/scss/main.scss_4853eb546e7a6c0898ed71feae7357c0.content`</span>
 </code></pre></div><p><strong>system</strong></p>
 <p><code>Bitstream</code> 은 coding 목적으로 많이 사용되는 font 입니다.</p>
 <p><a href="/images/localenv/20211105_change-eclipse-font_1.png" target="_blank">새 창 보기<a/></p>
@@ -974,39 +972,39 @@ $ npm install postcss -D --save
 <p><a href="/images/localenv/20211105_change-eclipse-font.png" target="_blank">새 창 보기<a/></p>
 <br>
 <h4 id="eclipse-hidpi-설정">(eclipse) hidpi 설정</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># eclipse.ini 파일의 맨 마지막에 추가
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># eclipse.ini 파일의 맨 마지막에 추가
 -Dswt.autoScale=150 # 150 == 1.5배
 </code></pre></div><p><a href="/files/localenv/20211120-eclipse.ini" target="_blank">새 창 보기</a></p>
 <br>
 <h4 id="win-절전-cmd">(win) 절전 cmd</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">%windir%\System32\rundll32.exe powrprof.dll SetSuspendState
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"><span style="color:#000">%windir%</span>\System32\rundll32.exe powrprof.dll SetSuspendState
 </code></pre></div><br>
 <h4 id="vmware-실행-cmd">(vmware) 실행 cmd</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"><span style="color:#66d9ef">set</span> <span style="color:#e6db74">&#34;VMWARE_HOME=C:\Program Files (x86)\VMware\VMware Workstation&#34;</span>
-<span style="color:#66d9ef">set</span> <span style="color:#e6db74">&#34;PATH=</span>%PATH%<span style="color:#e6db74">;</span>%VMWARE_HOME%<span style="color:#e6db74">&#34;</span>
-vmrun -T ws start <span style="color:#e6db74">&#34;Z:\centos7-develop\centos7-develop.vmx&#34;</span> nogui
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"><span style="color:#204a87;font-weight:bold">set</span> <span style="color:#4e9a06">&#34;VMWARE_HOME=C:\Program Files (x86)\VMware\VMware Workstation&#34;</span>
+<span style="color:#204a87;font-weight:bold">set</span> <span style="color:#4e9a06">&#34;PATH=</span><span style="color:#000">%PATH%</span><span style="color:#4e9a06">;</span><span style="color:#000">%VMWARE_HOME%</span><span style="color:#4e9a06">&#34;</span>
+vmrun -T ws start <span style="color:#4e9a06">&#34;Z:\centos7-develop\centos7-develop.vmx&#34;</span> nogui
 </code></pre></div><br>
 <h4 id="win-wol-설정">(win) wol 설정</h4>
 <p>절전 상태에서 wol 이 작동하려면 아래 옵션을 선택해야 합니다.</p>
 <p><a href="/images/localenv/20211120-windows_wol_1.png" target="_blank">새 창 보기</a></p>
 <br>
 <h4 id="win-port-forwarding-cmd">(win) port-forwarding cmd</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"># 설정
-&gt; netsh interface portproxy add v4tov4 listenport=8222 listenaddress=0.0.0.0 connectport=22 connectaddress=172.28.200.20
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"># 설정
+<span style="color:#000;font-weight:bold">&gt;</span> netsh interface portproxy add v4tov4 listenport=8222 listenaddress=0.0.0.0 connectport=22 connectaddress=172.28.200.20
 
 # 해제
-&gt; netsh interface portproxy delete v4tov4 listenport=8222 listenaddress=0.0.0.0
+<span style="color:#000;font-weight:bold">&gt;</span> netsh interface portproxy delete v4tov4 listenport=8222 listenaddress=0.0.0.0
 
 # 확인
-&gt; netsh interface portproxy show v4tov4
+<span style="color:#000;font-weight:bold">&gt;</span> netsh interface portproxy show v4tov4
 </code></pre></div><br>
 <h4 id="win-파일-공유-설정">(win) 파일 공유 설정</h4>
 <p>windows 에서 파일 공유 시 권한이 없다는 메시지가 나오는 경우가 있음</p>
 <p>windows 계정에 패스워드가 설정되어 있지 않으면 발생하는 사항</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"># 비밀번호 설정하기
-&gt; net user administrator *
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"># 비밀번호 설정하기
+<span style="color:#000;font-weight:bold">&gt;</span> net user administrator *
 </code></pre></div><p>centos 에서 windows 공유 디렉토리 mount</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">$ mkdir /share
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">$ mkdir /share
 $ mount -t cifs //172.28.200.1/share /share -o username=administrator,password=1
 $ df -h
 Filesystem            Size  Used Avail Use% Mounted on
@@ -1033,17 +1031,17 @@ $ vi /etc/fstab
 <p>vmware 의 guest os는 172.28.200.2~254 로 설정하고, host os(windows) 와 통신은 172.28.200.1 로 합니다.</p>
 <br>
 <h4 id="7z-7z-압축-cmd">(7z) 7z 압축 cmd</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">&gt; <span style="color:#e6db74">&#34;C:\Program Files\7-Zip\7z.exe&#34;</span> a -mx7 -mmt Z:\project.zip <span style="color:#e6db74">&#34;Z:\project&#34;</span>
-&gt; <span style="color:#e6db74">&#34;C:\Program Files\7-Zip\7z.exe&#34;</span> a -mx5 -t7z Z:\project.zip <span style="color:#e6db74">&#34;Z:\project&#34;</span> -xr!target -xr!node_modules
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"><span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#4e9a06">&#34;C:\Program Files\7-Zip\7z.exe&#34;</span> a -mx7 -mmt Z:\project.zip <span style="color:#4e9a06">&#34;Z:\project&#34;</span>
+<span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#4e9a06">&#34;C:\Program Files\7-Zip\7z.exe&#34;</span> a -mx5 -t7z Z:\project.zip <span style="color:#4e9a06">&#34;Z:\project&#34;</span> -xr!target -xr!node_modules
 </code></pre></div><p>target 디렉토리와 node_modules 디렉토리는 압축 대상에서 제외됩니다.</p>
 <br>
 <h4 id="jmeter-jmeter-실행-cmd">(jmeter) jmeter 실행 cmd</h4>
 <p>jmeter 실행 결과 디렉토리에 timestamp 변수 사용하기</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">&gt; set ts=%DATE:~0,4%%DATE:~5,2%%DATE:~8,2%_%TIME:~0,2%%TIME:~3,2%%TIME:~6,2%
-&gt; apache-jmeter-5.4.1\bin\jmeter.bat -n -t jmeter-mgkim-core.jmx -l data\%ts%.csv -e -o data\%ts%
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"><span style="color:#000;font-weight:bold">&gt;</span> set ts=<span style="color:#000">%DATE:~0,4%%DATE:~5,2%%DATE:~8,2%</span>_<span style="color:#000">%TIME:~0,2%%TIME:~3,2%%TIME:~6,2%</span>
+<span style="color:#000;font-weight:bold">&gt;</span> apache-jmeter-5.4.1\bin\jmeter.bat -n -t jmeter-mgkim-core.jmx -l data\<span style="color:#000">%ts%</span>.csv -e -o data\<span style="color:#000">%ts%</span>
 </code></pre></div><br>
 <h4 id="win-xcopy-cmd">(win) xcopy cmd</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">&gt; xcopy C:\exp\*.* Z:\exp\ /d/i/s/c/y
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"><span style="color:#000;font-weight:bold">&gt;</span> xcopy C:\exp\*.* Z:\exp\ /d/i/s/c/y
 </code></pre></div><br>
 <h4 id="chrome-https-자동-접속-현상">(chrome) https 자동 접속 현상</h4>
 <ul>
@@ -1060,24 +1058,24 @@ $ vi /etc/fstab
 </ul>
 <br>
 <h4 id="git-config-cmd">(git) config cmd</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">&gt; git config --global core.autocrlf true
-&gt; git config --global user.email hi@mgkim.net
-&gt; git config --global user.name 김명구
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd"><span style="color:#000;font-weight:bold">&gt;</span> git config --global core.autocrlf true
+<span style="color:#000;font-weight:bold">&gt;</span> git config --global user.email hi@mgkim.net
+<span style="color:#000;font-weight:bold">&gt;</span> git config --global user.name 김명구
 </code></pre></div><br>
 <h4 id="git-pre-commit-shell">(git) pre-commit shell</h4>
 <p>git-commit 을 하기 전에 사전 검사를 하기 위한 코드를 bash-shell 로 체크하는 방법입니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># project/.git/hooks/pre-commit</span>
-<span style="color:#75715e">#!/bin/sh</span>
-LIST<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>git diff --cached --name-only --diff-filter<span style="color:#f92672">=</span>ACRM<span style="color:#66d9ef">)</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#8f5902;font-style:italic"># project/.git/hooks/pre-commit</span>
+<span style="color:#8f5902;font-style:italic">#!/bin/sh</span>
+<span style="color:#000">LIST</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">$(</span>git diff --cached --name-only --diff-filter<span style="color:#ce5c00;font-weight:bold">=</span>ACRM<span style="color:#204a87;font-weight:bold">)</span>
 
-<span style="color:#66d9ef">for</span> file in $LIST
-<span style="color:#66d9ef">do</span>
-  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $file <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;.settings/org.eclipse.wst.common.component&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
-    echo <span style="color:#e6db74">&#34;이클립스 설정 파일(</span>$file<span style="color:#e6db74">)은 commit을 할 수 없습니다.&#34;</span>
-    exit <span style="color:#ae81ff">1</span>
-  <span style="color:#66d9ef">fi</span>
-<span style="color:#66d9ef">done</span>
-exit <span style="color:#ae81ff">0</span>
+<span style="color:#204a87;font-weight:bold">for</span> file in <span style="color:#000">$LIST</span>
+<span style="color:#204a87;font-weight:bold">do</span>
+  <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">[</span> <span style="color:#000">$file</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;.settings/org.eclipse.wst.common.component&#34;</span> <span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#000;font-weight:bold">;</span> <span style="color:#204a87;font-weight:bold">then</span>
+    <span style="color:#204a87">echo</span> <span style="color:#4e9a06">&#34;이클립스 설정 파일(</span><span style="color:#000">$file</span><span style="color:#4e9a06">)은 commit을 할 수 없습니다.&#34;</span>
+    <span style="color:#204a87">exit</span> <span style="color:#0000cf;font-weight:bold">1</span>
+  <span style="color:#204a87;font-weight:bold">fi</span>
+<span style="color:#204a87;font-weight:bold">done</span>
+<span style="color:#204a87">exit</span> <span style="color:#0000cf;font-weight:bold">0</span>
 </code></pre></div><br>
 <h4 id="oracle-client-무설치-설정">(oracle) client 무설치 설정</h4>
 <p><strong>시스템변수</strong></p>
@@ -1090,7 +1088,7 @@ exit <span style="color:#ae81ff">0</span>
 <p><a href="/files/localenv/20211120-tnsnames.ora" target="_blank">새 창 보기</a></p>
 <br>
 <h4 id="oracle-sqlplus">(oracle) sqlplus</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">C:\Users\Administrator&gt;sqlplus /nolog
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">C:\Users\Administrator&gt;sqlplus /nolog
 
 SQL*Plus: Release 12.1.0.2.0 Production on 목 9월 2 11:39:53 2021
 
@@ -1128,48 +1126,48 @@ SQL&gt;
 <h4 id="oracle-object-조회-query">(oracle) object 조회 query</h4>
 <p>dictionary 뷰에서부터 object 정보를 확인하고 생성된 상태를 확인할 수 있습니다.</p>
 <p>sqlgate 에 단축키로 등록하고 사용하면 유용할 query 입니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#f92672">#</span> <span style="color:#960050;background-color:#1e0010">테이블</span> <span style="color:#960050;background-color:#1e0010">검색</span>
-<span style="color:#66d9ef">SELECT</span> <span style="color:#75715e">/* (Alt+1) 테이블 검색  */</span> A.<span style="color:#66d9ef">OWNER</span>, A.COMMENTS <span style="color:#66d9ef">AS</span> T_COMMENT, A.<span style="color:#66d9ef">TABLE_NAME</span> <span style="color:#66d9ef">AS</span> T_NAME, B.<span style="color:#66d9ef">COLUMN_NAME</span> <span style="color:#66d9ef">AS</span> C_NAME, B.COMMENTS <span style="color:#66d9ef">AS</span> C_COMMENT, B1.COLUMN_ID
-<span style="color:#66d9ef">FROM</span>  ALL_TAB_COMMENTS A, ALL_COL_COMMENTS B, ALL_TAB_COLS B1
-<span style="color:#66d9ef">WHERE</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
-  <span style="color:#66d9ef">AND</span> A.<span style="color:#66d9ef">TABLE_NAME</span> <span style="color:#66d9ef">LIKE</span> <span style="color:#e6db74">&#39;%&amp;Var%&#39;</span>
-  <span style="color:#66d9ef">AND</span> A.<span style="color:#66d9ef">TABLE_NAME</span> <span style="color:#f92672">=</span> B.<span style="color:#66d9ef">TABLE_NAME</span>
-  <span style="color:#66d9ef">AND</span> B.<span style="color:#66d9ef">TABLE_NAME</span> <span style="color:#f92672">=</span> B1.<span style="color:#66d9ef">TABLE_NAME</span>
-  <span style="color:#66d9ef">AND</span> B.<span style="color:#66d9ef">COLUMN_NAME</span> <span style="color:#f92672">=</span> B1.<span style="color:#66d9ef">COLUMN_NAME</span>
-  <span style="color:#66d9ef">AND</span> A.<span style="color:#66d9ef">OWNER</span> <span style="color:#f92672">=</span> B.<span style="color:#66d9ef">OWNER</span>
-  <span style="color:#66d9ef">AND</span> B.<span style="color:#66d9ef">OWNER</span> <span style="color:#f92672">=</span> B1.<span style="color:#66d9ef">OWNER</span>(<span style="color:#f92672">+</span>)
-  <span style="color:#66d9ef">AND</span> A.<span style="color:#66d9ef">OWNER</span> <span style="color:#66d9ef">IN</span> (<span style="color:#e6db74">&#39;SPADBA&#39;</span>)
-<span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> A.<span style="color:#66d9ef">OWNER</span> <span style="color:#66d9ef">DESC</span>, B1.COLUMN_ID, A.COMMENTS
-;
-
-<span style="color:#f92672">#</span> <span style="color:#960050;background-color:#1e0010">컬럼</span> <span style="color:#960050;background-color:#1e0010">검색</span>
-<span style="color:#66d9ef">SELECT</span> <span style="color:#75715e">/* (Alt+2) 컬럼 검색  */</span> A.<span style="color:#66d9ef">OWNER</span>, A.COMMENTS <span style="color:#66d9ef">AS</span> T_COMMENT, A.<span style="color:#66d9ef">TABLE_NAME</span> <span style="color:#66d9ef">AS</span> T_NAME, B.<span style="color:#66d9ef">COLUMN_NAME</span> <span style="color:#66d9ef">AS</span> C_NAME, B.COMMENTS <span style="color:#66d9ef">AS</span> C_COMMENT, B1.COLUMN_ID
-<span style="color:#66d9ef">FROM</span>  ALL_TAB_COMMENTS A, ALL_COL_COMMENTS B, ALL_TAB_COLS B1, ALL_CONS_COLUMNS <span style="color:#66d9ef">C</span>
-<span style="color:#66d9ef">WHERE</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
-  <span style="color:#66d9ef">AND</span> (B.<span style="color:#66d9ef">COLUMN_NAME</span> <span style="color:#66d9ef">LIKE</span> <span style="color:#e6db74">&#39;%&amp;Var%&#39;</span> <span style="color:#66d9ef">OR</span> B.COMMENTS <span style="color:#66d9ef">LIKE</span> <span style="color:#e6db74">&#39;%&amp;Var%&#39;</span>)
-  <span style="color:#66d9ef">AND</span> A.<span style="color:#66d9ef">TABLE_NAME</span> <span style="color:#f92672">=</span> B.<span style="color:#66d9ef">TABLE_NAME</span>
-  <span style="color:#66d9ef">AND</span> B.<span style="color:#66d9ef">TABLE_NAME</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">C</span>.<span style="color:#66d9ef">TABLE_NAME</span>(<span style="color:#f92672">+</span>)
-  <span style="color:#66d9ef">AND</span> B.<span style="color:#66d9ef">TABLE_NAME</span> <span style="color:#f92672">=</span> B1.<span style="color:#66d9ef">TABLE_NAME</span>
-  <span style="color:#66d9ef">AND</span> B.<span style="color:#66d9ef">COLUMN_NAME</span> <span style="color:#f92672">=</span> B1.<span style="color:#66d9ef">COLUMN_NAME</span>
-  <span style="color:#66d9ef">AND</span> A.<span style="color:#66d9ef">OWNER</span> <span style="color:#f92672">=</span> B.<span style="color:#66d9ef">OWNER</span>
-  <span style="color:#66d9ef">AND</span> B.<span style="color:#66d9ef">OWNER</span> <span style="color:#f92672">=</span> B1.<span style="color:#66d9ef">OWNER</span>(<span style="color:#f92672">+</span>)
-  <span style="color:#66d9ef">AND</span> B.<span style="color:#66d9ef">OWNER</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">C</span>.<span style="color:#66d9ef">OWNER</span>
-  <span style="color:#66d9ef">AND</span> B.<span style="color:#66d9ef">COLUMN_NAME</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">C</span>.<span style="color:#66d9ef">COLUMN_NAME</span>(<span style="color:#f92672">+</span>)
-  <span style="color:#66d9ef">AND</span> <span style="color:#66d9ef">C</span>.<span style="color:#66d9ef">CONSTRAINT_NAME</span>(<span style="color:#f92672">+</span>) <span style="color:#66d9ef">LIKE</span> <span style="color:#e6db74">&#39;%PK&#39;</span>
-  <span style="color:#66d9ef">AND</span> A.<span style="color:#66d9ef">OWNER</span> <span style="color:#66d9ef">IN</span> (<span style="color:#e6db74">&#39;SPADBA&#39;</span>)
-  <span style="color:#66d9ef">AND</span> (A.<span style="color:#66d9ef">TABLE_NAME</span> <span style="color:#66d9ef">LIKE</span> <span style="color:#e6db74">&#39;E%&#39;</span> <span style="color:#66d9ef">OR</span> A.<span style="color:#66d9ef">TABLE_NAME</span> <span style="color:#66d9ef">LIKE</span> <span style="color:#e6db74">&#39;CB%&#39;</span>)
-<span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> A.<span style="color:#66d9ef">OWNER</span> <span style="color:#66d9ef">DESC</span>, A.COMMENTS, B1.COLUMN_ID, <span style="color:#66d9ef">C</span>.<span style="color:#66d9ef">POSITION</span>
-;
-
-<span style="color:#f92672">#</span> <span style="color:#960050;background-color:#1e0010">테이블</span> <span style="color:#960050;background-color:#1e0010">조회</span>
-<span style="color:#66d9ef">SELECT</span> <span style="color:#75715e">/* (Alt+3) 테이블 조회 */</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">&amp;</span>Var <span style="color:#66d9ef">WHERE</span> ROWNUM <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">200</span>
-;
-
-<span style="color:#f92672">#</span> dict <span style="color:#960050;background-color:#1e0010">검색</span>
-<span style="color:#66d9ef">SELECT</span> <span style="color:#75715e">/* (Alt+4) DICT 검색 */</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> DICT <span style="color:#66d9ef">WHERE</span> <span style="color:#66d9ef">TABLE_NAME</span> <span style="color:#66d9ef">LIKE</span> <span style="color:#e6db74">&#39;%&#39;</span><span style="color:#f92672">||</span><span style="color:#e6db74">&#39;&amp;Var&#39;</span><span style="color:#f92672">||</span><span style="color:#e6db74">&#39;%&#39;</span>
-<span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> <span style="color:#66d9ef">TABLE_NAME</span>
-;
-</code></pre></div><br>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#ce5c00;font-weight:bold">#</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">테이블</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">검색</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">/* (Alt+1) 테이블 검색  */</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">A</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">OWNER</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">A</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">COMMENTS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">T_COMMENT</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">A</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">TABLE_NAME</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">T_NAME</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">B</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">COLUMN_NAME</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">C_NAME</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">B</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">COMMENTS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">C_COMMENT</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">B1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">COLUMN_ID</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#000">ALL_TAB_COMMENTS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">A</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ALL_COL_COMMENTS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">B</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ALL_TAB_COLS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">B1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">WHERE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">AND</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">A</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">TABLE_NAME</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">LIKE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;%&amp;Var%&#39;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">AND</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">A</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">TABLE_NAME</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">B</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">TABLE_NAME</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">AND</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">B</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">TABLE_NAME</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">B1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">TABLE_NAME</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">AND</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">B</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">COLUMN_NAME</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">B1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">COLUMN_NAME</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">AND</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">A</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">OWNER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">B</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">OWNER</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">AND</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">B</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">OWNER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">B1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">OWNER</span><span style="color:#000;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">AND</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">A</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">OWNER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">IN</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;SPADBA&#39;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">ORDER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">A</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">OWNER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">DESC</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">B1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">COLUMN_ID</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">A</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">COMMENTS</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#ce5c00;font-weight:bold">#</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">컬럼</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">검색</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">/* (Alt+2) 컬럼 검색  */</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">A</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">OWNER</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">A</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">COMMENTS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">T_COMMENT</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">A</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">TABLE_NAME</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">T_NAME</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">B</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">COLUMN_NAME</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">C_NAME</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">B</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">COMMENTS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">C_COMMENT</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">B1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">COLUMN_ID</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#000">ALL_TAB_COMMENTS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">A</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ALL_COL_COMMENTS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">B</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ALL_TAB_COLS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">B1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ALL_CONS_COLUMNS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">C</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">WHERE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">AND</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">B</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">COLUMN_NAME</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">LIKE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;%&amp;Var%&#39;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">OR</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">B</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">COMMENTS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">LIKE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;%&amp;Var%&#39;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">AND</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">A</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">TABLE_NAME</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">B</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">TABLE_NAME</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">AND</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">B</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">TABLE_NAME</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">C</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">TABLE_NAME</span><span style="color:#000;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">AND</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">B</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">TABLE_NAME</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">B1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">TABLE_NAME</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">AND</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">B</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">COLUMN_NAME</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">B1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">COLUMN_NAME</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">AND</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">A</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">OWNER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">B</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">OWNER</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">AND</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">B</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">OWNER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">B1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">OWNER</span><span style="color:#000;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">AND</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">B</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">OWNER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">C</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">OWNER</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">AND</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">B</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">COLUMN_NAME</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">C</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">COLUMN_NAME</span><span style="color:#000;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">AND</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">C</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">CONSTRAINT_NAME</span><span style="color:#000;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">LIKE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;%PK&#39;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">AND</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">A</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">OWNER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">IN</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;SPADBA&#39;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">AND</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">A</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">TABLE_NAME</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">LIKE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;E%&#39;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">OR</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">A</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">TABLE_NAME</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">LIKE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;CB%&#39;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">ORDER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">A</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">OWNER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">DESC</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">A</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">COMMENTS</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">B1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">COLUMN_ID</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">C</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">POSITION</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#ce5c00;font-weight:bold">#</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">테이블</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">조회</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">/* (Alt+3) 테이블 조회 */</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&amp;</span><span style="color:#000">Var</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">WHERE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ROWNUM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">200</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#ce5c00;font-weight:bold">#</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">dict</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">검색</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">/* (Alt+4) DICT 검색 */</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">DICT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">WHERE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE_NAME</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">LIKE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;%&#39;</span><span style="color:#ce5c00;font-weight:bold">||</span><span style="color:#4e9a06">&#39;&amp;Var&#39;</span><span style="color:#ce5c00;font-weight:bold">||</span><span style="color:#4e9a06">&#39;%&#39;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">ORDER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE_NAME</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div><br>
         <div class="section-index">
     
     
@@ -1261,9 +1259,6 @@ window.markmap = {
 
 <script src="/js/main.min.c1b8f3c373b85f900699a7ea81c2038ebbbebcac1a5a4b6e5ef96c24c31790d6.js" integrity="sha256-wbjzw3O4X5AGmafqgcIDjru&#43;vKwaWktuXvlsJMMXkNY=" crossorigin="anonymous"></script>
 
-
-
-<script src='/js/prism.js'></script>
 
 
 

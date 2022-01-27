@@ -3,8 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.87.0" /><link rel="alternate" type="application/rss&#43;xml" href="/develop/index.xml">
-<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+<meta name="generator" content="Hugo 0.87.0" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
 
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
@@ -18,23 +17,31 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>develop | dlog</title>
+<title>kibana | dlog</title>
 
 
   
-  <meta name="description" content="(log4j2) 설정
-새 창 보기
-
+  <meta name="description" content="_cat/indices
+인덱스 목록, index명 desc 정렬, index 컬럼만 조회
+GET _cat/indices?v&amp;s=index:desc&amp;h=index
 ">
-<meta property="og:title" content="develop" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="/develop/" />
+<meta property="og:title" content="kibana" />
+<meta property="og:description" content="_cat/indices 인덱스 목록, index명 desc 정렬, index 컬럼만 조회
+GET _cat/indices?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/system/kibana/" /><meta property="article:section" content="system" />
 
-<meta itemprop="name" content="develop">
-<meta itemprop="description" content=""><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="develop"/>
-<meta name="twitter:description" content=""/>
+
+
+<meta itemprop="name" content="kibana">
+<meta itemprop="description" content="_cat/indices 인덱스 목록, index명 desc 정렬, index 컬럼만 조회
+GET _cat/indices?">
+
+<meta itemprop="wordCount" content="11">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="kibana"/>
+<meta name="twitter:description" content="_cat/indices 인덱스 목록, index명 desc 정렬, index 컬럼만 조회
+GET _cat/indices?"/>
 
 
 
@@ -63,7 +70,7 @@
 
 
   </head>
-  <body class="td-section">
+  <body class="td-page">
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -83,7 +90,7 @@
 				
 				
 				
-				<a class="nav-link" href="/system/" ><i class='fas fa-book'></i><span>system</span></a>
+				<a class="nav-link active" href="/system/" ><i class='fas fa-book'></i><span class="active">system</span></a>
 			</li>
 			
 			<li class="nav-item mr-4 mb-2 mb-lg-0">
@@ -107,7 +114,7 @@
 				
 				
 				
-				<a class="nav-link active" href="/develop/" ><i class='fas fa-book'></i><span class="active">develop</span></a>
+				<a class="nav-link" href="/develop/" ><i class='fas fa-book'></i><span>develop</span></a>
 			</li>
 			
 			
@@ -163,13 +170,34 @@
   </form>
   <nav class="collapse td-sidebar-nav" id="td-section-nav">
     <ul class="td-sidebar-nav__section pr-md-3 ul-0">
-      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-develop-li">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-system-li">
   
-  <a href="/develop/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__section tree-root" id="m-develop"><span class="td-sidebar-nav-active-item">develop</span></a>
+  <a href="/system/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-system"><span class="">system</span></a>
   <ul class="ul-1">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-developlog4j2-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemcentos8-li">
   
-  <a href="/develop/log4j2/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-developlog4j2"><span class="">log4j2</span></a>
+  <a href="/system/centos8/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemcentos8"><span class="">centos8</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemelk-li">
+  
+  <a href="/system/elk/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemelk"><span class="">ELK</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemhttpd-li">
+  
+  <a href="/system/httpd/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemhttpd"><span class="">httpd</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemjenkins-li">
+  
+  <a href="/system/jenkins/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemjenkins"><span class="">jenkins</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-systemkibana-li">
+  
+  <a href="/system/kibana/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-systemkibana"><span class="td-sidebar-nav-active-item">kibana</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemlinux-li">
+  
+  <a href="/system/linux/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemlinux"><span class="">linux</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemopenssh-li">
+  
+  <a href="/system/openssh/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemopenssh"><span class="">openssh</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemoracle12c-li">
+  
+  <a href="/system/oracle12c/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemoracle12c"><span class="">oracle12c</span></a>
 </li>
   </ul>
 </li>
@@ -201,7 +229,11 @@
       <ul>
         <li>
           <ul>
-            <li><a href="#log4j2-설정">(log4j2) 설정</a></li>
+            <li>
+              <ul>
+                <li><a href="#_catindices">_cat/indices</a></li>
+              </ul>
+            </li>
           </ul>
         </li>
       </ul>
@@ -243,8 +275,18 @@
 
 
 
+
+
+
+<li class="breadcrumb-item" >
+	<a href="/system/">system</a>
+</li>
+
+
+
+
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="/develop/">develop</a>
+	<a href="/system/kibana/">kibana</a>
 </li>
 
 	</ol>
@@ -252,8 +294,8 @@
 
             
 <div class="td-content">
-	<h1>develop</h1>
-  
+	<h1>kibana</h1>
+	
 	<header class="article-meta">
 		
 		
@@ -268,23 +310,11 @@
 			
 		
 		
-	</header>
-	<h4 id="log4j2-설정">(log4j2) 설정</h4>
-<p><a href="/develop/log4j2" target="_blank">새 창 보기</a></p>
-<br>
-
-        <div class="section-index">
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</div>
-
+	</header>    
+	<h5 id="_catindices">_cat/indices</h5>
+<p>인덱스 목록, index명 desc 정렬, index 컬럼만 조회</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#000">GET</span> <span style="color:#000">_cat</span>/<span style="color:#000">indices</span>?<span style="color:#000">v</span>&amp;<span style="color:#000">s</span><span style="color:#000;font-weight:bold">=</span><span style="color:#000">index</span>:<span style="color:#000">desc</span>&amp;<span style="color:#000">h</span><span style="color:#000;font-weight:bold">=</span><span style="color:#000">index</span><span style="color:#a40000">
+</span></code></pre></div>
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
@@ -292,6 +322,7 @@
 </div>
 
 </div>
+
 
           </main>
         </div>

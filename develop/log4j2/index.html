@@ -63,8 +63,8 @@ log4j-slf4j-impl:2.14.1
 
 
 
-<link rel="preload" href="/scss/main.min.1f861d065398c88219fc317598d260b310e1d29b4fded8c05305f546ecc0046e.css" as="style">
-<link href="/scss/main.min.1f861d065398c88219fc317598d260b310e1d29b4fded8c05305f546ecc0046e.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.7bab5b53ce3a6e9d0beb97d70df0f5bd91bedfa2f6e2037ec8f9d3b5e3f7a384.css" as="style">
+<link href="/scss/main.min.7bab5b53ce3a6e9d0beb97d70df0f5bd91bedfa2f6e2037ec8f9d3b5e3f7a384.css" rel="stylesheet" integrity="">
 
 
 <script
@@ -77,9 +77,6 @@ log4j-slf4j-impl:2.14.1
   integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
   crossorigin="anonymous"></script>
 
-
-
-<link rel="stylesheet" href="/css/prism.css"/>
 
 
 
@@ -152,7 +149,7 @@ log4j-slf4j-impl:2.14.1
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.9108037f01fa74764d27918328ce969d.json"
+  data-offline-search-index-json-src="/offline-search-index.14df443270e87b55e82ca0e74fde32c0.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -179,7 +176,7 @@ log4j-slf4j-impl:2.14.1
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.9108037f01fa74764d27918328ce969d.json"
+  data-offline-search-index-json-src="/offline-search-index.14df443270e87b55e82ca0e74fde32c0.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -312,7 +309,7 @@ log4j-slf4j-impl:2.14.1
 	</header>    
 	<h4 id="maven-dependency">maven-dependency</h4>
 <p>(Mar, 2021) 기준 log4j 는 <code>2.14.1</code> 버전이 최신입니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># 핵심 라이브러리
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># 핵심 라이브러리
 log4j-api:2.14.1
 log4j-core:2.14.1
 log4j-web:2.14.1
@@ -324,46 +321,46 @@ slf4j-log4j12:1.7.32
 log4j:1.2.17
 </code></pre></div><h4 id="log4j2xml">log4j2.xml</h4>
 <p>설정 파일의 기본 구조입니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;Configuration&gt;</span>
-  <span style="color:#f92672">&lt;Properties&gt;</span> ... <span style="color:#f92672">&lt;/Properties&gt;</span>
-  <span style="color:#f92672">&lt;Appenders&gt;</span> ... <span style="color:#f92672">&lt;/Appenders&gt;</span>
-  <span style="color:#f92672">&lt;Loggers&gt;</span> ... <span style="color:#f92672">&lt;/Loggers&gt;</span>
-<span style="color:#f92672">&lt;/Configuration&gt;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#204a87;font-weight:bold">&lt;Configuration&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;Properties&gt;</span> ... <span style="color:#204a87;font-weight:bold">&lt;/Properties&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;Appenders&gt;</span> ... <span style="color:#204a87;font-weight:bold">&lt;/Appenders&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;Loggers&gt;</span> ... <span style="color:#204a87;font-weight:bold">&lt;/Loggers&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/Configuration&gt;</span>
 </code></pre></div><h4 id="appenders-설정">&lt;Appenders&gt; 설정</h4>
 <p><code>&lt;Appenders&gt;</code> 는 로그의 출력을 설정합니다.</p>
 <p><code>&lt;File&gt;</code> 혹은 <code>&lt;RollingFile&gt;</code> 를 바로 정의 하는 것이 기본이고,<br>
 <code>&lt;Routing&gt;</code>을 사용하여 ThreadContext 의 값에 따라 <code>&lt;File&gt;</code> 혹은 <code>&lt;RollingFile&gt;</code> 을 routing 할 수 있습니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">  <span style="color:#f92672">&lt;Appenders&gt;</span>
-    <span style="color:#f92672">&lt;Console&gt;</span> ... <span style="color:#f92672">&lt;/Console&gt;</span>
-    <span style="color:#f92672">&lt;Routing&gt;</span>
-      <span style="color:#f92672">&lt;Routes&gt;</span>
-        <span style="color:#f92672">&lt;Route&gt;</span>
-          <span style="color:#f92672">&lt;RollingFile&gt;</span> ... <span style="color:#f92672">&lt;/RollingFile&gt;</span>
-        <span style="color:#f92672">&lt;/Route&gt;</span>
-        <span style="color:#f92672">&lt;Route&gt;</span>
-          <span style="color:#f92672">&lt;File&gt;</span> ... <span style="color:#f92672">&lt;/File&gt;</span>
-        <span style="color:#f92672">&lt;/Route&gt;</span>
-      <span style="color:#f92672">&lt;/Routes&gt;</span>
-    <span style="color:#f92672">&lt;/Routing&gt;</span>
-    <span style="color:#f92672">&lt;Async&gt;</span>
-      <span style="color:#f92672">&lt;AppenderRef&gt;</span> ... <span style="color:#f92672">&lt;/AppenderRef&gt;</span>
-    <span style="color:#f92672">&lt;/Async&gt;</span>
-  <span style="color:#f92672">&lt;/Appenders&gt;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">  <span style="color:#204a87;font-weight:bold">&lt;Appenders&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;Console&gt;</span> ... <span style="color:#204a87;font-weight:bold">&lt;/Console&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;Routing&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;Routes&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;Route&gt;</span>
+          <span style="color:#204a87;font-weight:bold">&lt;RollingFile&gt;</span> ... <span style="color:#204a87;font-weight:bold">&lt;/RollingFile&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;/Route&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;Route&gt;</span>
+          <span style="color:#204a87;font-weight:bold">&lt;File&gt;</span> ... <span style="color:#204a87;font-weight:bold">&lt;/File&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;/Route&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;/Routes&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;/Routing&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;Async&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;AppenderRef&gt;</span> ... <span style="color:#204a87;font-weight:bold">&lt;/AppenderRef&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;/Async&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;/Appenders&gt;</span>
 </code></pre></div><h4 id="routing-과-threadcontext">&lt;Routing&gt; 과 ThreadContext</h4>
 <p><code>&lt;Routing&gt;</code> 설정이 동작할 수 있도록 <code>ThreadContext</code> 을 어떻게 사용하는지에 대한 예시 입니다.</p>
 <p>참고로 <code>ThreadContext</code>는 log4j 의 <code>Lookups</code> 기능의 <code>Context Map</code> 을 사용하는 것이며, <code>Lookups</code> 의 세부 내용은 다시 다루겠습니다.</p>
 <p><code>&lt;Routing&gt;</code> 설정</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;Routing&gt;</span>
-  <span style="color:#f92672">&lt;Routes</span> <span style="color:#a6e22e">pattern=</span><span style="color:#e6db74">&#34;$${ctx:userId}&#34;</span><span style="color:#f92672">&gt;</span>
-    <span style="color:#f92672">&lt;Route&gt;</span>
-      <span style="color:#f92672">&lt;RollingFile&gt;</span>
-      <span style="color:#f92672">&lt;/RollingFile&gt;</span>
-    <span style="color:#f92672">&lt;/Route&gt;</span>
-    <span style="color:#f92672">&lt;Route&gt;</span>
-      <span style="color:#f92672">&lt;File&gt;</span> ... <span style="color:#f92672">&lt;/File&gt;</span>
-    <span style="color:#f92672">&lt;/Route&gt;</span>
-  <span style="color:#f92672">&lt;/Routes&gt;</span>
-<span style="color:#f92672">&lt;/Routing&gt;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#204a87;font-weight:bold">&lt;Routing&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;Routes</span> <span style="color:#c4a000">pattern=</span><span style="color:#4e9a06">&#34;$${ctx:userId}&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;Route&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;RollingFile&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;/RollingFile&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;/Route&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;Route&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;File&gt;</span> ... <span style="color:#204a87;font-weight:bold">&lt;/File&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;/Route&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;/Routes&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/Routing&gt;</span>
 </code></pre></div><h4 id="log-format">log-format</h4>
 <table>
 <thead>
@@ -498,9 +495,6 @@ window.markmap = {
 
 <script src="/js/main.min.c1b8f3c373b85f900699a7ea81c2038ebbbebcac1a5a4b6e5ef96c24c31790d6.js" integrity="sha256-wbjzw3O4X5AGmafqgcIDjru&#43;vKwaWktuXvlsJMMXkNY=" crossorigin="anonymous"></script>
 
-
-
-<script src='/js/prism.js'></script>
 
 
 
