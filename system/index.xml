@@ -59,7 +59,23 @@
 &lt;td&gt;nexus:ci&lt;/td&gt;
 &lt;td&gt;automatically&lt;/td&gt;
 &lt;td&gt;nexus.service&lt;/td&gt;
-&lt;td&gt;http://nexus/&lt;/td&gt;
+&lt;td&gt;https://nexus/&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;elasticsearch&lt;/td&gt;
+&lt;td&gt;8200&lt;/td&gt;
+&lt;td&gt;elasticsearch:-&lt;/td&gt;
+&lt;td&gt;automatically&lt;/td&gt;
+&lt;td&gt;elasticsearch.service&lt;/td&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;kibana&lt;/td&gt;
+&lt;td&gt;8300&lt;/td&gt;
+&lt;td&gt;kibana:-&lt;/td&gt;
+&lt;td&gt;automatically&lt;/td&gt;
+&lt;td&gt;kibana.service&lt;/td&gt;
+&lt;td&gt;http://kibana/&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;jenkins&lt;/td&gt;
@@ -95,7 +111,7 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;br&gt;
+&lt;!-- raw HTML omitted --&gt;
 &lt;h4 id=&#34;12-주요-파일&#34;&gt;1.2 주요 파일&lt;/h4&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -109,22 +125,32 @@
 &lt;tr&gt;
 &lt;td&gt;httpd&lt;/td&gt;
 &lt;td&gt;/etc/httpd/conf.d/*.conf&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;/files/system/20220106-httpd-conf.zip&#34;&gt;다운로드&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;!-- raw HTML omitted --&gt;다운로드&lt;!-- raw HTML omitted --&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;cockpit&lt;/td&gt;
 &lt;td&gt;/etc/systemd/system/sockets.target.wants/cockpit.socket&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;/files/system/20220106-cockpit.socket.txt&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;!-- raw HTML omitted --&gt;새 창 보기&lt;!-- raw HTML omitted --&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;nexus&lt;/td&gt;
 &lt;td&gt;/prod/nexus/nexus-3.28.1-01/*&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;/files/system/20210106-nexus-conf-list.txt&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;!-- raw HTML omitted --&gt;새 창 보기&lt;!-- raw HTML omitted --&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;elasticsearch&lt;/td&gt;
+&lt;td&gt;/etc/elasticsearch/elasticsearch.yml&lt;/td&gt;
+&lt;td&gt;&lt;!-- raw HTML omitted --&gt;새 창 보기&lt;!-- raw HTML omitted --&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;kibana&lt;/td&gt;
+&lt;td&gt;/etc/kibana/kibana.yml&lt;/td&gt;
+&lt;td&gt;&lt;!-- raw HTML omitted --&gt;새 창 보기&lt;!-- raw HTML omitted --&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;jenkins&lt;/td&gt;
 &lt;td&gt;/prod/jenkins/jenkins.sh&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;/files/system/20220106-jenkins.sh.txt&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;!-- raw HTML omitted --&gt;새 창 보기&lt;!-- raw HTML omitted --&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;oracle(dbms)&lt;/td&gt;
@@ -139,12 +165,16 @@
 &lt;tr&gt;
 &lt;td&gt;svn&lt;/td&gt;
 &lt;td&gt;/root/bin/start-svn.sh&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;/files/system/20220106-start-svn.sh.txt&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;!-- raw HTML omitted --&gt;새 창 보기&lt;!-- raw HTML omitted --&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;maven&lt;/td&gt;
+&lt;td&gt;/prod/maven/maven-3.6.3/conf/settings.xml&lt;/td&gt;
+&lt;td&gt;&lt;!-- raw HTML omitted --&gt;새 창 보기&lt;!-- raw HTML omitted --&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;br&gt;
-&lt;br&gt;
+&lt;!-- raw HTML omitted --&gt;
 &lt;h3 id=&#34;2-패키지&#34;&gt;2. 패키지&lt;/h3&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -162,10 +192,13 @@
 &lt;tr&gt;
 &lt;td&gt;xmlstarlet&lt;/td&gt;
 &lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;cloud-utils-growpart&lt;/td&gt;
+&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;전체 목록(yum): &lt;code&gt;yum list installed&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;/files/system/yum-list-installed_20220106.txt&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;새 창 보기&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
 
       </description>
     </item>
@@ -216,7 +249,7 @@ $ curl http://127.0.0.1:9200
   &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;tagline&amp;#34;&lt;/span&gt; : &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;You Know, for Search&amp;#34;&lt;/span&gt;
 &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
 $
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;!-- raw HTML omitted --&gt;
 &lt;h5 id=&#34;elasticsearch-설정&#34;&gt;elasticsearch 설정&lt;/h5&gt;
 &lt;p&gt;설정 파일 &lt;code&gt;/etc/elasticsearch/elasticsearch.yml&lt;/code&gt;에서 데이터/로그 디렉토리 변경&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;##&lt;/span&gt;
@@ -232,7 +265,7 @@ $ mkdir -p /data/PROD/es &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp
  &lt;span style=&#34;color:#ae81ff&#34;&gt;59&lt;/span&gt; network.host: 0.0.0.0
  &lt;span style=&#34;color:#ae81ff&#34;&gt;73&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;#discovery.seed_hosts: [&amp;#34;host1&amp;#34;, &amp;#34;host2&amp;#34;]&lt;/span&gt;
  &lt;span style=&#34;color:#ae81ff&#34;&gt;74&lt;/span&gt; discovery.seed_hosts: &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;0.0.0.0&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;!-- raw HTML omitted --&gt;
 &lt;h5 id=&#34;kibana-설치-binary&#34;&gt;kibana 설치 (binary)&lt;/h5&gt;
 &lt;p&gt;&lt;code&gt;artifacts.elastic.co&lt;/code&gt;에서 tar.gz 다운로드 후 아카이브 해제&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;$ curl -L -O https://artifacts.elastic.co/downloads/kibana/kibana-7.16.3-linux-x86_64.tar.gz
@@ -260,7 +293,7 @@ $ chown -R tomcat:ap /prod/kibana
 
 &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt; directories, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt; files
 $
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;!-- raw HTML omitted --&gt;
 &lt;h5 id=&#34;kibana-설치-yum&#34;&gt;kibana 설치 (yum)&lt;/h5&gt;
 &lt;p&gt;PGP 를 추가합니다.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;$ rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
@@ -278,7 +311,7 @@ type&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;rpm-md
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;systemd&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;$ systemctl enable kibana
 $ systemctl start kibana
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;!-- raw HTML omitted --&gt;
 &lt;h5 id=&#34;kibana-설정-binary&#34;&gt;kibana 설정 (binary)&lt;/h5&gt;
 &lt;p&gt;설정 파일 &lt;code&gt;/prod/kibana/kibana/config/kibana.yml&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 기본 설정 파일로 실행 시 `server.publicBaseUrl` 에 대한 경고가 표시 됩니다.&lt;/span&gt;
@@ -288,20 +321,20 @@ $ systemctl start kibana
 &lt;span style=&#34;color:#75715e&#34;&gt;# logging off&lt;/span&gt;
  &lt;span style=&#34;color:#ae81ff&#34;&gt;103&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;#logging.silent: false&lt;/span&gt;
  &lt;span style=&#34;color:#ae81ff&#34;&gt;104&lt;/span&gt; logging.silent: true
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a href=&#34;https://www.elastic.co/guide/en/kibana/master/settings.html&#34; target=&#34;_blank&#34;&gt;&lt;a href=&#34;http://www.elastic.co&#34;&gt;www.elastic.co&lt;/a&gt; kibana 설정 가이드&lt;/a&gt;&lt;/p&gt;
-&lt;br&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;!-- raw HTML omitted --&gt;&lt;a href=&#34;http://www.elastic.co&#34;&gt;www.elastic.co&lt;/a&gt; kibana 설정 가이드&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
 &lt;h5 id=&#34;kibana-설정-yum&#34;&gt;kibana 설정 (yum)&lt;/h5&gt;
 &lt;p&gt;설정 파일 &lt;code&gt;/etc/kibana/kibana.yml&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;server.port: &lt;span style=&#34;color:#ae81ff&#34;&gt;5601&lt;/span&gt;
 server.publicBaseUrl: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;http://localhost:5601&amp;#34;&lt;/span&gt;
 logging.silent: true
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a href=&#34;https://www.elastic.co/guide/en/kibana/7.16/rpm.html#rpm-layout&#34; target=&#34;_blank&#34;&gt;rpm-layout&lt;/a&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;!-- raw HTML omitted --&gt;rpm-layout&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;설정: /etc/kibana&lt;/li&gt;
 &lt;li&gt;로그: /var/log/kibana&lt;/li&gt;
 &lt;li&gt;데이터: /var/lib/kibana&lt;/li&gt;
 &lt;/ul&gt;
-&lt;br&gt;
+&lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;httpd 가상호스트 설정&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&amp;lt;VirtualHost *:80&amp;gt;
   ServerName kibana
@@ -322,22 +355,26 @@ logging.silent: true
   ProxyPass / http://localhost:5601/        &lt;span style=&#34;color:#75715e&#34;&gt;# &amp;#34;kibana.yml&amp;#34; 파일 &amp;#34;server.host&amp;#34; 에 설정된 호스트로 할 것&lt;/span&gt;
   ProxyPassReverse / http://localhost:5601/
 &amp;lt;/VirtualHost&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;kibana는 elasticsearch 와 connect 가 되지 않은 상태일 경우 &lt;code&gt;Kibana server is not ready yet&lt;/code&gt; 메시지가 표시됩니다.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#/etc/kibana/kibana.yml
+#elasticsearch.hosts: [&amp;quot;http://localhost:9200&amp;quot;]
+elasticsearch.hosts: [&amp;quot;http://localhost:8200&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;&lt;!-- raw HTML omitted --&gt;
 &lt;h5 id=&#34;logstash-설치&#34;&gt;logstash 설치&lt;/h5&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;$ yum install logstash
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;systemd&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;$ systemctl enable logstash
 $ systemctl start logstash
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;!-- raw HTML omitted --&gt;
 &lt;h5 id=&#34;filebeat-설치&#34;&gt;filebeat 설치&lt;/h5&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;$ yum list filebeat
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;filebeat-설정&#34;&gt;filebeat 설정&lt;/h5&gt;
 &lt;p&gt;filebeat 와 elasticsearch 의 관계를 설명하는 다이어그램입니다.&lt;/p&gt;
 &lt;p&gt;filebeat의 주요 기능은 는 로그파일을 읽어들이고(&lt;code&gt;input&lt;/code&gt;) elasticsearch 혹은 logstash 로 출력(&lt;code&gt;output&lt;/code&gt;)하는 것입니다.&lt;/p&gt;
-&lt;img src=&#34;/images/system/20220126-ELK-basic.png&#34; width=&#34;600&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;/images/system/20220126-ELK-basic.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
-&lt;br&gt;
-&lt;br&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;새 창 보기&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;filebeat 설정 파일&lt;code&gt;/etc/filebeat/filebeat.yml&lt;/code&gt;에 기본 설정된 상태를 보면 &lt;code&gt;output.elasticsearch&lt;/code&gt; 가 활성화 되어있고, &lt;code&gt;output.logstash&lt;/code&gt;는  비활성화로 되어있습니다.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;132&lt;/span&gt; output.elasticsearch:
 &lt;span style=&#34;color:#ae81ff&#34;&gt;133&lt;/span&gt;   &lt;span style=&#34;color:#75715e&#34;&gt;# Array of hosts to connect to.&lt;/span&gt;
@@ -346,7 +383,7 @@ $ systemctl start logstash
 &lt;span style=&#34;color:#ae81ff&#34;&gt;145&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;#output.logstash:&lt;/span&gt;
 &lt;span style=&#34;color:#ae81ff&#34;&gt;146&lt;/span&gt;   &lt;span style=&#34;color:#75715e&#34;&gt;# The Logstash hosts&lt;/span&gt;
 &lt;span style=&#34;color:#ae81ff&#34;&gt;147&lt;/span&gt;   &lt;span style=&#34;color:#75715e&#34;&gt;#hosts: [&amp;#34;localhost:5044&amp;#34;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;filebeat 를 yum 으로 설치했을 경우 systemd 에 추가할 수 있습니다.&lt;/p&gt;
 &lt;p&gt;기본적인 운용 개념은 다음과 같습니다.&lt;/p&gt;
 &lt;ul&gt;
@@ -358,7 +395,7 @@ $ systemctl start logstash
 &lt;li&gt;filebeat 서비스 재시작으로 모듈 설정된 내용 반영&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;주요 내용은 설정을 변경하면 filebeat 서비스를 재시작해야 반영된다는 사항이 있습니다.&lt;/p&gt;
-&lt;br&gt;
+&lt;!-- raw HTML omitted --&gt;
 &lt;h5 id=&#34;filebeat-apache-module&#34;&gt;filebeat) apache module&lt;/h5&gt;
 &lt;p&gt;filebeat 가 읽어들일 로그파일이 잘 알려진 프로그램의 로그일 경우 modules 에 포함 되어있습니다.&lt;/p&gt;
 &lt;p&gt;그 중 apache 모듈에 access_log 를 읽어들이도록 모듈을 설정하고 활성화하는 예시입니다.&lt;/p&gt;
@@ -415,7 +452,7 @@ $ ls -al /etc/filebeat/modules.d/apache.yml
       fields:
         server_name: develop-httpd
         log_type: nexus_access
-    var.paths: &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/outlog/WEB/httpd/nexus_ssl-access.log.2022-01-26&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
+    var.paths: &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/outlog/WEB/httpd/nexus_ssl-access.log.*&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
 
   error:
     enabled: true
@@ -423,11 +460,481 @@ $ ls -al /etc/filebeat/modules.d/apache.yml
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;filebeat modules enable apache&lt;/code&gt; 명령으로 모듈을 활성화 상태로 설정합니다.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;systemctl restart filebeat&lt;/code&gt; 명령으로 서비스를 재시작합니다.&lt;/p&gt;
 &lt;p&gt;아래와 같이 kibana 에서 access_log 를 확인합니다.&lt;/p&gt;
-&lt;img src=&#34;/images/system/20220126-kibana_basic.png&#34; width=&#34;600&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;/images/system/20220126-kibana_basic.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
-&lt;br&gt;
-&lt;br&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;새 창 보기&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;h5 id=&#34;logstash-설정&#34;&gt;logstash 설정&lt;/h5&gt;
+&lt;p&gt;실행파일&lt;code&gt;/usr/share/logstash/bin/logstash&lt;/code&gt;이 PATH 에 추가하는 것을 권합니다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;export LOGSTASH_HOME&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/usr/share/logstash
+export PATH&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;$PATH:/usr/local/go/bin:$LOGSTASH_HOME/bin
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;logstash 가 동작하는 방식을 이해하기 위한 단계별 예시입니다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# logstash daemon 을 실행합니다.&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# -e 파라미터에는 매우 단순한 표준 입출력을 정의했습니다.&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# daemon &lt;/span&gt;
+$ logstash -e &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;input {
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  stdin {}
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;}
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;output {
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  stdout {}
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;}&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;별도의 터미널을 열고 logstash 9900 에 &amp;ldquo;hello logstash&amp;rdquo; 문자열을 nc(NetCat)명령어로 전송해봅니다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;$ echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;hello logstash&amp;#34;&lt;/span&gt; | nc localhost &lt;span style=&#34;color:#ae81ff&#34;&gt;9900&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;logstash 콘솔에서는 &amp;ldquo;hello logstash&amp;rdquo; 문자열을 stdout 으로 출력한 문자열을 볼 수 있습니다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+      &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;@version&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1&amp;#34;&lt;/span&gt;,
+          &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;host&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;localhost&amp;#34;&lt;/span&gt;,
+          &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;port&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; 64924,
+       &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;message&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;hello logstash&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;@timestamp&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; 2022-01-26T16:20:17.308Z
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;exam_tpc.ls 라는 텍스트 파일을 생성하고 logstash daemon 을 실행합니다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;$ vi exam_tcp.ls
+input &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+  tcp &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    port &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;9900&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+output &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+  stdout &lt;span style=&#34;color:#f92672&#34;&gt;{}&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+$ logstash -f exam_tcp.ls
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;nc 명령으로 &amp;ldquo;hello&amp;rdquo; 문자열을 전송해봅니다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;$ echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;hello&amp;#34;&lt;/span&gt; | nc localhost &lt;span style=&#34;color:#ae81ff&#34;&gt;9900&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+      &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;@version&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1&amp;#34;&lt;/span&gt;,
+          &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;host&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;localhost&amp;#34;&lt;/span&gt;,
+          &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;port&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; 64924,
+       &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;message&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;hello&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;@timestamp&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; 2022-01-26T16:30:27.908Z
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;logstash -f filename&lt;/code&gt; 형태로 실행했을 경우 &lt;code&gt;filename&lt;/code&gt;에 변경이 있을 경우 자동으로 reload 하는 설정을 합니다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;$ vi /etc/logstash/logstash.yml
+&lt;span style=&#34;color:#75715e&#34;&gt;# config.reload.automatic: false&lt;/span&gt;
+config.reload.automatic: true
+&lt;span style=&#34;color:#75715e&#34;&gt;# config.reload.interval: 3s&lt;/span&gt;
+config.reload.interval: 1s
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;설정이 안될 때에는 실행 시 옵션으로 할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;logstash -f filename --config.reload.automatic&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;apache access 로그파일을 하나 준비합니다.&lt;/p&gt;
+&lt;p&gt;(참고로 apache 로그파일의 레이아웃은 기본이어야 합니다.)&lt;/p&gt;
+&lt;p&gt;로그파일의 1번째 행을 읽어들이고 9900 으로 전송하고 logstash 에서 처리한 로그를 확인합니다.&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;message&amp;rdquo; 필드에 보낸 문자열을 출력하고 있는 점을 확인하면 됩니다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;$ cp /outlog/WEB/httpd/dwww-access.log.2022-01-09 weblog.txt
+$ head -n &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; weblog.txt  | nc localhost &lt;span style=&#34;color:#ae81ff&#34;&gt;9900&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+          &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;port&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; 65366,
+      &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;@version&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1&amp;#34;&lt;/span&gt;,
+          &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;host&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;localhost&amp;#34;&lt;/span&gt;,
+       &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;message&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;218.39.220.90 - - [09/Jan/2022:17:52:49 +0900] \&amp;#34;GET /resources/jquery.min.js HTTP/1.1\&amp;#34; 503 299 \&amp;#34;http://dwww/status.html\&amp;#34; \&amp;#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36\&amp;#34;&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;@timestamp&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; 2022-01-26T16:48:45.155Z
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;이번에는 exam_filter.ls 파일을 생성하고, filter 에 &lt;code&gt;grok&lt;/code&gt;을 이용하여 &amp;ldquo;message&amp;rdquo; 필드를 parsing 해보겠습니다.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;grok&lt;/code&gt; 에 대한 설명은 아래 링크로 대체합니다.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/logstash-plugins/logstash-patterns-core/blob/main/patterns/ecs-v1/httpd&#34;&gt;https://github.com/logstash-plugins/logstash-patterns-core/blob/main/patterns/ecs-v1/httpd&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;grok-filter&lt;/code&gt;에 의해 message 가 parsing 된 결과를 확인할 수 있습니다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;$ logstash -f exam_filter.ls
 
+$ vi exam_filter.ls
+input &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+  tcp &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    port &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;9900&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+filter &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+  grok &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    match &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;message&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;%{COMBINEDAPACHELOG}&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+output &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+  stdout &lt;span style=&#34;color:#f92672&#34;&gt;{}&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+$ head -n &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; weblog.txt | nc localhost &lt;span style=&#34;color:#ae81ff&#34;&gt;9900&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;httpversion&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.1&amp;#34;&lt;/span&gt;,
+           &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;host&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;localhost&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;message&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;218.39.220.90 - - [09/Jan/2022:17:52:49 +0900] \&amp;#34;GET /resources/jquery.min.js HTTP/1.1\&amp;#34; 503 299 \&amp;#34;http://dwww/status.html\&amp;#34; \&amp;#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36\&amp;#34;&amp;#34;&lt;/span&gt;,
+       &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;referrer&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;\&amp;#34;http://dwww/status.html\&amp;#34;&amp;#34;&lt;/span&gt;,
+          &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;agent&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;\&amp;#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36\&amp;#34;&amp;#34;&lt;/span&gt;,
+          &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ident&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;-&amp;#34;&lt;/span&gt;,
+       &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;@version&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1&amp;#34;&lt;/span&gt;,
+       &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;clientip&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;218.39.220.90&amp;#34;&lt;/span&gt;,
+          &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;bytes&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;299&amp;#34;&lt;/span&gt;,
+      &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;timestamp&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;09/Jan/2022:17:52:49 +0900&amp;#34;&lt;/span&gt;,
+           &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;auth&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;-&amp;#34;&lt;/span&gt;,
+     &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;@timestamp&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; 2022-01-26T16:59:54.543Z,
+       &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;response&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;503&amp;#34;&lt;/span&gt;,
+           &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;port&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; 9122,
+           &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;verb&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;GET&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;request&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/resources/jquery.min.js&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;grok-filter&lt;/code&gt;에서 parsing 되어 생성된 필드인 &lt;code&gt;&amp;quot;clientip&amp;quot;&lt;/code&gt;를 &lt;code&gt;geoip-filter&lt;/code&gt;가 처리할 수 있도록 설정하고 테스트 해봅니다.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;geoip-filter&lt;/code&gt;는 &lt;code&gt;grok-filter&lt;/code&gt; 다음에 정의해야 한다는 것을 이해해야 합니다.&lt;/p&gt;
+&lt;p&gt;처리 결과에 geoip 라는 필드에 하위 세부 정보가 출력되는 것을 확인할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;geoip 에 대한 설명은 아래 링크로 대체 합니다.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.elastic.co/guide/en/elasticsearch/reference/8.0/geoip-processor.html#using-ingest-geoip&#34;&gt;https://www.elastic.co/guide/en/elasticsearch/reference/8.0/geoip-processor.html#using-ingest-geoip&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# grok 에서 parsing 된 정보 중 clientip 필드를 geoip 필터에 전달한다는 의미&lt;/span&gt;
+$ vi exam_filter.ls
+input &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+  tcp &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    port &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;9900&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+filter &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+  grok &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    match &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;message&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;%{COMBINEDAPACHELOG}&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+  geoip &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    source &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;clientip&amp;#34;&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+output &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+  stdout &lt;span style=&#34;color:#f92672&#34;&gt;{}&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+$ head -n &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; weblog.txt | nc localhost &lt;span style=&#34;color:#ae81ff&#34;&gt;9900&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+           &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;auth&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;-&amp;#34;&lt;/span&gt;,
+     &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;@timestamp&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; 2022-01-26T17:08:31.046Z,
+       &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;response&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;503&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;message&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;218.39.220.90 - - [09/Jan/2022:17:52:49 +0900] \&amp;#34;GET /resources/jquery.min.js HTTP/1.1\&amp;#34; 503 299 \&amp;#34;http://dwww/status.html\&amp;#34; \&amp;#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36\&amp;#34;&amp;#34;&lt;/span&gt;,
+           &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;port&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; 9306,
+          &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ident&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;-&amp;#34;&lt;/span&gt;,
+          &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;agent&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;\&amp;#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36\&amp;#34;&amp;#34;&lt;/span&gt;,
+           &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;host&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;localhost&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;request&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/resources/jquery.min.js&amp;#34;&lt;/span&gt;,
+       &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;@version&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1&amp;#34;&lt;/span&gt;,
+           &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;verb&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;GET&amp;#34;&lt;/span&gt;,
+          &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;geoip&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+             &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;longitude&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; 126.9754,
+         &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;country_code3&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;KR&amp;#34;&lt;/span&gt;,
+           &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;region_code&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;11&amp;#34;&lt;/span&gt;,
+             &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;city_name&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Seoul&amp;#34;&lt;/span&gt;,
+          &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;country_name&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;South Korea&amp;#34;&lt;/span&gt;,
+           &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;region_name&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Seoul&amp;#34;&lt;/span&gt;,
+              &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;location&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+            &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;lat&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; 37.5794,
+            &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;lon&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; 126.9754
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;,
+              &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;latitude&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; 37.5794,
+        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;continent_code&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AS&amp;#34;&lt;/span&gt;,
+         &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;country_code2&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;KR&amp;#34;&lt;/span&gt;,
+           &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;postal_code&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;04524&amp;#34;&lt;/span&gt;,
+                    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ip&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;218.39.220.90&amp;#34;&lt;/span&gt;,
+              &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;timezone&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Asia/Seoul&amp;#34;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;,
+      &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;timestamp&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;09/Jan/2022:17:52:49 +0900&amp;#34;&lt;/span&gt;,
+          &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;bytes&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;299&amp;#34;&lt;/span&gt;,
+       &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;referrer&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;\&amp;#34;http://dwww/status.html\&amp;#34;&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;httpversion&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.1&amp;#34;&lt;/span&gt;,
+       &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;clientip&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;218.39.220.90&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;logstash 의 output 으로 나오는 항목들은 모두 문자열입니다.&lt;/p&gt;
+&lt;p&gt;결과 필드를 정수(integer)형으로 변환하는 기능을 추가합니다.&lt;/p&gt;
+&lt;p&gt;filter 에 &lt;code&gt;mutate&lt;/code&gt; 를 보면 됩니다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;$ vi exam_filter.ls
+input &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+  tcp &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    port &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;9900&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+filter &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+  grok &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    match &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;message&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;%{COMBINEDAPACHELOG}&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+  geoip &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    source &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;clientip&amp;#34;&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+  mutate &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    convert &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+      &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;bytes&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;integer&amp;#34;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+output &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+  stdout &lt;span style=&#34;color:#f92672&#34;&gt;{}&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+
+$ head -n &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; weblog.txt | nc localhost &lt;span style=&#34;color:#ae81ff&#34;&gt;9900&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+           &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;auth&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;-&amp;#34;&lt;/span&gt;,
+           &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;host&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;localhost&amp;#34;&lt;/span&gt;,
+       &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;response&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;503&amp;#34;&lt;/span&gt;,
+           &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;verb&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;GET&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;message&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;218.39.220.90 - - [09/Jan/2022:17:52:49 +0900] \&amp;#34;GET /resources/jquery.min.js HTTP/1.1\&amp;#34; 503 299 \&amp;#34;http://dwww/status.html\&amp;#34; \&amp;#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36\&amp;#34;&amp;#34;&lt;/span&gt;,
+           &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;port&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; 9540,
+          &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;bytes&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; 299,
+          &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;geoip&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;continent_code&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AS&amp;#34;&lt;/span&gt;,
+           &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;region_name&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Seoul&amp;#34;&lt;/span&gt;,
+           &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;postal_code&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;04524&amp;#34;&lt;/span&gt;,
+              &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;timezone&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Asia/Seoul&amp;#34;&lt;/span&gt;,
+         &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;country_code3&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;KR&amp;#34;&lt;/span&gt;,
+          &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;country_name&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;South Korea&amp;#34;&lt;/span&gt;,
+                    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ip&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;218.39.220.90&amp;#34;&lt;/span&gt;,
+           &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;region_code&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;11&amp;#34;&lt;/span&gt;,
+             &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;city_name&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Seoul&amp;#34;&lt;/span&gt;,
+              &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;latitude&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; 37.5794,
+         &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;country_code2&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;KR&amp;#34;&lt;/span&gt;,
+             &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;longitude&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; 126.9754,
+              &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;location&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+            &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;lat&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; 37.5794,
+            &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;lon&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; 126.9754
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;,
+          &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ident&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;-&amp;#34;&lt;/span&gt;,
+     &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;@timestamp&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; 2022-01-26T17:19:32.250Z,
+       &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;@version&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1&amp;#34;&lt;/span&gt;,
+      &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;timestamp&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;09/Jan/2022:17:52:49 +0900&amp;#34;&lt;/span&gt;,
+          &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;agent&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;\&amp;#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36\&amp;#34;&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;request&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/resources/jquery.min.js&amp;#34;&lt;/span&gt;,
+       &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;clientip&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;218.39.220.90&amp;#34;&lt;/span&gt;,
+       &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;referrer&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;\&amp;#34;http://dwww/status.html\&amp;#34;&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;httpversion&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.1&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;useragent&lt;/code&gt;라는 filter 가 있습니다.&lt;/p&gt;
+&lt;p&gt;apache log 에 기본 포함되어있는 &amp;ldquo;agent&amp;rdquo; 필드를 parsing 하여 세분화합니다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;$ vi exam_filter.ls
+input &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+  tcp &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    port &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;9900&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+filter &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+  grok &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    match &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;message&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;%{COMBINEDAPACHELOG}&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+  geoip &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    source &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;clientip&amp;#34;&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+  mutate &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    convert &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+      &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;bytes&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;integer&amp;#34;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+  useragent &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    source &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;agent&amp;#34;&lt;/span&gt;
+    target &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;useragent&amp;#34;&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+output &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+  stdout &lt;span style=&#34;color:#f92672&#34;&gt;{}&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+$ head -n &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; weblog.txt | nc localhost &lt;span style=&#34;color:#ae81ff&#34;&gt;9900&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;request&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/resources/jquery.min.js&amp;#34;&lt;/span&gt;,
+          &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;bytes&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; 299,
+        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;message&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;218.39.220.90 - - [09/Jan/2022:17:52:49 +0900] \&amp;#34;GET /resources/jquery.min.js HTTP/1.1\&amp;#34; 503 299 \&amp;#34;http://dwww/status.html\&amp;#34; \&amp;#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36\&amp;#34;&amp;#34;&lt;/span&gt;,
+          &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ident&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;-&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;httpversion&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.1&amp;#34;&lt;/span&gt;,
+          &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;geoip&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+           &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;postal_code&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;04524&amp;#34;&lt;/span&gt;,
+             &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;city_name&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Seoul&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;continent_code&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AS&amp;#34;&lt;/span&gt;,
+          &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;country_name&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;South Korea&amp;#34;&lt;/span&gt;,
+           &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;region_code&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;11&amp;#34;&lt;/span&gt;,
+              &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;timezone&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Asia/Seoul&amp;#34;&lt;/span&gt;,
+         &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;country_code2&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;KR&amp;#34;&lt;/span&gt;,
+         &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;country_code3&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;KR&amp;#34;&lt;/span&gt;,
+              &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;location&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+            &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;lat&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; 37.5794,
+            &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;lon&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; 126.9754
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;,
+           &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;region_name&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Seoul&amp;#34;&lt;/span&gt;,
+             &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;longitude&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; 126.9754,
+              &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;latitude&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; 37.5794,
+                    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ip&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;218.39.220.90&amp;#34;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;,
+           &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;auth&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;-&amp;#34;&lt;/span&gt;,
+       &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;referrer&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;\&amp;#34;http://dwww/status.html\&amp;#34;&amp;#34;&lt;/span&gt;,
+       &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;response&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;503&amp;#34;&lt;/span&gt;,
+      &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;useragent&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+          &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;os_major&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;10&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;os_version&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;10&amp;#34;&lt;/span&gt;,
+           &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;os_full&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Windows 10&amp;#34;&lt;/span&gt;,
+             &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;minor&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;0&amp;#34;&lt;/span&gt;,
+                &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;os&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Windows&amp;#34;&lt;/span&gt;,
+              &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Chrome&amp;#34;&lt;/span&gt;,
+             &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;patch&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;4692&amp;#34;&lt;/span&gt;,
+             &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;major&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;97&amp;#34;&lt;/span&gt;,
+           &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;version&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;97.0.4692.71&amp;#34;&lt;/span&gt;,
+           &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;os_name&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Windows&amp;#34;&lt;/span&gt;,
+            &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;device&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Other&amp;#34;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;,
+           &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;verb&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;GET&amp;#34;&lt;/span&gt;,
+     &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;@timestamp&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; 2022-01-26T17:23:55.151Z,
+      &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;timestamp&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;09/Jan/2022:17:52:49 +0900&amp;#34;&lt;/span&gt;,
+           &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;host&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;localhost&amp;#34;&lt;/span&gt;,
+          &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;agent&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;\&amp;#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36\&amp;#34;&amp;#34;&lt;/span&gt;,
+       &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;@version&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1&amp;#34;&lt;/span&gt;,
+           &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;port&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; 9638,
+       &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;clientip&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;218.39.220.90&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;date&lt;/code&gt; filter 입니다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;$ vi exam_filter.ls
+input &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+  tcp &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    port &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;9900&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+filter &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+  grok &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    match &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;message&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;%{COMBINEDAPACHELOG}&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+  geoip &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    source &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;clientip&amp;#34;&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+  mutate &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    convert &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+      &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;bytes&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;integer&amp;#34;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+  useragent &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    source &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;agent&amp;#34;&lt;/span&gt;
+    target &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;useragent&amp;#34;&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+  date &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    match &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;timestamp&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;dd/MMM/yyyy:HH:mm:ss Z&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
+    target &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;logdate&amp;#34;&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+output &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+  stdout &lt;span style=&#34;color:#f92672&#34;&gt;{}&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+$ head -n &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; weblog.txt | nc localhost &lt;span style=&#34;color:#ae81ff&#34;&gt;9900&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+           &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;port&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; 9818,
+        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;message&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;218.39.220.90 - - [09/Jan/2022:17:52:49 +0900] \&amp;#34;GET /resources/jquery.min.js HTTP/1.1\&amp;#34; 503 299 \&amp;#34;http://dwww/status.html\&amp;#34; \&amp;#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36\&amp;#34;&amp;#34;&lt;/span&gt;,
+       &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;clientip&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;218.39.220.90&amp;#34;&lt;/span&gt;,
+          &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ident&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;-&amp;#34;&lt;/span&gt;,
+       &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;referrer&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;\&amp;#34;http://dwww/status.html\&amp;#34;&amp;#34;&lt;/span&gt;,
+          &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;agent&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;\&amp;#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36\&amp;#34;&amp;#34;&lt;/span&gt;,
+     &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;@timestamp&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; 2022-01-26T17:31:50.864Z,
+        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;request&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/resources/jquery.min.js&amp;#34;&lt;/span&gt;,
+      &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;useragent&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+           &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;os_name&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Windows&amp;#34;&lt;/span&gt;,
+           &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;os_full&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Windows 10&amp;#34;&lt;/span&gt;,
+             &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;patch&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;4692&amp;#34;&lt;/span&gt;,
+              &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Chrome&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;os_version&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;10&amp;#34;&lt;/span&gt;,
+            &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;device&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Other&amp;#34;&lt;/span&gt;,
+           &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;version&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;97.0.4692.71&amp;#34;&lt;/span&gt;,
+             &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;minor&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;0&amp;#34;&lt;/span&gt;,
+                &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;os&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Windows&amp;#34;&lt;/span&gt;,
+          &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;os_major&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;10&amp;#34;&lt;/span&gt;,
+             &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;major&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;97&amp;#34;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;,
+      &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;timestamp&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;09/Jan/2022:17:52:49 +0900&amp;#34;&lt;/span&gt;,
+           &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;host&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;localhost&amp;#34;&lt;/span&gt;,
+       &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;@version&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1&amp;#34;&lt;/span&gt;,
+           &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;verb&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;GET&amp;#34;&lt;/span&gt;,
+          &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;bytes&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; 299,
+          &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;geoip&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+             &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;longitude&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; 126.9754,
+                    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ip&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;218.39.220.90&amp;#34;&lt;/span&gt;,
+          &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;country_name&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;South Korea&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;continent_code&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;AS&amp;#34;&lt;/span&gt;,
+           &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;postal_code&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;04524&amp;#34;&lt;/span&gt;,
+              &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;location&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+            &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;lat&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; 37.5794,
+            &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;lon&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; 126.9754
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;,
+         &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;country_code2&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;KR&amp;#34;&lt;/span&gt;,
+           &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;region_code&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;11&amp;#34;&lt;/span&gt;,
+              &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;latitude&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; 37.5794,
+              &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;timezone&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Asia/Seoul&amp;#34;&lt;/span&gt;,
+           &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;region_name&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Seoul&amp;#34;&lt;/span&gt;,
+         &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;country_code3&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;KR&amp;#34;&lt;/span&gt;,
+             &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;city_name&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Seoul&amp;#34;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;,
+           &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;auth&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;-&amp;#34;&lt;/span&gt;,
+       &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;response&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;503&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;logdate&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; 2022-01-09T08:52:49.000Z,
+    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;httpversion&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.1&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;지금까지는 apache 로그의 첫번째 행을 읽어들이고 nc 명령으로 전송했었습니다.&lt;/p&gt;
+&lt;p&gt;이제는 nc 명령으로 전송하지 않고 filebeat 가 로그파일을 모두 읽고 logstash 로 전송하는 예시를 보겠습니다.&lt;/p&gt;
+&lt;p&gt;logstash 의 output 설정은 stdout 으로 출력과 elasticsearch 로 출력하도록 설정을 했습니다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;$ vi /etc/filebeat/filebeat.yml
+&lt;span style=&#34;color:#75715e&#34;&gt;#- type: filestream&lt;/span&gt;
+- type: log
+  enabled: true
+    - /root/test/weblog.txt
+&lt;span style=&#34;color:#75715e&#34;&gt;#output.elasticsearch:&lt;/span&gt;
+  &lt;span style=&#34;color:#75715e&#34;&gt;#hosts: [&amp;#34;localhost:9200&amp;#34;]&lt;/span&gt;
+output.logstash:
+  hosts: &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;localhost:5044&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
+$
+&lt;span style=&#34;color:#75715e&#34;&gt;# index =&amp;gt; &amp;#34;mgkim-apache-log-%{+yyyy.MM.dd}&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# @timestamp 의 값으로 %{+yyyy.MM.dd} 포맷의 index가 일자별로 생성됨&lt;/span&gt;
+$ vi exam_filter.ls
+input &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+  &lt;span style=&#34;color:#75715e&#34;&gt;#tcp {&lt;/span&gt;
+  &lt;span style=&#34;color:#75715e&#34;&gt;#  port =&amp;gt; 9900&lt;/span&gt;
+  &lt;span style=&#34;color:#75715e&#34;&gt;#}&lt;/span&gt;
+  beats &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    port &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;5044&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+filter &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+  mutate &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    remove_field &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;agent&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+  grok &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    match &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;message&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;%{COMBINEDAPACHELOG}&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+  geoip &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    source &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;clientip&amp;#34;&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+  mutate &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    convert &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+      &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;bytes&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;integer&amp;#34;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+  useragent &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    source &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;agent&amp;#34;&lt;/span&gt;
+    target &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;useragent&amp;#34;&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+  date &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    match &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;timestamp&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;dd/MMM/yyyy:HH:mm:ss Z&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+  mutate &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    remove_field &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;timestamp&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;host&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;@version&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;agent&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+output &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+  stdout &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    codec &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;dots&amp;#34;&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+  elasticsearch &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    index &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;mgkim-apache-log-%{+yyyy.MM.dd}&amp;#34;&lt;/span&gt;
+    hosts &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;centos8:9200&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+$ logstash -f exam_filter.ls --config.reload.automatic
+$ systemctl stop filebeat
+&lt;span style=&#34;color:#75715e&#34;&gt;# filebeat 가 한 번 읽어들인 정보는 data 디렉토리 /var/lib/filebeat/ 에 보관되어있습니다.&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# 이 디렉토리의 모든 정보를 삭제하면 다시 읽어들입니다.&lt;/span&gt;
+$ rm -rf /var/lib/filebeat/*
+$ systemctl start filebeat
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;losstash 에서 elasticsearch 로 출력한 내용은 kibana 에서 확인합니다.&lt;/p&gt;
+&lt;p&gt;kibana는 elasticsearch 의 클라이언트 tool 이라고 생각하면 됩니다.&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;(비유를 해보면 oracle-dbms 는 elasticsearch 이고, sqldeveloper 는 kibana 입니다.)&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;kibana 에서는 &lt;code&gt;Management&lt;/code&gt; &amp;gt; &lt;code&gt;Dev Tools&lt;/code&gt; 메뉴로 이동하여 아래 코드를 통해 실행할 수 있습니다.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;get _cat/indices
+get mgkim-apache-log-2022.01.09/_search
+get mgkim-apache-log-2022.01.09/_count
+
+&lt;/code&gt;&lt;/pre&gt;
       </description>
     </item>
     
@@ -443,11 +950,11 @@ $ ls -al /etc/filebeat/modules.d/apache.yml
         &lt;h3 id=&#34;command&#34;&gt;command&lt;/h3&gt;
 &lt;h4 id=&#34;loaded-모듈-목록-확인&#34;&gt;loaded 모듈 목록 확인&lt;/h4&gt;
 &lt;p&gt;&lt;code&gt;httpd -M&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;/files/system/20220106-httpd-loaded_modules.txt&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
-&lt;br&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;새 창 보기&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
 &lt;h3 id=&#34;configure&#34;&gt;configure&lt;/h3&gt;
 &lt;h4 id=&#34;httpdconf&#34;&gt;httpd.conf&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;ServerRoot &amp;#34;/etc/httpd&amp;#34;
+&lt;pre&gt;&lt;code&gt;ServerRoot &amp;quot;/etc/httpd&amp;quot;
 
 Listen 80
 
@@ -464,30 +971,30 @@ ServerName develop:80
   Require all denied
 &amp;lt;/Directory&amp;gt;
 
-DocumentRoot &amp;#34;/var/www/html&amp;#34;
+DocumentRoot &amp;quot;/var/www/html&amp;quot;
 
-&amp;lt;Files &amp;#34;.ht*&amp;#34;&amp;gt;
+&amp;lt;Files &amp;quot;.ht*&amp;quot;&amp;gt;
   Require all denied
 &amp;lt;/Files&amp;gt;
 
-ErrorLog &amp;#34;/outlog/WEB/httpd/error.log&amp;#34;
+ErrorLog &amp;quot;/outlog/WEB/httpd/error.log&amp;quot;
 
 LogLevel warn
 
 &amp;lt;IfModule log_config_module&amp;gt;
-  LogFormat &amp;#34;%h %l %u %t \&amp;#34;%r\&amp;#34; %&amp;gt;s %b \&amp;#34;%{Referer}i\&amp;#34; \&amp;#34;%{User-Agent}i\&amp;#34;&amp;#34; combined
-  LogFormat &amp;#34;%h %l %u %t \&amp;#34;%r\&amp;#34; %&amp;gt;s %b&amp;#34; common
+  LogFormat &amp;quot;%h %l %u %t \&amp;quot;%r\&amp;quot; %&amp;gt;s %b \&amp;quot;%{Referer}i\&amp;quot; \&amp;quot;%{User-Agent}i\&amp;quot;&amp;quot; combined
+  LogFormat &amp;quot;%h %l %u %t \&amp;quot;%r\&amp;quot; %&amp;gt;s %b&amp;quot; common
   &amp;lt;IfModule logio_module&amp;gt;
-    LogFormat &amp;#34;%h %l %u %t \&amp;#34;%r\&amp;#34; %&amp;gt;s %b \&amp;#34;%{Referer}i\&amp;#34; \&amp;#34;%{User-Agent}i\&amp;#34; %I %O&amp;#34; combinedio
+    LogFormat &amp;quot;%h %l %u %t \&amp;quot;%r\&amp;quot; %&amp;gt;s %b \&amp;quot;%{Referer}i\&amp;quot; \&amp;quot;%{User-Agent}i\&amp;quot; %I %O&amp;quot; combinedio
   &amp;lt;/IfModule&amp;gt;
-  CustomLog &amp;#34;/outlog/WEB/httpd/access.log&amp;#34; combined
+  CustomLog &amp;quot;/outlog/WEB/httpd/access.log&amp;quot; combined
 &amp;lt;/IfModule&amp;gt;
 
 &amp;lt;IfModule alias_module&amp;gt;
-  ScriptAlias /cgi-bin/ &amp;#34;/var/www/cgi-bin/&amp;#34;
+  ScriptAlias /cgi-bin/ &amp;quot;/var/www/cgi-bin/&amp;quot;
 &amp;lt;/IfModule&amp;gt;
 
-&amp;lt;Directory &amp;#34;/var/www/cgi-bin&amp;#34;&amp;gt;
+&amp;lt;Directory &amp;quot;/var/www/cgi-bin&amp;quot;&amp;gt;
   AllowOverride None
   Options None
   Require all granted
@@ -509,8 +1016,8 @@ AddDefaultCharset UTF-8
 
 EnableSendfile on
 IncludeOptional conf.d/*.conf
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;sslconf&#34;&gt;ssl.conf&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;Listen 443 https
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;sslconf&#34;&gt;ssl.conf&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;Listen 443 https
 
 SSLPassPhraseDialog exec:/usr/libexec/httpd-ssl-pass-dialog
 SSLSessionCache         shmcb:/run/httpd/sslcache(512000)
@@ -530,18 +1037,18 @@ SSLCryptoDevice builtin
   SSLCipherSuite HIGH:3DES:!aNULL:!MD5:!SEED:!IDEA
   SSLCertificateFile /etc/httpd/conf.d/certs/develop.crt
   SSLCertificateKeyFile /etc/httpd/conf.d/certs/develop.key
-  &amp;lt;Files ~ &amp;#34;\.(cgi|shtml|phtml|php3?)$&amp;#34;&amp;gt;
+  &amp;lt;Files ~ &amp;quot;\.(cgi|shtml|phtml|php3?)$&amp;quot;&amp;gt;
     SSLOptions +StdEnvVars
   &amp;lt;/Files&amp;gt;
-  &amp;lt;Directory &amp;#34;/var/www/cgi-bin&amp;#34;&amp;gt;
+  &amp;lt;Directory &amp;quot;/var/www/cgi-bin&amp;quot;&amp;gt;
     SSLOptions +StdEnvVars
   &amp;lt;/Directory&amp;gt;
-  BrowserMatch &amp;#34;MSIE [2-5]&amp;#34; nokeepalive ssl-unclean-shutdown downgrade-1.0 force-response-1.0
-  CustomLog /outlog/WEB/httpd/default-request_ssl.log &amp;#34;%t %h %{SSL_PROTOCOL}x %{SSL_CIPHER}x \&amp;#34;%r\&amp;#34; %b&amp;#34;
+  BrowserMatch &amp;quot;MSIE [2-5]&amp;quot; nokeepalive ssl-unclean-shutdown downgrade-1.0 force-response-1.0
+  CustomLog /outlog/WEB/httpd/default-request_ssl.log &amp;quot;%t %h %{SSL_PROTOCOL}x %{SSL_CIPHER}x \&amp;quot;%r\&amp;quot; %b&amp;quot;
 &amp;lt;/VirtualHost&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;!-- raw HTML omitted --&gt;
 &lt;h4 id=&#34;vhost-centos8conf&#34;&gt;vhost-centos8.conf&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&amp;lt;VirtualHost *:80&amp;gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;VirtualHost *:80&amp;gt;
   ServerName centos8
 
   RewriteEngine On
@@ -562,8 +1069,8 @@ SSLCryptoDevice builtin
   SSLCertificateFile /etc/cockpit/ws-certs.d/centos8.crt
   SSLCertificateKeyFile /etc/cockpit/ws-certs.d/centos8.key
 
-  ErrorLog &amp;#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/centos8-error.log.%Y-%m-%d 86400 +540&amp;#34;
-  CustomLog &amp;#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/centos8-access.log.%Y-%m-%d 86400 +540&amp;#34; combined
+  ErrorLog &amp;quot;|/usr/sbin/rotatelogs /outlog/WEB/httpd/centos8-error.log.%Y-%m-%d 86400 +540&amp;quot;
+  CustomLog &amp;quot;|/usr/sbin/rotatelogs /outlog/WEB/httpd/centos8-access.log.%Y-%m-%d 86400 +540&amp;quot; combined
 
   ProxyRequests Off
   ProxyPreserveHost On
@@ -571,7 +1078,7 @@ SSLCryptoDevice builtin
   SSLProxyEngine On
 
   AllowEncodedSlashes On
-  Header set Access-Control-Allow-Origin &amp;#34;*&amp;#34;
+  Header set Access-Control-Allow-Origin &amp;quot;*&amp;quot;
   RequestHeader set X-Forwarded-Proto https
 
   &amp;lt;Proxy balancer://cluster1&amp;gt;
@@ -585,9 +1092,9 @@ SSLCryptoDevice builtin
   RewriteCond %{HTTP:Upgrade} =websocket [NC]
   RewriteRule /(.*)           wss://127.0.0.1:8000/$1 [P,L]
 &amp;lt;/VirtualHost&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;!-- raw HTML omitted --&gt;
 &lt;h4 id=&#34;vhost-nexusconf&#34;&gt;vhost-nexus.conf&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&amp;lt;VirtualHost *:80&amp;gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;VirtualHost *:80&amp;gt;
   ServerName nexus
 
   RewriteEngine On
@@ -621,8 +1128,8 @@ SSLCryptoDevice builtin
 &amp;lt;VirtualHost *:443&amp;gt;
   ServerName nexus.mgkim.net
 
-  ErrorLog &amp;#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/nexus.mgkim.net_ssl-error.log.%Y-%m-%d 86400 +540%&amp;#34;
-  CustomLog &amp;#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/nexus.mgkim.net_ssl-access.log.%Y-%m-%d 86400 +540%&amp;#34; combined
+  ErrorLog &amp;quot;|/usr/sbin/rotatelogs /outlog/WEB/httpd/nexus.mgkim.net_ssl-error.log.%Y-%m-%d 86400 +540%&amp;quot;
+  CustomLog &amp;quot;|/usr/sbin/rotatelogs /outlog/WEB/httpd/nexus.mgkim.net_ssl-access.log.%Y-%m-%d 86400 +540%&amp;quot; combined
 
   SSLEngine On
   SSLProtocol all -SSLv2
@@ -631,7 +1138,7 @@ SSLCryptoDevice builtin
   SSLCertificateKeyFile /etc/httpd/conf.d/certs/STAR.mgkim.net.key
 
   AllowEncodedSlashes On
-  Header set Access-Control-Allow-Origin &amp;#34;*&amp;#34;
+  Header set Access-Control-Allow-Origin &amp;quot;*&amp;quot;
 
   ProxyRequests Off
   ProxyPreserveHost On
@@ -642,11 +1149,11 @@ SSLCryptoDevice builtin
 
   ProxyPass / http://127.0.0.1:8100/
   ProxyPassReverse / http://127.0.0.1:8100/
-  RequestHeader set X-Forwarded-Proto &amp;#34;https&amp;#34;
+  RequestHeader set X-Forwarded-Proto &amp;quot;https&amp;quot;
   #ProxyPassMatch ^/(.*)$ http://127.0.0.1:8100/$1
 &amp;lt;/VirtualHost&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;vhost-gitlabconf&#34;&gt;vhost-gitlab.conf&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&amp;lt;VirtualHost *:80&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;vhost-gitlabconf&#34;&gt;vhost-gitlab.conf&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;VirtualHost *:80&amp;gt;
   ServerName gitlab
 
   RewriteEngine On
@@ -680,9 +1187,9 @@ SSLCryptoDevice builtin
 &amp;lt;VirtualHost *:443&amp;gt;
   ServerName gitlab.mgkim.net
 
-  DocumentRoot &amp;#34;/opt/gitlab/embedded/service/gitlab-rails/public&amp;#34;
-  ErrorLog &amp;#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/gitlab.mgkim.net_ssl-error.log.%Y-%m-%d 86400 +540&amp;#34;
-  CustomLog &amp;#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/gitlab.mgkim.net_ssl-access.log.%Y-%m-%d 86400 +540&amp;#34; combined
+  DocumentRoot &amp;quot;/opt/gitlab/embedded/service/gitlab-rails/public&amp;quot;
+  ErrorLog &amp;quot;|/usr/sbin/rotatelogs /outlog/WEB/httpd/gitlab.mgkim.net_ssl-error.log.%Y-%m-%d 86400 +540&amp;quot;
+  CustomLog &amp;quot;|/usr/sbin/rotatelogs /outlog/WEB/httpd/gitlab.mgkim.net_ssl-access.log.%Y-%m-%d 86400 +540&amp;quot; combined
 
   SSLEngine On
   SSLProtocol all -SSLv2
@@ -698,13 +1205,13 @@ SSLCryptoDevice builtin
   &amp;lt;/Proxy&amp;gt;
 
   AllowEncodedSlashes On
-  Header set Access-Control-Allow-Origin &amp;#34;*&amp;#34;
+  Header set Access-Control-Allow-Origin &amp;quot;*&amp;quot;
 
   ProxyPass / http://127.0.0.1:8200/
   ProxyPassReverse / http://127.0.0.1:8200/
 &amp;lt;/VirtualHost&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;vhost-jenkinsconf&#34;&gt;vhost-jenkins.conf&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&amp;lt;VirtualHost *:80&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;vhost-jenkinsconf&#34;&gt;vhost-jenkins.conf&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;VirtualHost *:80&amp;gt;
   ServerName jenkins
 
   RewriteEngine On
@@ -748,8 +1255,8 @@ SSLCryptoDevice builtin
 &amp;lt;VirtualHost *:443&amp;gt;
   ServerName jenkins.mgkim.net
 
-  ErrorLog &amp;#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/jenkins.mgkim.net_ssl-error.log.%Y-%m-%d 86400 +540&amp;#34;
-  CustomLog &amp;#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/jenkins.mgkim.net_ssl-access.log.%Y-%m-%d 86400 +540&amp;#34; combined
+  ErrorLog &amp;quot;|/usr/sbin/rotatelogs /outlog/WEB/httpd/jenkins.mgkim.net_ssl-error.log.%Y-%m-%d 86400 +540&amp;quot;
+  CustomLog &amp;quot;|/usr/sbin/rotatelogs /outlog/WEB/httpd/jenkins.mgkim.net_ssl-access.log.%Y-%m-%d 86400 +540&amp;quot; combined
 
   SSLEngine On
   SSLProtocol all -SSLv2
@@ -758,7 +1265,7 @@ SSLCryptoDevice builtin
   SSLCertificateKeyFile /etc/httpd/conf.d/certs/STAR.mgkim.net.key
 
   AllowEncodedSlashes On
-  Header set Access-Control-Allow-Origin &amp;#34;*&amp;#34;
+  Header set Access-Control-Allow-Origin &amp;quot;*&amp;quot;
 
   RewriteEngine On
   RewriteCond %{HTTP:Upgrade} =websocket [NC]
@@ -766,8 +1273,8 @@ SSLCryptoDevice builtin
   RewriteCond %{HTTP:Upgrade} !=websocket [NC]
   RewriteRule /(.*) http://localhost:8400/$1 [P,L]
 &amp;lt;/VirtualHost&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;vhost-dlogconf&#34;&gt;vhost-dlog.conf&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&amp;lt;VirtualHost *:80&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;vhost-dlogconf&#34;&gt;vhost-dlog.conf&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;VirtualHost *:80&amp;gt;
   ServerName dlog
 
   RewriteEngine On
@@ -801,9 +1308,9 @@ SSLCryptoDevice builtin
 &amp;lt;VirtualHost *:443&amp;gt;
   ServerName dlog.mgkim.net
 
-  #DocumentRoot &amp;#34;/opt/gitlab/embedded/service/gitlab-rails/public&amp;#34;
-  ErrorLog &amp;#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/dlog.mgkim.net_ssl-error.log.%Y-%m-%d 86400 +540&amp;#34;
-  CustomLog &amp;#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/dlog.mgkim.net_ssl-access.log.%Y-%m-%d 86400 +540&amp;#34; combined
+  #DocumentRoot &amp;quot;/opt/gitlab/embedded/service/gitlab-rails/public&amp;quot;
+  ErrorLog &amp;quot;|/usr/sbin/rotatelogs /outlog/WEB/httpd/dlog.mgkim.net_ssl-error.log.%Y-%m-%d 86400 +540&amp;quot;
+  CustomLog &amp;quot;|/usr/sbin/rotatelogs /outlog/WEB/httpd/dlog.mgkim.net_ssl-access.log.%Y-%m-%d 86400 +540&amp;quot; combined
 
   SSLEngine On
   SSLProtocol all -SSLv2
@@ -819,25 +1326,25 @@ SSLCryptoDevice builtin
   &amp;lt;/Proxy&amp;gt;
 
   AllowEncodedSlashes On
-  Header set Access-Control-Allow-Origin &amp;#34;*&amp;#34;
+  Header set Access-Control-Allow-Origin &amp;quot;*&amp;quot;
 
   ProxyPass / http://127.0.0.1:1313/
   ProxyPassReverse / http://127.0.0.1:1313/
 &amp;lt;/VirtualHost&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;vhost-dwwwconf&#34;&gt;vhost-dwww.conf&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&amp;lt;VirtualHost *:80&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;vhost-dwwwconf&#34;&gt;vhost-dwww.conf&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;VirtualHost *:80&amp;gt;
   ServerName dwww
 
-  ErrorLog &amp;#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/dwww-error.log.%Y-%m-%d 86400 +540&amp;#34;
-  CustomLog &amp;#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/dwww-access.log.%Y-%m-%d 86400 +540&amp;#34; combined
+  ErrorLog &amp;quot;|/usr/sbin/rotatelogs /outlog/WEB/httpd/dwww-error.log.%Y-%m-%d 86400 +540&amp;quot;
+  CustomLog &amp;quot;|/usr/sbin/rotatelogs /outlog/WEB/httpd/dwww-access.log.%Y-%m-%d 86400 +540&amp;quot; combined
 
   AllowEncodedSlashes On
   # reverse proxy 사용 시 Off
   ProxyRequests Off
   ProxyPreserveHost On
   # BALANCER_WORKER_ROUTE: BalancerMember 의 route 값을 쿠키에 포함 (cluster1, cluster2)
-  Header add Set-Cookie &amp;#34;ROUTEID=.%{BALANCER_WORKER_ROUTE}e; path=/&amp;#34; env=BALANCER_ROUTE_CHANGED
-  Header set Access-Control-Allow-Origin &amp;#34;*&amp;#34;
+  Header add Set-Cookie &amp;quot;ROUTEID=.%{BALANCER_WORKER_ROUTE}e; path=/&amp;quot; env=BALANCER_ROUTE_CHANGED
+  Header set Access-Control-Allow-Origin &amp;quot;*&amp;quot;
 
   &amp;lt;Proxy balancer://cluster&amp;gt;
     BalancerMember http://127.0.0.1:7100 route=cluster1
@@ -855,9 +1362,9 @@ SSLCryptoDevice builtin
   ProxyPassReverse / balancer://cluster/
 
 &amp;lt;/VirtualHost&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;connector&#34;&gt;connector&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;connector&#34;&gt;connector&lt;/h3&gt;
 &lt;h4 id=&#34;weblogic&#34;&gt;weblogic&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;LoadModule weblogic_module modules/mod_wl_24.so
+&lt;pre&gt;&lt;code&gt;LoadModule weblogic_module modules/mod_wl_24.so
 
 &amp;lt;IfModule mod_weblogic.c&amp;gt;
   WebLogicCluster IP:PORT,IP:PORT,IP:PORT
@@ -875,15 +1382,15 @@ SSLCryptoDevice builtin
   WebLogicCluster IP:PORT,IP:PORT,IP:PORT
   #Idempotent OFF
 &amp;lt;/Location&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;windows&#34;&gt;windows&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;windows&#34;&gt;windows&lt;/h3&gt;
 &lt;h4 id=&#34;install-command-apache-lounge&#34;&gt;install command (Apache Lounge)&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;httpd.exe -k install
+&lt;pre&gt;&lt;code&gt;httpd.exe -k install
 httpd.exe -k configtest
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;configure-1&#34;&gt;configure&lt;/h4&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;configure-1&#34;&gt;configure&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;httpd.conf&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;ServerRoot &amp;#34;Z:/www/httpd_2.4.25-win64-VC14/Apache24&amp;#34;
+&lt;pre&gt;&lt;code&gt;ServerRoot &amp;quot;Z:/www/httpd_2.4.25-win64-VC14/Apache24&amp;quot;
 
 Listen 80
 
@@ -1010,8 +1517,8 @@ ServerName mgkim.net:50001
   Require all denied
 &amp;lt;/Directory&amp;gt;
 
-DocumentRoot &amp;#34;Z:/www/20210825_171631&amp;#34;
-&amp;lt;Directory &amp;#34;Z:/www/20210825_171631&amp;#34;&amp;gt;
+DocumentRoot &amp;quot;Z:/www/20210825_171631&amp;quot;
+&amp;lt;Directory &amp;quot;Z:/www/20210825_171631&amp;quot;&amp;gt;
   Options Indexes FollowSymLinks
   AllowOverride None
   Require all granted
@@ -1021,26 +1528,26 @@ DocumentRoot &amp;#34;Z:/www/20210825_171631&amp;#34;
   DirectoryIndex index.html
 &amp;lt;/IfModule&amp;gt;
 
-&amp;lt;Files &amp;#34;.ht*&amp;#34;&amp;gt;
+&amp;lt;Files &amp;quot;.ht*&amp;quot;&amp;gt;
   Require all denied
 &amp;lt;/Files&amp;gt;
 
-ErrorLog &amp;#34;logs/error.log&amp;#34;
+ErrorLog &amp;quot;logs/error.log&amp;quot;
 
 LogLevel warn
 
 &amp;lt;IfModule log_config_module&amp;gt;
-  LogFormat &amp;#34;%h %l %u %t \&amp;#34;%r\&amp;#34; %&amp;gt;s %b \&amp;#34;%{Referer}i\&amp;#34; \&amp;#34;%{User-Agent}i\&amp;#34;&amp;#34; combined
-  LogFormat &amp;#34;%h %l %u %t \&amp;#34;%r\&amp;#34; %&amp;gt;s %b&amp;#34; common
+  LogFormat &amp;quot;%h %l %u %t \&amp;quot;%r\&amp;quot; %&amp;gt;s %b \&amp;quot;%{Referer}i\&amp;quot; \&amp;quot;%{User-Agent}i\&amp;quot;&amp;quot; combined
+  LogFormat &amp;quot;%h %l %u %t \&amp;quot;%r\&amp;quot; %&amp;gt;s %b&amp;quot; common
 
   &amp;lt;IfModule logio_module&amp;gt;
-    LogFormat &amp;#34;%h %l %u %t \&amp;#34;%r\&amp;#34; %&amp;gt;s %b \&amp;#34;%{Referer}i\&amp;#34; \&amp;#34;%{User-Agent}i\&amp;#34; %I %O&amp;#34; combinedio
+    LogFormat &amp;quot;%h %l %u %t \&amp;quot;%r\&amp;quot; %&amp;gt;s %b \&amp;quot;%{Referer}i\&amp;quot; \&amp;quot;%{User-Agent}i\&amp;quot; %I %O&amp;quot; combinedio
   &amp;lt;/IfModule&amp;gt;
-  CustomLog &amp;#34;logs/access.log&amp;#34; common
+  CustomLog &amp;quot;logs/access.log&amp;quot; common
 &amp;lt;/IfModule&amp;gt;
 
 &amp;lt;IfModule alias_module&amp;gt;
-  ScriptAlias /cgi-bin/ &amp;#34;c:/Apache24/cgi-bin/&amp;#34;
+  ScriptAlias /cgi-bin/ &amp;quot;c:/Apache24/cgi-bin/&amp;quot;
 &amp;lt;/IfModule&amp;gt;
 
 &amp;lt;IfModule headers_module&amp;gt;
@@ -1077,10 +1584,10 @@ Include conf/extra/ssl.conf
   SSLRandomSeed connect builtin
 &amp;lt;/IfModule&amp;gt;
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
 &lt;li&gt;ssl.conf&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;Listen 9443
+&lt;pre&gt;&lt;code&gt;Listen 9443
 #Listen 443
 
 SSLCipherSuite HIGH:MEDIUM:!MD5:!RC4
@@ -1093,12 +1600,12 @@ SSLProxyProtocol all -SSLv3
 
 SSLPassPhraseDialog  builtin
 
-SSLSessionCache         &amp;#34;shmcb:c:/Apache24/logs/ssl_scache(512000)&amp;#34;
+SSLSessionCache         &amp;quot;shmcb:c:/Apache24/logs/ssl_scache(512000)&amp;quot;
 SSLSessionCacheTimeout  300
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
 &lt;li&gt;vhost-dlog.conf&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;#&amp;lt;VirtualHost *:80&amp;gt;
+&lt;pre&gt;&lt;code&gt;#&amp;lt;VirtualHost *:80&amp;gt;
 #  ServerName vdlog.mgkim.net:80
 #
 #  RewriteEngine On
@@ -1109,8 +1616,8 @@ SSLSessionCacheTimeout  300
 #&amp;lt;VirtualHost *:9443&amp;gt;
 #  ServerName vdlog.mgkim.net:9443
 #
-#  ErrorLog &amp;#34;|bin/rotatelogs.exe logs/vdlog.mgkim.net_ssl-error.log.%Y-%m-%d 86400 +540&amp;#34;
-#  CustomLog &amp;#34;|bin/rotatelogs.exe logs/vdlog.mgkim.net_ssl-access.log.%Y-%m-%d 86400 +540&amp;#34; combined
+#  ErrorLog &amp;quot;|bin/rotatelogs.exe logs/vdlog.mgkim.net_ssl-error.log.%Y-%m-%d 86400 +540&amp;quot;
+#  CustomLog &amp;quot;|bin/rotatelogs.exe logs/vdlog.mgkim.net_ssl-access.log.%Y-%m-%d 86400 +540&amp;quot; combined
 #
 #  SSLEngine On
 #  SSLProxyEngine On
@@ -1127,7 +1634,7 @@ SSLSessionCacheTimeout  300
 #  &amp;lt;/Proxy&amp;gt;
 #
 #  AllowEncodedSlashes On
-#  Header set Access-Control-Allow-Origin &amp;#34;*&amp;#34;
+#  Header set Access-Control-Allow-Origin &amp;quot;*&amp;quot;
 #
 #  ProxyPass / http://127.0.0.1:1313/
 #  ProxyPassReverse / http://127.0.0.1:1313/
@@ -1137,8 +1644,8 @@ SSLSessionCacheTimeout  300
   ServerName vdlog.mgkim.net:80
   ServerAlias mgkim.net:80
 
-  ErrorLog &amp;#34;|bin/rotatelogs.exe logs/vdlog.mgkim.net-error.log.%Y-%m-%d 86400 +540&amp;#34;
-  CustomLog &amp;#34;|bin/rotatelogs.exe logs/vdlog.mgkim.net-access.log.%Y-%m-%d 86400 +540&amp;#34; combined
+  ErrorLog &amp;quot;|bin/rotatelogs.exe logs/vdlog.mgkim.net-error.log.%Y-%m-%d 86400 +540&amp;quot;
+  CustomLog &amp;quot;|bin/rotatelogs.exe logs/vdlog.mgkim.net-access.log.%Y-%m-%d 86400 +540&amp;quot; combined
 
   ProxyRequests Off
   ProxyPreserveHost On
@@ -1148,7 +1655,7 @@ SSLSessionCacheTimeout  300
   &amp;lt;/Proxy&amp;gt;
 
   AllowEncodedSlashes On
-  Header set Access-Control-Allow-Origin &amp;#34;*&amp;#34;
+  Header set Access-Control-Allow-Origin &amp;quot;*&amp;quot;
 
   ProxyPass / http://127.0.0.1:1313/
   ProxyPassReverse / http://127.0.0.1:1313/
@@ -1179,7 +1686,7 @@ SSLSessionCacheTimeout  300
   RewriteEngine On
   RewriteRule /(.*) https://dlog.mgkim.net:443/$1 [QSA,P,L]
 &amp;lt;/VirtualHost&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;openssl&#34;&gt;openssl&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;openssl&#34;&gt;openssl&lt;/h3&gt;
 &lt;h4 id=&#34;인증서-생성하기&#34;&gt;인증서 생성하기&lt;/h4&gt;
 &lt;ol&gt;
 &lt;li&gt;개인키(key) 생성&lt;/li&gt;
@@ -1213,12 +1720,12 @@ openssl req -x509 -nodes -days &lt;span style=&#34;color:#ae81ff&#34;&gt;730&lt;
 
 &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;root@develop /etc/httpd/conf.d/certs&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;$
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;selinux&#34;&gt;selinux&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;chcon -Rt httpd_log_t /outlog/WEB
+&lt;pre&gt;&lt;code&gt;chcon -Rt httpd_log_t /outlog/WEB
 chcon -Rt httpd_sys_content_t /app/WEB/dlog
 setsebool -P httpd_can_network_connect on
 
 systemctl restart httpd
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;
       </description>
     </item>
     
@@ -1271,7 +1778,7 @@ JENKINS_ARGS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span sty
     exit &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
     ;;
 &lt;span style=&#34;color:#66d9ef&#34;&gt;esac&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;!-- raw HTML omitted --&gt;
 &lt;h4 id=&#34;systemd-등록&#34;&gt;systemd 등록&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;Unit&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
 Description&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;Jenkins
@@ -1289,7 +1796,7 @@ Restart&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;on-abort
 
 &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;Install&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
 WantedBy&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;multi-user.target
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;!-- raw HTML omitted --&gt;
 &lt;h3 id=&#34;plugins&#34;&gt;plugins&lt;/h3&gt;
 &lt;h4 id=&#34;publish-over-ssh&#34;&gt;Publish Over SSH&lt;/h4&gt;
 &lt;p&gt;mvn 빌드 후 생성된 artifact 파일을 sftp 로 전송하고 ssh 로 command 를 실행하는 기능을 사용할 수 있습니다.&lt;/p&gt;
@@ -1298,8 +1805,8 @@ WantedBy&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;multi-user.targe
 &lt;li&gt;&lt;code&gt;Add Server&lt;/code&gt; 버튼을 클릭하여 &lt;code&gt;SSH Server&lt;/code&gt; 선택
 &lt;ul&gt;
 &lt;li&gt;선택되는 서버는 빌드 결과물인 artifact 파일을 전송하고, ssh 로 command 를 실행할 서버를 의미함&lt;/li&gt;
-&lt;li&gt;아래 &lt;code&gt;Transfer Set&lt;/code&gt; 에 설정되는 &lt;code&gt;Exec command&lt;/code&gt;의 내용이 빌드 로그에 출력되도록 &lt;code&gt;고급&lt;/code&gt;버튼을 눌러 &lt;code&gt;Verbose output in console&lt;/code&gt; 을 선택할 것&lt;br/&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;[INFO] ------------------------------------------------------------------------
+&lt;li&gt;아래 &lt;code&gt;Transfer Set&lt;/code&gt; 에 설정되는 &lt;code&gt;Exec command&lt;/code&gt;의 내용이 빌드 로그에 출력되도록 &lt;code&gt;고급&lt;/code&gt;버튼을 눌러 &lt;code&gt;Verbose output in console&lt;/code&gt; 을 선택할 것&lt;!-- raw HTML omitted --&gt;
+&lt;pre&gt;&lt;code&gt;[INFO] ------------------------------------------------------------------------
 SSH: Connecting from host [i9-9900K]
 SSH: Connecting with configuration [tomcat@develop] ...
 SSH: Creating session: username [tomcat], hostname [develop], port [22]
@@ -1336,7 +1843,7 @@ SSH: EXEC: completed after 1,202 ms
 SSH: Disconnecting configuration [tomcat@develop] ...
 SSH: Transferred 2 ( 1 + 1 ) file(s)
 Finished: SUCCESS
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;code&gt;Add Transfer Set&lt;/code&gt; 버튼을 클릭하여 &lt;code&gt;Transfers Set&lt;/code&gt; 입력
@@ -1354,25 +1861,13 @@ Finished: SUCCESS
 &lt;div class=&#34;alert alert-primary&#34; role=&#34;alert&#34;&gt;
 &lt;h4 class=&#34;alert-heading&#34;&gt;SSH Server 추가하기&lt;/h4&gt;
 
-    &lt;p&gt;&lt;code&gt;SSH Server&lt;/code&gt; 는 &lt;code&gt;Jenkins 관리&lt;/code&gt; &amp;gt; &lt;code&gt;시스템 설정&lt;/code&gt; &amp;gt; &lt;code&gt;Publish over SSH&lt;/code&gt; 에서 추가를 해야 선택하는 항목이 나옵니다.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;Passphrase&lt;/code&gt;: 시스템 계정 jenkins 로 생성한 rsa 키의 비밀번호를 입력합니다.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Path to key&lt;/code&gt;: rsa 키 쌍 중 개인키의 경로를 입력합니다. (/home/jenkins/.ssh/id_rsa)
-jenkins node 구성에서 slave-node 을 추가했다면 jenkins 를 호스팅하고 있는 서버에서 생성한 개인키 파일에 접근할 수 없기에 &lt;code&gt;Key&lt;/code&gt; 항목에 개인키를 설정하여 사용해야 함&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Key&lt;/code&gt;: 개인키의 경로를 입력하지 않을 경우 개인키의 내용 추가로 설정할 수 있습니다. (키 경로 입력 시 생략할 것)&lt;br/&gt;
-개인키의 형태는 다음과 같으며 참고로 jenkins 에 설정할때에는 BEGIN 부터 END 까지 모두 입력해야 합니다.
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;-----BEGIN RSA PRIVATE KEY-----
-Proc-Type: 4,ENCRYPTED
-DEK-Info: AES-128-CBC,BB513C74CDF53133B6B805F08C716E14
+    &lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;lqXA6gIhaf3ztU1SoQVGvUtLWtXqINxbGzNfau3v+DIHRKJjVY1JvBj2mmADIxEq
 &amp;hellip;
 YqTPbiAOgnHAD9CgWg/v55Zl9zLrPKLakCJPYzGNrLo2BJ4qXR1ZX371JEsXq8tq
 &amp;mdash;&amp;ndash;END RSA PRIVATE KEY&amp;mdash;&amp;ndash;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;&lt;/p&gt;
-&lt;li&gt;&lt;code&gt;SSH Servers&lt;/code&gt;에 추가 버튼을 클릭하여 hostname, username, remote directory 입력합니다.&lt;br/&gt;
-입력이 끝나고 &lt;code&gt;Test Configuration&lt;/code&gt; 버튼을 클릭하여 테스트를 해봅니다.&lt;/li&gt;
-&lt;/ul&gt;
-
+&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
 
 &lt;/div&gt;
 
@@ -1400,18 +1895,13 @@ YqTPbiAOgnHAD9CgWg/v55Zl9zLrPKLakCJPYzGNrLo2BJ4qXR1ZX371JEsXq8tq
 &lt;div class=&#34;alert alert-primary&#34; role=&#34;alert&#34;&gt;
 &lt;h4 class=&#34;alert-heading&#34;&gt;GitLab webhook URL, Secret token 항목을 gitlab Webhooks 에 설정하기&lt;/h4&gt;
 
-    &lt;p&gt;아래 2개의 항목은 gitlab 의 프로젝트 설정의 &lt;code&gt;Webhooks&lt;/code&gt; 에서 설정해야하는 값입니다.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;GitLab webhook URL&lt;/code&gt;: 이 값은 체크항목에 레이블로 표시되어있는 &lt;code&gt;http://jenkins/project/boot-www&lt;/code&gt; 이며, &lt;code&gt;Webhooks&lt;/code&gt; 의 &lt;code&gt;URL&lt;/code&gt; 에 입력해야 하는 값.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Secret token&lt;/code&gt;: 이 값은 &lt;code&gt;Generate&lt;/code&gt; 버튼 클릭으로 생성되며, &lt;code&gt;Webhooks&lt;/code&gt; 의 &lt;code&gt;Secret Token&lt;/code&gt; 에 입력해야 하는 값.&lt;/li&gt;
-&lt;/ul&gt;
-
+    &lt;!-- raw HTML omitted --&gt;
 
 &lt;/div&gt;
 
 &lt;h4 id=&#34;github-integration-plugin&#34;&gt;GitHub Integration Plugin&lt;/h4&gt;
 &lt;p&gt;github 저장소에서 webhook 으로 push 이벤트를 받아서 jenkins build가 실행되도록 할 때 사용합니다.&lt;/p&gt;
-&lt;p&gt;활용법: &lt;a href=&#34;#github-연결&#34;&gt;github 연결&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;활용법: &lt;!-- raw HTML omitted --&gt;github 연결&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
 &lt;h3 id=&#34;build&#34;&gt;build&lt;/h3&gt;
 &lt;h4 id=&#34;분산-빌드-환경&#34;&gt;분산 빌드 환경&lt;/h4&gt;
 &lt;p&gt;&lt;code&gt;jenkins 관리&lt;/code&gt; 에서 &lt;code&gt;노드 관리&lt;/code&gt; 메뉴로 이동하면 &lt;code&gt;분산 빌드 환경&lt;/code&gt;을 위한 노드를 추가할 수 있습니다.&lt;/p&gt;
@@ -1423,19 +1913,12 @@ YqTPbiAOgnHAD9CgWg/v55Zl9zLrPKLakCJPYzGNrLo2BJ4qXR1ZX371JEsXq8tq
 &lt;div class=&#34;alert alert-primary&#34; role=&#34;alert&#34;&gt;
 &lt;h4 class=&#34;alert-heading&#34;&gt;주요 설정 항목&lt;/h4&gt;
 
-    &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;Name&lt;/code&gt;: slave-node 이름 (설명에는 &lt;code&gt;9900K&lt;/code&gt; 로 했습니다.)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Remote root directory&lt;/code&gt;: slave-node 의 workspace 디렉토리를 지정합니다.
-참고로 &lt;code&gt;Z:\jenkins&lt;/code&gt; 라고 입력하면 빌드 시 &lt;code&gt;Z:\jenkins\workspace\boot-www&lt;/code&gt; 디렉토리가 생성됩니다. (&lt;code&gt;boot-www&lt;/code&gt; 는 jenkins 프로젝트명 입니다.)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Labels&lt;/code&gt;: jenkins 프로젝트에 label 을 설정할 수 있으며, 해당 프로젝트에 포함된 label 과 매핑된 노드에서 빌드가 수행됨&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Launch method&lt;/code&gt;: &lt;code&gt;Use WebSocket&lt;/code&gt; 항목을 체크할 것&lt;/li&gt;
-&lt;/ul&gt;
-
+    &lt;!-- raw HTML omitted --&gt;
 
 &lt;/div&gt;
 
 &lt;p&gt;slave-node 를 추가하면 slave-node에서 jenkins 와 연결하는 방법을 알려줍니다.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;Connect agent to Jenkins one of these ways:
+&lt;pre&gt;&lt;code&gt;Connect agent to Jenkins one of these ways:
 
 Java Web Start is not available for the JVM version running Jenkins
 
@@ -1444,26 +1927,26 @@ Run from agent command line:
 javaws http://jenkins/computer/9900K/jenkins-agent.jnlp
 Or if the agent is headless:
 
-java -jar agent.jar -jnlpUrl http://jenkins/computer/9900K/jenkins-agent.jnlp -workDir &amp;#34;Z:\jenkins&amp;#34;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;slave-node 와 jenkins 연결하기&lt;/p&gt;
+java -jar agent.jar -jnlpUrl http://jenkins/computer/9900K/jenkins-agent.jnlp -workDir &amp;quot;Z:\jenkins&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;slave-node 와 jenkins 연결하기&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;code&gt;Z:\jenkins&lt;/code&gt; 에 agent.jar 를 다운로드 받음&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;code&gt;Z:\jenkins\start-agent.cmd&lt;/code&gt; 파일을 생성하고 아래 내용으로 설정&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;set JAVA_HOME=Z:\develop\java\openjdk-11.0.2
+&lt;pre&gt;&lt;code&gt;set JAVA_HOME=Z:\develop\java\openjdk-11.0.2
 set PATH=%JAVA_HOME%\bin;%PATH%
 
-java -jar agent.jar -jnlpUrl http://jenkins/computer/9900K/jenkins-agent.jnlp -workDir &amp;#34;Z:\jenkins&amp;#34;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+java -jar agent.jar -jnlpUrl http://jenkins/computer/9900K/jenkins-agent.jnlp -workDir &amp;quot;Z:\jenkins&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;code&gt;start-agent.cmd&lt;/code&gt; 실행 후 아래와 같이 console 로그가 출력되면 정상 실행&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;Z:\jenkins&amp;gt;set JAVA_HOME=Z:\develop\java\openjdk-11.0.2
+&lt;pre&gt;&lt;code&gt;Z:\jenkins&amp;gt;set JAVA_HOME=Z:\develop\java\openjdk-11.0.2
 
 Z:\jenkins&amp;gt;set PATH=Z:\develop\java\openjdk-11.0.2\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;Z:\oracle\ora12c_32bit\client_12_1\bin;Z:\develop\java\openjdk-11.0.2\bin;Z:\develop\build\maven-3.6.3\bin;C:\Users\Administrator\AppData\Local\Programs\Microsoft VS Code\bin;Z:\develop\hugo\hugo-ext-0.87.0;C:\Users\Administrator\AppData\Roaming\npm;Z:\www\httpd_2.4.25-win64-VC14\openssl-0.9.8e_X64\bin;
 
-Z:\jenkins&amp;gt;java -jar agent.jar -jnlpUrl http://jenkins/computer/9900K/jenkins-agent.jnlp -workDir &amp;#34;Z:\jenkins&amp;#34;
+Z:\jenkins&amp;gt;java -jar agent.jar -jnlpUrl http://jenkins/computer/9900K/jenkins-agent.jnlp -workDir &amp;quot;Z:\jenkins&amp;quot;
 9월 13, 2021 11:55:53 오후 org.jenkinsci.remoting.engine.WorkDirManager initializeWorkDir
 INFO: Using Z:\jenkins\remoting as a remoting work directory
 9월 13, 2021 11:55:53 오후 org.jenkinsci.remoting.engine.WorkDirManager setupLogging
@@ -1480,19 +1963,19 @@ INFO: Using Z:\jenkins\remoting as a remoting work directory
 INFO: WebSocket connection open
 9월 13, 2021 11:55:53 오후 hudson.remoting.jnlp.Main$CuiListener status
 INFO: Connected
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;참고로 여기서 연결이 안되는 상황이 발생함&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;참고로 여기서 연결이 안되는 상황이 발생함&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;agent.jar 실행 시 jenkins 에 접속할 때 websocket 으로 접속을 하게되는데 ssl 이 적용된 프로토콜 https, wss 은 handshake 오류가 발생함&lt;br/&gt;
-httpd 설정에 http 를 https 로 redirect 하도록 mod_rewrite 를 설정했는데 오류로 인해 rewrite 설정은 제거함&lt;br/&gt;&lt;/li&gt;
+&lt;li&gt;agent.jar 실행 시 jenkins 에 접속할 때 websocket 으로 접속을 하게되는데 ssl 이 적용된 프로토콜 https, wss 은 handshake 오류가 발생함&lt;!-- raw HTML omitted --&gt;
+httpd 설정에 http 를 https 로 redirect 하도록 mod_rewrite 를 설정했는데 오류로 인해 rewrite 설정은 제거함&lt;!-- raw HTML omitted --&gt;&lt;/li&gt;
 &lt;li&gt;jenkins 의 가상호스트 설정은 다음과 같습니다.
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&amp;lt;VirtualHost *:80&amp;gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;VirtualHost *:80&amp;gt;
   ServerName jenkins
 
-  ErrorLog &amp;#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/jenkins-error.log.%Y-%m-%d 86400 +540&amp;#34;
-  CustomLog &amp;#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/jenkins-access.log.%Y-%m-%d 86400 +540&amp;#34; combined
+  ErrorLog &amp;quot;|/usr/sbin/rotatelogs /outlog/WEB/httpd/jenkins-error.log.%Y-%m-%d 86400 +540&amp;quot;
+  CustomLog &amp;quot;|/usr/sbin/rotatelogs /outlog/WEB/httpd/jenkins-access.log.%Y-%m-%d 86400 +540&amp;quot; combined
 
   AllowEncodedSlashes On
-  Header set Access-Control-Allow-Origin &amp;#34;*&amp;#34;
+  Header set Access-Control-Allow-Origin &amp;quot;*&amp;quot;
 
   RewriteEngine On
   RewriteCond %{HTTP:Upgrade} =websocket [NC]
@@ -1500,7 +1983,7 @@ httpd 설정에 http 를 https 로 redirect 하도록 mod_rewrite 를 설정했�
   RewriteCond %{HTTP:Upgrade} !=websocket [NC]
   RewriteRule /(.*) http://localhost:8400/$1 [P,L]
 &amp;lt;/VirtualHost&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
@@ -1522,25 +2005,7 @@ httpd 설정에 http 를 https 로 redirect 하도록 mod_rewrite 를 설정했�
 &lt;div class=&#34;alert alert-primary&#34; role=&#34;alert&#34;&gt;
 &lt;h4 class=&#34;alert-heading&#34;&gt;github 에서 Personal access tokens 발급 및 jenkins Credentials 등록&lt;/h4&gt;
 
-    &lt;ol&gt;
-&lt;li&gt;github 로그인 후 &lt;code&gt;Settings&lt;/code&gt; &amp;gt; &lt;code&gt;Developer settings&lt;/code&gt; &amp;gt; &lt;code&gt;Personal access tokens&lt;/code&gt; 메뉴 이동&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Generate new token&lt;/code&gt; 버튼 클릭 후 &lt;code&gt;Expiration&lt;/code&gt; 과 &lt;code&gt;Select scopes&lt;/code&gt; 를 선택&lt;br/&gt;
-&lt;code&gt;Select scopes&lt;/code&gt;은 &lt;code&gt;repo&lt;/code&gt;, &lt;code&gt;admin:repo_hook&lt;/code&gt;를 전체 선택&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Generate token&lt;/code&gt; 버튼 클릭으로 토큰을 생성
-&lt;ul&gt;
-&lt;li&gt;생성된 토큰(access token) 값은 다시 확인할 수 없습니다. (재생성해야하는 것으로 알고 있음)&lt;/li&gt;
-&lt;li&gt;jenkins 에 등록될 access token 은 github 의 id 와 함께 사용되는 패스워드입니다.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;jenkins &lt;code&gt;Manage Credentials&lt;/code&gt; 에서 &lt;code&gt;Add Credentials&lt;/code&gt; 을 합니다.
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;Kind&lt;/code&gt;: &lt;code&gt;Username with password&lt;/code&gt; 를 선택합니다.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Username&lt;/code&gt;: github 에 로그인할 때 사용하는 id 를 입력합니다. (&lt;code&gt;lislroow&lt;/code&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Password&lt;/code&gt;: github 에서 생성한 토큰(access token)을 입력합니다. (&lt;code&gt;ghp_***생략***&lt;/code&gt;)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-
+    &lt;!-- raw HTML omitted --&gt;
 
 &lt;/div&gt;
 
@@ -1551,19 +2016,7 @@ httpd 설정에 http 를 https 로 redirect 하도록 mod_rewrite 를 설정했�
 &lt;div class=&#34;alert alert-primary&#34; role=&#34;alert&#34;&gt;
 &lt;h4 class=&#34;alert-heading&#34;&gt;github 에서 push 이벤트 jenkins 로 전송하기&lt;/h4&gt;
 
-    &lt;ol&gt;
-&lt;li&gt;github 의 프로젝트로 이동한 다음 &lt;code&gt;Settings&lt;/code&gt; &amp;gt; &lt;code&gt;Webhooks&lt;/code&gt; 메뉴로 이동합니다.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Add webhook&lt;/code&gt; 버튼을 클릭하여 다음을 입력합니다.
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;Payload URL&lt;/code&gt;: &lt;code&gt;http://{jenkins-domain}/github-webhook/&lt;/code&gt; 으로 입력합니다.&lt;br/&gt;
-참고로 uri 는 반드시 &lt;code&gt;/github-webhook/&lt;/code&gt; 으로 되어야 합니다. (&lt;code&gt;/github-webhook&lt;/code&gt; 으로하면 302 를 응답받고 실패합니다.)&lt;br/&gt;
-&lt;code&gt;Payload URL&lt;/code&gt; 을 입력하게되면 github 저장소에 push 이벤트가 발생할 때 해당 URL 을 호출하게되고, jenkins 는 이 http 요청을 받고 build 를 실행하게 되는 형태입니다.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Content type&lt;/code&gt;: &lt;code&gt;application/json&lt;/code&gt; 으로 설정&lt;/li&gt;
-&lt;li&gt;저장 후 소스코드를 수정하고 commit;push 를 하게되면 추가된 webhook 항목을 클릭했을 때 &lt;code&gt;Recent Deliveries&lt;/code&gt; 를 볼 수 있습니다.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-
+    &lt;!-- raw HTML omitted --&gt;
 
 &lt;/div&gt;
 
@@ -1589,7 +2042,7 @@ httpd 설정에 http 를 https 로 redirect 하도록 mod_rewrite 를 설정했�
 &lt;ul&gt;
 &lt;li&gt;파일경로: &lt;code&gt;/etc/systemd/system/{서비스명}.service&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;[root@develop /etc/systemd/system]$ cat jenkins.service
+&lt;pre&gt;&lt;code&gt;[root@develop /etc/systemd/system]$ cat jenkins.service
 [Unit]
 Description=Jenkins
 After=network.target syslog.target
@@ -1607,8 +2060,8 @@ Restart=on-abort
 [Install]
 WantedBy=multi-user.target
 [root@develop /etc/systemd/system]$
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;yum 으로 패키지 설치시 systemctl 에 등록된 정보를 아래와 같은 방법으로 확인합니다.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;[root@develop /etc/systemd/system]$ systemctl --help
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;yum 으로 패키지 설치시 systemctl 에 등록된 정보를 아래와 같은 방법으로 확인합니다.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[root@develop /etc/systemd/system]$ systemctl --help
 systemctl [OPTIONS...] {COMMAND} ...
 
 Unit Commands:
@@ -1621,11 +2074,11 @@ httpd.service                                                                   
 ● httpd.service - The Apache HTTP Server
    Loaded: loaded (/usr/lib/systemd/system/httpd.service; enabled; vendor preset: disabled)
 [root@develop /etc/systemd/system]$
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;httpd 의 서비스 파일은 &lt;code&gt;/usr/lib/systemd/system/httpd.service&lt;/code&gt; 에 있음을 확인할 수 있습니다.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;httpd 의 서비스 파일은 &lt;code&gt;/usr/lib/systemd/system/httpd.service&lt;/code&gt; 에 있음을 확인할 수 있습니다.&lt;/p&gt;
 &lt;h3 id=&#34;서비스-등록&#34;&gt;서비스 등록&lt;/h3&gt;
 &lt;p&gt;서비스 파일을 생성한 다음 systemctl 에 등록을 해야 합니다.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;[root@develop /etc/systemd/system]$ systemctl --help | grep reload
-     --no-reload      Don&amp;#39;t reload daemon after en-/dis-abling unit files
+&lt;pre&gt;&lt;code&gt;[root@develop /etc/systemd/system]$ systemctl --help | grep reload
+     --no-reload      Don&#39;t reload daemon after en-/dis-abling unit files
   reload NAME...                  Reload one or more units
   reload-or-restart NAME...       Reload one or more units if possible,
   reload-or-try-restart NAME...   Reload one or more units if possible,
@@ -1633,10 +2086,10 @@ httpd.service                                                                   
 [root@develop /etc/systemd/system]$
 [root@develop /etc/systemd/system]$ systemctl daemon-reload
 [root@develop /etc/systemd/system]$
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;systemctl daemon-reload&lt;/code&gt; 명령으로 reload 를 합니다.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;systemctl daemon-reload&lt;/code&gt; 명령으로 reload 를 합니다.&lt;/p&gt;
 &lt;h3 id=&#34;서비스-활성화&#34;&gt;서비스 활성화&lt;/h3&gt;
 &lt;p&gt;서비스 활성화 상태로 설정을 하게되면 os booting 시 자동으로 실행이 됩니다.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;[root@develop /etc/systemd/system]$ systemctl --help | grep enable
+&lt;pre&gt;&lt;code&gt;[root@develop /etc/systemd/system]$ systemctl --help | grep enable
      --preset-mode=   Apply only enable, only disable, or all presets
   enable NAME...                  Enable one or more unit files
   reenable NAME...                Reenable one or more unit files
@@ -1647,7 +2100,7 @@ enabled
 [root@develop /etc/systemd/system]$ systemctl is-enabled httpd.service
 enabled
 [root@develop /etc/systemd/system]$
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;systemctl enable {서비스}&lt;/code&gt; 명령으로 enabled 상태로 설정합니다.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;systemctl enable {서비스}&lt;/code&gt; 명령으로 enabled 상태로 설정합니다.&lt;/p&gt;
 &lt;h2 id=&#34;network&#34;&gt;network&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;root@develop ~&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;$ cat /etc/sysconfig/network-scripts/ifcfg-ens32
 TYPE&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Ethernet&amp;#34;&lt;/span&gt;
@@ -1671,10 +2124,10 @@ GATEWAY&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#
 DNS1&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;8.8.8.8&amp;#34;&lt;/span&gt;
 &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;root@develop ~&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;$
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;hostname&#34;&gt;hostname&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;[root@develop ~]$ hostnamectl set-hostname develop
+&lt;pre&gt;&lt;code&gt;[root@develop ~]$ hostnamectl set-hostname develop
 [root@develop ~]$
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;shell&#34;&gt;shell&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;[ -z ] : 문자열의 길이가 0이면 참
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;shell&#34;&gt;shell&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;[ -z ] : 문자열의 길이가 0이면 참
 [ -n ] : 문자열의 길이가 0이 아니면 참
 [ -eq ] : 값이 같으면 참
 [ -ne ] : 값이 다르면 참
@@ -1694,7 +2147,7 @@ DNS1&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;
 [ 파일1 -nt 파일2 ] : 파일1이 파일2보다 최신파일이면 참
 [ 파일1 -ot 파일2 ] : 파일1이 파일2보다 이전파일이면 참
 [ 파일1 -ef 파일2 ] : 파일1이 파일2랑 같은 파일이면 참
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;
       </description>
     </item>
     
@@ -1708,7 +2161,7 @@ DNS1&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;
         
         
         &lt;h2 id=&#34;패키지-확인&#34;&gt;패키지 확인&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;[root@develop ~]$ yum list *openssh*
+&lt;pre&gt;&lt;code&gt;[root@develop ~]$ yum list *openssh*
 Loaded plugins: fastestmirror, langpacks
 Repodata is over 2 weeks old. Install yum-cron? Or run: yum makecache fast
 Loading mirror speeds from cached hostfile
@@ -1725,13 +2178,13 @@ openssh.x86_64                                               7.4p1-21.el7       
 /usr/bin/ssh-keygen
 
 [root@develop ~]$
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;key-생성&#34;&gt;key 생성&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;key-생성&#34;&gt;key 생성&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;ssh-keygen&lt;/code&gt; 인자 &lt;code&gt;-t rsa&lt;/code&gt; 는 rsa 타입으로 생성 입니다.
 key 생성 경로는 home 디렉토리의 &lt;code&gt;.ssh&lt;/code&gt; 디렉토리에 생성이 됩니다.
 &lt;code&gt;passphrase&lt;/code&gt; 는 key 의 비밀번호 입니다.&lt;/p&gt;
 &lt;p&gt;key 생성이 되면 &lt;code&gt;.ssh&lt;/code&gt; 디렉토리에는 &lt;code&gt;id_rsa&lt;/code&gt;(개인키), &lt;code&gt;id_rsa.pub&lt;/code&gt;(공개키) 2개의 파일이 있습니다.&lt;/p&gt;
 &lt;p&gt;공개키인 &lt;code&gt;id_rsa.pub&lt;/code&gt; 파일의 내용은 SSH로 접속하려는 대상 서버의 시스템계정 홈디렉토리의 .ssh/authorized_keys 파일에 추가하여 사용됩니다.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;[tomcat@develop ~]$ pwd
+&lt;pre&gt;&lt;code&gt;[tomcat@develop ~]$ pwd
 /home/tomcat
 [tomcat@develop ~]$ ls -al
 합계 28
@@ -1780,7 +2233,7 @@ Your identification has been saved in /home/tomcat/.ssh/id_rsa.
 Your public key has been saved in /home/tomcat/.ssh/id_rsa.pub.
 The key fingerprint is:
 SHA256:Lp68Qh20r1rnsr+IyTTayVl/pbd8VlEL3mWGuez3IYY tomcat@develop
-The key&amp;#39;s randomart image is:
+The key&#39;s randomart image is:
 +---[RSA 2048]----+
 |               o |
 |      .      .o =|
@@ -1800,7 +2253,7 @@ drwx------. 5 tomcat ap  152  9월 13 11:48 ..
 -rw-------  1 tomcat ap 1766  9월 13 11:51 id_rsa
 -rw-r--r--  1 tomcat ap  396  9월 13 11:51 id_rsa.pub
 [tomcat@develop ~]$
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;
       </description>
     </item>
     
@@ -1828,19 +2281,19 @@ net.core.wmem_default &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &
 net.core.wmem_max &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1048586&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;반영: &lt;code&gt;sysctl -p&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;확인: &lt;code&gt;sysctl -a&lt;/code&gt;&lt;/p&gt;
-&lt;br&gt;
+&lt;!-- raw HTML omitted --&gt;
 &lt;h4 id=&#34;limits-설정&#34;&gt;limits 설정&lt;/h4&gt;
 &lt;p&gt;/etc/security/limits.conf&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;oracle soft nproc &lt;span style=&#34;color:#ae81ff&#34;&gt;2047&lt;/span&gt;
 oracle hard nproc &lt;span style=&#34;color:#ae81ff&#34;&gt;16384&lt;/span&gt;
 oracle soft nofile &lt;span style=&#34;color:#ae81ff&#34;&gt;1024&lt;/span&gt;
 oracle hard nofile &lt;span style=&#34;color:#ae81ff&#34;&gt;65536&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;!-- raw HTML omitted --&gt;
 &lt;h4 id=&#34;시스템-계정&#34;&gt;시스템 계정&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;groupadd oinstall
 groupadd dba
 useradd -g oinstall -G dba oracle
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;!-- raw HTML omitted --&gt;
 &lt;h4 id=&#34;설치-디렉토리&#34;&gt;설치 디렉토리&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;mkdir -p /prod/oracle12/app
 mkdir -p /prod/oracle12/oraInventory
@@ -1850,7 +2303,7 @@ chmod -R &lt;span style=&#34;color:#ae81ff&#34;&gt;775&lt;/span&gt; /prod/oracle
 chmod -R &lt;span style=&#34;color:#ae81ff&#34;&gt;775&lt;/span&gt; /prod/oracle12/oraInventory
 chmod g+s /prod/oracle12/app
 chmod g+s /prod/oracle12/oraInventory
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;!-- raw HTML omitted --&gt;
 &lt;h4 id=&#34;시스템-변수&#34;&gt;시스템 변수&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;export TMPDIR&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;$TMP
 export ORACLE_BASE&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/prod/oracle12/app/
@@ -1860,7 +2313,7 @@ export ORACLE_SID&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;orcl
 export LD_LIBRARY_PATH&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/lib:/usr/lib:/usr/lib64:$ORACLE_HOME/lib
 export CLASSPATH&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;$ORACLE_HOME/jlib:$ORACLE_HOME/rdbms/jlib
 export PATH&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;$ORACLE_HOME/bin:$PATH:$HOME/.local/bin:$HOME/bin
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;!-- raw HTML omitted --&gt;
 &lt;h4 id=&#34;gui-패키지-설치&#34;&gt;gui 패키지 설치&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;$ yum grouplist
 사용 가능한 환경 그룹 :
@@ -1871,25 +2324,25 @@ export PATH&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;$ORACLE_HOME/
    사용자 정의 운영 체제
 $ yum groupinstall &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;서버 - GUI 사용&amp;#34;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;설치 후 runlevel 변경: &lt;code&gt;$ systemctl set-default graphical.target&lt;/code&gt;&lt;/p&gt;
-&lt;br&gt;
+&lt;!-- raw HTML omitted --&gt;
 &lt;h4 id=&#34;oracle12c-ee-설치&#34;&gt;oracle12c-ee 설치&lt;/h4&gt;
 &lt;p&gt;gui 환경으로 booting 후 oracle 계정으로 로그인하고 &lt;code&gt;runInstaller&lt;/code&gt; 실행&lt;/p&gt;
 &lt;p&gt;설치 파일: &lt;code&gt;oracle-ee_12102_linux_x64_1of2.zip&lt;/code&gt;, &lt;code&gt;oracle-ee_12102_linux_x64_2of2.zip&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;install
+&lt;pre&gt;&lt;code&gt;install
 response
 rpm
 runInstaller
 sshsetup
 stage
 welcome.html
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;!-- raw HTML omitted --&gt;
 &lt;h4 id=&#34;systemctl-등록&#34;&gt;systemctl 등록&lt;/h4&gt;
 &lt;p&gt;systemctl 환경변수 파일: /etc/sysconfig/ora12c.env&lt;/p&gt;
 &lt;p&gt;소유자(oracle) 설정: &lt;code&gt;chown oracle:db /etc/sysconfig/ora12c.env&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;ORACLE_BASE&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/prod/oracle12/app
 ORACLE_HOME&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;$ORACLE_BASE/product/12.2.0/dbhome_1
 ORACLE_SID&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;ora12c
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;!-- raw HTML omitted --&gt;
 &lt;h4 id=&#34;각종-오류&#34;&gt;각종 오류&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -1902,16 +2355,16 @@ cp $ORACLE_BASE/admin/ora12c/pfile/init.ora.1028202115570 $ORACLE_HOME/dbs/inito
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;alter&lt;/span&gt; pluggable &lt;span style=&#34;color:#66d9ef&#34;&gt;database&lt;/span&gt; pdborcl &lt;span style=&#34;color:#66d9ef&#34;&gt;open&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;read&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;write&lt;/span&gt;;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;br&gt;
+&lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;systemctl service 파일 생성&lt;/p&gt;
 &lt;p&gt;service 파일에는 환경변수 파일을 적용할 것&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;ora12c@lsnrctl.service&lt;/code&gt;, &lt;code&gt;ora12c@dbms.service&lt;/code&gt;&lt;/p&gt;
-&lt;br&gt;
+&lt;!-- raw HTML omitted --&gt;
 &lt;h4 id=&#34;oratab-파일&#34;&gt;oratab 파일&lt;/h4&gt;
 &lt;p&gt;파일: /etc/oratab&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;ora12c:/prod/oracle12/app/product/12.2.0/dbhome_1:Y
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;소유자(oracle) 설정: &lt;code&gt;chown oracle:db /etc/oratab&lt;/code&gt;&lt;/p&gt;
-&lt;br&gt;
+&lt;pre&gt;&lt;code&gt;ora12c:/prod/oracle12/app/product/12.2.0/dbhome_1:Y
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;소유자(oracle) 설정: &lt;code&gt;chown oracle:db /etc/oratab&lt;/code&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
 &lt;h4 id=&#34;max_string_size--extended&#34;&gt;max_string_size = EXTENDED&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;startup mount;
 &lt;span style=&#34;color:#66d9ef&#34;&gt;alter&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;database&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;open&lt;/span&gt; migrate;
@@ -1925,7 +2378,7 @@ cp $ORACLE_BASE/admin/ora12c/pfile/init.ora.1028202115570 $ORACLE_HOME/dbs/inito
 &lt;span style=&#34;color:#f92672&#34;&gt;@?/&lt;/span&gt;rdbms&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;admin&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;utl32k.&lt;span style=&#34;color:#66d9ef&#34;&gt;sql&lt;/span&gt;;
 &lt;span style=&#34;color:#f92672&#34;&gt;@?/&lt;/span&gt;rdbms&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;admin&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;utlrp.&lt;span style=&#34;color:#66d9ef&#34;&gt;sql&lt;/span&gt;;
 &lt;span style=&#34;color:#66d9ef&#34;&gt;alter&lt;/span&gt; pluggable &lt;span style=&#34;color:#66d9ef&#34;&gt;database&lt;/span&gt; SPADBP &lt;span style=&#34;color:#66d9ef&#34;&gt;close&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;immediate&lt;/span&gt;;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;!-- raw HTML omitted --&gt;
 &lt;h4 id=&#34;pdb-자동-시작&#34;&gt;PDB 자동 시작&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; con_id, name, open_mode &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; v$pdbs;
 &lt;span style=&#34;color:#66d9ef&#34;&gt;CREATE&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;OR&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;REPLACE&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;TRIGGER&lt;/span&gt; open_pdbs 
@@ -1935,7 +2388,7 @@ cp $ORACLE_BASE/admin/ora12c/pfile/init.ora.1028202115570 $ORACLE_HOME/dbs/inito
 &lt;span style=&#34;color:#66d9ef&#34;&gt;END&lt;/span&gt; open_pdbs;
 &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;
 &lt;span style=&#34;color:#66d9ef&#34;&gt;commit&lt;/span&gt;;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;!-- raw HTML omitted --&gt;
 &lt;h4 id=&#34;oracle-계정-생성&#34;&gt;oracle 계정 생성&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;alter&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;session&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;_oracle_script&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;;
 &lt;span style=&#34;color:#66d9ef&#34;&gt;CREATE&lt;/span&gt; TABLESPACE TS_DATA01 DATAFILE &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;/data/DB/oradata/ora12c/SPADBP/TS_DATA01.dbf&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;SIZE&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;G&lt;/span&gt; AUTOEXTEND &lt;span style=&#34;color:#66d9ef&#34;&gt;ON&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;NEXT&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;M;
@@ -1946,11 +2399,11 @@ cp $ORACLE_BASE/admin/ora12c/pfile/init.ora.1028202115570 $ORACLE_HOME/dbs/inito
 &lt;span style=&#34;color:#66d9ef&#34;&gt;CREATE&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;ROLE&lt;/span&gt; RL_SPA_APP;
 &lt;span style=&#34;color:#66d9ef&#34;&gt;GRANT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;CONNECT&lt;/span&gt;, RESOURCE &lt;span style=&#34;color:#66d9ef&#34;&gt;TO&lt;/span&gt; RL_SPA_APP;
 &lt;span style=&#34;color:#66d9ef&#34;&gt;GRANT&lt;/span&gt; RL_SPA_APP &lt;span style=&#34;color:#66d9ef&#34;&gt;TO&lt;/span&gt; SPAAPP;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;!-- raw HTML omitted --&gt;
 &lt;h4 id=&#34;oracle-impexp&#34;&gt;oracle imp/exp&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;exp.exe SPADBA/1@SPADBP FILE=&amp;#39;Z:\SPADBP.dmp&amp;#39; GRANTS=Y INDEXES=Y ROWS=Y CONSTRAINTS=Y TRIGGERS=N COMPRESS=Y DIRECT=N CONSISTENT=N OWNER=(SPADBA)
-imp.exe SPADBA/1@SPADBP FILE=&amp;#39;Z:\SPADBP.dmp&amp;#39; FEEDBACK=1000 GRANTS=Y INDEXES=Y ROWS=Y CONSTRAINTS=Y IGNORE=N SHOW=N DESTROY=N ANALYZE=Y SKIP_UNUSABLE_INDEXES=N RECALCULATE_STATISTICS=N FROMUSER=SPADBA TOUSER=SPADBA
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;pre&gt;&lt;code class=&#34;language-dos&#34; data-lang=&#34;dos&#34;&gt;exp.exe SPADBA/1@SPADBP FILE=&#39;Z:\SPADBP.dmp&#39; GRANTS=Y INDEXES=Y ROWS=Y CONSTRAINTS=Y TRIGGERS=N COMPRESS=Y DIRECT=N CONSISTENT=N OWNER=(SPADBA)
+imp.exe SPADBA/1@SPADBP FILE=&#39;Z:\SPADBP.dmp&#39; FEEDBACK=1000 GRANTS=Y INDEXES=Y ROWS=Y CONSTRAINTS=Y IGNORE=N SHOW=N DESTROY=N ANALYZE=Y SKIP_UNUSABLE_INDEXES=N RECALCULATE_STATISTICS=N FROMUSER=SPADBA TOUSER=SPADBA
+&lt;/code&gt;&lt;/pre&gt;&lt;!-- raw HTML omitted --&gt;
 &lt;h4 id=&#34;drop-table-문&#34;&gt;drop table 문&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;drop table &amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;table_name&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39; cascade constraints;&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; user_tables;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;oracle-character-set-설정&#34;&gt;oracle character-set 설정&lt;/h4&gt;
@@ -1971,7 +2424,7 @@ STARTUP MOUNT;
 &lt;span style=&#34;color:#66d9ef&#34;&gt;ALTER&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;DATABASE&lt;/span&gt; CHARACTER &lt;span style=&#34;color:#66d9ef&#34;&gt;SET&lt;/span&gt; INTERNAL_USE AL32UTF8;
 SHUTDOWN &lt;span style=&#34;color:#66d9ef&#34;&gt;IMMEDIATE&lt;/span&gt;;
 STARTUP;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;!-- raw HTML omitted --&gt;
 
       </description>
     </item>

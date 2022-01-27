@@ -34,9 +34,8 @@ log4j-slf4j-impl:2.14.1
 <meta property="og:description" content="maven-dependency (Mar, 2021) 기준 log4j 는 2.14.1 버전이 최신입니다.
 # 핵심 라이브러리 log4j-api:2.14.1 log4j-core:2.14.1 log4j-web:2.14.1 log4j-slf4j-impl:2.14.1 # 보조 라이브러리 log4jdbc-log4j2-jdbc4.1:1.16 slf4j-log4j12:1.7.32 log4j:1.2.17 log4j2.xml 설정 파일의 기본 구조입니다.
 &lt;Configuration&gt; &lt;Properties&gt; ... &lt;/Properties&gt; &lt;Appenders&gt; ... &lt;/Appenders&gt; &lt;Loggers&gt; ... &lt;/Loggers&gt; &lt;/Configuration&gt; &lt;Appenders&gt; 설정 &lt;Appenders&gt; 는 로그의 출력을 설정합니다.
-&lt;File&gt; 혹은 &lt;RollingFile&gt; 를 바로 정의 하는 것이 기본이고,
-&lt;Routing&gt;을 사용하여 ThreadContext 의 값에 따라 &lt;File&gt; 혹은 &lt;RollingFile&gt; 을 routing 할 수 있습니다.
-&lt;Appenders&gt; &lt;Console&gt; ." />
+&lt;File&gt; 혹은 &lt;RollingFile&gt; 를 바로 정의 하는 것이 기본이고,&lt;Routing&gt;을 사용하여 ThreadContext 의 값에 따라 &lt;File&gt; 혹은 &lt;RollingFile&gt; 을 routing 할 수 있습니다.
+&lt;Appenders&gt; &lt;Console&gt; ... &lt;/Console&gt; &lt;Routing&gt; &lt;Routes&gt; &lt;Route&gt; &lt;RollingFile&gt; ." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/develop/log4j2/" /><meta property="article:section" content="develop" />
 
@@ -46,19 +45,17 @@ log4j-slf4j-impl:2.14.1
 <meta itemprop="description" content="maven-dependency (Mar, 2021) 기준 log4j 는 2.14.1 버전이 최신입니다.
 # 핵심 라이브러리 log4j-api:2.14.1 log4j-core:2.14.1 log4j-web:2.14.1 log4j-slf4j-impl:2.14.1 # 보조 라이브러리 log4jdbc-log4j2-jdbc4.1:1.16 slf4j-log4j12:1.7.32 log4j:1.2.17 log4j2.xml 설정 파일의 기본 구조입니다.
 &lt;Configuration&gt; &lt;Properties&gt; ... &lt;/Properties&gt; &lt;Appenders&gt; ... &lt;/Appenders&gt; &lt;Loggers&gt; ... &lt;/Loggers&gt; &lt;/Configuration&gt; &lt;Appenders&gt; 설정 &lt;Appenders&gt; 는 로그의 출력을 설정합니다.
-&lt;File&gt; 혹은 &lt;RollingFile&gt; 를 바로 정의 하는 것이 기본이고,
-&lt;Routing&gt;을 사용하여 ThreadContext 의 값에 따라 &lt;File&gt; 혹은 &lt;RollingFile&gt; 을 routing 할 수 있습니다.
-&lt;Appenders&gt; &lt;Console&gt; .">
+&lt;File&gt; 혹은 &lt;RollingFile&gt; 를 바로 정의 하는 것이 기본이고,&lt;Routing&gt;을 사용하여 ThreadContext 의 값에 따라 &lt;File&gt; 혹은 &lt;RollingFile&gt; 을 routing 할 수 있습니다.
+&lt;Appenders&gt; &lt;Console&gt; ... &lt;/Console&gt; &lt;Routing&gt; &lt;Routes&gt; &lt;Route&gt; &lt;RollingFile&gt; .">
 
-<meta itemprop="wordCount" content="200">
+<meta itemprop="wordCount" content="199">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="log4j2"/>
 <meta name="twitter:description" content="maven-dependency (Mar, 2021) 기준 log4j 는 2.14.1 버전이 최신입니다.
 # 핵심 라이브러리 log4j-api:2.14.1 log4j-core:2.14.1 log4j-web:2.14.1 log4j-slf4j-impl:2.14.1 # 보조 라이브러리 log4jdbc-log4j2-jdbc4.1:1.16 slf4j-log4j12:1.7.32 log4j:1.2.17 log4j2.xml 설정 파일의 기본 구조입니다.
 &lt;Configuration&gt; &lt;Properties&gt; ... &lt;/Properties&gt; &lt;Appenders&gt; ... &lt;/Appenders&gt; &lt;Loggers&gt; ... &lt;/Loggers&gt; &lt;/Configuration&gt; &lt;Appenders&gt; 설정 &lt;Appenders&gt; 는 로그의 출력을 설정합니다.
-&lt;File&gt; 혹은 &lt;RollingFile&gt; 를 바로 정의 하는 것이 기본이고,
-&lt;Routing&gt;을 사용하여 ThreadContext 의 값에 따라 &lt;File&gt; 혹은 &lt;RollingFile&gt; 을 routing 할 수 있습니다.
-&lt;Appenders&gt; &lt;Console&gt; ."/>
+&lt;File&gt; 혹은 &lt;RollingFile&gt; 를 바로 정의 하는 것이 기본이고,&lt;Routing&gt;을 사용하여 ThreadContext 의 값에 따라 &lt;File&gt; 혹은 &lt;RollingFile&gt; 을 routing 할 수 있습니다.
+&lt;Appenders&gt; &lt;Console&gt; ... &lt;/Console&gt; &lt;Routing&gt; &lt;Routes&gt; &lt;Route&gt; &lt;RollingFile&gt; ."/>
 
 
 
@@ -77,6 +74,9 @@ log4j-slf4j-impl:2.14.1
   integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
   crossorigin="anonymous"></script>
 
+
+
+<link rel="stylesheet" href="/css/prism.css"/>
 
 
 
@@ -149,7 +149,7 @@ log4j-slf4j-impl:2.14.1
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.32f692caf1b5e850cee0feb7b950dad2.json"
+  data-offline-search-index-json-src="/offline-search-index.08cf7cffcb59f761e22a08bcfff40ee5.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -176,7 +176,7 @@ log4j-slf4j-impl:2.14.1
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.32f692caf1b5e850cee0feb7b950dad2.json"
+  data-offline-search-index-json-src="/offline-search-index.08cf7cffcb59f761e22a08bcfff40ee5.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -309,7 +309,7 @@ log4j-slf4j-impl:2.14.1
 	</header>    
 	<h4 id="maven-dependency">maven-dependency</h4>
 <p>(Mar, 2021) 기준 log4j 는 <code>2.14.1</code> 버전이 최신입니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># 핵심 라이브러리
+<pre><code># 핵심 라이브러리
 log4j-api:2.14.1
 log4j-core:2.14.1
 log4j-web:2.14.1
@@ -319,7 +319,7 @@ log4j-slf4j-impl:2.14.1
 log4jdbc-log4j2-jdbc4.1:1.16
 slf4j-log4j12:1.7.32
 log4j:1.2.17
-</code></pre></div><h4 id="log4j2xml">log4j2.xml</h4>
+</code></pre><h4 id="log4j2xml">log4j2.xml</h4>
 <p>설정 파일의 기본 구조입니다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;Configuration&gt;</span>
   <span style="color:#f92672">&lt;Properties&gt;</span> ... <span style="color:#f92672">&lt;/Properties&gt;</span>
@@ -328,7 +328,7 @@ log4j:1.2.17
 <span style="color:#f92672">&lt;/Configuration&gt;</span>
 </code></pre></div><h4 id="appenders-설정">&lt;Appenders&gt; 설정</h4>
 <p><code>&lt;Appenders&gt;</code> 는 로그의 출력을 설정합니다.</p>
-<p><code>&lt;File&gt;</code> 혹은 <code>&lt;RollingFile&gt;</code> 를 바로 정의 하는 것이 기본이고,<br>
+<p><code>&lt;File&gt;</code> 혹은 <code>&lt;RollingFile&gt;</code> 를 바로 정의 하는 것이 기본이고,<!-- raw HTML omitted -->
 <code>&lt;Routing&gt;</code>을 사용하여 ThreadContext 의 값에 따라 <code>&lt;File&gt;</code> 혹은 <code>&lt;RollingFile&gt;</code> 을 routing 할 수 있습니다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">  <span style="color:#f92672">&lt;Appenders&gt;</span>
     <span style="color:#f92672">&lt;Console&gt;</span> ... <span style="color:#f92672">&lt;/Console&gt;</span>
@@ -495,6 +495,9 @@ window.markmap = {
 
 <script src="/js/main.min.c1b8f3c373b85f900699a7ea81c2038ebbbebcac1a5a4b6e5ef96c24c31790d6.js" integrity="sha256-wbjzw3O4X5AGmafqgcIDjru&#43;vKwaWktuXvlsJMMXkNY=" crossorigin="anonymous"></script>
 
+
+
+<script src='/js/prism.js'></script>
 
 
 

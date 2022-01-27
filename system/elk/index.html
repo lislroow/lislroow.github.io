@@ -36,7 +36,7 @@ $ curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-
 <meta itemprop="description" content="elasticsearch 설치 artifacts.elastic.co 에서 rpm 다운로드 후 설치
 $ curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.16.3-x86_64.rpm $ rpm -i elasticsearch-7.16.3-x86_64.rpm $ systemctl restart elasticsearch $ curl -L -O https://artifacts.elastic.co/downloads/kibana/kibana-7.16.3-linux-x86_64.tar.gz $ rpm -i elasticsearch-7.16.3-x86_64.rpm 경고: elasticsearch-7.16.3-x86_64.rpm: Header V4 RSA/SHA512 Signature, key ID d88e42b4: NOKEY Creating elasticsearch group... OK Creating elasticsearch user... OK ### NOT starting on installation, please execute the following statements to configure elasticsearch service to start automatically using systemd sudo systemctl daemon-reload sudo systemctl enable elasticsearch.">
 
-<meta itemprop="wordCount" content="822">
+<meta itemprop="wordCount" content="2481">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="ELK"/>
 <meta name="twitter:description" content="elasticsearch 설치 artifacts.elastic.co 에서 rpm 다운로드 후 설치
@@ -59,6 +59,9 @@ $ curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-
   integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
   crossorigin="anonymous"></script>
 
+
+
+<link rel="stylesheet" href="/css/prism.css"/>
 
 
 
@@ -131,7 +134,7 @@ $ curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.32f692caf1b5e850cee0feb7b950dad2.json"
+  data-offline-search-index-json-src="/offline-search-index.08cf7cffcb59f761e22a08bcfff40ee5.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -158,7 +161,7 @@ $ curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.32f692caf1b5e850cee0feb7b950dad2.json"
+  data-offline-search-index-json-src="/offline-search-index.08cf7cffcb59f761e22a08bcfff40ee5.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -237,6 +240,7 @@ $ curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-
                 <li><a href="#filebeat-설치">filebeat 설치</a></li>
                 <li><a href="#filebeat-설정">filebeat 설정</a></li>
                 <li><a href="#filebeat-apache-module">filebeat) apache module</a></li>
+                <li><a href="#logstash-설정">logstash 설정</a></li>
               </ul>
             </li>
           </ul>
@@ -353,7 +357,7 @@ $ curl http://127.0.0.1:9200
   <span style="color:#e6db74">&#34;tagline&#34;</span> : <span style="color:#e6db74">&#34;You Know, for Search&#34;</span>
 <span style="color:#f92672">}</span>
 $
-</code></pre></div><br>
+</code></pre></div><!-- raw HTML omitted -->
 <h5 id="elasticsearch-설정">elasticsearch 설정</h5>
 <p>설정 파일 <code>/etc/elasticsearch/elasticsearch.yml</code>에서 데이터/로그 디렉토리 변경</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">##</span>
@@ -369,7 +373,7 @@ $ mkdir -p /data/PROD/es <span style="color:#f92672">&amp;&amp;</span> chown ela
  <span style="color:#ae81ff">59</span> network.host: 0.0.0.0
  <span style="color:#ae81ff">73</span> <span style="color:#75715e">#discovery.seed_hosts: [&#34;host1&#34;, &#34;host2&#34;]</span>
  <span style="color:#ae81ff">74</span> discovery.seed_hosts: <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;0.0.0.0&#34;</span><span style="color:#f92672">]</span>
-</code></pre></div><br>
+</code></pre></div><!-- raw HTML omitted -->
 <h5 id="kibana-설치-binary">kibana 설치 (binary)</h5>
 <p><code>artifacts.elastic.co</code>에서 tar.gz 다운로드 후 아카이브 해제</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ curl -L -O https://artifacts.elastic.co/downloads/kibana/kibana-7.16.3-linux-x86_64.tar.gz
@@ -397,7 +401,7 @@ $ chown -R tomcat:ap /prod/kibana
 
 <span style="color:#ae81ff">10</span> directories, <span style="color:#ae81ff">4</span> files
 $
-</code></pre></div><br>
+</code></pre></div><!-- raw HTML omitted -->
 <h5 id="kibana-설치-yum">kibana 설치 (yum)</h5>
 <p>PGP 를 추가합니다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
@@ -415,7 +419,7 @@ type<span style="color:#f92672">=</span>rpm-md
 </code></pre></div><p>systemd</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ systemctl enable kibana
 $ systemctl start kibana
-</code></pre></div><br>
+</code></pre></div><!-- raw HTML omitted -->
 <h5 id="kibana-설정-binary">kibana 설정 (binary)</h5>
 <p>설정 파일 <code>/prod/kibana/kibana/config/kibana.yml</code></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 기본 설정 파일로 실행 시 `server.publicBaseUrl` 에 대한 경고가 표시 됩니다.</span>
@@ -425,20 +429,20 @@ $ systemctl start kibana
 <span style="color:#75715e"># logging off</span>
  <span style="color:#ae81ff">103</span> <span style="color:#75715e">#logging.silent: false</span>
  <span style="color:#ae81ff">104</span> logging.silent: true
-</code></pre></div><p><a href="https://www.elastic.co/guide/en/kibana/master/settings.html" target="_blank"><a href="http://www.elastic.co">www.elastic.co</a> kibana 설정 가이드</a></p>
-<br>
+</code></pre></div><p><!-- raw HTML omitted --><a href="http://www.elastic.co">www.elastic.co</a> kibana 설정 가이드<!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
 <h5 id="kibana-설정-yum">kibana 설정 (yum)</h5>
 <p>설정 파일 <code>/etc/kibana/kibana.yml</code></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">server.port: <span style="color:#ae81ff">5601</span>
 server.publicBaseUrl: <span style="color:#e6db74">&#34;http://localhost:5601&#34;</span>
 logging.silent: true
-</code></pre></div><p><a href="https://www.elastic.co/guide/en/kibana/7.16/rpm.html#rpm-layout" target="_blank">rpm-layout</a></p>
+</code></pre></div><p><!-- raw HTML omitted -->rpm-layout<!-- raw HTML omitted --></p>
 <ul>
 <li>설정: /etc/kibana</li>
 <li>로그: /var/log/kibana</li>
 <li>데이터: /var/lib/kibana</li>
 </ul>
-<br>
+<!-- raw HTML omitted -->
 <p>httpd 가상호스트 설정</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">&lt;VirtualHost *:80&gt;
   ServerName kibana
@@ -459,22 +463,26 @@ logging.silent: true
   ProxyPass / http://localhost:5601/        <span style="color:#75715e"># &#34;kibana.yml&#34; 파일 &#34;server.host&#34; 에 설정된 호스트로 할 것</span>
   ProxyPassReverse / http://localhost:5601/
 &lt;/VirtualHost&gt;
-</code></pre></div><br>
+</code></pre></div><!-- raw HTML omitted -->
+<p>kibana는 elasticsearch 와 connect 가 되지 않은 상태일 경우 <code>Kibana server is not ready yet</code> 메시지가 표시됩니다.</p>
+<pre><code>#/etc/kibana/kibana.yml
+#elasticsearch.hosts: [&quot;http://localhost:9200&quot;]
+elasticsearch.hosts: [&quot;http://localhost:8200&quot;]
+</code></pre><!-- raw HTML omitted -->
 <h5 id="logstash-설치">logstash 설치</h5>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ yum install logstash
 </code></pre></div><p>systemd</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ systemctl enable logstash
 $ systemctl start logstash
-</code></pre></div><br>
+</code></pre></div><!-- raw HTML omitted -->
 <h5 id="filebeat-설치">filebeat 설치</h5>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ yum list filebeat
 </code></pre></div><h5 id="filebeat-설정">filebeat 설정</h5>
 <p>filebeat 와 elasticsearch 의 관계를 설명하는 다이어그램입니다.</p>
 <p>filebeat의 주요 기능은 는 로그파일을 읽어들이고(<code>input</code>) elasticsearch 혹은 logstash 로 출력(<code>output</code>)하는 것입니다.</p>
-<img src="/images/system/20220126-ELK-basic.png" width="600">
-<p><a href="/images/system/20220126-ELK-basic.png" target="_blank">새 창 보기</a></p>
-<br>
-<br>
+<!-- raw HTML omitted -->
+<p><!-- raw HTML omitted -->새 창 보기<!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
 <p>filebeat 설정 파일<code>/etc/filebeat/filebeat.yml</code>에 기본 설정된 상태를 보면 <code>output.elasticsearch</code> 가 활성화 되어있고, <code>output.logstash</code>는  비활성화로 되어있습니다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#ae81ff">132</span> output.elasticsearch:
 <span style="color:#ae81ff">133</span>   <span style="color:#75715e"># Array of hosts to connect to.</span>
@@ -483,7 +491,7 @@ $ systemctl start logstash
 <span style="color:#ae81ff">145</span> <span style="color:#75715e">#output.logstash:</span>
 <span style="color:#ae81ff">146</span>   <span style="color:#75715e"># The Logstash hosts</span>
 <span style="color:#ae81ff">147</span>   <span style="color:#75715e">#hosts: [&#34;localhost:5044&#34;]</span>
-</code></pre></div><br>
+</code></pre></div><!-- raw HTML omitted -->
 <p>filebeat 를 yum 으로 설치했을 경우 systemd 에 추가할 수 있습니다.</p>
 <p>기본적인 운용 개념은 다음과 같습니다.</p>
 <ul>
@@ -495,7 +503,7 @@ $ systemctl start logstash
 <li>filebeat 서비스 재시작으로 모듈 설정된 내용 반영</li>
 </ul>
 <p>주요 내용은 설정을 변경하면 filebeat 서비스를 재시작해야 반영된다는 사항이 있습니다.</p>
-<br>
+<!-- raw HTML omitted -->
 <h5 id="filebeat-apache-module">filebeat) apache module</h5>
 <p>filebeat 가 읽어들일 로그파일이 잘 알려진 프로그램의 로그일 경우 modules 에 포함 되어있습니다.</p>
 <p>그 중 apache 모듈에 access_log 를 읽어들이도록 모듈을 설정하고 활성화하는 예시입니다.</p>
@@ -552,7 +560,7 @@ $ ls -al /etc/filebeat/modules.d/apache.yml
       fields:
         server_name: develop-httpd
         log_type: nexus_access
-    var.paths: <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;/outlog/WEB/httpd/nexus_ssl-access.log.2022-01-26&#34;</span><span style="color:#f92672">]</span>
+    var.paths: <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;/outlog/WEB/httpd/nexus_ssl-access.log.*&#34;</span><span style="color:#f92672">]</span>
 
   error:
     enabled: true
@@ -560,11 +568,481 @@ $ ls -al /etc/filebeat/modules.d/apache.yml
 </code></pre></div><p><code>filebeat modules enable apache</code> 명령으로 모듈을 활성화 상태로 설정합니다.</p>
 <p><code>systemctl restart filebeat</code> 명령으로 서비스를 재시작합니다.</p>
 <p>아래와 같이 kibana 에서 access_log 를 확인합니다.</p>
-<img src="/images/system/20220126-kibana_basic.png" width="600">
-<p><a href="/images/system/20220126-kibana_basic.png" target="_blank">새 창 보기</a></p>
-<br>
-<br>
+<!-- raw HTML omitted -->
+<p><!-- raw HTML omitted -->새 창 보기<!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<h5 id="logstash-설정">logstash 설정</h5>
+<p>실행파일<code>/usr/share/logstash/bin/logstash</code>이 PATH 에 추가하는 것을 권합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">export LOGSTASH_HOME<span style="color:#f92672">=</span>/usr/share/logstash
+export PATH<span style="color:#f92672">=</span>$PATH:/usr/local/go/bin:$LOGSTASH_HOME/bin
+</code></pre></div><p>logstash 가 동작하는 방식을 이해하기 위한 단계별 예시입니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># logstash daemon 을 실행합니다.</span>
+<span style="color:#75715e"># -e 파라미터에는 매우 단순한 표준 입출력을 정의했습니다.</span>
+<span style="color:#75715e"># daemon </span>
+$ logstash -e <span style="color:#e6db74">&#39;
+</span><span style="color:#e6db74">input {
+</span><span style="color:#e6db74">  stdin {}
+</span><span style="color:#e6db74">}
+</span><span style="color:#e6db74">output {
+</span><span style="color:#e6db74">  stdout {}
+</span><span style="color:#e6db74">}&#39;</span>
+</code></pre></div><!-- raw HTML omitted -->
+<p>별도의 터미널을 열고 logstash 9900 에 &ldquo;hello logstash&rdquo; 문자열을 nc(NetCat)명령어로 전송해봅니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ echo <span style="color:#e6db74">&#34;hello logstash&#34;</span> | nc localhost <span style="color:#ae81ff">9900</span>
+</code></pre></div><p>logstash 콘솔에서는 &ldquo;hello logstash&rdquo; 문자열을 stdout 으로 출력한 문자열을 볼 수 있습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#f92672">{</span>
+      <span style="color:#e6db74">&#34;@version&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;1&#34;</span>,
+          <span style="color:#e6db74">&#34;host&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;localhost&#34;</span>,
+          <span style="color:#e6db74">&#34;port&#34;</span> <span style="color:#f92672">=</span>&gt; 64924,
+       <span style="color:#e6db74">&#34;message&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;hello logstash&#34;</span>,
+    <span style="color:#e6db74">&#34;@timestamp&#34;</span> <span style="color:#f92672">=</span>&gt; 2022-01-26T16:20:17.308Z
+<span style="color:#f92672">}</span>
+</code></pre></div><p>exam_tpc.ls 라는 텍스트 파일을 생성하고 logstash daemon 을 실행합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ vi exam_tcp.ls
+input <span style="color:#f92672">{</span>
+  tcp <span style="color:#f92672">{</span>
+    port <span style="color:#f92672">=</span>&gt; <span style="color:#ae81ff">9900</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+output <span style="color:#f92672">{</span>
+  stdout <span style="color:#f92672">{}</span>
+<span style="color:#f92672">}</span>
+$ logstash -f exam_tcp.ls
+</code></pre></div><p>nc 명령으로 &ldquo;hello&rdquo; 문자열을 전송해봅니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ echo <span style="color:#e6db74">&#34;hello&#34;</span> | nc localhost <span style="color:#ae81ff">9900</span>
+<span style="color:#f92672">{</span>
+      <span style="color:#e6db74">&#34;@version&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;1&#34;</span>,
+          <span style="color:#e6db74">&#34;host&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;localhost&#34;</span>,
+          <span style="color:#e6db74">&#34;port&#34;</span> <span style="color:#f92672">=</span>&gt; 64924,
+       <span style="color:#e6db74">&#34;message&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;hello&#34;</span>,
+    <span style="color:#e6db74">&#34;@timestamp&#34;</span> <span style="color:#f92672">=</span>&gt; 2022-01-26T16:30:27.908Z
+<span style="color:#f92672">}</span>
+</code></pre></div><p><code>logstash -f filename</code> 형태로 실행했을 경우 <code>filename</code>에 변경이 있을 경우 자동으로 reload 하는 설정을 합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ vi /etc/logstash/logstash.yml
+<span style="color:#75715e"># config.reload.automatic: false</span>
+config.reload.automatic: true
+<span style="color:#75715e"># config.reload.interval: 3s</span>
+config.reload.interval: 1s
+</code></pre></div><p>설정이 안될 때에는 실행 시 옵션으로 할 수 있습니다.</p>
+<p><code>logstash -f filename --config.reload.automatic</code></p>
+<p>apache access 로그파일을 하나 준비합니다.</p>
+<p>(참고로 apache 로그파일의 레이아웃은 기본이어야 합니다.)</p>
+<p>로그파일의 1번째 행을 읽어들이고 9900 으로 전송하고 logstash 에서 처리한 로그를 확인합니다.</p>
+<p>&ldquo;message&rdquo; 필드에 보낸 문자열을 출력하고 있는 점을 확인하면 됩니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ cp /outlog/WEB/httpd/dwww-access.log.2022-01-09 weblog.txt
+$ head -n <span style="color:#ae81ff">1</span> weblog.txt  | nc localhost <span style="color:#ae81ff">9900</span>
+<span style="color:#f92672">{</span>
+          <span style="color:#e6db74">&#34;port&#34;</span> <span style="color:#f92672">=</span>&gt; 65366,
+      <span style="color:#e6db74">&#34;@version&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;1&#34;</span>,
+          <span style="color:#e6db74">&#34;host&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;localhost&#34;</span>,
+       <span style="color:#e6db74">&#34;message&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;218.39.220.90 - - [09/Jan/2022:17:52:49 +0900] \&#34;GET /resources/jquery.min.js HTTP/1.1\&#34; 503 299 \&#34;http://dwww/status.html\&#34; \&#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36\&#34;&#34;</span>,
+    <span style="color:#e6db74">&#34;@timestamp&#34;</span> <span style="color:#f92672">=</span>&gt; 2022-01-26T16:48:45.155Z
+<span style="color:#f92672">}</span>
+</code></pre></div><p>이번에는 exam_filter.ls 파일을 생성하고, filter 에 <code>grok</code>을 이용하여 &ldquo;message&rdquo; 필드를 parsing 해보겠습니다.</p>
+<p><code>grok</code> 에 대한 설명은 아래 링크로 대체합니다.</p>
+<p><a href="https://github.com/logstash-plugins/logstash-patterns-core/blob/main/patterns/ecs-v1/httpd">https://github.com/logstash-plugins/logstash-patterns-core/blob/main/patterns/ecs-v1/httpd</a></p>
+<p><code>grok-filter</code>에 의해 message 가 parsing 된 결과를 확인할 수 있습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ logstash -f exam_filter.ls
 
+$ vi exam_filter.ls
+input <span style="color:#f92672">{</span>
+  tcp <span style="color:#f92672">{</span>
+    port <span style="color:#f92672">=</span>&gt; <span style="color:#ae81ff">9900</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+filter <span style="color:#f92672">{</span>
+  grok <span style="color:#f92672">{</span>
+    match <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">{</span> <span style="color:#e6db74">&#34;message&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;%{COMBINEDAPACHELOG}&#34;</span> <span style="color:#f92672">}</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+output <span style="color:#f92672">{</span>
+  stdout <span style="color:#f92672">{}</span>
+<span style="color:#f92672">}</span>
+
+$ head -n <span style="color:#ae81ff">1</span> weblog.txt | nc localhost <span style="color:#ae81ff">9900</span>
+<span style="color:#f92672">{</span>
+    <span style="color:#e6db74">&#34;httpversion&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;1.1&#34;</span>,
+           <span style="color:#e6db74">&#34;host&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;localhost&#34;</span>,
+        <span style="color:#e6db74">&#34;message&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;218.39.220.90 - - [09/Jan/2022:17:52:49 +0900] \&#34;GET /resources/jquery.min.js HTTP/1.1\&#34; 503 299 \&#34;http://dwww/status.html\&#34; \&#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36\&#34;&#34;</span>,
+       <span style="color:#e6db74">&#34;referrer&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;\&#34;http://dwww/status.html\&#34;&#34;</span>,
+          <span style="color:#e6db74">&#34;agent&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;\&#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36\&#34;&#34;</span>,
+          <span style="color:#e6db74">&#34;ident&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;-&#34;</span>,
+       <span style="color:#e6db74">&#34;@version&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;1&#34;</span>,
+       <span style="color:#e6db74">&#34;clientip&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;218.39.220.90&#34;</span>,
+          <span style="color:#e6db74">&#34;bytes&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;299&#34;</span>,
+      <span style="color:#e6db74">&#34;timestamp&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;09/Jan/2022:17:52:49 +0900&#34;</span>,
+           <span style="color:#e6db74">&#34;auth&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;-&#34;</span>,
+     <span style="color:#e6db74">&#34;@timestamp&#34;</span> <span style="color:#f92672">=</span>&gt; 2022-01-26T16:59:54.543Z,
+       <span style="color:#e6db74">&#34;response&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;503&#34;</span>,
+           <span style="color:#e6db74">&#34;port&#34;</span> <span style="color:#f92672">=</span>&gt; 9122,
+           <span style="color:#e6db74">&#34;verb&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;GET&#34;</span>,
+        <span style="color:#e6db74">&#34;request&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;/resources/jquery.min.js&#34;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p><code>grok-filter</code>에서 parsing 되어 생성된 필드인 <code>&quot;clientip&quot;</code>를 <code>geoip-filter</code>가 처리할 수 있도록 설정하고 테스트 해봅니다.</p>
+<p><code>geoip-filter</code>는 <code>grok-filter</code> 다음에 정의해야 한다는 것을 이해해야 합니다.</p>
+<p>처리 결과에 geoip 라는 필드에 하위 세부 정보가 출력되는 것을 확인할 수 있습니다.</p>
+<p>geoip 에 대한 설명은 아래 링크로 대체 합니다.</p>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/8.0/geoip-processor.html#using-ingest-geoip">https://www.elastic.co/guide/en/elasticsearch/reference/8.0/geoip-processor.html#using-ingest-geoip</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># grok 에서 parsing 된 정보 중 clientip 필드를 geoip 필터에 전달한다는 의미</span>
+$ vi exam_filter.ls
+input <span style="color:#f92672">{</span>
+  tcp <span style="color:#f92672">{</span>
+    port <span style="color:#f92672">=</span>&gt; <span style="color:#ae81ff">9900</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+filter <span style="color:#f92672">{</span>
+  grok <span style="color:#f92672">{</span>
+    match <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">{</span> <span style="color:#e6db74">&#34;message&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;%{COMBINEDAPACHELOG}&#34;</span> <span style="color:#f92672">}</span>
+  <span style="color:#f92672">}</span>
+  geoip <span style="color:#f92672">{</span>
+    source <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;clientip&#34;</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+output <span style="color:#f92672">{</span>
+  stdout <span style="color:#f92672">{}</span>
+<span style="color:#f92672">}</span>
+
+$ head -n <span style="color:#ae81ff">1</span> weblog.txt | nc localhost <span style="color:#ae81ff">9900</span>
+<span style="color:#f92672">{</span>
+           <span style="color:#e6db74">&#34;auth&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;-&#34;</span>,
+     <span style="color:#e6db74">&#34;@timestamp&#34;</span> <span style="color:#f92672">=</span>&gt; 2022-01-26T17:08:31.046Z,
+       <span style="color:#e6db74">&#34;response&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;503&#34;</span>,
+        <span style="color:#e6db74">&#34;message&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;218.39.220.90 - - [09/Jan/2022:17:52:49 +0900] \&#34;GET /resources/jquery.min.js HTTP/1.1\&#34; 503 299 \&#34;http://dwww/status.html\&#34; \&#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36\&#34;&#34;</span>,
+           <span style="color:#e6db74">&#34;port&#34;</span> <span style="color:#f92672">=</span>&gt; 9306,
+          <span style="color:#e6db74">&#34;ident&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;-&#34;</span>,
+          <span style="color:#e6db74">&#34;agent&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;\&#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36\&#34;&#34;</span>,
+           <span style="color:#e6db74">&#34;host&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;localhost&#34;</span>,
+        <span style="color:#e6db74">&#34;request&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;/resources/jquery.min.js&#34;</span>,
+       <span style="color:#e6db74">&#34;@version&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;1&#34;</span>,
+           <span style="color:#e6db74">&#34;verb&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;GET&#34;</span>,
+          <span style="color:#e6db74">&#34;geoip&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">{</span>
+             <span style="color:#e6db74">&#34;longitude&#34;</span> <span style="color:#f92672">=</span>&gt; 126.9754,
+         <span style="color:#e6db74">&#34;country_code3&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;KR&#34;</span>,
+           <span style="color:#e6db74">&#34;region_code&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;11&#34;</span>,
+             <span style="color:#e6db74">&#34;city_name&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;Seoul&#34;</span>,
+          <span style="color:#e6db74">&#34;country_name&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;South Korea&#34;</span>,
+           <span style="color:#e6db74">&#34;region_name&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;Seoul&#34;</span>,
+              <span style="color:#e6db74">&#34;location&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">{</span>
+            <span style="color:#e6db74">&#34;lat&#34;</span> <span style="color:#f92672">=</span>&gt; 37.5794,
+            <span style="color:#e6db74">&#34;lon&#34;</span> <span style="color:#f92672">=</span>&gt; 126.9754
+        <span style="color:#f92672">}</span>,
+              <span style="color:#e6db74">&#34;latitude&#34;</span> <span style="color:#f92672">=</span>&gt; 37.5794,
+        <span style="color:#e6db74">&#34;continent_code&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;AS&#34;</span>,
+         <span style="color:#e6db74">&#34;country_code2&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;KR&#34;</span>,
+           <span style="color:#e6db74">&#34;postal_code&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;04524&#34;</span>,
+                    <span style="color:#e6db74">&#34;ip&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;218.39.220.90&#34;</span>,
+              <span style="color:#e6db74">&#34;timezone&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;Asia/Seoul&#34;</span>
+    <span style="color:#f92672">}</span>,
+      <span style="color:#e6db74">&#34;timestamp&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;09/Jan/2022:17:52:49 +0900&#34;</span>,
+          <span style="color:#e6db74">&#34;bytes&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;299&#34;</span>,
+       <span style="color:#e6db74">&#34;referrer&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;\&#34;http://dwww/status.html\&#34;&#34;</span>,
+    <span style="color:#e6db74">&#34;httpversion&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;1.1&#34;</span>,
+       <span style="color:#e6db74">&#34;clientip&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;218.39.220.90&#34;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>logstash 의 output 으로 나오는 항목들은 모두 문자열입니다.</p>
+<p>결과 필드를 정수(integer)형으로 변환하는 기능을 추가합니다.</p>
+<p>filter 에 <code>mutate</code> 를 보면 됩니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ vi exam_filter.ls
+input <span style="color:#f92672">{</span>
+  tcp <span style="color:#f92672">{</span>
+    port <span style="color:#f92672">=</span>&gt; <span style="color:#ae81ff">9900</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+filter <span style="color:#f92672">{</span>
+  grok <span style="color:#f92672">{</span>
+    match <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">{</span> <span style="color:#e6db74">&#34;message&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;%{COMBINEDAPACHELOG}&#34;</span> <span style="color:#f92672">}</span>
+  <span style="color:#f92672">}</span>
+  geoip <span style="color:#f92672">{</span>
+    source <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;clientip&#34;</span>
+  <span style="color:#f92672">}</span>
+  mutate <span style="color:#f92672">{</span>
+    convert <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">{</span>
+      <span style="color:#e6db74">&#34;bytes&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;integer&#34;</span>
+    <span style="color:#f92672">}</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+output <span style="color:#f92672">{</span>
+  stdout <span style="color:#f92672">{}</span>
+<span style="color:#f92672">}</span>
+
+
+$ head -n <span style="color:#ae81ff">1</span> weblog.txt | nc localhost <span style="color:#ae81ff">9900</span>
+<span style="color:#f92672">{</span>
+           <span style="color:#e6db74">&#34;auth&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;-&#34;</span>,
+           <span style="color:#e6db74">&#34;host&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;localhost&#34;</span>,
+       <span style="color:#e6db74">&#34;response&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;503&#34;</span>,
+           <span style="color:#e6db74">&#34;verb&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;GET&#34;</span>,
+        <span style="color:#e6db74">&#34;message&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;218.39.220.90 - - [09/Jan/2022:17:52:49 +0900] \&#34;GET /resources/jquery.min.js HTTP/1.1\&#34; 503 299 \&#34;http://dwww/status.html\&#34; \&#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36\&#34;&#34;</span>,
+           <span style="color:#e6db74">&#34;port&#34;</span> <span style="color:#f92672">=</span>&gt; 9540,
+          <span style="color:#e6db74">&#34;bytes&#34;</span> <span style="color:#f92672">=</span>&gt; 299,
+          <span style="color:#e6db74">&#34;geoip&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">{</span>
+        <span style="color:#e6db74">&#34;continent_code&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;AS&#34;</span>,
+           <span style="color:#e6db74">&#34;region_name&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;Seoul&#34;</span>,
+           <span style="color:#e6db74">&#34;postal_code&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;04524&#34;</span>,
+              <span style="color:#e6db74">&#34;timezone&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;Asia/Seoul&#34;</span>,
+         <span style="color:#e6db74">&#34;country_code3&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;KR&#34;</span>,
+          <span style="color:#e6db74">&#34;country_name&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;South Korea&#34;</span>,
+                    <span style="color:#e6db74">&#34;ip&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;218.39.220.90&#34;</span>,
+           <span style="color:#e6db74">&#34;region_code&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;11&#34;</span>,
+             <span style="color:#e6db74">&#34;city_name&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;Seoul&#34;</span>,
+              <span style="color:#e6db74">&#34;latitude&#34;</span> <span style="color:#f92672">=</span>&gt; 37.5794,
+         <span style="color:#e6db74">&#34;country_code2&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;KR&#34;</span>,
+             <span style="color:#e6db74">&#34;longitude&#34;</span> <span style="color:#f92672">=</span>&gt; 126.9754,
+              <span style="color:#e6db74">&#34;location&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">{</span>
+            <span style="color:#e6db74">&#34;lat&#34;</span> <span style="color:#f92672">=</span>&gt; 37.5794,
+            <span style="color:#e6db74">&#34;lon&#34;</span> <span style="color:#f92672">=</span>&gt; 126.9754
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>,
+          <span style="color:#e6db74">&#34;ident&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;-&#34;</span>,
+     <span style="color:#e6db74">&#34;@timestamp&#34;</span> <span style="color:#f92672">=</span>&gt; 2022-01-26T17:19:32.250Z,
+       <span style="color:#e6db74">&#34;@version&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;1&#34;</span>,
+      <span style="color:#e6db74">&#34;timestamp&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;09/Jan/2022:17:52:49 +0900&#34;</span>,
+          <span style="color:#e6db74">&#34;agent&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;\&#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36\&#34;&#34;</span>,
+        <span style="color:#e6db74">&#34;request&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;/resources/jquery.min.js&#34;</span>,
+       <span style="color:#e6db74">&#34;clientip&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;218.39.220.90&#34;</span>,
+       <span style="color:#e6db74">&#34;referrer&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;\&#34;http://dwww/status.html\&#34;&#34;</span>,
+    <span style="color:#e6db74">&#34;httpversion&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;1.1&#34;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p><code>useragent</code>라는 filter 가 있습니다.</p>
+<p>apache log 에 기본 포함되어있는 &ldquo;agent&rdquo; 필드를 parsing 하여 세분화합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ vi exam_filter.ls
+input <span style="color:#f92672">{</span>
+  tcp <span style="color:#f92672">{</span>
+    port <span style="color:#f92672">=</span>&gt; <span style="color:#ae81ff">9900</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+filter <span style="color:#f92672">{</span>
+  grok <span style="color:#f92672">{</span>
+    match <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">{</span> <span style="color:#e6db74">&#34;message&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;%{COMBINEDAPACHELOG}&#34;</span> <span style="color:#f92672">}</span>
+  <span style="color:#f92672">}</span>
+  geoip <span style="color:#f92672">{</span>
+    source <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;clientip&#34;</span>
+  <span style="color:#f92672">}</span>
+  mutate <span style="color:#f92672">{</span>
+    convert <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">{</span>
+      <span style="color:#e6db74">&#34;bytes&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;integer&#34;</span>
+    <span style="color:#f92672">}</span>
+  <span style="color:#f92672">}</span>
+  useragent <span style="color:#f92672">{</span>
+    source <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;agent&#34;</span>
+    target <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;useragent&#34;</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+output <span style="color:#f92672">{</span>
+  stdout <span style="color:#f92672">{}</span>
+<span style="color:#f92672">}</span>
+
+$ head -n <span style="color:#ae81ff">1</span> weblog.txt | nc localhost <span style="color:#ae81ff">9900</span>
+<span style="color:#f92672">{</span>
+        <span style="color:#e6db74">&#34;request&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;/resources/jquery.min.js&#34;</span>,
+          <span style="color:#e6db74">&#34;bytes&#34;</span> <span style="color:#f92672">=</span>&gt; 299,
+        <span style="color:#e6db74">&#34;message&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;218.39.220.90 - - [09/Jan/2022:17:52:49 +0900] \&#34;GET /resources/jquery.min.js HTTP/1.1\&#34; 503 299 \&#34;http://dwww/status.html\&#34; \&#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36\&#34;&#34;</span>,
+          <span style="color:#e6db74">&#34;ident&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;-&#34;</span>,
+    <span style="color:#e6db74">&#34;httpversion&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;1.1&#34;</span>,
+          <span style="color:#e6db74">&#34;geoip&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">{</span>
+           <span style="color:#e6db74">&#34;postal_code&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;04524&#34;</span>,
+             <span style="color:#e6db74">&#34;city_name&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;Seoul&#34;</span>,
+        <span style="color:#e6db74">&#34;continent_code&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;AS&#34;</span>,
+          <span style="color:#e6db74">&#34;country_name&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;South Korea&#34;</span>,
+           <span style="color:#e6db74">&#34;region_code&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;11&#34;</span>,
+              <span style="color:#e6db74">&#34;timezone&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;Asia/Seoul&#34;</span>,
+         <span style="color:#e6db74">&#34;country_code2&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;KR&#34;</span>,
+         <span style="color:#e6db74">&#34;country_code3&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;KR&#34;</span>,
+              <span style="color:#e6db74">&#34;location&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">{</span>
+            <span style="color:#e6db74">&#34;lat&#34;</span> <span style="color:#f92672">=</span>&gt; 37.5794,
+            <span style="color:#e6db74">&#34;lon&#34;</span> <span style="color:#f92672">=</span>&gt; 126.9754
+        <span style="color:#f92672">}</span>,
+           <span style="color:#e6db74">&#34;region_name&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;Seoul&#34;</span>,
+             <span style="color:#e6db74">&#34;longitude&#34;</span> <span style="color:#f92672">=</span>&gt; 126.9754,
+              <span style="color:#e6db74">&#34;latitude&#34;</span> <span style="color:#f92672">=</span>&gt; 37.5794,
+                    <span style="color:#e6db74">&#34;ip&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;218.39.220.90&#34;</span>
+    <span style="color:#f92672">}</span>,
+           <span style="color:#e6db74">&#34;auth&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;-&#34;</span>,
+       <span style="color:#e6db74">&#34;referrer&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;\&#34;http://dwww/status.html\&#34;&#34;</span>,
+       <span style="color:#e6db74">&#34;response&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;503&#34;</span>,
+      <span style="color:#e6db74">&#34;useragent&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">{</span>
+          <span style="color:#e6db74">&#34;os_major&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;10&#34;</span>,
+        <span style="color:#e6db74">&#34;os_version&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;10&#34;</span>,
+           <span style="color:#e6db74">&#34;os_full&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;Windows 10&#34;</span>,
+             <span style="color:#e6db74">&#34;minor&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;0&#34;</span>,
+                <span style="color:#e6db74">&#34;os&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;Windows&#34;</span>,
+              <span style="color:#e6db74">&#34;name&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;Chrome&#34;</span>,
+             <span style="color:#e6db74">&#34;patch&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;4692&#34;</span>,
+             <span style="color:#e6db74">&#34;major&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;97&#34;</span>,
+           <span style="color:#e6db74">&#34;version&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;97.0.4692.71&#34;</span>,
+           <span style="color:#e6db74">&#34;os_name&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;Windows&#34;</span>,
+            <span style="color:#e6db74">&#34;device&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;Other&#34;</span>
+    <span style="color:#f92672">}</span>,
+           <span style="color:#e6db74">&#34;verb&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;GET&#34;</span>,
+     <span style="color:#e6db74">&#34;@timestamp&#34;</span> <span style="color:#f92672">=</span>&gt; 2022-01-26T17:23:55.151Z,
+      <span style="color:#e6db74">&#34;timestamp&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;09/Jan/2022:17:52:49 +0900&#34;</span>,
+           <span style="color:#e6db74">&#34;host&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;localhost&#34;</span>,
+          <span style="color:#e6db74">&#34;agent&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;\&#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36\&#34;&#34;</span>,
+       <span style="color:#e6db74">&#34;@version&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;1&#34;</span>,
+           <span style="color:#e6db74">&#34;port&#34;</span> <span style="color:#f92672">=</span>&gt; 9638,
+       <span style="color:#e6db74">&#34;clientip&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;218.39.220.90&#34;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p><code>date</code> filter 입니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ vi exam_filter.ls
+input <span style="color:#f92672">{</span>
+  tcp <span style="color:#f92672">{</span>
+    port <span style="color:#f92672">=</span>&gt; <span style="color:#ae81ff">9900</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+filter <span style="color:#f92672">{</span>
+  grok <span style="color:#f92672">{</span>
+    match <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">{</span> <span style="color:#e6db74">&#34;message&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;%{COMBINEDAPACHELOG}&#34;</span> <span style="color:#f92672">}</span>
+  <span style="color:#f92672">}</span>
+  geoip <span style="color:#f92672">{</span>
+    source <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;clientip&#34;</span>
+  <span style="color:#f92672">}</span>
+  mutate <span style="color:#f92672">{</span>
+    convert <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">{</span>
+      <span style="color:#e6db74">&#34;bytes&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;integer&#34;</span>
+    <span style="color:#f92672">}</span>
+  <span style="color:#f92672">}</span>
+  useragent <span style="color:#f92672">{</span>
+    source <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;agent&#34;</span>
+    target <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;useragent&#34;</span>
+  <span style="color:#f92672">}</span>
+  date <span style="color:#f92672">{</span>
+    match <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;timestamp&#34;</span>, <span style="color:#e6db74">&#34;dd/MMM/yyyy:HH:mm:ss Z&#34;</span><span style="color:#f92672">]</span>
+    target <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;logdate&#34;</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+output <span style="color:#f92672">{</span>
+  stdout <span style="color:#f92672">{}</span>
+<span style="color:#f92672">}</span>
+
+$ head -n <span style="color:#ae81ff">1</span> weblog.txt | nc localhost <span style="color:#ae81ff">9900</span>
+<span style="color:#f92672">{</span>
+           <span style="color:#e6db74">&#34;port&#34;</span> <span style="color:#f92672">=</span>&gt; 9818,
+        <span style="color:#e6db74">&#34;message&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;218.39.220.90 - - [09/Jan/2022:17:52:49 +0900] \&#34;GET /resources/jquery.min.js HTTP/1.1\&#34; 503 299 \&#34;http://dwww/status.html\&#34; \&#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36\&#34;&#34;</span>,
+       <span style="color:#e6db74">&#34;clientip&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;218.39.220.90&#34;</span>,
+          <span style="color:#e6db74">&#34;ident&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;-&#34;</span>,
+       <span style="color:#e6db74">&#34;referrer&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;\&#34;http://dwww/status.html\&#34;&#34;</span>,
+          <span style="color:#e6db74">&#34;agent&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;\&#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36\&#34;&#34;</span>,
+     <span style="color:#e6db74">&#34;@timestamp&#34;</span> <span style="color:#f92672">=</span>&gt; 2022-01-26T17:31:50.864Z,
+        <span style="color:#e6db74">&#34;request&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;/resources/jquery.min.js&#34;</span>,
+      <span style="color:#e6db74">&#34;useragent&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">{</span>
+           <span style="color:#e6db74">&#34;os_name&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;Windows&#34;</span>,
+           <span style="color:#e6db74">&#34;os_full&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;Windows 10&#34;</span>,
+             <span style="color:#e6db74">&#34;patch&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;4692&#34;</span>,
+              <span style="color:#e6db74">&#34;name&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;Chrome&#34;</span>,
+        <span style="color:#e6db74">&#34;os_version&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;10&#34;</span>,
+            <span style="color:#e6db74">&#34;device&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;Other&#34;</span>,
+           <span style="color:#e6db74">&#34;version&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;97.0.4692.71&#34;</span>,
+             <span style="color:#e6db74">&#34;minor&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;0&#34;</span>,
+                <span style="color:#e6db74">&#34;os&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;Windows&#34;</span>,
+          <span style="color:#e6db74">&#34;os_major&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;10&#34;</span>,
+             <span style="color:#e6db74">&#34;major&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;97&#34;</span>
+    <span style="color:#f92672">}</span>,
+      <span style="color:#e6db74">&#34;timestamp&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;09/Jan/2022:17:52:49 +0900&#34;</span>,
+           <span style="color:#e6db74">&#34;host&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;localhost&#34;</span>,
+       <span style="color:#e6db74">&#34;@version&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;1&#34;</span>,
+           <span style="color:#e6db74">&#34;verb&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;GET&#34;</span>,
+          <span style="color:#e6db74">&#34;bytes&#34;</span> <span style="color:#f92672">=</span>&gt; 299,
+          <span style="color:#e6db74">&#34;geoip&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">{</span>
+             <span style="color:#e6db74">&#34;longitude&#34;</span> <span style="color:#f92672">=</span>&gt; 126.9754,
+                    <span style="color:#e6db74">&#34;ip&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;218.39.220.90&#34;</span>,
+          <span style="color:#e6db74">&#34;country_name&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;South Korea&#34;</span>,
+        <span style="color:#e6db74">&#34;continent_code&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;AS&#34;</span>,
+           <span style="color:#e6db74">&#34;postal_code&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;04524&#34;</span>,
+              <span style="color:#e6db74">&#34;location&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">{</span>
+            <span style="color:#e6db74">&#34;lat&#34;</span> <span style="color:#f92672">=</span>&gt; 37.5794,
+            <span style="color:#e6db74">&#34;lon&#34;</span> <span style="color:#f92672">=</span>&gt; 126.9754
+        <span style="color:#f92672">}</span>,
+         <span style="color:#e6db74">&#34;country_code2&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;KR&#34;</span>,
+           <span style="color:#e6db74">&#34;region_code&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;11&#34;</span>,
+              <span style="color:#e6db74">&#34;latitude&#34;</span> <span style="color:#f92672">=</span>&gt; 37.5794,
+              <span style="color:#e6db74">&#34;timezone&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;Asia/Seoul&#34;</span>,
+           <span style="color:#e6db74">&#34;region_name&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;Seoul&#34;</span>,
+         <span style="color:#e6db74">&#34;country_code3&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;KR&#34;</span>,
+             <span style="color:#e6db74">&#34;city_name&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;Seoul&#34;</span>
+    <span style="color:#f92672">}</span>,
+           <span style="color:#e6db74">&#34;auth&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;-&#34;</span>,
+       <span style="color:#e6db74">&#34;response&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;503&#34;</span>,
+        <span style="color:#e6db74">&#34;logdate&#34;</span> <span style="color:#f92672">=</span>&gt; 2022-01-09T08:52:49.000Z,
+    <span style="color:#e6db74">&#34;httpversion&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;1.1&#34;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><!-- raw HTML omitted -->
+<p>지금까지는 apache 로그의 첫번째 행을 읽어들이고 nc 명령으로 전송했었습니다.</p>
+<p>이제는 nc 명령으로 전송하지 않고 filebeat 가 로그파일을 모두 읽고 logstash 로 전송하는 예시를 보겠습니다.</p>
+<p>logstash 의 output 설정은 stdout 으로 출력과 elasticsearch 로 출력하도록 설정을 했습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ vi /etc/filebeat/filebeat.yml
+<span style="color:#75715e">#- type: filestream</span>
+- type: log
+  enabled: true
+    - /root/test/weblog.txt
+<span style="color:#75715e">#output.elasticsearch:</span>
+  <span style="color:#75715e">#hosts: [&#34;localhost:9200&#34;]</span>
+output.logstash:
+  hosts: <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;localhost:5044&#34;</span><span style="color:#f92672">]</span>
+$
+<span style="color:#75715e"># index =&gt; &#34;mgkim-apache-log-%{+yyyy.MM.dd}&#34;</span>
+<span style="color:#75715e"># @timestamp 의 값으로 %{+yyyy.MM.dd} 포맷의 index가 일자별로 생성됨</span>
+$ vi exam_filter.ls
+input <span style="color:#f92672">{</span>
+  <span style="color:#75715e">#tcp {</span>
+  <span style="color:#75715e">#  port =&gt; 9900</span>
+  <span style="color:#75715e">#}</span>
+  beats <span style="color:#f92672">{</span>
+    port <span style="color:#f92672">=</span>&gt; <span style="color:#ae81ff">5044</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+filter <span style="color:#f92672">{</span>
+  mutate <span style="color:#f92672">{</span>
+    remove_field <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;agent&#34;</span><span style="color:#f92672">]</span>
+  <span style="color:#f92672">}</span>
+  grok <span style="color:#f92672">{</span>
+    match <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">{</span> <span style="color:#e6db74">&#34;message&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;%{COMBINEDAPACHELOG}&#34;</span> <span style="color:#f92672">}</span>
+  <span style="color:#f92672">}</span>
+  geoip <span style="color:#f92672">{</span>
+    source <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;clientip&#34;</span>
+  <span style="color:#f92672">}</span>
+  mutate <span style="color:#f92672">{</span>
+    convert <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">{</span>
+      <span style="color:#e6db74">&#34;bytes&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;integer&#34;</span>
+    <span style="color:#f92672">}</span>
+  <span style="color:#f92672">}</span>
+  useragent <span style="color:#f92672">{</span>
+    source <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;agent&#34;</span>
+    target <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;useragent&#34;</span>
+  <span style="color:#f92672">}</span>
+  date <span style="color:#f92672">{</span>
+    match <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;timestamp&#34;</span>, <span style="color:#e6db74">&#34;dd/MMM/yyyy:HH:mm:ss Z&#34;</span><span style="color:#f92672">]</span>
+  <span style="color:#f92672">}</span>
+  mutate <span style="color:#f92672">{</span>
+    remove_field <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;timestamp&#34;</span>, <span style="color:#e6db74">&#34;host&#34;</span>, <span style="color:#e6db74">&#34;@version&#34;</span>, <span style="color:#e6db74">&#34;agent&#34;</span><span style="color:#f92672">]</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+output <span style="color:#f92672">{</span>
+  stdout <span style="color:#f92672">{</span>
+    codec <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;dots&#34;</span>
+  <span style="color:#f92672">}</span>
+  elasticsearch <span style="color:#f92672">{</span>
+    index <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;mgkim-apache-log-%{+yyyy.MM.dd}&#34;</span>
+    hosts <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;centos8:9200&#34;</span><span style="color:#f92672">]</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+$ logstash -f exam_filter.ls --config.reload.automatic
+$ systemctl stop filebeat
+<span style="color:#75715e"># filebeat 가 한 번 읽어들인 정보는 data 디렉토리 /var/lib/filebeat/ 에 보관되어있습니다.</span>
+<span style="color:#75715e"># 이 디렉토리의 모든 정보를 삭제하면 다시 읽어들입니다.</span>
+$ rm -rf /var/lib/filebeat/*
+$ systemctl start filebeat
+
+</code></pre></div><p>losstash 에서 elasticsearch 로 출력한 내용은 kibana 에서 확인합니다.</p>
+<p>kibana는 elasticsearch 의 클라이언트 tool 이라고 생각하면 됩니다.</p>
+<p><!-- raw HTML omitted -->(비유를 해보면 oracle-dbms 는 elasticsearch 이고, sqldeveloper 는 kibana 입니다.)<!-- raw HTML omitted --></p>
+<p>kibana 에서는 <code>Management</code> &gt; <code>Dev Tools</code> 메뉴로 이동하여 아래 코드를 통해 실행할 수 있습니다.</p>
+<pre><code>get _cat/indices
+get mgkim-apache-log-2022.01.09/_search
+get mgkim-apache-log-2022.01.09/_count
+
+</code></pre>
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
@@ -635,6 +1113,9 @@ window.markmap = {
 
 <script src="/js/main.min.c1b8f3c373b85f900699a7ea81c2038ebbbebcac1a5a4b6e5ef96c24c31790d6.js" integrity="sha256-wbjzw3O4X5AGmafqgcIDjru&#43;vKwaWktuXvlsJMMXkNY=" crossorigin="anonymous"></script>
 
+
+
+<script src='/js/prism.js'></script>
 
 
 

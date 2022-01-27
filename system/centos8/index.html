@@ -43,7 +43,7 @@ apache:web
 automatically …">
 <meta property="og:title" content="centos8" />
 <meta property="og:description" content="1. 서비스 1.1 port systemd: /etc/systemd/system/*.service
-   service port user running execute connect     httpd 80 apache:web automatically httpd.service -   cockpit 8000 root:root automatically cockpit.socket https://centos8/   nexus 8100 nexus:ci automatically nexus.service http://nexus/   jenkins 8400 jenkins:ci automatically jenkins.service http://jenkins/   oracle(dbms) - oracle:oinstall automatically ora12c@dbms.service -   oracle(lsnrctl) 1521 oracle:oinstall automatically ora12c@lsnrctl.service -   svn 3690 root:root manually start-svn." />
+   service port user running execute connect     httpd 80 apache:web automatically httpd.service -   cockpit 8000 root:root automatically cockpit.socket https://centos8/   nexus 8100 nexus:ci automatically nexus.service https://nexus/   elasticsearch 8200 elasticsearch:- automatically elasticsearch.service -   kibana 8300 kibana:- automatically kibana.service http://kibana/   jenkins 8400 jenkins:ci automatically jenkins.service http://jenkins/   oracle(dbms) - oracle:oinstall automatically ora12c@dbms." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/system/centos8/" /><meta property="article:section" content="system" />
 
@@ -51,13 +51,13 @@ automatically …">
 
 <meta itemprop="name" content="centos8">
 <meta itemprop="description" content="1. 서비스 1.1 port systemd: /etc/systemd/system/*.service
-   service port user running execute connect     httpd 80 apache:web automatically httpd.service -   cockpit 8000 root:root automatically cockpit.socket https://centos8/   nexus 8100 nexus:ci automatically nexus.service http://nexus/   jenkins 8400 jenkins:ci automatically jenkins.service http://jenkins/   oracle(dbms) - oracle:oinstall automatically ora12c@dbms.service -   oracle(lsnrctl) 1521 oracle:oinstall automatically ora12c@lsnrctl.service -   svn 3690 root:root manually start-svn.">
+   service port user running execute connect     httpd 80 apache:web automatically httpd.service -   cockpit 8000 root:root automatically cockpit.socket https://centos8/   nexus 8100 nexus:ci automatically nexus.service https://nexus/   elasticsearch 8200 elasticsearch:- automatically elasticsearch.service -   kibana 8300 kibana:- automatically kibana.service http://kibana/   jenkins 8400 jenkins:ci automatically jenkins.service http://jenkins/   oracle(dbms) - oracle:oinstall automatically ora12c@dbms.">
 
-<meta itemprop="wordCount" content="104">
+<meta itemprop="wordCount" content="132">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="centos8"/>
 <meta name="twitter:description" content="1. 서비스 1.1 port systemd: /etc/systemd/system/*.service
-   service port user running execute connect     httpd 80 apache:web automatically httpd.service -   cockpit 8000 root:root automatically cockpit.socket https://centos8/   nexus 8100 nexus:ci automatically nexus.service http://nexus/   jenkins 8400 jenkins:ci automatically jenkins.service http://jenkins/   oracle(dbms) - oracle:oinstall automatically ora12c@dbms.service -   oracle(lsnrctl) 1521 oracle:oinstall automatically ora12c@lsnrctl.service -   svn 3690 root:root manually start-svn."/>
+   service port user running execute connect     httpd 80 apache:web automatically httpd.service -   cockpit 8000 root:root automatically cockpit.socket https://centos8/   nexus 8100 nexus:ci automatically nexus.service https://nexus/   elasticsearch 8200 elasticsearch:- automatically elasticsearch.service -   kibana 8300 kibana:- automatically kibana.service http://kibana/   jenkins 8400 jenkins:ci automatically jenkins.service http://jenkins/   oracle(dbms) - oracle:oinstall automatically ora12c@dbms."/>
 
 
 
@@ -76,6 +76,9 @@ automatically …">
   integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
   crossorigin="anonymous"></script>
 
+
+
+<link rel="stylesheet" href="/css/prism.css"/>
 
 
 
@@ -148,7 +151,7 @@ automatically …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.32f692caf1b5e850cee0feb7b950dad2.json"
+  data-offline-search-index-json-src="/offline-search-index.08cf7cffcb59f761e22a08bcfff40ee5.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -175,7 +178,7 @@ automatically …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.32f692caf1b5e850cee0feb7b950dad2.json"
+  data-offline-search-index-json-src="/offline-search-index.08cf7cffcb59f761e22a08bcfff40ee5.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -359,7 +362,23 @@ automatically …">
 <td>nexus:ci</td>
 <td>automatically</td>
 <td>nexus.service</td>
-<td>http://nexus/</td>
+<td>https://nexus/</td>
+</tr>
+<tr>
+<td>elasticsearch</td>
+<td>8200</td>
+<td>elasticsearch:-</td>
+<td>automatically</td>
+<td>elasticsearch.service</td>
+<td>-</td>
+</tr>
+<tr>
+<td>kibana</td>
+<td>8300</td>
+<td>kibana:-</td>
+<td>automatically</td>
+<td>kibana.service</td>
+<td>http://kibana/</td>
 </tr>
 <tr>
 <td>jenkins</td>
@@ -395,7 +414,7 @@ automatically …">
 </tr>
 </tbody>
 </table>
-<br>
+<!-- raw HTML omitted -->
 <h4 id="12-주요-파일">1.2 주요 파일</h4>
 <table>
 <thead>
@@ -409,22 +428,32 @@ automatically …">
 <tr>
 <td>httpd</td>
 <td>/etc/httpd/conf.d/*.conf</td>
-<td><a href="/files/system/20220106-httpd-conf.zip">다운로드</a></td>
+<td><!-- raw HTML omitted -->다운로드<!-- raw HTML omitted --></td>
 </tr>
 <tr>
 <td>cockpit</td>
 <td>/etc/systemd/system/sockets.target.wants/cockpit.socket</td>
-<td><a href="/files/system/20220106-cockpit.socket.txt" target="_blank">새 창 보기</a></td>
+<td><!-- raw HTML omitted -->새 창 보기<!-- raw HTML omitted --></td>
 </tr>
 <tr>
 <td>nexus</td>
 <td>/prod/nexus/nexus-3.28.1-01/*</td>
-<td><a href="/files/system/20210106-nexus-conf-list.txt" target="_blank">새 창 보기</a></td>
+<td><!-- raw HTML omitted -->새 창 보기<!-- raw HTML omitted --></td>
+</tr>
+<tr>
+<td>elasticsearch</td>
+<td>/etc/elasticsearch/elasticsearch.yml</td>
+<td><!-- raw HTML omitted -->새 창 보기<!-- raw HTML omitted --></td>
+</tr>
+<tr>
+<td>kibana</td>
+<td>/etc/kibana/kibana.yml</td>
+<td><!-- raw HTML omitted -->새 창 보기<!-- raw HTML omitted --></td>
 </tr>
 <tr>
 <td>jenkins</td>
 <td>/prod/jenkins/jenkins.sh</td>
-<td><a href="/files/system/20220106-jenkins.sh.txt" target="_blank">새 창 보기</a></td>
+<td><!-- raw HTML omitted -->새 창 보기<!-- raw HTML omitted --></td>
 </tr>
 <tr>
 <td>oracle(dbms)</td>
@@ -439,12 +468,16 @@ automatically …">
 <tr>
 <td>svn</td>
 <td>/root/bin/start-svn.sh</td>
-<td><a href="/files/system/20220106-start-svn.sh.txt" target="_blank">새 창 보기</a></td>
+<td><!-- raw HTML omitted -->새 창 보기<!-- raw HTML omitted --></td>
+</tr>
+<tr>
+<td>maven</td>
+<td>/prod/maven/maven-3.6.3/conf/settings.xml</td>
+<td><!-- raw HTML omitted -->새 창 보기<!-- raw HTML omitted --></td>
 </tr>
 </tbody>
 </table>
-<br>
-<br>
+<!-- raw HTML omitted -->
 <h3 id="2-패키지">2. 패키지</h3>
 <table>
 <thead>
@@ -462,10 +495,13 @@ automatically …">
 <tr>
 <td>xmlstarlet</td>
 </tr>
+<tr>
+<td>cloud-utils-growpart</td>
+</tr>
 </tbody>
 </table>
 <p>전체 목록(yum): <code>yum list installed</code></p>
-<p><a href="/files/system/yum-list-installed_20220106.txt" target="_blank">새 창 보기</a></p>
+<p><!-- raw HTML omitted -->새 창 보기<!-- raw HTML omitted --></p>
 
 	
 	
@@ -537,6 +573,9 @@ window.markmap = {
 
 <script src="/js/main.min.c1b8f3c373b85f900699a7ea81c2038ebbbebcac1a5a4b6e5ef96c24c31790d6.js" integrity="sha256-wbjzw3O4X5AGmafqgcIDjru&#43;vKwaWktuXvlsJMMXkNY=" crossorigin="anonymous"></script>
 
+
+
+<script src='/js/prism.js'></script>
 
 
 

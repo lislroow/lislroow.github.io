@@ -57,6 +57,9 @@ sda …">
 
 
 
+<link rel="stylesheet" href="/css/prism.css"/>
+
+
 
 
 
@@ -127,7 +130,7 @@ sda …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.32f692caf1b5e850cee0feb7b950dad2.json"
+  data-offline-search-index-json-src="/offline-search-index.08cf7cffcb59f761e22a08bcfff40ee5.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -154,7 +157,7 @@ sda …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.32f692caf1b5e850cee0feb7b950dad2.json"
+  data-offline-search-index-json-src="/offline-search-index.08cf7cffcb59f761e22a08bcfff40ee5.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -338,9 +341,8 @@ sr0                  11:0    <span style="color:#ae81ff">1</span> 1024M  <span s
 $
 </code></pre></div><p>guest-os 를 shutdown 하고, vmware 에서 디스크 capacity 를 확장합니다.</p>
 <p>(디스크 sda 를 80G 확장합니다.)</p>
-<img src="/images/system/20220126-vmware_expand-disk-capacity.png" width="600">
-<br>
-<br>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <p>guest-os 를 startup 하고 lsblk 로 확장된 크기를 확인합니다.</p>
 <p>(디스크 sda 가 80G 로 확장된 것을 확인할 수 있습니다.)</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ lsblk
@@ -602,23 +604,23 @@ $ lvdisplay
   Block device           253:1
    
 $
-</code></pre></div><br>
+</code></pre></div><!-- raw HTML omitted -->
 <h4 id="jenkins-role-based-authorization-strategy-플러그인">(jenkins) Role-based Authorization Strategy 플러그인</h4>
 <p>플러그인 설치 후 <code>Jenkins 관리</code> &gt; <code>Configure Global Security</code> 메뉴로 이동합니다.</p>
 <p><code>Authorization</code> 영역에 <code>Role-Based Strategy</code> 를 체크합니다.</p>
-<p><a href="/images/system/20220117-jenkins_role-based-authorization-strategy_plugin.png" target="_blank">새 창 보기</a></p>
+<p><!-- raw HTML omitted -->새 창 보기<!-- raw HTML omitted --></p>
 <p><code>Jenkins 관리</code> &gt; <code>Manage and Assign Roles</code> 에서 세부 설정을 합니다.</p>
-<p><a href="/images/system/20220117-jenkins_role-based-authorization-strategy_config.png" target="_blank">새 창 보기</a></p>
-<br>
+<p><!-- raw HTML omitted -->새 창 보기<!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
 <h4 id="jenkins-ansicolor-플러그인">(jenkins) AnsiColor 플러그인</h4>
 <p>플러그인 설치 후 개별 job 의 <code>구성</code>에서 <code>빌드 환경</code>에 <code>Color ANSI Console Output</code> 을 선택하면 됩니다.</p>
 <p>플러그인 설명은 <code>Adds ANSI coloring to the Console Output</code> 입니다.</p>
-<p><a href="/images/system/20220117-jenkins_ansicolor_plugin.png" target="_blank">새 창 보기</a></p>
-<br>
+<p><!-- raw HTML omitted -->새 창 보기<!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
 <h4 id="ansible">(ansible)</h4>
 <p>[TODO] 내용 확인 후 세부 작성</p>
-<p><code>ansible</code> 설치 로그 <a href="/files/system/20220117-install-ansible_log.txt" target="_blank">새 창 보기</a></p>
-<br>
+<p><code>ansible</code> 설치 로그 <!-- raw HTML omitted -->새 창 보기<!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
 <h4 id="nexus-cleanup--compact-blob">(nexus) cleanup / compact blob</h4>
 <p>nexus 저장소에 오래된 snapshot 이 많아져서 공간이 부족해지면 아래 2가지 작업을 등록합니다.</p>
 <p>cleanup policy 및 cleanup task 만 등록할 경우 실제 blob 파일은 삭제되지 않기에 <code>compact blob task</code> 까지 등록해야 합니다.</p>
@@ -626,15 +628,15 @@ $
 <ul>
 <li>
 <p><code>Repository</code> &gt; <code>Cleanup Policies</code> 메뉴에서 정책 등록</p>
-<p>cleanup policy 등록: <a href="/images/system/20220114-nexus-cleanup-policy.png" target="_blank">새 창 보기</a></p>
+<p>cleanup policy 등록: <!-- raw HTML omitted -->새 창 보기<!-- raw HTML omitted --></p>
 </li>
 <li>
 <p><code>System</code> &gt; <code>Task</code> 메뉴에서 작업 등록</p>
-<p>cleanup task 등록: <a href="/images/system/20220114-nexus-cleanup-task.png" target="_blank">새 창 보기</a></p>
-<p>compact blob task 등록: <a href="/images/system/20220114-nexus-compact-blob-task.png" target="_blank">새 창 보기</a></p>
+<p>cleanup task 등록: <!-- raw HTML omitted -->새 창 보기<!-- raw HTML omitted --></p>
+<p>compact blob task 등록: <!-- raw HTML omitted -->새 창 보기<!-- raw HTML omitted --></p>
 </li>
 </ul>
-<br>
+<!-- raw HTML omitted -->
 <h4 id="shell-script-arguments-iterator">(shell) script arguments iterator</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">argc<span style="color:#f92672">=</span>$#
 argv<span style="color:#f92672">=(</span><span style="color:#e6db74">&#34;</span>$@<span style="color:#e6db74">&#34;</span><span style="color:#f92672">)</span>
@@ -655,7 +657,7 @@ argv<span style="color:#f92672">[</span>0<span style="color:#f92672">]=</span>a
 argv<span style="color:#f92672">[</span>1<span style="color:#f92672">]=</span>b
 argv<span style="color:#f92672">[</span>2<span style="color:#f92672">]=</span>c d
 argv<span style="color:#f92672">[</span>3<span style="color:#f92672">]=</span><span style="color:#ae81ff">3</span>
-</code></pre></div><br>
+</code></pre></div><!-- raw HTML omitted -->
 <h4 id="shell-script-정보">(shell) script 정보</h4>
 <p>bash 에서 script 파일을 실행할 때 기본 정보를 출력했습니다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#!/bin/bash
@@ -679,7 +681,7 @@ $ /z/project/pilot/service/service-www/a.sh <span style="color:#ae81ff">1</span>
 <span style="color:#75715e"># path to me ---------------&gt;  /z/project/pilot/service/service-www/a.sh</span>
 <span style="color:#75715e"># parent path --------------&gt;  /z/project/pilot/service/service-www</span>
 <span style="color:#75715e"># my name ------------------&gt;  a.sh</span>
-</code></pre></div><br>
+</code></pre></div><!-- raw HTML omitted -->
 <h4 id="libxml2-xmllint">(libxml2) xmllint</h4>
 <p>xmllint 를 이용하여 nexus 의 maven-metadata.xml 을 파싱하는 예시입니다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ XML_URL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://nexus/repository/maven-snapshot/mgkim/framework/framework-online/maven-metadata.xml&#34;</span>
@@ -742,12 +744,12 @@ libxml2-2.9.7-9.el8_4.2.x86_64 : Library providing XML and HTML support
 리포지토리      : baseos
 일치하는 항목 :
 파일 이름 : /usr/bin/xmllint
-</code></pre></div><br>
+</code></pre></div><!-- raw HTML omitted -->
 <h4 id="vim-vimrc">(vim) .vimrc</h4>
 <p><code>vi ~/.vimrc</code> 로 아래 기본 설정을 등록합니다.</p>
 <p>.vimrc 에는 # 주석이 오류를 일으키니 설정 시 제거해야 합니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ vi ~/.vimrc
-if has(&#34;syntax&#34;)
+<pre><code>$ vi ~/.vimrc
+if has(&quot;syntax&quot;)
   syntax on
 endif
 
@@ -770,19 +772,19 @@ set showmatch
 
 # 줄번호와 행번호 표시
 set ruler
-</code></pre></div><br>
+</code></pre><!-- raw HTML omitted -->
 <h4 id="self-signed-cert-git-bash-등록">(self-signed-cert) git-bash 등록</h4>
 <p>git-bash 에서 curl 을 사용할 때 ssl 인증 문제가 발생할 경우입니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ curl https://nexus/repository/maven-release/mgkim/service/service-www/maven-metadata.xml
+<pre><code>$ curl https://nexus/repository/maven-release/mgkim/service/service-www/maven-metadata.xml
 curl: (60) SSL certificate problem: self signed certificate
 More details here: https://curl.se/docs/sslcerts.html
 
 curl failed to verify the legitimacy of the server and therefore could not
 establish a secure connection to it. To learn more about this situation and
 how to fix it, please visit the web page mentioned above.
-</code></pre></div><p>해당 사이트(<code>https://nexus/</code>)의 crt 파일을 저장하고 git-bash 에서 관리하는 ca-bundle.crt 의 끝부분에 내용을 추가합니다.</p>
+</code></pre><p>해당 사이트(<code>https://nexus/</code>)의 crt 파일을 저장하고 git-bash 에서 관리하는 ca-bundle.crt 의 끝부분에 내용을 추가합니다.</p>
 <p>파일 경로: <code>C:\Program Files\Git\mingw64\ssl\certs\ca-bundle.crt</code></p>
-<br>
+<!-- raw HTML omitted -->
 <h4 id="self-signed-cert-java-등록">(self-signed-cert) java 등록</h4>
 <p>로컬 설치된 java 에 인증서 파일(*.crt) 등록을 하기 위해서는 $JAVA_HOME/bin/keytool 를 사용해야 합니다.</p>
 <p>ca 에 등록되지 않은 인증서로 https 통신을 하는 경우에는 ssl-handshake 과정에서 오류가 발생하므로</p>
@@ -806,9 +808,9 @@ hello, 2020. 5. 8, trustedCertEntry,
 <span style="color:#75715e"># 인증서 삭제</span>
 $ keytool -delete -alias <span style="color:#e6db74">&#34;hello&#34;</span> -keystore $CACERTS
 </code></pre></div><p>nexus 를 https 로 서비스 중인 상태에서 java에 인증서를 등록하지 않았을 경우 아래와 같은 오류가 발생합니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Transfer failed for http://nexus/repository/maven-snapshot/mgkim/service/service-www/2.0-SNAPSHOT/maven-metadata.xml: 
+<pre><code>Transfer failed for http://nexus/repository/maven-snapshot/mgkim/service/service-www/2.0-SNAPSHOT/maven-metadata.xml: 
 PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target -&gt; [Help 1]
-</code></pre></div><p>jenkins 에서 빌드 시 오류가 발생하여 java 에 인증서를 추가합니다.</p>
+</code></pre><p>jenkins 에서 빌드 시 오류가 발생하여 java 에 인증서를 추가합니다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ CACERTS<span style="color:#f92672">=</span>$JAVA_HOME/lib/security/cacerts
 $ keytool -importcert -keystore $CACERTS -file /z/nexus.crt -alias <span style="color:#e6db74">&#39;nexus&#39;</span>
 
@@ -848,21 +850,21 @@ SubjectAlternativeName <span style="color:#f92672">[</span>
 이 인증서를 신뢰합니까? <span style="color:#f92672">[</span>아니오<span style="color:#f92672">]</span>:  y
 인증서가 키 저장소에 추가되었습니다.
 $ 
-</code></pre></div><br>
+</code></pre></div><!-- raw HTML omitted -->
 <h4 id="self-signed-cert-centos-등록">(self-signed-cert) centos 등록</h4>
 <ul>
 <li><code>/etc/pki/ca-trust/source/anchors/</code> 경로에 crt 파일을 복사</li>
 <li><code>update-ca-trust extract</code> 실행으로 신뢰할 수 있는 인증서를 추가</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ cp /etc/httpd/conf.d/certs/nexus.crt /etc/pki/ca-trust/source/anchors/
+<pre><code>$ cp /etc/httpd/conf.d/certs/nexus.crt /etc/pki/ca-trust/source/anchors/
 $ update-ca-trust extract
-</code></pre></div><br>
+</code></pre><!-- raw HTML omitted -->
 <p><code>update-ca-trust</code> 명령으로 등록이 안될 경우 직접 추가하는 방법입니다.</p>
 <p><code>/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem</code> 파일에 crt 파일의 내용을 직접 추가합니다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ chmod u+w /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem
 $ cat nexus.crt &gt;&gt; /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem
 $ chmod u-w /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem
-</code></pre></div><br>
+</code></pre></div><!-- raw HTML omitted -->
 <h4 id="shell-script-파일-디렉토리">(shell) script 파일 디렉토리</h4>
 <p><code>/project/script/build.sh</code> 파일이 실행될 때 현재 디렉토리<code>/project/script/</code>를 확인하는 방법입니다.</p>
 <p>maven 프로젝트의 build.sh 파일이 pom.xml 과 같은 디렉토리가 아닐 경우 활용할 수 있습니다.</p>
@@ -875,10 +877,10 @@ $ echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</s
 $ DIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span> cd <span style="color:#66d9ef">$(</span> dirname <span style="color:#e6db74">&#34;</span>$0<span style="color:#e6db74">&#34;</span> <span style="color:#66d9ef">)</span>/.. <span style="color:#f92672">&amp;&amp;</span> pwd -P <span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
 $ echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>DIR<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
 /home
-</code></pre></div><br>
+</code></pre></div><!-- raw HTML omitted -->
 <h4 id="shell-process-및-port-체크">(shell) process 및 port 체크</h4>
-<img src="/images/system/20220110-shell-process-port-check.png" width="800">
-<p><a href="/images/system/20220110-shell-process-port-check.png" target="_blank">새 창 보기</a></p>
+<!-- raw HTML omitted -->
+<p><!-- raw HTML omitted -->새 창 보기<!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">APP_HOME<span style="color:#f92672">=</span>/app/WAS/pilot
 APP_NAME<span style="color:#f92672">=</span>service-www
 
@@ -934,13 +936,13 @@ $ find . -maxdepth <span style="color:#ae81ff">1</span> -type f ! -newer a.txt -
 <span style="color:#75715e"># -samefile 혹은 -name 해도됨</span>
 $ find . -maxdepth <span style="color:#ae81ff">1</span> -type f ! -newer a.txt -name <span style="color:#e6db74">&#39;*.txt&#39;</span> ! -samefile a.txt
 ./old.txt
-</code></pre></div><br>
+</code></pre></div><!-- raw HTML omitted -->
 <h4 id="shell-curl">(shell) curl</h4>
 <p>curl 로 http_code 를 받아오는 예시 입니다.</p>
 <p>이 예시는 was 가 정상 기동되었는지 확인하는데 활용할 수 있습니다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ curl --write-out <span style="color:#e6db74">&#34;%{http_code}&#34;</span> --silent --output /dev/null <span style="color:#e6db74">&#34;http://localhost:7100/&#34;</span>
 <span style="color:#ae81ff">200</span> <span style="color:#75715e"># 서버가 기동되지 않은 상태이면 즉시 응답이 오며, http_code 는 000 가 반환됩니다.</span>
-</code></pre></div><br>
+</code></pre></div><!-- raw HTML omitted -->
 <h4 id="shell-파일명-문자열">(shell) 파일명 문자열</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 파일명에서 확장자 분리</span>
 $ FILE_NAME<span style="color:#f92672">=</span>service-www-2.0-SNAPSHOT.jar
@@ -953,7 +955,7 @@ jar
 $ FILE_PATH<span style="color:#f92672">=</span>/app/WAS/pilot/service-www-2.0-SNAPSHOT.jar
 $ echo <span style="color:#e6db74">${</span>FILE_PATH##*/<span style="color:#e6db74">}</span>
 service-www-2.0-SNAPSHOT.jar
-</code></pre></div><br>
+</code></pre></div><!-- raw HTML omitted -->
 <h4 id="shell-while-문">(shell) while 문</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">PS_CMD<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ps -ef | grep -v grep | egrep </span><span style="color:#e6db74">${</span>INST_ID<span style="color:#e6db74">}</span><span style="color:#e6db74">.*\\.jar | awk &#39;{ print \$2 }&#39;&#34;</span>
 _PID<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>eval <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>PS_CMD<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">)</span>
@@ -970,7 +972,7 @@ kill -15 $_PID
   <span style="color:#66d9ef">fi</span>
   i<span style="color:#f92672">=</span><span style="color:#66d9ef">$((</span> $i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">))</span>
 <span style="color:#66d9ef">done</span>
-</code></pre></div><br>
+</code></pre></div><!-- raw HTML omitted -->
 <h4 id="shell-for-문">(shell) for 문</h4>
 <p>배열을 생성하고 for 문으로 출력하는 예시 입니다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">SVR_LIST<span style="color:#f92672">=(</span>
@@ -986,7 +988,7 @@ idx<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
   idx<span style="color:#f92672">=</span><span style="color:#66d9ef">$((</span> $idx <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">))</span>
   echo <span style="color:#e6db74">&#34;[</span><span style="color:#e6db74">${</span>idx<span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">${</span>total<span style="color:#e6db74">}</span><span style="color:#e6db74">]SVR=</span><span style="color:#e6db74">${</span>SVR<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
 <span style="color:#66d9ef">done</span>
-</code></pre></div><br>
+</code></pre></div><!-- raw HTML omitted -->
 <h4 id="shell-case-문">(shell) case 문</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#66d9ef">case</span> $var in
   a*<span style="color:#f92672">)</span> <span style="color:#75715e"># a로 시작하는 문자열일 경우</span>
@@ -996,11 +998,11 @@ idx<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
   a<span style="color:#f92672">[</span>bc<span style="color:#f92672">])</span> <span style="color:#75715e"># ab 혹은 ac 일 경우</span>
     ;;
 <span style="color:#66d9ef">esac</span>
-</code></pre></div><br>
+</code></pre></div><!-- raw HTML omitted -->
 <h4 id="tomcat-startstop">(tomcat) start/stop</h4>
 <p>jamwiki 라는 webapp 을 서비스하는 tomcat 설정 기본입니다.</p>
 <p>아래 sh 파일을 포함하여 tomcat 설정에 필요한 파일들만 tgz 로 압축했습니다.</p>
-<p><a href="/files/system/20220105-jamwiki.zip" target="_blank">다운로드</a></p>
+<p><!-- raw HTML omitted -->다운로드<!-- raw HTML omitted --></p>
 <p><code>start.sh</code> 파일</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#!/bin/sh
 </span><span style="color:#75715e"></span>
@@ -1054,7 +1056,7 @@ _PID<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>eval
 <span style="color:#66d9ef">fi</span>
 
 exit <span style="color:#ae81ff">0</span>
-</code></pre></div><br>
+</code></pre></div><!-- raw HTML omitted -->
 <p><code>start-jamwiki.sh</code> 파일</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#!/bin/sh
 </span><span style="color:#75715e"></span>
@@ -1066,7 +1068,7 @@ export INST_ID<span style="color:#f92672">=</span>jamwiki
 /prod/<span style="color:#e6db74">${</span>INST_ID<span style="color:#e6db74">}</span>/bin/start.sh
 
 exit <span style="color:#ae81ff">0</span>
-</code></pre></div><br>
+</code></pre></div><!-- raw HTML omitted -->
 <p><code>stop.sh</code> 파일</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#!/bin/sh
 </span><span style="color:#75715e"></span>
@@ -1099,7 +1101,7 @@ sleep <span style="color:#ae81ff">2</span>
 echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>INST_ID<span style="color:#e6db74">}</span><span style="color:#e6db74"> is stopped. pid: </span><span style="color:#e6db74">${</span>_PID<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
 
 exit <span style="color:#ae81ff">0</span>
-</code></pre></div><br>
+</code></pre></div><!-- raw HTML omitted -->
 <p><code>stop-jamwiki.sh</code> 파일</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#!/bin/sh
 </span><span style="color:#75715e"></span>
@@ -1109,7 +1111,7 @@ export INST_ID<span style="color:#f92672">=</span>jamwiki
 /prod/<span style="color:#e6db74">${</span>INST_ID<span style="color:#e6db74">}</span>/bin/stop.sh
 
 exit <span style="color:#ae81ff">0</span>
-</code></pre></div><br>
+</code></pre></div><!-- raw HTML omitted -->
 <p><code>status-jamwiki.sh</code> 파일</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#!/bin/sh
 </span><span style="color:#75715e"></span>
@@ -1118,16 +1120,16 @@ ps -ef | grep -v grep | grep -v <span style="color:#e6db74">&#39;.sh&#39;</span>
 echo <span style="color:#e6db74">&#34;&#34;</span>
 
 exit <span style="color:#ae81ff">0</span>
-</code></pre></div><br>
+</code></pre></div><!-- raw HTML omitted -->
 <h4 id="cockpit">(cockpit)</h4>
 <p>cockpit 은 centos 의 web console 을 제공하는 패키지 입니다.</p>
 <p>설치</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ dnf install cockpit
+<pre><code>$ dnf install cockpit
 $ systemctl enable --now cockpit.socket
 $ netstat -ntplu | grep 9090
-</code></pre></div><p>cockpit 에 ssl 인증서 교체하기</p>
-<p>참고: <a href="/files/system/create-cert.sh" target="_blank">create-cert.sh</a></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># create-cert.sh 로 인증서를 생성합니다.
+</code></pre><p>cockpit 에 ssl 인증서 교체하기</p>
+<p>참고: <!-- raw HTML omitted -->create-cert.sh<!-- raw HTML omitted --></p>
+<pre><code># create-cert.sh 로 인증서를 생성합니다.
 # 인자는 web console 에 접근할 도메인으로 생성하면 됩니다.
 # 예시는 centos8 이라는 도메인으로 생성합니다.
 $ ./create-cert.sh centos8
@@ -1148,7 +1150,7 @@ generated combined certificate file: /etc/cockpit/ws-certs.d/centos8.cert
 $ remotectl certificate
 certificate: /etc/cockpit/ws-certs.d/centos8.crt
 $ systemctl restart cockpit
-</code></pre></div><br>
+</code></pre><!-- raw HTML omitted -->
 <p>centos8 인증서 등록하기</p>
 <p><code>https://centos8:9090/</code> 링크로 이동하면 신뢰할 수 없는 사이트라고 표시됩니다.</p>
 <p>인증서를 내보내기 한 다음 아래 절차대로 인증서를 등록합니다.</p>
@@ -1163,11 +1165,11 @@ $ systemctl restart cockpit
 <li>chrome 에서 <code>https://centos8:9090/</code> 링크로 이동하여 정상 작동하는지를 확인합니다.</li>
 </ul>
 <p>정상 예시</p>
-<p><a href="/images/system/20220102-centos-web_console-cockpit.png" target="_blank">새 창 보기</a></p>
-<br>
+<p><!-- raw HTML omitted -->새 창 보기<!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
 <p>listen-port 변경하기</p>
 <p><code>/etc/systemd/system/sockets.target.wants/cockpit.socket</code> 파일을 아래와 같이 편집합니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[Unit]
+<pre><code>[Unit]
 Description=Cockpit Web Service Socket
 Documentation=man:cockpit-ws(8)
 Wants=cockpit-motd.service
@@ -1175,13 +1177,13 @@ Wants=cockpit-motd.service
 [Socket]
 #ListenStream=9090 # 기본값
 ListenStream=8000  # 변경값
-ExecStartPost=-/usr/share/cockpit/motd/update-motd &#39;&#39; localhost
+ExecStartPost=-/usr/share/cockpit/motd/update-motd '' localhost
 ExecStartPost=-/bin/ln -snf active.motd /run/cockpit/motd
 ExecStopPost=-/bin/ln -snf inactive.motd /run/cockpit/motd
 
 [Install]
 WantedBy=sockets.target
-</code></pre></div><p>편집 후 아래 명령어를 실행합니다.</p>
+</code></pre><p>편집 후 아래 명령어를 실행합니다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ systemctl disable --now cockpit.socket
 $ systemctl enable --now cockpit.socket
 $ systemctl restart cockpit.socket
@@ -1191,7 +1193,7 @@ $ netstat -ntplu | grep <span style="color:#ae81ff">8000</span>
 <p>설치</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ yum install mosh
 </code></pre></div><p>상태</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># 접속 후 netstat 상태 보기
+<pre><code># 접속 후 netstat 상태 보기
 $ mosh root@172.28.200.30
 $ netstat -ntplu | grep 3253
 udp        0      0 172.28.200.30:60001     0.0.0.0:*                           3253/mosh-server    
@@ -1199,34 +1201,34 @@ $ netstat -ntplu | grep 3217
 udp        0      0 0.0.0.0:19001           0.0.0.0:*                           3217/mosh-client    
 
 # 접속 옵션
-$ mosh -ssh=&#39;ssh -vvv&#39; root@172.28.200.30
-</code></pre></div><p>chrome 확장 프로그램 <code>Secure Shell</code></p>
-<p><a href="https://chrome.google.com/webstore/detail/secure-shell/iodihamcpbpeioajjeobimgagajmlibd/related?hl=ko" target="_blank">링크</a></p>
-<br>
+$ mosh -ssh='ssh -vvv' root@172.28.200.30
+</code></pre><p>chrome 확장 프로그램 <code>Secure Shell</code></p>
+<p><!-- raw HTML omitted -->링크<!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
 <h4 id="xmlstarlet">(xmlstarlet)</h4>
 <p>설치</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ dnf install epel-release
 $ yum install xmlstarlet
 </code></pre></div><p>사용법</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">xmlstarlet sel -N x<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://maven.apache.org/POM/4.0.0&#34;</span> -t -v <span style="color:#e6db74">&#34;x:project/x:version&#34;</span> ./pom.xml
-</code></pre></div><br>
+</code></pre></div><!-- raw HTML omitted -->
 <h4 id="oracle-12c-설치">(oracle) 12c 설치</h4>
 <p>oracle 12c ee 버전 설치</p>
 <p>pluggable database 설정, MAX_STRING_SIZE 설정, character-set 설정, oracle 계정 설정</p>
-<p><a href="/system/oracle12c" target="_blank">새 창 보기</a></p>
-<br>
+<p><!-- raw HTML omitted -->새 창 보기<!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
 <h4 id="yum-설치된-목록-확인">(yum) 설치된 목록 확인</h4>
 <p><code>yum list installed</code></p>
-<br>
+<!-- raw HTML omitted -->
 <h4 id="firewall-disabled">(firewall) disabled</h4>
 <p>추가된 목록: /etc/firewalld/zones/public.xml</p>
 <p>서비스명: <code>firewalld</code></p>
-<br>
+<!-- raw HTML omitted -->
 <h4 id="selinux-disabled">(selinux) disabled</h4>
 <p>파일: /etc/selinux/config</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">SELINUX<span style="color:#f92672">=</span>disabled
 </code></pre></div><p>적용: <code>shutdown -r now</code></p>
-<br>
+<!-- raw HTML omitted -->
 <h4 id="network-ip-설정">(network) ip 설정</h4>
 <p>파일: /etc/sysconfig/network-scripts/ifcfg-ens33</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">BOOTPROTO<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;none&#34;</span>
@@ -1236,7 +1238,7 @@ PREFIX<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;24&#3
 GATEWAY<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;172.28.200.2&#34;</span>
 DNS1<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;8.8.8.8&#34;</span>
 </code></pre></div><p>적용: <code>systemctl restart NetworkManager</code></p>
-<br>
+<!-- raw HTML omitted -->
 <h4 id="openssl-key-생성-cmd">(openssl) key 생성 cmd</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 암호화하지 않은 개인키</span>
 $ openssl genrsa -out private_key.pem <span style="color:#ae81ff">2048</span>
@@ -1250,15 +1252,15 @@ $ openssl rsa -des3 -in private_key.pem -out enc_private_key.pem
 
 <span style="color:#75715e"># 기존 개인키에 패스워드 제거</span>
 $ openssl rsa -in enc_private_key.pem -out private_key.pem
-</code></pre></div><br>
+</code></pre></div><!-- raw HTML omitted -->
 <h4 id="sed-문자열-치환">(sed) 문자열 치환</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sed -i -e <span style="color:#e6db74">&#39;s/hello/world/g&#39;</span> test.txt
-</code></pre></div><br>
+</code></pre></div><!-- raw HTML omitted -->
 <h4 id="tar-분할-압축">(tar) 분할 압축</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># split</span>
 $ tar cvfz - target | split -b 3072m - target.tgz
 $ cat target.tgz.* | tar zxvf -
-</code></pre></div><br>
+</code></pre></div><!-- raw HTML omitted -->
 <h4 id="tar-exclude-설정">(tar) exclude 설정</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># exclude</span>
 $ cat .tarexclude
@@ -1271,15 +1273,15 @@ bin
 .tarexclude
 backup.sh
 $ tar cvfz ../target.tgz * -X .tarexclude
-</code></pre></div><br>
+</code></pre></div><!-- raw HTML omitted -->
 <h4 id="httpd-설정">(httpd) 설정</h4>
 <p>httpd.conf, vhost 설정, ssl 적용에 대한 예시</p>
-<p><a href="/system/httpd" target="_blank">새 창 보기</a></p>
-<br>
+<p><!-- raw HTML omitted -->새 창 보기<!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
 <h4 id="jenkins-설정">(jenkins) 설정</h4>
 <p>플러그인 <code>Publish Over SSH</code>, <code>GitLab Plugin</code>, <code>GitHub Integration Plugin</code>에 대한 사용법</p>
-<p><a href="/system/jenkins" target="_blank">새 창 보기</a></p>
-<br>
+<p><!-- raw HTML omitted -->새 창 보기<!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
 
         <div class="section-index">
     
@@ -1362,6 +1364,9 @@ window.markmap = {
 
 <script src="/js/main.min.c1b8f3c373b85f900699a7ea81c2038ebbbebcac1a5a4b6e5ef96c24c31790d6.js" integrity="sha256-wbjzw3O4X5AGmafqgcIDjru&#43;vKwaWktuXvlsJMMXkNY=" crossorigin="anonymous"></script>
 
+
+
+<script src='/js/prism.js'></script>
 
 
 
