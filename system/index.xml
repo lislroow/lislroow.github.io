@@ -532,7 +532,7 @@ $ head -n &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; weblog.txt  |
 &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;이번에는 exam_filter.ls 파일을 생성하고, filter 에 &lt;code&gt;grok&lt;/code&gt;을 이용하여 &amp;ldquo;message&amp;rdquo; 필드를 parsing 해보겠습니다.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;grok&lt;/code&gt; 에 대한 설명은 아래 링크로 대체합니다.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/logstash-plugins/logstash-patterns-core/blob/main/patterns/ecs-v1/httpd&#34;&gt;https://github.com/logstash-plugins/logstash-patterns-core/blob/main/patterns/ecs-v1/httpd&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;새 창 보기&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;grok-filter&lt;/code&gt;에 의해 message 가 parsing 된 결과를 확인할 수 있습니다.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;$ logstash -f exam_filter.ls
 
@@ -575,7 +575,7 @@ $ head -n &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; weblog.txt | 
 &lt;p&gt;&lt;code&gt;geoip-filter&lt;/code&gt;는 &lt;code&gt;grok-filter&lt;/code&gt; 다음에 정의해야 한다는 것을 이해해야 합니다.&lt;/p&gt;
 &lt;p&gt;처리 결과에 geoip 라는 필드에 하위 세부 정보가 출력되는 것을 확인할 수 있습니다.&lt;/p&gt;
 &lt;p&gt;geoip 에 대한 설명은 아래 링크로 대체 합니다.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.elastic.co/guide/en/elasticsearch/reference/8.0/geoip-processor.html#using-ingest-geoip&#34;&gt;https://www.elastic.co/guide/en/elasticsearch/reference/8.0/geoip-processor.html#using-ingest-geoip&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;새 창 보기&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# grok 에서 parsing 된 정보 중 clientip 필드를 geoip 필터에 전달한다는 의미&lt;/span&gt;
 $ vi exam_filter.ls
 input &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
