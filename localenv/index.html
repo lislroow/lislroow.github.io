@@ -22,8 +22,10 @@
 
 
   
-  <meta name="description" content="(docsy) Code highlighting with Prism
-설정파일config.toml의 prism_syntax_highlighting = true 항목을 추가하면 prismjs.com 에서 배포하는 js/css 로 theme 를 적용할 수 있습니다. …">
+  <meta name="description" content="(java) keytool 인증서 생성
+java 에 포함되어 있는 keytool 명령으로 아래 절차로 인증서를 생성합니다.
+생성된 인증서는 spring-boot 어플리케이션 설정파일인 application.yaml 주요 설정값을 암복호화를 할 때 사용하려 합니다.
+# …">
 <meta property="og:title" content="localenv" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -126,7 +128,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.710214e10f8a08242c7f298876a08aa5.json"
+  data-offline-search-index-json-src="/offline-search-index.9108037f01fa74764d27918328ce969d.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -153,7 +155,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.710214e10f8a08242c7f298876a08aa5.json"
+  data-offline-search-index-json-src="/offline-search-index.9108037f01fa74764d27918328ce969d.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -202,6 +204,7 @@
       <ul>
         <li>
           <ul>
+            <li><a href="#java-keytool-인증서-생성">(java) keytool 인증서 생성</a></li>
             <li><a href="#docsy-code-highlighting-with-prism">(docsy) Code highlighting with Prism</a></li>
             <li><a href="#maven-패스워드-암호화">(maven) 패스워드 암호화</a></li>
             <li><a href="#windows-vbs-msgbox-사용하기">(windows) vbs MsgBox 사용하기</a></li>
@@ -331,7 +334,66 @@
 		
 		
 	</header>
-	<h4 id="docsy-code-highlighting-with-prism">(docsy) Code highlighting with Prism</h4>
+	<h4 id="java-keytool-인증서-생성">(java) keytool 인증서 생성</h4>
+<p>java 에 포함되어 있는 <code>keytool</code> 명령으로 아래 절차로 인증서를 생성합니다.</p>
+<p>생성된 인증서는 spring-boot 어플리케이션 설정파일인 <code>application.yaml</code> 주요 설정값을 암복호화를 할 때 사용하려 합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># keytool 경로 확인</span>
+$ which keytool
+/z/develop/java/openjdk-11.0.13.8-temurin/bin/keytool
+
+<span style="color:#75715e"># private-key 파일 생성 (mgkim-pc.jks)</span>
+$ keytool -genkeypair -alias mgkim-pc -keyalg RSA -dname <span style="color:#e6db74">&#34;CN=mgkim, OU=API Development, O=mgkim.net, L=Seoul, C=KR&#34;</span> -keypass <span style="color:#e6db74">&#34;votmdnjem&#34;</span> -keystore mgkim-pc.jks -storepass <span style="color:#e6db74">&#34;votmdnjem&#34;</span>
+$ ls -al mgkim-pc.*
+-rw-r--r-- <span style="color:#ae81ff">1</span> Administrator <span style="color:#ae81ff">197121</span> <span style="color:#ae81ff">2733</span> 2022-01-27 21:56 mgkim-pc.jks
+
+<span style="color:#75715e"># 인증서 파일 생성 (mgkim-pc.cer)</span>
+$ keytool -export -alias mgkim-pc -keystore mgkim-pc.jks -rfc -file mgkim-pc.cer
+키 저장소 비밀번호 입력:  votmdnjem
+인증서가 &lt;mgkim-pc.cer&gt; 파일에 저장되었습니다.
+$ ls -al mgkim-pc.*
+-rw-r--r-- <span style="color:#ae81ff">1</span> Administrator <span style="color:#ae81ff">197121</span> <span style="color:#ae81ff">1236</span> 2022-01-27 21:58 mgkim-pc.cer
+-rw-r--r-- <span style="color:#ae81ff">1</span> Administrator <span style="color:#ae81ff">197121</span> <span style="color:#ae81ff">2733</span> 2022-01-27 21:56 mgkim-pc.jks
+
+<span style="color:#75715e"># public-key 파일 생성 (mgkim-pc.jks.pub)</span>
+$ keytool -import -alias mgkim-pc -file mgkim-pc.cer -keystore mgkim-pc.jks.pub
+키 저장소 비밀번호 입력:  votmdnjem
+새 비밀번호 다시 입력: votmdnjem
+소유자: CN<span style="color:#f92672">=</span>mgkim, OU<span style="color:#f92672">=</span>API Development, O<span style="color:#f92672">=</span>mgkim.net, L<span style="color:#f92672">=</span>Seoul, C<span style="color:#f92672">=</span>KR
+발행자: CN<span style="color:#f92672">=</span>mgkim, OU<span style="color:#f92672">=</span>API Development, O<span style="color:#f92672">=</span>mgkim.net, L<span style="color:#f92672">=</span>Seoul, C<span style="color:#f92672">=</span>KR
+일련 번호: 59e8ce89
+적합한 시작 날짜: Thu Jan <span style="color:#ae81ff">27</span> 21:56:38 KST <span style="color:#ae81ff">2022</span> 종료 날짜: Wed Apr <span style="color:#ae81ff">27</span> 21:56:38 KST <span style="color:#ae81ff">2022</span>
+인증서 지문:
+         SHA1: 1D:5F:AF:4A:BE:13:E8:2C:3A:17:3D:DF:D4:0B:32:31:8C:FA:F2:88
+         SHA256: CC:89:1A:2A:E0:2E:6D:E5:82:12:57:B7:95:30:C8:09:F5:4D:46:13:C1:06:D1:3B:FB:A1:68:72:24:5E:18:A3
+서명 알고리즘 이름: SHA256withRSA
+주체 공용 키 알고리즘: 2048비트 RSA 키
+버전: <span style="color:#ae81ff">3</span>
+
+확장:
+
+<span style="color:#75715e">#1: ObjectId: 2.5.29.14 Criticality=false</span>
+SubjectKeyIdentifier <span style="color:#f92672">[</span>
+KeyIdentifier <span style="color:#f92672">[</span>
+0000: <span style="color:#ae81ff">89</span> <span style="color:#ae81ff">34</span> C5 D9 <span style="color:#ae81ff">38</span> <span style="color:#ae81ff">29</span> <span style="color:#ae81ff">88</span> <span style="color:#ae81ff">26</span>   <span style="color:#ae81ff">43</span> 6B DF B8 <span style="color:#ae81ff">34</span> E7 AE <span style="color:#ae81ff">74</span>  .4..8<span style="color:#f92672">)</span>.&amp;Ck..4..t
+0010: FD <span style="color:#ae81ff">35</span> 0B 8F                                        .5..
+<span style="color:#f92672">]</span>
+<span style="color:#f92672">]</span>
+
+이 인증서를 신뢰합니까? <span style="color:#f92672">[</span>아니오<span style="color:#f92672">]</span>:  y
+인증서가 키 저장소에 추가되었습니다.
+
+$ ls -al mgkim-pc.*
+-rw-r--r-- <span style="color:#ae81ff">1</span> Administrator <span style="color:#ae81ff">197121</span> <span style="color:#ae81ff">1236</span> 2022-01-27 21:58 mgkim-pc.cer
+-rw-r--r-- <span style="color:#ae81ff">1</span> Administrator <span style="color:#ae81ff">197121</span> <span style="color:#ae81ff">2733</span> 2022-01-27 21:56 mgkim-pc.jks
+-rw-r--r-- <span style="color:#ae81ff">1</span> Administrator <span style="color:#ae81ff">197121</span> <span style="color:#ae81ff">1239</span> 2022-01-27 22:00 mgkim-pc.jks.pub
+$ 
+</code></pre></div><ul>
+<li>mgkim-pc.jks: private-key 파일</li>
+<li>mgkim-pc.cer: 인증서 파일</li>
+<li>mgkim-pc.jks.pub: public-key 파일</li>
+</ul>
+<br>
+<h4 id="docsy-code-highlighting-with-prism">(docsy) Code highlighting with Prism</h4>
 <p>설정파일<code>config.toml</code>의 <code>prism_syntax_highlighting = true</code> 항목을 추가하면 prismjs.com 에서 배포하는 js/css 로 theme 를 적용할 수 있습니다.</p>
 <ul>
 <li><code>config.toml</code>의 <code>prism_syntax_highlighting = true</code> 항목을 추가</li>
