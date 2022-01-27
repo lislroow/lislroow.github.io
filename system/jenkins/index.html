@@ -31,19 +31,19 @@ export PATH=$JAVA_HOME/bin:$PATH
 
 JAVA_OPTS= …">
 <meta property="og:title" content="jenkins" />
-<meta property="og:description" content="installation start 스크립트 #!/bin/sh  #JAVA_HOME=/prod/java/jdk1.8.0_202 JAVA_HOME=/prod/java/openjdk-11.0.2 export PATH=$JAVA_HOME/bin:$PATH JAVA_OPTS=&#34;${JAVA_OPTS}-Dapp.id=jenkins&#34; JAVA_OPTS=&#34;${JAVA_OPTS}-Dcom.sun.akuma.Daemon=daemonized&#34; JAVA_OPTS=&#34;${JAVA_OPTS}-Djava.awt.headless=true&#34; JAVA_OPTS=&#34;${JAVA_OPTS}-DJENKINS_HOME=/data/PROD/jenkins&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--logfile=/outlog/PROD/jenkins/default.log&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--webroot=/prod/jenkins/jenkins/cache-war&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--daemon&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--httpPort=8400&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--debug=5&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--handlerCountMax=100&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--handlerCountMaxIdle=20&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--accessLoggerClassName=winstone.accesslog.SimpleAccessLogger&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--simpleAccessLogger.format=combined&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--simpleAccessLogger.file=/outlog/PROD/jenkins/access.log&#34; #JENKINS_ARGS=&#34;${JENKINS_ARGS} --httpsCertificate=/etc/pki/tls/mgkim/jenkins.crt&#34; #JENKINS_ARGS=&#34;${JENKINS_ARGS} --httpsPrivateKey=/etc/pki/tls/mgkim/jenkins.key&#34; case &#34;$1&#34; in start) echo &#34;starting jenkins&#34; nohup $JAVA_HOME/bin/java $JAVA_OPTS -jar /prod/jenkins/jenkins/jenkins.war $JENKINS_ARGS &gt; /dev/null 2&gt;&amp;1 &amp; ;; stop) echo &#34;stopping jenkins&#34; ps -ef | grep java | grep -v grep | grep jenkins | awk &#39;{ print $2 }&#39; | xargs kill -9 ;; *) echo &#34;Usage: $0{start|stop}&#34; exit 1 ;; esac systemd 등록 [Unit] Description=Jenkins After=network." />
+<meta property="og:description" content="installation start 스크립트 #!/bin/sh  #JAVA_HOME=/prod/java/jdk1.8.0_202 JAVA_HOME=/prod/java/openjdk-11.0.2 export PATH=$JAVA_HOME/bin:$PATH JAVA_OPTS=&#34;${JAVA_OPTS}-Dapp.id=jenkins&#34; JAVA_OPTS=&#34;${JAVA_OPTS}-Dcom.sun.akuma.Daemon=daemonized&#34; JAVA_OPTS=&#34;${JAVA_OPTS}-Djava.awt.headless=true&#34; JAVA_OPTS=&#34;${JAVA_OPTS}-DJENKINS_HOME=/data/PROD/jenkins&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--logfile=/outlog/PROD/jenkins/default.log&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--webroot=/prod/jenkins/jenkins/cache-war&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--daemon&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--httpPort=8400&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--debug=5&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--handlerCountMax=100&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--handlerCountMaxIdle=20&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--accessLoggerClassName=winstone.accesslog.SimpleAccessLogger&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--simpleAccessLogger.format=combined&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--simpleAccessLogger.file=/outlog/PROD/jenkins/access.log&#34; #JENKINS_ARGS=&#34;${JENKINS_ARGS} --httpsCertificate=/etc/pki/tls/mgkim/jenkins.crt&#34; #JENKINS_ARGS=&#34;${JENKINS_ARGS} --httpsPrivateKey=/etc/pki/tls/mgkim/jenkins.key&#34; case &#34;$1&#34; in start) echo &#34;starting jenkins&#34; nohup $JAVA_HOME/bin/java $JAVA_OPTS -jar /prod/jenkins/jenkins/jenkins.war $JENKINS_ARGS &gt; /dev/null 2&gt;&amp;1 &amp; ;; stop) echo &#34;stopping jenkins&#34; ps -ef | grep java | grep -v grep | grep jenkins | awk &#39;{ print $2 }&#39; | xargs kill -9 ;; *) echo &#34;Usage: $0{start|stop}&#34; exit 1 ;; esac" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/system/jenkins/" /><meta property="article:section" content="system" />
 
 
 
 <meta itemprop="name" content="jenkins">
-<meta itemprop="description" content="installation start 스크립트 #!/bin/sh  #JAVA_HOME=/prod/java/jdk1.8.0_202 JAVA_HOME=/prod/java/openjdk-11.0.2 export PATH=$JAVA_HOME/bin:$PATH JAVA_OPTS=&#34;${JAVA_OPTS}-Dapp.id=jenkins&#34; JAVA_OPTS=&#34;${JAVA_OPTS}-Dcom.sun.akuma.Daemon=daemonized&#34; JAVA_OPTS=&#34;${JAVA_OPTS}-Djava.awt.headless=true&#34; JAVA_OPTS=&#34;${JAVA_OPTS}-DJENKINS_HOME=/data/PROD/jenkins&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--logfile=/outlog/PROD/jenkins/default.log&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--webroot=/prod/jenkins/jenkins/cache-war&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--daemon&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--httpPort=8400&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--debug=5&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--handlerCountMax=100&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--handlerCountMaxIdle=20&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--accessLoggerClassName=winstone.accesslog.SimpleAccessLogger&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--simpleAccessLogger.format=combined&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--simpleAccessLogger.file=/outlog/PROD/jenkins/access.log&#34; #JENKINS_ARGS=&#34;${JENKINS_ARGS} --httpsCertificate=/etc/pki/tls/mgkim/jenkins.crt&#34; #JENKINS_ARGS=&#34;${JENKINS_ARGS} --httpsPrivateKey=/etc/pki/tls/mgkim/jenkins.key&#34; case &#34;$1&#34; in start) echo &#34;starting jenkins&#34; nohup $JAVA_HOME/bin/java $JAVA_OPTS -jar /prod/jenkins/jenkins/jenkins.war $JENKINS_ARGS &gt; /dev/null 2&gt;&amp;1 &amp; ;; stop) echo &#34;stopping jenkins&#34; ps -ef | grep java | grep -v grep | grep jenkins | awk &#39;{ print $2 }&#39; | xargs kill -9 ;; *) echo &#34;Usage: $0{start|stop}&#34; exit 1 ;; esac systemd 등록 [Unit] Description=Jenkins After=network.">
+<meta itemprop="description" content="installation start 스크립트 #!/bin/sh  #JAVA_HOME=/prod/java/jdk1.8.0_202 JAVA_HOME=/prod/java/openjdk-11.0.2 export PATH=$JAVA_HOME/bin:$PATH JAVA_OPTS=&#34;${JAVA_OPTS}-Dapp.id=jenkins&#34; JAVA_OPTS=&#34;${JAVA_OPTS}-Dcom.sun.akuma.Daemon=daemonized&#34; JAVA_OPTS=&#34;${JAVA_OPTS}-Djava.awt.headless=true&#34; JAVA_OPTS=&#34;${JAVA_OPTS}-DJENKINS_HOME=/data/PROD/jenkins&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--logfile=/outlog/PROD/jenkins/default.log&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--webroot=/prod/jenkins/jenkins/cache-war&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--daemon&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--httpPort=8400&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--debug=5&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--handlerCountMax=100&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--handlerCountMaxIdle=20&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--accessLoggerClassName=winstone.accesslog.SimpleAccessLogger&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--simpleAccessLogger.format=combined&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--simpleAccessLogger.file=/outlog/PROD/jenkins/access.log&#34; #JENKINS_ARGS=&#34;${JENKINS_ARGS} --httpsCertificate=/etc/pki/tls/mgkim/jenkins.crt&#34; #JENKINS_ARGS=&#34;${JENKINS_ARGS} --httpsPrivateKey=/etc/pki/tls/mgkim/jenkins.key&#34; case &#34;$1&#34; in start) echo &#34;starting jenkins&#34; nohup $JAVA_HOME/bin/java $JAVA_OPTS -jar /prod/jenkins/jenkins/jenkins.war $JENKINS_ARGS &gt; /dev/null 2&gt;&amp;1 &amp; ;; stop) echo &#34;stopping jenkins&#34; ps -ef | grep java | grep -v grep | grep jenkins | awk &#39;{ print $2 }&#39; | xargs kill -9 ;; *) echo &#34;Usage: $0{start|stop}&#34; exit 1 ;; esac">
 
-<meta itemprop="wordCount" content="1015">
+<meta itemprop="wordCount" content="1413">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="jenkins"/>
-<meta name="twitter:description" content="installation start 스크립트 #!/bin/sh  #JAVA_HOME=/prod/java/jdk1.8.0_202 JAVA_HOME=/prod/java/openjdk-11.0.2 export PATH=$JAVA_HOME/bin:$PATH JAVA_OPTS=&#34;${JAVA_OPTS}-Dapp.id=jenkins&#34; JAVA_OPTS=&#34;${JAVA_OPTS}-Dcom.sun.akuma.Daemon=daemonized&#34; JAVA_OPTS=&#34;${JAVA_OPTS}-Djava.awt.headless=true&#34; JAVA_OPTS=&#34;${JAVA_OPTS}-DJENKINS_HOME=/data/PROD/jenkins&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--logfile=/outlog/PROD/jenkins/default.log&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--webroot=/prod/jenkins/jenkins/cache-war&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--daemon&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--httpPort=8400&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--debug=5&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--handlerCountMax=100&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--handlerCountMaxIdle=20&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--accessLoggerClassName=winstone.accesslog.SimpleAccessLogger&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--simpleAccessLogger.format=combined&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--simpleAccessLogger.file=/outlog/PROD/jenkins/access.log&#34; #JENKINS_ARGS=&#34;${JENKINS_ARGS} --httpsCertificate=/etc/pki/tls/mgkim/jenkins.crt&#34; #JENKINS_ARGS=&#34;${JENKINS_ARGS} --httpsPrivateKey=/etc/pki/tls/mgkim/jenkins.key&#34; case &#34;$1&#34; in start) echo &#34;starting jenkins&#34; nohup $JAVA_HOME/bin/java $JAVA_OPTS -jar /prod/jenkins/jenkins/jenkins.war $JENKINS_ARGS &gt; /dev/null 2&gt;&amp;1 &amp; ;; stop) echo &#34;stopping jenkins&#34; ps -ef | grep java | grep -v grep | grep jenkins | awk &#39;{ print $2 }&#39; | xargs kill -9 ;; *) echo &#34;Usage: $0{start|stop}&#34; exit 1 ;; esac systemd 등록 [Unit] Description=Jenkins After=network."/>
+<meta name="twitter:description" content="installation start 스크립트 #!/bin/sh  #JAVA_HOME=/prod/java/jdk1.8.0_202 JAVA_HOME=/prod/java/openjdk-11.0.2 export PATH=$JAVA_HOME/bin:$PATH JAVA_OPTS=&#34;${JAVA_OPTS}-Dapp.id=jenkins&#34; JAVA_OPTS=&#34;${JAVA_OPTS}-Dcom.sun.akuma.Daemon=daemonized&#34; JAVA_OPTS=&#34;${JAVA_OPTS}-Djava.awt.headless=true&#34; JAVA_OPTS=&#34;${JAVA_OPTS}-DJENKINS_HOME=/data/PROD/jenkins&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--logfile=/outlog/PROD/jenkins/default.log&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--webroot=/prod/jenkins/jenkins/cache-war&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--daemon&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--httpPort=8400&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--debug=5&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--handlerCountMax=100&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--handlerCountMaxIdle=20&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--accessLoggerClassName=winstone.accesslog.SimpleAccessLogger&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--simpleAccessLogger.format=combined&#34; JENKINS_ARGS=&#34;${JENKINS_ARGS}--simpleAccessLogger.file=/outlog/PROD/jenkins/access.log&#34; #JENKINS_ARGS=&#34;${JENKINS_ARGS} --httpsCertificate=/etc/pki/tls/mgkim/jenkins.crt&#34; #JENKINS_ARGS=&#34;${JENKINS_ARGS} --httpsPrivateKey=/etc/pki/tls/mgkim/jenkins.key&#34; case &#34;$1&#34; in start) echo &#34;starting jenkins&#34; nohup $JAVA_HOME/bin/java $JAVA_OPTS -jar /prod/jenkins/jenkins/jenkins.war $JENKINS_ARGS &gt; /dev/null 2&gt;&amp;1 &amp; ;; stop) echo &#34;stopping jenkins&#34; ps -ef | grep java | grep -v grep | grep jenkins | awk &#39;{ print $2 }&#39; | xargs kill -9 ;; *) echo &#34;Usage: $0{start|stop}&#34; exit 1 ;; esac"/>
 
 
 
@@ -137,7 +137,7 @@ JAVA_OPTS= …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.0de5675672003d5f331f9b806672b485.json"
+  data-offline-search-index-json-src="/offline-search-index.710214e10f8a08242c7f298876a08aa5.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -164,7 +164,7 @@ JAVA_OPTS= …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.0de5675672003d5f331f9b806672b485.json"
+  data-offline-search-index-json-src="/offline-search-index.710214e10f8a08242c7f298876a08aa5.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -363,7 +363,7 @@ JENKINS_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34
     exit <span style="color:#ae81ff">1</span>
     ;;
 <span style="color:#66d9ef">esac</span>
-</code></pre></div><!-- raw HTML omitted -->
+</code></pre></div><br>
 <h4 id="systemd-등록">systemd 등록</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#f92672">[</span>Unit<span style="color:#f92672">]</span>
 Description<span style="color:#f92672">=</span>Jenkins
@@ -381,7 +381,7 @@ Restart<span style="color:#f92672">=</span>on-abort
 
 <span style="color:#f92672">[</span>Install<span style="color:#f92672">]</span>
 WantedBy<span style="color:#f92672">=</span>multi-user.target
-</code></pre></div><!-- raw HTML omitted -->
+</code></pre></div><br>
 <h3 id="plugins">plugins</h3>
 <h4 id="publish-over-ssh">Publish Over SSH</h4>
 <p>mvn 빌드 후 생성된 artifact 파일을 sftp 로 전송하고 ssh 로 command 를 실행하는 기능을 사용할 수 있습니다.</p>
@@ -390,8 +390,8 @@ WantedBy<span style="color:#f92672">=</span>multi-user.target
 <li><code>Add Server</code> 버튼을 클릭하여 <code>SSH Server</code> 선택
 <ul>
 <li>선택되는 서버는 빌드 결과물인 artifact 파일을 전송하고, ssh 로 command 를 실행할 서버를 의미함</li>
-<li>아래 <code>Transfer Set</code> 에 설정되는 <code>Exec command</code>의 내용이 빌드 로그에 출력되도록 <code>고급</code>버튼을 눌러 <code>Verbose output in console</code> 을 선택할 것<!-- raw HTML omitted -->
-<pre><code>[INFO] ------------------------------------------------------------------------
+<li>아래 <code>Transfer Set</code> 에 설정되는 <code>Exec command</code>의 내용이 빌드 로그에 출력되도록 <code>고급</code>버튼을 눌러 <code>Verbose output in console</code> 을 선택할 것<br/>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[INFO] ------------------------------------------------------------------------
 SSH: Connecting from host [i9-9900K]
 SSH: Connecting with configuration [tomcat@develop] ...
 SSH: Creating session: username [tomcat], hostname [develop], port [22]
@@ -428,7 +428,7 @@ SSH: EXEC: completed after 1,202 ms
 SSH: Disconnecting configuration [tomcat@develop] ...
 SSH: Transferred 2 ( 1 + 1 ) file(s)
 Finished: SUCCESS
-</code></pre></li>
+</code></pre></div></li>
 </ul>
 </li>
 <li><code>Add Transfer Set</code> 버튼을 클릭하여 <code>Transfers Set</code> 입력
@@ -446,13 +446,25 @@ Finished: SUCCESS
 <div class="alert alert-primary" role="alert">
 <h4 class="alert-heading">SSH Server 추가하기</h4>
 
-    <!-- raw HTML omitted -->
+    <p><code>SSH Server</code> 는 <code>Jenkins 관리</code> &gt; <code>시스템 설정</code> &gt; <code>Publish over SSH</code> 에서 추가를 해야 선택하는 항목이 나옵니다.</p>
+<ul>
+<li><code>Passphrase</code>: 시스템 계정 jenkins 로 생성한 rsa 키의 비밀번호를 입력합니다.</li>
+<li><code>Path to key</code>: rsa 키 쌍 중 개인키의 경로를 입력합니다. (/home/jenkins/.ssh/id_rsa)
+jenkins node 구성에서 slave-node 을 추가했다면 jenkins 를 호스팅하고 있는 서버에서 생성한 개인키 파일에 접근할 수 없기에 <code>Key</code> 항목에 개인키를 설정하여 사용해야 함</li>
+<li><code>Key</code>: 개인키의 경로를 입력하지 않을 경우 개인키의 내용 추가로 설정할 수 있습니다. (키 경로 입력 시 생략할 것)<br/>
+개인키의 형태는 다음과 같으며 참고로 jenkins 에 설정할때에는 BEGIN 부터 END 까지 모두 입력해야 합니다.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">-----BEGIN RSA PRIVATE KEY-----
+Proc-Type: 4,ENCRYPTED
+DEK-Info: AES-128-CBC,BB513C74CDF53133B6B805F08C716E14
 <p>lqXA6gIhaf3ztU1SoQVGvUtLWtXqINxbGzNfau3v+DIHRKJjVY1JvBj2mmADIxEq
 &hellip;
 YqTPbiAOgnHAD9CgWg/v55Zl9zLrPKLakCJPYzGNrLo2BJ4qXR1ZX371JEsXq8tq
 &mdash;&ndash;END RSA PRIVATE KEY&mdash;&ndash;
-<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
+</code></pre></div></li></p>
+<li><code>SSH Servers</code>에 추가 버튼을 클릭하여 hostname, username, remote directory 입력합니다.<br/>
+입력이 끝나고 <code>Test Configuration</code> 버튼을 클릭하여 테스트를 해봅니다.</li>
+</ul>
+
 
 </div>
 
@@ -480,13 +492,18 @@ YqTPbiAOgnHAD9CgWg/v55Zl9zLrPKLakCJPYzGNrLo2BJ4qXR1ZX371JEsXq8tq
 <div class="alert alert-primary" role="alert">
 <h4 class="alert-heading">GitLab webhook URL, Secret token 항목을 gitlab Webhooks 에 설정하기</h4>
 
-    <!-- raw HTML omitted -->
+    <p>아래 2개의 항목은 gitlab 의 프로젝트 설정의 <code>Webhooks</code> 에서 설정해야하는 값입니다.</p>
+<ul>
+<li><code>GitLab webhook URL</code>: 이 값은 체크항목에 레이블로 표시되어있는 <code>http://jenkins/project/boot-www</code> 이며, <code>Webhooks</code> 의 <code>URL</code> 에 입력해야 하는 값.</li>
+<li><code>Secret token</code>: 이 값은 <code>Generate</code> 버튼 클릭으로 생성되며, <code>Webhooks</code> 의 <code>Secret Token</code> 에 입력해야 하는 값.</li>
+</ul>
+
 
 </div>
 
 <h4 id="github-integration-plugin">GitHub Integration Plugin</h4>
 <p>github 저장소에서 webhook 으로 push 이벤트를 받아서 jenkins build가 실행되도록 할 때 사용합니다.</p>
-<p>활용법: <!-- raw HTML omitted -->github 연결<!-- raw HTML omitted --></p>
+<p>활용법: <a href="#github-연결">github 연결</a></p>
 <h3 id="build">build</h3>
 <h4 id="분산-빌드-환경">분산 빌드 환경</h4>
 <p><code>jenkins 관리</code> 에서 <code>노드 관리</code> 메뉴로 이동하면 <code>분산 빌드 환경</code>을 위한 노드를 추가할 수 있습니다.</p>
@@ -498,12 +515,19 @@ YqTPbiAOgnHAD9CgWg/v55Zl9zLrPKLakCJPYzGNrLo2BJ4qXR1ZX371JEsXq8tq
 <div class="alert alert-primary" role="alert">
 <h4 class="alert-heading">주요 설정 항목</h4>
 
-    <!-- raw HTML omitted -->
+    <ul>
+<li><code>Name</code>: slave-node 이름 (설명에는 <code>9900K</code> 로 했습니다.)</li>
+<li><code>Remote root directory</code>: slave-node 의 workspace 디렉토리를 지정합니다.
+참고로 <code>Z:\jenkins</code> 라고 입력하면 빌드 시 <code>Z:\jenkins\workspace\boot-www</code> 디렉토리가 생성됩니다. (<code>boot-www</code> 는 jenkins 프로젝트명 입니다.)</li>
+<li><code>Labels</code>: jenkins 프로젝트에 label 을 설정할 수 있으며, 해당 프로젝트에 포함된 label 과 매핑된 노드에서 빌드가 수행됨</li>
+<li><code>Launch method</code>: <code>Use WebSocket</code> 항목을 체크할 것</li>
+</ul>
+
 
 </div>
 
 <p>slave-node 를 추가하면 slave-node에서 jenkins 와 연결하는 방법을 알려줍니다.</p>
-<pre><code>Connect agent to Jenkins one of these ways:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Connect agent to Jenkins one of these ways:
 
 Java Web Start is not available for the JVM version running Jenkins
 
@@ -512,26 +536,26 @@ Run from agent command line:
 javaws http://jenkins/computer/9900K/jenkins-agent.jnlp
 Or if the agent is headless:
 
-java -jar agent.jar -jnlpUrl http://jenkins/computer/9900K/jenkins-agent.jnlp -workDir &quot;Z:\jenkins&quot;
-</code></pre><p>slave-node 와 jenkins 연결하기</p>
+java -jar agent.jar -jnlpUrl http://jenkins/computer/9900K/jenkins-agent.jnlp -workDir &#34;Z:\jenkins&#34;
+</code></pre></div><p>slave-node 와 jenkins 연결하기</p>
 <ol>
 <li>
 <p><code>Z:\jenkins</code> 에 agent.jar 를 다운로드 받음</p>
 </li>
 <li>
 <p><code>Z:\jenkins\start-agent.cmd</code> 파일을 생성하고 아래 내용으로 설정</p>
-<pre><code>set JAVA_HOME=Z:\develop\java\openjdk-11.0.2
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">set JAVA_HOME=Z:\develop\java\openjdk-11.0.2
 set PATH=%JAVA_HOME%\bin;%PATH%
 
-java -jar agent.jar -jnlpUrl http://jenkins/computer/9900K/jenkins-agent.jnlp -workDir &quot;Z:\jenkins&quot;
-</code></pre></li>
+java -jar agent.jar -jnlpUrl http://jenkins/computer/9900K/jenkins-agent.jnlp -workDir &#34;Z:\jenkins&#34;
+</code></pre></div></li>
 <li>
 <p><code>start-agent.cmd</code> 실행 후 아래와 같이 console 로그가 출력되면 정상 실행</p>
-<pre><code>Z:\jenkins&gt;set JAVA_HOME=Z:\develop\java\openjdk-11.0.2
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Z:\jenkins&gt;set JAVA_HOME=Z:\develop\java\openjdk-11.0.2
 
 Z:\jenkins&gt;set PATH=Z:\develop\java\openjdk-11.0.2\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;Z:\oracle\ora12c_32bit\client_12_1\bin;Z:\develop\java\openjdk-11.0.2\bin;Z:\develop\build\maven-3.6.3\bin;C:\Users\Administrator\AppData\Local\Programs\Microsoft VS Code\bin;Z:\develop\hugo\hugo-ext-0.87.0;C:\Users\Administrator\AppData\Roaming\npm;Z:\www\httpd_2.4.25-win64-VC14\openssl-0.9.8e_X64\bin;
 
-Z:\jenkins&gt;java -jar agent.jar -jnlpUrl http://jenkins/computer/9900K/jenkins-agent.jnlp -workDir &quot;Z:\jenkins&quot;
+Z:\jenkins&gt;java -jar agent.jar -jnlpUrl http://jenkins/computer/9900K/jenkins-agent.jnlp -workDir &#34;Z:\jenkins&#34;
 9월 13, 2021 11:55:53 오후 org.jenkinsci.remoting.engine.WorkDirManager initializeWorkDir
 INFO: Using Z:\jenkins\remoting as a remoting work directory
 9월 13, 2021 11:55:53 오후 org.jenkinsci.remoting.engine.WorkDirManager setupLogging
@@ -548,19 +572,19 @@ INFO: Using Z:\jenkins\remoting as a remoting work directory
 INFO: WebSocket connection open
 9월 13, 2021 11:55:53 오후 hudson.remoting.jnlp.Main$CuiListener status
 INFO: Connected
-</code></pre><p>참고로 여기서 연결이 안되는 상황이 발생함</p>
+</code></pre></div><p>참고로 여기서 연결이 안되는 상황이 발생함</p>
 <ul>
-<li>agent.jar 실행 시 jenkins 에 접속할 때 websocket 으로 접속을 하게되는데 ssl 이 적용된 프로토콜 https, wss 은 handshake 오류가 발생함<!-- raw HTML omitted -->
-httpd 설정에 http 를 https 로 redirect 하도록 mod_rewrite 를 설정했는데 오류로 인해 rewrite 설정은 제거함<!-- raw HTML omitted --></li>
+<li>agent.jar 실행 시 jenkins 에 접속할 때 websocket 으로 접속을 하게되는데 ssl 이 적용된 프로토콜 https, wss 은 handshake 오류가 발생함<br/>
+httpd 설정에 http 를 https 로 redirect 하도록 mod_rewrite 를 설정했는데 오류로 인해 rewrite 설정은 제거함<br/></li>
 <li>jenkins 의 가상호스트 설정은 다음과 같습니다.
-<pre><code>&lt;VirtualHost *:80&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&lt;VirtualHost *:80&gt;
   ServerName jenkins
 
-  ErrorLog &quot;|/usr/sbin/rotatelogs /outlog/WEB/httpd/jenkins-error.log.%Y-%m-%d 86400 +540&quot;
-  CustomLog &quot;|/usr/sbin/rotatelogs /outlog/WEB/httpd/jenkins-access.log.%Y-%m-%d 86400 +540&quot; combined
+  ErrorLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/jenkins-error.log.%Y-%m-%d 86400 +540&#34;
+  CustomLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/jenkins-access.log.%Y-%m-%d 86400 +540&#34; combined
 
   AllowEncodedSlashes On
-  Header set Access-Control-Allow-Origin &quot;*&quot;
+  Header set Access-Control-Allow-Origin &#34;*&#34;
 
   RewriteEngine On
   RewriteCond %{HTTP:Upgrade} =websocket [NC]
@@ -568,7 +592,7 @@ httpd 설정에 http 를 https 로 redirect 하도록 mod_rewrite 를 설정했�
   RewriteCond %{HTTP:Upgrade} !=websocket [NC]
   RewriteRule /(.*) http://localhost:8400/$1 [P,L]
 &lt;/VirtualHost&gt;
-</code></pre></li>
+</code></pre></div></li>
 </ul>
 </li>
 <li>
@@ -590,7 +614,25 @@ httpd 설정에 http 를 https 로 redirect 하도록 mod_rewrite 를 설정했�
 <div class="alert alert-primary" role="alert">
 <h4 class="alert-heading">github 에서 Personal access tokens 발급 및 jenkins Credentials 등록</h4>
 
-    <!-- raw HTML omitted -->
+    <ol>
+<li>github 로그인 후 <code>Settings</code> &gt; <code>Developer settings</code> &gt; <code>Personal access tokens</code> 메뉴 이동</li>
+<li><code>Generate new token</code> 버튼 클릭 후 <code>Expiration</code> 과 <code>Select scopes</code> 를 선택<br/>
+<code>Select scopes</code>은 <code>repo</code>, <code>admin:repo_hook</code>를 전체 선택</li>
+<li><code>Generate token</code> 버튼 클릭으로 토큰을 생성
+<ul>
+<li>생성된 토큰(access token) 값은 다시 확인할 수 없습니다. (재생성해야하는 것으로 알고 있음)</li>
+<li>jenkins 에 등록될 access token 은 github 의 id 와 함께 사용되는 패스워드입니다.</li>
+</ul>
+</li>
+<li>jenkins <code>Manage Credentials</code> 에서 <code>Add Credentials</code> 을 합니다.
+<ul>
+<li><code>Kind</code>: <code>Username with password</code> 를 선택합니다.</li>
+<li><code>Username</code>: github 에 로그인할 때 사용하는 id 를 입력합니다. (<code>lislroow</code>)</li>
+<li><code>Password</code>: github 에서 생성한 토큰(access token)을 입력합니다. (<code>ghp_***생략***</code>)</li>
+</ul>
+</li>
+</ol>
+
 
 </div>
 
@@ -601,7 +643,19 @@ httpd 설정에 http 를 https 로 redirect 하도록 mod_rewrite 를 설정했�
 <div class="alert alert-primary" role="alert">
 <h4 class="alert-heading">github 에서 push 이벤트 jenkins 로 전송하기</h4>
 
-    <!-- raw HTML omitted -->
+    <ol>
+<li>github 의 프로젝트로 이동한 다음 <code>Settings</code> &gt; <code>Webhooks</code> 메뉴로 이동합니다.</li>
+<li><code>Add webhook</code> 버튼을 클릭하여 다음을 입력합니다.
+<ul>
+<li><code>Payload URL</code>: <code>http://{jenkins-domain}/github-webhook/</code> 으로 입력합니다.<br/>
+참고로 uri 는 반드시 <code>/github-webhook/</code> 으로 되어야 합니다. (<code>/github-webhook</code> 으로하면 302 를 응답받고 실패합니다.)<br/>
+<code>Payload URL</code> 을 입력하게되면 github 저장소에 push 이벤트가 발생할 때 해당 URL 을 호출하게되고, jenkins 는 이 http 요청을 받고 build 를 실행하게 되는 형태입니다.</li>
+<li><code>Content type</code>: <code>application/json</code> 으로 설정</li>
+<li>저장 후 소스코드를 수정하고 commit;push 를 하게되면 추가된 webhook 항목을 클릭했을 때 <code>Recent Deliveries</code> 를 볼 수 있습니다.</li>
+</ul>
+</li>
+</ol>
+
 
 </div>
 

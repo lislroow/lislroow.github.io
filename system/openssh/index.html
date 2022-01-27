@@ -132,7 +132,7 @@ Repodata is over 2 weeks old. Install yum-cron? Or run: yum …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.0de5675672003d5f331f9b806672b485.json"
+  data-offline-search-index-json-src="/offline-search-index.710214e10f8a08242c7f298876a08aa5.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -159,7 +159,7 @@ Repodata is over 2 weeks old. Install yum-cron? Or run: yum …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.0de5675672003d5f331f9b806672b485.json"
+  data-offline-search-index-json-src="/offline-search-index.710214e10f8a08242c7f298876a08aa5.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -298,7 +298,7 @@ Repodata is over 2 weeks old. Install yum-cron? Or run: yum …">
 		
 	</header>    
 	<h2 id="패키지-확인">패키지 확인</h2>
-<pre><code>[root@develop ~]$ yum list *openssh*
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@develop ~]$ yum list *openssh*
 Loaded plugins: fastestmirror, langpacks
 Repodata is over 2 weeks old. Install yum-cron? Or run: yum makecache fast
 Loading mirror speeds from cached hostfile
@@ -315,13 +315,13 @@ openssh.x86_64                                               7.4p1-21.el7       
 /usr/bin/ssh-keygen
 
 [root@develop ~]$
-</code></pre><h2 id="key-생성">key 생성</h2>
+</code></pre></div><h2 id="key-생성">key 생성</h2>
 <p><code>ssh-keygen</code> 인자 <code>-t rsa</code> 는 rsa 타입으로 생성 입니다.
 key 생성 경로는 home 디렉토리의 <code>.ssh</code> 디렉토리에 생성이 됩니다.
 <code>passphrase</code> 는 key 의 비밀번호 입니다.</p>
 <p>key 생성이 되면 <code>.ssh</code> 디렉토리에는 <code>id_rsa</code>(개인키), <code>id_rsa.pub</code>(공개키) 2개의 파일이 있습니다.</p>
 <p>공개키인 <code>id_rsa.pub</code> 파일의 내용은 SSH로 접속하려는 대상 서버의 시스템계정 홈디렉토리의 .ssh/authorized_keys 파일에 추가하여 사용됩니다.</p>
-<pre><code>[tomcat@develop ~]$ pwd
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[tomcat@develop ~]$ pwd
 /home/tomcat
 [tomcat@develop ~]$ ls -al
 합계 28
@@ -370,7 +370,7 @@ Your identification has been saved in /home/tomcat/.ssh/id_rsa.
 Your public key has been saved in /home/tomcat/.ssh/id_rsa.pub.
 The key fingerprint is:
 SHA256:Lp68Qh20r1rnsr+IyTTayVl/pbd8VlEL3mWGuez3IYY tomcat@develop
-The key's randomart image is:
+The key&#39;s randomart image is:
 +---[RSA 2048]----+
 |               o |
 |      .      .o =|
@@ -390,7 +390,7 @@ drwx------. 5 tomcat ap  152  9월 13 11:48 ..
 -rw-------  1 tomcat ap 1766  9월 13 11:51 id_rsa
 -rw-r--r--  1 tomcat ap  396  9월 13 11:51 id_rsa.pub
 [tomcat@develop ~]$
-</code></pre>
+</code></pre></div>
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">

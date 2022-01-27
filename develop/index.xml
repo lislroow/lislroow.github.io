@@ -24,7 +24,7 @@
         
         &lt;h4 id=&#34;maven-dependency&#34;&gt;maven-dependency&lt;/h4&gt;
 &lt;p&gt;(Mar, 2021) 기준 log4j 는 &lt;code&gt;2.14.1&lt;/code&gt; 버전이 최신입니다.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# 핵심 라이브러리
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;# 핵심 라이브러리
 log4j-api:2.14.1
 log4j-core:2.14.1
 log4j-web:2.14.1
@@ -34,7 +34,7 @@ log4j-slf4j-impl:2.14.1
 log4jdbc-log4j2-jdbc4.1:1.16
 slf4j-log4j12:1.7.32
 log4j:1.2.17
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;log4j2xml&#34;&gt;log4j2.xml&lt;/h4&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;log4j2xml&#34;&gt;log4j2.xml&lt;/h4&gt;
 &lt;p&gt;설정 파일의 기본 구조입니다.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;Configuration&amp;gt;&lt;/span&gt;
   &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;Properties&amp;gt;&lt;/span&gt; ... &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/Properties&amp;gt;&lt;/span&gt;
@@ -43,7 +43,7 @@ log4j:1.2.17
 &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/Configuration&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;appenders-설정&#34;&gt;&amp;lt;Appenders&amp;gt; 설정&lt;/h4&gt;
 &lt;p&gt;&lt;code&gt;&amp;lt;Appenders&amp;gt;&lt;/code&gt; 는 로그의 출력을 설정합니다.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;&amp;lt;File&amp;gt;&lt;/code&gt; 혹은 &lt;code&gt;&amp;lt;RollingFile&amp;gt;&lt;/code&gt; 를 바로 정의 하는 것이 기본이고,&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;File&amp;gt;&lt;/code&gt; 혹은 &lt;code&gt;&amp;lt;RollingFile&amp;gt;&lt;/code&gt; 를 바로 정의 하는 것이 기본이고,&lt;br&gt;
 &lt;code&gt;&amp;lt;Routing&amp;gt;&lt;/code&gt;을 사용하여 ThreadContext 의 값에 따라 &lt;code&gt;&amp;lt;File&amp;gt;&lt;/code&gt; 혹은 &lt;code&gt;&amp;lt;RollingFile&amp;gt;&lt;/code&gt; 을 routing 할 수 있습니다.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;Appenders&amp;gt;&lt;/span&gt;
     &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;Console&amp;gt;&lt;/span&gt; ... &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;/Console&amp;gt;&lt;/span&gt;
