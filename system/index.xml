@@ -130,7 +130,7 @@
 &lt;tr&gt;
 &lt;td&gt;cockpit&lt;/td&gt;
 &lt;td&gt;/etc/systemd/system/sockets.target.wants/cockpit.socket&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;/files/system/20220106-cockpit.socket.txt&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;/files/system/20220128-cockpit.socket.txt&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;nexus&lt;/td&gt;
@@ -2119,8 +2119,8 @@ httpd 설정에 http 를 https 로 redirect 하도록 mod_rewrite 를 설정했�
         
         &lt;h5 id=&#34;_catindices&#34;&gt;_cat/indices&lt;/h5&gt;
 &lt;p&gt;인덱스 목록, index명 desc 정렬, index 컬럼만 조회&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;&lt;span style=&#34;color:#000&#34;&gt;GET&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;_cat&lt;/span&gt;/&lt;span style=&#34;color:#000&#34;&gt;indices&lt;/span&gt;?&lt;span style=&#34;color:#000&#34;&gt;v&lt;/span&gt;&amp;amp;&lt;span style=&#34;color:#000&#34;&gt;s&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;index&lt;/span&gt;:&lt;span style=&#34;color:#000&#34;&gt;desc&lt;/span&gt;&amp;amp;&lt;span style=&#34;color:#000&#34;&gt;h&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;index&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;GET _cat/indices?v&amp;amp;s=index:desc&amp;amp;h=index
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       </description>
     </item>
     

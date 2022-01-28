@@ -124,7 +124,7 @@ elasticsearch …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.14df443270e87b55e82ca0e74fde32c0.json"
+  data-offline-search-index-json-src="/offline-search-index.720f56765c4b03db0e1bb8f6708085d9.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -151,7 +151,7 @@ elasticsearch …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.14df443270e87b55e82ca0e74fde32c0.json"
+  data-offline-search-index-json-src="/offline-search-index.720f56765c4b03db0e1bb8f6708085d9.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -1290,7 +1290,7 @@ Wants=cockpit-motd.service
 
 [Socket]
 #ListenStream=9090 # 기본값
-ListenStream=8000  # 변경값
+ListenStream=127.0.0.1:8000  # 변경값 (httpd 에서 proxy 로 접근)
 ExecStartPost=-/usr/share/cockpit/motd/update-motd &#39;&#39; localhost
 ExecStartPost=-/bin/ln -snf active.motd /run/cockpit/motd
 ExecStopPost=-/bin/ln -snf inactive.motd /run/cockpit/motd
