@@ -43,7 +43,7 @@ apache:web
 automatically …">
 <meta property="og:title" content="centos8" />
 <meta property="og:description" content="1. 서비스 1.1 port systemd: /etc/systemd/system/*.service
-   service port user running execute connect     httpd 80 apache:web automatically httpd.service -   cockpit 8000 root:root automatically cockpit.socket https://centos8/   nexus 8100 nexus:ci automatically nexus.service https://nexus/   elasticsearch 8200 elasticsearch:- automatically elasticsearch.service -   kibana 8300 kibana:- automatically kibana.service http://kibana/   jenkins 8400 jenkins:ci automatically jenkins.service http://jenkins/   oracle(dbms) - oracle:oinstall automatically ora12c@dbms." />
+   service port user running execute connect     httpd 80 apache:web automatically httpd.service -   cockpit 8000 root:root automatically cockpit.socket https://centos8/   nexus 8100 nexus:ci automatically nexus.service https://nexus/   elasticsearch 8200 elasticsearch:- automatically elasticsearch.service -   kibana 8300 kibana:- automatically kibana.service http://kibana/   jenkins 8400 jenkins:ci automatically jenkins.service http://jenkins/   logstash 9600 logstash:- automatically logstash." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/system/centos8/" /><meta property="article:section" content="system" />
 
@@ -51,13 +51,13 @@ automatically …">
 
 <meta itemprop="name" content="centos8">
 <meta itemprop="description" content="1. 서비스 1.1 port systemd: /etc/systemd/system/*.service
-   service port user running execute connect     httpd 80 apache:web automatically httpd.service -   cockpit 8000 root:root automatically cockpit.socket https://centos8/   nexus 8100 nexus:ci automatically nexus.service https://nexus/   elasticsearch 8200 elasticsearch:- automatically elasticsearch.service -   kibana 8300 kibana:- automatically kibana.service http://kibana/   jenkins 8400 jenkins:ci automatically jenkins.service http://jenkins/   oracle(dbms) - oracle:oinstall automatically ora12c@dbms.">
+   service port user running execute connect     httpd 80 apache:web automatically httpd.service -   cockpit 8000 root:root automatically cockpit.socket https://centos8/   nexus 8100 nexus:ci automatically nexus.service https://nexus/   elasticsearch 8200 elasticsearch:- automatically elasticsearch.service -   kibana 8300 kibana:- automatically kibana.service http://kibana/   jenkins 8400 jenkins:ci automatically jenkins.service http://jenkins/   logstash 9600 logstash:- automatically logstash.">
 
-<meta itemprop="wordCount" content="132">
+<meta itemprop="wordCount" content="155">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="centos8"/>
 <meta name="twitter:description" content="1. 서비스 1.1 port systemd: /etc/systemd/system/*.service
-   service port user running execute connect     httpd 80 apache:web automatically httpd.service -   cockpit 8000 root:root automatically cockpit.socket https://centos8/   nexus 8100 nexus:ci automatically nexus.service https://nexus/   elasticsearch 8200 elasticsearch:- automatically elasticsearch.service -   kibana 8300 kibana:- automatically kibana.service http://kibana/   jenkins 8400 jenkins:ci automatically jenkins.service http://jenkins/   oracle(dbms) - oracle:oinstall automatically ora12c@dbms."/>
+   service port user running execute connect     httpd 80 apache:web automatically httpd.service -   cockpit 8000 root:root automatically cockpit.socket https://centos8/   nexus 8100 nexus:ci automatically nexus.service https://nexus/   elasticsearch 8200 elasticsearch:- automatically elasticsearch.service -   kibana 8300 kibana:- automatically kibana.service http://kibana/   jenkins 8400 jenkins:ci automatically jenkins.service http://jenkins/   logstash 9600 logstash:- automatically logstash."/>
 
 
 
@@ -148,7 +148,7 @@ automatically …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.c0ea7e936afbc6c9f8672686e185870f.json"
+  data-offline-search-index-json-src="/offline-search-index.a838f8a455fe9cd61c9305971a3efcb4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -175,7 +175,7 @@ automatically …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.c0ea7e936afbc6c9f8672686e185870f.json"
+  data-offline-search-index-json-src="/offline-search-index.a838f8a455fe9cd61c9305971a3efcb4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -389,6 +389,30 @@ automatically …">
 <td>http://jenkins/</td>
 </tr>
 <tr>
+<td>logstash</td>
+<td>9600</td>
+<td>logstash:-</td>
+<td>automatically</td>
+<td>logstash.service</td>
+<td>-</td>
+</tr>
+<tr>
+<td>logstash</td>
+<td>10000</td>
+<td>logstash:-</td>
+<td>automatically</td>
+<td>logstash.service</td>
+<td>tcp:10000</td>
+</tr>
+<tr>
+<td>logstash</td>
+<td>11000</td>
+<td>logstash:-</td>
+<td>automatically</td>
+<td>logstash.service</td>
+<td>filebeat:11000</td>
+</tr>
+<tr>
 <td>oracle(dbms)</td>
 <td>-</td>
 <td>oracle:oinstall</td>
@@ -453,6 +477,11 @@ automatically …">
 <tr>
 <td>jenkins</td>
 <td>/prod/jenkins/jenkins.sh</td>
+<td><a href="/files/system/20220106-jenkins.sh.txt" target="_blank">새 창 보기</a></td>
+</tr>
+<tr>
+<td>logstash</td>
+<td>/etc/logstash/conf.d/*.conf</td>
 <td><a href="/files/system/20220106-jenkins.sh.txt" target="_blank">새 창 보기</a></td>
 </tr>
 <tr>
