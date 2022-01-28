@@ -392,8 +392,12 @@ $ vi /etc/logstash/logstash.yml
 
 $ mkdir /data/PROD/logstash &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; chown logstash:logstash /data/PROD/logstash
 $ mkdir /outlog/PROD/logstash &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; chown logstash:logstash /outlog/PROD/logstash
-$ systemctl restart logstash
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;logstash-설정-pipelinesyml&#34;&gt;logstash 설정 (pipelines.yml)&lt;/h5&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;logstash 서비스는 pipelines.yml 의 conf 파일 설정이 되었을때 start 를 하는 것을 권합니다.&lt;/p&gt;
+&lt;p&gt;conf 파일이 없을 경우 &lt;code&gt;config.reload.automatic: true&lt;/code&gt;에 의해 &lt;code&gt;config.reload.interval: 1s&lt;/code&gt; 마다 아래와 같은 로그가 &lt;code&gt;/outlog/PROD/logstash/logstash-plain.log&lt;/code&gt; 파일에 출력됩니다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;[2022-01-28T11:09:33,537][INFO ][logstash.config.source.local.configpathloader] No config files found in path {:path=&amp;gt;&amp;#34;/etc/logstash/conf.d/*.conf&amp;#34;}
+[2022-01-28T11:09:33,539][ERROR][logstash.config.sourceloader] No configuration found in the configured sources.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;h5 id=&#34;logstash-설정-pipelinesyml&#34;&gt;logstash 설정 (pipelines.yml)&lt;/h5&gt;
 &lt;p&gt;logstash 는 &lt;code&gt;/etc/logstash/pipelines.yml&lt;/code&gt; 에는 conf 파일(&lt;code&gt;input-filter-output&lt;/code&gt; 처리를 정의한 파일)의 경로를 설정합니다.&lt;/p&gt;
 &lt;p&gt;기본 설치된 &lt;code&gt;pipelines.yml&lt;/code&gt; 내용을 보면 다음과 같습니다.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ cat /etc/logstash/pipelines.yml

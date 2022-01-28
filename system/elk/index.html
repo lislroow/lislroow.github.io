@@ -36,7 +36,7 @@ $ curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-
 <meta itemprop="description" content="elasticsearch 설치 artifacts.elastic.co 에서 rpm 다운로드 후 설치
 $ curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.16.3-x86_64.rpm $ rpm -i elasticsearch-7.16.3-x86_64.rpm $ systemctl restart elasticsearch $ curl -L -O https://artifacts.elastic.co/downloads/kibana/kibana-7.16.3-linux-x86_64.tar.gz $ rpm -i elasticsearch-7.16.3-x86_64.rpm 경고: elasticsearch-7.16.3-x86_64.rpm: Header V4 RSA/SHA512 Signature, key ID d88e42b4: NOKEY Creating elasticsearch group... OK Creating elasticsearch user... OK ### NOT starting on installation, please execute the following statements to configure elasticsearch service to start automatically using systemd sudo systemctl daemon-reload sudo systemctl enable elasticsearch.">
 
-<meta itemprop="wordCount" content="2825">
+<meta itemprop="wordCount" content="2867">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="ELK"/>
 <meta name="twitter:description" content="elasticsearch 설치 artifacts.elastic.co 에서 rpm 다운로드 후 설치
@@ -131,7 +131,7 @@ $ curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.1f41e302c5ee499c8a5123e1a0e72e69.json"
+  data-offline-search-index-json-src="/offline-search-index.c0ea7e936afbc6c9f8672686e185870f.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -158,7 +158,7 @@ $ curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.1f41e302c5ee499c8a5123e1a0e72e69.json"
+  data-offline-search-index-json-src="/offline-search-index.c0ea7e936afbc6c9f8672686e185870f.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -502,8 +502,12 @@ $ vi /etc/logstash/logstash.yml
 
 $ mkdir /data/PROD/logstash <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> chown logstash:logstash /data/PROD/logstash
 $ mkdir /outlog/PROD/logstash <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> chown logstash:logstash /outlog/PROD/logstash
-$ systemctl restart logstash
-</code></pre></div><h5 id="logstash-설정-pipelinesyml">logstash 설정 (pipelines.yml)</h5>
+</code></pre></div><p>logstash 서비스는 pipelines.yml 의 conf 파일 설정이 되었을때 start 를 하는 것을 권합니다.</p>
+<p>conf 파일이 없을 경우 <code>config.reload.automatic: true</code>에 의해 <code>config.reload.interval: 1s</code> 마다 아래와 같은 로그가 <code>/outlog/PROD/logstash/logstash-plain.log</code> 파일에 출력됩니다.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[2022-01-28T11:09:33,537][INFO ][logstash.config.source.local.configpathloader] No config files found in path {:path=&gt;&#34;/etc/logstash/conf.d/*.conf&#34;}
+[2022-01-28T11:09:33,539][ERROR][logstash.config.sourceloader] No configuration found in the configured sources.
+</code></pre></div><br>
+<h5 id="logstash-설정-pipelinesyml">logstash 설정 (pipelines.yml)</h5>
 <p>logstash 는 <code>/etc/logstash/pipelines.yml</code> 에는 conf 파일(<code>input-filter-output</code> 처리를 정의한 파일)의 경로를 설정합니다.</p>
 <p>기본 설치된 <code>pipelines.yml</code> 내용을 보면 다음과 같습니다.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ cat /etc/logstash/pipelines.yml
