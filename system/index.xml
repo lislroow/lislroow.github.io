@@ -1191,7 +1191,7 @@ $ systemctl start filebeat.service
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;elasticsearch 에서 index 명 &lt;code&gt;mgkim-apache-log-2022.01.09&lt;/code&gt; 의 데이터 조회&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ curl -XGET -u elastic:votmdnjem &amp;#34;http://localhost:8200/mgkim-apache-log-2022.01.09/_search?pretty&amp;#34;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;curl 테스트: &lt;a href=&#34;/file/system/20220128-filebeat-logstash-elastic_test.txt&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;curl 테스트: &lt;a href=&#34;/files/system/20220128-filebeat-logstash-elastic_test.txt&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;
 &lt;br&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
