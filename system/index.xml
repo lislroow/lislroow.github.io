@@ -393,6 +393,46 @@ $ vi /etc/logstash/logstash.yml
 $ mkdir /data/PROD/logstash &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; chown logstash:logstash /data/PROD/logstash
 $ mkdir /outlog/PROD/logstash &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; chown logstash:logstash /outlog/PROD/logstash
 $ systemctl restart logstash
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;logstash-설정-pipelinesyml&#34;&gt;logstash 설정 (pipelines.yml)&lt;/h5&gt;
+&lt;p&gt;logstash 는 &lt;code&gt;/etc/logstash/pipelines.yml&lt;/code&gt; 에는 conf 파일(&lt;code&gt;input-filter-output&lt;/code&gt; 처리를 정의한 파일)의 경로를 설정합니다.&lt;/p&gt;
+&lt;p&gt;기본 설치된 &lt;code&gt;pipelines.yml&lt;/code&gt; 내용을 보면 다음과 같습니다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ cat /etc/logstash/pipelines.yml
+# This file is where you define your pipelines. You can define multiple.
+# For more information on multiple pipelines, see the documentation:
+#   https://www.elastic.co/guide/en/logstash/current/multiple-pipelines.html
+
+- pipeline.id: main
+  path.config: &amp;#34;/etc/logstash/conf.d/*.conf&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;아래와 같이 설정 파일을 추가하면 &lt;code&gt;config.reload.automatic: true&lt;/code&gt; 설정에 의해 자동으로 conf 파일을 reload 합니다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ cat &amp;lt;&amp;lt; EOF &amp;gt; /etc/logstash/conf.d/exam_tcp.conf
+input {
+  tcp {
+    port =&amp;gt; 11000
+  }
+}
+
+output {
+  stdout {}
+}
+EOF
+$ 
+$ ls -al /etc/logstash/conf.d/exam_tcp.conf
+-rw-r--r-- 1 root root 77 2022-01-28 01:59 /etc/logstash/conf.d/exam_tcp.conf
+$ 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;exam_tcp.conf&lt;/code&gt; 파일을 추가했을 때와 port 를 11000 에서 11001 로 변경했을 때에 대한 로그입니다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;[2022-01-28T11:09:35,939][INFO ][logstash.javapipeline    ][main] Starting pipeline {:pipeline_id=&amp;gt;&amp;#34;main&amp;#34;, &amp;#34;pipeline.workers&amp;#34;=&amp;gt;4, &amp;#34;pipeline.batch.size&amp;#34;=&amp;gt;125, &amp;#34;pipeline.batch.delay&amp;#34;=&amp;gt;50, &amp;#34;pipeline.max_inflight&amp;#34;=&amp;gt;500, &amp;#34;pipeline.sources&amp;#34;=&amp;gt;[&amp;#34;/etc/logstash/conf.d/exam_tcp.conf&amp;#34;], :thread=&amp;gt;&amp;#34;#&amp;lt;Thread:0x9fd78a8 run&amp;gt;&amp;#34;}
+[2022-01-28T11:09:35,967][INFO ][logstash.javapipeline    ][main] Pipeline Java execution initialization time {&amp;#34;seconds&amp;#34;=&amp;gt;0.03}
+[2022-01-28T11:09:35,982][INFO ][logstash.javapipeline    ][main] Pipeline started {&amp;#34;pipeline.id&amp;#34;=&amp;gt;&amp;#34;main&amp;#34;}
+[2022-01-28T11:09:35,984][INFO ][logstash.inputs.tcp      ][main][d83c273d53113db5c7c05a26049443aedcdfcd34e3deae0d6abd509db45a5e87] Starting tcp input listener {:address=&amp;gt;&amp;#34;0.0.0.0:11000&amp;#34;, :ssl_enable=&amp;gt;false}
+[2022-01-28T11:09:35,987][INFO ][logstash.agent           ] Pipelines running {:count=&amp;gt;1, :running_pipelines=&amp;gt;[:main], :non_running_pipelines=&amp;gt;[]}
+
+[2022-01-28T11:10:40,988][INFO ][logstash.pipelineaction.reload] Reloading pipeline {&amp;#34;pipeline.id&amp;#34;=&amp;gt;:main}
+[2022-01-28T11:10:45,149][INFO ][logstash.javapipeline    ][main] Pipeline terminated {&amp;#34;pipeline.id&amp;#34;=&amp;gt;&amp;#34;main&amp;#34;}
+[2022-01-28T11:10:46,510][INFO ][logstash.javapipeline    ][main] Starting pipeline {:pipeline_id=&amp;gt;&amp;#34;main&amp;#34;, &amp;#34;pipeline.workers&amp;#34;=&amp;gt;4, &amp;#34;pipeline.batch.size&amp;#34;=&amp;gt;125, &amp;#34;pipeline.batch.delay&amp;#34;=&amp;gt;50, &amp;#34;pipeline.max_inflight&amp;#34;=&amp;gt;500, &amp;#34;pipeline.sources&amp;#34;=&amp;gt;[&amp;#34;/etc/logstash/conf.d/exam_tcp.conf&amp;#34;], :thread=&amp;gt;&amp;#34;#&amp;lt;Thread:0x58a6a0d5 run&amp;gt;&amp;#34;}
+[2022-01-28T11:10:46,529][INFO ][logstash.javapipeline    ][main] Pipeline Java execution initialization time {&amp;#34;seconds&amp;#34;=&amp;gt;0.02}
+[2022-01-28T11:10:46,543][INFO ][logstash.javapipeline    ][main] Pipeline started {&amp;#34;pipeline.id&amp;#34;=&amp;gt;&amp;#34;main&amp;#34;}
+[2022-01-28T11:10:46,543][INFO ][logstash.inputs.tcp      ][main][735f4ed1b2193b470c8f3f5019940dab9a73e81dbd8046b87dd2d15ff6bf5850] Starting tcp input listener {:address=&amp;gt;&amp;#34;0.0.0.0:11001&amp;#34;, :ssl_enable=&amp;gt;false}
+[2022-01-28T11:10:46,559][INFO ][logstash.agent           ] Pipelines running {:count=&amp;gt;1, :running_pipelines=&amp;gt;[:main], :non_running_pipelines=&amp;gt;[]}
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
 &lt;h5 id=&#34;filebeat-설치&#34;&gt;filebeat 설치&lt;/h5&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;$ yum list filebeat
