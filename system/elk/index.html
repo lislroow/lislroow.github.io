@@ -36,7 +36,7 @@ $ curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-
 <meta itemprop="description" content="elasticsearch 설치 artifacts.elastic.co 에서 rpm 다운로드 후 설치
 $ curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.16.3-x86_64.rpm $ rpm -i elasticsearch-7.16.3-x86_64.rpm $ systemctl restart elasticsearch $ curl -L -O https://artifacts.elastic.co/downloads/kibana/kibana-7.16.3-linux-x86_64.tar.gz $ rpm -i elasticsearch-7.16.3-x86_64.rpm 경고: elasticsearch-7.16.3-x86_64.rpm: Header V4 RSA/SHA512 Signature, key ID d88e42b4: NOKEY Creating elasticsearch group... OK Creating elasticsearch user... OK ### NOT starting on installation, please execute the following statements to configure elasticsearch service to start automatically using systemd sudo systemctl daemon-reload sudo systemctl enable elasticsearch.">
 
-<meta itemprop="wordCount" content="3473">
+<meta itemprop="wordCount" content="4020">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="ELK"/>
 <meta name="twitter:description" content="elasticsearch 설치 artifacts.elastic.co 에서 rpm 다운로드 후 설치
@@ -131,7 +131,7 @@ $ curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.a838f8a455fe9cd61c9305971a3efcb4.json"
+  data-offline-search-index-json-src="/offline-search-index.e9900134aed270df1dd6a29e3921bf9b.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -158,7 +158,7 @@ $ curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.a838f8a455fe9cd61c9305971a3efcb4.json"
+  data-offline-search-index-json-src="/offline-search-index.e9900134aed270df1dd6a29e3921bf9b.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -246,6 +246,7 @@ $ curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-
                 <li><a href="#filebeat-설정-1">filebeat 설정</a></li>
                 <li><a href="#filebeat-logstash-테스트">filebeat-logstash 테스트</a></li>
                 <li><a href="#filebeat-logstash-elastics-테스트">filebeat-logstash-elastics 테스트</a></li>
+                <li><a href="#logstash-설정-keystore">logstash 설정 (keystore)</a></li>
               </ul>
             </li>
           </ul>
@@ -1279,7 +1280,135 @@ $ systemctl start filebeat.service
 <br></p>
 </li>
 </ol>
+<h5 id="logstash-설정-keystore">logstash 설정 (keystore)</h5>
+<p>logstash 의 pipeline 설정 파일에 elasticsearch 패스워드 입력부분을 keystore 에서 가져오도록 할 수 있습니다.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">elasticsearch {
+  hosts =&gt; [&#34;localhost:8200&#34;]
+  user =&gt; &#34;elastic&#34;
+  #password =&gt; &#34;votmdnjem&#34;
+  # logstash-keystore 에서 es_password 값을 사용하도록 함
+  password =&gt; &#34;${es_password}&#34;
+}
+</code></pre></div><p>logstash 에서 keystore 를 생성하는 과정입니다.</p>
+<p>신경써야하는 부분은 keystore 의 password 를 저장하는 시스템변수 <code>LOGSTASH_KEYSTORE_PASS</code> 와 logstash 서비스의 설정과 관련있는 <code>--path.settings</code> 파라미터의 경로입니다.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#8f5902;font-style:italic">### logstash 서비스 파일에서 EnvironmentFile 파일 확인</span>
+<span style="color:#8f5902;font-style:italic">### EnvironmentFile 파일에 LOGSTASH_KEYSTORE_PASS 변수 추가할 목적으로 확인</span>
+<span style="color:#8f5902;font-style:italic">### --path.settings 의 경로를 확인 (logstash-keystore 로 keystore 생성 시 파라미터로 전달해야함)</span>
+$ cat /etc/systemd/system/logstash.service
+<span style="color:#ce5c00;font-weight:bold">[</span>Unit<span style="color:#ce5c00;font-weight:bold">]</span>
+<span style="color:#000">Description</span><span style="color:#ce5c00;font-weight:bold">=</span>logstash
 
+<span style="color:#ce5c00;font-weight:bold">[</span>Service<span style="color:#ce5c00;font-weight:bold">]</span>
+<span style="color:#000">Type</span><span style="color:#ce5c00;font-weight:bold">=</span>simple
+<span style="color:#000">User</span><span style="color:#ce5c00;font-weight:bold">=</span>logstash
+<span style="color:#000">Group</span><span style="color:#ce5c00;font-weight:bold">=</span>logstash
+<span style="color:#8f5902;font-style:italic"># Load env vars from /etc/default/ and /etc/sysconfig/ if they exist.</span>
+<span style="color:#8f5902;font-style:italic"># Prefixing the path with &#39;-&#39; makes it try to load, but if the file doesn&#39;t</span>
+<span style="color:#8f5902;font-style:italic"># exist, it continues onward.</span>
+<span style="color:#000">EnvironmentFile</span><span style="color:#ce5c00;font-weight:bold">=</span>-/etc/default/logstash
+<span style="color:#000">EnvironmentFile</span><span style="color:#ce5c00;font-weight:bold">=</span>-/etc/sysconfig/logstash
+<span style="color:#000">ExecStart</span><span style="color:#ce5c00;font-weight:bold">=</span>/usr/share/logstash/bin/logstash <span style="color:#4e9a06">&#34;--path.settings&#34;</span> <span style="color:#4e9a06">&#34;/etc/logstash&#34;</span>
+<span style="color:#000">Restart</span><span style="color:#ce5c00;font-weight:bold">=</span>always
+<span style="color:#000">WorkingDirectory</span><span style="color:#ce5c00;font-weight:bold">=</span>/
+<span style="color:#000">Nice</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">19</span>
+<span style="color:#000">LimitNOFILE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">16384</span>
+
+<span style="color:#8f5902;font-style:italic"># When stopping, how long to wait before giving up and sending SIGKILL?</span>
+<span style="color:#8f5902;font-style:italic"># Keep in mind that SIGKILL on a process can cause data loss.</span>
+<span style="color:#000">TimeoutStopSec</span><span style="color:#ce5c00;font-weight:bold">=</span>infinity
+
+<span style="color:#ce5c00;font-weight:bold">[</span>Install<span style="color:#ce5c00;font-weight:bold">]</span>
+<span style="color:#000">WantedBy</span><span style="color:#ce5c00;font-weight:bold">=</span>multi-user.target
+
+
+
+
+<span style="color:#8f5902;font-style:italic">### EnvironmentFile 파일의 마지막 부분에 LOGSTASH_KEYSTORE_PASS=1 추가</span>
+<span style="color:#8f5902;font-style:italic">### logstash 서비스가 logstash-keystore 에 접근할 때 사용합니다.</span>
+$ cat /etc/default/logstash
+<span style="color:#000">LS_HOME</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;/usr/share/logstash&#34;</span>
+<span style="color:#000">LS_SETTINGS_DIR</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;/etc/logstash&#34;</span>
+<span style="color:#000">LS_PIDFILE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;/var/run/logstash.pid&#34;</span>
+<span style="color:#000">LS_USER</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;logstash&#34;</span>
+<span style="color:#000">LS_GROUP</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;logstash&#34;</span>
+<span style="color:#000">LS_GC_LOG_FILE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;/var/log/logstash/gc.log&#34;</span>
+<span style="color:#000">LS_OPEN_FILES</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;16384&#34;</span>
+<span style="color:#000">LS_NICE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;19&#34;</span>
+<span style="color:#000">SERVICE_NAME</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;logstash&#34;</span>
+<span style="color:#000">SERVICE_DESCRIPTION</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;logstash&#34;</span>
+
+<span style="color:#000">LOGSTASH_KEYSTORE_PASS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span>
+
+
+
+
+<span style="color:#8f5902;font-style:italic">### key 저장소 생성</span>
+$ /usr/share/logstash/bin/logstash-keystore --path.settings /etc/logstash create
+Using JAVA_HOME defined java: /prod/java/openjdk-11.0.13.8-temurin
+WARNING: Using JAVA_HOME <span style="color:#204a87;font-weight:bold">while</span> Logstash distribution comes with a bundled JDK.
+DEPRECATION: The use of JAVA_HOME is now deprecated and will be removed starting from 8.0. Please configure LS_JAVA_HOME instead.
+OpenJDK 64-Bit Server VM warning: Option UseConcMarkSweepGC was deprecated in version 9.0 and will likely be removed in a future release.
+
+Created Logstash keystore at /etc/logstash/logstash.keystore
+
+
+
+
+<span style="color:#8f5902;font-style:italic">### key 저장소가 생성된 경로의 파일의 소유자를 logstash 로 변경</span>
+$ chown logstash:root /etc/logstash/logstash.keystore
+$ ls -al /etc/logstash/logstash.keystore
+-rw-r--r-- <span style="color:#0000cf;font-weight:bold">1</span> logstash root <span style="color:#0000cf;font-weight:bold">771</span> 2022-01-28 16:55 /etc/logstash/logstash.keystore
+
+
+
+
+<span style="color:#8f5902;font-style:italic">### key 저장소에 es_password 추가</span>
+$ /usr/share/logstash/bin/logstash-keystore --path.settings /etc/logstash add es_password
+Using JAVA_HOME defined java: /prod/java/openjdk-11.0.13.8-temurin
+WARNING: Using JAVA_HOME <span style="color:#204a87;font-weight:bold">while</span> Logstash distribution comes with a bundled JDK.
+DEPRECATION: The use of JAVA_HOME is now deprecated and will be removed starting from 8.0. Please configure LS_JAVA_HOME instead.
+OpenJDK 64-Bit Server VM warning: Option UseConcMarkSweepGC was deprecated in version 9.0 and will likely be removed in a future release.
+
+Enter value <span style="color:#204a87;font-weight:bold">for</span> es_password: 
+Added <span style="color:#4e9a06">&#39;es_password&#39;</span> to the Logstash keystore.
+
+
+
+
+<span style="color:#8f5902;font-style:italic">### key 저장소에 es_password 가 있는지 확인</span>
+$ /usr/share/logstash/bin/logstash-keystore --path.settings /etc/logstash list
+Using JAVA_HOME defined java: /prod/java/openjdk-11.0.13.8-temurin
+WARNING: Using JAVA_HOME <span style="color:#204a87;font-weight:bold">while</span> Logstash distribution comes with a bundled JDK.
+DEPRECATION: The use of JAVA_HOME is now deprecated and will be removed starting from 8.0. Please configure LS_JAVA_HOME instead.
+OpenJDK 64-Bit Server VM warning: Option UseConcMarkSweepGC was deprecated in version 9.0 and will likely be removed in a future release.
+
+es_password
+
+
+
+
+<span style="color:#8f5902;font-style:italic">### logstash 의 pipeline 설정 파일에 es_password 로 치환</span>
+<span style="color:#8f5902;font-style:italic">### pipeline 설정파일: /etc/logstash/conf.d/exam_filebeat.conf</span>
+...
+elasticsearch <span style="color:#ce5c00;font-weight:bold">{</span>
+  <span style="color:#000">hosts</span> <span style="color:#ce5c00;font-weight:bold">=</span>&gt; <span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#4e9a06">&#34;localhost:8200&#34;</span><span style="color:#ce5c00;font-weight:bold">]</span>
+  <span style="color:#000">user</span> <span style="color:#ce5c00;font-weight:bold">=</span>&gt; <span style="color:#4e9a06">&#34;elastic&#34;</span>
+  <span style="color:#8f5902;font-style:italic">#password =&gt; &#34;votmdnjem&#34;</span>
+  <span style="color:#8f5902;font-style:italic"># logstash-keystore 에서 es_password 값을 사용하도록 함</span>
+  <span style="color:#000">password</span> <span style="color:#ce5c00;font-weight:bold">=</span>&gt; <span style="color:#4e9a06">&#34;</span><span style="color:#4e9a06">${</span><span style="color:#000">es_password</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span>
+<span style="color:#ce5c00;font-weight:bold">}</span>
+...
+
+
+
+<span style="color:#8f5902;font-style:italic">### logstash 서비스 재시작 후 elasticsearch 접속 상태 로그에서 확인</span>
+$ systemctl restart logstash
+$ tail -f /var/log/messages <span style="color:#000;font-weight:bold">|</span> grep logstash
+Jan <span style="color:#0000cf;font-weight:bold">28</span> 21:34:53 centos8 logstash<span style="color:#ce5c00;font-weight:bold">[</span>100495<span style="color:#ce5c00;font-weight:bold">]</span>: <span style="color:#ce5c00;font-weight:bold">[</span>2022-01-28T21:34:53,467<span style="color:#ce5c00;font-weight:bold">][</span>INFO <span style="color:#ce5c00;font-weight:bold">][</span>logstash.outputs.elasticsearch<span style="color:#ce5c00;font-weight:bold">][</span>main<span style="color:#ce5c00;font-weight:bold">]</span> New Elasticsearch output <span style="color:#ce5c00;font-weight:bold">{</span>:class<span style="color:#ce5c00;font-weight:bold">=</span>&gt;<span style="color:#4e9a06">&#34;LogStash::Outputs::ElasticSearch&#34;</span>, :hosts<span style="color:#ce5c00;font-weight:bold">=</span>&gt;<span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#4e9a06">&#34;//localhost:8200&#34;</span><span style="color:#ce5c00;font-weight:bold">]}</span>
+Jan <span style="color:#0000cf;font-weight:bold">28</span> 21:34:53 centos8 logstash<span style="color:#ce5c00;font-weight:bold">[</span>100495<span style="color:#ce5c00;font-weight:bold">]</span>: <span style="color:#ce5c00;font-weight:bold">[</span>2022-01-28T21:34:53,791<span style="color:#ce5c00;font-weight:bold">][</span>INFO <span style="color:#ce5c00;font-weight:bold">][</span>logstash.outputs.elasticsearch<span style="color:#ce5c00;font-weight:bold">][</span>main<span style="color:#ce5c00;font-weight:bold">]</span> Elasticsearch pool URLs updated <span style="color:#ce5c00;font-weight:bold">{</span>:changes<span style="color:#ce5c00;font-weight:bold">=</span>&gt;<span style="color:#ce5c00;font-weight:bold">{</span>:removed<span style="color:#ce5c00;font-weight:bold">=</span>&gt;<span style="color:#ce5c00;font-weight:bold">[]</span>, :added<span style="color:#ce5c00;font-weight:bold">=</span>&gt;<span style="color:#ce5c00;font-weight:bold">[</span>http://elastic:xxxxxx@localhost:8200/<span style="color:#ce5c00;font-weight:bold">]}}</span>
+Jan <span style="color:#0000cf;font-weight:bold">28</span> 21:34:54 centos8 logstash<span style="color:#ce5c00;font-weight:bold">[</span>100495<span style="color:#ce5c00;font-weight:bold">]</span>: <span style="color:#ce5c00;font-weight:bold">[</span>2022-01-28T21:34:54,027<span style="color:#ce5c00;font-weight:bold">][</span>WARN <span style="color:#ce5c00;font-weight:bold">][</span>logstash.outputs.elasticsearch<span style="color:#ce5c00;font-weight:bold">][</span>main<span style="color:#ce5c00;font-weight:bold">]</span> Restored connection to ES instance <span style="color:#ce5c00;font-weight:bold">{</span>:url<span style="color:#ce5c00;font-weight:bold">=</span>&gt;<span style="color:#4e9a06">&#34;http://elastic:xxxxxx@localhost:8200/&#34;</span><span style="color:#ce5c00;font-weight:bold">}</span>
+Jan <span style="color:#0000cf;font-weight:bold">28</span> 21:34:54 centos8 logstash<span style="color:#ce5c00;font-weight:bold">[</span>100495<span style="color:#ce5c00;font-weight:bold">]</span>: <span style="color:#ce5c00;font-weight:bold">[</span>2022-01-28T21:34:54,044<span style="color:#ce5c00;font-weight:bold">][</span>INFO <span style="color:#ce5c00;font-weight:bold">][</span>logstash.outputs.elasticsearch<span style="color:#ce5c00;font-weight:bold">][</span>main<span style="color:#ce5c00;font-weight:bold">]</span> Elasticsearch version determined <span style="color:#ce5c00;font-weight:bold">(</span>7.16.3<span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>:es_version<span style="color:#ce5c00;font-weight:bold">=</span>&gt;7<span style="color:#ce5c00;font-weight:bold">}</span>
+</code></pre></div>
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
