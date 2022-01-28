@@ -124,7 +124,7 @@ elasticsearch …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.720f56765c4b03db0e1bb8f6708085d9.json"
+  data-offline-search-index-json-src="/offline-search-index.02f5d90099ed4484f44071f8ee401e46.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -151,7 +151,7 @@ elasticsearch …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.720f56765c4b03db0e1bb8f6708085d9.json"
+  data-offline-search-index-json-src="/offline-search-index.02f5d90099ed4484f44071f8ee401e46.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -1297,9 +1297,15 @@ ExecStopPost=-/bin/ln -snf inactive.motd /run/cockpit/motd
 
 [Install]
 WantedBy=sockets.target
+</code></pre></div><p>redhat 공식문서에서는 <code>/etc/systemd/system/cockpit.socket.d/listen.conf</code> 파일을 <code>생성</code>하고 daemon-reload 를 하라고 되어있습니다.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[Socket]
+ListenStream=
+ListenStream=127.0.0.1:8000
+FreeBind=yes
+</code></pre></div><p><a href="https://www.freedesktop.org/software/systemd/man/systemd.socket.html#ListenStream=" target="_blank"><a href="http://www.freedesktop.org">www.freedesktop.org</a></a>에서는 아래와 같이 <code>FreeBind=yes</code> 를 권장한다고 되어있습니다.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">If an IP address is used here, it is often desirable to listen on it before the interface it is configured on is up and running, and even regardless of whether it will be up and running at any point. To deal with this, it is recommended to set the FreeBind= option described below.
 </code></pre></div><p>편집 후 아래 명령어를 실행합니다.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ systemctl disable --now cockpit.socket
-$ systemctl <span style="color:#204a87">enable</span> --now cockpit.socket
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ systemctl daemon-reload cockpit.socket
 $ systemctl restart cockpit.socket
 <span style="color:#8f5902;font-style:italic"># 변경 상태를 확인합니다.</span>
 $ netstat -ntplu <span style="color:#000;font-weight:bold">|</span> grep <span style="color:#0000cf;font-weight:bold">8000</span>
