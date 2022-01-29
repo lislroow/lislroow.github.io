@@ -18,28 +18,40 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>kibana | dlog</title>
-<meta name="description" content="_cat/indices
-인덱스 목록, index명 desc 정렬, index 컬럼만 조회
-GET _cat/indices?v&amp;s=index:desc&amp;h=index
-">
-<meta property="og:title" content="kibana" />
-<meta property="og:description" content="_cat/indices 인덱스 목록, index명 desc 정렬, index 컬럼만 조회
-GET _cat/indices?v&amp;s=index:desc&amp;h=index " />
+<title>2022.01.29 | dlog</title>
+<meta name="description" content="
+
+
+apache 로그파일 &gt; filebeat &gt; logstash &gt; elastic 저장 과정에 대한 이해
+
+apache 로그에 대한 포맷
+logstash 의 filter
+elastic 에 저장된 내용을 kibana 에서 조회
+
+
+
+
+apache …">
+<meta property="og:title" content="2022.01.29" />
+<meta property="og:description" content="apache 로그파일 &gt; filebeat &gt; logstash &gt; elastic 저장 과정에 대한 이해
+ apache 로그에 대한 포맷 logstash 의 filter elastic 에 저장된 내용을 kibana 에서 조회   apache 로그 apache 로그는 httpd.conf 에 아래와 같이 정의되어 있다.
+&lt;IfModule log_config_module&gt; LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34;&#34; combined LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b&#34; common &lt;IfModule logio_module&gt; LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34; %I %O&#34; combinedio &lt;/IfModule&gt; CustomLog &#34;/outlog/WEB/httpd/access." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/system/kibana/" /><meta property="article:section" content="system" />
+<meta property="og:url" content="/elk/20220129-apache_log/" /><meta property="article:section" content="ELK" />
 
 
 
-<meta itemprop="name" content="kibana">
-<meta itemprop="description" content="_cat/indices 인덱스 목록, index명 desc 정렬, index 컬럼만 조회
-GET _cat/indices?v&amp;s=index:desc&amp;h=index ">
+<meta itemprop="name" content="2022.01.29">
+<meta itemprop="description" content="apache 로그파일 &gt; filebeat &gt; logstash &gt; elastic 저장 과정에 대한 이해
+ apache 로그에 대한 포맷 logstash 의 filter elastic 에 저장된 내용을 kibana 에서 조회   apache 로그 apache 로그는 httpd.conf 에 아래와 같이 정의되어 있다.
+&lt;IfModule log_config_module&gt; LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34;&#34; combined LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b&#34; common &lt;IfModule logio_module&gt; LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34; %I %O&#34; combinedio &lt;/IfModule&gt; CustomLog &#34;/outlog/WEB/httpd/access.">
 
-<meta itemprop="wordCount" content="11">
+<meta itemprop="wordCount" content="120">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="kibana"/>
-<meta name="twitter:description" content="_cat/indices 인덱스 목록, index명 desc 정렬, index 컬럼만 조회
-GET _cat/indices?v&amp;s=index:desc&amp;h=index "/>
+<meta name="twitter:title" content="2022.01.29"/>
+<meta name="twitter:description" content="apache 로그파일 &gt; filebeat &gt; logstash &gt; elastic 저장 과정에 대한 이해
+ apache 로그에 대한 포맷 logstash 의 filter elastic 에 저장된 내용을 kibana 에서 조회   apache 로그 apache 로그는 httpd.conf 에 아래와 같이 정의되어 있다.
+&lt;IfModule log_config_module&gt; LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34;&#34; combined LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b&#34; common &lt;IfModule logio_module&gt; LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34; %I %O&#34; combinedio &lt;/IfModule&gt; CustomLog &#34;/outlog/WEB/httpd/access."/>
 
 
 
@@ -77,7 +89,7 @@ GET _cat/indices?v&amp;s=index:desc&amp;h=index "/>
 				
 				
 				
-				<a class="nav-link active" href="/system/" ><i class='fas fa-book'></i><span class="active">system</span></a>
+				<a class="nav-link" href="/system/" ><i class='fas fa-book'></i><span>system</span></a>
 			</li>
 			
 			<li class="nav-item mr-4 mb-2 mb-lg-0">
@@ -101,7 +113,7 @@ GET _cat/indices?v&amp;s=index:desc&amp;h=index "/>
 				
 				
 				
-				<a class="nav-link" href="/elk/" ><i class='fas fa-book'></i><span>ELK</span></a>
+				<a class="nav-link active" href="/elk/" ><i class='fas fa-book'></i><span class="active">ELK</span></a>
 			</li>
 			
 			
@@ -147,34 +159,13 @@ GET _cat/indices?v&amp;s=index:desc&amp;h=index "/>
   </form>
   <nav class="collapse td-sidebar-nav" id="td-section-nav">
     <ul class="td-sidebar-nav__section pr-md-3 ul-0">
-      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-system-li">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-elk-li">
   
-  <a href="/system/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-system"><span class="">system</span></a>
+  <a href="/elk/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-elk"><span class="">ELK</span></a>
   <ul class="ul-1">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemcentos8-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-elk20220129-apache_log-li">
   
-  <a href="/system/centos8/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemcentos8"><span class="">centos8</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemelk-li">
-  
-  <a href="/system/elk/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemelk"><span class="">ELK</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemhttpd-li">
-  
-  <a href="/system/httpd/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemhttpd"><span class="">httpd</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemjenkins-li">
-  
-  <a href="/system/jenkins/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemjenkins"><span class="">jenkins</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-systemkibana-li">
-  
-  <a href="/system/kibana/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-systemkibana"><span class="td-sidebar-nav-active-item">kibana</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemlinux-li">
-  
-  <a href="/system/linux/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemlinux"><span class="">linux</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemopenssh-li">
-  
-  <a href="/system/openssh/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemopenssh"><span class="">openssh</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemoracle12c-li">
-  
-  <a href="/system/oracle12c/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemoracle12c"><span class="">oracle12c</span></a>
+  <a href="/elk/20220129-apache_log/" title="2022.01.29" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-elk20220129-apache_log"><span class="td-sidebar-nav-active-item">2022.01.29-apache_log</span></a>
 </li>
   </ul>
 </li>
@@ -198,11 +189,7 @@ GET _cat/indices?v&amp;s=index:desc&amp;h=index "/>
       <ul>
         <li>
           <ul>
-            <li>
-              <ul>
-                <li><a href="#_catindices">_cat/indices</a></li>
-              </ul>
-            </li>
+            <li><a href="#apache-로그">apache 로그</a></li>
           </ul>
         </li>
       </ul>
@@ -240,16 +227,16 @@ GET _cat/indices?v&amp;s=index:desc&amp;h=index "/>
             <nav aria-label="breadcrumb" class="td-breadcrumbs">
   <ol class="breadcrumb">
   <li class="breadcrumb-item">
-    <a href="/system/">system</a>
+    <a href="/elk/">ELK</a>
   </li>
   <li class="breadcrumb-item active" aria-current="page">
-    <a href="/system/kibana/">kibana</a>
+    <a href="/elk/20220129-apache_log/">2022.01.29-apache_log</a>
   </li>
   </ol>
 </nav>
             
 <div class="td-content">
-	<h1>kibana</h1>
+	<h1>2022.01.29</h1>
 	
 	<header class="article-meta">
 		
@@ -266,10 +253,56 @@ GET _cat/indices?v&amp;s=index:desc&amp;h=index "/>
 		
 		
 	</header>    
-	<h5 id="_catindices">_cat/indices</h5>
-<p>인덱스 목록, index명 desc 정렬, index 컬럼만 조회</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">GET _cat/indices?v&amp;s=index:desc&amp;h=index
-</code></pre></div>
+	
+
+<div class="pageinfo pageinfo-primary">
+<p>apache 로그파일 &gt; filebeat &gt; logstash &gt; elastic 저장 과정에 대한 이해</p>
+<ul>
+<li>apache 로그에 대한 포맷</li>
+<li>logstash 의 filter</li>
+<li>elastic 에 저장된 내용을 kibana 에서 조회</li>
+</ul>
+
+</div>
+
+<h4 id="apache-로그">apache 로그</h4>
+<p>apache 로그는 httpd.conf 에 아래와 같이 정의되어 있다.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&lt;IfModule log_config_module&gt;
+    LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34;&#34; combined
+    LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b&#34; common
+    &lt;IfModule logio_module&gt;
+      LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34; %I %O&#34; combinedio
+    &lt;/IfModule&gt;
+    CustomLog &#34;/outlog/WEB/httpd/access.log&#34; combined
+&lt;/IfModule&gt;
+</code></pre></div><p><code>combined</code> 라는 이름의 <code>&quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b \&quot;%{Referer}i\&quot; \&quot;%{User-Agent}i\&quot;&quot;</code> 형식을 풀이하면 이렇다.</p>
+<table>
+<thead>
+<tr>
+<th>포맷</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>%h</code></td>
+<td>원격 호스트 이름</td>
+</tr>
+<tr>
+<td><code>%l</code></td>
+<td>ident 인증으로 알아낸 os 의 사용자명 <a href="https://www.rfc-editor.org/rfc/rfc1413.txt" target="_blank">rfc1413</a></td>
+</tr>
+<tr>
+<td><code>%u</code></td>
+<td>HTTP 인증으로 알아낸 사용자ID</td>
+</tr>
+<tr>
+<td><code>%r</code></td>
+<td>요청 uri (<code>%m %U%q %H</code> 와 같다.)</td>
+</tr>
+</tbody>
+</table>
+
 	
 	
 	
