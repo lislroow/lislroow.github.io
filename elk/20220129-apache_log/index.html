@@ -46,7 +46,7 @@ apache …">
  apache 로그에 대한 포맷 logstash 의 filter elastic 에 저장된 내용을 kibana 에서 조회   apache 로그 apache 로그는 httpd.conf 에 아래와 같이 정의되어 있다.
 &lt;IfModule log_config_module&gt; LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34;&#34; combined LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b&#34; common &lt;IfModule logio_module&gt; LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34; %I %O&#34; combinedio &lt;/IfModule&gt; CustomLog &#34;/outlog/WEB/httpd/access.">
 
-<meta itemprop="wordCount" content="120">
+<meta itemprop="wordCount" content="159">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="2022.01.29"/>
 <meta name="twitter:description" content="apache 로그파일 &gt; filebeat &gt; logstash &gt; elastic 저장 과정에 대한 이해
@@ -127,7 +127,7 @@ apache …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.a6a39e54329c3c77811a24b0893b84c4.json"
+  data-offline-search-index-json-src="/offline-search-index.eb8b68b591ab40a75231791644b1bfc4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -149,7 +149,7 @@ apache …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.a6a39e54329c3c77811a24b0893b84c4.json"
+  data-offline-search-index-json-src="/offline-search-index.eb8b68b591ab40a75231791644b1bfc4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -276,7 +276,22 @@ apache …">
     CustomLog &#34;/outlog/WEB/httpd/access.log&#34; combined
 &lt;/IfModule&gt;
 </code></pre></div><p><code>combined</code> 라는 이름의 <code>&quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b \&quot;%{Referer}i\&quot; \&quot;%{User-Agent}i\&quot;&quot;</code> 형식을 풀이하면 이렇다.</p>
-<table>
+<p>예시 로그</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">172.28.200.30 - - [29/Jan/2022:14:23:44 +0900] &#34;GET /repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml HTTP/1.1&#34; 200 599 &#34;-&#34; &#34;curl/7.61.1&#34;
+{
+  &#34;request&#34;: &#34;/repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml&#34;,
+  &#34;agent&#34;: &#34;\&#34;curl/7.61.1\&#34;&#34;,
+  &#34;auth&#34;: &#34;-&#34;,
+  &#34;ident&#34;: &#34;-&#34;,
+  &#34;verb&#34;: &#34;GET&#34;,
+  &#34;referrer&#34;: &#34;\&#34;-\&#34;&#34;,
+  &#34;response&#34;: &#34;200&#34;,
+  &#34;bytes&#34;: &#34;599&#34;,
+  &#34;clientip&#34;: &#34;172.28.200.30&#34;,
+  &#34;httpversion&#34;: &#34;1.1&#34;,
+  &#34;timestamp&#34;: &#34;29/Jan/2022:14:23:44 +0900&#34;
+}
+</code></pre></div><table>
 <thead>
 <tr>
 <th>포맷</th>

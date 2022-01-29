@@ -45,7 +45,22 @@
     CustomLog &amp;#34;/outlog/WEB/httpd/access.log&amp;#34; combined
 &amp;lt;/IfModule&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;combined&lt;/code&gt; 라는 이름의 &lt;code&gt;&amp;quot;%h %l %u %t \&amp;quot;%r\&amp;quot; %&amp;gt;s %b \&amp;quot;%{Referer}i\&amp;quot; \&amp;quot;%{User-Agent}i\&amp;quot;&amp;quot;&lt;/code&gt; 형식을 풀이하면 이렇다.&lt;/p&gt;
-&lt;table&gt;
+&lt;p&gt;예시 로그&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;172.28.200.30 - - [29/Jan/2022:14:23:44 +0900] &amp;#34;GET /repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml HTTP/1.1&amp;#34; 200 599 &amp;#34;-&amp;#34; &amp;#34;curl/7.61.1&amp;#34;
+{
+  &amp;#34;request&amp;#34;: &amp;#34;/repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml&amp;#34;,
+  &amp;#34;agent&amp;#34;: &amp;#34;\&amp;#34;curl/7.61.1\&amp;#34;&amp;#34;,
+  &amp;#34;auth&amp;#34;: &amp;#34;-&amp;#34;,
+  &amp;#34;ident&amp;#34;: &amp;#34;-&amp;#34;,
+  &amp;#34;verb&amp;#34;: &amp;#34;GET&amp;#34;,
+  &amp;#34;referrer&amp;#34;: &amp;#34;\&amp;#34;-\&amp;#34;&amp;#34;,
+  &amp;#34;response&amp;#34;: &amp;#34;200&amp;#34;,
+  &amp;#34;bytes&amp;#34;: &amp;#34;599&amp;#34;,
+  &amp;#34;clientip&amp;#34;: &amp;#34;172.28.200.30&amp;#34;,
+  &amp;#34;httpversion&amp;#34;: &amp;#34;1.1&amp;#34;,
+  &amp;#34;timestamp&amp;#34;: &amp;#34;29/Jan/2022:14:23:44 +0900&amp;#34;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th&gt;포맷&lt;/th&gt;
