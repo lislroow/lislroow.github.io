@@ -35,18 +35,22 @@
 &lt;/div&gt;
 
 &lt;h4 id=&#34;apache-로그&#34;&gt;apache 로그&lt;/h4&gt;
-&lt;p&gt;apache 로그는 httpd.conf 에 아래와 같이 정의되어 있다.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&amp;lt;IfModule log_config_module&amp;gt;
-    LogFormat &amp;#34;%h %l %u %t \&amp;#34;%r\&amp;#34; %&amp;gt;s %b \&amp;#34;%{Referer}i\&amp;#34; \&amp;#34;%{User-Agent}i\&amp;#34;&amp;#34; combined
-    LogFormat &amp;#34;%h %l %u %t \&amp;#34;%r\&amp;#34; %&amp;gt;s %b&amp;#34; common
-    &amp;lt;IfModule logio_module&amp;gt;
-      LogFormat &amp;#34;%h %l %u %t \&amp;#34;%r\&amp;#34; %&amp;gt;s %b \&amp;#34;%{Referer}i\&amp;#34; \&amp;#34;%{User-Agent}i\&amp;#34; %I %O&amp;#34; combinedio
-    &amp;lt;/IfModule&amp;gt;
-    CustomLog &amp;#34;/outlog/WEB/httpd/access.log&amp;#34; combined
-&amp;lt;/IfModule&amp;gt;
+&lt;h5 id=&#34;로그-포맷&#34;&gt;로그 포맷&lt;/h5&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&amp;lt;VirtualHost *:443&amp;gt;
+  ServerName nexus
+  
+  # combined 포맷은 httpd.conf 에 정의되어 있음
+  LogFormat &amp;#34;%h %l %u %t \&amp;#34;%r\&amp;#34; %&amp;gt;s %b  \&amp;#34;%{Referer}i\&amp;#34; \&amp;#34;%{User-Agent}i\&amp;#34;&amp;#34; combined
+  CustomLog &amp;#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/nexus_ssl-access.log.%Y-%m-%d 86400 +540%&amp;#34; combined
+  ...
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;combined&lt;/code&gt; 라는 이름의 &lt;code&gt;&amp;quot;%h %l %u %t \&amp;quot;%r\&amp;quot; %&amp;gt;s %b \&amp;quot;%{Referer}i\&amp;quot; \&amp;quot;%{User-Agent}i\&amp;quot;&amp;quot;&lt;/code&gt; 형식을 풀이하면 이렇다.&lt;/p&gt;
-&lt;p&gt;예시 로그&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;172.28.200.30 - - [29/Jan/2022:14:23:44 +0900] &amp;#34;GET /repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml HTTP/1.1&amp;#34; 200 599 &amp;#34;-&amp;#34; &amp;#34;curl/7.61.1&amp;#34;
+&lt;h5 id=&#34;로그-예시&#34;&gt;로그 예시&lt;/h5&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ curl -X GET https://nexus/repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml
+
+# apache 로그
+172.28.200.30 - - [29/Jan/2022:22:35:05 +0900] &amp;#34;GET /repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml HTTP/1.1&amp;#34; 200 599 &amp;#34;-&amp;#34; &amp;#34;curl/7.61.1&amp;#34;
+
+# kibana 에서 grok pattern: %{COMBINEDAPACHELOG}
 {
   &amp;#34;request&amp;#34;: &amp;#34;/repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml&amp;#34;,
   &amp;#34;agent&amp;#34;: &amp;#34;\&amp;#34;curl/7.61.1\&amp;#34;&amp;#34;,
@@ -58,9 +62,10 @@
   &amp;#34;bytes&amp;#34;: &amp;#34;599&amp;#34;,
   &amp;#34;clientip&amp;#34;: &amp;#34;172.28.200.30&amp;#34;,
   &amp;#34;httpversion&amp;#34;: &amp;#34;1.1&amp;#34;,
-  &amp;#34;timestamp&amp;#34;: &amp;#34;29/Jan/2022:14:23:44 +0900&amp;#34;
+  &amp;#34;timestamp&amp;#34;: &amp;#34;29/Jan/2022:22:35:05 +0900&amp;#34;
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;table&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;로그-예시-설명&#34;&gt;로그 예시 (설명)&lt;/h5&gt;
+&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th&gt;포맷&lt;/th&gt;
@@ -74,19 +79,86 @@
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;%l&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;ident 인증으로 알아낸 os 의 사용자명 &lt;a href=&#34;https://www.rfc-editor.org/rfc/rfc1413.txt&#34; target=&#34;_blank&#34;&gt;rfc1413&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;ident 인증으로 알아낸 os 의 사용자명 &lt;a href=&#34;https://www.rfc-editor.org/rfc/rfc1413.txt&#34; target=&#34;_blank&#34;&gt;rfc14&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;%u&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;HTTP 인증으로 알아낸 사용자ID&lt;/td&gt;
+&lt;td&gt;http 인증으로 알아낸 사용자ID&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;%r&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;요청 uri (&lt;code&gt;%m %U%q %H&lt;/code&gt; 와 같다.)&lt;/td&gt;
 &lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;%&amp;gt;s&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;http status&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;%b&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;클라이언트에 보낸 http body 의 byte 크기&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;%{Referer}i&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;http header 명 &lt;code&gt;Referer&lt;/code&gt;의 값&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;%{User-Agent}i&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;http header 명 &lt;code&gt;User-Agent&lt;/code&gt;의 값&lt;/td&gt;
+&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+&lt;h5 id=&#34;로그-포맷-추가&#34;&gt;로그 포맷 추가&lt;/h5&gt;
+&lt;p&gt;&lt;code&gt;combined&lt;/code&gt; 포맷에 http header &lt;code&gt;txid&lt;/code&gt; 를 추가 후 curl 테스트&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ vi /etc/httpd/conf.d/vhost-nexus.conf
+&amp;lt;VirtualHost *:443&amp;gt;
+  ServerName nexus
+  
+  # combined_nexus 포맷에 &amp;#34;txid&amp;#34; 추가
+  # LogFormat &amp;#34;%h %l %u %t \&amp;#34;%r\&amp;#34; %&amp;gt;s %b  \&amp;#34;%{Referer}i\&amp;#34; \&amp;#34;%{User-Agent}i\&amp;#34;&amp;#34; combined
+  LogFormat &amp;#34;%h %l %u %t \&amp;#34;%r\&amp;#34; %&amp;gt;s %b  \&amp;#34;%{Referer}i\&amp;#34; \&amp;#34;%{User-Agent}i\&amp;#34; \&amp;#34;%{txid}i\&amp;#34;&amp;#34; combined_nexus
+  # access log 의 포맷을 combined_nexus 로 변경
+  CustomLog &amp;#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/nexus_ssl-access.log.%Y-%m-%d 86400 +540%&amp;#34; combined_nexus
+  ...
 
+$ systemctl restart httpd
+
+$ curl -X GET -H &amp;#34;txid: t1hruu5xl7le0o&amp;#34; https://nexus/repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml
+
+# apache 로그
+172.28.200.30 - - [29/Jan/2022:22:43:39 +0900] &amp;#34;GET /repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml HTTP/1.1&amp;#34; 200 599 &amp;#34;-&amp;#34; &amp;#34;curl/7.61.1&amp;#34; &amp;#34;t1hruu5xl7le0o&amp;#34;
+
+# kibana 에서 grok pattern: %{COMBINEDAPACHELOG} \&amp;#34;%{GREEDYDATA:txid}\&amp;#34;
+{
+  &amp;#34;request&amp;#34;: &amp;#34;/repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml&amp;#34;,
+  &amp;#34;agent&amp;#34;: &amp;#34;\&amp;#34;curl/7.61.1\&amp;#34;&amp;#34;,
+  &amp;#34;auth&amp;#34;: &amp;#34;-&amp;#34;,
+  &amp;#34;ident&amp;#34;: &amp;#34;-&amp;#34;,
+  &amp;#34;verb&amp;#34;: &amp;#34;GET&amp;#34;,
+  &amp;#34;txid&amp;#34;: &amp;#34;t1hruu5xl7le0o&amp;#34;,
+  &amp;#34;referrer&amp;#34;: &amp;#34;\&amp;#34;-\&amp;#34;&amp;#34;,
+  &amp;#34;response&amp;#34;: &amp;#34;200&amp;#34;,
+  &amp;#34;bytes&amp;#34;: &amp;#34;599&amp;#34;,
+  &amp;#34;clientip&amp;#34;: &amp;#34;172.28.200.30&amp;#34;,
+  &amp;#34;httpversion&amp;#34;: &amp;#34;1.1&amp;#34;,
+  &amp;#34;timestamp&amp;#34;: &amp;#34;29/Jan/2022:22:43:39 +0900&amp;#34;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;grok pattern 에서 txid 를 parsing 하기 위해 %{GREEDYDATA:txid} 를 사용함&lt;/p&gt;
+&lt;p&gt;(txid 를 [a-z0-9]{14} 으로 패턴을 정의하여 logstash pattern 에 등록하여 사용할 수 있음)&lt;/p&gt;
+&lt;p&gt;github: &lt;a href=&#34;https://github.com/logstash-plugins/logstash-patterns-core.git&#34;&gt;https://github.com/logstash-plugins/logstash-patterns-core.git&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://raw.githubusercontent.com/logstash-plugins/logstash-patterns-core/main/patterns/ecs-v1/grok-patterns&#34; target=&#34;_blank&#34;&gt;grok-patterns&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ git pull https://github.com/logstash-plugins/logstash-patterns-core.git
+$ find ./logstash-patterns-core/patterns/ -type f | grep grok | xargs grep -E &amp;#34;^[^#\ ]&amp;#34; | grep &amp;#39;GREEDYDATA&amp;#39;
+./logstash-patterns-core/patterns/ecs-v1/grok-patterns:GREEDYDATA .*
+./logstash-patterns-core/patterns/legacy/grok-patterns:GREEDYDATA .*
+$ head -n 5 ./logstash-patterns-core/patterns/legacy/grok-patterns
+USERNAME [a-zA-Z0-9._-]+
+USER %{USERNAME}
+EMAILLOCALPART [a-zA-Z][a-zA-Z0-9_.+-=:]+
+EMAILADDRESS %{EMAILLOCALPART}@%{HOSTNAME}
+INT (?:[+-]?(?:[0-9]+))
+$ find ./logstash-patterns-core/patterns/ -type f | xargs grep -E &amp;#34;^[^#\ ]&amp;#34; | grep &amp;#39;COMBINEDAPACHELOG&amp;#39;
+./logstash-patterns-core/patterns/legacy/httpd:COMBINEDAPACHELOG %{HTTPD_COMBINEDLOG}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       </description>
     </item>
     

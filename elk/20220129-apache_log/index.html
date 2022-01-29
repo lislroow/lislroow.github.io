@@ -31,11 +31,11 @@ elastic 에 저장된 내용을 kibana 에서 조회
 
 
 
-apache …">
+apache 로그
+ …">
 <meta property="og:title" content="2022.01.29" />
 <meta property="og:description" content="apache 로그파일 &gt; filebeat &gt; logstash &gt; elastic 저장 과정에 대한 이해
- apache 로그에 대한 포맷 logstash 의 filter elastic 에 저장된 내용을 kibana 에서 조회   apache 로그 apache 로그는 httpd.conf 에 아래와 같이 정의되어 있다.
-&lt;IfModule log_config_module&gt; LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34;&#34; combined LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b&#34; common &lt;IfModule logio_module&gt; LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34; %I %O&#34; combinedio &lt;/IfModule&gt; CustomLog &#34;/outlog/WEB/httpd/access." />
+ apache 로그에 대한 포맷 logstash 의 filter elastic 에 저장된 내용을 kibana 에서 조회   apache 로그 로그 포맷 &lt;VirtualHost *:443&gt; ServerName nexus # combined 포맷은 httpd.conf 에 정의되어 있음 LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34;&#34; combined CustomLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/nexus_ssl-access.log.%Y-%m-%d 86400 &#43;540%&#34; combined ... combined 라는 이름의 &quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b \&quot;%{Referer}i\&quot; \&quot;%{User-Agent}i\&quot;&quot; 형식을 풀이하면 이렇다." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/elk/20220129-apache_log/" /><meta property="article:section" content="ELK" />
 
@@ -43,15 +43,13 @@ apache …">
 
 <meta itemprop="name" content="2022.01.29">
 <meta itemprop="description" content="apache 로그파일 &gt; filebeat &gt; logstash &gt; elastic 저장 과정에 대한 이해
- apache 로그에 대한 포맷 logstash 의 filter elastic 에 저장된 내용을 kibana 에서 조회   apache 로그 apache 로그는 httpd.conf 에 아래와 같이 정의되어 있다.
-&lt;IfModule log_config_module&gt; LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34;&#34; combined LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b&#34; common &lt;IfModule logio_module&gt; LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34; %I %O&#34; combinedio &lt;/IfModule&gt; CustomLog &#34;/outlog/WEB/httpd/access.">
+ apache 로그에 대한 포맷 logstash 의 filter elastic 에 저장된 내용을 kibana 에서 조회   apache 로그 로그 포맷 &lt;VirtualHost *:443&gt; ServerName nexus # combined 포맷은 httpd.conf 에 정의되어 있음 LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34;&#34; combined CustomLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/nexus_ssl-access.log.%Y-%m-%d 86400 &#43;540%&#34; combined ... combined 라는 이름의 &quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b \&quot;%{Referer}i\&quot; \&quot;%{User-Agent}i\&quot;&quot; 형식을 풀이하면 이렇다.">
 
-<meta itemprop="wordCount" content="159">
+<meta itemprop="wordCount" content="389">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="2022.01.29"/>
 <meta name="twitter:description" content="apache 로그파일 &gt; filebeat &gt; logstash &gt; elastic 저장 과정에 대한 이해
- apache 로그에 대한 포맷 logstash 의 filter elastic 에 저장된 내용을 kibana 에서 조회   apache 로그 apache 로그는 httpd.conf 에 아래와 같이 정의되어 있다.
-&lt;IfModule log_config_module&gt; LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34;&#34; combined LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b&#34; common &lt;IfModule logio_module&gt; LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34; %I %O&#34; combinedio &lt;/IfModule&gt; CustomLog &#34;/outlog/WEB/httpd/access."/>
+ apache 로그에 대한 포맷 logstash 의 filter elastic 에 저장된 내용을 kibana 에서 조회   apache 로그 로그 포맷 &lt;VirtualHost *:443&gt; ServerName nexus # combined 포맷은 httpd.conf 에 정의되어 있음 LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34;&#34; combined CustomLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/nexus_ssl-access.log.%Y-%m-%d 86400 &#43;540%&#34; combined ... combined 라는 이름의 &quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b \&quot;%{Referer}i\&quot; \&quot;%{User-Agent}i\&quot;&quot; 형식을 풀이하면 이렇다."/>
 
 
 
@@ -127,7 +125,7 @@ apache …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.eb8b68b591ab40a75231791644b1bfc4.json"
+  data-offline-search-index-json-src="/offline-search-index.d7da2ccebda735ed0d123d4a86ce1597.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -149,7 +147,7 @@ apache …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.eb8b68b591ab40a75231791644b1bfc4.json"
+  data-offline-search-index-json-src="/offline-search-index.d7da2ccebda735ed0d123d4a86ce1597.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -189,7 +187,14 @@ apache …">
       <ul>
         <li>
           <ul>
-            <li><a href="#apache-로그">apache 로그</a></li>
+            <li><a href="#apache-로그">apache 로그</a>
+              <ul>
+                <li><a href="#로그-포맷">로그 포맷</a></li>
+                <li><a href="#로그-예시">로그 예시</a></li>
+                <li><a href="#로그-예시-설명">로그 예시 (설명)</a></li>
+                <li><a href="#로그-포맷-추가">로그 포맷 추가</a></li>
+              </ul>
+            </li>
           </ul>
         </li>
       </ul>
@@ -266,18 +271,22 @@ apache …">
 </div>
 
 <h4 id="apache-로그">apache 로그</h4>
-<p>apache 로그는 httpd.conf 에 아래와 같이 정의되어 있다.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&lt;IfModule log_config_module&gt;
-    LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34;&#34; combined
-    LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b&#34; common
-    &lt;IfModule logio_module&gt;
-      LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34; %I %O&#34; combinedio
-    &lt;/IfModule&gt;
-    CustomLog &#34;/outlog/WEB/httpd/access.log&#34; combined
-&lt;/IfModule&gt;
+<h5 id="로그-포맷">로그 포맷</h5>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&lt;VirtualHost *:443&gt;
+  ServerName nexus
+  
+  # combined 포맷은 httpd.conf 에 정의되어 있음
+  LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b  \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34;&#34; combined
+  CustomLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/nexus_ssl-access.log.%Y-%m-%d 86400 +540%&#34; combined
+  ...
 </code></pre></div><p><code>combined</code> 라는 이름의 <code>&quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b \&quot;%{Referer}i\&quot; \&quot;%{User-Agent}i\&quot;&quot;</code> 형식을 풀이하면 이렇다.</p>
-<p>예시 로그</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">172.28.200.30 - - [29/Jan/2022:14:23:44 +0900] &#34;GET /repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml HTTP/1.1&#34; 200 599 &#34;-&#34; &#34;curl/7.61.1&#34;
+<h5 id="로그-예시">로그 예시</h5>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ curl -X GET https://nexus/repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml
+
+# apache 로그
+172.28.200.30 - - [29/Jan/2022:22:35:05 +0900] &#34;GET /repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml HTTP/1.1&#34; 200 599 &#34;-&#34; &#34;curl/7.61.1&#34;
+
+# kibana 에서 grok pattern: %{COMBINEDAPACHELOG}
 {
   &#34;request&#34;: &#34;/repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml&#34;,
   &#34;agent&#34;: &#34;\&#34;curl/7.61.1\&#34;&#34;,
@@ -289,9 +298,10 @@ apache …">
   &#34;bytes&#34;: &#34;599&#34;,
   &#34;clientip&#34;: &#34;172.28.200.30&#34;,
   &#34;httpversion&#34;: &#34;1.1&#34;,
-  &#34;timestamp&#34;: &#34;29/Jan/2022:14:23:44 +0900&#34;
+  &#34;timestamp&#34;: &#34;29/Jan/2022:22:35:05 +0900&#34;
 }
-</code></pre></div><table>
+</code></pre></div><h5 id="로그-예시-설명">로그 예시 (설명)</h5>
+<table>
 <thead>
 <tr>
 <th>포맷</th>
@@ -305,19 +315,86 @@ apache …">
 </tr>
 <tr>
 <td><code>%l</code></td>
-<td>ident 인증으로 알아낸 os 의 사용자명 <a href="https://www.rfc-editor.org/rfc/rfc1413.txt" target="_blank">rfc1413</a></td>
+<td>ident 인증으로 알아낸 os 의 사용자명 <a href="https://www.rfc-editor.org/rfc/rfc1413.txt" target="_blank">rfc14</a></td>
 </tr>
 <tr>
 <td><code>%u</code></td>
-<td>HTTP 인증으로 알아낸 사용자ID</td>
+<td>http 인증으로 알아낸 사용자ID</td>
 </tr>
 <tr>
 <td><code>%r</code></td>
 <td>요청 uri (<code>%m %U%q %H</code> 와 같다.)</td>
 </tr>
+<tr>
+<td><code>%&gt;s</code></td>
+<td>http status</td>
+</tr>
+<tr>
+<td><code>%b</code></td>
+<td>클라이언트에 보낸 http body 의 byte 크기</td>
+</tr>
+<tr>
+<td><code>%{Referer}i</code></td>
+<td>http header 명 <code>Referer</code>의 값</td>
+</tr>
+<tr>
+<td><code>%{User-Agent}i</code></td>
+<td>http header 명 <code>User-Agent</code>의 값</td>
+</tr>
 </tbody>
 </table>
+<h5 id="로그-포맷-추가">로그 포맷 추가</h5>
+<p><code>combined</code> 포맷에 http header <code>txid</code> 를 추가 후 curl 테스트</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ vi /etc/httpd/conf.d/vhost-nexus.conf
+&lt;VirtualHost *:443&gt;
+  ServerName nexus
+  
+  # combined_nexus 포맷에 &#34;txid&#34; 추가
+  # LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b  \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34;&#34; combined
+  LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b  \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34; \&#34;%{txid}i\&#34;&#34; combined_nexus
+  # access log 의 포맷을 combined_nexus 로 변경
+  CustomLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/nexus_ssl-access.log.%Y-%m-%d 86400 +540%&#34; combined_nexus
+  ...
 
+$ systemctl restart httpd
+
+$ curl -X GET -H &#34;txid: t1hruu5xl7le0o&#34; https://nexus/repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml
+
+# apache 로그
+172.28.200.30 - - [29/Jan/2022:22:43:39 +0900] &#34;GET /repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml HTTP/1.1&#34; 200 599 &#34;-&#34; &#34;curl/7.61.1&#34; &#34;t1hruu5xl7le0o&#34;
+
+# kibana 에서 grok pattern: %{COMBINEDAPACHELOG} \&#34;%{GREEDYDATA:txid}\&#34;
+{
+  &#34;request&#34;: &#34;/repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml&#34;,
+  &#34;agent&#34;: &#34;\&#34;curl/7.61.1\&#34;&#34;,
+  &#34;auth&#34;: &#34;-&#34;,
+  &#34;ident&#34;: &#34;-&#34;,
+  &#34;verb&#34;: &#34;GET&#34;,
+  &#34;txid&#34;: &#34;t1hruu5xl7le0o&#34;,
+  &#34;referrer&#34;: &#34;\&#34;-\&#34;&#34;,
+  &#34;response&#34;: &#34;200&#34;,
+  &#34;bytes&#34;: &#34;599&#34;,
+  &#34;clientip&#34;: &#34;172.28.200.30&#34;,
+  &#34;httpversion&#34;: &#34;1.1&#34;,
+  &#34;timestamp&#34;: &#34;29/Jan/2022:22:43:39 +0900&#34;
+}
+</code></pre></div><p>grok pattern 에서 txid 를 parsing 하기 위해 %{GREEDYDATA:txid} 를 사용함</p>
+<p>(txid 를 [a-z0-9]{14} 으로 패턴을 정의하여 logstash pattern 에 등록하여 사용할 수 있음)</p>
+<p>github: <a href="https://github.com/logstash-plugins/logstash-patterns-core.git">https://github.com/logstash-plugins/logstash-patterns-core.git</a></p>
+<p><a href="https://raw.githubusercontent.com/logstash-plugins/logstash-patterns-core/main/patterns/ecs-v1/grok-patterns" target="_blank">grok-patterns</a></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ git pull https://github.com/logstash-plugins/logstash-patterns-core.git
+$ find ./logstash-patterns-core/patterns/ -type f | grep grok | xargs grep -E &#34;^[^#\ ]&#34; | grep &#39;GREEDYDATA&#39;
+./logstash-patterns-core/patterns/ecs-v1/grok-patterns:GREEDYDATA .*
+./logstash-patterns-core/patterns/legacy/grok-patterns:GREEDYDATA .*
+$ head -n 5 ./logstash-patterns-core/patterns/legacy/grok-patterns
+USERNAME [a-zA-Z0-9._-]+
+USER %{USERNAME}
+EMAILLOCALPART [a-zA-Z][a-zA-Z0-9_.+-=:]+
+EMAILADDRESS %{EMAILLOCALPART}@%{HOSTNAME}
+INT (?:[+-]?(?:[0-9]+))
+$ find ./logstash-patterns-core/patterns/ -type f | xargs grep -E &#34;^[^#\ ]&#34; | grep &#39;COMBINEDAPACHELOG&#39;
+./logstash-patterns-core/patterns/legacy/httpd:COMBINEDAPACHELOG %{HTTPD_COMBINEDLOG}
+</code></pre></div>
 	
 	
 	
