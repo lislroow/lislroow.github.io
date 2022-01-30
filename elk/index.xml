@@ -43,28 +43,8 @@
   LogFormat &amp;#34;%h %l %u %t \&amp;#34;%r\&amp;#34; %&amp;gt;s %b  \&amp;#34;%{Referer}i\&amp;#34; \&amp;#34;%{User-Agent}i\&amp;#34;&amp;#34; combined
   CustomLog &amp;#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/nexus_ssl-access.log.%Y-%m-%d 86400 +540%&amp;#34; combined
   ...
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;combined&lt;/code&gt; 라는 이름의 &lt;code&gt;&amp;quot;%h %l %u %t \&amp;quot;%r\&amp;quot; %&amp;gt;s %b \&amp;quot;%{Referer}i\&amp;quot; \&amp;quot;%{User-Agent}i\&amp;quot;&amp;quot;&lt;/code&gt; 형식을 풀이하면 이렇다.&lt;/p&gt;
-&lt;h5 id=&#34;로그-예시&#34;&gt;로그 예시&lt;/h5&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ curl -X GET https://nexus/repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml
-
-# apache 로그
-172.28.200.30 - - [29/Jan/2022:22:35:05 +0900] &amp;#34;GET /repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml HTTP/1.1&amp;#34; 200 599 &amp;#34;-&amp;#34; &amp;#34;curl/7.61.1&amp;#34;
-
-# kibana 에서 grok pattern: %{COMBINEDAPACHELOG}
-{
-  &amp;#34;request&amp;#34;: &amp;#34;/repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml&amp;#34;,
-  &amp;#34;agent&amp;#34;: &amp;#34;\&amp;#34;curl/7.61.1\&amp;#34;&amp;#34;,
-  &amp;#34;auth&amp;#34;: &amp;#34;-&amp;#34;,
-  &amp;#34;ident&amp;#34;: &amp;#34;-&amp;#34;,
-  &amp;#34;verb&amp;#34;: &amp;#34;GET&amp;#34;,
-  &amp;#34;referrer&amp;#34;: &amp;#34;\&amp;#34;-\&amp;#34;&amp;#34;,
-  &amp;#34;response&amp;#34;: &amp;#34;200&amp;#34;,
-  &amp;#34;bytes&amp;#34;: &amp;#34;599&amp;#34;,
-  &amp;#34;clientip&amp;#34;: &amp;#34;172.28.200.30&amp;#34;,
-  &amp;#34;httpversion&amp;#34;: &amp;#34;1.1&amp;#34;,
-  &amp;#34;timestamp&amp;#34;: &amp;#34;29/Jan/2022:22:35:05 +0900&amp;#34;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;로그-예시-설명&#34;&gt;로그 예시 (설명)&lt;/h5&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;로그-설명&#34;&gt;로그 설명&lt;/h5&gt;
+&lt;p&gt;&lt;code&gt;combined&lt;/code&gt; 라는 이름의 &lt;code&gt;&amp;quot;%h %l %u %t \&amp;quot;%r\&amp;quot; %&amp;gt;s %b \&amp;quot;%{Referer}i\&amp;quot; \&amp;quot;%{User-Agent}i\&amp;quot;&amp;quot;&lt;/code&gt; 형식을 풀이하면 이렇다.&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -107,8 +87,29 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h5 id=&#34;로그-포맷-추가&#34;&gt;로그 포맷 추가&lt;/h5&gt;
+&lt;h5 id=&#34;로그-예시&#34;&gt;로그 예시&lt;/h5&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ curl -X GET https://nexus/repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml
+
+# apache 로그
+172.28.200.30 - - [29/Jan/2022:22:35:05 +0900] &amp;#34;GET /repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml HTTP/1.1&amp;#34; 200 599 &amp;#34;-&amp;#34; &amp;#34;curl/7.61.1&amp;#34;
+
+# kibana 에서 grok pattern: %{COMBINEDAPACHELOG}
+{
+  &amp;#34;request&amp;#34;: &amp;#34;/repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml&amp;#34;,
+  &amp;#34;agent&amp;#34;: &amp;#34;\&amp;#34;curl/7.61.1\&amp;#34;&amp;#34;,
+  &amp;#34;auth&amp;#34;: &amp;#34;-&amp;#34;,
+  &amp;#34;ident&amp;#34;: &amp;#34;-&amp;#34;,
+  &amp;#34;verb&amp;#34;: &amp;#34;GET&amp;#34;,
+  &amp;#34;referrer&amp;#34;: &amp;#34;\&amp;#34;-\&amp;#34;&amp;#34;,
+  &amp;#34;response&amp;#34;: &amp;#34;200&amp;#34;,
+  &amp;#34;bytes&amp;#34;: &amp;#34;599&amp;#34;,
+  &amp;#34;clientip&amp;#34;: &amp;#34;172.28.200.30&amp;#34;,
+  &amp;#34;httpversion&amp;#34;: &amp;#34;1.1&amp;#34;,
+  &amp;#34;timestamp&amp;#34;: &amp;#34;29/Jan/2022:22:35:05 +0900&amp;#34;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;로그-포맷-추가&#34;&gt;로그 포맷 추가&lt;/h5&gt;
 &lt;p&gt;&lt;code&gt;combined&lt;/code&gt; 포맷에 http header &lt;code&gt;txid&lt;/code&gt; 를 추가 후 curl 테스트&lt;/p&gt;
+&lt;p&gt;txid 가 포함된 로그를 kibana grok debugger 에서 &lt;code&gt;%{COMBINEDAPACHELOG}&lt;/code&gt; &amp;gt; &lt;code&gt;%{COMBINEDAPACHELOG} \&amp;quot;%{GREEDYDATA:txid}\&amp;quot;&lt;/code&gt; 로 테스트&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ vi /etc/httpd/conf.d/vhost-nexus.conf
 &amp;lt;VirtualHost *:443&amp;gt;
   ServerName nexus
@@ -142,8 +143,8 @@ $ curl -X GET -H &amp;#34;txid: t1hruu5xl7le0o&amp;#34; https://nexus/repository
   &amp;#34;httpversion&amp;#34;: &amp;#34;1.1&amp;#34;,
   &amp;#34;timestamp&amp;#34;: &amp;#34;29/Jan/2022:22:43:39 +0900&amp;#34;
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;grok pattern 에서 txid 를 parsing 하기 위해 %{GREEDYDATA:txid} 를 사용함&lt;/p&gt;
-&lt;p&gt;(txid 를 [a-z0-9]{14} 으로 패턴을 정의하여 logstash pattern 에 등록하여 사용할 수 있음)&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;kibana grok debugger 에서 txid 를 parsing 하기 위해 %{GREEDYDATA:txid} 를 사용함&lt;/p&gt;
+&lt;h5 id=&#34;grok-패턴-greedydata&#34;&gt;grok 패턴: %{GREEDYDATA}&lt;/h5&gt;
 &lt;p&gt;github: &lt;a href=&#34;https://github.com/logstash-plugins/logstash-patterns-core.git&#34;&gt;https://github.com/logstash-plugins/logstash-patterns-core.git&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://raw.githubusercontent.com/logstash-plugins/logstash-patterns-core/main/patterns/ecs-v1/grok-patterns&#34; target=&#34;_blank&#34;&gt;grok-patterns&lt;/a&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ git pull https://github.com/logstash-plugins/logstash-patterns-core.git
@@ -158,7 +159,137 @@ EMAILADDRESS %{EMAILLOCALPART}@%{HOSTNAME}
 INT (?:[+-]?(?:[0-9]+))
 $ find ./logstash-patterns-core/patterns/ -type f | xargs grep -E &amp;#34;^[^#\ ]&amp;#34; | grep &amp;#39;COMBINEDAPACHELOG&amp;#39;
 ./logstash-patterns-core/patterns/legacy/httpd:COMBINEDAPACHELOG %{HTTPD_COMBINEDLOG}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;logstash-filter-에-txid-추가&#34;&gt;logstash filter 에 &amp;ldquo;txid&amp;rdquo; 추가&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;filebeat 테스트 준비&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;# &amp;#34;weblog.txt-txid&amp;#34; 파일을 읽도록 수정
+$ vi /etc/filebeat/filebeat.yml
+  paths:
+    #- /var/log/*.log
+    #- /root/ls-test/weblog.txt
+    - /root/ls-test/weblog.txt-txid
+$
+
+# &amp;#34;weblog.txt-txid&amp;#34; 파일 생성
+$ cat &amp;lt;&amp;lt; EOF &amp;gt; /root/ls-test/weblog.txt-txid
+172.28.200.30 - - [29/Jan/2022:22:43:39 +0900] &amp;#34;GET /repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml HTTP/1.1&amp;#34; 200 599 &amp;#34;-&amp;#34; &amp;#34;curl/7.61.1&amp;#34; &amp;#34;t1hruu5xl7le0o&amp;#34;
+EOF
+$ 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;logstash 테스트 준비&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;kibana grok debugger 에서 테스트가 완료된 패턴을 logstash 에 추가&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;# grok &amp;gt; match 의 message 에 \&amp;#34;%{GREEDYDATA:txid}\&amp;#34; 추가
+$ vi /etc/logstash/conf.d/exam_filebeat.conf
+filter {
+  mutate {
+    remove_field =&amp;gt; [&amp;#34;agent&amp;#34;]
+  }
+  grok {
+    #match =&amp;gt; { &amp;#34;message&amp;#34; =&amp;gt; &amp;#34;%{COMBINEDAPACHELOG}&amp;#34;  }
+    match =&amp;gt; { &amp;#34;message&amp;#34; =&amp;gt; &amp;#34;%{COMBINEDAPACHELOG} \&amp;#34;%{GREEDYDATA:txid}\&amp;#34;&amp;#34; }
+$ 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;logstash 및 filebeat 재시작&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ systemctl stop logstash
+$ systemctl stop filebeat
+$ vi /etc/filebeat/filebeat.yml
+
+$ rm -rf /data/PROD/filebeat/*
+$ systemctl start logstash
+$ systemctl start filebeat
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;kibana 에서 조회&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;GET _cat/indices?pretty&amp;amp;v&amp;amp;s=index:desc
+health status index                           uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+yellow open   mgkim-apache-log-2022.01.29     DvbnByKXS9a56Rn8Vb_RMg   1   1          1            0     19.4kb         19.4kb
+
+GET mgkim-apache-log-2022.01.29/_search
+{
+  &amp;#34;took&amp;#34; : 0,
+  &amp;#34;timed_out&amp;#34; : false,
+  &amp;#34;_shards&amp;#34; : {
+    &amp;#34;total&amp;#34; : 1,
+    &amp;#34;successful&amp;#34; : 1,
+    &amp;#34;skipped&amp;#34; : 0,
+    &amp;#34;failed&amp;#34; : 0
+  },
+  &amp;#34;hits&amp;#34; : {
+    &amp;#34;total&amp;#34; : {
+      &amp;#34;value&amp;#34; : 1,
+      &amp;#34;relation&amp;#34; : &amp;#34;eq&amp;#34;
+    },
+    &amp;#34;max_score&amp;#34; : 1.0,
+    &amp;#34;hits&amp;#34; : [
+      {
+        &amp;#34;_index&amp;#34; : &amp;#34;mgkim-apache-log-2022.01.29&amp;#34;,
+        &amp;#34;_type&amp;#34; : &amp;#34;_doc&amp;#34;,
+        &amp;#34;_id&amp;#34; : &amp;#34;9uPYqX4BOw_Yo7UZd8Fg&amp;#34;,
+        &amp;#34;_score&amp;#34; : 1.0,
+        &amp;#34;_source&amp;#34; : {
+          &amp;#34;tags&amp;#34; : [
+            &amp;#34;beats_input_codec_plain_applied&amp;#34;,
+            &amp;#34;_geoip_lookup_failure&amp;#34;
+          ],
+          &amp;#34;bytes&amp;#34; : 599,
+          &amp;#34;ecs&amp;#34; : {
+            &amp;#34;version&amp;#34; : &amp;#34;1.12.0&amp;#34;
+          },
+          &amp;#34;useragent&amp;#34; : {
+            &amp;#34;minor&amp;#34; : &amp;#34;61&amp;#34;,
+            &amp;#34;device&amp;#34; : &amp;#34;Other&amp;#34;,
+            &amp;#34;os_name&amp;#34; : &amp;#34;Other&amp;#34;,
+            &amp;#34;os_full&amp;#34; : &amp;#34;Other&amp;#34;,
+            &amp;#34;major&amp;#34; : &amp;#34;7&amp;#34;,
+            &amp;#34;version&amp;#34; : &amp;#34;7.61.1&amp;#34;,
+            &amp;#34;name&amp;#34; : &amp;#34;curl&amp;#34;,
+            &amp;#34;os&amp;#34; : &amp;#34;Other&amp;#34;,
+            &amp;#34;patch&amp;#34; : &amp;#34;1&amp;#34;
+          },
+          &amp;#34;response&amp;#34; : &amp;#34;200&amp;#34;,
+          &amp;#34;auth&amp;#34; : &amp;#34;-&amp;#34;,
+          &amp;#34;clientip&amp;#34; : &amp;#34;172.28.200.30&amp;#34;,
+          &amp;#34;ident&amp;#34; : &amp;#34;-&amp;#34;,
+          &amp;#34;log&amp;#34; : {
+            &amp;#34;offset&amp;#34; : 0,
+            &amp;#34;file&amp;#34; : {
+              &amp;#34;path&amp;#34; : &amp;#34;/root/ls-test/weblog.txt-txid&amp;#34;
+            }
+          },
+          &amp;#34;message&amp;#34; : &amp;#34;172.28.200.30 - - [29/Jan/2022:22:43:39 +0900] \&amp;#34;GET /repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml HTTP/1.1\&amp;#34; 200 599 \&amp;#34;-\&amp;#34; \&amp;#34;curl/7.61.1\&amp;#34; \&amp;#34;t1hruu5xl7le0o\&amp;#34;&amp;#34;,
+          &amp;#34;referrer&amp;#34; : &amp;#34;\&amp;#34;-\&amp;#34;&amp;#34;,
+          &amp;#34;httpversion&amp;#34; : &amp;#34;1.1&amp;#34;,
+          &amp;#34;request&amp;#34; : &amp;#34;/repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml&amp;#34;,
+          &amp;#34;txid&amp;#34; : &amp;#34;t1hruu5xl7le0o&amp;#34;,
+          &amp;#34;geoip&amp;#34; : { },
+          &amp;#34;verb&amp;#34; : &amp;#34;GET&amp;#34;,
+          &amp;#34;input&amp;#34; : {
+            &amp;#34;type&amp;#34; : &amp;#34;log&amp;#34;
+          },
+          &amp;#34;@timestamp&amp;#34; : &amp;#34;2022-01-29T13:43:39.000Z&amp;#34;
+        }
+      }
+    ]
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;  #grok {
+  #  patterns_dir =&amp;gt; [ &amp;#34;패턴파일경로&amp;#34; ]
+  #  match =&amp;gt; {
+  #    &amp;#34;message&amp;#34; =&amp;gt; { &amp;#34;%{COMBINEDAPACHELOG} \&amp;#34;%{GREEDYDATA:txid}\&amp;#34;&amp;#34; }
+  #  }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;elastic logstash: &lt;a href=&#34;https://www.elastic.co/kr/blog/a-practical-introduction-to-logstash&#34; target=&#34;_blank&#34;&gt;&lt;a href=&#34;https://www.elastic.co/kr/blog/a-practical-introduction-to-logstash&#34;&gt;https://www.elastic.co/kr/blog/a-practical-introduction-to-logstash&lt;/a&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;grok 테스트: &lt;a href=&#34;http://grokdebug.herokuapp.com&#34; target=&#34;_blank&#34;&gt;&lt;a href=&#34;http://grokdebug.herokuapp.com&#34;&gt;http://grokdebug.herokuapp.com&lt;/a&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;regex 테스트: &lt;a href=&#34;https://regex101.com&#34; target=&#34;_blank&#34;&gt;&lt;a href=&#34;https://regex101.com&#34;&gt;https://regex101.com&lt;/a&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;regex 참고1: &lt;a href=&#34;https://velog.io/@koseungbin/%EC%A0%95%EA%B7%9C-%ED%91%9C%ED%98%84%EC%8B%9D&#34; target=&#34;_blank&#34;&gt;&lt;a href=&#34;https://velog.io/@koseungbin/%EC%A0%95%EA%B7%9C-%ED%91%9C%ED%98%84%EC%8B%9D&#34;&gt;https://velog.io/@koseungbin/%EC%A0%95%EA%B7%9C-%ED%91%9C%ED%98%84%EC%8B%9D&lt;/a&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;regex 참고2: &lt;a href=&#34;https://heropy.blog/2018/10/28/regexp/&#34; target=&#34;_blank&#34;&gt;&lt;a href=&#34;https://heropy.blog/2018/10/28/regexp/&#34;&gt;https://heropy.blog/2018/10/28/regexp/&lt;/a&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;172.28.200.30 - - [29/Jan/2022:22:43:39 +0900] &amp;ldquo;GET /repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml HTTP/1.1&amp;rdquo; 200 599 &amp;ldquo;-&amp;rdquo; &amp;ldquo;curl/7.61.1&amp;rdquo; &amp;ldquo;t1hruu5xl7le0o|s1jetbjlo0kpx0&amp;rdquo;
+%{COMBINEDAPACHELOG} &amp;quot;%{GREEDYDATA:txid}|%{GREEDYDATA:ssid}&amp;quot;&lt;/p&gt;
+
       </description>
     </item>
     

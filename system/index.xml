@@ -516,8 +516,10 @@ $ logstash -f exam_tcp.ls
 &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;logstash -f filename&lt;/code&gt; 형태로 실행했을 경우 &lt;code&gt;filename&lt;/code&gt;에 변경이 있을 경우 자동으로 reload 하는 옵션을 추가 합니다.&lt;/p&gt;
 &lt;p&gt;(logstash 를 systemctl 서비스로 실행하는 방식이 아니기에 아래 옵션을 추가해야 합니다.)&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;logstash -f filename --config.reload.automatic&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;apache access 로그파일을 하나 준비합니다.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;logstash -r -f filename&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ logstash --help | grep &amp;#39;\-r&amp;#39;
+    -r, --config.reload.automatic Monitor configuration changes and reload
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;apache access 로그파일을 하나 준비합니다.&lt;/p&gt;
 &lt;p&gt;(참고로 apache 로그파일의 레이아웃은 기본이어야 합니다.)&lt;/p&gt;
 &lt;p&gt;로그파일의 1번째 행을 읽어들이고 9900 으로 전송하고 logstash 에서 처리한 로그를 확인합니다.&lt;/p&gt;
 &lt;p&gt;&amp;ldquo;message&amp;rdquo; 필드에 보낸 문자열을 출력하고 있는 점을 확인하면 됩니다.&lt;/p&gt;

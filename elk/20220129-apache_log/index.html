@@ -35,7 +35,7 @@ apache 로그
  …">
 <meta property="og:title" content="2022.01.29" />
 <meta property="og:description" content="apache 로그파일 &gt; filebeat &gt; logstash &gt; elastic 저장 과정에 대한 이해
- apache 로그에 대한 포맷 logstash 의 filter elastic 에 저장된 내용을 kibana 에서 조회   apache 로그 로그 포맷 &lt;VirtualHost *:443&gt; ServerName nexus # combined 포맷은 httpd.conf 에 정의되어 있음 LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34;&#34; combined CustomLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/nexus_ssl-access.log.%Y-%m-%d 86400 &#43;540%&#34; combined ... combined 라는 이름의 &quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b \&quot;%{Referer}i\&quot; \&quot;%{User-Agent}i\&quot;&quot; 형식을 풀이하면 이렇다." />
+ apache 로그에 대한 포맷 logstash 의 filter elastic 에 저장된 내용을 kibana 에서 조회   apache 로그 로그 포맷 &lt;VirtualHost *:443&gt; ServerName nexus # combined 포맷은 httpd.conf 에 정의되어 있음 LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34;&#34; combined CustomLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/nexus_ssl-access.log.%Y-%m-%d 86400 &#43;540%&#34; combined ... 로그 설명 combined 라는 이름의 &quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b \&quot;%{Referer}i\&quot; \&quot;%{User-Agent}i\&quot;&quot; 형식을 풀이하면 이렇다." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/elk/20220129-apache_log/" /><meta property="article:section" content="ELK" />
 
@@ -43,13 +43,13 @@ apache 로그
 
 <meta itemprop="name" content="2022.01.29">
 <meta itemprop="description" content="apache 로그파일 &gt; filebeat &gt; logstash &gt; elastic 저장 과정에 대한 이해
- apache 로그에 대한 포맷 logstash 의 filter elastic 에 저장된 내용을 kibana 에서 조회   apache 로그 로그 포맷 &lt;VirtualHost *:443&gt; ServerName nexus # combined 포맷은 httpd.conf 에 정의되어 있음 LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34;&#34; combined CustomLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/nexus_ssl-access.log.%Y-%m-%d 86400 &#43;540%&#34; combined ... combined 라는 이름의 &quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b \&quot;%{Referer}i\&quot; \&quot;%{User-Agent}i\&quot;&quot; 형식을 풀이하면 이렇다.">
+ apache 로그에 대한 포맷 logstash 의 filter elastic 에 저장된 내용을 kibana 에서 조회   apache 로그 로그 포맷 &lt;VirtualHost *:443&gt; ServerName nexus # combined 포맷은 httpd.conf 에 정의되어 있음 LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34;&#34; combined CustomLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/nexus_ssl-access.log.%Y-%m-%d 86400 &#43;540%&#34; combined ... 로그 설명 combined 라는 이름의 &quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b \&quot;%{Referer}i\&quot; \&quot;%{User-Agent}i\&quot;&quot; 형식을 풀이하면 이렇다.">
 
-<meta itemprop="wordCount" content="389">
+<meta itemprop="wordCount" content="778">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="2022.01.29"/>
 <meta name="twitter:description" content="apache 로그파일 &gt; filebeat &gt; logstash &gt; elastic 저장 과정에 대한 이해
- apache 로그에 대한 포맷 logstash 의 filter elastic 에 저장된 내용을 kibana 에서 조회   apache 로그 로그 포맷 &lt;VirtualHost *:443&gt; ServerName nexus # combined 포맷은 httpd.conf 에 정의되어 있음 LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34;&#34; combined CustomLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/nexus_ssl-access.log.%Y-%m-%d 86400 &#43;540%&#34; combined ... combined 라는 이름의 &quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b \&quot;%{Referer}i\&quot; \&quot;%{User-Agent}i\&quot;&quot; 형식을 풀이하면 이렇다."/>
+ apache 로그에 대한 포맷 logstash 의 filter elastic 에 저장된 내용을 kibana 에서 조회   apache 로그 로그 포맷 &lt;VirtualHost *:443&gt; ServerName nexus # combined 포맷은 httpd.conf 에 정의되어 있음 LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34;&#34; combined CustomLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/nexus_ssl-access.log.%Y-%m-%d 86400 &#43;540%&#34; combined ... 로그 설명 combined 라는 이름의 &quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b \&quot;%{Referer}i\&quot; \&quot;%{User-Agent}i\&quot;&quot; 형식을 풀이하면 이렇다."/>
 
 
 
@@ -125,7 +125,7 @@ apache 로그
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.d7da2ccebda735ed0d123d4a86ce1597.json"
+  data-offline-search-index-json-src="/offline-search-index.2752b6dc6a0d305ae2ecbbdbd39ab159.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -147,7 +147,7 @@ apache 로그
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.d7da2ccebda735ed0d123d4a86ce1597.json"
+  data-offline-search-index-json-src="/offline-search-index.2752b6dc6a0d305ae2ecbbdbd39ab159.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -190,9 +190,11 @@ apache 로그
             <li><a href="#apache-로그">apache 로그</a>
               <ul>
                 <li><a href="#로그-포맷">로그 포맷</a></li>
+                <li><a href="#로그-설명">로그 설명</a></li>
                 <li><a href="#로그-예시">로그 예시</a></li>
-                <li><a href="#로그-예시-설명">로그 예시 (설명)</a></li>
                 <li><a href="#로그-포맷-추가">로그 포맷 추가</a></li>
+                <li><a href="#grok-패턴-greedydata">grok 패턴: %{GREEDYDATA}</a></li>
+                <li><a href="#logstash-filter-에-txid-추가">logstash filter 에 &ldquo;txid&rdquo; 추가</a></li>
               </ul>
             </li>
           </ul>
@@ -279,28 +281,8 @@ apache 로그
   LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b  \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34;&#34; combined
   CustomLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/nexus_ssl-access.log.%Y-%m-%d 86400 +540%&#34; combined
   ...
-</code></pre></div><p><code>combined</code> 라는 이름의 <code>&quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b \&quot;%{Referer}i\&quot; \&quot;%{User-Agent}i\&quot;&quot;</code> 형식을 풀이하면 이렇다.</p>
-<h5 id="로그-예시">로그 예시</h5>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ curl -X GET https://nexus/repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml
-
-# apache 로그
-172.28.200.30 - - [29/Jan/2022:22:35:05 +0900] &#34;GET /repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml HTTP/1.1&#34; 200 599 &#34;-&#34; &#34;curl/7.61.1&#34;
-
-# kibana 에서 grok pattern: %{COMBINEDAPACHELOG}
-{
-  &#34;request&#34;: &#34;/repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml&#34;,
-  &#34;agent&#34;: &#34;\&#34;curl/7.61.1\&#34;&#34;,
-  &#34;auth&#34;: &#34;-&#34;,
-  &#34;ident&#34;: &#34;-&#34;,
-  &#34;verb&#34;: &#34;GET&#34;,
-  &#34;referrer&#34;: &#34;\&#34;-\&#34;&#34;,
-  &#34;response&#34;: &#34;200&#34;,
-  &#34;bytes&#34;: &#34;599&#34;,
-  &#34;clientip&#34;: &#34;172.28.200.30&#34;,
-  &#34;httpversion&#34;: &#34;1.1&#34;,
-  &#34;timestamp&#34;: &#34;29/Jan/2022:22:35:05 +0900&#34;
-}
-</code></pre></div><h5 id="로그-예시-설명">로그 예시 (설명)</h5>
+</code></pre></div><h5 id="로그-설명">로그 설명</h5>
+<p><code>combined</code> 라는 이름의 <code>&quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b \&quot;%{Referer}i\&quot; \&quot;%{User-Agent}i\&quot;&quot;</code> 형식을 풀이하면 이렇다.</p>
 <table>
 <thead>
 <tr>
@@ -343,8 +325,29 @@ apache 로그
 </tr>
 </tbody>
 </table>
-<h5 id="로그-포맷-추가">로그 포맷 추가</h5>
+<h5 id="로그-예시">로그 예시</h5>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ curl -X GET https://nexus/repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml
+
+# apache 로그
+172.28.200.30 - - [29/Jan/2022:22:35:05 +0900] &#34;GET /repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml HTTP/1.1&#34; 200 599 &#34;-&#34; &#34;curl/7.61.1&#34;
+
+# kibana 에서 grok pattern: %{COMBINEDAPACHELOG}
+{
+  &#34;request&#34;: &#34;/repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml&#34;,
+  &#34;agent&#34;: &#34;\&#34;curl/7.61.1\&#34;&#34;,
+  &#34;auth&#34;: &#34;-&#34;,
+  &#34;ident&#34;: &#34;-&#34;,
+  &#34;verb&#34;: &#34;GET&#34;,
+  &#34;referrer&#34;: &#34;\&#34;-\&#34;&#34;,
+  &#34;response&#34;: &#34;200&#34;,
+  &#34;bytes&#34;: &#34;599&#34;,
+  &#34;clientip&#34;: &#34;172.28.200.30&#34;,
+  &#34;httpversion&#34;: &#34;1.1&#34;,
+  &#34;timestamp&#34;: &#34;29/Jan/2022:22:35:05 +0900&#34;
+}
+</code></pre></div><h5 id="로그-포맷-추가">로그 포맷 추가</h5>
 <p><code>combined</code> 포맷에 http header <code>txid</code> 를 추가 후 curl 테스트</p>
+<p>txid 가 포함된 로그를 kibana grok debugger 에서 <code>%{COMBINEDAPACHELOG}</code> &gt; <code>%{COMBINEDAPACHELOG} \&quot;%{GREEDYDATA:txid}\&quot;</code> 로 테스트</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ vi /etc/httpd/conf.d/vhost-nexus.conf
 &lt;VirtualHost *:443&gt;
   ServerName nexus
@@ -378,8 +381,8 @@ $ curl -X GET -H &#34;txid: t1hruu5xl7le0o&#34; https://nexus/repository/maven-s
   &#34;httpversion&#34;: &#34;1.1&#34;,
   &#34;timestamp&#34;: &#34;29/Jan/2022:22:43:39 +0900&#34;
 }
-</code></pre></div><p>grok pattern 에서 txid 를 parsing 하기 위해 %{GREEDYDATA:txid} 를 사용함</p>
-<p>(txid 를 [a-z0-9]{14} 으로 패턴을 정의하여 logstash pattern 에 등록하여 사용할 수 있음)</p>
+</code></pre></div><p>kibana grok debugger 에서 txid 를 parsing 하기 위해 %{GREEDYDATA:txid} 를 사용함</p>
+<h5 id="grok-패턴-greedydata">grok 패턴: %{GREEDYDATA}</h5>
 <p>github: <a href="https://github.com/logstash-plugins/logstash-patterns-core.git">https://github.com/logstash-plugins/logstash-patterns-core.git</a></p>
 <p><a href="https://raw.githubusercontent.com/logstash-plugins/logstash-patterns-core/main/patterns/ecs-v1/grok-patterns" target="_blank">grok-patterns</a></p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ git pull https://github.com/logstash-plugins/logstash-patterns-core.git
@@ -394,7 +397,137 @@ EMAILADDRESS %{EMAILLOCALPART}@%{HOSTNAME}
 INT (?:[+-]?(?:[0-9]+))
 $ find ./logstash-patterns-core/patterns/ -type f | xargs grep -E &#34;^[^#\ ]&#34; | grep &#39;COMBINEDAPACHELOG&#39;
 ./logstash-patterns-core/patterns/legacy/httpd:COMBINEDAPACHELOG %{HTTPD_COMBINEDLOG}
-</code></pre></div>
+</code></pre></div><h5 id="logstash-filter-에-txid-추가">logstash filter 에 &ldquo;txid&rdquo; 추가</h5>
+<ul>
+<li>filebeat 테스트 준비</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># &#34;weblog.txt-txid&#34; 파일을 읽도록 수정
+$ vi /etc/filebeat/filebeat.yml
+  paths:
+    #- /var/log/*.log
+    #- /root/ls-test/weblog.txt
+    - /root/ls-test/weblog.txt-txid
+$
+
+# &#34;weblog.txt-txid&#34; 파일 생성
+$ cat &lt;&lt; EOF &gt; /root/ls-test/weblog.txt-txid
+172.28.200.30 - - [29/Jan/2022:22:43:39 +0900] &#34;GET /repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml HTTP/1.1&#34; 200 599 &#34;-&#34; &#34;curl/7.61.1&#34; &#34;t1hruu5xl7le0o&#34;
+EOF
+$ 
+</code></pre></div><ul>
+<li>logstash 테스트 준비</li>
+</ul>
+<p>kibana grok debugger 에서 테스트가 완료된 패턴을 logstash 에 추가</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># grok &gt; match 의 message 에 \&#34;%{GREEDYDATA:txid}\&#34; 추가
+$ vi /etc/logstash/conf.d/exam_filebeat.conf
+filter {
+  mutate {
+    remove_field =&gt; [&#34;agent&#34;]
+  }
+  grok {
+    #match =&gt; { &#34;message&#34; =&gt; &#34;%{COMBINEDAPACHELOG}&#34;  }
+    match =&gt; { &#34;message&#34; =&gt; &#34;%{COMBINEDAPACHELOG} \&#34;%{GREEDYDATA:txid}\&#34;&#34; }
+$ 
+</code></pre></div><ul>
+<li>logstash 및 filebeat 재시작</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ systemctl stop logstash
+$ systemctl stop filebeat
+$ vi /etc/filebeat/filebeat.yml
+
+$ rm -rf /data/PROD/filebeat/*
+$ systemctl start logstash
+$ systemctl start filebeat
+</code></pre></div><ul>
+<li>kibana 에서 조회</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">GET _cat/indices?pretty&amp;v&amp;s=index:desc
+health status index                           uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+yellow open   mgkim-apache-log-2022.01.29     DvbnByKXS9a56Rn8Vb_RMg   1   1          1            0     19.4kb         19.4kb
+
+GET mgkim-apache-log-2022.01.29/_search
+{
+  &#34;took&#34; : 0,
+  &#34;timed_out&#34; : false,
+  &#34;_shards&#34; : {
+    &#34;total&#34; : 1,
+    &#34;successful&#34; : 1,
+    &#34;skipped&#34; : 0,
+    &#34;failed&#34; : 0
+  },
+  &#34;hits&#34; : {
+    &#34;total&#34; : {
+      &#34;value&#34; : 1,
+      &#34;relation&#34; : &#34;eq&#34;
+    },
+    &#34;max_score&#34; : 1.0,
+    &#34;hits&#34; : [
+      {
+        &#34;_index&#34; : &#34;mgkim-apache-log-2022.01.29&#34;,
+        &#34;_type&#34; : &#34;_doc&#34;,
+        &#34;_id&#34; : &#34;9uPYqX4BOw_Yo7UZd8Fg&#34;,
+        &#34;_score&#34; : 1.0,
+        &#34;_source&#34; : {
+          &#34;tags&#34; : [
+            &#34;beats_input_codec_plain_applied&#34;,
+            &#34;_geoip_lookup_failure&#34;
+          ],
+          &#34;bytes&#34; : 599,
+          &#34;ecs&#34; : {
+            &#34;version&#34; : &#34;1.12.0&#34;
+          },
+          &#34;useragent&#34; : {
+            &#34;minor&#34; : &#34;61&#34;,
+            &#34;device&#34; : &#34;Other&#34;,
+            &#34;os_name&#34; : &#34;Other&#34;,
+            &#34;os_full&#34; : &#34;Other&#34;,
+            &#34;major&#34; : &#34;7&#34;,
+            &#34;version&#34; : &#34;7.61.1&#34;,
+            &#34;name&#34; : &#34;curl&#34;,
+            &#34;os&#34; : &#34;Other&#34;,
+            &#34;patch&#34; : &#34;1&#34;
+          },
+          &#34;response&#34; : &#34;200&#34;,
+          &#34;auth&#34; : &#34;-&#34;,
+          &#34;clientip&#34; : &#34;172.28.200.30&#34;,
+          &#34;ident&#34; : &#34;-&#34;,
+          &#34;log&#34; : {
+            &#34;offset&#34; : 0,
+            &#34;file&#34; : {
+              &#34;path&#34; : &#34;/root/ls-test/weblog.txt-txid&#34;
+            }
+          },
+          &#34;message&#34; : &#34;172.28.200.30 - - [29/Jan/2022:22:43:39 +0900] \&#34;GET /repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml HTTP/1.1\&#34; 200 599 \&#34;-\&#34; \&#34;curl/7.61.1\&#34; \&#34;t1hruu5xl7le0o\&#34;&#34;,
+          &#34;referrer&#34; : &#34;\&#34;-\&#34;&#34;,
+          &#34;httpversion&#34; : &#34;1.1&#34;,
+          &#34;request&#34; : &#34;/repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml&#34;,
+          &#34;txid&#34; : &#34;t1hruu5xl7le0o&#34;,
+          &#34;geoip&#34; : { },
+          &#34;verb&#34; : &#34;GET&#34;,
+          &#34;input&#34; : {
+            &#34;type&#34; : &#34;log&#34;
+          },
+          &#34;@timestamp&#34; : &#34;2022-01-29T13:43:39.000Z&#34;
+        }
+      }
+    ]
+  }
+}
+</code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">  #grok {
+  #  patterns_dir =&gt; [ &#34;패턴파일경로&#34; ]
+  #  match =&gt; {
+  #    &#34;message&#34; =&gt; { &#34;%{COMBINEDAPACHELOG} \&#34;%{GREEDYDATA:txid}\&#34;&#34; }
+  #  }
+</code></pre></div><ul>
+<li>elastic logstash: <a href="https://www.elastic.co/kr/blog/a-practical-introduction-to-logstash" target="_blank"><a href="https://www.elastic.co/kr/blog/a-practical-introduction-to-logstash">https://www.elastic.co/kr/blog/a-practical-introduction-to-logstash</a></a></li>
+<li>grok 테스트: <a href="http://grokdebug.herokuapp.com" target="_blank"><a href="http://grokdebug.herokuapp.com">http://grokdebug.herokuapp.com</a></a></li>
+<li>regex 테스트: <a href="https://regex101.com" target="_blank"><a href="https://regex101.com">https://regex101.com</a></a></li>
+<li>regex 참고1: <a href="https://velog.io/@koseungbin/%EC%A0%95%EA%B7%9C-%ED%91%9C%ED%98%84%EC%8B%9D" target="_blank"><a href="https://velog.io/@koseungbin/%EC%A0%95%EA%B7%9C-%ED%91%9C%ED%98%84%EC%8B%9D">https://velog.io/@koseungbin/%EC%A0%95%EA%B7%9C-%ED%91%9C%ED%98%84%EC%8B%9D</a></a></li>
+<li>regex 참고2: <a href="https://heropy.blog/2018/10/28/regexp/" target="_blank"><a href="https://heropy.blog/2018/10/28/regexp/">https://heropy.blog/2018/10/28/regexp/</a></a></li>
+</ul>
+<p>172.28.200.30 - - [29/Jan/2022:22:43:39 +0900] &ldquo;GET /repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml HTTP/1.1&rdquo; 200 599 &ldquo;-&rdquo; &ldquo;curl/7.61.1&rdquo; &ldquo;t1hruu5xl7le0o|s1jetbjlo0kpx0&rdquo;
+%{COMBINEDAPACHELOG} &quot;%{GREEDYDATA:txid}|%{GREEDYDATA:ssid}&quot;</p>
+
 	
 	
 	

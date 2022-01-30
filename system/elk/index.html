@@ -34,7 +34,7 @@ $ curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-
 <meta itemprop="description" content="elasticsearch 설치 artifacts.elastic.co 에서 rpm 다운로드 후 설치
 $ curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.16.3-x86_64.rpm $ rpm -i elasticsearch-7.16.3-x86_64.rpm $ systemctl restart elasticsearch $ curl -L -O https://artifacts.elastic.co/downloads/kibana/kibana-7.16.3-linux-x86_64.tar.gz $ rpm -i elasticsearch-7.16.3-x86_64.rpm 경고: elasticsearch-7.16.3-x86_64.rpm: Header V4 RSA/SHA512 Signature, key ID d88e42b4: NOKEY Creating elasticsearch group... OK Creating elasticsearch user... OK ### NOT starting on installation, please execute the following statements to configure elasticsearch service to start automatically using systemd sudo systemctl daemon-reload sudo systemctl enable elasticsearch.">
 
-<meta itemprop="wordCount" content="4020">
+<meta itemprop="wordCount" content="4033">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="ELK"/>
 <meta name="twitter:description" content="elasticsearch 설치 artifacts.elastic.co 에서 rpm 다운로드 후 설치
@@ -114,7 +114,7 @@ $ curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.d7da2ccebda735ed0d123d4a86ce1597.json"
+  data-offline-search-index-json-src="/offline-search-index.2752b6dc6a0d305ae2ecbbdbd39ab159.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -136,7 +136,7 @@ $ curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.d7da2ccebda735ed0d123d4a86ce1597.json"
+  data-offline-search-index-json-src="/offline-search-index.2752b6dc6a0d305ae2ecbbdbd39ab159.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -556,8 +556,10 @@ $ logstash -f exam_tcp.ls
 <span style="color:#ce5c00;font-weight:bold">}</span>
 </code></pre></div><p><code>logstash -f filename</code> 형태로 실행했을 경우 <code>filename</code>에 변경이 있을 경우 자동으로 reload 하는 옵션을 추가 합니다.</p>
 <p>(logstash 를 systemctl 서비스로 실행하는 방식이 아니기에 아래 옵션을 추가해야 합니다.)</p>
-<p><code>logstash -f filename --config.reload.automatic</code></p>
-<p>apache access 로그파일을 하나 준비합니다.</p>
+<p><code>logstash -r -f filename</code></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ logstash --help | grep &#39;\-r&#39;
+    -r, --config.reload.automatic Monitor configuration changes and reload
+</code></pre></div><p>apache access 로그파일을 하나 준비합니다.</p>
 <p>(참고로 apache 로그파일의 레이아웃은 기본이어야 합니다.)</p>
 <p>로그파일의 1번째 행을 읽어들이고 9900 으로 전송하고 logstash 에서 처리한 로그를 확인합니다.</p>
 <p>&ldquo;message&rdquo; 필드에 보낸 문자열을 출력하고 있는 점을 확인하면 됩니다.</p>
