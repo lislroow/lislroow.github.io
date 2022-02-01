@@ -20,12 +20,11 @@
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
 <title>system | dlog</title>
-<meta name="description" content="(cockpit) cockpit-pcp 설치
-시스템모니터링 기능이며 cockpit-pcp를 설치하여 메트릭 정보를 볼 수 있습니다.
-새 창 보기
-$ yum install cockpit-pcp
-$ systemctl enable pmlogger.service
-$ …">
+<meta name="description" content="(cockpit) grafana, grafana-pcp
+$ yum install grafana grafana-pcp
+$ systemctl enable --now grafana-server
+http://host:3000/ 으로 접속
+최초 로그인: …">
 <meta property="og:title" content="system" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -110,7 +109,7 @@ $ …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.f57b2263d9d8a329c8ac102d6123ee50.json"
+  data-offline-search-index-json-src="/offline-search-index.89e7efc5b878617e131dc0102f861539.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -132,7 +131,7 @@ $ …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.f57b2263d9d8a329c8ac102d6123ee50.json"
+  data-offline-search-index-json-src="/offline-search-index.89e7efc5b878617e131dc0102f861539.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -193,6 +192,7 @@ $ …">
       <ul>
         <li>
           <ul>
+            <li><a href="#cockpit-grafana-grafana-pcp">(cockpit) grafana, grafana-pcp</a></li>
             <li><a href="#cockpit-cockpit-pcp-설치">(cockpit) cockpit-pcp 설치</a></li>
             <li><a href="#dnf-makecache-오류">(dnf-makecache) 오류</a></li>
             <li><a href="#elk-elasticsearch-패스워드-설정">(ELK) elasticsearch 패스워드 설정</a></li>
@@ -291,7 +291,25 @@ $ …">
 		
 		
 	</header>
-	<h4 id="cockpit-cockpit-pcp-설치">(cockpit) cockpit-pcp 설치</h4>
+	<h4 id="cockpit-grafana-grafana-pcp">(cockpit) grafana, grafana-pcp</h4>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ yum install grafana grafana-pcp
+$ systemctl enable --now grafana-server
+</code></pre></div><p>http://host:3000/ 으로 접속</p>
+<p>최초 로그인: <a href="/images/system/20220201-grafana_login_admin_admin.png" target="_blank">새 창 열림</a></p>
+<p>포트 변경은 <code>/etc/grafana/grafana.ini</code> 파일에서 <code>http_port = 3000</code> 를 변경하면 됩니다.</p>
+<p>서비스 재시작: <code>systemctl restart grafana-server</code></p>
+<p>가상호스트 설정: <a href="/files/system/20220201-grafana-vhost.txt" target="_blank">새 창 보기</a></p>
+<p>로그인 후 설정</p>
+<ul>
+<li>좌측 메뉴 <code>Configuration</code> &gt; <code>Plugin</code> 선택</li>
+<li><code>Performance Co-Pilot</code> 플러그인을 활성화 (enable 버튼 클릭)</li>
+<li><code>cockpit-pcp</code>에서 <code>redis</code> 설치 후 <code>grafana</code>에서 <code>Configuration</code> &gt; <code>Data Sources</code> 선택
+<br>(<code>grafana</code>는 cockpit-pcp 의 메트릭 정보를 redis 를 통해 가져옵니다. redis 설치는 cockpit 에서 버튼 클릭 한번으로 끝남)</li>
+<li><code>HTTP</code>의 <code>URL</code> 항목만 <code>http://127.0.0.1:44322</code> 으로 입력 후 <code>Save &amp; Test</code> 버튼 클릭</li>
+</ul>
+<p>대시보드: <a href="/images/system/20220201-grafana_dashboard_PCP_redis.png" target="_blank">새 창 보기</a></p>
+<br>
+<h4 id="cockpit-cockpit-pcp-설치">(cockpit) cockpit-pcp 설치</h4>
 <p>시스템모니터링 기능이며 <code>cockpit-pcp</code>를 설치하여 메트릭 정보를 볼 수 있습니다.</p>
 <p><a href="/images/system/20220201-cockpit-pcp.png" target="_blank">새 창 보기</a></p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ yum install cockpit-pcp
