@@ -203,7 +203,7 @@ $ systemctl start filebeat
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;kibana 에서 조회&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;GET _cat/indices?pretty&amp;amp;v&amp;amp;s=index:desc
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;#GET _cat/indices/mgkim*?v
 health status index                           uuid                   pri rep docs.count docs.deleted store.size pri.store.size
 yellow open   mgkim-apache-log-2022.01.29     DvbnByKXS9a56Rn8Vb_RMg   1   1          1            0     19.4kb         19.4kb
 
@@ -290,6 +290,83 @@ GET mgkim-apache-log-2022.01.29/_search
 &lt;p&gt;172.28.200.30 - - [29/Jan/2022:22:43:39 +0900] &amp;ldquo;GET /repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml HTTP/1.1&amp;rdquo; 200 599 &amp;ldquo;-&amp;rdquo; &amp;ldquo;curl/7.61.1&amp;rdquo; &amp;ldquo;t1hruu5xl7le0o|s1jetbjlo0kpx0&amp;rdquo;
 %{COMBINEDAPACHELOG} &amp;quot;%{GREEDYDATA:txid}|%{GREEDYDATA:ssid}&amp;quot;&lt;/p&gt;
 
+      </description>
+    </item>
+    
+    <item>
+      <title>ELK: 2022.01.30</title>
+      <link>/elk/20220130-elastic_mappings/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/elk/20220130-elastic_mappings/</guid>
+      <description>
+        
+        
+        
+
+&lt;div class=&#34;pageinfo pageinfo-primary&#34;&gt;
+&lt;p&gt;elasticsearch 의 index 의 &lt;code&gt;_mapping&lt;/code&gt; 을 수정하여 특정 field 관리할 수 있도록 정리&lt;/p&gt;
+
+&lt;/div&gt;
+
+&lt;h4 id=&#34;mapping&#34;&gt;mapping&lt;/h4&gt;
+&lt;p&gt;기존 index &lt;code&gt;mgkim-apache-log-2022.01.29&lt;/code&gt;로 신규 index &lt;code&gt;mgkim-apache-log-remapping&lt;/code&gt; 생성&lt;/p&gt;
+&lt;h5 id=&#34;기존-index-의-mapping-정보-조회&#34;&gt;기존 index 의 mapping 정보 조회&lt;/h5&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;GET mgkim-apache-log-2022.01.29/_mapping
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;&amp;quot;mappings&amp;quot;: {...}&lt;/code&gt; 를 전체 복사하여 신규 index 를 편집하는곳에 붙여넣기로 시작&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;/files/ELK/20220130-asis-index-mapping.txt&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
+&lt;h5 id=&#34;신규-index-생성&#34;&gt;신규 index 생성&lt;/h5&gt;
+&lt;p&gt;mappings 편집 항목&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;quot;auth&amp;quot;: &amp;quot;text&amp;quot;&lt;/code&gt; &amp;gt; &lt;code&gt;&amp;quot;auth&amp;quot;: &amp;quot;keyword&amp;quot;&lt;/code&gt;: 집계만하기 위해 변경&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;PUT mgkim-apache-log-remapping
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a href=&#34;/files/ELK/20220130-tobe-index-mapping.txt&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
+&lt;h5 id=&#34;reindex&#34;&gt;reindex&lt;/h5&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;POST _reindex
+{
+  &amp;#34;source&amp;#34;: {
+    &amp;#34;index&amp;#34;: &amp;#34;mgkim-apache-log-2022.01.29&amp;#34;
+  },
+  &amp;#34;dest&amp;#34;: {
+    &amp;#34;index&amp;#34;: &amp;#34;mgkim-apache-log-mapping&amp;#34;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;웹-어플리케이션&#34;&gt;웹 어플리케이션&lt;/h4&gt;
+&lt;h5 id=&#34;vhost-dwwwconf&#34;&gt;vhost-dwww.conf&lt;/h5&gt;
+&lt;p&gt;로그 포맷 변경 (combined + ROUTEID + txid + ssid)&lt;/p&gt;
+&lt;p&gt;LogFormat &amp;ldquo;%h %l %u %t &amp;quot;%r&amp;quot; %&amp;gt;s %b  &amp;quot;%{Referer}i&amp;quot; &amp;quot;%{User-Agent}i&amp;quot;&amp;rdquo; &amp;quot;%{ROUTEID}C&amp;quot; &amp;quot;%{txid}i|%{ssid}i&amp;quot;&amp;quot; combined_trace&lt;/p&gt;
+&lt;p&gt;Header add Set-Cookie &amp;ldquo;ROUTEID=%{BALANCER_WORKER_ROUTE}e; path=/&amp;rdquo; env=BALANCER_ROUTE_CHANGED&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&amp;lt;VirtualHost *:80&amp;gt;
+  ServerName dwww
+  
+  LogFormat &amp;#34;%h %l %u %t \&amp;#34;%r\&amp;#34; %&amp;gt;s %b  \&amp;#34;%{Referer}i\&amp;#34; \&amp;#34;%{User-Agent}i\&amp;#34; \&amp;#34;%{ROUTEID}C\&amp;#34; \&amp;#34;%{txid}i|%{ssid}i\&amp;#34;&amp;#34; combined_trace
+  ErrorLog &amp;#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/dwww-error.log.%Y-%m-%d 86400 +540&amp;#34;
+  CustomLog &amp;#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/dwww-access.log.%Y-%m-%d 86400 +540&amp;#34; combined_trace
+
+  AllowEncodedSlashes On
+  # reverse proxy 사용 시 Off
+  ProxyRequests Off
+  ProxyPreserveHost On
+  # BALANCER_WORKER_ROUTE: BalancerMember 의 route 값을 쿠키에 포함 (dwww11, dwww12)
+  Header add Set-Cookie &amp;#34;ROUTEID=%{BALANCER_WORKER_ROUTE}e; path=/&amp;#34; env=BALANCER_ROUTE_CHANGED
+  Header set Access-Control-Allow-Origin &amp;#34;*&amp;#34;
+
+  &amp;lt;Proxy balancer://cluster&amp;gt;
+    BalancerMember http://127.0.0.1:7100 route=dwww11
+    BalancerMember http://127.0.0.1:7101 route=dwww12
+    
+    ProxySet stickysession=ROUTEID
+    ## lbmethod
+    # byrequests: 요청별 분배
+    # bytraffic: byte 트래픽 가중치 분배
+    # bybusyness: 보류중 요청 분배
+    #ProxySet lbmethod=byrequests
+  &amp;lt;/Proxy&amp;gt;
+  
+  ProxyPass / balancer://cluster/
+  ProxyPassReverse / balancer://cluster/
+
+&amp;lt;/VirtualHost&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       </description>
     </item>
     

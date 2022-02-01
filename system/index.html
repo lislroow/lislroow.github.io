@@ -20,9 +20,12 @@
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
 <title>system | dlog</title>
-<meta name="description" content="(ELK) elasticsearch 패스워드 설정
-elasticsearch와 kibana에 id/pw 방식의 보안을 적용하기 위해 elasticsearch 에 패스워드를 설정합니다.
-elasticsearch …">
+<meta name="description" content="(cockpit) cockpit-pcp 설치
+참고: 새 창 보기
+
+(dnf-makecache) 오류
+dnf-makecache는 centos의 자동업데이트 기능입니다.
+오류: repo &#39;appstream&#39;: Cannot prepare internal …">
 <meta property="og:title" content="system" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -107,7 +110,7 @@ elasticsearch …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.2752b6dc6a0d305ae2ecbbdbd39ab159.json"
+  data-offline-search-index-json-src="/offline-search-index.622ec23fa076a0e18c2bb0852288ab5c.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -129,7 +132,7 @@ elasticsearch …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.2752b6dc6a0d305ae2ecbbdbd39ab159.json"
+  data-offline-search-index-json-src="/offline-search-index.622ec23fa076a0e18c2bb0852288ab5c.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -190,6 +193,8 @@ elasticsearch …">
       <ul>
         <li>
           <ul>
+            <li><a href="#cockpit-cockpit-pcp-설치">(cockpit) cockpit-pcp 설치</a></li>
+            <li><a href="#dnf-makecache-오류">(dnf-makecache) 오류</a></li>
             <li><a href="#elk-elasticsearch-패스워드-설정">(ELK) elasticsearch 패스워드 설정</a></li>
             <li><a href="#centos-디스크-size-확장">(centos) 디스크 size 확장</a></li>
             <li><a href="#jenkins-role-based-authorization-strategy-플러그인">(jenkins) Role-based Authorization Strategy 플러그인</a></li>
@@ -286,7 +291,25 @@ elasticsearch …">
 		
 		
 	</header>
-	<h4 id="elk-elasticsearch-패스워드-설정">(ELK) elasticsearch 패스워드 설정</h4>
+	<h4 id="cockpit-cockpit-pcp-설치">(cockpit) cockpit-pcp 설치</h4>
+<p>참고: <a href="https://cockpit-project.org/blog/pcp-grafana.html" target="_blank">새 창 보기</a></p>
+<br>
+<h4 id="dnf-makecache-오류">(dnf-makecache) 오류</h4>
+<p><code>dnf-makecache</code>는 centos의 자동업데이트 기능입니다.</p>
+<p><code>오류: repo 'appstream': Cannot prepare internal mirrorlist: No URLs in mirrorlist 를 위해 메타데이타 내려받기에 실패하였습니다</code></p>
+<p><a href="/files/system/20220201-dnf-makecache_mirrorlist_error.txt" target="_blank">새 창 보기</a></p>
+<p>disable 명령어는 다음과 같습니다.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ gsettings set org.gnome.software download-updates false
+$ systemctl disable dnf-makecache.service
+$ systemctl disable dnf-makecache.timer
+</code></pre></div><p>정상 작동하도록 하기 위해 yum 저장소 설정 파일을 수정합니다.</p>
+<p><a href="/files/system/20220201-yum_repo.txt" target="_blank">새 창 보기</a></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ sed -i &#39;s/mirrorlist/#mirrorlist/g&#39; /etc/yum.repos.d/CentOS-Linux-*
+$ sed -i &#39;s|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g&#39; /etc/yum.repos.d/CentOS-Linux-*
+# yum upgrade 테스트
+</code></pre></div><p>참고: dnf 저장소 관리 <a href="https://wnw1005.tistory.com/300" target="_blank">새 창 보기</a></p>
+<br>
+<h4 id="elk-elasticsearch-패스워드-설정">(ELK) elasticsearch 패스워드 설정</h4>
 <p><code>elasticsearch</code>와 <code>kibana</code>에 id/pw 방식의 보안을 적용하기 위해 elasticsearch 에 패스워드를 설정합니다.</p>
 <p>elasticsearch 에 패스워드를 설정하는 명령어는 <code>elasticsearch-setup-passwords interactive</code> 입니다.</p>
 <p>오류 내용이 <code>ERROR: X-Pack Security is disabled by configuration</code> 으로 나올 경우 설정파일<code>elasticsearch.yml</code>이 기본으로 되어있을 경우 발생합니다.</p>

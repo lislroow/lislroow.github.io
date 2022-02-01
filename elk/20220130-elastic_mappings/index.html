@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.92.1" />
+<meta name="robots" content="index, follow">
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
+
+<title>2022.01.30 | dlog</title>
+<meta name="description" content="
+
+
+elasticsearch 의 index 의 _mapping 을 수정하여 특정 field 관리할 수 있도록 정리
+
+
+
+mapping
+기존 index mgkim-apache-log-2022.01.29로 신규 index mgkim-apache-log-remapping  …">
+<meta property="og:title" content="2022.01.30" />
+<meta property="og:description" content="elasticsearch 의 index 의 _mapping 을 수정하여 특정 field 관리할 수 있도록 정리
+ mapping 기존 index mgkim-apache-log-2022.01.29로 신규 index mgkim-apache-log-remapping 생성
+기존 index 의 mapping 정보 조회 GET mgkim-apache-log-2022.01.29/_mapping &quot;mappings&quot;: {...} 를 전체 복사하여 신규 index 를 편집하는곳에 붙여넣기로 시작
+새 창 보기
+신규 index 생성 mappings 편집 항목
+&quot;auth&quot;: &quot;text&quot; &gt; &quot;auth&quot;: &quot;keyword&quot;: 집계만하기 위해 변경
+PUT mgkim-apache-log-remapping 새 창 보기
+reindex POST _reindex { &#34;source&#34;: { &#34;index&#34;: &#34;mgkim-apache-log-2022." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/elk/20220130-elastic_mappings/" /><meta property="article:section" content="ELK" />
+
+
+
+<meta itemprop="name" content="2022.01.30">
+<meta itemprop="description" content="elasticsearch 의 index 의 _mapping 을 수정하여 특정 field 관리할 수 있도록 정리
+ mapping 기존 index mgkim-apache-log-2022.01.29로 신규 index mgkim-apache-log-remapping 생성
+기존 index 의 mapping 정보 조회 GET mgkim-apache-log-2022.01.29/_mapping &quot;mappings&quot;: {...} 를 전체 복사하여 신규 index 를 편집하는곳에 붙여넣기로 시작
+새 창 보기
+신규 index 생성 mappings 편집 항목
+&quot;auth&quot;: &quot;text&quot; &gt; &quot;auth&quot;: &quot;keyword&quot;: 집계만하기 위해 변경
+PUT mgkim-apache-log-remapping 새 창 보기
+reindex POST _reindex { &#34;source&#34;: { &#34;index&#34;: &#34;mgkim-apache-log-2022.">
+
+<meta itemprop="wordCount" content="206">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="2022.01.30"/>
+<meta name="twitter:description" content="elasticsearch 의 index 의 _mapping 을 수정하여 특정 field 관리할 수 있도록 정리
+ mapping 기존 index mgkim-apache-log-2022.01.29로 신규 index mgkim-apache-log-remapping 생성
+기존 index 의 mapping 정보 조회 GET mgkim-apache-log-2022.01.29/_mapping &quot;mappings&quot;: {...} 를 전체 복사하여 신규 index 를 편집하는곳에 붙여넣기로 시작
+새 창 보기
+신규 index 생성 mappings 편집 항목
+&quot;auth&quot;: &quot;text&quot; &gt; &quot;auth&quot;: &quot;keyword&quot;: 집계만하기 위해 변경
+PUT mgkim-apache-log-remapping 새 창 보기
+reindex POST _reindex { &#34;source&#34;: { &#34;index&#34;: &#34;mgkim-apache-log-2022."/>
+
+
+
+
+<link rel="preload" href="/scss/main.min.12755f2d2010b2542dbf214c6cf33aae16e1495d4dbcc9e9c60840c685662af2.css" as="style">
+<link href="/scss/main.min.12755f2d2010b2542dbf214c6cf33aae16e1495d4dbcc9e9c60840c685662af2.css" rel="stylesheet" integrity="">
+
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
+  crossorigin="anonymous"></script>
+<script
+  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
+  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-page">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="/">
+		<span class="navbar-logo"></span><span class="font-weight-bold">dlog</span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/system/" ><i class='fas fa-book'></i><span>system</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/localenv/" ><i class='fas fa-book'></i><span>localenv</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				
+				
+				<a class="nav-link active" href="/elk/" ><i class='fas fa-book'></i><span class="active">ELK</span></a>
+			</li>
+			
+			
+			
+		</ul>
+	</div>
+	<div class="navbar-nav d-none d-lg-block"><input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Search this site…"
+  aria-label="Search this site…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="/offline-search-index.622ec23fa076a0e18c2bb0852288ab5c.json"
+  data-offline-search-base-href="/"
+  data-offline-search-max-results="10"
+>
+</div>
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  <form class="td-sidebar__search d-flex align-items-center">
+    <input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Search this site…"
+  aria-label="Search this site…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="/offline-search-index.622ec23fa076a0e18c2bb0852288ab5c.json"
+  data-offline-search-base-href="/"
+  data-offline-search-max-results="10"
+>
+
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  <nav class="collapse td-sidebar-nav" id="td-section-nav">
+    <ul class="td-sidebar-nav__section pr-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-elk-li">
+  
+  <a href="/elk/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-elk"><span class="">ELK</span></a>
+  <ul class="ul-1">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-elk20220129-apache_log-li">
+  
+  <a href="/elk/20220129-apache_log/" title="2022.01.29" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-elk20220129-apache_log"><span class="">2022.01.29-apache_log</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-elk20220130-elastic_mappings-li">
+  
+  <a href="/elk/20220130-elastic_mappings/" title="2022.01.30" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-elk20220130-elastic_mappings"><span class="td-sidebar-nav-active-item">2022.01.30-dwww</span></a>
+</li>
+  </ul>
+</li>
+    </ul>
+  </nav>
+</div>
+
+          </aside>
+          <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+            
+<div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
+
+</div>
+
+            
+
+
+<div class="td-toc"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#mapping">mapping</a>
+              <ul>
+                <li><a href="#기존-index-의-mapping-정보-조회">기존 index 의 mapping 정보 조회</a></li>
+                <li><a href="#신규-index-생성">신규 index 생성</a></li>
+                <li><a href="#reindex">reindex</a></li>
+              </ul>
+            </li>
+            <li><a href="#웹-어플리케이션">웹 어플리케이션</a>
+              <ul>
+                <li><a href="#vhost-dwwwconf">vhost-dwww.conf</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+
+
+
+            
+
+	
+		
+
+
+
+  
+  
+
+	
+		
+
+
+
+  
+  
+
+	
+
+          </aside>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="td-breadcrumbs">
+  <ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/elk/">ELK</a>
+  </li>
+  <li class="breadcrumb-item active" aria-current="page">
+    <a href="/elk/20220130-elastic_mappings/">2022.01.30-dwww</a>
+  </li>
+  </ol>
+</nav>
+            
+<div class="td-content">
+	<h1>2022.01.30</h1>
+	
+	<header class="article-meta">
+		
+		
+			
+				
+
+
+			
+				
+
+
+			
+		
+		
+	</header>    
+	
+
+<div class="pageinfo pageinfo-primary">
+<p>elasticsearch 의 index 의 <code>_mapping</code> 을 수정하여 특정 field 관리할 수 있도록 정리</p>
+
+</div>
+
+<h4 id="mapping">mapping</h4>
+<p>기존 index <code>mgkim-apache-log-2022.01.29</code>로 신규 index <code>mgkim-apache-log-remapping</code> 생성</p>
+<h5 id="기존-index-의-mapping-정보-조회">기존 index 의 mapping 정보 조회</h5>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">GET mgkim-apache-log-2022.01.29/_mapping
+</code></pre></div><p><code>&quot;mappings&quot;: {...}</code> 를 전체 복사하여 신규 index 를 편집하는곳에 붙여넣기로 시작</p>
+<p><a href="/files/ELK/20220130-asis-index-mapping.txt" target="_blank">새 창 보기</a></p>
+<h5 id="신규-index-생성">신규 index 생성</h5>
+<p>mappings 편집 항목</p>
+<p><code>&quot;auth&quot;: &quot;text&quot;</code> &gt; <code>&quot;auth&quot;: &quot;keyword&quot;</code>: 집계만하기 위해 변경</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">PUT mgkim-apache-log-remapping
+</code></pre></div><p><a href="/files/ELK/20220130-tobe-index-mapping.txt" target="_blank">새 창 보기</a></p>
+<h5 id="reindex">reindex</h5>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">POST _reindex
+{
+  &#34;source&#34;: {
+    &#34;index&#34;: &#34;mgkim-apache-log-2022.01.29&#34;
+  },
+  &#34;dest&#34;: {
+    &#34;index&#34;: &#34;mgkim-apache-log-mapping&#34;
+  }
+}
+</code></pre></div><h4 id="웹-어플리케이션">웹 어플리케이션</h4>
+<h5 id="vhost-dwwwconf">vhost-dwww.conf</h5>
+<p>로그 포맷 변경 (combined + ROUTEID + txid + ssid)</p>
+<p>LogFormat &ldquo;%h %l %u %t &quot;%r&quot; %&gt;s %b  &quot;%{Referer}i&quot; &quot;%{User-Agent}i&quot;&rdquo; &quot;%{ROUTEID}C&quot; &quot;%{txid}i|%{ssid}i&quot;&quot; combined_trace</p>
+<p>Header add Set-Cookie &ldquo;ROUTEID=%{BALANCER_WORKER_ROUTE}e; path=/&rdquo; env=BALANCER_ROUTE_CHANGED</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&lt;VirtualHost *:80&gt;
+  ServerName dwww
+  
+  LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b  \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34; \&#34;%{ROUTEID}C\&#34; \&#34;%{txid}i|%{ssid}i\&#34;&#34; combined_trace
+  ErrorLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/dwww-error.log.%Y-%m-%d 86400 +540&#34;
+  CustomLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/dwww-access.log.%Y-%m-%d 86400 +540&#34; combined_trace
+
+  AllowEncodedSlashes On
+  # reverse proxy 사용 시 Off
+  ProxyRequests Off
+  ProxyPreserveHost On
+  # BALANCER_WORKER_ROUTE: BalancerMember 의 route 값을 쿠키에 포함 (dwww11, dwww12)
+  Header add Set-Cookie &#34;ROUTEID=%{BALANCER_WORKER_ROUTE}e; path=/&#34; env=BALANCER_ROUTE_CHANGED
+  Header set Access-Control-Allow-Origin &#34;*&#34;
+
+  &lt;Proxy balancer://cluster&gt;
+    BalancerMember http://127.0.0.1:7100 route=dwww11
+    BalancerMember http://127.0.0.1:7101 route=dwww12
+    
+    ProxySet stickysession=ROUTEID
+    ## lbmethod
+    # byrequests: 요청별 분배
+    # bytraffic: byte 트래픽 가중치 분배
+    # bybusyness: 보류중 요청 분배
+    #ProxySet lbmethod=byrequests
+  &lt;/Proxy&gt;
+  
+  ProxyPass / balancer://cluster/
+  ProxyPassReverse / balancer://cluster/
+
+&lt;/VirtualHost&gt;
+</code></pre></div>
+	
+	
+	
+</div>
+
+
+          </main>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+    integrity="sha512-UR25UO94eTnCVwjbXozyeVd6ZqpaAE9naiEUBK/A+QDbfSTQFhPGj5lOR6d8tsgbBk84Ggb5A3EkjsOgPRPcKA=="
+    crossorigin="anonymous"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@8.13.4/dist/mermaid.min.js" integrity="sha512-JERecFUBbsm75UpkVheAuDOE8NdHjQBrPACfEQYPwvPG+fjgCpHAz1Jw2ci9EXmd3DdfiWth3O3CQvcfEg8gsA==" crossorigin="anonymous"></script>
+
+
+
+<style>
+.markmap > svg {
+  width: 100%;
+  height: 300px;
+}
+</style>
+<script>
+window.markmap = {
+  autoLoader: { manual: true },
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
+
+
+<script src='/js/tabpane-persist.js'></script>
+
+
+
+<script src='/js/deflate.js'></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
+    integrity="sha512-vJqxkZ+Sugf/6WRlpcxN01qVfX/29hF6qc33eHF1va3NgoV+U+wCi+uTAsQ10sDoGyBxHLdaHvGwDlV3yVYboA==" crossorigin="anonymous">
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"
+    integrity="sha512-5ufNcHqOYgilGEHPfuRIQ5B/vDS1M8+UC+DESZ5CwVgGTg+b2Ol/15rYL/GiCWJ/Sx8oVo0FPFok1dPk8U9INQ=="
+    crossorigin="anonymous"></script>
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js"
+    integrity="sha512-HWb6LyQhO6UkmYLjdSblpgiOvvbdkoMRjln0POPhOVbZu3l4QdqwZnMJ/cuwKScU5pWARejB495TAAAz0WNsXQ=="
+    crossorigin="anonymous"></script>
+
+
+<script defer src='https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js'
+    integrity='sha512-ZA/RPrAo88DlwRnnoNVqKINnQNcWERzRK03PDaA4GIJiVZvGFIWQbdWCsUebMZfkWohnfngsDjXzU6PokO4jGw==' crossorigin='anonymous' 
+    onload='renderMathInElement(document.body, null);'></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.min.107a1d3f0d9dfdbd7b6c30065c60e2534ccedea64e72f2386b6c20f924336373.js" integrity="sha256-EHodPw2d/b17bDAGXGDiU0zO3qZOcvI4a2wg&#43;SQzY3M=" crossorigin="anonymous"></script>
+
+
+
+
+  </body>
+</html>
