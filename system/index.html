@@ -21,11 +21,11 @@
 
 <title>system | dlog</title>
 <meta name="description" content="(cockpit) cockpit-pcp 설치
-참고: 새 창 보기
-
-(dnf-makecache) 오류
-dnf-makecache는 centos의 자동업데이트 기능입니다.
-오류: repo &#39;appstream&#39;: Cannot prepare internal …">
+시스템모니터링 기능이며 cockpit-pcp를 설치하여 메트릭 정보를 볼 수 있습니다.
+새 창 보기
+$ yum install cockpit-pcp
+$ systemctl enable pmlogger.service
+$ …">
 <meta property="og:title" content="system" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -110,7 +110,7 @@ dnf-makecache는 centos의 자동업데이트 기능입니다.
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.622ec23fa076a0e18c2bb0852288ab5c.json"
+  data-offline-search-index-json-src="/offline-search-index.f57b2263d9d8a329c8ac102d6123ee50.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -132,7 +132,7 @@ dnf-makecache는 centos의 자동업데이트 기능입니다.
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.622ec23fa076a0e18c2bb0852288ab5c.json"
+  data-offline-search-index-json-src="/offline-search-index.f57b2263d9d8a329c8ac102d6123ee50.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -292,6 +292,15 @@ dnf-makecache는 centos의 자동업데이트 기능입니다.
 		
 	</header>
 	<h4 id="cockpit-cockpit-pcp-설치">(cockpit) cockpit-pcp 설치</h4>
+<p>시스템모니터링 기능이며 <code>cockpit-pcp</code>를 설치하여 메트릭 정보를 볼 수 있습니다.</p>
+<p><a href="/images/system/20220201-cockpit-pcp.png" target="_blank">새 창 보기</a></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ yum install cockpit-pcp
+$ systemctl enable pmlogger.service
+$ systemctl enable pmproxy.service
+$ systemctl daemon-reload
+$ systemctl start pmlogger.service
+$ systemctl start pmproxy.service
+</code></pre></div><p>pmproxy.service 활성화를 통해 여러 머신의 메트릭 정보를 볼 수도 있습니다. (redis 설치됨)</p>
 <p>참고: <a href="https://cockpit-project.org/blog/pcp-grafana.html" target="_blank">새 창 보기</a></p>
 <br>
 <h4 id="dnf-makecache-오류">(dnf-makecache) 오류</h4>
