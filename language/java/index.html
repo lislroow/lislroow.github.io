@@ -1,0 +1,661 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.92.1" />
+<meta name="robots" content="index, follow">
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
+
+<title>java | dlog</title>
+<meta name="description" content="Collection vs Stream
+
+
+
+Collection
+Stream
+
+
+
+
+Iterator로 모든 요소를 순회 해야한다.
+filter 로 일부 요소들만 순회할 수 있다.
+
+
+메모리에 모든 요소가 load 된 상태에서 결과를 계산한다.
+계산식을 미리 적어두고 계산 …">
+<meta property="og:title" content="java" />
+<meta property="og:description" content="Collection vs Stream    Collection Stream     Iterator로 모든 요소를 순회 해야한다. filter 로 일부 요소들만 순회할 수 있다.   메모리에 모든 요소가 load 된 상태에서 결과를 계산한다. 계산식을 미리 적어두고 계산시에 람다식으로 jvm에 넘긴다.   메모리 사용량이 늘어난다. 메모리 사용량이 줄어든다.    함수형 인터페이스 default 메소드를 제외한 메소드가 1개만 있을 경우 아래와 같이 사용 가능합니다.
+함수 역할을 하는 객체
+(class Collections)  void sort(List list, Comparator&lt;?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/language/java/" /><meta property="article:section" content="language" />
+
+
+
+<meta itemprop="name" content="java">
+<meta itemprop="description" content="Collection vs Stream    Collection Stream     Iterator로 모든 요소를 순회 해야한다. filter 로 일부 요소들만 순회할 수 있다.   메모리에 모든 요소가 load 된 상태에서 결과를 계산한다. 계산식을 미리 적어두고 계산시에 람다식으로 jvm에 넘긴다.   메모리 사용량이 늘어난다. 메모리 사용량이 줄어든다.    함수형 인터페이스 default 메소드를 제외한 메소드가 1개만 있을 경우 아래와 같이 사용 가능합니다.
+함수 역할을 하는 객체
+(class Collections)  void sort(List list, Comparator&lt;?">
+
+<meta itemprop="wordCount" content="824">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="java"/>
+<meta name="twitter:description" content="Collection vs Stream    Collection Stream     Iterator로 모든 요소를 순회 해야한다. filter 로 일부 요소들만 순회할 수 있다.   메모리에 모든 요소가 load 된 상태에서 결과를 계산한다. 계산식을 미리 적어두고 계산시에 람다식으로 jvm에 넘긴다.   메모리 사용량이 늘어난다. 메모리 사용량이 줄어든다.    함수형 인터페이스 default 메소드를 제외한 메소드가 1개만 있을 경우 아래와 같이 사용 가능합니다.
+함수 역할을 하는 객체
+(class Collections)  void sort(List list, Comparator&lt;?"/>
+
+
+
+
+<link rel="preload" href="/scss/main.min.569faf0cd6db21d28c977bb7a6bce7a5d821664edbb87d1db6db005ecf6228c2.css" as="style">
+<link href="/scss/main.min.569faf0cd6db21d28c977bb7a6bce7a5d821664edbb87d1db6db005ecf6228c2.css" rel="stylesheet" integrity="">
+
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
+  crossorigin="anonymous"></script>
+<script
+  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
+  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-page">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="/">
+		<span class="navbar-logo"></span><span class="font-weight-bold">dlog</span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/system/" ><i class='fas fa-book'></i><span>system</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/localenv/" ><i class='fas fa-book'></i><span>localenv</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				
+				
+				<a class="nav-link active" href="/language/" ><i class='fas fa-book'></i><span class="active">language</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/elk/" ><i class='fas fa-book'></i><span>ELK</span></a>
+			</li>
+			
+			
+			
+		</ul>
+	</div>
+	<div class="navbar-nav d-none d-lg-block"><input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Search this site…"
+  aria-label="Search this site…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="/offline-search-index.ffca7df2854217b28f88229455dd669e.json"
+  data-offline-search-base-href="/"
+  data-offline-search-max-results="10"
+>
+</div>
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  <form class="td-sidebar__search d-flex align-items-center">
+    <input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Search this site…"
+  aria-label="Search this site…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="/offline-search-index.ffca7df2854217b28f88229455dd669e.json"
+  data-offline-search-base-href="/"
+  data-offline-search-max-results="10"
+>
+
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  <nav class="collapse td-sidebar-nav" id="td-section-nav">
+    <ul class="td-sidebar-nav__section pr-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-language-li">
+  
+  <a href="/language/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-language"><span class="">language</span></a>
+  <ul class="ul-1">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-languagejava-li">
+  
+  <a href="/language/java/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-languagejava"><span class="td-sidebar-nav-active-item">java</span></a>
+</li>
+  </ul>
+</li>
+    </ul>
+  </nav>
+</div>
+
+          </aside>
+          <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+            
+<div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
+
+</div>
+
+            
+
+
+<div class="td-toc"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#collection-vs-stream">Collection vs Stream</a></li>
+            <li><a href="#함수형-인터페이스">함수형 인터페이스</a>
+              <ul>
+                <li><a href="#class-collections-t-void-sortlistt-list-comparator-super-t-c">(class Collections) <T> void sort(List<T> list, Comparator&lt;? super T&gt; c)</a></li>
+                <li><a href="#interface-predicatet-boolean-testt-t">(interface Predicate<T>) boolean test(T t)</a></li>
+                <li><a href="#interface-consumert-void-acceptt-t">(interface Consumer<T>) void accept(T t)</a></li>
+                <li><a href="#interface-suppliert-t-get">(interface Supplier<T>) T get()</a></li>
+                <li><a href="#interface-comparatort-int-comparet-o1-t-o2">(interface Comparator<T>) int compare(T o1, T o2)</a></li>
+                <li><a href="#interface-functiont-r-r-applyt-t">(interface Function&lt;T, R&gt;) R apply(T t)</a></li>
+              </ul>
+            </li>
+            <li><a href="#interface-streamt">(interface Stream<T>)</a>
+              <ul>
+                <li><a href="#initial-operation">initial operation</a></li>
+                <li><a href="#intermediate-operation">intermediate operation</a></li>
+                <li><a href="#terminal-operation">terminal operation</a></li>
+              </ul>
+            </li>
+            <li><a href="#misc">misc</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+
+
+
+            
+
+	
+		
+
+
+
+  
+  
+
+	
+		
+
+
+
+  
+  
+
+	
+
+          </aside>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="td-breadcrumbs">
+  <ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/language/">language</a>
+  </li>
+  <li class="breadcrumb-item active" aria-current="page">
+    <a href="/language/java/">java</a>
+  </li>
+  </ol>
+</nav>
+            
+<div class="td-content">
+	<h1>java</h1>
+	
+	<header class="article-meta">
+		
+		
+			
+				
+
+
+			
+				
+
+
+			
+		
+		
+	</header>    
+	<h4 id="collection-vs-stream">Collection vs Stream</h4>
+<table>
+<thead>
+<tr>
+<th>Collection</th>
+<th>Stream</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Iterator로 모든 요소를 순회 해야한다.</td>
+<td>filter 로 일부 요소들만 순회할 수 있다.</td>
+</tr>
+<tr>
+<td>메모리에 모든 요소가 load 된 상태에서 결과를 계산한다.</td>
+<td>계산식을 미리 적어두고 계산시에 람다식으로 jvm에 넘긴다.</td>
+</tr>
+<tr>
+<td>메모리 사용량이 늘어난다.</td>
+<td>메모리 사용량이 줄어든다.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="함수형-인터페이스">함수형 인터페이스</h4>
+<p>default 메소드를 제외한 메소드가 1개만 있을 경우 아래와 같이 사용 가능합니다.</p>
+<p><code>함수 역할을 하는 객체</code></p>
+<h5 id="class-collections-t-void-sortlistt-list-comparator-super-t-c">(class Collections) <T> void sort(List<T> list, Comparator&lt;? super T&gt; c)</h5>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#ce5c00;font-weight:bold">{</span>
+      <span style="color:#000">ApiTxLogMapper</span> <span style="color:#000">mapper</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">springContext</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getBean</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">ApiTxLogMapper</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">class</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      <span style="color:#000">List</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Map</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Object</span><span style="color:#ce5c00;font-weight:bold">&gt;&gt;</span> <span style="color:#000">list</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">mapper</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">selectLogList_map</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">null</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      <span style="color:#000">java</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">util</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">Collections</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">sort</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">list</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">o1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">o2</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">final</span> <span style="color:#000">String</span> <span style="color:#000">cmpKey</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;txdt&#34;</span><span style="color:#ce5c00;font-weight:bold">;</span>
+        <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">o1</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">get</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">cmpKey</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">toString</span><span style="color:#ce5c00;font-weight:bold">().</span><span style="color:#c4a000">compareTo</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">o2</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">get</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">cmpKey</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">toString</span><span style="color:#ce5c00;font-weight:bold">());</span>
+      <span style="color:#ce5c00;font-weight:bold">});</span>
+      <span style="color:#000">java</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">util</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">Collections</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">sort</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">list</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">o1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">o2</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">o1</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">get</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;txdt&#34;</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">toString</span><span style="color:#ce5c00;font-weight:bold">().</span><span style="color:#c4a000">compareTo</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">o2</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">get</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;txdt&#34;</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">toString</span><span style="color:#ce5c00;font-weight:bold">()));</span>
+      <span style="color:#000">outDTO</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setBody</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Map</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">of</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;list&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">list</span><span style="color:#ce5c00;font-weight:bold">));</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>
+</code></pre></div><h5 id="interface-predicatet-boolean-testt-t">(interface Predicate<T>) boolean test(T t)</h5>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#ce5c00;font-weight:bold">{</span>
+      <span style="color:#000">java</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">util</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">function</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">Predicate</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">predicate1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">java</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">util</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">function</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">Predicate</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">&gt;()</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#5c35cc;font-weight:bold">@Override</span>
+        <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">boolean</span> <span style="color:#000">test</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Integer</span> <span style="color:#000">n</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+          <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#ce5c00;font-weight:bold">!(</span><span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">==</span> <span style="color:#204a87;font-weight:bold">null</span> <span style="color:#ce5c00;font-weight:bold">||</span> <span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">&lt;=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">);</span>
+        <span style="color:#ce5c00;font-weight:bold">}</span>
+      <span style="color:#ce5c00;font-weight:bold">};</span>
+      <span style="color:#000">log</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">info</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;predicate1.test(null): {}&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">predicate1</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">test</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">null</span><span style="color:#ce5c00;font-weight:bold">));</span>
+      <span style="color:#000">log</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">info</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;predicate1.test(-10): {}&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">predicate1</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">test</span><span style="color:#ce5c00;font-weight:bold">(-</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">));</span>
+      <span style="color:#000">log</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">info</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;predicate1.test(0): {}&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">predicate1</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">test</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">));</span>
+      <span style="color:#000">log</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">info</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;predicate1.test(3): {}&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">predicate1</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">test</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">));</span>
+      
+      <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      
+      <span style="color:#000">java</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">util</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">function</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">Predicate</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">predicate2</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#ce5c00;font-weight:bold">!(</span><span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">==</span> <span style="color:#204a87;font-weight:bold">null</span> <span style="color:#ce5c00;font-weight:bold">||</span> <span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">&lt;=</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      <span style="color:#204a87;font-weight:bold">for</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">=-</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">++)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#000">log</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">info</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;predicate2.test({}): {}&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">predicate2</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">test</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">));</span>
+      <span style="color:#ce5c00;font-weight:bold">}</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>
+</code></pre></div><h5 id="interface-consumert-void-acceptt-t">(interface Consumer<T>) void accept(T t)</h5>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#ce5c00;font-weight:bold">{</span>
+      <span style="color:#000">java</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">util</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">function</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">Consumer</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">consumer</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">n</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">log</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">info</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;n: {}&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">n</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      <span style="color:#000">consumer</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">accept</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">);</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>
+</code></pre></div><h5 id="interface-suppliert-t-get">(interface Supplier<T>) T get()</h5>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#ce5c00;font-weight:bold">{</span>
+      <span style="color:#000">java</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">util</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">function</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">Supplier</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">supplier</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">;</span>
+      <span style="color:#ce5c00;font-weight:bold">};</span>
+      <span style="color:#000">Integer</span> <span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">supplier</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">get</span><span style="color:#ce5c00;font-weight:bold">();</span>
+      <span style="color:#000">log</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">info</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;n: {}&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">n</span><span style="color:#ce5c00;font-weight:bold">);</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>
+</code></pre></div><h5 id="interface-comparatort-int-comparet-o1-t-o2">(interface Comparator<T>) int compare(T o1, T o2)</h5>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"></code></pre></div><h5 id="interface-functiont-r-r-applyt-t">(interface Function&lt;T, R&gt;) R apply(T t)</h5>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"></code></pre></div><h4 id="interface-streamt">(interface Stream<T>)</h4>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#ce5c00;font-weight:bold">{</span>
+      <span style="color:#000">ApiTxLogMapper</span> <span style="color:#000">mapper</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">springContext</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getBean</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">ApiTxLogMapper</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">class</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      <span style="color:#000">List</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Map</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Object</span><span style="color:#ce5c00;font-weight:bold">&gt;&gt;</span> <span style="color:#000">list</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">mapper</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">selectLogList_map</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">null</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">sum1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">list</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">stream</span><span style="color:#ce5c00;font-weight:bold">().</span><span style="color:#c4a000">mapToInt</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">item</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#4e9a06">&#34;20220121&#34;</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">equals</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">item</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">get</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;txdt&#34;</span><span style="color:#ce5c00;font-weight:bold">))</span> <span style="color:#ce5c00;font-weight:bold">?</span> <span style="color:#000">1</span> <span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">sum</span><span style="color:#ce5c00;font-weight:bold">();</span>
+      <span style="color:#000">log</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">info</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;sum1: {}&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">sum1</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      
+      <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      <span style="color:#000">List</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Map</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Object</span><span style="color:#ce5c00;font-weight:bold">&gt;&gt;</span> <span style="color:#000">list1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">list</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">stream</span><span style="color:#ce5c00;font-weight:bold">().</span><span style="color:#c4a000">limit</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">collect</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Collectors</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toList</span><span style="color:#ce5c00;font-weight:bold">());</span>
+      <span style="color:#000">log</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">info</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;list.size(): {}&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">list</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">size</span><span style="color:#ce5c00;font-weight:bold">());</span>
+      <span style="color:#000">log</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">info</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;list1.size(): {}&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">list1</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">size</span><span style="color:#ce5c00;font-weight:bold">());</span>
+      
+      <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      <span style="color:#000">List</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Map</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Object</span><span style="color:#ce5c00;font-weight:bold">&gt;&gt;</span> <span style="color:#000">list2</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">list</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">stream</span><span style="color:#ce5c00;font-weight:bold">().</span><span style="color:#c4a000">skip</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">limit</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">collect</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Collectors</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toList</span><span style="color:#ce5c00;font-weight:bold">());</span>
+      <span style="color:#000">log</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">info</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;list1: {}&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">list1</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      <span style="color:#000">log</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">info</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;list2: {}&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">list2</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      
+      <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      <span style="color:#000">List</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Map</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Object</span><span style="color:#ce5c00;font-weight:bold">&gt;&gt;</span> <span style="color:#000">list3</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">list</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">stream</span><span style="color:#ce5c00;font-weight:bold">().</span><span style="color:#c4a000">sorted</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Comparator</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">comparing</span><span style="color:#ce5c00;font-weight:bold">((</span><span style="color:#000">Map</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Object</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">m</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">get</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;txdt&#34;</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">toString</span><span style="color:#ce5c00;font-weight:bold">();</span>
+      <span style="color:#ce5c00;font-weight:bold">}).</span><span style="color:#c4a000">reversed</span><span style="color:#ce5c00;font-weight:bold">()).</span><span style="color:#c4a000">collect</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Collectors</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toList</span><span style="color:#ce5c00;font-weight:bold">());</span>
+      
+      <span style="color:#000">log</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">info</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;list1: {}&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">list1</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      <span style="color:#000">log</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">info</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;list3: {}&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">list3</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      <span style="color:#000">List</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">nList1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Arrays</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">asList</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;1:a&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;2:b&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;3:c&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;4:d&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;5:e&#34;</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">stream</span><span style="color:#ce5c00;font-weight:bold">()</span>
+          <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">map</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">s</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">parseInt</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">split</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;:&#34;</span><span style="color:#ce5c00;font-weight:bold">)[</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">])).</span><span style="color:#c4a000">collect</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Collectors</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toList</span><span style="color:#ce5c00;font-weight:bold">());</span>
+      <span style="color:#000">List</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">nList2</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Arrays</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">asList</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;1:a&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;2:b&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;3:c&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;4:d&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;5:e&#34;</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">stream</span><span style="color:#ce5c00;font-weight:bold">()</span>
+          <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">flatMap</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">s</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">parseInt</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">split</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;:&#34;</span><span style="color:#ce5c00;font-weight:bold">)[</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">]);</span>
+            <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">Stream</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">of</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">n</span><span style="color:#ce5c00;font-weight:bold">);</span>
+          <span style="color:#ce5c00;font-weight:bold">}).</span><span style="color:#c4a000">collect</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Collectors</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toList</span><span style="color:#ce5c00;font-weight:bold">());</span>
+      <span style="color:#000">log</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">info</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;nList1: {}&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">nList1</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      <span style="color:#000">log</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">info</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;nList2: {}&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">nList2</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      
+      <span style="color:#000">List</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">nList3</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Arrays</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">asList</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;1:a&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;2:b&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;3:c&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;4:d&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;4:d&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;5:e&#34;</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">stream</span><span style="color:#ce5c00;font-weight:bold">()</span>
+          <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">map</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">s</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">parseInt</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">split</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;:&#34;</span><span style="color:#ce5c00;font-weight:bold">)[</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">])).</span><span style="color:#c4a000">collect</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Collectors</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toList</span><span style="color:#ce5c00;font-weight:bold">());</span>
+      <span style="color:#000">Set</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">nSet1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Arrays</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">asList</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;1:a&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;2:b&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;3:c&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;4:d&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;4:d&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;5:e&#34;</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">stream</span><span style="color:#ce5c00;font-weight:bold">()</span>
+          <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">map</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">s</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">parseInt</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">split</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;:&#34;</span><span style="color:#ce5c00;font-weight:bold">)[</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">])).</span><span style="color:#c4a000">collect</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Collectors</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toSet</span><span style="color:#ce5c00;font-weight:bold">());</span>
+      <span style="color:#000">log</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">info</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;nList3: {}&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">nList3</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      <span style="color:#000">nList3</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">forEach</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">println</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      <span style="color:#000">log</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">info</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;nSet1: {}&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">nSet1</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      <span style="color:#000">nSet1</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">forEach</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">println</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      
+      <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;\nsList1&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      <span style="color:#000">List</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">sList1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Arrays</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">asList</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;1:a&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;2:b&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;c:3&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;d:4&#34;</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">stream</span><span style="color:#ce5c00;font-weight:bold">()</span>
+          <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">flatMap</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">s</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">Arrays</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">stream</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">split</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;:&#34;</span><span style="color:#ce5c00;font-weight:bold">)))</span>
+          <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">collect</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Collectors</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toList</span><span style="color:#ce5c00;font-weight:bold">());</span>
+      <span style="color:#000">sList1</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">forEach</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">println</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      
+      <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;\nsList2&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      <span style="color:#000">List</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">sList2</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Arrays</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">asList</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;1:a&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;2:b&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;c:3&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;d:4&#34;</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">stream</span><span style="color:#ce5c00;font-weight:bold">()</span>
+          <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">flatMap</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">s</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">Arrays</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">stream</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">split</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;:&#34;</span><span style="color:#ce5c00;font-weight:bold">)))</span>
+          <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">filter</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">s</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">org</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">apache</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">commons</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">lang3</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">math</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">NumberUtils</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">isDigits</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">))</span>
+          <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">collect</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Collectors</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toList</span><span style="color:#ce5c00;font-weight:bold">());</span>
+      <span style="color:#000">sList2</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">forEach</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">println</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      
+      
+      <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;\nsSet1&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      <span style="color:#000">Set</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Set</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">&gt;&gt;</span> <span style="color:#000">sSet1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Arrays</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">asList</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;1:a&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;2:b&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;c:3&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;d:4&#34;</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">stream</span><span style="color:#ce5c00;font-weight:bold">()</span>
+          <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">map</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">s</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">Arrays</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">stream</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">split</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;:&#34;</span><span style="color:#ce5c00;font-weight:bold">)).</span><span style="color:#c4a000">collect</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Collectors</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toSet</span><span style="color:#ce5c00;font-weight:bold">())).</span><span style="color:#c4a000">collect</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Collectors</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toSet</span><span style="color:#ce5c00;font-weight:bold">());</span>
+      <span style="color:#000">sSet1</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">forEach</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">println</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      
+      <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;\nsSet2&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      <span style="color:#000">Set</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">sSet2</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Arrays</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">asList</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;1:a&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;2:b&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;c:3&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;d:4&#34;</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">stream</span><span style="color:#ce5c00;font-weight:bold">()</span>
+          <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">map</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">s</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">Arrays</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">stream</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">split</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;:&#34;</span><span style="color:#ce5c00;font-weight:bold">)).</span><span style="color:#c4a000">collect</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Collectors</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toSet</span><span style="color:#ce5c00;font-weight:bold">())).</span><span style="color:#c4a000">collect</span><span style="color:#ce5c00;font-weight:bold">(</span>
+              <span style="color:#000">HashSet</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#ce5c00;font-weight:bold">,</span>
+              <span style="color:#000">Set</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">addAll</span><span style="color:#ce5c00;font-weight:bold">,</span>
+              <span style="color:#000">Set</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">addAll</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      <span style="color:#000">sSet2</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">forEach</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">println</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      
+      <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;\nsSet3&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      <span style="color:#000">List</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">sSet3</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Arrays</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">asList</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;1:a&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;2:b&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;c:3&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;d:4&#34;</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">stream</span><span style="color:#ce5c00;font-weight:bold">()</span>
+          <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">map</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">s</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">Arrays</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">stream</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">split</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;:&#34;</span><span style="color:#ce5c00;font-weight:bold">)).</span><span style="color:#c4a000">collect</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Collectors</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toList</span><span style="color:#ce5c00;font-weight:bold">())).</span><span style="color:#c4a000">collect</span><span style="color:#ce5c00;font-weight:bold">(</span>
+              <span style="color:#000">ArrayList</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">&gt;::</span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#ce5c00;font-weight:bold">,</span>
+              <span style="color:#000">List</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">addAll</span><span style="color:#ce5c00;font-weight:bold">,</span>
+              <span style="color:#000">List</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">addAll</span><span style="color:#ce5c00;font-weight:bold">)</span>
+          <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">stream</span><span style="color:#ce5c00;font-weight:bold">().</span><span style="color:#c4a000">filter</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">s</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#ce5c00;font-weight:bold">!</span><span style="color:#000">NumberUtils</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">isDigits</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">)).</span><span style="color:#c4a000">collect</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Collectors</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toList</span><span style="color:#ce5c00;font-weight:bold">());</span>
+      <span style="color:#000">sSet3</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">forEach</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">println</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      
+      <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;\nsSet3&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      <span style="color:#000">List</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">sSet4</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Arrays</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">asList</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;1:c&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;2:a&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;3:b&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;d:4&#34;</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">stream</span><span style="color:#ce5c00;font-weight:bold">()</span>
+          <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">map</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">s</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">Arrays</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">stream</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">split</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;:&#34;</span><span style="color:#ce5c00;font-weight:bold">)).</span><span style="color:#c4a000">collect</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Collectors</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toList</span><span style="color:#ce5c00;font-weight:bold">())).</span><span style="color:#c4a000">collect</span><span style="color:#ce5c00;font-weight:bold">(</span>
+              <span style="color:#000">ArrayList</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">&gt;::</span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#ce5c00;font-weight:bold">,</span>
+              <span style="color:#000">List</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">addAll</span><span style="color:#ce5c00;font-weight:bold">,</span>
+              <span style="color:#000">List</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">addAll</span><span style="color:#ce5c00;font-weight:bold">)</span>
+          <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">stream</span><span style="color:#ce5c00;font-weight:bold">().</span><span style="color:#c4a000">filter</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">s</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#ce5c00;font-weight:bold">!</span><span style="color:#000">NumberUtils</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">isDigits</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">))</span>
+          <span style="color:#8f5902;font-style:italic">//.sorted(Comparator.comparing(s -&gt; { return s; }).reversed())
+</span><span style="color:#8f5902;font-style:italic"></span>          <span style="color:#8f5902;font-style:italic">//.sorted(Comparator.comparing(s -&gt; { return s.toString(); }).reversed())
+</span><span style="color:#8f5902;font-style:italic"></span>          <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">sorted</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Comparator</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">comparing</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">toString</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">reversed</span><span style="color:#ce5c00;font-weight:bold">())</span>
+          <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">collect</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Collectors</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toList</span><span style="color:#ce5c00;font-weight:bold">());</span>
+      <span style="color:#000">sSet4</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">forEach</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">println</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      
+      <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      <span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">[][]</span> <span style="color:#000">nArr1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">[][]</span> <span style="color:#ce5c00;font-weight:bold">{{</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">5</span><span style="color:#ce5c00;font-weight:bold">},</span> <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">4</span><span style="color:#ce5c00;font-weight:bold">}};</span>
+      <span style="color:#000">Set</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">nSet2</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Arrays</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">stream</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">nArr1</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">flatMap</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">Arrays</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">stream</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">n</span><span style="color:#ce5c00;font-weight:bold">)).</span><span style="color:#c4a000">collect</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Collectors</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toSet</span><span style="color:#ce5c00;font-weight:bold">());</span>
+      <span style="color:#000">nSet2</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">forEach</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">println</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      
+      <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      <span style="color:#000">List</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">nList4</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Arrays</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">asList</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;0|c&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;1|a&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;2|b&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;3|d&#34;</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">stream</span><span style="color:#ce5c00;font-weight:bold">().</span><span style="color:#c4a000">collect</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">ArrayList</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">&gt;::</span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#ce5c00;font-weight:bold">,</span>
+          <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">set</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">str</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">set</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">parseInt</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">str</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">split</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;\\|&#34;</span><span style="color:#ce5c00;font-weight:bold">)[</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">])),</span>
+          <span style="color:#000">List</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">addAll</span><span style="color:#ce5c00;font-weight:bold">)</span>
+          <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">stream</span><span style="color:#ce5c00;font-weight:bold">().</span><span style="color:#c4a000">sorted</span><span style="color:#ce5c00;font-weight:bold">((</span><span style="color:#000">o1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">o2</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#ce5c00;font-weight:bold">{</span> <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">o1</span> <span style="color:#ce5c00;font-weight:bold">-</span> <span style="color:#000">o2</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#ce5c00;font-weight:bold">}).</span><span style="color:#c4a000">collect</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Collectors</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toList</span><span style="color:#ce5c00;font-weight:bold">());</span>
+      <span style="color:#000">nList4</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">forEach</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">println</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      
+      <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      <span style="color:#000">List</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">nList5</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Arrays</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">asList</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;0|c&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;3|a&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;2|b&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;1|d&#34;</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">stream</span><span style="color:#ce5c00;font-weight:bold">().</span><span style="color:#c4a000">collect</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">ArrayList</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">&gt;::</span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#ce5c00;font-weight:bold">,</span>
+          <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">set</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">str</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">set</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">parseInt</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">str</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">split</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;\\|&#34;</span><span style="color:#ce5c00;font-weight:bold">)[</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">])),</span>
+          <span style="color:#000">List</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">addAll</span><span style="color:#ce5c00;font-weight:bold">)</span>
+          <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">stream</span><span style="color:#ce5c00;font-weight:bold">()</span>
+          <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">sorted</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">java</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">util</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">Comparator</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">comparing</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">valueOf</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">java</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">util</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">Collections</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">reverseOrder</span><span style="color:#ce5c00;font-weight:bold">()))</span>
+          <span style="color:#8f5902;font-style:italic">//.sorted()
+</span><span style="color:#8f5902;font-style:italic"></span>          <span style="color:#8f5902;font-style:italic">//.sorted(java.util.Collections.reverseOrder())
+</span><span style="color:#8f5902;font-style:italic"></span>          <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">collect</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">java</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">util</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">stream</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">Collectors</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toList</span><span style="color:#ce5c00;font-weight:bold">());</span>
+      <span style="color:#000">nList5</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">forEach</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">println</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      
+    <span style="color:#ce5c00;font-weight:bold">}</span>
+</code></pre></div><ul>
+<li><code>함수형 인터페이스</code>: 추상 메서드가 1개인 인터페이스. Predicate, Supplier, Consumer, Function, Comparator 가 있음</li>
+<li><code>Lambda</code>식은 함수형 인터페이스를 화살표 <code>-&gt;</code>로 표현</li>
+<li><code>method reference</code> 또는 <code>double colon operator(::)</code> 를 사용할 수 있음</li>
+<li><code>Stream</code>은 데이터의 가공 및 처리를 chaining 형태의 api를 제공하는 인터페이스</li>
+<li><code>Lambda</code>식에서는 접근하는 외부 지역변수는 final 선언과 같이 변경되어서는 안 됨.</li>
+<li>stream 객체는 재사용 불가, 최적화 안 됨.</li>
+</ul>
+<h5 id="initial-operation">initial operation</h5>
+<ul>
+<li>Arrays.stream(arr)</li>
+<li>list.stream()</li>
+</ul>
+<h5 id="intermediate-operation">intermediate operation</h5>
+<ul>
+<li>filter()</li>
+<li>map():</li>
+<li>flatMap(): 중첩 구조를 한 단계 제거하고 map() 과 같은 처리를 함</li>
+<li>sorted()</li>
+<li>distinct()</li>
+</ul>
+<h5 id="terminal-operation">terminal operation</h5>
+<ul>
+<li>count()</li>
+<li>forEach()</li>
+<li>collect()</li>
+<li>anyMatch(), allMatch()</li>
+</ul>
+<h4 id="misc">misc</h4>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#ce5c00;font-weight:bold">{</span>
+      <span style="color:#000">List</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">list</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Arrays</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">asList</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">3</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      <span style="color:#000">list</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">stream</span><span style="color:#ce5c00;font-weight:bold">().</span><span style="color:#c4a000">sorted</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">compare</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">forEach</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">println</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      
+      <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">UPPER</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">64</span><span style="color:#ce5c00;font-weight:bold">;</span>
+      <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">LOWER</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">96</span><span style="color:#ce5c00;font-weight:bold">;</span>
+      <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">();</span>
+      <span style="color:#000">List</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">list1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">IntStream</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">rangeClosed</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">26</span><span style="color:#ce5c00;font-weight:bold">)</span>
+          <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">mapToObj</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">valueOf</span><span style="color:#ce5c00;font-weight:bold">((</span><span style="color:#204a87;font-weight:bold">char</span><span style="color:#ce5c00;font-weight:bold">)(</span><span style="color:#000">n</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">UPPER</span><span style="color:#ce5c00;font-weight:bold">)))</span>
+          <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">collect</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Collectors</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toList</span><span style="color:#ce5c00;font-weight:bold">());</span>
+      <span style="color:#000">list1</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">forEach</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">println</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      
+      <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">();</span>
+      <span style="color:#000">List</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">list2</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">list1</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">stream</span><span style="color:#ce5c00;font-weight:bold">().</span><span style="color:#c4a000">map</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">s</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">charAt</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">-</span> <span style="color:#000">UPPER</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">collect</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Collectors</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toList</span><span style="color:#ce5c00;font-weight:bold">());</span>
+      <span style="color:#000">list2</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">forEach</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">println</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      
+    <span style="color:#ce5c00;font-weight:bold">}</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#000">Set</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">radix36Set</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">HashSet</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">&gt;();</span>
+    
+    <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">a</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">10000</span><span style="color:#ce5c00;font-weight:bold">;</span>
+    <span style="color:#204a87;font-weight:bold">while</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">a</span> <span style="color:#ce5c00;font-weight:bold">--&gt;</span> <span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">)</span>
+    
+    <span style="color:#ce5c00;font-weight:bold">{</span>
+      <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">();</span>
+      <span style="color:#000">UUID</span> <span style="color:#000">uuid1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">UUID</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">randomUUID</span><span style="color:#ce5c00;font-weight:bold">();</span>
+      <span style="color:#000">ByteBuffer</span> <span style="color:#000">buffer1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">ByteBuffer</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">wrap</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">new</span> <span style="color:#204a87;font-weight:bold">byte</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">16</span><span style="color:#ce5c00;font-weight:bold">]);</span>
+      <span style="color:#000">buffer1</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">putLong</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">uuid1</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getMostSignificantBits</span><span style="color:#ce5c00;font-weight:bold">());</span>
+      <span style="color:#000">buffer1</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">putLong</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">uuid1</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getLeastSignificantBits</span><span style="color:#ce5c00;font-weight:bold">());</span>
+      
+      <span style="color:#000">BigInteger</span> <span style="color:#000">bint</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">BigInteger</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">buffer1</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">array</span><span style="color:#ce5c00;font-weight:bold">());</span>
+      <span style="color:#000">UUID</span> <span style="color:#000">uuid2</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">UUID</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">fromString</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">bint</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toString</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">16</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">replaceFirst</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;([0-9a-fA-F]{8})([0-9a-fA-F]{4})([0-9a-fA-F]{4})([0-9a-fA-F]{4})([0-9a-fA-F]+)&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;$1-$2-$3-$4-$5&#34;</span><span style="color:#ce5c00;font-weight:bold">));</span>
+      <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">KStringUtil</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">lpad</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;uuid1: &#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">15</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34; &#34;</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">uuid1</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">KStringUtil</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">lpad</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;uuid2: &#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">15</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34; &#34;</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">uuid2</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      
+      <span style="color:#000">String</span> <span style="color:#000">radix10</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">bint</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toString</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">10</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      <span style="color:#000">String</span> <span style="color:#000">radix16</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">bint</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toString</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">16</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      <span style="color:#000">String</span> <span style="color:#000">radix36</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">bint</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toString</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">36</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">KStringUtil</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">lpad</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;radix10: &#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">15</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34; &#34;</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">radix10</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">KStringUtil</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">lpad</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;radix16: &#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">15</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34; &#34;</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">radix16</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">KStringUtil</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">lpad</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;radix36: &#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">15</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34; &#34;</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">radix36</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      
+      <span style="color:#000">radix36Set</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">radix36</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      
+      <span style="color:#000">BigInteger</span> <span style="color:#000">bint2</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">BigInteger</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">radix36</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">36</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      <span style="color:#000">UUID</span> <span style="color:#000">uuid3</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">UUID</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">fromString</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">bint2</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toString</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">16</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">replaceFirst</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;([0-9a-fA-F]{8})([0-9a-fA-F]{4})([0-9a-fA-F]{4})([0-9a-fA-F]{4})([0-9a-fA-F]+)&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;$1-$2-$3-$4-$5&#34;</span><span style="color:#ce5c00;font-weight:bold">));</span>
+      <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">KStringUtil</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">lpad</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;uuid3: &#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">15</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34; &#34;</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">uuid3</span><span style="color:#ce5c00;font-weight:bold">);</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>
+    
+    <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">KStringUtil</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">lpad</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;size(): &#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">15</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34; &#34;</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">radix36Set</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">size</span><span style="color:#ce5c00;font-weight:bold">());</span>
+    <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">KStringUtil</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">lpad</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;length()!=25: &#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">15</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34; &#34;</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">radix36Set</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">stream</span><span style="color:#ce5c00;font-weight:bold">().</span><span style="color:#c4a000">filter</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">s</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">length</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">!=</span> <span style="color:#000">25</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">count</span><span style="color:#ce5c00;font-weight:bold">());</span>
+    
+    <span style="color:#000">Map</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">List</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">&gt;&gt;</span> <span style="color:#000">result</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">radix36Set</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">stream</span><span style="color:#ce5c00;font-weight:bold">().</span><span style="color:#c4a000">collect</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">HashMap</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">Integer</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">List</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">&gt;&gt;::</span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#ce5c00;font-weight:bold">,</span>
+        <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">map</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">str</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">-&gt;</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+          <span style="color:#000">Integer</span> <span style="color:#000">key</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">str</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">length</span><span style="color:#ce5c00;font-weight:bold">();</span>
+          <span style="color:#000">List</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">list</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">map</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">get</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">key</span><span style="color:#ce5c00;font-weight:bold">);</span>
+          <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">list</span> <span style="color:#ce5c00;font-weight:bold">==</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+            <span style="color:#000">list</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">ArrayList</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">&gt;();</span>
+            <span style="color:#000">map</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">put</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">key</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">list</span><span style="color:#ce5c00;font-weight:bold">);</span>
+          <span style="color:#ce5c00;font-weight:bold">}</span>
+          <span style="color:#000">list</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">add</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">str</span><span style="color:#ce5c00;font-weight:bold">);</span>
+        <span style="color:#ce5c00;font-weight:bold">},</span>
+        <span style="color:#000">Map</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">putAll</span>
+      <span style="color:#ce5c00;font-weight:bold">);</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#ce5c00;font-weight:bold">{</span>
+      <span style="color:#000">Object</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">argv</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">Object</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#4e9a06">&#34;language&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;locale korean dpName: {}, english dpName: {}&#34;</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">Locale</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">KOREAN</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getDisplayName</span><span style="color:#ce5c00;font-weight:bold">(),</span> <span style="color:#000">Locale</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">ENGLISH</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getDisplayName</span><span style="color:#ce5c00;font-weight:bold">()};</span>
+      <span style="color:#000">String</span> <span style="color:#000">mdc_label</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">KStringUtil</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">nvl</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">argv</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">0</span><span style="color:#ce5c00;font-weight:bold">]);</span>
+      <span style="color:#000">String</span> <span style="color:#000">msg_format</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">KStringUtil</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">nvl</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">argv</span><span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#000">1</span><span style="color:#ce5c00;font-weight:bold">]);</span>
+      <span style="color:#000">Object</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">msgv</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Arrays</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">stream</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">argv</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">skip</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">2</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">collect</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Collectors</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toList</span><span style="color:#ce5c00;font-weight:bold">()).</span><span style="color:#c4a000">toArray</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Object</span><span style="color:#ce5c00;font-weight:bold">[]::</span><span style="color:#204a87;font-weight:bold">new</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      <span style="color:#000">Arrays</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">stream</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">msgv</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">forEach</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">println</span><span style="color:#ce5c00;font-weight:bold">);</span>
+      <span style="color:#000">log</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">info</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">msg_format</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">msgv</span><span style="color:#ce5c00;font-weight:bold">);</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>
+</code></pre></div>
+	
+	
+	
+</div>
+
+
+          </main>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+    integrity="sha512-UR25UO94eTnCVwjbXozyeVd6ZqpaAE9naiEUBK/A+QDbfSTQFhPGj5lOR6d8tsgbBk84Ggb5A3EkjsOgPRPcKA=="
+    crossorigin="anonymous"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@8.13.4/dist/mermaid.min.js" integrity="sha512-JERecFUBbsm75UpkVheAuDOE8NdHjQBrPACfEQYPwvPG+fjgCpHAz1Jw2ci9EXmd3DdfiWth3O3CQvcfEg8gsA==" crossorigin="anonymous"></script>
+
+
+
+<style>
+.markmap > svg {
+  width: 100%;
+  height: 300px;
+}
+</style>
+<script>
+window.markmap = {
+  autoLoader: { manual: true },
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
+
+
+<script src='/js/tabpane-persist.js'></script>
+
+
+
+<script src='/js/deflate.js'></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
+    integrity="sha512-vJqxkZ+Sugf/6WRlpcxN01qVfX/29hF6qc33eHF1va3NgoV+U+wCi+uTAsQ10sDoGyBxHLdaHvGwDlV3yVYboA==" crossorigin="anonymous">
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"
+    integrity="sha512-5ufNcHqOYgilGEHPfuRIQ5B/vDS1M8+UC+DESZ5CwVgGTg+b2Ol/15rYL/GiCWJ/Sx8oVo0FPFok1dPk8U9INQ=="
+    crossorigin="anonymous"></script>
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js"
+    integrity="sha512-HWb6LyQhO6UkmYLjdSblpgiOvvbdkoMRjln0POPhOVbZu3l4QdqwZnMJ/cuwKScU5pWARejB495TAAAz0WNsXQ=="
+    crossorigin="anonymous"></script>
+
+
+<script defer src='https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js'
+    integrity='sha512-ZA/RPrAo88DlwRnnoNVqKINnQNcWERzRK03PDaA4GIJiVZvGFIWQbdWCsUebMZfkWohnfngsDjXzU6PokO4jGw==' crossorigin='anonymous' 
+    onload='renderMathInElement(document.body, null);'></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.min.107a1d3f0d9dfdbd7b6c30065c60e2534ccedea64e72f2386b6c20f924336373.js" integrity="sha256-EHodPw2d/b17bDAGXGDiU0zO3qZOcvI4a2wg&#43;SQzY3M=" crossorigin="anonymous"></script>
+
+
+
+
+  </body>
+</html>
