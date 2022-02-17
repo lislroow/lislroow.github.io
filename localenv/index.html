@@ -20,13 +20,9 @@
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
 <title>localenv | dlog</title>
-<meta name="description" content="(git-bash) jq
-jq: 새 창 보기
-jq: 다운로드
-다운로드 후 C:\Program Files\Git\mingw64\bin 에 복사 &amp; 붙여넣기
-
-(java) keytool 인증서 생성
-java 에 포함되어 있는 keytool 명령으로 아래 절차로 인 …">
+<meta name="description" content="(jasypt) encrypt
+  public static void main(String[] args) {
+    PooledPBEStringEncryptor encryptor = new PooledPBEStringEncryptor(); …">
 <meta property="og:title" content="localenv" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -123,7 +119,7 @@ java 에 포함되어 있는 keytool 명령으로 아래 절차로 인 …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.ea6def82f2c11aa567788c03fb20c170.json"
+  data-offline-search-index-json-src="/offline-search-index.31292c9ca8b29eb468e102735ef1a836.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -145,7 +141,7 @@ java 에 포함되어 있는 keytool 명령으로 아래 절차로 인 …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.ea6def82f2c11aa567788c03fb20c170.json"
+  data-offline-search-index-json-src="/offline-search-index.31292c9ca8b29eb468e102735ef1a836.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -162,6 +158,9 @@ java 에 포함되어 있는 keytool 명령으로 아래 절차로 인 …">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-localenv04_ecb0b8eab3a0_eclipse-eb8ba8ecb695ed82a4-li">
   
   <a href="/localenv/04_%EC%B0%B8%EA%B3%A0_eclipse-%EB%8B%A8%EC%B6%95%ED%82%A4/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-localenv04_ecb0b8eab3a0_eclipse-eb8ba8ecb695ed82a4"><span class="">04_참고_eclipse-단축키</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-localenvgradle-li">
+  
+  <a href="/localenv/gradle/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-localenvgradle"><span class="">gradle</span></a>
 </li>
   </ul>
 </li>
@@ -185,6 +184,7 @@ java 에 포함되어 있는 keytool 명령으로 아래 절차로 인 …">
       <ul>
         <li>
           <ul>
+            <li><a href="#jasypt-encrypt">(jasypt) encrypt</a></li>
             <li><a href="#git-bash-jq">(git-bash) jq</a></li>
             <li><a href="#java-keytool-인증서-생성">(java) keytool 인증서 생성</a></li>
             <li><a href="#docsy-code-highlighting-with-prism">(docsy) Code highlighting with Prism</a></li>
@@ -309,7 +309,24 @@ java 에 포함되어 있는 keytool 명령으로 아래 절차로 인 …">
 		
 		
 	</header>
-	<h4 id="git-bash-jq">(git-bash) jq</h4>
+	<h4 id="jasypt-encrypt">(jasypt) encrypt</h4>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">  <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">static</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">main</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">args</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+    <span style="color:#000">PooledPBEStringEncryptor</span> <span style="color:#000">encryptor</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">PooledPBEStringEncryptor</span><span style="color:#ce5c00;font-weight:bold">();</span>
+    <span style="color:#000">SimpleStringPBEConfig</span> <span style="color:#000">config</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">SimpleStringPBEConfig</span><span style="color:#ce5c00;font-weight:bold">();</span>
+    <span style="color:#000">String</span> <span style="color:#000">secretkey</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;password&#34;</span><span style="color:#ce5c00;font-weight:bold">;</span>
+    <span style="color:#000">config</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setPassword</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">secretkey</span><span style="color:#ce5c00;font-weight:bold">);</span>
+    <span style="color:#000">config</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setAlgorithm</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;PBEWithHMACSHA512AndAES_256&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
+    <span style="color:#000">config</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setPoolSize</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;2&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
+    <span style="color:#000">config</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setStringOutputType</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;base64&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
+    <span style="color:#000">config</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setIvGenerator</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">RandomIvGenerator</span><span style="color:#ce5c00;font-weight:bold">());</span>
+    <span style="color:#000">encryptor</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setConfig</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">config</span><span style="color:#ce5c00;font-weight:bold">);</span>
+    <span style="color:#000">String</span> <span style="color:#000">암호문</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">encryptor</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">encrypt</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;asdf&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
+    <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">암호문</span><span style="color:#ce5c00;font-weight:bold">);</span>
+    <span style="color:#000">String</span> <span style="color:#000">평문</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">encryptor</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">decrypt</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">암호문</span><span style="color:#ce5c00;font-weight:bold">);</span>
+    <span style="color:#000">System</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">out</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">println</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">평문</span><span style="color:#ce5c00;font-weight:bold">);</span>
+  <span style="color:#ce5c00;font-weight:bold">}</span>
+</code></pre></div><br>
+<h4 id="git-bash-jq">(git-bash) jq</h4>
 <p>jq: <a href="https://stedolan.github.io/jq/download/" target="_blank">새 창 보기</a></p>
 <p>jq: <a href="/files/localenv/jq" download="jq">다운로드</a></p>
 <p>다운로드 후 <code>C:\Program Files\Git\mingw64\bin</code> 에 <code>복사 &amp; 붙여넣기</code></p>

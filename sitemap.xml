@@ -18,6 +18,8 @@
   </url><url>
     <loc>/system/elk/</loc>
   </url><url>
+    <loc>/localenv/gradle/</loc>
+  </url><url>
     <loc>/system/httpd/</loc>
   </url><url>
     <loc>/language/java/</loc>
