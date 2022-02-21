@@ -20,11 +20,10 @@
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
 <title>system | dlog</title>
-<meta name="description" content="(systemctl) Requires 속성
-logstash 서비스를 elasticsearch 서비스의 종속으로 구성해야할 필요가 생겼습니다.
-$ vi /etc/systemd/system/logstash.service
-[Unit]
-Description=logstash …">
+<meta name="description" content="(centos) zsh
+$ yum install zsh
+$ sh -c &#34;$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&#34;
+$ vi ~/.zshrc …">
 <meta property="og:title" content="system" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -121,7 +120,7 @@ Description=logstash …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.31292c9ca8b29eb468e102735ef1a836.json"
+  data-offline-search-index-json-src="/offline-search-index.8c6699ad5d0289f02cbb0d9d1fb7b0d1.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -143,7 +142,7 @@ Description=logstash …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.31292c9ca8b29eb468e102735ef1a836.json"
+  data-offline-search-index-json-src="/offline-search-index.8c6699ad5d0289f02cbb0d9d1fb7b0d1.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -204,6 +203,7 @@ Description=logstash …">
       <ul>
         <li>
           <ul>
+            <li><a href="#centos-zsh">(centos) zsh</a></li>
             <li><a href="#systemctl-requires-속성">(systemctl) Requires 속성</a></li>
             <li><a href="#cockpit-grafana-grafana-pcp">(cockpit) grafana, grafana-pcp</a></li>
             <li><a href="#cockpit-cockpit-pcp-설치">(cockpit) cockpit-pcp 설치</a></li>
@@ -304,7 +304,49 @@ Description=logstash …">
 		
 		
 	</header>
-	<h4 id="systemctl-requires-속성">(systemctl) Requires 속성</h4>
+	<h4 id="centos-zsh">(centos) zsh</h4>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ yum install zsh
+$ sh -c &#34;$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&#34;
+$ vi ~/.zshrc
+ZSH_THEME=&#34;agnoster&#34;
+$ git clone https://github.com/powerline/fonts.git
+$ cd fonts &amp;&amp; ./install.sh
+$ git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+$ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+$ vi ~/.zshrc
+plugins=(
+  git
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+)
+</code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ vi ~/.oh-my-zsh/themes/agnoster.zsh-theme
+
+prompt_newline() {
+  if [[ -n $CURRENT_BG ]]; then
+    echo -n &#34;%{%k%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR
+%{%k%F{blue}%}$SEGMENT_SEPARATOR&#34;
+  else
+    echo -n &#34;%{%k%}&#34;
+  fi
+
+  echo -n &#34;%{%f%}&#34;
+  CURRENT_BG=&#39;&#39;
+}
+
+build_prompt() {
+  RETVAL=$?
+  prompt_status
+  prompt_virtualenv
+  prompt_context
+  prompt_dir
+  prompt_git
+  prompt_hg
+  prompt_newline
+  prompt_end
+}
+</code></pre></div><p><a href="/images/system/20220222-centos-zsh.png" target="_blank">새 창 보기</a></p>
+<br>
+<h4 id="systemctl-requires-속성">(systemctl) Requires 속성</h4>
 <p>logstash 서비스를 elasticsearch 서비스의 종속으로 구성해야할 필요가 생겼습니다.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ vi /etc/systemd/system/logstash.service
 [Unit]
