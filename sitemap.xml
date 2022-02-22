@@ -12,6 +12,8 @@
   </url><url>
     <loc>/system/centos8/</loc>
   </url><url>
+    <loc>/system/curl/</loc>
+  </url><url>
     <loc>/</loc>
   </url><url>
     <loc>/elk/</loc>

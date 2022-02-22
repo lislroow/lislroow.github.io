@@ -20,9 +20,10 @@
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
 <title>localenv | dlog</title>
-<meta name="description" content="(jasypt) encrypt
-  public static void main(String[] args) {
-    PooledPBEStringEncryptor encryptor = new PooledPBEStringEncryptor(); …">
+<meta name="description" content="(git-bash) zsh
+zsh-{버전}-x86_64.pkg.tar.zst 링크를 아래 사이트에서 다운로드 합니다.
+링크
+zstandard(zstd)가 설치되어 있어야 압축해제가 가능하여 zip 으로 압축된 버전은 아래 링크로 대체합니다. …">
 <meta property="og:title" content="localenv" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -119,7 +120,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.8c6699ad5d0289f02cbb0d9d1fb7b0d1.json"
+  data-offline-search-index-json-src="/offline-search-index.c4911ee25b9bafdeac9379719cc5b9a5.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -141,7 +142,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.8c6699ad5d0289f02cbb0d9d1fb7b0d1.json"
+  data-offline-search-index-json-src="/offline-search-index.c4911ee25b9bafdeac9379719cc5b9a5.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -184,6 +185,8 @@
       <ul>
         <li>
           <ul>
+            <li><a href="#git-bash-zsh">(git-bash) zsh</a></li>
+            <li><a href="#windows-xcopy">(windows) xcopy</a></li>
             <li><a href="#jasypt-encrypt">(jasypt) encrypt</a></li>
             <li><a href="#git-bash-jq">(git-bash) jq</a></li>
             <li><a href="#java-keytool-인증서-생성">(java) keytool 인증서 생성</a></li>
@@ -309,7 +312,64 @@
 		
 		
 	</header>
-	<h4 id="jasypt-encrypt">(jasypt) encrypt</h4>
+	<h4 id="git-bash-zsh">(git-bash) zsh</h4>
+<p>zsh-{버전}-x86_64.pkg.tar.zst 링크를 아래 사이트에서 다운로드 합니다.</p>
+<p><a href="https://packages.msys2.org/package/zsh?repo=msys&variant=x86_64" target="_blank">링크</a></p>
+<p>zstandard(<code>zstd</code>)가 설치되어 있어야 압축해제가 가능하여 zip 으로 압축된 버전은 아래 링크로 대체합니다.</p>
+<p><a href="/files/localenv/zsh-5.8-5-x86_64.zip" download="zsh-5.8-5-x86_64.zip">zsh-5.8-5-x86_64.zip</a></p>
+<p>git-bash 설치 경로 <code>C:\Program Files\Git</code> 에서 압축을 해제합니다. (<code>usr</code>, <code>etc</code> 디렉토리에 덮어쓰기)</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ sh -c &#34;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&#34;
+$ cat &lt;&lt; EOF &gt; ~/.bashrc
+exec zsh
+EOF
+$ vi ~/.oh-my-zsh/themes/agnoster.zsh-theme
+prompt_newline() {
+  if [[ -n $CURRENT_BG ]]; then
+    echo -n &#34;%{%k%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR
+%{%k%F{blue}%}$SEGMENT_SEPARATOR&#34;
+  else
+    echo -n &#34;%{%k%}&#34;
+  fi
+
+  echo -n &#34;%{%f%}&#34;
+  CURRENT_BG=&#39;&#39;
+}
+
+build_prompt() {
+  RETVAL=$?
+  prompt_status
+  prompt_virtualenv
+  prompt_context
+  prompt_dir
+  prompt_git
+  prompt_hg
+  prompt_newline
+  prompt_end
+}
+$ vi ~/.zshrc
+ZSH_THEME=&#34;agnoster&#34;
+</code></pre></div><p><code>git-bash</code> &gt; <code>Options</code> &gt; <code>Looks</code> &gt; <code>Theme</code> 에서 <code>rosipov</code> 선택합니다.</p>
+<br>
+<h4 id="windows-xcopy">(windows) xcopy</h4>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&gt; xcopy /?
+Copies files and directory trees.
+
+  /D:m-d-y     Copies files changed on or after the specified date.
+               If no date is given, copies only those files whose
+               source time is newer than the destination time.
+  /S           Copies directories and subdirectories except empty ones.
+  /E           Copies directories and subdirectories, including empty ones.
+               Same as /S /E. May be used to modify /T.
+  /V           Verifies the size of each new file.
+  /C           Continues copying even if errors occur.
+  /I           If destination does not exist and copying more than one file,
+               assumes that destination must be a directory.
+  /Y           Suppresses prompting to confirm you want to overwrite an
+               existing destination file.
+  /J           Copies using unbuffered I/O. Recommended for very large files.
+</code></pre></div><p><code>xcopy E:\유틸리티\*.* D:\유틸리티 /d/i/s/c/y</code></p>
+<br>
+<h4 id="jasypt-encrypt">(jasypt) encrypt</h4>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">  <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">static</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">main</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">args</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
     <span style="color:#000">PooledPBEStringEncryptor</span> <span style="color:#000">encryptor</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">PooledPBEStringEncryptor</span><span style="color:#ce5c00;font-weight:bold">();</span>
     <span style="color:#000">SimpleStringPBEConfig</span> <span style="color:#000">config</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">SimpleStringPBEConfig</span><span style="color:#ce5c00;font-weight:bold">();</span>

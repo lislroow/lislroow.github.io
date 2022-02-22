@@ -233,6 +233,240 @@
     </item>
     
     <item>
+      <title>System: curl</title>
+      <link>/system/curl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/system/curl/</guid>
+      <description>
+        
+        
+        &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ curl -h
+
+Usage: curl [options...] &amp;lt;url&amp;gt;
+     --abstract-unix-socket &amp;lt;path&amp;gt; Connect via abstract Unix domain socket
+     --anyauth       Pick any authentication method
+ -a, --append        Append to target file when uploading
+     --basic         Use HTTP Basic Authentication
+     --cacert &amp;lt;file&amp;gt; CA certificate to verify peer against
+     --capath &amp;lt;dir&amp;gt;  CA directory to verify peer against
+ -E, --cert &amp;lt;certificate[:password]&amp;gt; Client certificate file and password
+     --cert-status   Verify the status of the server certificate
+     --cert-type &amp;lt;type&amp;gt; Certificate file type (DER/PEM/ENG)
+     --ciphers &amp;lt;list of ciphers&amp;gt; SSL ciphers to use
+     --compressed    Request compressed response
+     --compressed-ssh Enable SSH compression
+ -K, --config &amp;lt;file&amp;gt; Read config from a file
+     --connect-timeout &amp;lt;seconds&amp;gt; Maximum time allowed for connection
+     --connect-to &amp;lt;HOST1:PORT1:HOST2:PORT2&amp;gt; Connect to host
+ -C, --continue-at &amp;lt;offset&amp;gt; Resumed transfer offset
+ -b, --cookie &amp;lt;data&amp;gt; Send cookies from string/file
+ -c, --cookie-jar &amp;lt;filename&amp;gt; Write cookies to &amp;lt;filename&amp;gt; after operation
+     --create-dirs   Create necessary local directory hierarchy
+     --crlf          Convert LF to CRLF in upload
+     --crlfile &amp;lt;file&amp;gt; Get a CRL list in PEM format from the given file
+ -d, --data &amp;lt;data&amp;gt;   HTTP POST data
+     --data-ascii &amp;lt;data&amp;gt; HTTP POST ASCII data
+     --data-binary &amp;lt;data&amp;gt; HTTP POST binary data
+     --data-raw &amp;lt;data&amp;gt; HTTP POST data, &amp;#39;@&amp;#39; allowed
+     --data-urlencode &amp;lt;data&amp;gt; HTTP POST data url encoded
+     --delegation &amp;lt;LEVEL&amp;gt; GSS-API delegation permission
+     --digest        Use HTTP Digest Authentication
+ -q, --disable       Disable .curlrc
+     --disable-eprt  Inhibit using EPRT or LPRT
+     --disable-epsv  Inhibit using EPSV
+     --disallow-username-in-url Disallow username in url
+     --dns-interface &amp;lt;interface&amp;gt; Interface to use for DNS requests
+     --dns-ipv4-addr &amp;lt;address&amp;gt; IPv4 address to use for DNS requests
+     --dns-ipv6-addr &amp;lt;address&amp;gt; IPv6 address to use for DNS requests
+     --dns-servers &amp;lt;addresses&amp;gt; DNS server addrs to use
+ -D, --dump-header &amp;lt;filename&amp;gt; Write the received headers to &amp;lt;filename&amp;gt;
+     --egd-file &amp;lt;file&amp;gt; EGD socket path for random data
+     --engine &amp;lt;name&amp;gt; Crypto engine to use
+     --expect100-timeout &amp;lt;seconds&amp;gt; How long to wait for 100-continue
+ -f, --fail          Fail silently (no output at all) on HTTP errors
+     --fail-early    Fail on first transfer error, do not continue
+     --false-start   Enable TLS False Start
+ -F, --form &amp;lt;name=content&amp;gt; Specify multipart MIME data
+     --form-string &amp;lt;name=string&amp;gt; Specify multipart MIME data
+     --ftp-account &amp;lt;data&amp;gt; Account data string
+     --ftp-alternative-to-user &amp;lt;command&amp;gt; String to replace USER [name]
+     --ftp-create-dirs Create the remote dirs if not present
+     --ftp-method &amp;lt;method&amp;gt; Control CWD usage
+     --ftp-pasv      Use PASV/EPSV instead of PORT
+ -P, --ftp-port &amp;lt;address&amp;gt; Use PORT instead of PASV
+     --ftp-pret      Send PRET before PASV
+     --ftp-skip-pasv-ip Skip the IP address for PASV
+     --ftp-ssl-ccc   Send CCC after authenticating
+     --ftp-ssl-ccc-mode &amp;lt;active/passive&amp;gt; Set CCC mode
+     --ftp-ssl-control Require SSL/TLS for FTP login, clear for transfer
+ -G, --get           Put the post data in the URL and use GET
+ -g, --globoff       Disable URL sequences and ranges using {} and []
+     --happy-eyeballs-timeout-ms &amp;lt;milliseconds&amp;gt; How long to wait in milliseconds for IPv6 before trying IPv4
+     --haproxy-protocol Send HAProxy PROXY protocol v1 header
+ -I, --head          Show document info only
+ -H, --header &amp;lt;header/@file&amp;gt; Pass custom header(s) to server
+ -h, --help          This help text
+     --hostpubmd5 &amp;lt;md5&amp;gt; Acceptable MD5 hash of the host public key
+ -0, --http1.0       Use HTTP 1.0
+     --http1.1       Use HTTP 1.1
+     --http2         Use HTTP 2
+     --http2-prior-knowledge Use HTTP 2 without HTTP/1.1 Upgrade
+     --ignore-content-length Ignore the size of the remote resource
+ -i, --include       Include protocol response headers in the output
+ -k, --insecure      Allow insecure server connections when using SSL
+     --interface &amp;lt;name&amp;gt; Use network INTERFACE (or address)
+ -4, --ipv4          Resolve names to IPv4 addresses
+ -6, --ipv6          Resolve names to IPv6 addresses
+ -j, --junk-session-cookies Ignore session cookies read from file
+     --keepalive-time &amp;lt;seconds&amp;gt; Interval time for keepalive probes
+     --key &amp;lt;key&amp;gt;     Private key file name
+     --key-type &amp;lt;type&amp;gt; Private key file type (DER/PEM/ENG)
+     --krb &amp;lt;level&amp;gt;   Enable Kerberos with security &amp;lt;level&amp;gt;
+     --libcurl &amp;lt;file&amp;gt; Dump libcurl equivalent code of this command line
+     --limit-rate &amp;lt;speed&amp;gt; Limit transfer speed to RATE
+ -l, --list-only     List only mode
+     --local-port &amp;lt;num/range&amp;gt; Force use of RANGE for local port numbers
+ -L, --location      Follow redirects
+     --location-trusted Like --location, and send auth to other hosts
+     --login-options &amp;lt;options&amp;gt; Server login options
+     --mail-auth &amp;lt;address&amp;gt; Originator address of the original email
+     --mail-from &amp;lt;address&amp;gt; Mail from this address
+     --mail-rcpt &amp;lt;address&amp;gt; Mail to this address
+ -M, --manual        Display the full manual
+     --max-filesize &amp;lt;bytes&amp;gt; Maximum file size to download
+     --max-redirs &amp;lt;num&amp;gt; Maximum number of redirects allowed
+ -m, --max-time &amp;lt;seconds&amp;gt; Maximum time allowed for the transfer
+     --metalink      Process given URLs as metalink XML file
+     --negotiate     Use HTTP Negotiate (SPNEGO) authentication
+ -n, --netrc         Must read .netrc for user name and password
+     --netrc-file &amp;lt;filename&amp;gt; Specify FILE for netrc
+     --netrc-optional Use either .netrc or URL
+ -:, --next          Make next URL use its separate set of options
+     --no-alpn       Disable the ALPN TLS extension
+ -N, --no-buffer     Disable buffering of the output stream
+     --no-keepalive  Disable TCP keepalive on the connection
+     --no-npn        Disable the NPN TLS extension
+     --no-sessionid  Disable SSL session-ID reusing
+     --noproxy &amp;lt;no-proxy-list&amp;gt; List of hosts which do not use proxy
+     --ntlm          Use HTTP NTLM authentication
+     --ntlm-wb       Use HTTP NTLM authentication with winbind
+     --oauth2-bearer &amp;lt;token&amp;gt; OAuth 2 Bearer Token
+ -o, --output &amp;lt;file&amp;gt; Write to file instead of stdout
+     --pass &amp;lt;phrase&amp;gt; Pass phrase for the private key
+     --path-as-is    Do not squash .. sequences in URL path
+     --pinnedpubkey &amp;lt;hashes&amp;gt; FILE/HASHES Public key to verify peer against
+     --post301       Do not switch to GET after following a 301
+     --post302       Do not switch to GET after following a 302
+     --post303       Do not switch to GET after following a 303
+     --preproxy [protocol://]host[:port] Use this proxy first
+ -#, --progress-bar  Display transfer progress as a bar
+     --proto &amp;lt;protocols&amp;gt; Enable/disable PROTOCOLS
+     --proto-default &amp;lt;protocol&amp;gt; Use PROTOCOL for any URL missing a scheme
+     --proto-redir &amp;lt;protocols&amp;gt; Enable/disable PROTOCOLS on redirect
+ -x, --proxy [protocol://]host[:port] Use this proxy
+     --proxy-anyauth Pick any proxy authentication method
+     --proxy-basic   Use Basic authentication on the proxy
+     --proxy-cacert &amp;lt;file&amp;gt; CA certificate to verify peer against for proxy
+     --proxy-capath &amp;lt;dir&amp;gt; CA directory to verify peer against for proxy
+     --proxy-cert &amp;lt;cert[:passwd]&amp;gt; Set client certificate for proxy
+     --proxy-cert-type &amp;lt;type&amp;gt; Client certificate type for HTTPS proxy
+     --proxy-ciphers &amp;lt;list&amp;gt; SSL ciphers to use for proxy
+     --proxy-crlfile &amp;lt;file&amp;gt; Set a CRL list for proxy
+     --proxy-digest  Use Digest authentication on the proxy
+     --proxy-header &amp;lt;header/@file&amp;gt; Pass custom header(s) to proxy
+     --proxy-insecure Do HTTPS proxy connections without verifying the proxy
+     --proxy-key &amp;lt;key&amp;gt; Private key for HTTPS proxy
+     --proxy-key-type &amp;lt;type&amp;gt; Private key file type for proxy
+     --proxy-negotiate Use HTTP Negotiate (SPNEGO) authentication on the proxy
+     --proxy-ntlm    Use NTLM authentication on the proxy
+     --proxy-pass &amp;lt;phrase&amp;gt; Pass phrase for the private key for HTTPS proxy
+     --proxy-pinnedpubkey &amp;lt;hashes&amp;gt; FILE/HASHES public key to verify proxy with
+     --proxy-service-name &amp;lt;name&amp;gt; SPNEGO proxy service name
+     --proxy-ssl-allow-beast Allow security flaw for interop for HTTPS proxy
+     --proxy-tls13-ciphers &amp;lt;ciphersuite list&amp;gt; TLS 1.3 proxy cipher suites
+     --proxy-tlsauthtype &amp;lt;type&amp;gt; TLS authentication type for HTTPS proxy
+     --proxy-tlspassword &amp;lt;string&amp;gt; TLS password for HTTPS proxy
+     --proxy-tlsuser &amp;lt;name&amp;gt; TLS username for HTTPS proxy
+     --proxy-tlsv1   Use TLSv1 for HTTPS proxy
+ -U, --proxy-user &amp;lt;user:password&amp;gt; Proxy user and password
+     --proxy1.0 &amp;lt;host[:port]&amp;gt; Use HTTP/1.0 proxy on given port
+ -p, --proxytunnel   Operate through an HTTP proxy tunnel (using CONNECT)
+     --pubkey &amp;lt;key&amp;gt;  SSH Public key file name
+ -Q, --quote         Send command(s) to server before transfer
+     --random-file &amp;lt;file&amp;gt; File for reading random data from
+ -r, --range &amp;lt;range&amp;gt; Retrieve only the bytes within RANGE
+     --raw           Do HTTP &amp;#34;raw&amp;#34;; no transfer decoding
+ -e, --referer &amp;lt;URL&amp;gt; Referrer URL
+ -J, --remote-header-name Use the header-provided filename
+ -O, --remote-name   Write output to a file named as the remote file
+     --remote-name-all Use the remote file name for all URLs
+ -R, --remote-time   Set the remote file&amp;#39;s time on the local output
+ -X, --request &amp;lt;command&amp;gt; Specify request command to use
+     --request-target Specify the target for this request
+     --resolve &amp;lt;host:port:address[,address]...&amp;gt; Resolve the host+port to this address
+     --retry &amp;lt;num&amp;gt;   Retry request if transient problems occur
+     --retry-connrefused Retry on connection refused (use with --retry)
+     --retry-delay &amp;lt;seconds&amp;gt; Wait time between retries
+     --retry-max-time &amp;lt;seconds&amp;gt; Retry only within this period
+     --sasl-ir       Enable initial response in SASL authentication
+     --service-name &amp;lt;name&amp;gt; SPNEGO service name
+ -S, --show-error    Show error even when -s is used
+ -s, --silent        Silent mode
+     --socks4 &amp;lt;host[:port]&amp;gt; SOCKS4 proxy on given host + port
+     --socks4a &amp;lt;host[:port]&amp;gt; SOCKS4a proxy on given host + port
+     --socks5 &amp;lt;host[:port]&amp;gt; SOCKS5 proxy on given host + port
+     --socks5-basic  Enable username/password auth for SOCKS5 proxies
+     --socks5-gssapi Enable GSS-API auth for SOCKS5 proxies
+     --socks5-gssapi-nec Compatibility with NEC SOCKS5 server
+     --socks5-gssapi-service &amp;lt;name&amp;gt; SOCKS5 proxy service name for GSS-API
+     --socks5-hostname &amp;lt;host[:port]&amp;gt; SOCKS5 proxy, pass host name to proxy
+ -Y, --speed-limit &amp;lt;speed&amp;gt; Stop transfers slower than this
+ -y, --speed-time &amp;lt;seconds&amp;gt; Trigger &amp;#39;speed-limit&amp;#39; abort after this time
+     --ssl           Try SSL/TLS
+     --ssl-allow-beast Allow security flaw to improve interop
+     --ssl-no-revoke Disable cert revocation checks (WinSSL)
+     --ssl-reqd      Require SSL/TLS
+ -2, --sslv2         Use SSLv2
+ -3, --sslv3         Use SSLv3
+     --stderr        Where to redirect stderr
+     --styled-output Enable styled output for HTTP headers
+     --suppress-connect-headers Suppress proxy CONNECT response headers
+     --tcp-fastopen  Use TCP Fast Open
+     --tcp-nodelay   Use the TCP_NODELAY option
+ -t, --telnet-option &amp;lt;opt=val&amp;gt; Set telnet option
+     --tftp-blksize &amp;lt;value&amp;gt; Set TFTP BLKSIZE option
+     --tftp-no-options Do not send any TFTP options
+ -z, --time-cond &amp;lt;time&amp;gt; Transfer based on a time condition
+     --tls-max &amp;lt;VERSION&amp;gt; Use TLSv1.0 or greater
+     --tls13-ciphers &amp;lt;list of TLS 1.3 ciphersuites&amp;gt; TLS 1.3 cipher suites to use
+     --tlsauthtype &amp;lt;type&amp;gt; TLS authentication type
+     --tlspassword   TLS password
+     --tlsuser &amp;lt;name&amp;gt; TLS user name
+ -1, --tlsv1         Use TLSv1.0 or greater
+     --tlsv1.0       Use TLSv1.0
+     --tlsv1.1       Use TLSv1.1
+     --tlsv1.2       Use TLSv1.2
+     --tlsv1.3       Use TLSv1.3
+     --tr-encoding   Request compressed transfer encoding
+     --trace &amp;lt;file&amp;gt;  Write a debug trace to FILE
+     --trace-ascii &amp;lt;file&amp;gt; Like --trace, but without hex output
+     --trace-time    Add time stamps to trace/verbose output
+     --unix-socket &amp;lt;path&amp;gt; Connect through this Unix domain socket
+ -T, --upload-file &amp;lt;file&amp;gt; Transfer local FILE to destination
+     --url &amp;lt;url&amp;gt;     URL to work with
+ -B, --use-ascii     Use ASCII/text transfer
+ -u, --user &amp;lt;user:password&amp;gt; Server user and password
+ -A, --user-agent &amp;lt;name&amp;gt; Send User-Agent &amp;lt;name&amp;gt; to server
+ -v, --verbose       Make the operation more talkative
+ -V, --version       Show version number and quit
+ -w, --write-out &amp;lt;format&amp;gt; Use output FORMAT after completion
+     --xattr         Store metadata in extended file attributes
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      </description>
+    </item>
+    
+    <item>
       <title>System: ELK</title>
       <link>/system/elk/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

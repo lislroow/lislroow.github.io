@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.92.1" />
+<meta name="robots" content="index, follow">
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
+
+<title>curl | dlog</title>
+<meta name="description" content="$ curl -h
+
+Usage: curl [options...] &lt;url&gt;
+     --abstract-unix-socket &lt;path&gt; Connect via abstract Unix domain socket
+     --anyauth …">
+<meta property="og:title" content="curl" />
+<meta property="og:description" content="$ curl -h Usage: curl [options...] &lt;url&gt; --abstract-unix-socket &lt;path&gt; Connect via abstract Unix domain socket --anyauth Pick any authentication method -a, --append Append to target file when uploading --basic Use HTTP Basic Authentication --cacert &lt;file&gt; CA certificate to verify peer against --capath &lt;dir&gt; CA directory to verify peer against -E, --cert &lt;certificate[:password]&gt; Client certificate file and password --cert-status Verify the status of the server certificate --cert-type &lt;type&gt; Certificate file type (DER/PEM/ENG) --ciphers &lt;list of ciphers&gt; SSL ciphers to use --compressed Request compressed response --compressed-ssh Enable SSH compression -K, --config &lt;file&gt; Read config from a file --connect-timeout &lt;seconds&gt; Maximum time allowed for connection --connect-to &lt;HOST1:PORT1:HOST2:PORT2&gt; Connect to host -C, --continue-at &lt;offset&gt; Resumed transfer offset -b, --cookie &lt;data&gt; Send cookies from string/file -c, --cookie-jar &lt;filename&gt; Write cookies to &lt;filename&gt; after operation --create-dirs Create necessary local directory hierarchy --crlf Convert LF to CRLF in upload --crlfile &lt;file&gt; Get a CRL list in PEM format from the given file -d, --data &lt;data&gt; HTTP POST data --data-ascii &lt;data&gt; HTTP POST ASCII data --data-binary &lt;data&gt; HTTP POST binary data --data-raw &lt;data&gt; HTTP POST data, &#39;@&#39; allowed --data-urlencode &lt;data&gt; HTTP POST data url encoded --delegation &lt;LEVEL&gt; GSS-API delegation permission --digest Use HTTP Digest Authentication -q, --disable Disable ." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/system/curl/" /><meta property="article:section" content="system" />
+
+
+
+<meta itemprop="name" content="curl">
+<meta itemprop="description" content="$ curl -h Usage: curl [options...] &lt;url&gt; --abstract-unix-socket &lt;path&gt; Connect via abstract Unix domain socket --anyauth Pick any authentication method -a, --append Append to target file when uploading --basic Use HTTP Basic Authentication --cacert &lt;file&gt; CA certificate to verify peer against --capath &lt;dir&gt; CA directory to verify peer against -E, --cert &lt;certificate[:password]&gt; Client certificate file and password --cert-status Verify the status of the server certificate --cert-type &lt;type&gt; Certificate file type (DER/PEM/ENG) --ciphers &lt;list of ciphers&gt; SSL ciphers to use --compressed Request compressed response --compressed-ssh Enable SSH compression -K, --config &lt;file&gt; Read config from a file --connect-timeout &lt;seconds&gt; Maximum time allowed for connection --connect-to &lt;HOST1:PORT1:HOST2:PORT2&gt; Connect to host -C, --continue-at &lt;offset&gt; Resumed transfer offset -b, --cookie &lt;data&gt; Send cookies from string/file -c, --cookie-jar &lt;filename&gt; Write cookies to &lt;filename&gt; after operation --create-dirs Create necessary local directory hierarchy --crlf Convert LF to CRLF in upload --crlfile &lt;file&gt; Get a CRL list in PEM format from the given file -d, --data &lt;data&gt; HTTP POST data --data-ascii &lt;data&gt; HTTP POST ASCII data --data-binary &lt;data&gt; HTTP POST binary data --data-raw &lt;data&gt; HTTP POST data, &#39;@&#39; allowed --data-urlencode &lt;data&gt; HTTP POST data url encoded --delegation &lt;LEVEL&gt; GSS-API delegation permission --digest Use HTTP Digest Authentication -q, --disable Disable .">
+
+<meta itemprop="wordCount" content="1558">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="curl"/>
+<meta name="twitter:description" content="$ curl -h Usage: curl [options...] &lt;url&gt; --abstract-unix-socket &lt;path&gt; Connect via abstract Unix domain socket --anyauth Pick any authentication method -a, --append Append to target file when uploading --basic Use HTTP Basic Authentication --cacert &lt;file&gt; CA certificate to verify peer against --capath &lt;dir&gt; CA directory to verify peer against -E, --cert &lt;certificate[:password]&gt; Client certificate file and password --cert-status Verify the status of the server certificate --cert-type &lt;type&gt; Certificate file type (DER/PEM/ENG) --ciphers &lt;list of ciphers&gt; SSL ciphers to use --compressed Request compressed response --compressed-ssh Enable SSH compression -K, --config &lt;file&gt; Read config from a file --connect-timeout &lt;seconds&gt; Maximum time allowed for connection --connect-to &lt;HOST1:PORT1:HOST2:PORT2&gt; Connect to host -C, --continue-at &lt;offset&gt; Resumed transfer offset -b, --cookie &lt;data&gt; Send cookies from string/file -c, --cookie-jar &lt;filename&gt; Write cookies to &lt;filename&gt; after operation --create-dirs Create necessary local directory hierarchy --crlf Convert LF to CRLF in upload --crlfile &lt;file&gt; Get a CRL list in PEM format from the given file -d, --data &lt;data&gt; HTTP POST data --data-ascii &lt;data&gt; HTTP POST ASCII data --data-binary &lt;data&gt; HTTP POST binary data --data-raw &lt;data&gt; HTTP POST data, &#39;@&#39; allowed --data-urlencode &lt;data&gt; HTTP POST data url encoded --delegation &lt;LEVEL&gt; GSS-API delegation permission --digest Use HTTP Digest Authentication -q, --disable Disable ."/>
+
+
+
+
+<link rel="preload" href="/scss/main.min.605941b10b594481991cd827b8a615a282d76d5a0d20968050c39715a5edf557.css" as="style">
+<link href="/scss/main.min.605941b10b594481991cd827b8a615a282d76d5a0d20968050c39715a5edf557.css" rel="stylesheet" integrity="">
+
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
+  crossorigin="anonymous"></script>
+<script
+  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
+  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-page">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="/">
+		<span class="navbar-logo"></span><span class="font-weight-bold">dlog</span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				
+				
+				<a class="nav-link active" href="/system/" ><i class='fas fa-book'></i><span class="active">system</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/localenv/" ><i class='fas fa-book'></i><span>localenv</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/language/" ><i class='fas fa-book'></i><span>language</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/elk/" ><i class='fas fa-book'></i><span>ELK</span></a>
+			</li>
+			
+			
+			
+		</ul>
+	</div>
+	<div class="navbar-nav d-none d-lg-block"><input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Search this site…"
+  aria-label="Search this site…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="/offline-search-index.c4911ee25b9bafdeac9379719cc5b9a5.json"
+  data-offline-search-base-href="/"
+  data-offline-search-max-results="10"
+>
+</div>
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  <form class="td-sidebar__search d-flex align-items-center">
+    <input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Search this site…"
+  aria-label="Search this site…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="/offline-search-index.c4911ee25b9bafdeac9379719cc5b9a5.json"
+  data-offline-search-base-href="/"
+  data-offline-search-max-results="10"
+>
+
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  <nav class="collapse td-sidebar-nav" id="td-section-nav">
+    <ul class="td-sidebar-nav__section pr-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-system-li">
+  
+  <a href="/system/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-system"><span class="">system</span></a>
+  <ul class="ul-1">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemcentos8-li">
+  
+  <a href="/system/centos8/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemcentos8"><span class="">centos8</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-systemcurl-li">
+  
+  <a href="/system/curl/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-systemcurl"><span class="td-sidebar-nav-active-item">curl</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemelk-li">
+  
+  <a href="/system/elk/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemelk"><span class="">ELK</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemhttpd-li">
+  
+  <a href="/system/httpd/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemhttpd"><span class="">httpd</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemjenkins-li">
+  
+  <a href="/system/jenkins/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemjenkins"><span class="">jenkins</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemkibana-li">
+  
+  <a href="/system/kibana/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemkibana"><span class="">kibana</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemlinux-li">
+  
+  <a href="/system/linux/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemlinux"><span class="">linux</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemopenssh-li">
+  
+  <a href="/system/openssh/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemopenssh"><span class="">openssh</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemoracle12c-li">
+  
+  <a href="/system/oracle12c/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemoracle12c"><span class="">oracle12c</span></a>
+</li>
+  </ul>
+</li>
+    </ul>
+  </nav>
+</div>
+
+          </aside>
+          <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+            
+<div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
+
+</div>
+
+            
+
+
+<div class="td-toc"><nav id="TableOfContents"></nav></div>
+
+
+
+            
+
+	
+		
+
+
+
+  
+  
+
+	
+		
+
+
+
+  
+  
+
+	
+
+          </aside>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="td-breadcrumbs">
+  <ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/system/">system</a>
+  </li>
+  <li class="breadcrumb-item active" aria-current="page">
+    <a href="/system/curl/">curl</a>
+  </li>
+  </ol>
+</nav>
+            
+<div class="td-content">
+	<h1>curl</h1>
+	
+	<header class="article-meta">
+		
+		
+			
+				
+
+
+			
+				
+
+
+			
+		
+		
+	</header>    
+	<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ curl -h
+
+Usage: curl [options...] &lt;url&gt;
+     --abstract-unix-socket &lt;path&gt; Connect via abstract Unix domain socket
+     --anyauth       Pick any authentication method
+ -a, --append        Append to target file when uploading
+     --basic         Use HTTP Basic Authentication
+     --cacert &lt;file&gt; CA certificate to verify peer against
+     --capath &lt;dir&gt;  CA directory to verify peer against
+ -E, --cert &lt;certificate[:password]&gt; Client certificate file and password
+     --cert-status   Verify the status of the server certificate
+     --cert-type &lt;type&gt; Certificate file type (DER/PEM/ENG)
+     --ciphers &lt;list of ciphers&gt; SSL ciphers to use
+     --compressed    Request compressed response
+     --compressed-ssh Enable SSH compression
+ -K, --config &lt;file&gt; Read config from a file
+     --connect-timeout &lt;seconds&gt; Maximum time allowed for connection
+     --connect-to &lt;HOST1:PORT1:HOST2:PORT2&gt; Connect to host
+ -C, --continue-at &lt;offset&gt; Resumed transfer offset
+ -b, --cookie &lt;data&gt; Send cookies from string/file
+ -c, --cookie-jar &lt;filename&gt; Write cookies to &lt;filename&gt; after operation
+     --create-dirs   Create necessary local directory hierarchy
+     --crlf          Convert LF to CRLF in upload
+     --crlfile &lt;file&gt; Get a CRL list in PEM format from the given file
+ -d, --data &lt;data&gt;   HTTP POST data
+     --data-ascii &lt;data&gt; HTTP POST ASCII data
+     --data-binary &lt;data&gt; HTTP POST binary data
+     --data-raw &lt;data&gt; HTTP POST data, &#39;@&#39; allowed
+     --data-urlencode &lt;data&gt; HTTP POST data url encoded
+     --delegation &lt;LEVEL&gt; GSS-API delegation permission
+     --digest        Use HTTP Digest Authentication
+ -q, --disable       Disable .curlrc
+     --disable-eprt  Inhibit using EPRT or LPRT
+     --disable-epsv  Inhibit using EPSV
+     --disallow-username-in-url Disallow username in url
+     --dns-interface &lt;interface&gt; Interface to use for DNS requests
+     --dns-ipv4-addr &lt;address&gt; IPv4 address to use for DNS requests
+     --dns-ipv6-addr &lt;address&gt; IPv6 address to use for DNS requests
+     --dns-servers &lt;addresses&gt; DNS server addrs to use
+ -D, --dump-header &lt;filename&gt; Write the received headers to &lt;filename&gt;
+     --egd-file &lt;file&gt; EGD socket path for random data
+     --engine &lt;name&gt; Crypto engine to use
+     --expect100-timeout &lt;seconds&gt; How long to wait for 100-continue
+ -f, --fail          Fail silently (no output at all) on HTTP errors
+     --fail-early    Fail on first transfer error, do not continue
+     --false-start   Enable TLS False Start
+ -F, --form &lt;name=content&gt; Specify multipart MIME data
+     --form-string &lt;name=string&gt; Specify multipart MIME data
+     --ftp-account &lt;data&gt; Account data string
+     --ftp-alternative-to-user &lt;command&gt; String to replace USER [name]
+     --ftp-create-dirs Create the remote dirs if not present
+     --ftp-method &lt;method&gt; Control CWD usage
+     --ftp-pasv      Use PASV/EPSV instead of PORT
+ -P, --ftp-port &lt;address&gt; Use PORT instead of PASV
+     --ftp-pret      Send PRET before PASV
+     --ftp-skip-pasv-ip Skip the IP address for PASV
+     --ftp-ssl-ccc   Send CCC after authenticating
+     --ftp-ssl-ccc-mode &lt;active/passive&gt; Set CCC mode
+     --ftp-ssl-control Require SSL/TLS for FTP login, clear for transfer
+ -G, --get           Put the post data in the URL and use GET
+ -g, --globoff       Disable URL sequences and ranges using {} and []
+     --happy-eyeballs-timeout-ms &lt;milliseconds&gt; How long to wait in milliseconds for IPv6 before trying IPv4
+     --haproxy-protocol Send HAProxy PROXY protocol v1 header
+ -I, --head          Show document info only
+ -H, --header &lt;header/@file&gt; Pass custom header(s) to server
+ -h, --help          This help text
+     --hostpubmd5 &lt;md5&gt; Acceptable MD5 hash of the host public key
+ -0, --http1.0       Use HTTP 1.0
+     --http1.1       Use HTTP 1.1
+     --http2         Use HTTP 2
+     --http2-prior-knowledge Use HTTP 2 without HTTP/1.1 Upgrade
+     --ignore-content-length Ignore the size of the remote resource
+ -i, --include       Include protocol response headers in the output
+ -k, --insecure      Allow insecure server connections when using SSL
+     --interface &lt;name&gt; Use network INTERFACE (or address)
+ -4, --ipv4          Resolve names to IPv4 addresses
+ -6, --ipv6          Resolve names to IPv6 addresses
+ -j, --junk-session-cookies Ignore session cookies read from file
+     --keepalive-time &lt;seconds&gt; Interval time for keepalive probes
+     --key &lt;key&gt;     Private key file name
+     --key-type &lt;type&gt; Private key file type (DER/PEM/ENG)
+     --krb &lt;level&gt;   Enable Kerberos with security &lt;level&gt;
+     --libcurl &lt;file&gt; Dump libcurl equivalent code of this command line
+     --limit-rate &lt;speed&gt; Limit transfer speed to RATE
+ -l, --list-only     List only mode
+     --local-port &lt;num/range&gt; Force use of RANGE for local port numbers
+ -L, --location      Follow redirects
+     --location-trusted Like --location, and send auth to other hosts
+     --login-options &lt;options&gt; Server login options
+     --mail-auth &lt;address&gt; Originator address of the original email
+     --mail-from &lt;address&gt; Mail from this address
+     --mail-rcpt &lt;address&gt; Mail to this address
+ -M, --manual        Display the full manual
+     --max-filesize &lt;bytes&gt; Maximum file size to download
+     --max-redirs &lt;num&gt; Maximum number of redirects allowed
+ -m, --max-time &lt;seconds&gt; Maximum time allowed for the transfer
+     --metalink      Process given URLs as metalink XML file
+     --negotiate     Use HTTP Negotiate (SPNEGO) authentication
+ -n, --netrc         Must read .netrc for user name and password
+     --netrc-file &lt;filename&gt; Specify FILE for netrc
+     --netrc-optional Use either .netrc or URL
+ -:, --next          Make next URL use its separate set of options
+     --no-alpn       Disable the ALPN TLS extension
+ -N, --no-buffer     Disable buffering of the output stream
+     --no-keepalive  Disable TCP keepalive on the connection
+     --no-npn        Disable the NPN TLS extension
+     --no-sessionid  Disable SSL session-ID reusing
+     --noproxy &lt;no-proxy-list&gt; List of hosts which do not use proxy
+     --ntlm          Use HTTP NTLM authentication
+     --ntlm-wb       Use HTTP NTLM authentication with winbind
+     --oauth2-bearer &lt;token&gt; OAuth 2 Bearer Token
+ -o, --output &lt;file&gt; Write to file instead of stdout
+     --pass &lt;phrase&gt; Pass phrase for the private key
+     --path-as-is    Do not squash .. sequences in URL path
+     --pinnedpubkey &lt;hashes&gt; FILE/HASHES Public key to verify peer against
+     --post301       Do not switch to GET after following a 301
+     --post302       Do not switch to GET after following a 302
+     --post303       Do not switch to GET after following a 303
+     --preproxy [protocol://]host[:port] Use this proxy first
+ -#, --progress-bar  Display transfer progress as a bar
+     --proto &lt;protocols&gt; Enable/disable PROTOCOLS
+     --proto-default &lt;protocol&gt; Use PROTOCOL for any URL missing a scheme
+     --proto-redir &lt;protocols&gt; Enable/disable PROTOCOLS on redirect
+ -x, --proxy [protocol://]host[:port] Use this proxy
+     --proxy-anyauth Pick any proxy authentication method
+     --proxy-basic   Use Basic authentication on the proxy
+     --proxy-cacert &lt;file&gt; CA certificate to verify peer against for proxy
+     --proxy-capath &lt;dir&gt; CA directory to verify peer against for proxy
+     --proxy-cert &lt;cert[:passwd]&gt; Set client certificate for proxy
+     --proxy-cert-type &lt;type&gt; Client certificate type for HTTPS proxy
+     --proxy-ciphers &lt;list&gt; SSL ciphers to use for proxy
+     --proxy-crlfile &lt;file&gt; Set a CRL list for proxy
+     --proxy-digest  Use Digest authentication on the proxy
+     --proxy-header &lt;header/@file&gt; Pass custom header(s) to proxy
+     --proxy-insecure Do HTTPS proxy connections without verifying the proxy
+     --proxy-key &lt;key&gt; Private key for HTTPS proxy
+     --proxy-key-type &lt;type&gt; Private key file type for proxy
+     --proxy-negotiate Use HTTP Negotiate (SPNEGO) authentication on the proxy
+     --proxy-ntlm    Use NTLM authentication on the proxy
+     --proxy-pass &lt;phrase&gt; Pass phrase for the private key for HTTPS proxy
+     --proxy-pinnedpubkey &lt;hashes&gt; FILE/HASHES public key to verify proxy with
+     --proxy-service-name &lt;name&gt; SPNEGO proxy service name
+     --proxy-ssl-allow-beast Allow security flaw for interop for HTTPS proxy
+     --proxy-tls13-ciphers &lt;ciphersuite list&gt; TLS 1.3 proxy cipher suites
+     --proxy-tlsauthtype &lt;type&gt; TLS authentication type for HTTPS proxy
+     --proxy-tlspassword &lt;string&gt; TLS password for HTTPS proxy
+     --proxy-tlsuser &lt;name&gt; TLS username for HTTPS proxy
+     --proxy-tlsv1   Use TLSv1 for HTTPS proxy
+ -U, --proxy-user &lt;user:password&gt; Proxy user and password
+     --proxy1.0 &lt;host[:port]&gt; Use HTTP/1.0 proxy on given port
+ -p, --proxytunnel   Operate through an HTTP proxy tunnel (using CONNECT)
+     --pubkey &lt;key&gt;  SSH Public key file name
+ -Q, --quote         Send command(s) to server before transfer
+     --random-file &lt;file&gt; File for reading random data from
+ -r, --range &lt;range&gt; Retrieve only the bytes within RANGE
+     --raw           Do HTTP &#34;raw&#34;; no transfer decoding
+ -e, --referer &lt;URL&gt; Referrer URL
+ -J, --remote-header-name Use the header-provided filename
+ -O, --remote-name   Write output to a file named as the remote file
+     --remote-name-all Use the remote file name for all URLs
+ -R, --remote-time   Set the remote file&#39;s time on the local output
+ -X, --request &lt;command&gt; Specify request command to use
+     --request-target Specify the target for this request
+     --resolve &lt;host:port:address[,address]...&gt; Resolve the host+port to this address
+     --retry &lt;num&gt;   Retry request if transient problems occur
+     --retry-connrefused Retry on connection refused (use with --retry)
+     --retry-delay &lt;seconds&gt; Wait time between retries
+     --retry-max-time &lt;seconds&gt; Retry only within this period
+     --sasl-ir       Enable initial response in SASL authentication
+     --service-name &lt;name&gt; SPNEGO service name
+ -S, --show-error    Show error even when -s is used
+ -s, --silent        Silent mode
+     --socks4 &lt;host[:port]&gt; SOCKS4 proxy on given host + port
+     --socks4a &lt;host[:port]&gt; SOCKS4a proxy on given host + port
+     --socks5 &lt;host[:port]&gt; SOCKS5 proxy on given host + port
+     --socks5-basic  Enable username/password auth for SOCKS5 proxies
+     --socks5-gssapi Enable GSS-API auth for SOCKS5 proxies
+     --socks5-gssapi-nec Compatibility with NEC SOCKS5 server
+     --socks5-gssapi-service &lt;name&gt; SOCKS5 proxy service name for GSS-API
+     --socks5-hostname &lt;host[:port]&gt; SOCKS5 proxy, pass host name to proxy
+ -Y, --speed-limit &lt;speed&gt; Stop transfers slower than this
+ -y, --speed-time &lt;seconds&gt; Trigger &#39;speed-limit&#39; abort after this time
+     --ssl           Try SSL/TLS
+     --ssl-allow-beast Allow security flaw to improve interop
+     --ssl-no-revoke Disable cert revocation checks (WinSSL)
+     --ssl-reqd      Require SSL/TLS
+ -2, --sslv2         Use SSLv2
+ -3, --sslv3         Use SSLv3
+     --stderr        Where to redirect stderr
+     --styled-output Enable styled output for HTTP headers
+     --suppress-connect-headers Suppress proxy CONNECT response headers
+     --tcp-fastopen  Use TCP Fast Open
+     --tcp-nodelay   Use the TCP_NODELAY option
+ -t, --telnet-option &lt;opt=val&gt; Set telnet option
+     --tftp-blksize &lt;value&gt; Set TFTP BLKSIZE option
+     --tftp-no-options Do not send any TFTP options
+ -z, --time-cond &lt;time&gt; Transfer based on a time condition
+     --tls-max &lt;VERSION&gt; Use TLSv1.0 or greater
+     --tls13-ciphers &lt;list of TLS 1.3 ciphersuites&gt; TLS 1.3 cipher suites to use
+     --tlsauthtype &lt;type&gt; TLS authentication type
+     --tlspassword   TLS password
+     --tlsuser &lt;name&gt; TLS user name
+ -1, --tlsv1         Use TLSv1.0 or greater
+     --tlsv1.0       Use TLSv1.0
+     --tlsv1.1       Use TLSv1.1
+     --tlsv1.2       Use TLSv1.2
+     --tlsv1.3       Use TLSv1.3
+     --tr-encoding   Request compressed transfer encoding
+     --trace &lt;file&gt;  Write a debug trace to FILE
+     --trace-ascii &lt;file&gt; Like --trace, but without hex output
+     --trace-time    Add time stamps to trace/verbose output
+     --unix-socket &lt;path&gt; Connect through this Unix domain socket
+ -T, --upload-file &lt;file&gt; Transfer local FILE to destination
+     --url &lt;url&gt;     URL to work with
+ -B, --use-ascii     Use ASCII/text transfer
+ -u, --user &lt;user:password&gt; Server user and password
+ -A, --user-agent &lt;name&gt; Send User-Agent &lt;name&gt; to server
+ -v, --verbose       Make the operation more talkative
+ -V, --version       Show version number and quit
+ -w, --write-out &lt;format&gt; Use output FORMAT after completion
+     --xattr         Store metadata in extended file attributes
+</code></pre></div>
+	
+	
+	
+</div>
+
+
+          </main>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+    integrity="sha512-UR25UO94eTnCVwjbXozyeVd6ZqpaAE9naiEUBK/A+QDbfSTQFhPGj5lOR6d8tsgbBk84Ggb5A3EkjsOgPRPcKA=="
+    crossorigin="anonymous"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@8.13.4/dist/mermaid.min.js" integrity="sha512-JERecFUBbsm75UpkVheAuDOE8NdHjQBrPACfEQYPwvPG+fjgCpHAz1Jw2ci9EXmd3DdfiWth3O3CQvcfEg8gsA==" crossorigin="anonymous"></script>
+
+
+
+<style>
+.markmap > svg {
+  width: 100%;
+  height: 300px;
+}
+</style>
+<script>
+window.markmap = {
+  autoLoader: { manual: true },
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
+
+
+<script src='/js/tabpane-persist.js'></script>
+
+
+
+<script src='/js/deflate.js'></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
+    integrity="sha512-vJqxkZ+Sugf/6WRlpcxN01qVfX/29hF6qc33eHF1va3NgoV+U+wCi+uTAsQ10sDoGyBxHLdaHvGwDlV3yVYboA==" crossorigin="anonymous">
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"
+    integrity="sha512-5ufNcHqOYgilGEHPfuRIQ5B/vDS1M8+UC+DESZ5CwVgGTg+b2Ol/15rYL/GiCWJ/Sx8oVo0FPFok1dPk8U9INQ=="
+    crossorigin="anonymous"></script>
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js"
+    integrity="sha512-HWb6LyQhO6UkmYLjdSblpgiOvvbdkoMRjln0POPhOVbZu3l4QdqwZnMJ/cuwKScU5pWARejB495TAAAz0WNsXQ=="
+    crossorigin="anonymous"></script>
+
+
+<script defer src='https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js'
+    integrity='sha512-ZA/RPrAo88DlwRnnoNVqKINnQNcWERzRK03PDaA4GIJiVZvGFIWQbdWCsUebMZfkWohnfngsDjXzU6PokO4jGw==' crossorigin='anonymous' 
+    onload='renderMathInElement(document.body, null);'></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.min.107a1d3f0d9dfdbd7b6c30065c60e2534ccedea64e72f2386b6c20f924336373.js" integrity="sha256-EHodPw2d/b17bDAGXGDiU0zO3qZOcvI4a2wg&#43;SQzY3M=" crossorigin="anonymous"></script>
+
+
+
+
+  </body>
+</html>
