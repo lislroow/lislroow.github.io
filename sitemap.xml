@@ -14,6 +14,8 @@
   </url><url>
     <loc>/system/curl/</loc>
   </url><url>
+    <loc>/system/tar/</loc>
+  </url><url>
     <loc>/</loc>
   </url><url>
     <loc>/elk/</loc>
