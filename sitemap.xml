@@ -22,6 +22,8 @@
   </url><url>
     <loc>/system/elk/</loc>
   </url><url>
+    <loc>/localenv/git/</loc>
+  </url><url>
     <loc>/localenv/gradle/</loc>
   </url><url>
     <loc>/system/httpd/</loc>
