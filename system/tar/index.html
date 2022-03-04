@@ -18,23 +18,23 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>curl | dlog</title>
+<title>tar | dlog</title>
 <meta name="description" content="$ tar --help                                   
 사용법: tar [&lt;옵션&gt;...] [&lt;파일&gt;]...
 GNU &#39;tar&#39; saves many files together into a single …">
-<meta property="og:title" content="curl" />
+<meta property="og:title" content="tar" />
 <meta property="og:description" content="$ tar --help 사용법: tar [&lt;옵션&gt;...] [&lt;파일&gt;]... GNU &#39;tar&#39; saves many files together into a single tape or disk archive, and can restore individual files from the archive. Examples: tar -cf archive.tar foo bar # Create archive.tar from files foo and bar. tar -tvf archive.tar # List all files in archive.tar verbosely. tar -xf archive.tar # Extract all files from archive.tar. 로컬 파일 이름 선택: -C, --directory=&lt;디렉터리&gt; &lt;디렉터리&gt;로 전환 --exclude=&lt;패턴&gt; 주어진 &lt;패턴&gt; 값에 해당하는 파일 제외 --exclude-ignore=&lt;파일&gt; &lt;파일&gt;이 있다면 각 디렉터리에 대한 제외 패턴을 &lt;파일&gt;에서 읽기 --exclude-ignore-recursive=&lt;파일&gt; &lt;파일&gt;이 있다면 각 디렉터리 및 하위 디렉터리에 대한 제외 패턴을 &lt;파일&gt; 에서 읽기 -X, --exclude-from=&lt;파일&gt; &lt;파일&gt; 목록에 있는 패턴 제외 주 동작 모드: -d, --diff, --compare 아카이브 및 파일 시스템 차이점 -r, --append 아카이브 마지막에 파일 추가 -u, --update 아카이브 내 사본보다 최신인 파일만 추가 압축 옵션: -a, --auto-compress 압축 프로그램 사용을 결정하는 아카이브 후위 확장자 사용 -I, --use-compress-program=&lt;프로그램&gt; &lt;프로그램&gt;으로 필터링합니다(-d 옵션을 받아들여야 함) -j, --bzip2 bzip2(으)로 아카이브를 필터링합니다 -J, --xz xz(으)로 아카이브를 필터링합니다 --lzip lzip(으)로 아카이브를 필터링합니다 --lzma xz --format=lzma(으)로 아카이브를 필터링합니다 --lzop lzop(으)로 아카이브를 필터링합니다 --no-auto-compress 압축 프로그램 사용을 결정하는 아카이브 후위 확장자 사용 안함 -z, --gzip, --gunzip, --ungzip gzip(으)로 아카이브를 필터링합니다 -Z, --compress, --uncompress compress(으)로 아카이브를 필터링합니다 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/system/tar/" /><meta property="article:section" content="system" />
 
 
 
-<meta itemprop="name" content="curl">
+<meta itemprop="name" content="tar">
 <meta itemprop="description" content="$ tar --help 사용법: tar [&lt;옵션&gt;...] [&lt;파일&gt;]... GNU &#39;tar&#39; saves many files together into a single tape or disk archive, and can restore individual files from the archive. Examples: tar -cf archive.tar foo bar # Create archive.tar from files foo and bar. tar -tvf archive.tar # List all files in archive.tar verbosely. tar -xf archive.tar # Extract all files from archive.tar. 로컬 파일 이름 선택: -C, --directory=&lt;디렉터리&gt; &lt;디렉터리&gt;로 전환 --exclude=&lt;패턴&gt; 주어진 &lt;패턴&gt; 값에 해당하는 파일 제외 --exclude-ignore=&lt;파일&gt; &lt;파일&gt;이 있다면 각 디렉터리에 대한 제외 패턴을 &lt;파일&gt;에서 읽기 --exclude-ignore-recursive=&lt;파일&gt; &lt;파일&gt;이 있다면 각 디렉터리 및 하위 디렉터리에 대한 제외 패턴을 &lt;파일&gt; 에서 읽기 -X, --exclude-from=&lt;파일&gt; &lt;파일&gt; 목록에 있는 패턴 제외 주 동작 모드: -d, --diff, --compare 아카이브 및 파일 시스템 차이점 -r, --append 아카이브 마지막에 파일 추가 -u, --update 아카이브 내 사본보다 최신인 파일만 추가 압축 옵션: -a, --auto-compress 압축 프로그램 사용을 결정하는 아카이브 후위 확장자 사용 -I, --use-compress-program=&lt;프로그램&gt; &lt;프로그램&gt;으로 필터링합니다(-d 옵션을 받아들여야 함) -j, --bzip2 bzip2(으)로 아카이브를 필터링합니다 -J, --xz xz(으)로 아카이브를 필터링합니다 --lzip lzip(으)로 아카이브를 필터링합니다 --lzma xz --format=lzma(으)로 아카이브를 필터링합니다 --lzop lzop(으)로 아카이브를 필터링합니다 --no-auto-compress 압축 프로그램 사용을 결정하는 아카이브 후위 확장자 사용 안함 -z, --gzip, --gunzip, --ungzip gzip(으)로 아카이브를 필터링합니다 -Z, --compress, --uncompress compress(으)로 아카이브를 필터링합니다 ">
 
 <meta itemprop="wordCount" content="197">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="curl"/>
+<meta name="twitter:title" content="tar"/>
 <meta name="twitter:description" content="$ tar --help 사용법: tar [&lt;옵션&gt;...] [&lt;파일&gt;]... GNU &#39;tar&#39; saves many files together into a single tape or disk archive, and can restore individual files from the archive. Examples: tar -cf archive.tar foo bar # Create archive.tar from files foo and bar. tar -tvf archive.tar # List all files in archive.tar verbosely. tar -xf archive.tar # Extract all files from archive.tar. 로컬 파일 이름 선택: -C, --directory=&lt;디렉터리&gt; &lt;디렉터리&gt;로 전환 --exclude=&lt;패턴&gt; 주어진 &lt;패턴&gt; 값에 해당하는 파일 제외 --exclude-ignore=&lt;파일&gt; &lt;파일&gt;이 있다면 각 디렉터리에 대한 제외 패턴을 &lt;파일&gt;에서 읽기 --exclude-ignore-recursive=&lt;파일&gt; &lt;파일&gt;이 있다면 각 디렉터리 및 하위 디렉터리에 대한 제외 패턴을 &lt;파일&gt; 에서 읽기 -X, --exclude-from=&lt;파일&gt; &lt;파일&gt; 목록에 있는 패턴 제외 주 동작 모드: -d, --diff, --compare 아카이브 및 파일 시스템 차이점 -r, --append 아카이브 마지막에 파일 추가 -u, --update 아카이브 내 사본보다 최신인 파일만 추가 압축 옵션: -a, --auto-compress 압축 프로그램 사용을 결정하는 아카이브 후위 확장자 사용 -I, --use-compress-program=&lt;프로그램&gt; &lt;프로그램&gt;으로 필터링합니다(-d 옵션을 받아들여야 함) -j, --bzip2 bzip2(으)로 아카이브를 필터링합니다 -J, --xz xz(으)로 아카이브를 필터링합니다 --lzip lzip(으)로 아카이브를 필터링합니다 --lzma xz --format=lzma(으)로 아카이브를 필터링합니다 --lzop lzop(으)로 아카이브를 필터링합니다 --no-auto-compress 압축 프로그램 사용을 결정하는 아카이브 후위 확장자 사용 안함 -z, --gzip, --gunzip, --ungzip gzip(으)로 아카이브를 필터링합니다 -Z, --compress, --uncompress compress(으)로 아카이브를 필터링합니다 "/>
 
 
@@ -123,7 +123,7 @@ GNU &#39;tar&#39; saves many files together into a single …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.98294d1d9181e0b823f6dbc15e6ea042.json"
+  data-offline-search-index-json-src="/offline-search-index.44da0b444cb8f88ca27269034285ac3d.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -145,7 +145,7 @@ GNU &#39;tar&#39; saves many files together into a single …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.98294d1d9181e0b823f6dbc15e6ea042.json"
+  data-offline-search-index-json-src="/offline-search-index.44da0b444cb8f88ca27269034285ac3d.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -165,9 +165,6 @@ GNU &#39;tar&#39; saves many files together into a single …">
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemcurl-li">
   
   <a href="/system/curl/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemcurl"><span class="">curl</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-systemtar-li">
-  
-  <a href="/system/tar/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-systemtar"><span class="td-sidebar-nav-active-item">curl</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemelk-li">
   
   <a href="/system/elk/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemelk"><span class="">ELK</span></a>
@@ -189,6 +186,9 @@ GNU &#39;tar&#39; saves many files together into a single …">
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemoracle12c-li">
   
   <a href="/system/oracle12c/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemoracle12c"><span class="">oracle12c</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-systemtar-li">
+  
+  <a href="/system/tar/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-systemtar"><span class="td-sidebar-nav-active-item">tar</span></a>
 </li>
   </ul>
 </li>
@@ -241,13 +241,13 @@ GNU &#39;tar&#39; saves many files together into a single …">
     <a href="/system/">system</a>
   </li>
   <li class="breadcrumb-item active" aria-current="page">
-    <a href="/system/tar/">curl</a>
+    <a href="/system/tar/">tar</a>
   </li>
   </ol>
 </nav>
             
 <div class="td-content">
-	<h1>curl</h1>
+	<h1>tar</h1>
 	
 	<header class="article-meta">
 		

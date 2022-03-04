@@ -14,8 +14,6 @@
   </url><url>
     <loc>/system/curl/</loc>
   </url><url>
-    <loc>/system/tar/</loc>
-  </url><url>
     <loc>/</loc>
   </url><url>
     <loc>/elk/</loc>
@@ -27,6 +25,8 @@
     <loc>/localenv/gradle/</loc>
   </url><url>
     <loc>/system/httpd/</loc>
+  </url><url>
+    <loc>/localenv/intellij/</loc>
   </url><url>
     <loc>/language/java/</loc>
   </url><url>
@@ -49,5 +49,7 @@
     <loc>/system/</loc>
   </url><url>
     <loc>/tags/</loc>
+  </url><url>
+    <loc>/system/tar/</loc>
   </url>
 </urlset>

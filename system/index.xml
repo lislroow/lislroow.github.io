@@ -467,68 +467,6 @@ Usage: curl [options...] &amp;lt;url&amp;gt;
     </item>
     
     <item>
-      <title>System: curl</title>
-      <link>/system/tar/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/system/tar/</guid>
-      <description>
-        
-        
-        &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ tar --help                                   
-사용법: tar [&amp;lt;옵션&amp;gt;...] [&amp;lt;파일&amp;gt;]...
-GNU &amp;#39;tar&amp;#39; saves many files together into a single tape or disk archive, and can
-restore individual files from the archive.
-
-Examples:
-  tar -cf archive.tar foo bar  # Create archive.tar from files foo and bar.
-  tar -tvf archive.tar         # List all files in archive.tar verbosely.
-  tar -xf archive.tar          # Extract all files from archive.tar.
-
- 로컬 파일 이름 선택:
-
-  -C, --directory=&amp;lt;디렉터리&amp;gt;   &amp;lt;디렉터리&amp;gt;로 전환
-      --exclude=&amp;lt;패턴&amp;gt;     주어진 &amp;lt;패턴&amp;gt; 값에 해당하는 파일
-                             제외
-      --exclude-ignore=&amp;lt;파일&amp;gt;   &amp;lt;파일&amp;gt;이 있다면 각 디렉터리에
-                             대한 제외 패턴을 &amp;lt;파일&amp;gt;에서 읽기
-      --exclude-ignore-recursive=&amp;lt;파일&amp;gt;
-                             &amp;lt;파일&amp;gt;이 있다면 각 디렉터리 및 하위
-                             디렉터리에 대한 제외 패턴을 &amp;lt;파일&amp;gt;
-                             에서 읽기
-  -X, --exclude-from=&amp;lt;파일&amp;gt;   &amp;lt;파일&amp;gt; 목록에 있는 패턴 제외
-
- 주 동작 모드:
-
-  -d, --diff, --compare      아카이브 및 파일 시스템 차이점
-  -r, --append               아카이브 마지막에 파일 추가
-  -u, --update               아카이브 내 사본보다 최신인 파일만
-                             추가
-
- 압축 옵션:
-
-  -a, --auto-compress        압축 프로그램 사용을 결정하는
-                             아카이브 후위 확장자 사용
-  -I, --use-compress-program=&amp;lt;프로그램&amp;gt;
-                             &amp;lt;프로그램&amp;gt;으로 필터링합니다(-d
-                             옵션을 받아들여야 함)
-  -j, --bzip2                bzip2(으)로 아카이브를 필터링합니다
-  -J, --xz                   xz(으)로 아카이브를 필터링합니다
-      --lzip                 lzip(으)로 아카이브를 필터링합니다
-      --lzma                 xz --format=lzma(으)로 아카이브를
-                             필터링합니다
-      --lzop                 lzop(으)로 아카이브를 필터링합니다
-      --no-auto-compress     압축 프로그램 사용을 결정하는
-                             아카이브 후위 확장자 사용 안함
-  -z, --gzip, --gunzip, --ungzip   gzip(으)로 아카이브를
-                             필터링합니다
-  -Z, --compress, --uncompress   compress(으)로 아카이브를
-                             필터링합니다
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-      </description>
-    </item>
-    
-    <item>
       <title>System: ELK</title>
       <link>/system/elk/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -3183,6 +3121,68 @@ imp.exe SPADBA/1@SPADBP FILE=&amp;#39;Z:\SPADBP.dmp&amp;#39; FEEDBACK=1000 GRANT
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;STARTUP&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
 
+      </description>
+    </item>
+    
+    <item>
+      <title>System: tar</title>
+      <link>/system/tar/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/system/tar/</guid>
+      <description>
+        
+        
+        &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ tar --help                                   
+사용법: tar [&amp;lt;옵션&amp;gt;...] [&amp;lt;파일&amp;gt;]...
+GNU &amp;#39;tar&amp;#39; saves many files together into a single tape or disk archive, and can
+restore individual files from the archive.
+
+Examples:
+  tar -cf archive.tar foo bar  # Create archive.tar from files foo and bar.
+  tar -tvf archive.tar         # List all files in archive.tar verbosely.
+  tar -xf archive.tar          # Extract all files from archive.tar.
+
+ 로컬 파일 이름 선택:
+
+  -C, --directory=&amp;lt;디렉터리&amp;gt;   &amp;lt;디렉터리&amp;gt;로 전환
+      --exclude=&amp;lt;패턴&amp;gt;     주어진 &amp;lt;패턴&amp;gt; 값에 해당하는 파일
+                             제외
+      --exclude-ignore=&amp;lt;파일&amp;gt;   &amp;lt;파일&amp;gt;이 있다면 각 디렉터리에
+                             대한 제외 패턴을 &amp;lt;파일&amp;gt;에서 읽기
+      --exclude-ignore-recursive=&amp;lt;파일&amp;gt;
+                             &amp;lt;파일&amp;gt;이 있다면 각 디렉터리 및 하위
+                             디렉터리에 대한 제외 패턴을 &amp;lt;파일&amp;gt;
+                             에서 읽기
+  -X, --exclude-from=&amp;lt;파일&amp;gt;   &amp;lt;파일&amp;gt; 목록에 있는 패턴 제외
+
+ 주 동작 모드:
+
+  -d, --diff, --compare      아카이브 및 파일 시스템 차이점
+  -r, --append               아카이브 마지막에 파일 추가
+  -u, --update               아카이브 내 사본보다 최신인 파일만
+                             추가
+
+ 압축 옵션:
+
+  -a, --auto-compress        압축 프로그램 사용을 결정하는
+                             아카이브 후위 확장자 사용
+  -I, --use-compress-program=&amp;lt;프로그램&amp;gt;
+                             &amp;lt;프로그램&amp;gt;으로 필터링합니다(-d
+                             옵션을 받아들여야 함)
+  -j, --bzip2                bzip2(으)로 아카이브를 필터링합니다
+  -J, --xz                   xz(으)로 아카이브를 필터링합니다
+      --lzip                 lzip(으)로 아카이브를 필터링합니다
+      --lzma                 xz --format=lzma(으)로 아카이브를
+                             필터링합니다
+      --lzop                 lzop(으)로 아카이브를 필터링합니다
+      --no-auto-compress     압축 프로그램 사용을 결정하는
+                             아카이브 후위 확장자 사용 안함
+  -z, --gzip, --gunzip, --ungzip   gzip(으)로 아카이브를
+                             필터링합니다
+  -Z, --compress, --uncompress   compress(으)로 아카이브를
+                             필터링합니다
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       </description>
     </item>
     
