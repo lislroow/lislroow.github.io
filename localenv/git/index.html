@@ -35,7 +35,7 @@ $ git remote …">
 <meta itemprop="name" content="git">
 <meta itemprop="description" content="git-remote $ git remote -v origin https://github.com/lislroow/dlog.git (fetch) origin https://github.com/lislroow/dlog.git (push) $ git remote set-url origin git@github.com:lislroow/dlog.git $ git remote -v origin git@github.com:lislroow/dlog.git (fetch) origin git@github.com:lislroow/dlog.git (push) git-log  git log --branches --not --remotes: commit 목록 중 원격지에 push 하지 않은 항목 출력 git log --oneline --graph: commit 목록을 1 line 으로 출력하면서 graph 로 표시 git log -p -1: commit 목록 중 최근 1개에 대하여 -p(patch) diff 출력 git log -p -S 문자열: patch 에 문자열이 포함된 commit 목록 출력 git log --since=&#39;2022-02-26 14:00&#39;: &lsquo;2022-02-26 14:00&rsquo; 부터 지금까지의 commit 목록 출력 (since/until)  주요 옵션">
 
-<meta itemprop="wordCount" content="610">
+<meta itemprop="wordCount" content="614">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="git"/>
 <meta name="twitter:description" content="git-remote $ git remote -v origin https://github.com/lislroow/dlog.git (fetch) origin https://github.com/lislroow/dlog.git (push) $ git remote set-url origin git@github.com:lislroow/dlog.git $ git remote -v origin git@github.com:lislroow/dlog.git (fetch) origin git@github.com:lislroow/dlog.git (push) git-log  git log --branches --not --remotes: commit 목록 중 원격지에 push 하지 않은 항목 출력 git log --oneline --graph: commit 목록을 1 line 으로 출력하면서 graph 로 표시 git log -p -1: commit 목록 중 최근 1개에 대하여 -p(patch) diff 출력 git log -p -S 문자열: patch 에 문자열이 포함된 commit 목록 출력 git log --since=&#39;2022-02-26 14:00&#39;: &lsquo;2022-02-26 14:00&rsquo; 부터 지금까지의 commit 목록 출력 (since/until)  주요 옵션"/>
@@ -126,7 +126,7 @@ $ git remote …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.350107a6c16ad47d56d257a5c32986a4.json"
+  data-offline-search-index-json-src="/offline-search-index.98294d1d9181e0b823f6dbc15e6ea042.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -148,7 +148,7 @@ $ git remote …">
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.350107a6c16ad47d56d257a5c32986a4.json"
+  data-offline-search-index-json-src="/offline-search-index.98294d1d9181e0b823f6dbc15e6ea042.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -376,7 +376,8 @@ origin  git@github.com:lislroow/dlog.git (push)
 </ul>
 <h4 id="git-reset">git-reset</h4>
 <ul>
-<li><code>git reset path-to-file</code>: Index 의 파일(Index에 파일이 있다는 것은 staged 상태임)을 unstaging 으로 변경</li>
+<li><code>git reset -- path-to-file</code>: Index 의 파일(Index에 파일이 있다는 것은 staged 상태임)을 unstaging 으로 변경</li>
+<li><code>git checkout path-to-file</code></li>
 </ul>
 <p>reset 명령은 HEAD가 가리키는 브랜치의 commit 을 바꿉니다.</p>
 <p>옵션은 --soft, --mixed, --hard 3가지가 있으며 기본은 --mixed 입니다.</p>

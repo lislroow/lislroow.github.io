@@ -440,7 +440,8 @@ origin  git@github.com:lislroow/dlog.git (push)
 &lt;/ul&gt;
 &lt;h4 id=&#34;git-reset&#34;&gt;git-reset&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;git reset path-to-file&lt;/code&gt;: Index 의 파일(Index에 파일이 있다는 것은 staged 상태임)을 unstaging 으로 변경&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git reset -- path-to-file&lt;/code&gt;: Index 의 파일(Index에 파일이 있다는 것은 staged 상태임)을 unstaging 으로 변경&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git checkout path-to-file&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;reset 명령은 HEAD가 가리키는 브랜치의 commit 을 바꿉니다.&lt;/p&gt;
 &lt;p&gt;옵션은 --soft, --mixed, --hard 3가지가 있으며 기본은 --mixed 입니다.&lt;/p&gt;
