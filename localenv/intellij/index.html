@@ -19,21 +19,25 @@
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
 <title>intellij | dlog</title>
-<meta name="description" content="">
+<meta name="description" content="
+ctrl&#43;shift&#43;T: 검색 (in classes)
+ctrl&#43;shift&#43;A: 검색 (in actions, intellij 의 기능을 검색, e.g, show lines)
+ctrl&#43;shift&#43;space: javadoc (dbl-click 시 우측 탭 열림)
+ctrl&#43; …">
 <meta property="og:title" content="intellij" />
-<meta property="og:description" content="" />
+<meta property="og:description" content=" ctrl&#43;shift&#43;T: 검색 (in classes) ctrl&#43;shift&#43;A: 검색 (in actions, intellij 의 기능을 검색, e.g, show lines) ctrl&#43;shift&#43;space: javadoc (dbl-click 시 우측 탭 열림) ctrl&#43;alt&#43;shift&#43;N: 검색 (in symbols, 메소드 혹은 변수를 검색) ctrl&#43;shift&#43;R: 검색 (in files) alt&#43;shift&#43;↑: 이전 항목까지 선택 (↓ 다음 항목까지 선택) ctrl&#43;/: 주석(//, 단일행 주석) ctrl&#43;shift&#43;/: 주석 (/* .. */, 여러행 주석) ctrl&#43;alt&#43;↓: 현재 행을 다음행에 복사 alt&#43;↑: 현재 행을 위로 이동 (↓ 아래로 이동, 메소드일 경우 메소드가 전체 이동함) ctrl&#43;-: collapse (&#43; expand, *: expand all) alt&#43;shift&#43;Z:  " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/localenv/intellij/" /><meta property="article:section" content="localenv" />
 
 
 
 <meta itemprop="name" content="intellij">
-<meta itemprop="description" content="">
+<meta itemprop="description" content=" ctrl&#43;shift&#43;T: 검색 (in classes) ctrl&#43;shift&#43;A: 검색 (in actions, intellij 의 기능을 검색, e.g, show lines) ctrl&#43;shift&#43;space: javadoc (dbl-click 시 우측 탭 열림) ctrl&#43;alt&#43;shift&#43;N: 검색 (in symbols, 메소드 혹은 변수를 검색) ctrl&#43;shift&#43;R: 검색 (in files) alt&#43;shift&#43;↑: 이전 항목까지 선택 (↓ 다음 항목까지 선택) ctrl&#43;/: 주석(//, 단일행 주석) ctrl&#43;shift&#43;/: 주석 (/* .. */, 여러행 주석) ctrl&#43;alt&#43;↓: 현재 행을 다음행에 복사 alt&#43;↑: 현재 행을 위로 이동 (↓ 아래로 이동, 메소드일 경우 메소드가 전체 이동함) ctrl&#43;-: collapse (&#43; expand, *: expand all) alt&#43;shift&#43;Z:  ">
 
-<meta itemprop="wordCount" content="0">
+<meta itemprop="wordCount" content="79">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="intellij"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:description" content=" ctrl&#43;shift&#43;T: 검색 (in classes) ctrl&#43;shift&#43;A: 검색 (in actions, intellij 의 기능을 검색, e.g, show lines) ctrl&#43;shift&#43;space: javadoc (dbl-click 시 우측 탭 열림) ctrl&#43;alt&#43;shift&#43;N: 검색 (in symbols, 메소드 혹은 변수를 검색) ctrl&#43;shift&#43;R: 검색 (in files) alt&#43;shift&#43;↑: 이전 항목까지 선택 (↓ 다음 항목까지 선택) ctrl&#43;/: 주석(//, 단일행 주석) ctrl&#43;shift&#43;/: 주석 (/* .. */, 여러행 주석) ctrl&#43;alt&#43;↓: 현재 행을 다음행에 복사 alt&#43;↑: 현재 행을 위로 이동 (↓ 아래로 이동, 메소드일 경우 메소드가 전체 이동함) ctrl&#43;-: collapse (&#43; expand, *: expand all) alt&#43;shift&#43;Z:  "/>
 
 
 
@@ -121,7 +125,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.44da0b444cb8f88ca27269034285ac3d.json"
+  data-offline-search-index-json-src="/offline-search-index.929a67c593144705c6c32db9a4a6340f.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -143,7 +147,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.44da0b444cb8f88ca27269034285ac3d.json"
+  data-offline-search-index-json-src="/offline-search-index.929a67c593144705c6c32db9a4a6340f.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -244,7 +248,21 @@
 
 		
 	</header>    
-	
+	<ul>
+<li><code>ctrl</code>+<code>shift</code>+<code>T</code>: 검색 (in classes)</li>
+<li><code>ctrl</code>+<code>shift</code>+<code>A</code>: 검색 (in actions, intellij 의 기능을 검색, e.g, show lines)</li>
+<li><code>ctrl</code>+<code>shift</code>+<code>space</code>: javadoc (<code>dbl-click</code> 시 우측 탭 열림)</li>
+<li><code>ctrl</code>+<code>alt</code>+<code>shift</code>+<code>N</code>: 검색 (in symbols, 메소드 혹은 변수를 검색)</li>
+<li><code>ctrl</code>+<code>shift</code>+<code>R</code>: 검색 (in files)</li>
+<li><code>alt</code>+<code>shift</code>+<code>↑</code>: 이전 항목까지 선택 (<code>↓</code> 다음 항목까지 선택)</li>
+<li><code>ctrl</code>+<code>/</code>: 주석(//, 단일행 주석)</li>
+<li><code>ctrl</code>+<code>shift</code>+<code>/</code>: 주석 (/* .. */, 여러행 주석)</li>
+<li><code>ctrl</code>+<code>alt</code>+<code>↓</code>: 현재 행을 다음행에 복사</li>
+<li><code>alt</code>+<code>↑</code>: 현재 행을 위로 이동 (<code>↓</code> 아래로 이동, 메소드일 경우 메소드가 전체 이동함)</li>
+<li><code>ctrl</code>+<code>-</code>: collapse (<code>+</code> expand, <code>*</code>: expand all)</li>
+<li><code>alt</code>+<code>shift</code>+<code>Z</code>:</li>
+</ul>
+
 	
 	
 	

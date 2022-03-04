@@ -562,7 +562,21 @@ $ git commit --amend
       <description>
         
         
-        
+        &lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ctrl&lt;/code&gt;+&lt;code&gt;shift&lt;/code&gt;+&lt;code&gt;T&lt;/code&gt;: 검색 (in classes)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ctrl&lt;/code&gt;+&lt;code&gt;shift&lt;/code&gt;+&lt;code&gt;A&lt;/code&gt;: 검색 (in actions, intellij 의 기능을 검색, e.g, show lines)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ctrl&lt;/code&gt;+&lt;code&gt;shift&lt;/code&gt;+&lt;code&gt;space&lt;/code&gt;: javadoc (&lt;code&gt;dbl-click&lt;/code&gt; 시 우측 탭 열림)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ctrl&lt;/code&gt;+&lt;code&gt;alt&lt;/code&gt;+&lt;code&gt;shift&lt;/code&gt;+&lt;code&gt;N&lt;/code&gt;: 검색 (in symbols, 메소드 혹은 변수를 검색)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ctrl&lt;/code&gt;+&lt;code&gt;shift&lt;/code&gt;+&lt;code&gt;R&lt;/code&gt;: 검색 (in files)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;alt&lt;/code&gt;+&lt;code&gt;shift&lt;/code&gt;+&lt;code&gt;↑&lt;/code&gt;: 이전 항목까지 선택 (&lt;code&gt;↓&lt;/code&gt; 다음 항목까지 선택)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ctrl&lt;/code&gt;+&lt;code&gt;/&lt;/code&gt;: 주석(//, 단일행 주석)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ctrl&lt;/code&gt;+&lt;code&gt;shift&lt;/code&gt;+&lt;code&gt;/&lt;/code&gt;: 주석 (/* .. */, 여러행 주석)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ctrl&lt;/code&gt;+&lt;code&gt;alt&lt;/code&gt;+&lt;code&gt;↓&lt;/code&gt;: 현재 행을 다음행에 복사&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;alt&lt;/code&gt;+&lt;code&gt;↑&lt;/code&gt;: 현재 행을 위로 이동 (&lt;code&gt;↓&lt;/code&gt; 아래로 이동, 메소드일 경우 메소드가 전체 이동함)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ctrl&lt;/code&gt;+&lt;code&gt;-&lt;/code&gt;: collapse (&lt;code&gt;+&lt;/code&gt; expand, &lt;code&gt;*&lt;/code&gt;: expand all)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;alt&lt;/code&gt;+&lt;code&gt;shift&lt;/code&gt;+&lt;code&gt;Z&lt;/code&gt;:&lt;/li&gt;
+&lt;/ul&gt;
+
       </description>
     </item>
     
