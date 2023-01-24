@@ -36,8 +36,8 @@
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;대소문자 구분 옵션을 설정하려면 &lt;code&gt;Ctrl + F&lt;/code&gt; 찾기에서 &lt;code&gt;Case sentive&lt;/code&gt; 옵션을 선택해야합니다.&lt;/strong&gt;&lt;br&gt;
 &lt;strong&gt;&lt;code&gt;Whole word&lt;/code&gt; 옵션으로 온전한 단어일 경우에만 검색되는 옵션도 있습니다.&lt;/strong&gt;&lt;/p&gt;
- &lt;img src=&#34;/images/dev-note/20211203-eclipse_shortcut_7.png&#34; width=&#34;800&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;/images/dev-note/20211203-eclipse_shortcut_7.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
+ &lt;img src=&#34;/images/localenv/20211203-eclipse_shortcut_7.png&#34; width=&#34;800&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;/images/localenv/20211203-eclipse_shortcut_7.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;br&gt;
@@ -52,8 +52,8 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;code&gt;DOWN&lt;/code&gt; 일 경우 아래에 복제하고, &lt;code&gt;UP&lt;/code&gt; 일 경우 위에 복제합니다.&lt;/p&gt;
- &lt;img src=&#34;/images/dev-note/20211203-eclipse_shortcut_8.png&#34; width=&#34;600&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;/images/dev-note/20211203-eclipse_shortcut_8.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;
+ &lt;img src=&#34;/images/localenv/20211203-eclipse_shortcut_8.png&#34; width=&#34;600&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;/images/localenv/20211203-eclipse_shortcut_8.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;
 &lt;br&gt;
 &lt;br&gt;&lt;/p&gt;
 &lt;/li&gt;
@@ -65,8 +65,8 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;일반 모드일 경우에는 행을 선택하는 형태이고, 컬럼 단위로 선택을 하기 위해 사용합니다.&lt;/p&gt;
- &lt;img src=&#34;/images/dev-note/20211203-eclipse_shortcut_16.png&#34; width=&#34;800&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;/images/dev-note/20211203-eclipse_shortcut_16.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;
+ &lt;img src=&#34;/images/localenv/20211203-eclipse_shortcut_16.png&#34; width=&#34;800&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;/images/localenv/20211203-eclipse_shortcut_16.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;
 &lt;br&gt;
 &lt;br&gt;&lt;/p&gt;
 &lt;/li&gt;
@@ -85,8 +85,8 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;주로 프레임워크/공통 개발 시 제공된 클래스가 업무서비스의 어디서 참조되고 있는지를 검색해야 할 때 사용하면 좋습니다.&lt;/p&gt;
- &lt;img src=&#34;/images/dev-note/20211203-eclipse_shortcut_14.png&#34; width=&#34;800&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;/images/dev-note/20211203-eclipse_shortcut_14.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
+ &lt;img src=&#34;/images/localenv/20211203-eclipse_shortcut_14.png&#34; width=&#34;800&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;/images/localenv/20211203-eclipse_shortcut_14.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;br&gt;
@@ -112,8 +112,8 @@
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;이전에 수정했던 파일의 라인으로 이동합니다.&lt;/p&gt;
- &lt;img src=&#34;/images/dev-note/20211203-eclipse_shortcut_9.png&#34; width=&#34;700&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;/images/dev-note/20211203-eclipse_shortcut_9.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;
+ &lt;img src=&#34;/images/localenv/20211203-eclipse_shortcut_9.png&#34; width=&#34;700&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;/images/localenv/20211203-eclipse_shortcut_9.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;
 &lt;br&gt;
 &lt;br&gt;&lt;/p&gt;
 &lt;/li&gt;
@@ -126,8 +126,8 @@ extends 에 대한 구조를 보여주며, implements 에 대한 구조는 보�
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;프레임워크/공통 개발 시 오픈소스 라이브러리를 상속받고 구현체 클래스를 생성하는 경우가 많기에 알아둬야 겠습니다.&lt;/p&gt;
- &lt;img src=&#34;/images/dev-note/20211203-eclipse_shortcut_15.png&#34; width=&#34;600&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;/images/dev-note/20211203-eclipse_shortcut_15.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;
+ &lt;img src=&#34;/images/localenv/20211203-eclipse_shortcut_15.png&#34; width=&#34;600&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;/images/localenv/20211203-eclipse_shortcut_15.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;
 &lt;br&gt;
 &lt;br&gt;&lt;/p&gt;
 &lt;/li&gt;
@@ -136,8 +136,8 @@ extends 에 대한 구조를 보여주며, implements 에 대한 구조는 보�
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;editing 중인 파일의 해당 라인으로 이동하는 기능입니다.&lt;/p&gt;
- &lt;img src=&#34;/images/dev-note/20211203-eclipse_shortcut_17.png&#34; width=&#34;700&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;/images/dev-note/20211203-eclipse_shortcut_17.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;
+ &lt;img src=&#34;/images/localenv/20211203-eclipse_shortcut_17.png&#34; width=&#34;700&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;/images/localenv/20211203-eclipse_shortcut_17.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;
 &lt;br&gt;
 &lt;br&gt;&lt;/p&gt;
 &lt;/li&gt;
@@ -149,8 +149,8 @@ extends 에 대한 구조를 보여주며, implements 에 대한 구조는 보�
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;매우 사용 빈도가 높기에 필수로 기억해둬야 할 것입니다.&lt;/p&gt;
- &lt;img src=&#34;/images/dev-note/20211203-eclipse_shortcut_18.png&#34; width=&#34;700&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;/images/dev-note/20211203-eclipse_shortcut_18.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;
+ &lt;img src=&#34;/images/localenv/20211203-eclipse_shortcut_18.png&#34; width=&#34;700&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;/images/localenv/20211203-eclipse_shortcut_18.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;
 &lt;br&gt;
 &lt;br&gt;&lt;/p&gt;
 &lt;/li&gt;
@@ -174,8 +174,8 @@ extends 에 대한 구조를 보여주며, implements 에 대한 구조는 보�
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;검색할 문자열을 블록 선택한 다음 &lt;code&gt;Ctrl + Alt + Shifh + L&lt;/code&gt; 을 입력하면 팝업이 open 되면서 검색이 시작됩니다.&lt;/p&gt;
- &lt;img src=&#34;/images/dev-note/20211203-eclipse_shortcut_20.png&#34; width=&#34;700&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;/images/dev-note/20211203-eclipse_shortcut_20.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
+ &lt;img src=&#34;/images/localenv/20211203-eclipse_shortcut_20.png&#34; width=&#34;700&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;/images/localenv/20211203-eclipse_shortcut_20.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;br&gt;
@@ -188,8 +188,8 @@ extends 에 대한 구조를 보여주며, implements 에 대한 구조는 보�
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;commit 을 하기전에는 무엇이 변경되었는지 빠르게 확인을 하기 위해 자주 사용되는 diff 단축키 입니다.&lt;/p&gt;
- &lt;img src=&#34;/images/dev-note/20211203-eclipse_shortcut_12.png&#34; width=&#34;600&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;/images/dev-note/20211203-eclipse_shortcut_12.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
+ &lt;img src=&#34;/images/localenv/20211203-eclipse_shortcut_12.png&#34; width=&#34;600&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;/images/localenv/20211203-eclipse_shortcut_12.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;br&gt;
@@ -206,8 +206,8 @@ extends 에 대한 구조를 보여주며, implements 에 대한 구조는 보�
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;svn-commit(&lt;code&gt;Ctrl + Alt + C&lt;/code&gt;), svn-update(&lt;code&gt;Ctrl + Alt + U&lt;/code&gt;) 에 대한 단축키도 익혀두시면 좋겠습니다.&lt;/p&gt;
- &lt;img src=&#34;/images/dev-note/20211203-eclipse_shortcut_13.png&#34; width=&#34;400&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;/images/dev-note/20211203-eclipse_shortcut_13.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
+ &lt;img src=&#34;/images/localenv/20211203-eclipse_shortcut_13.png&#34; width=&#34;400&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;/images/localenv/20211203-eclipse_shortcut_13.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;br&gt;
@@ -221,9 +221,9 @@ extends 에 대한 구조를 보여주며, implements 에 대한 구조는 보�
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;두 가지 case 에 대한 예시 입니다.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;# e.g 
-employName 은 camelcase 이고, employ_name 는 underscore-case 입니다.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;# e.g 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;employName 은 camelcase 이고, employ_name 는 underscore-case 입니다.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;oracle 에서는 컬럼에 대해 대소문자가 구분이되지 않기 때문에 underscore-case 표기법을 사용하게 됩니다.&lt;br&gt;
 java 에서는 oracle 컬럼에 대응되는 변수를 생성할 때&lt;br&gt;
@@ -231,7 +231,7 @@ camelcase 를 사용하는 경우가 일반적이므로 이 기능의 활용도�
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;사용법은 변환할 문자열을 블록 선택한 다음 &lt;code&gt;Ctrl + Alt + K&lt;/code&gt; 를 입력하면 됩니다.&lt;/p&gt;
- &lt;img src=&#34;/images/dev-note/20211203-eclipse_shortcut_19.png&#34;&gt;
+ &lt;img src=&#34;/images/localenv/20211203-eclipse_shortcut_19.png&#34;&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;br&gt;
@@ -242,8 +242,8 @@ camelcase 를 사용하는 경우가 일반적이므로 이 기능의 활용도�
 &lt;p&gt;사용자 지정 단축키는 &lt;code&gt;User&lt;/code&gt; 부분에 &lt;code&gt;U&lt;/code&gt; 라고 표시가 되어 있습니다.&lt;/p&gt;
 &lt;p&gt;만일 기존 단축키와 충돌이 발생할 경우 &lt;code&gt;C&lt;/code&gt; 라는 문자가 같이 포함되어 있으며,&lt;/p&gt;
 &lt;p&gt;해제 하고자 하는 명령을 선택하고 &lt;code&gt;Unbind Command&lt;/code&gt; 버튼을 클릭하면 해제할 수 있게 됩니다.&lt;/p&gt;
-&lt;img src=&#34;/images/dev-note/20211203-eclipse_shortcut_5.png&#34; width=&#34;600&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;/images/dev-note/20211203-eclipse_shortcut_5.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
+&lt;img src=&#34;/images/localenv/20211203-eclipse_shortcut_5.png&#34; width=&#34;600&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;/images/localenv/20211203-eclipse_shortcut_5.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
 &lt;h4 id=&#34;41-ctrl--alt--h-&#34;&gt;4.1 Ctrl + Alt + H (★★☆)&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -251,8 +251,8 @@ camelcase 를 사용하는 경우가 일반적이므로 이 기능의 활용도�
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;특정 파일을 편집 상태에서도 &lt;code&gt;Ctrl + Alt + H&lt;/code&gt; 를 입력하면, 편집 중인 파일의 svn-history 를 볼 수 있습니다.&lt;/p&gt;
- &lt;img src=&#34;/images/dev-note/20211203-eclipse_shortcut_6.png&#34; width=&#34;600&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;/images/dev-note/20211203-eclipse_shortcut_6.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
+ &lt;img src=&#34;/images/localenv/20211203-eclipse_shortcut_6.png&#34; width=&#34;600&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;/images/localenv/20211203-eclipse_shortcut_6.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;br&gt;
@@ -267,8 +267,8 @@ camelcase 를 사용하는 경우가 일반적이므로 이 기능의 활용도�
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;java 파일을 editing 하는 상태에서 &lt;code&gt;Alt + C&lt;/code&gt; 를 입력하면 현재 파일을 포함하는 프로젝트가 Clean 대상으로 체크됩니다.&lt;/p&gt;
- &lt;img src=&#34;/images/dev-note/20211203-eclipse_shortcut_11.png&#34; width=&#34;600&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;/images/dev-note/20211203-eclipse_shortcut_11.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
+ &lt;img src=&#34;/images/localenv/20211203-eclipse_shortcut_11.png&#34; width=&#34;600&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;/images/localenv/20211203-eclipse_shortcut_11.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;br&gt;
@@ -285,26 +285,26 @@ camelcase 를 사용하는 경우가 일반적이므로 이 기능의 활용도�
 &lt;h4 id=&#34;51-설정창-이동&#34;&gt;5.1 설정창 이동&lt;/h4&gt;
 &lt;p&gt;이클립스 상단 context 메뉴에서 &lt;code&gt;Window&lt;/code&gt; &amp;gt; &lt;code&gt;Preferences&lt;/code&gt; 를 선택합니다. (Preferences 창이 열림)&lt;/p&gt;
 &lt;p&gt;Preferences 창에서 &lt;code&gt;General&lt;/code&gt; &amp;gt; &lt;code&gt;Keys&lt;/code&gt; 를 선택하면 단축키 설정 화면이 보입니다.&lt;/p&gt;
-&lt;img src=&#34;/images/dev-note/20211203-eclipse_shortcut_1.png&#34; width=&#34;500&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;/images/dev-note/20211203-eclipse_shortcut_1.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
+&lt;img src=&#34;/images/localenv/20211203-eclipse_shortcut_1.png&#34; width=&#34;500&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;/images/localenv/20211203-eclipse_shortcut_1.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
 &lt;br&gt;
 &lt;br&gt;
 &lt;h4 id=&#34;52-binding-상태-확인&#34;&gt;5.2 binding 상태 확인&lt;/h4&gt;
 &lt;p&gt;검색 영역에서 &lt;code&gt;binding&lt;/code&gt; 으로도 검색이 가능합니다.&lt;/p&gt;
-&lt;img src=&#34;/images/dev-note/20211203-eclipse_shortcut_2.png&#34; width=&#34;500&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;/images/dev-note/20211203-eclipse_shortcut_2.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
+&lt;img src=&#34;/images/localenv/20211203-eclipse_shortcut_2.png&#34; width=&#34;500&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;/images/localenv/20211203-eclipse_shortcut_2.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
 &lt;br&gt;
 &lt;br&gt;
 &lt;h4 id=&#34;53-단축키-변경&#34;&gt;5.3 단축키 변경&lt;/h4&gt;
 &lt;p&gt;단축키를 변경하기 위해서는 &lt;code&gt;Binding&lt;/code&gt; 에서 단축키를 직접 입력합니다.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;When&lt;/code&gt; 은 &lt;code&gt;In Windows&lt;/code&gt; 를 선택해주세요.&lt;/p&gt;
-&lt;img src=&#34;/images/dev-note/20211203-eclipse_shortcut_3.png&#34; width=&#34;500&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;/images/dev-note/20211203-eclipse_shortcut_3.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
+&lt;img src=&#34;/images/localenv/20211203-eclipse_shortcut_3.png&#34; width=&#34;500&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;/images/localenv/20211203-eclipse_shortcut_3.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;참고로 &lt;code&gt;Editing Text&lt;/code&gt; 일 경우 텍스트를 편집할 때에만 적용된다는 의미가 됩니다.&lt;/p&gt;
 &lt;p&gt;아래는 기존 단축키를 유지하면서 새로운 단축키를 하나 더 설정하는 방법입니다.&lt;/p&gt;
 &lt;p&gt;(이클립스에 기본으로 Binding 된 단축키는 가급적이면 그대로 유지할 것을 권합니다.)&lt;/p&gt;
-&lt;img src=&#34;/images/dev-note/20211203-eclipse_shortcut_4.png&#34; width=&#34;500&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;/images/dev-note/20211203-eclipse_shortcut_4.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
+&lt;img src=&#34;/images/localenv/20211203-eclipse_shortcut_4.png&#34; width=&#34;500&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;/images/localenv/20211203-eclipse_shortcut_4.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
 &lt;br&gt;
 &lt;br&gt;
 &lt;h4 id=&#34;54-ctrl--shift--l&#34;&gt;5.4 Ctrl + Shift + L&lt;/h4&gt;
@@ -314,8 +314,8 @@ camelcase 를 사용하는 경우가 일반적이므로 이 기능의 활용도�
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;한 번 더 &lt;code&gt;Ctrl + Shift + L&lt;/code&gt; 를 입력하면 단축키 설정 창을 open 합니다.&lt;/p&gt;
- &lt;img src=&#34;/images/dev-note/20211203-eclipse_shortcut_10.png&#34; width=&#34;500&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;/images/dev-note/20211203-eclipse_shortcut_10.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;
+ &lt;img src=&#34;/images/localenv/20211203-eclipse_shortcut_10.png&#34; width=&#34;500&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;/images/localenv/20211203-eclipse_shortcut_10.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;
 &lt;br&gt;
 &lt;br&gt;&lt;/p&gt;
 &lt;/li&gt;
@@ -334,16 +334,16 @@ camelcase 를 사용하는 경우가 일반적이므로 이 기능의 활용도�
         
         
         &lt;h4 id=&#34;git-remote&#34;&gt;git-remote&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ git remote -v
-origin  https://github.com/lislroow/dlog.git (fetch)
-origin  https://github.com/lislroow/dlog.git (push)
-
-$ git remote set-url origin git@github.com:lislroow/dlog.git
-
-$ git remote -v
-origin  git@github.com:lislroow/dlog.git (fetch)
-origin  git@github.com:lislroow/dlog.git (push)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;git-log&#34;&gt;git-log&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git remote -v
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;origin  https://github.com/lislroow/dlog.git (fetch)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;origin  https://github.com/lislroow/dlog.git (push)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git remote set-url origin git@github.com:lislroow/dlog.git
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git remote -v
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;origin  git@github.com:lislroow/dlog.git (fetch)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;origin  git@github.com:lislroow/dlog.git (push)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;git-log&#34;&gt;git-log&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;git log --branches --not --remotes&lt;/code&gt;: commit 목록 중 원격지에 push 하지 않은 항목 출력&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;git log --oneline --graph&lt;/code&gt;: commit 목록을 1 line 으로 출력하면서 graph 로 표시&lt;/li&gt;
@@ -496,10 +496,10 @@ origin  git@github.com:lislroow/dlog.git (push)
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;git commit --amend&lt;/code&gt;: Index 에 추가된 항목으로 commit 을 재작성&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ git commit -m &amp;#39;메시지&amp;#39;
-$ git add forgotten_file
-$ git commit --amend
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;git-ls-files&#34;&gt;git-ls-files&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git commit -m &amp;#39;메시지&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git add forgotten_file
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git commit --amend
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;git-ls-files&#34;&gt;git-ls-files&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;git ls-files -s&lt;/code&gt;: (Index)&lt;/li&gt;
 &lt;/ul&gt;

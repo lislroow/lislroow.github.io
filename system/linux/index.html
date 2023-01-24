@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en" class="no-js">
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.92.1" />
+<meta name="generator" content="Hugo 0.110.0">
 <meta name="robots" content="index, follow">
 
 
@@ -19,22 +19,21 @@
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
 <title>linux | dlog</title>
-<meta name="description" content="systemd
-systemd 는 centos 7 부터 포함된 기능입니다.
+<meta name="description" content="systemd systemd 는 centos 7 부터 포함된 기능입니다.
 /etc/init.d 에서 서비스를 관리했던 것을 systemd 로 관리하게 되었습니다.
 실행 명령어는 systemctl 입니다.
-서비스 생성
-새로운 서비스를 등록할 경우 아래 템플릿으로 파일을  …">
+서비스 생성 새로운 서비스를 등록할 경우 아래 템플릿으로 파일을 생성합니다.
+파일경로: /etc/systemd/system/{서비스명}.service [root@develop /etc/systemd/system]$ cat jenkins.service [Unit] Description=Jenkins After=network.target syslog.target [Service] Type=forking User=jenkins Group=ci ExecStart=/prod/jenkins/jenkins.sh start ExecStop=/prod/jenkins/jenkins.sh stop Restart=on-abort [Install] WantedBy=multi-user.target [root@develop /etc/systemd/system]$ yum 으로 패키지 설치시 systemctl 에 등록된 정보를 아래와 같은 방법으로 확인합니다.
+[root@develop /etc/systemd/system]$ systemctl --help systemctl [OPTIONS.">
 <meta property="og:title" content="linux" />
 <meta property="og:description" content="systemd systemd 는 centos 7 부터 포함된 기능입니다.
 /etc/init.d 에서 서비스를 관리했던 것을 systemd 로 관리하게 되었습니다.
 실행 명령어는 systemctl 입니다.
 서비스 생성 새로운 서비스를 등록할 경우 아래 템플릿으로 파일을 생성합니다.
- 파일경로: /etc/systemd/system/{서비스명}.service  [root@develop /etc/systemd/system]$ cat jenkins.service [Unit] Description=Jenkins After=network.target syslog.target [Service] Type=forking User=jenkins Group=ci ExecStart=/prod/jenkins/jenkins.sh start ExecStop=/prod/jenkins/jenkins.sh stop Restart=on-abort [Install] WantedBy=multi-user.target [root@develop /etc/systemd/system]$ yum 으로 패키지 설치시 systemctl 에 등록된 정보를 아래와 같은 방법으로 확인합니다.
+파일경로: /etc/systemd/system/{서비스명}.service [root@develop /etc/systemd/system]$ cat jenkins.service [Unit] Description=Jenkins After=network.target syslog.target [Service] Type=forking User=jenkins Group=ci ExecStart=/prod/jenkins/jenkins.sh start ExecStop=/prod/jenkins/jenkins.sh stop Restart=on-abort [Install] WantedBy=multi-user.target [root@develop /etc/systemd/system]$ yum 으로 패키지 설치시 systemctl 에 등록된 정보를 아래와 같은 방법으로 확인합니다.
 [root@develop /etc/systemd/system]$ systemctl --help systemctl [OPTIONS." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/system/linux/" /><meta property="article:section" content="system" />
-
 
 
 <meta itemprop="name" content="linux">
@@ -42,7 +41,7 @@ systemd 는 centos 7 부터 포함된 기능입니다.
 /etc/init.d 에서 서비스를 관리했던 것을 systemd 로 관리하게 되었습니다.
 실행 명령어는 systemctl 입니다.
 서비스 생성 새로운 서비스를 등록할 경우 아래 템플릿으로 파일을 생성합니다.
- 파일경로: /etc/systemd/system/{서비스명}.service  [root@develop /etc/systemd/system]$ cat jenkins.service [Unit] Description=Jenkins After=network.target syslog.target [Service] Type=forking User=jenkins Group=ci ExecStart=/prod/jenkins/jenkins.sh start ExecStop=/prod/jenkins/jenkins.sh stop Restart=on-abort [Install] WantedBy=multi-user.target [root@develop /etc/systemd/system]$ yum 으로 패키지 설치시 systemctl 에 등록된 정보를 아래와 같은 방법으로 확인합니다.
+파일경로: /etc/systemd/system/{서비스명}.service [root@develop /etc/systemd/system]$ cat jenkins.service [Unit] Description=Jenkins After=network.target syslog.target [Service] Type=forking User=jenkins Group=ci ExecStart=/prod/jenkins/jenkins.sh start ExecStop=/prod/jenkins/jenkins.sh stop Restart=on-abort [Install] WantedBy=multi-user.target [root@develop /etc/systemd/system]$ yum 으로 패키지 설치시 systemctl 에 등록된 정보를 아래와 같은 방법으로 확인합니다.
 [root@develop /etc/systemd/system]$ systemctl --help systemctl [OPTIONS.">
 
 <meta itemprop="wordCount" content="472">
@@ -52,102 +51,45 @@ systemd 는 centos 7 부터 포함된 기능입니다.
 /etc/init.d 에서 서비스를 관리했던 것을 systemd 로 관리하게 되었습니다.
 실행 명령어는 systemctl 입니다.
 서비스 생성 새로운 서비스를 등록할 경우 아래 템플릿으로 파일을 생성합니다.
- 파일경로: /etc/systemd/system/{서비스명}.service  [root@develop /etc/systemd/system]$ cat jenkins.service [Unit] Description=Jenkins After=network.target syslog.target [Service] Type=forking User=jenkins Group=ci ExecStart=/prod/jenkins/jenkins.sh start ExecStop=/prod/jenkins/jenkins.sh stop Restart=on-abort [Install] WantedBy=multi-user.target [root@develop /etc/systemd/system]$ yum 으로 패키지 설치시 systemctl 에 등록된 정보를 아래와 같은 방법으로 확인합니다.
+파일경로: /etc/systemd/system/{서비스명}.service [root@develop /etc/systemd/system]$ cat jenkins.service [Unit] Description=Jenkins After=network.target syslog.target [Service] Type=forking User=jenkins Group=ci ExecStart=/prod/jenkins/jenkins.sh start ExecStop=/prod/jenkins/jenkins.sh stop Restart=on-abort [Install] WantedBy=multi-user.target [root@develop /etc/systemd/system]$ yum 으로 패키지 설치시 systemctl 에 등록된 정보를 아래와 같은 방법으로 확인합니다.
 [root@develop /etc/systemd/system]$ systemctl --help systemctl [OPTIONS."/>
 
 
 
 
-<link rel="preload" href="/scss/main.min.605941b10b594481991cd827b8a615a282d76d5a0d20968050c39715a5edf557.css" as="style">
-<link href="/scss/main.min.605941b10b594481991cd827b8a615a282d76d5a0d20968050c39715a5edf557.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.scss" as="style">
+<link href="/scss/main.scss" rel="stylesheet" integrity="">
 
 <script
   src="https://code.jquery.com/jquery-3.6.0.min.js"
   integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
   crossorigin="anonymous"></script>
-<script
-  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
-  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
-  crossorigin="anonymous"></script>
 
   </head>
   <body class="td-page">
     <header>
-      
-<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
-        <a class="navbar-brand" href="/">
-		<span class="navbar-logo"></span><span class="font-weight-bold">dlog</span>
-	</a>
-	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
-		<ul class="navbar-nav mt-2 mt-lg-0">
-			
-			
-			<li class="nav-item mr-4 mb-2 mb-lg-0">
-				
-				
-				
-				
-				
-				
-				
-				
-				<a class="nav-link active" href="/system/" ><i class='fas fa-book'></i><span class="active">system</span></a>
-			</li>
-			
-			<li class="nav-item mr-4 mb-2 mb-lg-0">
-				
-				
-				
-				
-				
-				
-				
-				
-				<a class="nav-link" href="/localenv/" ><i class='fas fa-book'></i><span>localenv</span></a>
-			</li>
-			
-			<li class="nav-item mr-4 mb-2 mb-lg-0">
-				
-				
-				
-				
-				
-				
-				
-				
-				<a class="nav-link" href="/language/" ><i class='fas fa-book'></i><span>language</span></a>
-			</li>
-			
-			<li class="nav-item mr-4 mb-2 mb-lg-0">
-				
-				
-				
-				
-				
-				
-				
-				
-				<a class="nav-link" href="/elk/" ><i class='fas fa-book'></i><span>ELK</span></a>
-			</li>
-			
-			
-			
-		</ul>
-	</div>
-	<div class="navbar-nav d-none d-lg-block"><input
-  type="search"
-  class="form-control td-search-input"
-  placeholder="&#xf002; Search this site…"
-  aria-label="Search this site…"
-  autocomplete="off"
-  
-  data-offline-search-index-json-src="/offline-search-index.929a67c593144705c6c32db9a4a6340f.json"
-  data-offline-search-base-href="/"
-  data-offline-search-max-results="10"
->
-</div>
+      <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+  <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"></span><span class="navbar-brand__name">dlog</span></a>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav mt-2 mt-lg-0">
+      <li class="nav-item me-4 mb-2 mb-lg-0">
+        <a class="nav-link active" href="/system/"><i class='fas fa-book'></i><span class="active">system</span></a>
+      </li>
+      <li class="nav-item me-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/localenv/"><i class='fas fa-book'></i><span>localenv</span></a>
+      </li>
+      <li class="nav-item me-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/language/"><i class='fas fa-book'></i><span>language</span></a>
+      </li>
+      <li class="nav-item me-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/elk/"><i class='fas fa-book'></i><span>ELK</span></a>
+      </li>
+      </ul>
+  </div>
+  <div class="navbar-nav d-none d-lg-block">
+    
+  </div>
 </nav>
-
     </header>
     <div class="container-fluid td-outer">
       <div class="td-main">
@@ -156,56 +98,34 @@ systemd 는 centos 7 부터 포함된 기능입니다.
             
 <div id="td-sidebar-menu" class="td-sidebar__inner">
   <form class="td-sidebar__search d-flex align-items-center">
-    <input
-  type="search"
-  class="form-control td-search-input"
-  placeholder="&#xf002; Search this site…"
-  aria-label="Search this site…"
-  autocomplete="off"
-  
-  data-offline-search-index-json-src="/offline-search-index.929a67c593144705c6c32db9a4a6340f.json"
-  data-offline-search-base-href="/"
-  data-offline-search-max-results="10"
->
-
-    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ms-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
     </button>
   </form>
   <nav class="collapse td-sidebar-nav" id="td-section-nav">
     <ul class="td-sidebar-nav__section pr-md-3 ul-0">
       <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-system-li">
-  
   <a href="/system/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-system"><span class="">system</span></a>
   <ul class="ul-1">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemcentos8-li">
-  
   <a href="/system/centos8/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemcentos8"><span class="">centos8</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemcurl-li">
-  
   <a href="/system/curl/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemcurl"><span class="">curl</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemelk-li">
-  
   <a href="/system/elk/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemelk"><span class="">ELK</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemhttpd-li">
-  
   <a href="/system/httpd/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemhttpd"><span class="">httpd</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemjenkins-li">
-  
   <a href="/system/jenkins/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemjenkins"><span class="">jenkins</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemkibana-li">
-  
   <a href="/system/kibana/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemkibana"><span class="">kibana</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-systemlinux-li">
-  
   <a href="/system/linux/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-systemlinux"><span class="td-sidebar-nav-active-item">linux</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemopenssh-li">
-  
   <a href="/system/openssh/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemopenssh"><span class="">openssh</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemoracle12c-li">
-  
   <a href="/system/oracle12c/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemoracle12c"><span class="">oracle12c</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemtar-li">
-  
   <a href="/system/tar/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemtar"><span class="">tar</span></a>
 </li>
   </ul>
@@ -215,16 +135,14 @@ systemd 는 centos 7 부터 포함된 기능입니다.
 </div>
 
           </aside>
-          <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+          <aside class="d-none d-xl-block col-xl-3 td-sidebar-toc d-print-none">
             
-<div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
+<div class="td-page-meta ms-2 pb-1 pt-2 mb-0">
 
 </div>
 
-            
-
-
-<div class="td-toc"><nav id="TableOfContents">
+            <div class="td-toc">
+        <nav id="TableOfContents">
   <ul>
     <li><a href="#systemd">systemd</a>
       <ul>
@@ -237,45 +155,14 @@ systemd 는 centos 7 부터 포함된 기능입니다.
     <li><a href="#hostname">hostname</a></li>
     <li><a href="#shell">shell</a></li>
   </ul>
-</nav></div>
-
-
-
-            
-
-	
-		
-
-
-
-  
-  
-
-	
-		
-
-
-
-  
-  
-
-	
-
-          </aside>
-          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
-            
-  
-
-            <nav aria-label="breadcrumb" class="td-breadcrumbs">
-  <ol class="breadcrumb">
-  <li class="breadcrumb-item">
-    <a href="/system/">system</a>
-  </li>
-  <li class="breadcrumb-item active" aria-current="page">
-    <a href="/system/linux/">linux</a>
-  </li>
-  </ol>
 </nav>
+      </div>
+    
+            
+          </aside>
+          <main class="col-12 col-md-9 col-xl-7 pl-md-5" role="main">
+            
+            
             
 <div class="td-content">
 	<h1>linux</h1>
@@ -304,112 +191,112 @@ systemd 는 centos 7 부터 포함된 기능입니다.
 <ul>
 <li>파일경로: <code>/etc/systemd/system/{서비스명}.service</code></li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@develop /etc/systemd/system]$ cat jenkins.service
-[Unit]
-Description=Jenkins
-After=network.target syslog.target
-
-[Service]
-Type=forking
-User=jenkins
-Group=ci
-
-ExecStart=/prod/jenkins/jenkins.sh start
-ExecStop=/prod/jenkins/jenkins.sh stop
-
-Restart=on-abort
-
-[Install]
-WantedBy=multi-user.target
-[root@develop /etc/systemd/system]$
-</code></pre></div><p>yum 으로 패키지 설치시 systemctl 에 등록된 정보를 아래와 같은 방법으로 확인합니다.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@develop /etc/systemd/system]$ systemctl --help
-systemctl [OPTIONS...] {COMMAND} ...
-
-Unit Commands:
-  list-units [PATTERN...]         List loaded units
-
-[root@develop /etc/systemd/system]$ systemctl list-units | grep httpd
-httpd.service                                                                        loaded active running   The Apache HTTP Server
-[root@develop /etc/systemd/system]$
-[root@develop /etc/systemd/system]$ systemctl status httpd.service
-● httpd.service - The Apache HTTP Server
-   Loaded: loaded (/usr/lib/systemd/system/httpd.service; enabled; vendor preset: disabled)
-[root@develop /etc/systemd/system]$
-</code></pre></div><p>httpd 의 서비스 파일은 <code>/usr/lib/systemd/system/httpd.service</code> 에 있음을 확인할 수 있습니다.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>[root@develop /etc/systemd/system]$ cat jenkins.service
+</span></span><span style="display:flex;"><span>[Unit]
+</span></span><span style="display:flex;"><span>Description=Jenkins
+</span></span><span style="display:flex;"><span>After=network.target syslog.target
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[Service]
+</span></span><span style="display:flex;"><span>Type=forking
+</span></span><span style="display:flex;"><span>User=jenkins
+</span></span><span style="display:flex;"><span>Group=ci
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ExecStart=/prod/jenkins/jenkins.sh start
+</span></span><span style="display:flex;"><span>ExecStop=/prod/jenkins/jenkins.sh stop
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Restart=on-abort
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[Install]
+</span></span><span style="display:flex;"><span>WantedBy=multi-user.target
+</span></span><span style="display:flex;"><span>[root@develop /etc/systemd/system]$
+</span></span></code></pre></div><p>yum 으로 패키지 설치시 systemctl 에 등록된 정보를 아래와 같은 방법으로 확인합니다.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>[root@develop /etc/systemd/system]$ systemctl --help
+</span></span><span style="display:flex;"><span>systemctl [OPTIONS...] {COMMAND} ...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Unit Commands:
+</span></span><span style="display:flex;"><span>  list-units [PATTERN...]         List loaded units
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[root@develop /etc/systemd/system]$ systemctl list-units | grep httpd
+</span></span><span style="display:flex;"><span>httpd.service                                                                        loaded active running   The Apache HTTP Server
+</span></span><span style="display:flex;"><span>[root@develop /etc/systemd/system]$
+</span></span><span style="display:flex;"><span>[root@develop /etc/systemd/system]$ systemctl status httpd.service
+</span></span><span style="display:flex;"><span>● httpd.service - The Apache HTTP Server
+</span></span><span style="display:flex;"><span>   Loaded: loaded (/usr/lib/systemd/system/httpd.service; enabled; vendor preset: disabled)
+</span></span><span style="display:flex;"><span>[root@develop /etc/systemd/system]$
+</span></span></code></pre></div><p>httpd 의 서비스 파일은 <code>/usr/lib/systemd/system/httpd.service</code> 에 있음을 확인할 수 있습니다.</p>
 <h3 id="서비스-등록">서비스 등록</h3>
 <p>서비스 파일을 생성한 다음 systemctl 에 등록을 해야 합니다.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@develop /etc/systemd/system]$ systemctl --help | grep reload
-     --no-reload      Don&#39;t reload daemon after en-/dis-abling unit files
-  reload NAME...                  Reload one or more units
-  reload-or-restart NAME...       Reload one or more units if possible,
-  reload-or-try-restart NAME...   Reload one or more units if possible,
-  daemon-reload                   Reload systemd manager configuration
-[root@develop /etc/systemd/system]$
-[root@develop /etc/systemd/system]$ systemctl daemon-reload
-[root@develop /etc/systemd/system]$
-</code></pre></div><p><code>systemctl daemon-reload</code> 명령으로 reload 를 합니다.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>[root@develop /etc/systemd/system]$ systemctl --help | grep reload
+</span></span><span style="display:flex;"><span>     --no-reload      Don&#39;t reload daemon after en-/dis-abling unit files
+</span></span><span style="display:flex;"><span>  reload NAME...                  Reload one or more units
+</span></span><span style="display:flex;"><span>  reload-or-restart NAME...       Reload one or more units if possible,
+</span></span><span style="display:flex;"><span>  reload-or-try-restart NAME...   Reload one or more units if possible,
+</span></span><span style="display:flex;"><span>  daemon-reload                   Reload systemd manager configuration
+</span></span><span style="display:flex;"><span>[root@develop /etc/systemd/system]$
+</span></span><span style="display:flex;"><span>[root@develop /etc/systemd/system]$ systemctl daemon-reload
+</span></span><span style="display:flex;"><span>[root@develop /etc/systemd/system]$
+</span></span></code></pre></div><p><code>systemctl daemon-reload</code> 명령으로 reload 를 합니다.</p>
 <h3 id="서비스-활성화">서비스 활성화</h3>
 <p>서비스 활성화 상태로 설정을 하게되면 os booting 시 자동으로 실행이 됩니다.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@develop /etc/systemd/system]$ systemctl --help | grep enable
-     --preset-mode=   Apply only enable, only disable, or all presets
-  enable NAME...                  Enable one or more unit files
-  reenable NAME...                Reenable one or more unit files
-  is-enabled NAME...              Check whether unit files are enabled
-[root@develop /etc/systemd/system]$
-[root@develop /etc/systemd/system]$ systemctl is-enabled orcl@oracledb.service
-enabled
-[root@develop /etc/systemd/system]$ systemctl is-enabled httpd.service
-enabled
-[root@develop /etc/systemd/system]$
-</code></pre></div><p><code>systemctl enable {서비스}</code> 명령으로 enabled 상태로 설정합니다.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>[root@develop /etc/systemd/system]$ systemctl --help | grep enable
+</span></span><span style="display:flex;"><span>     --preset-mode=   Apply only enable, only disable, or all presets
+</span></span><span style="display:flex;"><span>  enable NAME...                  Enable one or more unit files
+</span></span><span style="display:flex;"><span>  reenable NAME...                Reenable one or more unit files
+</span></span><span style="display:flex;"><span>  is-enabled NAME...              Check whether unit files are enabled
+</span></span><span style="display:flex;"><span>[root@develop /etc/systemd/system]$
+</span></span><span style="display:flex;"><span>[root@develop /etc/systemd/system]$ systemctl is-enabled orcl@oracledb.service
+</span></span><span style="display:flex;"><span>enabled
+</span></span><span style="display:flex;"><span>[root@develop /etc/systemd/system]$ systemctl is-enabled httpd.service
+</span></span><span style="display:flex;"><span>enabled
+</span></span><span style="display:flex;"><span>[root@develop /etc/systemd/system]$
+</span></span></code></pre></div><p><code>systemctl enable {서비스}</code> 명령으로 enabled 상태로 설정합니다.</p>
 <h2 id="network">network</h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#ce5c00;font-weight:bold">[</span>root@develop ~<span style="color:#ce5c00;font-weight:bold">]</span>$ cat /etc/sysconfig/network-scripts/ifcfg-ens32
-<span style="color:#000">TYPE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;Ethernet&#34;</span>
-<span style="color:#000">PROXY_METHOD</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;none&#34;</span>
-<span style="color:#000">BROWSER_ONLY</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;no&#34;</span>
-<span style="color:#000">BOOTPROTO</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;none&#34;</span>
-<span style="color:#000">DEFROUTE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;yes&#34;</span>
-<span style="color:#000">IPV4_FAILURE_FATAL</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;no&#34;</span>
-<span style="color:#000">IPV6INIT</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;no&#34;</span>
-<span style="color:#000">IPV6_AUTOCONF</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;yes&#34;</span>
-<span style="color:#000">IPV6_DEFROUTE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;yes&#34;</span>
-<span style="color:#000">IPV6_FAILURE_FATAL</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;no&#34;</span>
-<span style="color:#000">IPV6_ADDR_GEN_MODE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;stable-privacy&#34;</span>
-<span style="color:#000">NAME</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;ens32&#34;</span>
-<span style="color:#000">UUID</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;d18679f4-c760-4621-b73a-8e7b513594a7&#34;</span>
-<span style="color:#000">DEVICE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;ens32&#34;</span>
-<span style="color:#000">ONBOOT</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;yes&#34;</span>
-<span style="color:#000">IPADDR</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;172.28.200.20&#34;</span>
-<span style="color:#000">PREFIX</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;24&#34;</span>
-<span style="color:#000">GATEWAY</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;172.28.200.2&#34;</span>
-<span style="color:#000">DNS1</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;8.8.8.8&#34;</span>
-<span style="color:#ce5c00;font-weight:bold">[</span>root@develop ~<span style="color:#ce5c00;font-weight:bold">]</span>$
-</code></pre></div><h2 id="hostname">hostname</h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@develop ~]$ hostnamectl set-hostname develop
-[root@develop ~]$
-</code></pre></div><h2 id="shell">shell</h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[ -z ] : 문자열의 길이가 0이면 참
-[ -n ] : 문자열의 길이가 0이 아니면 참
-[ -eq ] : 값이 같으면 참
-[ -ne ] : 값이 다르면 참
-[ -gt ] :  값1 &gt; 값2
-[ -ge ] : 값1  &gt;= 값2
-[ -lt ] : 값1 &lt; 값2
-[ -le ] : 값1 &lt;= 값2
-[ -a ] : &amp;&amp;연산과 동일 and 연산
-[ -o ] : ||연산과 동일 xor 연산
-[ -d ] : 파일이 디렉토리면 참
-[ -e ] : 파일이 있으면 참
-[ -L ] : 파일이 심볼릭 링크면 참
-[ -r ] : 파일이 읽기 가능하면 참
-[ -s ] : 파일의 크기가 0 보다 크면 참
-[ -w ] : 파일이 쓰기 가능하면 참
-[ -x ] : 파일이 실행 가능하면 참
-[ 파일1 -nt 파일2 ] : 파일1이 파일2보다 최신파일이면 참
-[ 파일1 -ot 파일2 ] : 파일1이 파일2보다 이전파일이면 참
-[ 파일1 -ef 파일2 ] : 파일1이 파일2랑 같은 파일이면 참
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">[</span>root@develop ~<span style="color:#ce5c00;font-weight:bold">]</span>$ cat /etc/sysconfig/network-scripts/ifcfg-ens32
+</span></span><span style="display:flex;"><span><span style="color:#000">TYPE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;Ethernet&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">PROXY_METHOD</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;none&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">BROWSER_ONLY</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;no&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">BOOTPROTO</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;none&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">DEFROUTE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;yes&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">IPV4_FAILURE_FATAL</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;no&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">IPV6INIT</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;no&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">IPV6_AUTOCONF</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;yes&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">IPV6_DEFROUTE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;yes&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">IPV6_FAILURE_FATAL</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;no&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">IPV6_ADDR_GEN_MODE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;stable-privacy&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">NAME</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;ens32&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">UUID</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;d18679f4-c760-4621-b73a-8e7b513594a7&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">DEVICE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;ens32&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">ONBOOT</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;yes&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">IPADDR</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;172.28.200.20&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">PREFIX</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;24&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">GATEWAY</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;172.28.200.2&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">DNS1</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;8.8.8.8&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">[</span>root@develop ~<span style="color:#ce5c00;font-weight:bold">]</span>$
+</span></span></code></pre></div><h2 id="hostname">hostname</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>[root@develop ~]$ hostnamectl set-hostname develop
+</span></span><span style="display:flex;"><span>[root@develop ~]$
+</span></span></code></pre></div><h2 id="shell">shell</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>[ -z ] : 문자열의 길이가 0이면 참
+</span></span><span style="display:flex;"><span>[ -n ] : 문자열의 길이가 0이 아니면 참
+</span></span><span style="display:flex;"><span>[ -eq ] : 값이 같으면 참
+</span></span><span style="display:flex;"><span>[ -ne ] : 값이 다르면 참
+</span></span><span style="display:flex;"><span>[ -gt ] :  값1 &gt; 값2
+</span></span><span style="display:flex;"><span>[ -ge ] : 값1  &gt;= 값2
+</span></span><span style="display:flex;"><span>[ -lt ] : 값1 &lt; 값2
+</span></span><span style="display:flex;"><span>[ -le ] : 값1 &lt;= 값2
+</span></span><span style="display:flex;"><span>[ -a ] : &amp;&amp;연산과 동일 and 연산
+</span></span><span style="display:flex;"><span>[ -o ] : ||연산과 동일 xor 연산
+</span></span><span style="display:flex;"><span>[ -d ] : 파일이 디렉토리면 참
+</span></span><span style="display:flex;"><span>[ -e ] : 파일이 있으면 참
+</span></span><span style="display:flex;"><span>[ -L ] : 파일이 심볼릭 링크면 참
+</span></span><span style="display:flex;"><span>[ -r ] : 파일이 읽기 가능하면 참
+</span></span><span style="display:flex;"><span>[ -s ] : 파일의 크기가 0 보다 크면 참
+</span></span><span style="display:flex;"><span>[ -w ] : 파일이 쓰기 가능하면 참
+</span></span><span style="display:flex;"><span>[ -x ] : 파일이 실행 가능하면 참
+</span></span><span style="display:flex;"><span>[ 파일1 -nt 파일2 ] : 파일1이 파일2보다 최신파일이면 참
+</span></span><span style="display:flex;"><span>[ 파일1 -ot 파일2 ] : 파일1이 파일2보다 이전파일이면 참
+</span></span><span style="display:flex;"><span>[ 파일1 -ef 파일2 ] : 파일1이 파일2랑 같은 파일이면 참
+</span></span></code></pre></div>
 	
 	
 	
@@ -420,19 +307,10 @@ enabled
         </div>
       </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-    crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
-    integrity="sha512-UR25UO94eTnCVwjbXozyeVd6ZqpaAE9naiEUBK/A+QDbfSTQFhPGj5lOR6d8tsgbBk84Ggb5A3EkjsOgPRPcKA=="
-    crossorigin="anonymous"></script>
-
-
-<script src="https://cdn.jsdelivr.net/npm/mermaid@8.13.4/dist/mermaid.min.js" integrity="sha512-JERecFUBbsm75UpkVheAuDOE8NdHjQBrPACfEQYPwvPG+fjgCpHAz1Jw2ci9EXmd3DdfiWth3O3CQvcfEg8gsA==" crossorigin="anonymous"></script>
-
-
-
-<style>
+    
+        
+    
+  <style>
 .markmap > svg {
   width: 100%;
   height: 300px;
@@ -440,57 +318,34 @@ enabled
 </style>
 <script>
 window.markmap = {
-  autoLoader: { manual: true },
+  autoLoader: {
+      manual: true,
+      onReady() {
+        const { autoLoader, builtInPlugins } = window.markmap;
+        autoLoader.transformPlugins = builtInPlugins.filter(plugin => plugin.name !== 'prism');
+      },
+  },
 };
 </script>
 <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
-
-
-<script src='/js/tabpane-persist.js'></script>
-
-
-
 <script src='/js/deflate.js'></script>
-
-
-
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
-    integrity="sha512-vJqxkZ+Sugf/6WRlpcxN01qVfX/29hF6qc33eHF1va3NgoV+U+wCi+uTAsQ10sDoGyBxHLdaHvGwDlV3yVYboA==" crossorigin="anonymous">
-
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"
-    integrity="sha512-5ufNcHqOYgilGEHPfuRIQ5B/vDS1M8+UC+DESZ5CwVgGTg+b2Ol/15rYL/GiCWJ/Sx8oVo0FPFok1dPk8U9INQ=="
-    crossorigin="anonymous"></script>
-
-
-
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js"
-    integrity="sha512-HWb6LyQhO6UkmYLjdSblpgiOvvbdkoMRjln0POPhOVbZu3l4QdqwZnMJ/cuwKScU5pWARejB495TAAAz0WNsXQ=="
-    crossorigin="anonymous"></script>
-
-
-<script defer src='https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js'
-    integrity='sha512-ZA/RPrAo88DlwRnnoNVqKINnQNcWERzRK03PDaA4GIJiVZvGFIWQbdWCsUebMZfkWohnfngsDjXzU6PokO4jGw==' crossorigin='anonymous' 
-    onload='renderMathInElement(document.body, null);'></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script src="/js/main.min.107a1d3f0d9dfdbd7b6c30065c60e2534ccedea64e72f2386b6c20f924336373.js" integrity="sha256-EHodPw2d/b17bDAGXGDiU0zO3qZOcvI4a2wg&#43;SQzY3M=" crossorigin="anonymous"></script>
-
-
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/katex.min.css"
+      integrity="sha512-6VMVcy7XQNyarhVuiL50FzpgCFKsyTd6YO93aaQEyET+BNaWvj0IgKR86Bf6+AmWczxAcSnL+JGjo+iStgO1gQ==" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/katex.min.js"
+        integrity="sha512-b9IKj4LCNrtCPBhceRcoYOHWW/S2q9fpl7iAJlyxYpykRj1SKM7FE9+E0NEnJ8g8ni47LBr2GuX9qzg/xeuwzQ=="
+        crossorigin="anonymous">
+</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/contrib/mhchem.min.js"
+        integrity="sha512-V1hl0fnOXW6Cdqe5ZVqtw8TBpJVpu3XRDRQti96j/04+tMarPrCdXEUE3UdfvfKYTpOn9DV4zEZBVr0HhDiuiQ=="
+        crossorigin="anonymous">
+</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/contrib/auto-render.min.js"
+       integrity="sha512-iWiuBS5nt6r60fCz26Nd0Zqe0nbk1ZTIQbl3Kv7kYsX+yKMUFHzjaH2+AnM6vp2Xs+gNmaBAVWJjSmuPw76Efg==" crossorigin="anonymous"
+       onload='renderMathInElement(document.body, null);'>
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@9.2.2/dist/mermaid.min.js" integrity="sha512-IX+bU+wShHqfqaMHLMrtwi4nK6W/Z+QdZoL4kPNtRxI2wCLyHPMAdl3a43Fv1Foqv4AP+aiW6hg1dcrTt3xc+Q==" crossorigin="anonymous"></script>
+<script src="/js/main.min.cb60271b4607b0814d09c13d1ba59ea4ff218de622cc7a51c2403d3d292d9320.js" integrity="sha256-y2AnG0YHsIFNCcE9G6WepP8hjeYizHpRwkA9PSktkyA=" crossorigin="anonymous"></script>
+<script src='/js/tabpane-persist.js'></script>
 
   </body>
 </html>

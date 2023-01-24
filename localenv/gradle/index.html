@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en" class="no-js">
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.92.1" />
+<meta name="generator" content="Hugo 0.110.0">
 <meta name="robots" content="index, follow">
 
 
@@ -19,13 +19,11 @@
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
 <title>gradle | dlog</title>
-<meta name="description" content="다운로드
-">
+<meta name="description" content="다운로드 ">
 <meta property="og:title" content="gradle" />
 <meta property="og:description" content="다운로드 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/localenv/gradle/" /><meta property="article:section" content="localenv" />
-
 
 
 <meta itemprop="name" content="gradle">
@@ -39,96 +37,39 @@
 
 
 
-<link rel="preload" href="/scss/main.min.605941b10b594481991cd827b8a615a282d76d5a0d20968050c39715a5edf557.css" as="style">
-<link href="/scss/main.min.605941b10b594481991cd827b8a615a282d76d5a0d20968050c39715a5edf557.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.scss" as="style">
+<link href="/scss/main.scss" rel="stylesheet" integrity="">
 
 <script
   src="https://code.jquery.com/jquery-3.6.0.min.js"
   integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
   crossorigin="anonymous"></script>
-<script
-  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
-  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
-  crossorigin="anonymous"></script>
 
   </head>
   <body class="td-page">
     <header>
-      
-<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
-        <a class="navbar-brand" href="/">
-		<span class="navbar-logo"></span><span class="font-weight-bold">dlog</span>
-	</a>
-	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
-		<ul class="navbar-nav mt-2 mt-lg-0">
-			
-			
-			<li class="nav-item mr-4 mb-2 mb-lg-0">
-				
-				
-				
-				
-				
-				
-				
-				
-				<a class="nav-link" href="/system/" ><i class='fas fa-book'></i><span>system</span></a>
-			</li>
-			
-			<li class="nav-item mr-4 mb-2 mb-lg-0">
-				
-				
-				
-				
-				
-				
-				
-				
-				<a class="nav-link active" href="/localenv/" ><i class='fas fa-book'></i><span class="active">localenv</span></a>
-			</li>
-			
-			<li class="nav-item mr-4 mb-2 mb-lg-0">
-				
-				
-				
-				
-				
-				
-				
-				
-				<a class="nav-link" href="/language/" ><i class='fas fa-book'></i><span>language</span></a>
-			</li>
-			
-			<li class="nav-item mr-4 mb-2 mb-lg-0">
-				
-				
-				
-				
-				
-				
-				
-				
-				<a class="nav-link" href="/elk/" ><i class='fas fa-book'></i><span>ELK</span></a>
-			</li>
-			
-			
-			
-		</ul>
-	</div>
-	<div class="navbar-nav d-none d-lg-block"><input
-  type="search"
-  class="form-control td-search-input"
-  placeholder="&#xf002; Search this site…"
-  aria-label="Search this site…"
-  autocomplete="off"
-  
-  data-offline-search-index-json-src="/offline-search-index.929a67c593144705c6c32db9a4a6340f.json"
-  data-offline-search-base-href="/"
-  data-offline-search-max-results="10"
->
-</div>
+      <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+  <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"></span><span class="navbar-brand__name">dlog</span></a>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav mt-2 mt-lg-0">
+      <li class="nav-item me-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/system/"><i class='fas fa-book'></i><span>system</span></a>
+      </li>
+      <li class="nav-item me-4 mb-2 mb-lg-0">
+        <a class="nav-link active" href="/localenv/"><i class='fas fa-book'></i><span class="active">localenv</span></a>
+      </li>
+      <li class="nav-item me-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/language/"><i class='fas fa-book'></i><span>language</span></a>
+      </li>
+      <li class="nav-item me-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/elk/"><i class='fas fa-book'></i><span>ELK</span></a>
+      </li>
+      </ul>
+  </div>
+  <div class="navbar-nav d-none d-lg-block">
+    
+  </div>
 </nav>
-
     </header>
     <div class="container-fluid td-outer">
       <div class="td-main">
@@ -137,38 +78,22 @@
             
 <div id="td-sidebar-menu" class="td-sidebar__inner">
   <form class="td-sidebar__search d-flex align-items-center">
-    <input
-  type="search"
-  class="form-control td-search-input"
-  placeholder="&#xf002; Search this site…"
-  aria-label="Search this site…"
-  autocomplete="off"
-  
-  data-offline-search-index-json-src="/offline-search-index.929a67c593144705c6c32db9a4a6340f.json"
-  data-offline-search-base-href="/"
-  data-offline-search-max-results="10"
->
-
-    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ms-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
     </button>
   </form>
   <nav class="collapse td-sidebar-nav" id="td-section-nav">
     <ul class="td-sidebar-nav__section pr-md-3 ul-0">
       <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-localenv-li">
-  
   <a href="/localenv/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-localenv"><span class="">localenv</span></a>
   <ul class="ul-1">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-localenv04_ecb0b8eab3a0_eclipse-eb8ba8ecb695ed82a4-li">
-  
   <a href="/localenv/04_%EC%B0%B8%EA%B3%A0_eclipse-%EB%8B%A8%EC%B6%95%ED%82%A4/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-localenv04_ecb0b8eab3a0_eclipse-eb8ba8ecb695ed82a4"><span class="">04_참고_eclipse-단축키</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-localenvgit-li">
-  
   <a href="/localenv/git/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-localenvgit"><span class="">git</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-localenvgradle-li">
-  
   <a href="/localenv/gradle/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-localenvgradle"><span class="td-sidebar-nav-active-item">gradle</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-localenvintellij-li">
-  
   <a href="/localenv/intellij/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-localenvintellij"><span class="">intellij</span></a>
 </li>
   </ul>
@@ -178,16 +103,14 @@
 </div>
 
           </aside>
-          <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+          <aside class="d-none d-xl-block col-xl-3 td-sidebar-toc d-print-none">
             
-<div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
+<div class="td-page-meta ms-2 pb-1 pt-2 mb-0">
 
 </div>
 
-            
-
-
-<div class="td-toc"><nav id="TableOfContents">
+            <div class="td-toc">
+        <nav id="TableOfContents">
   <ul>
     <li>
       <ul>
@@ -199,45 +122,14 @@
       </ul>
     </li>
   </ul>
-</nav></div>
-
-
-
-            
-
-	
-		
-
-
-
-  
-  
-
-	
-		
-
-
-
-  
-  
-
-	
-
-          </aside>
-          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
-            
-  
-
-            <nav aria-label="breadcrumb" class="td-breadcrumbs">
-  <ol class="breadcrumb">
-  <li class="breadcrumb-item">
-    <a href="/localenv/">localenv</a>
-  </li>
-  <li class="breadcrumb-item active" aria-current="page">
-    <a href="/localenv/gradle/">gradle</a>
-  </li>
-  </ol>
 </nav>
+      </div>
+    
+            
+          </aside>
+          <main class="col-12 col-md-9 col-xl-7 pl-md-5" role="main">
+            
+            
             
 <div class="td-content">
 	<h1>gradle</h1>
@@ -269,19 +161,10 @@
         </div>
       </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-    crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
-    integrity="sha512-UR25UO94eTnCVwjbXozyeVd6ZqpaAE9naiEUBK/A+QDbfSTQFhPGj5lOR6d8tsgbBk84Ggb5A3EkjsOgPRPcKA=="
-    crossorigin="anonymous"></script>
-
-
-<script src="https://cdn.jsdelivr.net/npm/mermaid@8.13.4/dist/mermaid.min.js" integrity="sha512-JERecFUBbsm75UpkVheAuDOE8NdHjQBrPACfEQYPwvPG+fjgCpHAz1Jw2ci9EXmd3DdfiWth3O3CQvcfEg8gsA==" crossorigin="anonymous"></script>
-
-
-
-<style>
+    
+        
+    
+  <style>
 .markmap > svg {
   width: 100%;
   height: 300px;
@@ -289,57 +172,34 @@
 </style>
 <script>
 window.markmap = {
-  autoLoader: { manual: true },
+  autoLoader: {
+      manual: true,
+      onReady() {
+        const { autoLoader, builtInPlugins } = window.markmap;
+        autoLoader.transformPlugins = builtInPlugins.filter(plugin => plugin.name !== 'prism');
+      },
+  },
 };
 </script>
 <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
-
-
-<script src='/js/tabpane-persist.js'></script>
-
-
-
 <script src='/js/deflate.js'></script>
-
-
-
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
-    integrity="sha512-vJqxkZ+Sugf/6WRlpcxN01qVfX/29hF6qc33eHF1va3NgoV+U+wCi+uTAsQ10sDoGyBxHLdaHvGwDlV3yVYboA==" crossorigin="anonymous">
-
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"
-    integrity="sha512-5ufNcHqOYgilGEHPfuRIQ5B/vDS1M8+UC+DESZ5CwVgGTg+b2Ol/15rYL/GiCWJ/Sx8oVo0FPFok1dPk8U9INQ=="
-    crossorigin="anonymous"></script>
-
-
-
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js"
-    integrity="sha512-HWb6LyQhO6UkmYLjdSblpgiOvvbdkoMRjln0POPhOVbZu3l4QdqwZnMJ/cuwKScU5pWARejB495TAAAz0WNsXQ=="
-    crossorigin="anonymous"></script>
-
-
-<script defer src='https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js'
-    integrity='sha512-ZA/RPrAo88DlwRnnoNVqKINnQNcWERzRK03PDaA4GIJiVZvGFIWQbdWCsUebMZfkWohnfngsDjXzU6PokO4jGw==' crossorigin='anonymous' 
-    onload='renderMathInElement(document.body, null);'></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script src="/js/main.min.107a1d3f0d9dfdbd7b6c30065c60e2534ccedea64e72f2386b6c20f924336373.js" integrity="sha256-EHodPw2d/b17bDAGXGDiU0zO3qZOcvI4a2wg&#43;SQzY3M=" crossorigin="anonymous"></script>
-
-
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/katex.min.css"
+      integrity="sha512-6VMVcy7XQNyarhVuiL50FzpgCFKsyTd6YO93aaQEyET+BNaWvj0IgKR86Bf6+AmWczxAcSnL+JGjo+iStgO1gQ==" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/katex.min.js"
+        integrity="sha512-b9IKj4LCNrtCPBhceRcoYOHWW/S2q9fpl7iAJlyxYpykRj1SKM7FE9+E0NEnJ8g8ni47LBr2GuX9qzg/xeuwzQ=="
+        crossorigin="anonymous">
+</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/contrib/mhchem.min.js"
+        integrity="sha512-V1hl0fnOXW6Cdqe5ZVqtw8TBpJVpu3XRDRQti96j/04+tMarPrCdXEUE3UdfvfKYTpOn9DV4zEZBVr0HhDiuiQ=="
+        crossorigin="anonymous">
+</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/contrib/auto-render.min.js"
+       integrity="sha512-iWiuBS5nt6r60fCz26Nd0Zqe0nbk1ZTIQbl3Kv7kYsX+yKMUFHzjaH2+AnM6vp2Xs+gNmaBAVWJjSmuPw76Efg==" crossorigin="anonymous"
+       onload='renderMathInElement(document.body, null);'>
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@9.2.2/dist/mermaid.min.js" integrity="sha512-IX+bU+wShHqfqaMHLMrtwi4nK6W/Z+QdZoL4kPNtRxI2wCLyHPMAdl3a43Fv1Foqv4AP+aiW6hg1dcrTt3xc+Q==" crossorigin="anonymous"></script>
+<script src="/js/main.min.cb60271b4607b0814d09c13d1ba59ea4ff218de622cc7a51c2403d3d292d9320.js" integrity="sha256-y2AnG0YHsIFNCcE9G6WepP8hjeYizHpRwkA9PSktkyA=" crossorigin="anonymous"></script>
+<script src='/js/tabpane-persist.js'></script>
 
   </body>
 </html>

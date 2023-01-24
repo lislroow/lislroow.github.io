@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en" class="no-js">
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.92.1" />
+<meta name="generator" content="Hugo 0.110.0">
 <meta name="robots" content="index, follow">
 
 
@@ -19,27 +19,15 @@
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
 <title>httpd | dlog</title>
-<meta name="description" content="command
-loaded 모듈 목록 확인
-httpd -M
+<meta name="description" content="command loaded 모듈 목록 확인 httpd -M
 새 창 보기
-
-configure
-httpd.conf
-ServerRoot &#34;/etc/httpd&#34;
-
-Listen 80
-
-Include conf.modules.d/*.conf
-
-User apache …">
+configure httpd.conf ServerRoot &amp;#34;/etc/httpd&amp;#34; Listen 80 Include conf.modules.d/*.conf User apache Group web ServerAdmin hi@mgkim.net ServerName develop:80 &amp;lt;Directory /&amp;gt; AllowOverride none Require all denied &amp;lt;/Directory&amp;gt; DocumentRoot &amp;#34;/var/www/html&amp;#34; &amp;lt;Files &amp;#34;.ht*&amp;#34;&amp;gt; Require all denied &amp;lt;/Files&amp;gt; ErrorLog &amp;#34;/outlog/WEB/httpd/error.log&amp;#34; LogLevel warn &amp;lt;IfModule log_config_module&amp;gt; LogFormat &amp;#34;%h %l %u %t \&amp;#34;%r\&amp;#34; %&amp;gt;s %b \&amp;#34;%{Referer}i\&amp;#34; \&amp;#34;%{User-Agent}i\&amp;#34;&amp;#34; combined LogFormat &amp;#34;%h %l %u %t \&amp;#34;%r\&amp;#34; %&amp;gt;s %b&amp;#34; common &amp;lt;IfModule logio_module&amp;gt; LogFormat &amp;#34;%h %l %u %t \&amp;#34;%r\&amp;#34; %&amp;gt;s %b \&amp;#34;%{Referer}i\&amp;#34; \&amp;#34;%{User-Agent}i\&amp;#34; %I %O&amp;#34; combinedio &amp;lt;/IfModule&amp;gt; CustomLog &amp;#34;/outlog/WEB/httpd/access.">
 <meta property="og:title" content="httpd" />
 <meta property="og:description" content="command loaded 모듈 목록 확인 httpd -M
 새 창 보기
 configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modules.d/*.conf User apache Group web ServerAdmin hi@mgkim.net ServerName develop:80 &lt;Directory /&gt; AllowOverride none Require all denied &lt;/Directory&gt; DocumentRoot &#34;/var/www/html&#34; &lt;Files &#34;.ht*&#34;&gt; Require all denied &lt;/Files&gt; ErrorLog &#34;/outlog/WEB/httpd/error.log&#34; LogLevel warn &lt;IfModule log_config_module&gt; LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34;&#34; combined LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b&#34; common &lt;IfModule logio_module&gt; LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34; %I %O&#34; combinedio &lt;/IfModule&gt; CustomLog &#34;/outlog/WEB/httpd/access." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/system/httpd/" /><meta property="article:section" content="system" />
-
 
 
 <meta itemprop="name" content="httpd">
@@ -57,96 +45,39 @@ configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modu
 
 
 
-<link rel="preload" href="/scss/main.min.605941b10b594481991cd827b8a615a282d76d5a0d20968050c39715a5edf557.css" as="style">
-<link href="/scss/main.min.605941b10b594481991cd827b8a615a282d76d5a0d20968050c39715a5edf557.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.scss" as="style">
+<link href="/scss/main.scss" rel="stylesheet" integrity="">
 
 <script
   src="https://code.jquery.com/jquery-3.6.0.min.js"
   integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
   crossorigin="anonymous"></script>
-<script
-  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
-  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
-  crossorigin="anonymous"></script>
 
   </head>
   <body class="td-page">
     <header>
-      
-<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
-        <a class="navbar-brand" href="/">
-		<span class="navbar-logo"></span><span class="font-weight-bold">dlog</span>
-	</a>
-	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
-		<ul class="navbar-nav mt-2 mt-lg-0">
-			
-			
-			<li class="nav-item mr-4 mb-2 mb-lg-0">
-				
-				
-				
-				
-				
-				
-				
-				
-				<a class="nav-link active" href="/system/" ><i class='fas fa-book'></i><span class="active">system</span></a>
-			</li>
-			
-			<li class="nav-item mr-4 mb-2 mb-lg-0">
-				
-				
-				
-				
-				
-				
-				
-				
-				<a class="nav-link" href="/localenv/" ><i class='fas fa-book'></i><span>localenv</span></a>
-			</li>
-			
-			<li class="nav-item mr-4 mb-2 mb-lg-0">
-				
-				
-				
-				
-				
-				
-				
-				
-				<a class="nav-link" href="/language/" ><i class='fas fa-book'></i><span>language</span></a>
-			</li>
-			
-			<li class="nav-item mr-4 mb-2 mb-lg-0">
-				
-				
-				
-				
-				
-				
-				
-				
-				<a class="nav-link" href="/elk/" ><i class='fas fa-book'></i><span>ELK</span></a>
-			</li>
-			
-			
-			
-		</ul>
-	</div>
-	<div class="navbar-nav d-none d-lg-block"><input
-  type="search"
-  class="form-control td-search-input"
-  placeholder="&#xf002; Search this site…"
-  aria-label="Search this site…"
-  autocomplete="off"
-  
-  data-offline-search-index-json-src="/offline-search-index.929a67c593144705c6c32db9a4a6340f.json"
-  data-offline-search-base-href="/"
-  data-offline-search-max-results="10"
->
-</div>
+      <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+  <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"></span><span class="navbar-brand__name">dlog</span></a>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav mt-2 mt-lg-0">
+      <li class="nav-item me-4 mb-2 mb-lg-0">
+        <a class="nav-link active" href="/system/"><i class='fas fa-book'></i><span class="active">system</span></a>
+      </li>
+      <li class="nav-item me-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/localenv/"><i class='fas fa-book'></i><span>localenv</span></a>
+      </li>
+      <li class="nav-item me-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/language/"><i class='fas fa-book'></i><span>language</span></a>
+      </li>
+      <li class="nav-item me-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/elk/"><i class='fas fa-book'></i><span>ELK</span></a>
+      </li>
+      </ul>
+  </div>
+  <div class="navbar-nav d-none d-lg-block">
+    
+  </div>
 </nav>
-
     </header>
     <div class="container-fluid td-outer">
       <div class="td-main">
@@ -155,56 +86,34 @@ configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modu
             
 <div id="td-sidebar-menu" class="td-sidebar__inner">
   <form class="td-sidebar__search d-flex align-items-center">
-    <input
-  type="search"
-  class="form-control td-search-input"
-  placeholder="&#xf002; Search this site…"
-  aria-label="Search this site…"
-  autocomplete="off"
-  
-  data-offline-search-index-json-src="/offline-search-index.929a67c593144705c6c32db9a4a6340f.json"
-  data-offline-search-base-href="/"
-  data-offline-search-max-results="10"
->
-
-    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ms-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
     </button>
   </form>
   <nav class="collapse td-sidebar-nav" id="td-section-nav">
     <ul class="td-sidebar-nav__section pr-md-3 ul-0">
       <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-system-li">
-  
   <a href="/system/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-system"><span class="">system</span></a>
   <ul class="ul-1">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemcentos8-li">
-  
   <a href="/system/centos8/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemcentos8"><span class="">centos8</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemcurl-li">
-  
   <a href="/system/curl/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemcurl"><span class="">curl</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemelk-li">
-  
   <a href="/system/elk/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemelk"><span class="">ELK</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-systemhttpd-li">
-  
   <a href="/system/httpd/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-systemhttpd"><span class="td-sidebar-nav-active-item">httpd</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemjenkins-li">
-  
   <a href="/system/jenkins/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemjenkins"><span class="">jenkins</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemkibana-li">
-  
   <a href="/system/kibana/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemkibana"><span class="">kibana</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemlinux-li">
-  
   <a href="/system/linux/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemlinux"><span class="">linux</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemopenssh-li">
-  
   <a href="/system/openssh/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemopenssh"><span class="">openssh</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemoracle12c-li">
-  
   <a href="/system/oracle12c/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemoracle12c"><span class="">oracle12c</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-systemtar-li">
-  
   <a href="/system/tar/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-systemtar"><span class="">tar</span></a>
 </li>
   </ul>
@@ -214,16 +123,14 @@ configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modu
 </div>
 
           </aside>
-          <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+          <aside class="d-none d-xl-block col-xl-3 td-sidebar-toc d-print-none">
             
-<div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
+<div class="td-page-meta ms-2 pb-1 pt-2 mb-0">
 
 </div>
 
-            
-
-
-<div class="td-toc"><nav id="TableOfContents">
+            <div class="td-toc">
+        <nav id="TableOfContents">
   <ul>
     <li>
       <ul>
@@ -265,45 +172,14 @@ configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modu
       </ul>
     </li>
   </ul>
-</nav></div>
-
-
-
-            
-
-	
-		
-
-
-
-  
-  
-
-	
-		
-
-
-
-  
-  
-
-	
-
-          </aside>
-          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
-            
-  
-
-            <nav aria-label="breadcrumb" class="td-breadcrumbs">
-  <ol class="breadcrumb">
-  <li class="breadcrumb-item">
-    <a href="/system/">system</a>
-  </li>
-  <li class="breadcrumb-item active" aria-current="page">
-    <a href="/system/httpd/">httpd</a>
-  </li>
-  </ol>
 </nav>
+      </div>
+    
+            
+          </aside>
+          <main class="col-12 col-md-9 col-xl-7 pl-md-5" role="main">
+            
+            
             
 <div class="td-content">
 	<h1>httpd</h1>
@@ -330,739 +206,738 @@ configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modu
 <br>
 <h3 id="configure">configure</h3>
 <h4 id="httpdconf">httpd.conf</h4>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">ServerRoot &#34;/etc/httpd&#34;
-
-Listen 80
-
-Include conf.modules.d/*.conf
-
-User apache
-Group web
-
-ServerAdmin hi@mgkim.net
-ServerName develop:80
-
-&lt;Directory /&gt;
-  AllowOverride none
-  Require all denied
-&lt;/Directory&gt;
-
-DocumentRoot &#34;/var/www/html&#34;
-
-&lt;Files &#34;.ht*&#34;&gt;
-  Require all denied
-&lt;/Files&gt;
-
-ErrorLog &#34;/outlog/WEB/httpd/error.log&#34;
-
-LogLevel warn
-
-&lt;IfModule log_config_module&gt;
-  LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34;&#34; combined
-  LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b&#34; common
-  &lt;IfModule logio_module&gt;
-    LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34; %I %O&#34; combinedio
-  &lt;/IfModule&gt;
-  CustomLog &#34;/outlog/WEB/httpd/access.log&#34; combined
-&lt;/IfModule&gt;
-
-&lt;IfModule alias_module&gt;
-  ScriptAlias /cgi-bin/ &#34;/var/www/cgi-bin/&#34;
-&lt;/IfModule&gt;
-
-&lt;Directory &#34;/var/www/cgi-bin&#34;&gt;
-  AllowOverride None
-  Options None
-  Require all granted
-&lt;/Directory&gt;
-
-&lt;IfModule mime_module&gt;
-  TypesConfig /etc/mime.types
-  AddType application/x-compress .Z
-  AddType application/x-gzip .gz .tgz
-  AddType text/html .shtml
-  AddOutputFilter INCLUDES .shtml
-&lt;/IfModule&gt;
-
-AddDefaultCharset UTF-8
-
-&lt;IfModule mime_magic_module&gt;
-  MIMEMagicFile conf/magic
-&lt;/IfModule&gt;
-
-EnableSendfile on
-IncludeOptional conf.d/*.conf
-</code></pre></div><h4 id="sslconf">ssl.conf</h4>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Listen 443 https
-
-SSLPassPhraseDialog exec:/usr/libexec/httpd-ssl-pass-dialog
-SSLSessionCache         shmcb:/run/httpd/sslcache(512000)
-SSLSessionCacheTimeout  300
-SSLRandomSeed startup file:/dev/urandom  256
-SSLRandomSeed connect builtin
-SSLCryptoDevice builtin
-
-&lt;VirtualHost _default_:443&gt;
-  ServerName develop
-  ErrorLog /outlog/WEB/httpd/develop-error_ssl.log
-  TransferLog /outlog/WEB/httpd/develop-access_ssl.log
-  LogLevel warn
-
-  SSLEngine on
-  SSLProtocol all -SSLv2 -SSLv3
-  SSLCipherSuite HIGH:3DES:!aNULL:!MD5:!SEED:!IDEA
-  SSLCertificateFile /etc/httpd/conf.d/certs/develop.crt
-  SSLCertificateKeyFile /etc/httpd/conf.d/certs/develop.key
-  &lt;Files ~ &#34;\.(cgi|shtml|phtml|php3?)$&#34;&gt;
-    SSLOptions +StdEnvVars
-  &lt;/Files&gt;
-  &lt;Directory &#34;/var/www/cgi-bin&#34;&gt;
-    SSLOptions +StdEnvVars
-  &lt;/Directory&gt;
-  BrowserMatch &#34;MSIE [2-5]&#34; nokeepalive ssl-unclean-shutdown downgrade-1.0 force-response-1.0
-  CustomLog /outlog/WEB/httpd/default-request_ssl.log &#34;%t %h %{SSL_PROTOCOL}x %{SSL_CIPHER}x \&#34;%r\&#34; %b&#34;
-&lt;/VirtualHost&gt;
-</code></pre></div><br>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>ServerRoot &#34;/etc/httpd&#34;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Listen 80
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Include conf.modules.d/*.conf
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>User apache
+</span></span><span style="display:flex;"><span>Group web
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ServerAdmin hi@mgkim.net
+</span></span><span style="display:flex;"><span>ServerName develop:80
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;Directory /&gt;
+</span></span><span style="display:flex;"><span>  AllowOverride none
+</span></span><span style="display:flex;"><span>  Require all denied
+</span></span><span style="display:flex;"><span>&lt;/Directory&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>DocumentRoot &#34;/var/www/html&#34;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;Files &#34;.ht*&#34;&gt;
+</span></span><span style="display:flex;"><span>  Require all denied
+</span></span><span style="display:flex;"><span>&lt;/Files&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ErrorLog &#34;/outlog/WEB/httpd/error.log&#34;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>LogLevel warn
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;IfModule log_config_module&gt;
+</span></span><span style="display:flex;"><span>  LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34;&#34; combined
+</span></span><span style="display:flex;"><span>  LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b&#34; common
+</span></span><span style="display:flex;"><span>  &lt;IfModule logio_module&gt;
+</span></span><span style="display:flex;"><span>    LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34; %I %O&#34; combinedio
+</span></span><span style="display:flex;"><span>  &lt;/IfModule&gt;
+</span></span><span style="display:flex;"><span>  CustomLog &#34;/outlog/WEB/httpd/access.log&#34; combined
+</span></span><span style="display:flex;"><span>&lt;/IfModule&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;IfModule alias_module&gt;
+</span></span><span style="display:flex;"><span>  ScriptAlias /cgi-bin/ &#34;/var/www/cgi-bin/&#34;
+</span></span><span style="display:flex;"><span>&lt;/IfModule&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;Directory &#34;/var/www/cgi-bin&#34;&gt;
+</span></span><span style="display:flex;"><span>  AllowOverride None
+</span></span><span style="display:flex;"><span>  Options None
+</span></span><span style="display:flex;"><span>  Require all granted
+</span></span><span style="display:flex;"><span>&lt;/Directory&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;IfModule mime_module&gt;
+</span></span><span style="display:flex;"><span>  TypesConfig /etc/mime.types
+</span></span><span style="display:flex;"><span>  AddType application/x-compress .Z
+</span></span><span style="display:flex;"><span>  AddType application/x-gzip .gz .tgz
+</span></span><span style="display:flex;"><span>  AddType text/html .shtml
+</span></span><span style="display:flex;"><span>  AddOutputFilter INCLUDES .shtml
+</span></span><span style="display:flex;"><span>&lt;/IfModule&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>AddDefaultCharset UTF-8
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;IfModule mime_magic_module&gt;
+</span></span><span style="display:flex;"><span>  MIMEMagicFile conf/magic
+</span></span><span style="display:flex;"><span>&lt;/IfModule&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>EnableSendfile on
+</span></span><span style="display:flex;"><span>IncludeOptional conf.d/*.conf
+</span></span></code></pre></div><h4 id="sslconf">ssl.conf</h4>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>Listen 443 https
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>SSLPassPhraseDialog exec:/usr/libexec/httpd-ssl-pass-dialog
+</span></span><span style="display:flex;"><span>SSLSessionCache         shmcb:/run/httpd/sslcache(512000)
+</span></span><span style="display:flex;"><span>SSLSessionCacheTimeout  300
+</span></span><span style="display:flex;"><span>SSLRandomSeed startup file:/dev/urandom  256
+</span></span><span style="display:flex;"><span>SSLRandomSeed connect builtin
+</span></span><span style="display:flex;"><span>SSLCryptoDevice builtin
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;VirtualHost _default_:443&gt;
+</span></span><span style="display:flex;"><span>  ServerName develop
+</span></span><span style="display:flex;"><span>  ErrorLog /outlog/WEB/httpd/develop-error_ssl.log
+</span></span><span style="display:flex;"><span>  TransferLog /outlog/WEB/httpd/develop-access_ssl.log
+</span></span><span style="display:flex;"><span>  LogLevel warn
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  SSLEngine on
+</span></span><span style="display:flex;"><span>  SSLProtocol all -SSLv2 -SSLv3
+</span></span><span style="display:flex;"><span>  SSLCipherSuite HIGH:3DES:!aNULL:!MD5:!SEED:!IDEA
+</span></span><span style="display:flex;"><span>  SSLCertificateFile /etc/httpd/conf.d/certs/develop.crt
+</span></span><span style="display:flex;"><span>  SSLCertificateKeyFile /etc/httpd/conf.d/certs/develop.key
+</span></span><span style="display:flex;"><span>  &lt;Files ~ &#34;\.(cgi|shtml|phtml|php3?)$&#34;&gt;
+</span></span><span style="display:flex;"><span>    SSLOptions +StdEnvVars
+</span></span><span style="display:flex;"><span>  &lt;/Files&gt;
+</span></span><span style="display:flex;"><span>  &lt;Directory &#34;/var/www/cgi-bin&#34;&gt;
+</span></span><span style="display:flex;"><span>    SSLOptions +StdEnvVars
+</span></span><span style="display:flex;"><span>  &lt;/Directory&gt;
+</span></span><span style="display:flex;"><span>  BrowserMatch &#34;MSIE [2-5]&#34; nokeepalive ssl-unclean-shutdown downgrade-1.0 force-response-1.0
+</span></span><span style="display:flex;"><span>  CustomLog /outlog/WEB/httpd/default-request_ssl.log &#34;%t %h %{SSL_PROTOCOL}x %{SSL_CIPHER}x \&#34;%r\&#34; %b&#34;
+</span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
+</span></span></code></pre></div><br>
 <h4 id="vhost-centos8conf">vhost-centos8.conf</h4>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&lt;VirtualHost *:80&gt;
-  ServerName centos8
-
-  RewriteEngine On
-  RewriteCond %{HTTPS} !=On [NC]
-  RewriteRule /(.*) https://centos8/$1 [P,L]
-  #RewriteCond %{HTTP:Upgrade} =websocket [NC]
-  #RewriteRule /(.*) wss://centos8/$1 [P,L]
-  #RewriteCond %{HTTP:Upgrade} !=websocket [NC]
-  #RewriteRule /(.*) https://centos8/$1 [P,L]
-&lt;/VirtualHost&gt;
-
-&lt;VirtualHost *:443&gt;
-  ServerName centos8
-
-  SSLEngine On
-  SSLProtocol all -SSLv2
-  SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5
-  SSLCertificateFile /etc/cockpit/ws-certs.d/centos8.crt
-  SSLCertificateKeyFile /etc/cockpit/ws-certs.d/centos8.key
-
-  ErrorLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/centos8-error.log.%Y-%m-%d 86400 +540&#34;
-  CustomLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/centos8-access.log.%Y-%m-%d 86400 +540&#34; combined
-
-  ProxyRequests Off
-  ProxyPreserveHost On
-  # AH01961: SSL Proxy requested for centos8:443 but not enabled [Hint: SSLProxyEngine]
-  SSLProxyEngine On
-
-  AllowEncodedSlashes On
-  Header set Access-Control-Allow-Origin &#34;*&#34;
-  RequestHeader set X-Forwarded-Proto https
-
-  &lt;Proxy balancer://cluster1&gt;
-    BalancerMember https://127.0.0.1:8000
-  &lt;/Proxy&gt;
-  
-  ProxyPass / balancer://cluster1/ stickysession=JSESSIONID|jsessionid
-  ProxyPassReverse / balancer://cluster1/
-
-  RewriteEngine On
-  RewriteCond %{HTTP:Upgrade} =websocket [NC]
-  RewriteRule /(.*)           wss://127.0.0.1:8000/$1 [P,L]
-&lt;/VirtualHost&gt;
-</code></pre></div><br>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>&lt;VirtualHost *:80&gt;
+</span></span><span style="display:flex;"><span>  ServerName centos8
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  RewriteEngine On
+</span></span><span style="display:flex;"><span>  RewriteCond %{HTTPS} !=On [NC]
+</span></span><span style="display:flex;"><span>  RewriteRule /(.*) https://centos8/$1 [P,L]
+</span></span><span style="display:flex;"><span>  #RewriteCond %{HTTP:Upgrade} =websocket [NC]
+</span></span><span style="display:flex;"><span>  #RewriteRule /(.*) wss://centos8/$1 [P,L]
+</span></span><span style="display:flex;"><span>  #RewriteCond %{HTTP:Upgrade} !=websocket [NC]
+</span></span><span style="display:flex;"><span>  #RewriteRule /(.*) https://centos8/$1 [P,L]
+</span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;VirtualHost *:443&gt;
+</span></span><span style="display:flex;"><span>  ServerName centos8
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  SSLEngine On
+</span></span><span style="display:flex;"><span>  SSLProtocol all -SSLv2
+</span></span><span style="display:flex;"><span>  SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5
+</span></span><span style="display:flex;"><span>  SSLCertificateFile /etc/cockpit/ws-certs.d/centos8.crt
+</span></span><span style="display:flex;"><span>  SSLCertificateKeyFile /etc/cockpit/ws-certs.d/centos8.key
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  ErrorLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/centos8-error.log.%Y-%m-%d 86400 +540&#34;
+</span></span><span style="display:flex;"><span>  CustomLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/centos8-access.log.%Y-%m-%d 86400 +540&#34; combined
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  ProxyRequests Off
+</span></span><span style="display:flex;"><span>  ProxyPreserveHost On
+</span></span><span style="display:flex;"><span>  # AH01961: SSL Proxy requested for centos8:443 but not enabled [Hint: SSLProxyEngine]
+</span></span><span style="display:flex;"><span>  SSLProxyEngine On
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  AllowEncodedSlashes On
+</span></span><span style="display:flex;"><span>  Header set Access-Control-Allow-Origin &#34;*&#34;
+</span></span><span style="display:flex;"><span>  RequestHeader set X-Forwarded-Proto https
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  &lt;Proxy balancer://cluster1&gt;
+</span></span><span style="display:flex;"><span>    BalancerMember https://127.0.0.1:8000
+</span></span><span style="display:flex;"><span>  &lt;/Proxy&gt;
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  ProxyPass / balancer://cluster1/ stickysession=JSESSIONID|jsessionid
+</span></span><span style="display:flex;"><span>  ProxyPassReverse / balancer://cluster1/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  RewriteEngine On
+</span></span><span style="display:flex;"><span>  RewriteCond %{HTTP:Upgrade} =websocket [NC]
+</span></span><span style="display:flex;"><span>  RewriteRule /(.*)           wss://127.0.0.1:8000/$1 [P,L]
+</span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
+</span></span></code></pre></div><br>
 <h4 id="vhost-nexusconf">vhost-nexus.conf</h4>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&lt;VirtualHost *:80&gt;
-  ServerName nexus
-
-  RewriteEngine On
-  RewriteCond %{HTTPS} !=On
-  RewriteRule /(.*) https://nexus.mgkim.net/$1 [QSA,R,L]
-&lt;/VirtualHost&gt;
-
-&lt;VirtualHost *:443&gt;
-  ServerName nexus
-
-  SSLEngine On
-  SSLProtocol all -SSLv2
-  SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5
-  SSLCertificateFile /etc/httpd/conf.d/certs/nexus.crt
-  SSLCertificateKeyFile /etc/httpd/conf.d/certs/nexus.key
-
-  RewriteEngine On
-  RewriteRule /(.*) https://nexus.mgkim.net/$1 [QSA,R,L]
-&lt;/VirtualHost&gt;
-
-### mgkim.net
-
-&lt;VirtualHost *:80&gt;
-  ServerName nexus.mgkim.net
-
-  RewriteEngine On
-  RewriteCond %{HTTPS} !=On
-  RewriteRule /(.*) https://%{HTTP_HOST}/$1 [QSA,R,L]
-&lt;/VirtualHost&gt;
-
-&lt;VirtualHost *:443&gt;
-  ServerName nexus.mgkim.net
-
-  ErrorLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/nexus.mgkim.net_ssl-error.log.%Y-%m-%d 86400 +540%&#34;
-  CustomLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/nexus.mgkim.net_ssl-access.log.%Y-%m-%d 86400 +540%&#34; combined
-
-  SSLEngine On
-  SSLProtocol all -SSLv2
-  SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5
-  SSLCertificateFile /etc/httpd/conf.d/certs/STAR.mgkim.net.crt
-  SSLCertificateKeyFile /etc/httpd/conf.d/certs/STAR.mgkim.net.key
-
-  AllowEncodedSlashes On
-  Header set Access-Control-Allow-Origin &#34;*&#34;
-
-  ProxyRequests Off
-  ProxyPreserveHost On
-
-  &lt;Proxy *&gt;
-    Require all granted
-  &lt;/Proxy&gt;
-
-  ProxyPass / http://127.0.0.1:8100/
-  ProxyPassReverse / http://127.0.0.1:8100/
-  RequestHeader set X-Forwarded-Proto &#34;https&#34;
-  #ProxyPassMatch ^/(.*)$ http://127.0.0.1:8100/$1
-&lt;/VirtualHost&gt;
-</code></pre></div><h4 id="vhost-gitlabconf">vhost-gitlab.conf</h4>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&lt;VirtualHost *:80&gt;
-  ServerName gitlab
-
-  RewriteEngine On
-  RewriteCond %{HTTPS} !=On
-  RewriteRule /(.*) https://gitlab.mgkim.net/$1 [QSA,R,L]
-&lt;/VirtualHost&gt;
-
-&lt;VirtualHost *:443&gt;
-  ServerName gitlab
-
-  SSLEngine On
-  SSLProtocol all -SSLv2
-  SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5
-  SSLCertificateFile /etc/httpd/conf.d/certs/gitlab.crt
-  SSLCertificateKeyFile /etc/httpd/conf.d/certs/gitlab.key
-
-  RewriteEngine On
-  RewriteRule /(.*) https://gitlab.mgkim.net/$1 [QSA,R,L]
-&lt;/VirtualHost&gt;
-
-### mgkim.net
-
-&lt;VirtualHost *:80&gt;
-  ServerName gitlab.mgkim.net
-
-  RewriteEngine On
-  RewriteCond %{HTTPS} !=On
-  RewriteRule /(.*) https://%{HTTP_HOST}/$1 [QSA,R,L]
-&lt;/VirtualHost&gt;
-
-&lt;VirtualHost *:443&gt;
-  ServerName gitlab.mgkim.net
-
-  DocumentRoot &#34;/opt/gitlab/embedded/service/gitlab-rails/public&#34;
-  ErrorLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/gitlab.mgkim.net_ssl-error.log.%Y-%m-%d 86400 +540&#34;
-  CustomLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/gitlab.mgkim.net_ssl-access.log.%Y-%m-%d 86400 +540&#34; combined
-
-  SSLEngine On
-  SSLProtocol all -SSLv2
-  SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5
-  SSLCertificateFile /etc/httpd/conf.d/certs/STAR.mgkim.net.crt
-  SSLCertificateKeyFile /etc/httpd/conf.d/certs/STAR.mgkim.net.key
-
-  ProxyRequests Off
-  ProxyPreserveHost On
-
-  &lt;Proxy gitlab&gt;
-    Require all granted
-  &lt;/Proxy&gt;
-
-  AllowEncodedSlashes On
-  Header set Access-Control-Allow-Origin &#34;*&#34;
-
-  ProxyPass / http://127.0.0.1:8200/
-  ProxyPassReverse / http://127.0.0.1:8200/
-&lt;/VirtualHost&gt;
-</code></pre></div><h4 id="vhost-jenkinsconf">vhost-jenkins.conf</h4>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&lt;VirtualHost *:80&gt;
-  ServerName jenkins
-
-  RewriteEngine On
-  RewriteCond %{HTTPS} !=On
-  RewriteCond %{REQUEST_URI} ^/(computer)/.*$
-  RewriteRule /(.*) http://localhost:8400/$1 [QSA,P,L]
-  RewriteCond %{REQUEST_URI} ^/(wsagents)/.*$
-  RewriteRule /(.*) ws://localhost:8400/$1 [QSA,P,L]
-
-  RewriteRule /(.*) https://jenkins.mgkim.net/$1 [QSA,R,L]
-&lt;/VirtualHost&gt;
-
-&lt;VirtualHost *:443&gt;
-  ServerName jenkins
-
-  SSLEngine On
-  SSLProtocol all -SSLv2
-  SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5
-  SSLCertificateFile /etc/httpd/conf.d/certs/jenkins.crt
-  SSLCertificateKeyFile /etc/httpd/conf.d/certs/jenkins.key
-
-  RewriteEngine On
-  RewriteRule /(.*) https://jenkins.mgkim.net/$1 [QSA,R,L]
-&lt;/VirtualHost&gt;
-
-### mgkim.net
-
-&lt;VirtualHost *:80&gt;
-  ServerName jenkins.mgkim.net
-
-  RewriteEngine On
-  RewriteCond %{HTTPS} !=On
-  RewriteCond %{REQUEST_URI} ^/(computer)/.*$
-  RewriteRule /(.*) http://localhost:8400/$1 [QSA,P,L]
-  RewriteCond %{REQUEST_URI} ^/(wsagents)/.*$
-  RewriteRule /(.*) ws://localhost:8400/$1 [QSA,P,L]
-
-  RewriteRule /(.*) https://jenkins.mgkim.net/$1 [QSA,R,L]
-&lt;/VirtualHost&gt;
-
-&lt;VirtualHost *:443&gt;
-  ServerName jenkins.mgkim.net
-
-  ErrorLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/jenkins.mgkim.net_ssl-error.log.%Y-%m-%d 86400 +540&#34;
-  CustomLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/jenkins.mgkim.net_ssl-access.log.%Y-%m-%d 86400 +540&#34; combined
-
-  SSLEngine On
-  SSLProtocol all -SSLv2
-  SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5
-  SSLCertificateFile /etc/httpd/conf.d/certs/STAR.mgkim.net.crt
-  SSLCertificateKeyFile /etc/httpd/conf.d/certs/STAR.mgkim.net.key
-
-  AllowEncodedSlashes On
-  Header set Access-Control-Allow-Origin &#34;*&#34;
-
-  RewriteEngine On
-  RewriteCond %{HTTP:Upgrade} =websocket [NC]
-  RewriteRule /(.*) ws://localhost:8400/$1 [P,L]
-  RewriteCond %{HTTP:Upgrade} !=websocket [NC]
-  RewriteRule /(.*) http://localhost:8400/$1 [P,L]
-&lt;/VirtualHost&gt;
-</code></pre></div><h4 id="vhost-dlogconf">vhost-dlog.conf</h4>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&lt;VirtualHost *:80&gt;
-  ServerName dlog
-
-  RewriteEngine On
-  RewriteCond %{HTTPS} !=On
-  RewriteRule /(.*) https://dlog.mgkim.net/$1 [QSA,R,L]
-&lt;/VirtualHost&gt;
-
-&lt;VirtualHost *:443&gt;
-  ServerName dlog
-
-  SSLEngine On
-  SSLProtocol all -SSLv2
-  SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5
-  SSLCertificateFile /etc/httpd/conf.d/certs/dlog.crt
-  SSLCertificateKeyFile /etc/httpd/conf.d/certs/dlog.key
-
-  RewriteEngine On
-  RewriteRule /(.*) https://dlog.mgkim.net/$1 [QSA,R,L]
-&lt;/VirtualHost&gt;
-
-### mgkim.net
-
-&lt;VirtualHost *:80&gt;
-  ServerName dlog.mgkim.net
-
-  RewriteEngine On
-  RewriteCond %{HTTPS} !=On
-  RewriteRule /(.*) https://%{HTTP_HOST}/$1 [QSA,R,L]
-&lt;/VirtualHost&gt;
-
-&lt;VirtualHost *:443&gt;
-  ServerName dlog.mgkim.net
-
-  #DocumentRoot &#34;/opt/gitlab/embedded/service/gitlab-rails/public&#34;
-  ErrorLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/dlog.mgkim.net_ssl-error.log.%Y-%m-%d 86400 +540&#34;
-  CustomLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/dlog.mgkim.net_ssl-access.log.%Y-%m-%d 86400 +540&#34; combined
-
-  SSLEngine On
-  SSLProtocol all -SSLv2
-  SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5
-  SSLCertificateFile /etc/httpd/conf.d/certs/STAR.mgkim.net.crt
-  SSLCertificateKeyFile /etc/httpd/conf.d/certs/STAR.mgkim.net.key
-
-  ProxyRequests Off
-  ProxyPreserveHost On
-
-  &lt;Proxy gitlab&gt;
-    Require all granted
-  &lt;/Proxy&gt;
-
-  AllowEncodedSlashes On
-  Header set Access-Control-Allow-Origin &#34;*&#34;
-
-  ProxyPass / http://127.0.0.1:1313/
-  ProxyPassReverse / http://127.0.0.1:1313/
-&lt;/VirtualHost&gt;
-</code></pre></div><h4 id="vhost-dwwwconf">vhost-dwww.conf</h4>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&lt;VirtualHost *:80&gt;
-  ServerName dwww
-
-  ErrorLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/dwww-error.log.%Y-%m-%d 86400 +540&#34;
-  CustomLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/dwww-access.log.%Y-%m-%d 86400 +540&#34; combined
-
-  AllowEncodedSlashes On
-  # reverse proxy 사용 시 Off
-  ProxyRequests Off
-  ProxyPreserveHost On
-  # BALANCER_WORKER_ROUTE: BalancerMember 의 route 값을 쿠키에 포함 (cluster1, cluster2)
-  Header add Set-Cookie &#34;ROUTEID=.%{BALANCER_WORKER_ROUTE}e; path=/&#34; env=BALANCER_ROUTE_CHANGED
-  Header set Access-Control-Allow-Origin &#34;*&#34;
-
-  &lt;Proxy balancer://cluster&gt;
-    BalancerMember http://127.0.0.1:7100 route=cluster1
-    BalancerMember http://127.0.0.1:7101 route=cluster2
-    
-    ProxySet stickysession=ROUTEID
-    ## lbmethod
-    # byrequests: 요청별 분배
-    # bytraffic: byte 트래픽 가중치 분배
-    # bybusyness: 보류중 요청 분배
-    #ProxySet lbmethod=byrequests
-  &lt;/Proxy&gt;
-  
-  ProxyPass / balancer://cluster/
-  ProxyPassReverse / balancer://cluster/
-
-&lt;/VirtualHost&gt;
-</code></pre></div><h3 id="connector">connector</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>&lt;VirtualHost *:80&gt;
+</span></span><span style="display:flex;"><span>  ServerName nexus
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  RewriteEngine On
+</span></span><span style="display:flex;"><span>  RewriteCond %{HTTPS} !=On
+</span></span><span style="display:flex;"><span>  RewriteRule /(.*) https://nexus.mgkim.net/$1 [QSA,R,L]
+</span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;VirtualHost *:443&gt;
+</span></span><span style="display:flex;"><span>  ServerName nexus
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  SSLEngine On
+</span></span><span style="display:flex;"><span>  SSLProtocol all -SSLv2
+</span></span><span style="display:flex;"><span>  SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5
+</span></span><span style="display:flex;"><span>  SSLCertificateFile /etc/httpd/conf.d/certs/nexus.crt
+</span></span><span style="display:flex;"><span>  SSLCertificateKeyFile /etc/httpd/conf.d/certs/nexus.key
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  RewriteEngine On
+</span></span><span style="display:flex;"><span>  RewriteRule /(.*) https://nexus.mgkim.net/$1 [QSA,R,L]
+</span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>### mgkim.net
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;VirtualHost *:80&gt;
+</span></span><span style="display:flex;"><span>  ServerName nexus.mgkim.net
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  RewriteEngine On
+</span></span><span style="display:flex;"><span>  RewriteCond %{HTTPS} !=On
+</span></span><span style="display:flex;"><span>  RewriteRule /(.*) https://%{HTTP_HOST}/$1 [QSA,R,L]
+</span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;VirtualHost *:443&gt;
+</span></span><span style="display:flex;"><span>  ServerName nexus.mgkim.net
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  ErrorLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/nexus.mgkim.net_ssl-error.log.%Y-%m-%d 86400 +540%&#34;
+</span></span><span style="display:flex;"><span>  CustomLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/nexus.mgkim.net_ssl-access.log.%Y-%m-%d 86400 +540%&#34; combined
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  SSLEngine On
+</span></span><span style="display:flex;"><span>  SSLProtocol all -SSLv2
+</span></span><span style="display:flex;"><span>  SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5
+</span></span><span style="display:flex;"><span>  SSLCertificateFile /etc/httpd/conf.d/certs/STAR.mgkim.net.crt
+</span></span><span style="display:flex;"><span>  SSLCertificateKeyFile /etc/httpd/conf.d/certs/STAR.mgkim.net.key
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  AllowEncodedSlashes On
+</span></span><span style="display:flex;"><span>  Header set Access-Control-Allow-Origin &#34;*&#34;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  ProxyRequests Off
+</span></span><span style="display:flex;"><span>  ProxyPreserveHost On
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  &lt;Proxy *&gt;
+</span></span><span style="display:flex;"><span>    Require all granted
+</span></span><span style="display:flex;"><span>  &lt;/Proxy&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  ProxyPass / http://127.0.0.1:8100/
+</span></span><span style="display:flex;"><span>  ProxyPassReverse / http://127.0.0.1:8100/
+</span></span><span style="display:flex;"><span>  RequestHeader set X-Forwarded-Proto &#34;https&#34;
+</span></span><span style="display:flex;"><span>  #ProxyPassMatch ^/(.*)$ http://127.0.0.1:8100/$1
+</span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
+</span></span></code></pre></div><h4 id="vhost-gitlabconf">vhost-gitlab.conf</h4>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>&lt;VirtualHost *:80&gt;
+</span></span><span style="display:flex;"><span>  ServerName gitlab
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  RewriteEngine On
+</span></span><span style="display:flex;"><span>  RewriteCond %{HTTPS} !=On
+</span></span><span style="display:flex;"><span>  RewriteRule /(.*) https://gitlab.mgkim.net/$1 [QSA,R,L]
+</span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;VirtualHost *:443&gt;
+</span></span><span style="display:flex;"><span>  ServerName gitlab
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  SSLEngine On
+</span></span><span style="display:flex;"><span>  SSLProtocol all -SSLv2
+</span></span><span style="display:flex;"><span>  SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5
+</span></span><span style="display:flex;"><span>  SSLCertificateFile /etc/httpd/conf.d/certs/gitlab.crt
+</span></span><span style="display:flex;"><span>  SSLCertificateKeyFile /etc/httpd/conf.d/certs/gitlab.key
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  RewriteEngine On
+</span></span><span style="display:flex;"><span>  RewriteRule /(.*) https://gitlab.mgkim.net/$1 [QSA,R,L]
+</span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>### mgkim.net
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;VirtualHost *:80&gt;
+</span></span><span style="display:flex;"><span>  ServerName gitlab.mgkim.net
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  RewriteEngine On
+</span></span><span style="display:flex;"><span>  RewriteCond %{HTTPS} !=On
+</span></span><span style="display:flex;"><span>  RewriteRule /(.*) https://%{HTTP_HOST}/$1 [QSA,R,L]
+</span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;VirtualHost *:443&gt;
+</span></span><span style="display:flex;"><span>  ServerName gitlab.mgkim.net
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  DocumentRoot &#34;/opt/gitlab/embedded/service/gitlab-rails/public&#34;
+</span></span><span style="display:flex;"><span>  ErrorLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/gitlab.mgkim.net_ssl-error.log.%Y-%m-%d 86400 +540&#34;
+</span></span><span style="display:flex;"><span>  CustomLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/gitlab.mgkim.net_ssl-access.log.%Y-%m-%d 86400 +540&#34; combined
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  SSLEngine On
+</span></span><span style="display:flex;"><span>  SSLProtocol all -SSLv2
+</span></span><span style="display:flex;"><span>  SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5
+</span></span><span style="display:flex;"><span>  SSLCertificateFile /etc/httpd/conf.d/certs/STAR.mgkim.net.crt
+</span></span><span style="display:flex;"><span>  SSLCertificateKeyFile /etc/httpd/conf.d/certs/STAR.mgkim.net.key
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  ProxyRequests Off
+</span></span><span style="display:flex;"><span>  ProxyPreserveHost On
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  &lt;Proxy gitlab&gt;
+</span></span><span style="display:flex;"><span>    Require all granted
+</span></span><span style="display:flex;"><span>  &lt;/Proxy&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  AllowEncodedSlashes On
+</span></span><span style="display:flex;"><span>  Header set Access-Control-Allow-Origin &#34;*&#34;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  ProxyPass / http://127.0.0.1:8200/
+</span></span><span style="display:flex;"><span>  ProxyPassReverse / http://127.0.0.1:8200/
+</span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
+</span></span></code></pre></div><h4 id="vhost-jenkinsconf">vhost-jenkins.conf</h4>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>&lt;VirtualHost *:80&gt;
+</span></span><span style="display:flex;"><span>  ServerName jenkins
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  RewriteEngine On
+</span></span><span style="display:flex;"><span>  RewriteCond %{HTTPS} !=On
+</span></span><span style="display:flex;"><span>  RewriteCond %{REQUEST_URI} ^/(computer)/.*$
+</span></span><span style="display:flex;"><span>  RewriteRule /(.*) http://localhost:8400/$1 [QSA,P,L]
+</span></span><span style="display:flex;"><span>  RewriteCond %{REQUEST_URI} ^/(wsagents)/.*$
+</span></span><span style="display:flex;"><span>  RewriteRule /(.*) ws://localhost:8400/$1 [QSA,P,L]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  RewriteRule /(.*) https://jenkins.mgkim.net/$1 [QSA,R,L]
+</span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;VirtualHost *:443&gt;
+</span></span><span style="display:flex;"><span>  ServerName jenkins
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  SSLEngine On
+</span></span><span style="display:flex;"><span>  SSLProtocol all -SSLv2
+</span></span><span style="display:flex;"><span>  SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5
+</span></span><span style="display:flex;"><span>  SSLCertificateFile /etc/httpd/conf.d/certs/jenkins.crt
+</span></span><span style="display:flex;"><span>  SSLCertificateKeyFile /etc/httpd/conf.d/certs/jenkins.key
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  RewriteEngine On
+</span></span><span style="display:flex;"><span>  RewriteRule /(.*) https://jenkins.mgkim.net/$1 [QSA,R,L]
+</span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>### mgkim.net
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;VirtualHost *:80&gt;
+</span></span><span style="display:flex;"><span>  ServerName jenkins.mgkim.net
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  RewriteEngine On
+</span></span><span style="display:flex;"><span>  RewriteCond %{HTTPS} !=On
+</span></span><span style="display:flex;"><span>  RewriteCond %{REQUEST_URI} ^/(computer)/.*$
+</span></span><span style="display:flex;"><span>  RewriteRule /(.*) http://localhost:8400/$1 [QSA,P,L]
+</span></span><span style="display:flex;"><span>  RewriteCond %{REQUEST_URI} ^/(wsagents)/.*$
+</span></span><span style="display:flex;"><span>  RewriteRule /(.*) ws://localhost:8400/$1 [QSA,P,L]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  RewriteRule /(.*) https://jenkins.mgkim.net/$1 [QSA,R,L]
+</span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;VirtualHost *:443&gt;
+</span></span><span style="display:flex;"><span>  ServerName jenkins.mgkim.net
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  ErrorLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/jenkins.mgkim.net_ssl-error.log.%Y-%m-%d 86400 +540&#34;
+</span></span><span style="display:flex;"><span>  CustomLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/jenkins.mgkim.net_ssl-access.log.%Y-%m-%d 86400 +540&#34; combined
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  SSLEngine On
+</span></span><span style="display:flex;"><span>  SSLProtocol all -SSLv2
+</span></span><span style="display:flex;"><span>  SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5
+</span></span><span style="display:flex;"><span>  SSLCertificateFile /etc/httpd/conf.d/certs/STAR.mgkim.net.crt
+</span></span><span style="display:flex;"><span>  SSLCertificateKeyFile /etc/httpd/conf.d/certs/STAR.mgkim.net.key
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  AllowEncodedSlashes On
+</span></span><span style="display:flex;"><span>  Header set Access-Control-Allow-Origin &#34;*&#34;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  RewriteEngine On
+</span></span><span style="display:flex;"><span>  RewriteCond %{HTTP:Upgrade} =websocket [NC]
+</span></span><span style="display:flex;"><span>  RewriteRule /(.*) ws://localhost:8400/$1 [P,L]
+</span></span><span style="display:flex;"><span>  RewriteCond %{HTTP:Upgrade} !=websocket [NC]
+</span></span><span style="display:flex;"><span>  RewriteRule /(.*) http://localhost:8400/$1 [P,L]
+</span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
+</span></span></code></pre></div><h4 id="vhost-dlogconf">vhost-dlog.conf</h4>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>&lt;VirtualHost *:80&gt;
+</span></span><span style="display:flex;"><span>  ServerName dlog
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  RewriteEngine On
+</span></span><span style="display:flex;"><span>  RewriteCond %{HTTPS} !=On
+</span></span><span style="display:flex;"><span>  RewriteRule /(.*) https://dlog.mgkim.net/$1 [QSA,R,L]
+</span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;VirtualHost *:443&gt;
+</span></span><span style="display:flex;"><span>  ServerName dlog
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  SSLEngine On
+</span></span><span style="display:flex;"><span>  SSLProtocol all -SSLv2
+</span></span><span style="display:flex;"><span>  SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5
+</span></span><span style="display:flex;"><span>  SSLCertificateFile /etc/httpd/conf.d/certs/dlog.crt
+</span></span><span style="display:flex;"><span>  SSLCertificateKeyFile /etc/httpd/conf.d/certs/dlog.key
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  RewriteEngine On
+</span></span><span style="display:flex;"><span>  RewriteRule /(.*) https://dlog.mgkim.net/$1 [QSA,R,L]
+</span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>### mgkim.net
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;VirtualHost *:80&gt;
+</span></span><span style="display:flex;"><span>  ServerName dlog.mgkim.net
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  RewriteEngine On
+</span></span><span style="display:flex;"><span>  RewriteCond %{HTTPS} !=On
+</span></span><span style="display:flex;"><span>  RewriteRule /(.*) https://%{HTTP_HOST}/$1 [QSA,R,L]
+</span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;VirtualHost *:443&gt;
+</span></span><span style="display:flex;"><span>  ServerName dlog.mgkim.net
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  #DocumentRoot &#34;/opt/gitlab/embedded/service/gitlab-rails/public&#34;
+</span></span><span style="display:flex;"><span>  ErrorLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/dlog.mgkim.net_ssl-error.log.%Y-%m-%d 86400 +540&#34;
+</span></span><span style="display:flex;"><span>  CustomLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/dlog.mgkim.net_ssl-access.log.%Y-%m-%d 86400 +540&#34; combined
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  SSLEngine On
+</span></span><span style="display:flex;"><span>  SSLProtocol all -SSLv2
+</span></span><span style="display:flex;"><span>  SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5
+</span></span><span style="display:flex;"><span>  SSLCertificateFile /etc/httpd/conf.d/certs/STAR.mgkim.net.crt
+</span></span><span style="display:flex;"><span>  SSLCertificateKeyFile /etc/httpd/conf.d/certs/STAR.mgkim.net.key
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  ProxyRequests Off
+</span></span><span style="display:flex;"><span>  ProxyPreserveHost On
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  &lt;Proxy gitlab&gt;
+</span></span><span style="display:flex;"><span>    Require all granted
+</span></span><span style="display:flex;"><span>  &lt;/Proxy&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  AllowEncodedSlashes On
+</span></span><span style="display:flex;"><span>  Header set Access-Control-Allow-Origin &#34;*&#34;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  ProxyPass / http://127.0.0.1:1313/
+</span></span><span style="display:flex;"><span>  ProxyPassReverse / http://127.0.0.1:1313/
+</span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
+</span></span></code></pre></div><h4 id="vhost-dwwwconf">vhost-dwww.conf</h4>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>&lt;VirtualHost *:80&gt;
+</span></span><span style="display:flex;"><span>  ServerName dwww
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  ErrorLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/dwww-error.log.%Y-%m-%d 86400 +540&#34;
+</span></span><span style="display:flex;"><span>  CustomLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/dwww-access.log.%Y-%m-%d 86400 +540&#34; combined
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  AllowEncodedSlashes On
+</span></span><span style="display:flex;"><span>  # reverse proxy 사용 시 Off
+</span></span><span style="display:flex;"><span>  ProxyRequests Off
+</span></span><span style="display:flex;"><span>  ProxyPreserveHost On
+</span></span><span style="display:flex;"><span>  # BALANCER_WORKER_ROUTE: BalancerMember 의 route 값을 쿠키에 포함 (cluster1, cluster2)
+</span></span><span style="display:flex;"><span>  Header add Set-Cookie &#34;ROUTEID=.%{BALANCER_WORKER_ROUTE}e; path=/&#34; env=BALANCER_ROUTE_CHANGED
+</span></span><span style="display:flex;"><span>  Header set Access-Control-Allow-Origin &#34;*&#34;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  &lt;Proxy balancer://cluster&gt;
+</span></span><span style="display:flex;"><span>    BalancerMember http://127.0.0.1:7100 route=cluster1
+</span></span><span style="display:flex;"><span>    BalancerMember http://127.0.0.1:7101 route=cluster2
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    ProxySet stickysession=ROUTEID
+</span></span><span style="display:flex;"><span>    ## lbmethod
+</span></span><span style="display:flex;"><span>    # byrequests: 요청별 분배
+</span></span><span style="display:flex;"><span>    # bytraffic: byte 트래픽 가중치 분배
+</span></span><span style="display:flex;"><span>    # bybusyness: 보류중 요청 분배
+</span></span><span style="display:flex;"><span>    #ProxySet lbmethod=byrequests
+</span></span><span style="display:flex;"><span>  &lt;/Proxy&gt;
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  ProxyPass / balancer://cluster/
+</span></span><span style="display:flex;"><span>  ProxyPassReverse / balancer://cluster/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
+</span></span></code></pre></div><h3 id="connector">connector</h3>
 <h4 id="weblogic">weblogic</h4>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">LoadModule weblogic_module modules/mod_wl_24.so
-
-&lt;IfModule mod_weblogic.c&gt;
-  WebLogicCluster IP:PORT,IP:PORT,IP:PORT
-  ConnectTimeoutSecs 8
-  ConnectRetrySecs 2
-  Idempotent OFF
-  DynamicServerList OFF
-  MatchExpression *
-  KeepAliveEnabled OFF
-&lt;/IfModule&gt;
-
-&lt;Location /api &gt;
-  WLSRequest On
-  #SetHandler weblogic-handler
-  WebLogicCluster IP:PORT,IP:PORT,IP:PORT
-  #Idempotent OFF
-&lt;/Location&gt;
-</code></pre></div><h3 id="windows">windows</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-v" data-lang="v"><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">weblogic_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_wl_24</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#000">IfModule</span> <span style="color:#000">mod_weblogic</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">c</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">WebLogicCluster</span> <span style="color:#000">IP</span><span style="color:#000;font-weight:bold">:</span><span style="color:#000">PORT</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">IP</span><span style="color:#000;font-weight:bold">:</span><span style="color:#000">PORT</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">IP</span><span style="color:#000;font-weight:bold">:</span><span style="color:#000">PORT</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">ConnectTimeoutSecs</span> <span style="color:#0000cf;font-weight:bold">8</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">ConnectRetrySecs</span> <span style="color:#0000cf;font-weight:bold">2</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">Idempotent</span> <span style="color:#000">OFF</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">DynamicServerList</span> <span style="color:#000">OFF</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">MatchExpression</span> <span style="color:#ce5c00;font-weight:bold">*</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">KeepAliveEnabled</span> <span style="color:#000">OFF</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">IfModule</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#000">Location</span> <span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">api</span> <span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">WLSRequest</span> <span style="color:#000">On</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#8f5902;font-style:italic">#SetHandler weblogic-handler</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">WebLogicCluster</span> <span style="color:#000">IP</span><span style="color:#000;font-weight:bold">:</span><span style="color:#000">PORT</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">IP</span><span style="color:#000;font-weight:bold">:</span><span style="color:#000">PORT</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">IP</span><span style="color:#000;font-weight:bold">:</span><span style="color:#000">PORT</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#8f5902;font-style:italic">#Idempotent OFF</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">Location</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span></code></pre></div><h3 id="windows">windows</h3>
 <h4 id="install-command-apache-lounge">install command (Apache Lounge)</h4>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">httpd.exe -k install
-httpd.exe -k configtest
-</code></pre></div><h4 id="configure-1">configure</h4>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>httpd.exe -k install
+</span></span><span style="display:flex;"><span>httpd.exe -k configtest
+</span></span></code></pre></div><h4 id="configure-1">configure</h4>
 <ul>
 <li>httpd.conf</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">ServerRoot &#34;Z:/www/httpd_2.4.25-win64-VC14/Apache24&#34;
-
-Listen 80
-
-LoadModule access_compat_module modules/mod_access_compat.so
-LoadModule actions_module modules/mod_actions.so
-LoadModule alias_module modules/mod_alias.so
-LoadModule allowmethods_module modules/mod_allowmethods.so
-LoadModule asis_module modules/mod_asis.so
-LoadModule auth_basic_module modules/mod_auth_basic.so
-#LoadModule auth_digest_module modules/mod_auth_digest.so
-#LoadModule auth_form_module modules/mod_auth_form.so
-#LoadModule authn_anon_module modules/mod_authn_anon.so
-LoadModule authn_core_module modules/mod_authn_core.so
-#LoadModule authn_dbd_module modules/mod_authn_dbd.so
-#LoadModule authn_dbm_module modules/mod_authn_dbm.so
-LoadModule authn_file_module modules/mod_authn_file.so
-#LoadModule authn_socache_module modules/mod_authn_socache.so
-#LoadModule authnz_fcgi_module modules/mod_authnz_fcgi.so
-#LoadModule authnz_ldap_module modules/mod_authnz_ldap.so
-LoadModule authz_core_module modules/mod_authz_core.so
-#LoadModule authz_dbd_module modules/mod_authz_dbd.so
-#LoadModule authz_dbm_module modules/mod_authz_dbm.so
-LoadModule authz_groupfile_module modules/mod_authz_groupfile.so
-LoadModule authz_host_module modules/mod_authz_host.so
-#LoadModule authz_owner_module modules/mod_authz_owner.so
-LoadModule authz_user_module modules/mod_authz_user.so
-LoadModule autoindex_module modules/mod_autoindex.so
-#LoadModule buffer_module modules/mod_buffer.so
-#LoadModule cache_module modules/mod_cache.so
-#LoadModule cache_disk_module modules/mod_cache_disk.so
-#LoadModule cache_socache_module modules/mod_cache_socache.so
-#LoadModule cern_meta_module modules/mod_cern_meta.so
-LoadModule cgi_module modules/mod_cgi.so
-#LoadModule charset_lite_module modules/mod_charset_lite.so
-#LoadModule data_module modules/mod_data.so
-#LoadModule dav_module modules/mod_dav.so
-#LoadModule dav_fs_module modules/mod_dav_fs.so
-#LoadModule dav_lock_module modules/mod_dav_lock.so
-#LoadModule dbd_module modules/mod_dbd.so
-#LoadModule deflate_module modules/mod_deflate.so
-LoadModule dir_module modules/mod_dir.so
-#LoadModule dumpio_module modules/mod_dumpio.so
-LoadModule env_module modules/mod_env.so
-#LoadModule expires_module modules/mod_expires.so
-#LoadModule ext_filter_module modules/mod_ext_filter.so
-#LoadModule file_cache_module modules/mod_file_cache.so
-#LoadModule filter_module modules/mod_filter.so
-#LoadModule http2_module modules/mod_http2.so
-LoadModule headers_module modules/mod_headers.so
-#LoadModule heartbeat_module modules/mod_heartbeat.so
-#LoadModule heartmonitor_module modules/mod_heartmonitor.so
-#LoadModule ident_module modules/mod_ident.so
-#LoadModule imagemap_module modules/mod_imagemap.so
-LoadModule include_module modules/mod_include.so
-#LoadModule info_module modules/mod_info.so
-LoadModule isapi_module modules/mod_isapi.so
-#LoadModule lbmethod_bybusyness_module modules/mod_lbmethod_bybusyness.so
-#LoadModule lbmethod_byrequests_module modules/mod_lbmethod_byrequests.so
-#LoadModule lbmethod_bytraffic_module modules/mod_lbmethod_bytraffic.so
-#LoadModule lbmethod_heartbeat_module modules/mod_lbmethod_heartbeat.so
-#LoadModule ldap_module modules/mod_ldap.so
-#LoadModule logio_module modules/mod_logio.so
-LoadModule log_config_module modules/mod_log_config.so
-#LoadModule log_debug_module modules/mod_log_debug.so
-#LoadModule log_forensic_module modules/mod_log_forensic.so
-#LoadModule lua_module modules/mod_lua.so
-#LoadModule macro_module modules/mod_macro.so
-LoadModule mime_module modules/mod_mime.so
-#LoadModule mime_magic_module modules/mod_mime_magic.so
-LoadModule negotiation_module modules/mod_negotiation.so
-LoadModule proxy_module modules/mod_proxy.so
-LoadModule proxy_ajp_module modules/mod_proxy_ajp.so
-LoadModule proxy_balancer_module modules/mod_proxy_balancer.so
-LoadModule proxy_connect_module modules/mod_proxy_connect.so
-LoadModule proxy_express_module modules/mod_proxy_express.so
-LoadModule proxy_fcgi_module modules/mod_proxy_fcgi.so
-LoadModule proxy_ftp_module modules/mod_proxy_ftp.so
-LoadModule proxy_hcheck_module modules/mod_proxy_hcheck.so
-LoadModule proxy_html_module modules/mod_proxy_html.so
-LoadModule proxy_http_module modules/mod_proxy_http.so
-#LoadModule proxy_http2_module modules/mod_proxy_http2.so
-#LoadModule proxy_scgi_module modules/mod_proxy_scgi.so
-#LoadModule proxy_wstunnel_module modules/mod_proxy_wstunnel.so
-#LoadModule ratelimit_module modules/mod_ratelimit.so
-#LoadModule reflector_module modules/mod_reflector.so
-#LoadModule remoteip_module modules/mod_remoteip.so
-#LoadModule request_module modules/mod_request.so
-#LoadModule reqtimeout_module modules/mod_reqtimeout.so
-LoadModule rewrite_module modules/mod_rewrite.so
-#LoadModule sed_module modules/mod_sed.so
-#LoadModule session_module modules/mod_session.so
-#LoadModule session_cookie_module modules/mod_session_cookie.so
-#LoadModule session_crypto_module modules/mod_session_crypto.so
-#LoadModule session_dbd_module modules/mod_session_dbd.so
-LoadModule setenvif_module modules/mod_setenvif.so
-#LoadModule slotmem_plain_module modules/mod_slotmem_plain.so
-LoadModule slotmem_shm_module modules/mod_slotmem_shm.so
-#LoadModule socache_dbm_module modules/mod_socache_dbm.so
-#LoadModule socache_memcache_module modules/mod_socache_memcache.so
-LoadModule socache_shmcb_module modules/mod_socache_shmcb.so
-#LoadModule speling_module modules/mod_speling.so
-LoadModule ssl_module modules/mod_ssl.so
-#LoadModule status_module modules/mod_status.so
-#LoadModule substitute_module modules/mod_substitute.so
-#LoadModule unique_id_module modules/mod_unique_id.so
-#LoadModule userdir_module modules/mod_userdir.so
-#LoadModule usertrack_module modules/mod_usertrack.so
-#LoadModule version_module modules/mod_version.so
-#LoadModule vhost_alias_module modules/mod_vhost_alias.so
-LoadModule watchdog_module modules/mod_watchdog.so
-LoadModule xml2enc_module modules/mod_xml2enc.so
-
-&lt;IfModule unixd_module&gt;
-  User daemon
-  Group daemon
-&lt;/IfModule&gt;
-
-ServerAdmin hi@mgkim.net
-
-ServerName mgkim.net:50001
-
-&lt;Directory /&gt;
-  AllowOverride none
-  Require all denied
-&lt;/Directory&gt;
-
-DocumentRoot &#34;Z:/www/20210825_171631&#34;
-&lt;Directory &#34;Z:/www/20210825_171631&#34;&gt;
-  Options Indexes FollowSymLinks
-  AllowOverride None
-  Require all granted
-&lt;/Directory&gt;
-
-&lt;IfModule dir_module&gt;
-  DirectoryIndex index.html
-&lt;/IfModule&gt;
-
-&lt;Files &#34;.ht*&#34;&gt;
-  Require all denied
-&lt;/Files&gt;
-
-ErrorLog &#34;logs/error.log&#34;
-
-LogLevel warn
-
-&lt;IfModule log_config_module&gt;
-  LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34;&#34; combined
-  LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b&#34; common
-
-  &lt;IfModule logio_module&gt;
-    LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34; %I %O&#34; combinedio
-  &lt;/IfModule&gt;
-  CustomLog &#34;logs/access.log&#34; common
-&lt;/IfModule&gt;
-
-&lt;IfModule alias_module&gt;
-  ScriptAlias /cgi-bin/ &#34;c:/Apache24/cgi-bin/&#34;
-&lt;/IfModule&gt;
-
-&lt;IfModule headers_module&gt;
-  RequestHeader unset Proxy early
-&lt;/IfModule&gt;
-
-&lt;IfModule mime_module&gt;
-  TypesConfig conf/mime.types
-  AddType application/x-compress .Z
-  AddType application/x-gzip .gz .tgz
-&lt;/IfModule&gt;
-
-### include
-
-Include conf/extra/vhost-dlog.conf
-Include conf/extra/ssl.conf
-
-### exclude
-
-#Include conf/extra/httpd-mpm.conf
-#Include conf/extra/httpd-multilang-errordoc.conf
-#Include conf/extra/httpd-autoindex.conf
-#Include conf/extra/httpd-languages.conf
-#Include conf/extra/httpd-userdir.conf
-#Include conf/extra/httpd-info.conf
-#Include conf/extra/httpd-manual.conf
-#Include conf/extra/httpd-dav.conf
-#Include conf/extra/httpd-default.conf
-#&lt;IfModule proxy_html_module&gt;
-#  Include conf/extra/proxy-html.conf
-#&lt;/IfModule&gt;
-&lt;IfModule ssl_module&gt;
-  SSLRandomSeed startup builtin
-  SSLRandomSeed connect builtin
-&lt;/IfModule&gt;
-
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-v" data-lang="v"><span style="display:flex;"><span><span style="color:#000">ServerRoot</span> <span style="color:#4e9a06">&#34;Z:/www/httpd_2.4.25-win64-VC14/Apache24&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000">Listen</span> <span style="color:#0000cf;font-weight:bold">80</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">access_compat_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_access_compat</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">actions_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_actions</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">alias_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_alias</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">allowmethods_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_allowmethods</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">asis_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_asis</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">auth_basic_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_auth_basic</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule auth_digest_module modules/mod_auth_digest.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule auth_form_module modules/mod_auth_form.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule authn_anon_module modules/mod_authn_anon.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">authn_core_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_authn_core</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule authn_dbd_module modules/mod_authn_dbd.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule authn_dbm_module modules/mod_authn_dbm.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">authn_file_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_authn_file</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule authn_socache_module modules/mod_authn_socache.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule authnz_fcgi_module modules/mod_authnz_fcgi.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule authnz_ldap_module modules/mod_authnz_ldap.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">authz_core_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_authz_core</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule authz_dbd_module modules/mod_authz_dbd.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule authz_dbm_module modules/mod_authz_dbm.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">authz_groupfile_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_authz_groupfile</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">authz_host_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_authz_host</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule authz_owner_module modules/mod_authz_owner.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">authz_user_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_authz_user</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">autoindex_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_autoindex</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule buffer_module modules/mod_buffer.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule cache_module modules/mod_cache.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule cache_disk_module modules/mod_cache_disk.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule cache_socache_module modules/mod_cache_socache.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule cern_meta_module modules/mod_cern_meta.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">cgi_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_cgi</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule charset_lite_module modules/mod_charset_lite.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule data_module modules/mod_data.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule dav_module modules/mod_dav.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule dav_fs_module modules/mod_dav_fs.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule dav_lock_module modules/mod_dav_lock.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule dbd_module modules/mod_dbd.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule deflate_module modules/mod_deflate.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">dir_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_dir</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule dumpio_module modules/mod_dumpio.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">env_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_env</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule expires_module modules/mod_expires.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule ext_filter_module modules/mod_ext_filter.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule file_cache_module modules/mod_file_cache.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule filter_module modules/mod_filter.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule http2_module modules/mod_http2.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">headers_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_headers</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule heartbeat_module modules/mod_heartbeat.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule heartmonitor_module modules/mod_heartmonitor.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule ident_module modules/mod_ident.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule imagemap_module modules/mod_imagemap.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">include_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_include</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule info_module modules/mod_info.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">isapi_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_isapi</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule lbmethod_bybusyness_module modules/mod_lbmethod_bybusyness.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule lbmethod_byrequests_module modules/mod_lbmethod_byrequests.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule lbmethod_bytraffic_module modules/mod_lbmethod_bytraffic.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule lbmethod_heartbeat_module modules/mod_lbmethod_heartbeat.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule ldap_module modules/mod_ldap.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule logio_module modules/mod_logio.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">log_config_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_log_config</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule log_debug_module modules/mod_log_debug.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule log_forensic_module modules/mod_log_forensic.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule lua_module modules/mod_lua.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule macro_module modules/mod_macro.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">mime_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_mime</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule mime_magic_module modules/mod_mime_magic.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">negotiation_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_negotiation</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">proxy_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_proxy</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">proxy_ajp_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_proxy_ajp</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">proxy_balancer_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_proxy_balancer</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">proxy_connect_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_proxy_connect</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">proxy_express_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_proxy_express</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">proxy_fcgi_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_proxy_fcgi</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">proxy_ftp_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_proxy_ftp</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">proxy_hcheck_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_proxy_hcheck</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">proxy_html_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_proxy_html</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">proxy_http_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_proxy_http</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule proxy_http2_module modules/mod_proxy_http2.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule proxy_scgi_module modules/mod_proxy_scgi.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule proxy_wstunnel_module modules/mod_proxy_wstunnel.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule ratelimit_module modules/mod_ratelimit.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule reflector_module modules/mod_reflector.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule remoteip_module modules/mod_remoteip.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule request_module modules/mod_request.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule reqtimeout_module modules/mod_reqtimeout.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">rewrite_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_rewrite</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule sed_module modules/mod_sed.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule session_module modules/mod_session.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule session_cookie_module modules/mod_session_cookie.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule session_crypto_module modules/mod_session_crypto.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule session_dbd_module modules/mod_session_dbd.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">setenvif_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_setenvif</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule slotmem_plain_module modules/mod_slotmem_plain.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">slotmem_shm_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_slotmem_shm</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule socache_dbm_module modules/mod_socache_dbm.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule socache_memcache_module modules/mod_socache_memcache.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">socache_shmcb_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_socache_shmcb</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule speling_module modules/mod_speling.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">ssl_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_ssl</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule status_module modules/mod_status.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule substitute_module modules/mod_substitute.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule unique_id_module modules/mod_unique_id.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule userdir_module modules/mod_userdir.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule usertrack_module modules/mod_usertrack.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule version_module modules/mod_version.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule vhost_alias_module modules/mod_vhost_alias.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">watchdog_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_watchdog</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">xml2enc_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_xml2enc</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#000">IfModule</span> <span style="color:#000">unixd_module</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">User</span> <span style="color:#000">daemon</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">Group</span> <span style="color:#000">daemon</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">IfModule</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000">ServerAdmin</span> <span style="color:#000">hi</span><span style="color:#ce5c00;font-weight:bold">@</span><span style="color:#000">mgkim</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">net</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000">ServerName</span> <span style="color:#000">mgkim</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">net</span><span style="color:#000;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">50001</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#000">Directory</span> <span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">AllowOverride</span> <span style="color:#204a87;font-weight:bold">none</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">Require</span> <span style="color:#000">all</span> <span style="color:#000">denied</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">Directory</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000">DocumentRoot</span> <span style="color:#4e9a06">&#34;Z:/www/20210825_171631&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#000">Directory</span> <span style="color:#4e9a06">&#34;Z:/www/20210825_171631&#34;</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">Options</span> <span style="color:#000">Indexes</span> <span style="color:#000">FollowSymLinks</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">AllowOverride</span> <span style="color:#000">None</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">Require</span> <span style="color:#000">all</span> <span style="color:#000">granted</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">Directory</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#000">IfModule</span> <span style="color:#000">dir_module</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">DirectoryIndex</span> <span style="color:#000">index</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">html</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">IfModule</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#000">Files</span> <span style="color:#4e9a06">&#34;.ht*&#34;</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">Require</span> <span style="color:#000">all</span> <span style="color:#000">denied</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">Files</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000">ErrorLog</span> <span style="color:#4e9a06">&#34;logs/error.log&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000">LogLevel</span> <span style="color:#000">warn</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#000">IfModule</span> <span style="color:#000">log_config_module</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">LogFormat</span> <span style="color:#4e9a06">&#34;%h %l %u %t </span><span style="color:#4e9a06">\&#34;</span><span style="color:#4e9a06">%r</span><span style="color:#4e9a06">\&#34;</span><span style="color:#4e9a06"> %&gt;s %b </span><span style="color:#4e9a06">\&#34;</span><span style="color:#4e9a06">%{Referer}i</span><span style="color:#4e9a06">\&#34;</span><span style="color:#4e9a06"> </span><span style="color:#4e9a06">\&#34;</span><span style="color:#4e9a06">%{User-Agent}i</span><span style="color:#4e9a06">\&#34;</span><span style="color:#4e9a06">&#34;</span> <span style="color:#000">combined</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">LogFormat</span> <span style="color:#4e9a06">&#34;%h %l %u %t </span><span style="color:#4e9a06">\&#34;</span><span style="color:#4e9a06">%r</span><span style="color:#4e9a06">\&#34;</span><span style="color:#4e9a06"> %&gt;s %b&#34;</span> <span style="color:#000">common</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#000">IfModule</span> <span style="color:#000">logio_module</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">LogFormat</span> <span style="color:#4e9a06">&#34;%h %l %u %t </span><span style="color:#4e9a06">\&#34;</span><span style="color:#4e9a06">%r</span><span style="color:#4e9a06">\&#34;</span><span style="color:#4e9a06"> %&gt;s %b </span><span style="color:#4e9a06">\&#34;</span><span style="color:#4e9a06">%{Referer}i</span><span style="color:#4e9a06">\&#34;</span><span style="color:#4e9a06"> </span><span style="color:#4e9a06">\&#34;</span><span style="color:#4e9a06">%{User-Agent}i</span><span style="color:#4e9a06">\&#34;</span><span style="color:#4e9a06"> %I %O&#34;</span> <span style="color:#000">combinedio</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">IfModule</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">CustomLog</span> <span style="color:#4e9a06">&#34;logs/access.log&#34;</span> <span style="color:#000">common</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">IfModule</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#000">IfModule</span> <span style="color:#000">alias_module</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">ScriptAlias</span> <span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">cgi</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">bin</span><span style="color:#ce5c00;font-weight:bold">/</span> <span style="color:#4e9a06">&#34;c:/Apache24/cgi-bin/&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">IfModule</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#000">IfModule</span> <span style="color:#000">headers_module</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">RequestHeader</span> <span style="color:#000">unset</span> <span style="color:#000">Proxy</span> <span style="color:#000">early</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">IfModule</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#000">IfModule</span> <span style="color:#000">mime_module</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">TypesConfig</span> <span style="color:#000">conf</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mime</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">types</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">AddType</span> <span style="color:#000">application</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">compress</span> <span style="color:#000;font-weight:bold">.</span><span style="color:#000">Z</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">AddType</span> <span style="color:#000">application</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">gzip</span> <span style="color:#000;font-weight:bold">.</span><span style="color:#000">gz</span> <span style="color:#000;font-weight:bold">.</span><span style="color:#000">tgz</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">IfModule</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">###</span> <span style="color:#000">include</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000">Include</span> <span style="color:#000">conf</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">extra</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">vhost</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">dlog</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">conf</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">Include</span> <span style="color:#000">conf</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">extra</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">ssl</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">conf</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">###</span> <span style="color:#000">exclude</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#Include conf/extra/httpd-mpm.conf</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#Include conf/extra/httpd-multilang-errordoc.conf</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#Include conf/extra/httpd-autoindex.conf</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#Include conf/extra/httpd-languages.conf</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#Include conf/extra/httpd-userdir.conf</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#Include conf/extra/httpd-info.conf</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#Include conf/extra/httpd-manual.conf</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#Include conf/extra/httpd-dav.conf</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#Include conf/extra/httpd-default.conf</span>
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">#</span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#000">IfModule</span> <span style="color:#000">proxy_html_module</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">#</span>  <span style="color:#000">Include</span> <span style="color:#000">conf</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">extra</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxy</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">html</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">conf</span>
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">#</span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">IfModule</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#000">IfModule</span> <span style="color:#000">ssl_module</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">SSLRandomSeed</span> <span style="color:#000">startup</span> <span style="color:#000">builtin</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">SSLRandomSeed</span> <span style="color:#000">connect</span> <span style="color:#000">builtin</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">IfModule</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span></code></pre></div><ul>
 <li>ssl.conf</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Listen 9443
-#Listen 443
-
-SSLCipherSuite HIGH:MEDIUM:!MD5:!RC4
-SSLProxyCipherSuite HIGH:MEDIUM:!MD5:!RC4
-
-SSLHonorCipherOrder on
-
-SSLProtocol all -SSLv3
-SSLProxyProtocol all -SSLv3
-
-SSLPassPhraseDialog  builtin
-
-SSLSessionCache         &#34;shmcb:c:/Apache24/logs/ssl_scache(512000)&#34;
-SSLSessionCacheTimeout  300
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>Listen 9443
+</span></span><span style="display:flex;"><span>#Listen 443
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>SSLCipherSuite HIGH:MEDIUM:!MD5:!RC4
+</span></span><span style="display:flex;"><span>SSLProxyCipherSuite HIGH:MEDIUM:!MD5:!RC4
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>SSLHonorCipherOrder on
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>SSLProtocol all -SSLv3
+</span></span><span style="display:flex;"><span>SSLProxyProtocol all -SSLv3
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>SSLPassPhraseDialog  builtin
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>SSLSessionCache         &#34;shmcb:c:/Apache24/logs/ssl_scache(512000)&#34;
+</span></span><span style="display:flex;"><span>SSLSessionCacheTimeout  300
+</span></span></code></pre></div><ul>
 <li>vhost-dlog.conf</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">#&lt;VirtualHost *:80&gt;
-#  ServerName vdlog.mgkim.net:80
-#
-#  RewriteEngine On
-#  RewriteCond %{HTTPS} !=On
-#  RewriteRule /(.*) https://vdlog.mgkim.net:9443/$1 [QSA,R,L]
-#&lt;/VirtualHost&gt;
-#
-#&lt;VirtualHost *:9443&gt;
-#  ServerName vdlog.mgkim.net:9443
-#
-#  ErrorLog &#34;|bin/rotatelogs.exe logs/vdlog.mgkim.net_ssl-error.log.%Y-%m-%d 86400 +540&#34;
-#  CustomLog &#34;|bin/rotatelogs.exe logs/vdlog.mgkim.net_ssl-access.log.%Y-%m-%d 86400 +540&#34; combined
-#
-#  SSLEngine On
-#  SSLProxyEngine On
-#  SSLProtocol all -SSLv2
-#  SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5
-#  SSLCertificateFile conf/certs/STAR.mgkim.net.crt
-#  SSLCertificateKeyFile conf/certs/STAR.mgkim.net.key
-#
-#  ProxyRequests Off
-#  ProxyPreserveHost On
-#
-#  &lt;Proxy gitlab&gt;
-#    Require all granted
-#  &lt;/Proxy&gt;
-#
-#  AllowEncodedSlashes On
-#  Header set Access-Control-Allow-Origin &#34;*&#34;
-#
-#  ProxyPass / http://127.0.0.1:1313/
-#  ProxyPassReverse / http://127.0.0.1:1313/
-#&lt;/VirtualHost&gt;
-
-&lt;VirtualHost *:80&gt;
-  ServerName vdlog.mgkim.net:80
-  ServerAlias mgkim.net:80
-
-  ErrorLog &#34;|bin/rotatelogs.exe logs/vdlog.mgkim.net-error.log.%Y-%m-%d 86400 +540&#34;
-  CustomLog &#34;|bin/rotatelogs.exe logs/vdlog.mgkim.net-access.log.%Y-%m-%d 86400 +540&#34; combined
-
-  ProxyRequests Off
-  ProxyPreserveHost On
-
-  &lt;Proxy gitlab&gt;
-    Require all granted
-  &lt;/Proxy&gt;
-
-  AllowEncodedSlashes On
-  Header set Access-Control-Allow-Origin &#34;*&#34;
-
-  ProxyPass / http://127.0.0.1:1313/
-  ProxyPassReverse / http://127.0.0.1:1313/
-&lt;/VirtualHost&gt;
-
-
-
-&lt;VirtualHost *:80&gt;
-  ServerName vdlog:80
-
-  RewriteEngine On
-  RewriteCond %{HTTPS} !=On
-  RewriteRule /(.*) https://vdlog:9443/$1 [QSA,R,L]
-&lt;/VirtualHost&gt;
-
-&lt;VirtualHost *:9443&gt;
-  ServerName vdlog:9443
-
-  SSLEngine On
-  SSLProxyEngine On
-  #SSLProxyCheckPeerCN On
-  #SSLProxyCheckPeerExpire On
-  SSLProtocol all -SSLv2
-  SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5
-  SSLCertificateFile conf/certs/vdlog.crt
-  SSLCertificateKeyFile conf/certs/vdlog.key
-
-  RewriteEngine On
-  RewriteRule /(.*) https://dlog.mgkim.net:443/$1 [QSA,P,L]
-&lt;/VirtualHost&gt;
-</code></pre></div><h3 id="openssl">openssl</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>#&lt;VirtualHost *:80&gt;
+</span></span><span style="display:flex;"><span>#  ServerName vdlog.mgkim.net:80
+</span></span><span style="display:flex;"><span>#
+</span></span><span style="display:flex;"><span>#  RewriteEngine On
+</span></span><span style="display:flex;"><span>#  RewriteCond %{HTTPS} !=On
+</span></span><span style="display:flex;"><span>#  RewriteRule /(.*) https://vdlog.mgkim.net:9443/$1 [QSA,R,L]
+</span></span><span style="display:flex;"><span>#&lt;/VirtualHost&gt;
+</span></span><span style="display:flex;"><span>#
+</span></span><span style="display:flex;"><span>#&lt;VirtualHost *:9443&gt;
+</span></span><span style="display:flex;"><span>#  ServerName vdlog.mgkim.net:9443
+</span></span><span style="display:flex;"><span>#
+</span></span><span style="display:flex;"><span>#  ErrorLog &#34;|bin/rotatelogs.exe logs/vdlog.mgkim.net_ssl-error.log.%Y-%m-%d 86400 +540&#34;
+</span></span><span style="display:flex;"><span>#  CustomLog &#34;|bin/rotatelogs.exe logs/vdlog.mgkim.net_ssl-access.log.%Y-%m-%d 86400 +540&#34; combined
+</span></span><span style="display:flex;"><span>#
+</span></span><span style="display:flex;"><span>#  SSLEngine On
+</span></span><span style="display:flex;"><span>#  SSLProxyEngine On
+</span></span><span style="display:flex;"><span>#  SSLProtocol all -SSLv2
+</span></span><span style="display:flex;"><span>#  SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5
+</span></span><span style="display:flex;"><span>#  SSLCertificateFile conf/certs/STAR.mgkim.net.crt
+</span></span><span style="display:flex;"><span>#  SSLCertificateKeyFile conf/certs/STAR.mgkim.net.key
+</span></span><span style="display:flex;"><span>#
+</span></span><span style="display:flex;"><span>#  ProxyRequests Off
+</span></span><span style="display:flex;"><span>#  ProxyPreserveHost On
+</span></span><span style="display:flex;"><span>#
+</span></span><span style="display:flex;"><span>#  &lt;Proxy gitlab&gt;
+</span></span><span style="display:flex;"><span>#    Require all granted
+</span></span><span style="display:flex;"><span>#  &lt;/Proxy&gt;
+</span></span><span style="display:flex;"><span>#
+</span></span><span style="display:flex;"><span>#  AllowEncodedSlashes On
+</span></span><span style="display:flex;"><span>#  Header set Access-Control-Allow-Origin &#34;*&#34;
+</span></span><span style="display:flex;"><span>#
+</span></span><span style="display:flex;"><span>#  ProxyPass / http://127.0.0.1:1313/
+</span></span><span style="display:flex;"><span>#  ProxyPassReverse / http://127.0.0.1:1313/
+</span></span><span style="display:flex;"><span>#&lt;/VirtualHost&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;VirtualHost *:80&gt;
+</span></span><span style="display:flex;"><span>  ServerName vdlog.mgkim.net:80
+</span></span><span style="display:flex;"><span>  ServerAlias mgkim.net:80
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  ErrorLog &#34;|bin/rotatelogs.exe logs/vdlog.mgkim.net-error.log.%Y-%m-%d 86400 +540&#34;
+</span></span><span style="display:flex;"><span>  CustomLog &#34;|bin/rotatelogs.exe logs/vdlog.mgkim.net-access.log.%Y-%m-%d 86400 +540&#34; combined
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  ProxyRequests Off
+</span></span><span style="display:flex;"><span>  ProxyPreserveHost On
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  &lt;Proxy gitlab&gt;
+</span></span><span style="display:flex;"><span>    Require all granted
+</span></span><span style="display:flex;"><span>  &lt;/Proxy&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  AllowEncodedSlashes On
+</span></span><span style="display:flex;"><span>  Header set Access-Control-Allow-Origin &#34;*&#34;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  ProxyPass / http://127.0.0.1:1313/
+</span></span><span style="display:flex;"><span>  ProxyPassReverse / http://127.0.0.1:1313/
+</span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;VirtualHost *:80&gt;
+</span></span><span style="display:flex;"><span>  ServerName vdlog:80
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  RewriteEngine On
+</span></span><span style="display:flex;"><span>  RewriteCond %{HTTPS} !=On
+</span></span><span style="display:flex;"><span>  RewriteRule /(.*) https://vdlog:9443/$1 [QSA,R,L]
+</span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;VirtualHost *:9443&gt;
+</span></span><span style="display:flex;"><span>  ServerName vdlog:9443
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  SSLEngine On
+</span></span><span style="display:flex;"><span>  SSLProxyEngine On
+</span></span><span style="display:flex;"><span>  #SSLProxyCheckPeerCN On
+</span></span><span style="display:flex;"><span>  #SSLProxyCheckPeerExpire On
+</span></span><span style="display:flex;"><span>  SSLProtocol all -SSLv2
+</span></span><span style="display:flex;"><span>  SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5
+</span></span><span style="display:flex;"><span>  SSLCertificateFile conf/certs/vdlog.crt
+</span></span><span style="display:flex;"><span>  SSLCertificateKeyFile conf/certs/vdlog.key
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  RewriteEngine On
+</span></span><span style="display:flex;"><span>  RewriteRule /(.*) https://dlog.mgkim.net:443/$1 [QSA,P,L]
+</span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
+</span></span></code></pre></div><h3 id="openssl">openssl</h3>
 <h4 id="인증서-생성하기">인증서 생성하기</h4>
 <ol>
 <li>개인키(key) 생성</li>
@@ -1071,37 +946,37 @@ SSLSessionCacheTimeout  300
 </ol>
 <h4 id="useful">useful</h4>
 <p>개인키(domain.key)와 인증서(domain.crt) 파일을 동시에 생성하는 스크립트 입니다.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#ce5c00;font-weight:bold">[</span>root@develop /etc/httpd/conf.d/certs<span style="color:#ce5c00;font-weight:bold">]</span>$ cat create-cert.sh
-<span style="color:#000">DOMAIN</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">$1</span>
-
-openssl req -x509 -nodes -days <span style="color:#0000cf;font-weight:bold">730</span> -newkey rsa:2048 -keyout <span style="color:#000">$DOMAIN</span>.key -out <span style="color:#000">$DOMAIN</span>.crt -config &lt;<span style="color:#ce5c00;font-weight:bold">(</span>cat <span style="color:#4e9a06">&lt;&lt;- TEXT
-</span><span style="color:#4e9a06">[req]
-</span><span style="color:#4e9a06">distinguished_name = req_distinguished_name
-</span><span style="color:#4e9a06">x509_extensions = v3_req
-</span><span style="color:#4e9a06">prompt = no
-</span><span style="color:#4e9a06">[req_distinguished_name]
-</span><span style="color:#4e9a06">countryName             = KR
-</span><span style="color:#4e9a06">stateOrProvinceName     = Seoul
-</span><span style="color:#4e9a06">localityName            = Seonyudo
-</span><span style="color:#4e9a06">organizationName        = SPACESOFT
-</span><span style="color:#4e9a06">organizationalUnitName  = Dev Team
-</span><span style="color:#4e9a06">CN = $DOMAIN
-</span><span style="color:#4e9a06">[v3_req]
-</span><span style="color:#4e9a06">keyUsage = critical, digitalSignature, keyAgreement
-</span><span style="color:#4e9a06">extendedKeyUsage = serverAuth
-</span><span style="color:#4e9a06">subjectAltName = @alt_names
-</span><span style="color:#4e9a06">[alt_names]
-</span><span style="color:#4e9a06">DNS.1 = $DOMAIN
-</span><span style="color:#4e9a06">TEXT</span><span style="color:#ce5c00;font-weight:bold">)</span> -sha256
-
-<span style="color:#ce5c00;font-weight:bold">[</span>root@develop /etc/httpd/conf.d/certs<span style="color:#ce5c00;font-weight:bold">]</span>$
-</code></pre></div><h3 id="selinux">selinux</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">chcon -Rt httpd_log_t /outlog/WEB
-chcon -Rt httpd_sys_content_t /app/WEB/dlog
-setsebool -P httpd_can_network_connect on
-
-systemctl restart httpd
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">[</span>root@develop /etc/httpd/conf.d/certs<span style="color:#ce5c00;font-weight:bold">]</span>$ cat create-cert.sh
+</span></span><span style="display:flex;"><span><span style="color:#000">DOMAIN</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">$1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>openssl req -x509 -nodes -days <span style="color:#0000cf;font-weight:bold">730</span> -newkey rsa:2048 -keyout <span style="color:#000">$DOMAIN</span>.key -out <span style="color:#000">$DOMAIN</span>.crt -config &lt;<span style="color:#ce5c00;font-weight:bold">(</span>cat <span style="color:#4e9a06">&lt;&lt;- TEXT
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">[req]
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">distinguished_name = req_distinguished_name
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">x509_extensions = v3_req
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">prompt = no
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">[req_distinguished_name]
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">countryName             = KR
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">stateOrProvinceName     = Seoul
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">localityName            = Seonyudo
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">organizationName        = SPACESOFT
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">organizationalUnitName  = Dev Team
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">CN = $DOMAIN
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">[v3_req]
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">keyUsage = critical, digitalSignature, keyAgreement
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">extendedKeyUsage = serverAuth
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">subjectAltName = @alt_names
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">[alt_names]
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">DNS.1 = $DOMAIN
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">TEXT</span><span style="color:#ce5c00;font-weight:bold">)</span> -sha256
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">[</span>root@develop /etc/httpd/conf.d/certs<span style="color:#ce5c00;font-weight:bold">]</span>$
+</span></span></code></pre></div><h3 id="selinux">selinux</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>chcon -Rt httpd_log_t /outlog/WEB
+</span></span><span style="display:flex;"><span>chcon -Rt httpd_sys_content_t /app/WEB/dlog
+</span></span><span style="display:flex;"><span>setsebool -P httpd_can_network_connect on
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>systemctl restart httpd
+</span></span></code></pre></div>
 	
 	
 	
@@ -1112,19 +987,10 @@ systemctl restart httpd
         </div>
       </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-    crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
-    integrity="sha512-UR25UO94eTnCVwjbXozyeVd6ZqpaAE9naiEUBK/A+QDbfSTQFhPGj5lOR6d8tsgbBk84Ggb5A3EkjsOgPRPcKA=="
-    crossorigin="anonymous"></script>
-
-
-<script src="https://cdn.jsdelivr.net/npm/mermaid@8.13.4/dist/mermaid.min.js" integrity="sha512-JERecFUBbsm75UpkVheAuDOE8NdHjQBrPACfEQYPwvPG+fjgCpHAz1Jw2ci9EXmd3DdfiWth3O3CQvcfEg8gsA==" crossorigin="anonymous"></script>
-
-
-
-<style>
+    
+        
+    
+  <style>
 .markmap > svg {
   width: 100%;
   height: 300px;
@@ -1132,57 +998,34 @@ systemctl restart httpd
 </style>
 <script>
 window.markmap = {
-  autoLoader: { manual: true },
+  autoLoader: {
+      manual: true,
+      onReady() {
+        const { autoLoader, builtInPlugins } = window.markmap;
+        autoLoader.transformPlugins = builtInPlugins.filter(plugin => plugin.name !== 'prism');
+      },
+  },
 };
 </script>
 <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
-
-
-<script src='/js/tabpane-persist.js'></script>
-
-
-
 <script src='/js/deflate.js'></script>
-
-
-
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
-    integrity="sha512-vJqxkZ+Sugf/6WRlpcxN01qVfX/29hF6qc33eHF1va3NgoV+U+wCi+uTAsQ10sDoGyBxHLdaHvGwDlV3yVYboA==" crossorigin="anonymous">
-
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"
-    integrity="sha512-5ufNcHqOYgilGEHPfuRIQ5B/vDS1M8+UC+DESZ5CwVgGTg+b2Ol/15rYL/GiCWJ/Sx8oVo0FPFok1dPk8U9INQ=="
-    crossorigin="anonymous"></script>
-
-
-
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js"
-    integrity="sha512-HWb6LyQhO6UkmYLjdSblpgiOvvbdkoMRjln0POPhOVbZu3l4QdqwZnMJ/cuwKScU5pWARejB495TAAAz0WNsXQ=="
-    crossorigin="anonymous"></script>
-
-
-<script defer src='https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js'
-    integrity='sha512-ZA/RPrAo88DlwRnnoNVqKINnQNcWERzRK03PDaA4GIJiVZvGFIWQbdWCsUebMZfkWohnfngsDjXzU6PokO4jGw==' crossorigin='anonymous' 
-    onload='renderMathInElement(document.body, null);'></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script src="/js/main.min.107a1d3f0d9dfdbd7b6c30065c60e2534ccedea64e72f2386b6c20f924336373.js" integrity="sha256-EHodPw2d/b17bDAGXGDiU0zO3qZOcvI4a2wg&#43;SQzY3M=" crossorigin="anonymous"></script>
-
-
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/katex.min.css"
+      integrity="sha512-6VMVcy7XQNyarhVuiL50FzpgCFKsyTd6YO93aaQEyET+BNaWvj0IgKR86Bf6+AmWczxAcSnL+JGjo+iStgO1gQ==" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/katex.min.js"
+        integrity="sha512-b9IKj4LCNrtCPBhceRcoYOHWW/S2q9fpl7iAJlyxYpykRj1SKM7FE9+E0NEnJ8g8ni47LBr2GuX9qzg/xeuwzQ=="
+        crossorigin="anonymous">
+</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/contrib/mhchem.min.js"
+        integrity="sha512-V1hl0fnOXW6Cdqe5ZVqtw8TBpJVpu3XRDRQti96j/04+tMarPrCdXEUE3UdfvfKYTpOn9DV4zEZBVr0HhDiuiQ=="
+        crossorigin="anonymous">
+</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/contrib/auto-render.min.js"
+       integrity="sha512-iWiuBS5nt6r60fCz26Nd0Zqe0nbk1ZTIQbl3Kv7kYsX+yKMUFHzjaH2+AnM6vp2Xs+gNmaBAVWJjSmuPw76Efg==" crossorigin="anonymous"
+       onload='renderMathInElement(document.body, null);'>
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@9.2.2/dist/mermaid.min.js" integrity="sha512-IX+bU+wShHqfqaMHLMrtwi4nK6W/Z+QdZoL4kPNtRxI2wCLyHPMAdl3a43Fv1Foqv4AP+aiW6hg1dcrTt3xc+Q==" crossorigin="anonymous"></script>
+<script src="/js/main.min.cb60271b4607b0814d09c13d1ba59ea4ff218de622cc7a51c2403d3d292d9320.js" integrity="sha256-y2AnG0YHsIFNCcE9G6WepP8hjeYizHpRwkA9PSktkyA=" crossorigin="anonymous"></script>
+<script src='/js/tabpane-persist.js'></script>
 
   </body>
 </html>
