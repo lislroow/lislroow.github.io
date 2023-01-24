@@ -1,8 +1,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>dlog – localenv</title>
+    <title> – localenv</title>
     <link>/localenv/</link>
-    <description>Recent content in localenv on dlog</description>
+    <description>Recent content in localenv on </description>
     <generator>Hugo -- gohugo.io</generator>
     
 	  <atom:link href="/localenv/index.xml" rel="self" type="application/rss+xml" />
