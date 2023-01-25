@@ -1,0 +1,39 @@
+#!/bin/sh
+
+#JAVA_HOME=/prod/java/jdk1.8.0_202
+JAVA_HOME=/prod/java/openjdk-11.0.2
+export PATH=$JAVA_HOME/bin:$PATH
+
+JAVA_OPTS="${JAVA_OPTS} -Dapp.id=jenkins"
+JAVA_OPTS="${JAVA_OPTS} -Dcom.sun.akuma.Daemon=daemonized"
+JAVA_OPTS="${JAVA_OPTS} -Djava.awt.headless=true"
+JAVA_OPTS="${JAVA_OPTS} -DJENKINS_HOME=/data/PROD/jenkins"
+
+JENKINS_ARGS="${JENKINS_ARGS} --logfile=/outlog/PROD/jenkins/default.log"
+JENKINS_ARGS="${JENKINS_ARGS} --webroot=/prod/jenkins/jenkins/cache-war"
+JENKINS_ARGS="${JENKINS_ARGS} --daemon"
+JENKINS_ARGS="${JENKINS_ARGS} --httpPort=8400"
+JENKINS_ARGS="${JENKINS_ARGS} --debug=5"
+JENKINS_ARGS="${JENKINS_ARGS} --handlerCountMax=100"
+JENKINS_ARGS="${JENKINS_ARGS} --handlerCountMaxIdle=20"
+JENKINS_ARGS="${JENKINS_ARGS} --accessLoggerClassName=winstone.accesslog.SimpleAccessLogger"
+JENKINS_ARGS="${JENKINS_ARGS} --simpleAccessLogger.format=combined"
+JENKINS_ARGS="${JENKINS_ARGS} --simpleAccessLogger.file=/outlog/PROD/jenkins/access.log"
+#JENKINS_ARGS="${JENKINS_ARGS} --httpsCertificate=/etc/pki/tls/mgkim/jenkins.crt"
+#JENKINS_ARGS="${JENKINS_ARGS} --httpsPrivateKey=/etc/pki/tls/mgkim/jenkins.key"
+
+case "$1" in
+  start)
+    echo "starting jenkins"
+    nohup $JAVA_HOME/bin/java $JAVA_OPTS -jar /prod/jenkins/jenkins/jenkins.war $JENKINS_ARGS > /dev/null 2>&1 &
+    ;;
+  stop)
+    echo "stopping jenkins"
+    ps -ef | grep java | grep -v grep | grep jenkins | awk '{ print $2 }' | xargs kill -9 
+    ;;
+  *)
+    echo "Usage: $0 {start|stop}"
+    exit 1
+    ;;
+esac
+

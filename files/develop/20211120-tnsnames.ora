@@ -1,0 +1,44 @@
+EVTDBP =
+  (DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = develop)(PORT = 1521))
+    (CONNECT_DATA =
+      (SERVER = DEDICATED)
+      (SERVICE_NAME = EVTDBP)
+    )
+  )
+
+SPADBP =
+  (DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = develop)(PORT = 1521))
+    (CONNECT_DATA =
+      (SERVER = DEDICATED)
+      (SERVICE_NAME = SPADBP)
+    )
+  )
+
+xe =
+  (DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = develop)(PORT = 1521))
+    (CONNECT_DATA =
+      (SERVER = DEDICATED)
+      (SERVICE_NAME = xe)
+    )
+  )
+
+XEPDB1 =
+  (DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = develop)(PORT = 1521))
+    (CONNECT_DATA =
+      (SERVER = DEDICATED)
+      (SERVICE_NAME = XEPDB1)
+    )
+  )
+
+NTVCPT1 =
+  (DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = ntvcpt1)(PORT = 1521))
+    (CONNECT_DATA =
+      (SERVER = DEDICATED)
+      (SERVICE_NAME = XE)
+    )
+  )
