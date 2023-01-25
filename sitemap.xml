@@ -2,8 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/</loc>
-  </url><url>
     <loc>/it/localenv/04_%EC%B0%B8%EA%B3%A0_eclipse-%EB%8B%A8%EC%B6%95%ED%82%A4/</loc>
   </url><url>
     <loc>/it/elk/20220129-apache_log/</loc>
@@ -27,6 +25,8 @@
     <loc>/it/localenv/gradle/</loc>
   </url><url>
     <loc>/it/system/httpd/</loc>
+  </url><url>
+    <loc>/</loc>
   </url><url>
     <loc>/it/localenv/intellij/</loc>
   </url><url>

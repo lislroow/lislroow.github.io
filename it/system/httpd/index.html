@@ -79,7 +79,7 @@ configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modu
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/offline-search-index.4f94867d1623c679d66ce1949cddd383.json"
+    data-offline-search-index-json-src="/offline-search-index.d8b13234e18a0cf7d9d0f50f0410ab2f.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -105,7 +105,7 @@ configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modu
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/offline-search-index.4f94867d1623c679d66ce1949cddd383.json"
+    data-offline-search-index-json-src="/offline-search-index.d8b13234e18a0cf7d9d0f50f0410ab2f.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -294,7 +294,7 @@ configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modu
 <br>
 <h3 id="configure">configure</h3>
 <h4 id="httpdconf">httpd.conf</h4>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>ServerRoot &#34;/etc/httpd&#34;
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>ServerRoot &#34;/etc/httpd&#34;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>Listen 80
 </span></span><span style="display:flex;"><span>
@@ -357,7 +357,7 @@ configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modu
 </span></span><span style="display:flex;"><span>EnableSendfile on
 </span></span><span style="display:flex;"><span>IncludeOptional conf.d/*.conf
 </span></span></code></pre></div><h4 id="sslconf">ssl.conf</h4>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>Listen 443 https
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>Listen 443 https
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>SSLPassPhraseDialog exec:/usr/libexec/httpd-ssl-pass-dialog
 </span></span><span style="display:flex;"><span>SSLSessionCache         shmcb:/run/httpd/sslcache(512000)
@@ -388,7 +388,7 @@ configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modu
 </span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
 </span></span></code></pre></div><br>
 <h4 id="vhost-centos8conf">vhost-centos8.conf</h4>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>&lt;VirtualHost *:80&gt;
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>&lt;VirtualHost *:80&gt;
 </span></span><span style="display:flex;"><span>  ServerName centos8
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  RewriteEngine On
@@ -434,7 +434,7 @@ configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modu
 </span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
 </span></span></code></pre></div><br>
 <h4 id="vhost-nexusconf">vhost-nexus.conf</h4>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>&lt;VirtualHost *:80&gt;
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>&lt;VirtualHost *:80&gt;
 </span></span><span style="display:flex;"><span>  ServerName nexus
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  RewriteEngine On
@@ -493,7 +493,7 @@ configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modu
 </span></span><span style="display:flex;"><span>  #ProxyPassMatch ^/(.*)$ http://127.0.0.1:8100/$1
 </span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
 </span></span></code></pre></div><h4 id="vhost-gitlabconf">vhost-gitlab.conf</h4>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>&lt;VirtualHost *:80&gt;
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>&lt;VirtualHost *:80&gt;
 </span></span><span style="display:flex;"><span>  ServerName gitlab
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  RewriteEngine On
@@ -551,7 +551,7 @@ configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modu
 </span></span><span style="display:flex;"><span>  ProxyPassReverse / http://127.0.0.1:8200/
 </span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
 </span></span></code></pre></div><h4 id="vhost-jenkinsconf">vhost-jenkins.conf</h4>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>&lt;VirtualHost *:80&gt;
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>&lt;VirtualHost *:80&gt;
 </span></span><span style="display:flex;"><span>  ServerName jenkins
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  RewriteEngine On
@@ -614,7 +614,7 @@ configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modu
 </span></span><span style="display:flex;"><span>  RewriteRule /(.*) http://localhost:8400/$1 [P,L]
 </span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
 </span></span></code></pre></div><h4 id="vhost-dlogconf">vhost-dlog.conf</h4>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>&lt;VirtualHost *:80&gt;
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>&lt;VirtualHost *:80&gt;
 </span></span><span style="display:flex;"><span>  ServerName dlog
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  RewriteEngine On
@@ -672,7 +672,7 @@ configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modu
 </span></span><span style="display:flex;"><span>  ProxyPassReverse / http://127.0.0.1:1313/
 </span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
 </span></span></code></pre></div><h4 id="vhost-dwwwconf">vhost-dwww.conf</h4>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>&lt;VirtualHost *:80&gt;
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>&lt;VirtualHost *:80&gt;
 </span></span><span style="display:flex;"><span>  ServerName dwww
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  ErrorLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/dwww-error.log.%Y-%m-%d 86400 +540&#34;
@@ -704,229 +704,229 @@ configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modu
 </span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
 </span></span></code></pre></div><h3 id="connector">connector</h3>
 <h4 id="weblogic">weblogic</h4>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-v" data-lang="v"><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">weblogic_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_wl_24</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-v" data-lang="v"><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">LoadModule</span> <span style="color:#19177c">weblogic_module</span> <span style="color:#19177c">modules</span><span style="color:#666">/</span><span style="color:#19177c">mod_wl_24</span>.<span style="color:#19177c">so</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#000">IfModule</span> <span style="color:#000">mod_weblogic</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">c</span><span style="color:#000;font-weight:bold">&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">WebLogicCluster</span> <span style="color:#000">IP</span><span style="color:#000;font-weight:bold">:</span><span style="color:#000">PORT</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">IP</span><span style="color:#000;font-weight:bold">:</span><span style="color:#000">PORT</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">IP</span><span style="color:#000;font-weight:bold">:</span><span style="color:#000">PORT</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">ConnectTimeoutSecs</span> <span style="color:#0000cf;font-weight:bold">8</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">ConnectRetrySecs</span> <span style="color:#0000cf;font-weight:bold">2</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">Idempotent</span> <span style="color:#000">OFF</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">DynamicServerList</span> <span style="color:#000">OFF</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">MatchExpression</span> <span style="color:#ce5c00;font-weight:bold">*</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">KeepAliveEnabled</span> <span style="color:#000">OFF</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">IfModule</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#00f;font-weight:bold">IfModule</span> <span style="color:#19177c">mod_weblogic</span>.<span style="color:#19177c">c</span>&gt;
+</span></span><span style="display:flex;"><span>  <span style="color:#00f;font-weight:bold">WebLogicCluster</span> <span style="color:#00f;font-weight:bold">IP</span>:<span style="color:#00f;font-weight:bold">PORT</span>,<span style="color:#00f;font-weight:bold">IP</span>:<span style="color:#00f;font-weight:bold">PORT</span>,<span style="color:#00f;font-weight:bold">IP</span>:<span style="color:#00f;font-weight:bold">PORT</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f;font-weight:bold">ConnectTimeoutSecs</span> <span style="color:#666">8</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f;font-weight:bold">ConnectRetrySecs</span> <span style="color:#666">2</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f;font-weight:bold">Idempotent</span> <span style="color:#00f;font-weight:bold">OFF</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f;font-weight:bold">DynamicServerList</span> <span style="color:#00f;font-weight:bold">OFF</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f;font-weight:bold">MatchExpression</span> <span style="color:#666">*</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f;font-weight:bold">KeepAliveEnabled</span> <span style="color:#00f;font-weight:bold">OFF</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#666">/</span><span style="color:#00f;font-weight:bold">IfModule</span>&gt;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#000">Location</span> <span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">api</span> <span style="color:#000;font-weight:bold">&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">WLSRequest</span> <span style="color:#000">On</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#8f5902;font-style:italic">#SetHandler weblogic-handler</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">WebLogicCluster</span> <span style="color:#000">IP</span><span style="color:#000;font-weight:bold">:</span><span style="color:#000">PORT</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">IP</span><span style="color:#000;font-weight:bold">:</span><span style="color:#000">PORT</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">IP</span><span style="color:#000;font-weight:bold">:</span><span style="color:#000">PORT</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#8f5902;font-style:italic">#Idempotent OFF</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">Location</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#00f;font-weight:bold">Location</span> <span style="color:#666">/</span><span style="color:#19177c">api</span> &gt;
+</span></span><span style="display:flex;"><span>  <span style="color:#00f;font-weight:bold">WLSRequest</span> <span style="color:#00f;font-weight:bold">On</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#bc7a00">#SetHandler weblogic-handler</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f;font-weight:bold">WebLogicCluster</span> <span style="color:#00f;font-weight:bold">IP</span>:<span style="color:#00f;font-weight:bold">PORT</span>,<span style="color:#00f;font-weight:bold">IP</span>:<span style="color:#00f;font-weight:bold">PORT</span>,<span style="color:#00f;font-weight:bold">IP</span>:<span style="color:#00f;font-weight:bold">PORT</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#bc7a00">#Idempotent OFF</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#666">/</span><span style="color:#00f;font-weight:bold">Location</span>&gt;
 </span></span></code></pre></div><h3 id="windows">windows</h3>
 <h4 id="install-command-apache-lounge">install command (Apache Lounge)</h4>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>httpd.exe -k install
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>httpd.exe -k install
 </span></span><span style="display:flex;"><span>httpd.exe -k configtest
 </span></span></code></pre></div><h4 id="configure-1">configure</h4>
 <ul>
 <li>httpd.conf</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-v" data-lang="v"><span style="display:flex;"><span><span style="color:#000">ServerRoot</span> <span style="color:#4e9a06">&#34;Z:/www/httpd_2.4.25-win64-VC14/Apache24&#34;</span>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-v" data-lang="v"><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">ServerRoot</span> <span style="color:#ba2121">&#34;Z:/www/httpd_2.4.25-win64-VC14/Apache24&#34;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#000">Listen</span> <span style="color:#0000cf;font-weight:bold">80</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">Listen</span> <span style="color:#666">80</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">access_compat_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_access_compat</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">actions_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_actions</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">alias_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_alias</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">allowmethods_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_allowmethods</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">asis_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_asis</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">auth_basic_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_auth_basic</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule auth_digest_module modules/mod_auth_digest.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule auth_form_module modules/mod_auth_form.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule authn_anon_module modules/mod_authn_anon.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">authn_core_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_authn_core</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule authn_dbd_module modules/mod_authn_dbd.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule authn_dbm_module modules/mod_authn_dbm.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">authn_file_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_authn_file</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule authn_socache_module modules/mod_authn_socache.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule authnz_fcgi_module modules/mod_authnz_fcgi.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule authnz_ldap_module modules/mod_authnz_ldap.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">authz_core_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_authz_core</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule authz_dbd_module modules/mod_authz_dbd.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule authz_dbm_module modules/mod_authz_dbm.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">authz_groupfile_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_authz_groupfile</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">authz_host_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_authz_host</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule authz_owner_module modules/mod_authz_owner.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">authz_user_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_authz_user</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">autoindex_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_autoindex</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule buffer_module modules/mod_buffer.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule cache_module modules/mod_cache.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule cache_disk_module modules/mod_cache_disk.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule cache_socache_module modules/mod_cache_socache.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule cern_meta_module modules/mod_cern_meta.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">cgi_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_cgi</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule charset_lite_module modules/mod_charset_lite.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule data_module modules/mod_data.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule dav_module modules/mod_dav.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule dav_fs_module modules/mod_dav_fs.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule dav_lock_module modules/mod_dav_lock.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule dbd_module modules/mod_dbd.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule deflate_module modules/mod_deflate.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">dir_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_dir</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule dumpio_module modules/mod_dumpio.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">env_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_env</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule expires_module modules/mod_expires.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule ext_filter_module modules/mod_ext_filter.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule file_cache_module modules/mod_file_cache.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule filter_module modules/mod_filter.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule http2_module modules/mod_http2.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">headers_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_headers</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule heartbeat_module modules/mod_heartbeat.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule heartmonitor_module modules/mod_heartmonitor.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule ident_module modules/mod_ident.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule imagemap_module modules/mod_imagemap.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">include_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_include</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule info_module modules/mod_info.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">isapi_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_isapi</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule lbmethod_bybusyness_module modules/mod_lbmethod_bybusyness.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule lbmethod_byrequests_module modules/mod_lbmethod_byrequests.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule lbmethod_bytraffic_module modules/mod_lbmethod_bytraffic.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule lbmethod_heartbeat_module modules/mod_lbmethod_heartbeat.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule ldap_module modules/mod_ldap.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule logio_module modules/mod_logio.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">log_config_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_log_config</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule log_debug_module modules/mod_log_debug.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule log_forensic_module modules/mod_log_forensic.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule lua_module modules/mod_lua.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule macro_module modules/mod_macro.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">mime_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_mime</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule mime_magic_module modules/mod_mime_magic.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">negotiation_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_negotiation</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">proxy_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_proxy</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">proxy_ajp_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_proxy_ajp</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">proxy_balancer_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_proxy_balancer</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">proxy_connect_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_proxy_connect</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">proxy_express_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_proxy_express</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">proxy_fcgi_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_proxy_fcgi</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">proxy_ftp_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_proxy_ftp</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">proxy_hcheck_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_proxy_hcheck</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">proxy_html_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_proxy_html</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">proxy_http_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_proxy_http</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule proxy_http2_module modules/mod_proxy_http2.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule proxy_scgi_module modules/mod_proxy_scgi.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule proxy_wstunnel_module modules/mod_proxy_wstunnel.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule ratelimit_module modules/mod_ratelimit.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule reflector_module modules/mod_reflector.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule remoteip_module modules/mod_remoteip.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule request_module modules/mod_request.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule reqtimeout_module modules/mod_reqtimeout.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">rewrite_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_rewrite</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule sed_module modules/mod_sed.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule session_module modules/mod_session.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule session_cookie_module modules/mod_session_cookie.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule session_crypto_module modules/mod_session_crypto.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule session_dbd_module modules/mod_session_dbd.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">setenvif_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_setenvif</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule slotmem_plain_module modules/mod_slotmem_plain.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">slotmem_shm_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_slotmem_shm</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule socache_dbm_module modules/mod_socache_dbm.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule socache_memcache_module modules/mod_socache_memcache.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">socache_shmcb_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_socache_shmcb</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule speling_module modules/mod_speling.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">ssl_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_ssl</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule status_module modules/mod_status.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule substitute_module modules/mod_substitute.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule unique_id_module modules/mod_unique_id.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule userdir_module modules/mod_userdir.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule usertrack_module modules/mod_usertrack.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule version_module modules/mod_version.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#LoadModule vhost_alias_module modules/mod_vhost_alias.so</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">watchdog_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_watchdog</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">LoadModule</span> <span style="color:#000">xml2enc_module</span> <span style="color:#000">modules</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mod_xml2enc</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">LoadModule</span> <span style="color:#19177c">access_compat_module</span> <span style="color:#19177c">modules</span><span style="color:#666">/</span><span style="color:#19177c">mod_access_compat</span>.<span style="color:#19177c">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">LoadModule</span> <span style="color:#19177c">actions_module</span> <span style="color:#19177c">modules</span><span style="color:#666">/</span><span style="color:#19177c">mod_actions</span>.<span style="color:#19177c">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">LoadModule</span> <span style="color:#19177c">alias_module</span> <span style="color:#19177c">modules</span><span style="color:#666">/</span><span style="color:#19177c">mod_alias</span>.<span style="color:#19177c">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">LoadModule</span> <span style="color:#19177c">allowmethods_module</span> <span style="color:#19177c">modules</span><span style="color:#666">/</span><span style="color:#19177c">mod_allowmethods</span>.<span style="color:#19177c">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">LoadModule</span> <span style="color:#19177c">asis_module</span> <span style="color:#19177c">modules</span><span style="color:#666">/</span><span style="color:#19177c">mod_asis</span>.<span style="color:#19177c">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">LoadModule</span> <span style="color:#19177c">auth_basic_module</span> <span style="color:#19177c">modules</span><span style="color:#666">/</span><span style="color:#19177c">mod_auth_basic</span>.<span style="color:#19177c">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule auth_digest_module modules/mod_auth_digest.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule auth_form_module modules/mod_auth_form.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule authn_anon_module modules/mod_authn_anon.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">LoadModule</span> <span style="color:#19177c">authn_core_module</span> <span style="color:#19177c">modules</span><span style="color:#666">/</span><span style="color:#19177c">mod_authn_core</span>.<span style="color:#19177c">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule authn_dbd_module modules/mod_authn_dbd.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule authn_dbm_module modules/mod_authn_dbm.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">LoadModule</span> <span style="color:#19177c">authn_file_module</span> <span style="color:#19177c">modules</span><span style="color:#666">/</span><span style="color:#19177c">mod_authn_file</span>.<span style="color:#19177c">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule authn_socache_module modules/mod_authn_socache.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule authnz_fcgi_module modules/mod_authnz_fcgi.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule authnz_ldap_module modules/mod_authnz_ldap.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">LoadModule</span> <span style="color:#19177c">authz_core_module</span> <span style="color:#19177c">modules</span><span style="color:#666">/</span><span style="color:#19177c">mod_authz_core</span>.<span style="color:#19177c">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule authz_dbd_module modules/mod_authz_dbd.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule authz_dbm_module modules/mod_authz_dbm.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">LoadModule</span> <span style="color:#19177c">authz_groupfile_module</span> <span style="color:#19177c">modules</span><span style="color:#666">/</span><span style="color:#19177c">mod_authz_groupfile</span>.<span style="color:#19177c">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">LoadModule</span> <span style="color:#19177c">authz_host_module</span> <span style="color:#19177c">modules</span><span style="color:#666">/</span><span style="color:#19177c">mod_authz_host</span>.<span style="color:#19177c">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule authz_owner_module modules/mod_authz_owner.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">LoadModule</span> <span style="color:#19177c">authz_user_module</span> <span style="color:#19177c">modules</span><span style="color:#666">/</span><span style="color:#19177c">mod_authz_user</span>.<span style="color:#19177c">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">LoadModule</span> <span style="color:#19177c">autoindex_module</span> <span style="color:#19177c">modules</span><span style="color:#666">/</span><span style="color:#19177c">mod_autoindex</span>.<span style="color:#19177c">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule buffer_module modules/mod_buffer.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule cache_module modules/mod_cache.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule cache_disk_module modules/mod_cache_disk.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule cache_socache_module modules/mod_cache_socache.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule cern_meta_module modules/mod_cern_meta.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">LoadModule</span> <span style="color:#19177c">cgi_module</span> <span style="color:#19177c">modules</span><span style="color:#666">/</span><span style="color:#19177c">mod_cgi</span>.<span style="color:#19177c">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule charset_lite_module modules/mod_charset_lite.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule data_module modules/mod_data.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule dav_module modules/mod_dav.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule dav_fs_module modules/mod_dav_fs.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule dav_lock_module modules/mod_dav_lock.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule dbd_module modules/mod_dbd.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule deflate_module modules/mod_deflate.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">LoadModule</span> <span style="color:#19177c">dir_module</span> <span style="color:#19177c">modules</span><span style="color:#666">/</span><span style="color:#19177c">mod_dir</span>.<span style="color:#19177c">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule dumpio_module modules/mod_dumpio.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">LoadModule</span> <span style="color:#19177c">env_module</span> <span style="color:#19177c">modules</span><span style="color:#666">/</span><span style="color:#19177c">mod_env</span>.<span style="color:#19177c">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule expires_module modules/mod_expires.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule ext_filter_module modules/mod_ext_filter.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule file_cache_module modules/mod_file_cache.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule filter_module modules/mod_filter.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule http2_module modules/mod_http2.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">LoadModule</span> <span style="color:#19177c">headers_module</span> <span style="color:#19177c">modules</span><span style="color:#666">/</span><span style="color:#19177c">mod_headers</span>.<span style="color:#19177c">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule heartbeat_module modules/mod_heartbeat.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule heartmonitor_module modules/mod_heartmonitor.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule ident_module modules/mod_ident.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule imagemap_module modules/mod_imagemap.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">LoadModule</span> <span style="color:#19177c">include_module</span> <span style="color:#19177c">modules</span><span style="color:#666">/</span><span style="color:#19177c">mod_include</span>.<span style="color:#19177c">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule info_module modules/mod_info.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">LoadModule</span> <span style="color:#19177c">isapi_module</span> <span style="color:#19177c">modules</span><span style="color:#666">/</span><span style="color:#19177c">mod_isapi</span>.<span style="color:#19177c">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule lbmethod_bybusyness_module modules/mod_lbmethod_bybusyness.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule lbmethod_byrequests_module modules/mod_lbmethod_byrequests.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule lbmethod_bytraffic_module modules/mod_lbmethod_bytraffic.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule lbmethod_heartbeat_module modules/mod_lbmethod_heartbeat.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule ldap_module modules/mod_ldap.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule logio_module modules/mod_logio.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">LoadModule</span> <span style="color:#19177c">log_config_module</span> <span style="color:#19177c">modules</span><span style="color:#666">/</span><span style="color:#19177c">mod_log_config</span>.<span style="color:#19177c">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule log_debug_module modules/mod_log_debug.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule log_forensic_module modules/mod_log_forensic.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule lua_module modules/mod_lua.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule macro_module modules/mod_macro.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">LoadModule</span> <span style="color:#19177c">mime_module</span> <span style="color:#19177c">modules</span><span style="color:#666">/</span><span style="color:#19177c">mod_mime</span>.<span style="color:#19177c">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule mime_magic_module modules/mod_mime_magic.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">LoadModule</span> <span style="color:#19177c">negotiation_module</span> <span style="color:#19177c">modules</span><span style="color:#666">/</span><span style="color:#19177c">mod_negotiation</span>.<span style="color:#19177c">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">LoadModule</span> <span style="color:#19177c">proxy_module</span> <span style="color:#19177c">modules</span><span style="color:#666">/</span><span style="color:#19177c">mod_proxy</span>.<span style="color:#19177c">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">LoadModule</span> <span style="color:#19177c">proxy_ajp_module</span> <span style="color:#19177c">modules</span><span style="color:#666">/</span><span style="color:#19177c">mod_proxy_ajp</span>.<span style="color:#19177c">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">LoadModule</span> <span style="color:#19177c">proxy_balancer_module</span> <span style="color:#19177c">modules</span><span style="color:#666">/</span><span style="color:#19177c">mod_proxy_balancer</span>.<span style="color:#19177c">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">LoadModule</span> <span style="color:#19177c">proxy_connect_module</span> <span style="color:#19177c">modules</span><span style="color:#666">/</span><span style="color:#19177c">mod_proxy_connect</span>.<span style="color:#19177c">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">LoadModule</span> <span style="color:#19177c">proxy_express_module</span> <span style="color:#19177c">modules</span><span style="color:#666">/</span><span style="color:#19177c">mod_proxy_express</span>.<span style="color:#19177c">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">LoadModule</span> <span style="color:#19177c">proxy_fcgi_module</span> <span style="color:#19177c">modules</span><span style="color:#666">/</span><span style="color:#19177c">mod_proxy_fcgi</span>.<span style="color:#19177c">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">LoadModule</span> <span style="color:#19177c">proxy_ftp_module</span> <span style="color:#19177c">modules</span><span style="color:#666">/</span><span style="color:#19177c">mod_proxy_ftp</span>.<span style="color:#19177c">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">LoadModule</span> <span style="color:#19177c">proxy_hcheck_module</span> <span style="color:#19177c">modules</span><span style="color:#666">/</span><span style="color:#19177c">mod_proxy_hcheck</span>.<span style="color:#19177c">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">LoadModule</span> <span style="color:#19177c">proxy_html_module</span> <span style="color:#19177c">modules</span><span style="color:#666">/</span><span style="color:#19177c">mod_proxy_html</span>.<span style="color:#19177c">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">LoadModule</span> <span style="color:#19177c">proxy_http_module</span> <span style="color:#19177c">modules</span><span style="color:#666">/</span><span style="color:#19177c">mod_proxy_http</span>.<span style="color:#19177c">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule proxy_http2_module modules/mod_proxy_http2.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule proxy_scgi_module modules/mod_proxy_scgi.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule proxy_wstunnel_module modules/mod_proxy_wstunnel.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule ratelimit_module modules/mod_ratelimit.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule reflector_module modules/mod_reflector.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule remoteip_module modules/mod_remoteip.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule request_module modules/mod_request.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule reqtimeout_module modules/mod_reqtimeout.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">LoadModule</span> <span style="color:#19177c">rewrite_module</span> <span style="color:#19177c">modules</span><span style="color:#666">/</span><span style="color:#19177c">mod_rewrite</span>.<span style="color:#19177c">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule sed_module modules/mod_sed.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule session_module modules/mod_session.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule session_cookie_module modules/mod_session_cookie.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule session_crypto_module modules/mod_session_crypto.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule session_dbd_module modules/mod_session_dbd.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">LoadModule</span> <span style="color:#19177c">setenvif_module</span> <span style="color:#19177c">modules</span><span style="color:#666">/</span><span style="color:#19177c">mod_setenvif</span>.<span style="color:#19177c">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule slotmem_plain_module modules/mod_slotmem_plain.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">LoadModule</span> <span style="color:#19177c">slotmem_shm_module</span> <span style="color:#19177c">modules</span><span style="color:#666">/</span><span style="color:#19177c">mod_slotmem_shm</span>.<span style="color:#19177c">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule socache_dbm_module modules/mod_socache_dbm.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule socache_memcache_module modules/mod_socache_memcache.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">LoadModule</span> <span style="color:#19177c">socache_shmcb_module</span> <span style="color:#19177c">modules</span><span style="color:#666">/</span><span style="color:#19177c">mod_socache_shmcb</span>.<span style="color:#19177c">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule speling_module modules/mod_speling.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">LoadModule</span> <span style="color:#19177c">ssl_module</span> <span style="color:#19177c">modules</span><span style="color:#666">/</span><span style="color:#19177c">mod_ssl</span>.<span style="color:#19177c">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule status_module modules/mod_status.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule substitute_module modules/mod_substitute.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule unique_id_module modules/mod_unique_id.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule userdir_module modules/mod_userdir.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule usertrack_module modules/mod_usertrack.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule version_module modules/mod_version.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#LoadModule vhost_alias_module modules/mod_vhost_alias.so</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">LoadModule</span> <span style="color:#19177c">watchdog_module</span> <span style="color:#19177c">modules</span><span style="color:#666">/</span><span style="color:#19177c">mod_watchdog</span>.<span style="color:#19177c">so</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">LoadModule</span> <span style="color:#19177c">xml2enc_module</span> <span style="color:#19177c">modules</span><span style="color:#666">/</span><span style="color:#19177c">mod_xml2enc</span>.<span style="color:#19177c">so</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#000">IfModule</span> <span style="color:#000">unixd_module</span><span style="color:#000;font-weight:bold">&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">User</span> <span style="color:#000">daemon</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">Group</span> <span style="color:#000">daemon</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">IfModule</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#00f;font-weight:bold">IfModule</span> <span style="color:#19177c">unixd_module</span>&gt;
+</span></span><span style="display:flex;"><span>  <span style="color:#00f;font-weight:bold">User</span> <span style="color:#19177c">daemon</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f;font-weight:bold">Group</span> <span style="color:#19177c">daemon</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#666">/</span><span style="color:#00f;font-weight:bold">IfModule</span>&gt;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#000">ServerAdmin</span> <span style="color:#000">hi</span><span style="color:#ce5c00;font-weight:bold">@</span><span style="color:#000">mgkim</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">net</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">ServerAdmin</span> <span style="color:#19177c">hi</span><span style="color:#666">@</span><span style="color:#19177c">mgkim</span>.<span style="color:#19177c">net</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#000">ServerName</span> <span style="color:#000">mgkim</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">net</span><span style="color:#000;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">50001</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">ServerName</span> <span style="color:#19177c">mgkim</span>.<span style="color:#19177c">net</span>:<span style="color:#666">50001</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#000">Directory</span> <span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000;font-weight:bold">&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">AllowOverride</span> <span style="color:#204a87;font-weight:bold">none</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">Require</span> <span style="color:#000">all</span> <span style="color:#000">denied</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">Directory</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#00f;font-weight:bold">Directory</span> <span style="color:#666">/</span>&gt;
+</span></span><span style="display:flex;"><span>  <span style="color:#00f;font-weight:bold">AllowOverride</span> <span style="color:#008000;font-weight:bold">none</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f;font-weight:bold">Require</span> <span style="color:#19177c">all</span> <span style="color:#19177c">denied</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#666">/</span><span style="color:#00f;font-weight:bold">Directory</span>&gt;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#000">DocumentRoot</span> <span style="color:#4e9a06">&#34;Z:/www/20210825_171631&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#000">Directory</span> <span style="color:#4e9a06">&#34;Z:/www/20210825_171631&#34;</span><span style="color:#000;font-weight:bold">&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">Options</span> <span style="color:#000">Indexes</span> <span style="color:#000">FollowSymLinks</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">AllowOverride</span> <span style="color:#000">None</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">Require</span> <span style="color:#000">all</span> <span style="color:#000">granted</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">Directory</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">DocumentRoot</span> <span style="color:#ba2121">&#34;Z:/www/20210825_171631&#34;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#00f;font-weight:bold">Directory</span> <span style="color:#ba2121">&#34;Z:/www/20210825_171631&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  <span style="color:#00f;font-weight:bold">Options</span> <span style="color:#00f;font-weight:bold">Indexes</span> <span style="color:#00f;font-weight:bold">FollowSymLinks</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f;font-weight:bold">AllowOverride</span> <span style="color:#00f;font-weight:bold">None</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f;font-weight:bold">Require</span> <span style="color:#19177c">all</span> <span style="color:#19177c">granted</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#666">/</span><span style="color:#00f;font-weight:bold">Directory</span>&gt;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#000">IfModule</span> <span style="color:#000">dir_module</span><span style="color:#000;font-weight:bold">&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">DirectoryIndex</span> <span style="color:#000">index</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">html</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">IfModule</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#00f;font-weight:bold">IfModule</span> <span style="color:#19177c">dir_module</span>&gt;
+</span></span><span style="display:flex;"><span>  <span style="color:#00f;font-weight:bold">DirectoryIndex</span> <span style="color:#19177c">index</span>.<span style="color:#19177c">html</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#666">/</span><span style="color:#00f;font-weight:bold">IfModule</span>&gt;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#000">Files</span> <span style="color:#4e9a06">&#34;.ht*&#34;</span><span style="color:#000;font-weight:bold">&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">Require</span> <span style="color:#000">all</span> <span style="color:#000">denied</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">Files</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#00f;font-weight:bold">Files</span> <span style="color:#ba2121">&#34;.ht*&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  <span style="color:#00f;font-weight:bold">Require</span> <span style="color:#19177c">all</span> <span style="color:#19177c">denied</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#666">/</span><span style="color:#00f;font-weight:bold">Files</span>&gt;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#000">ErrorLog</span> <span style="color:#4e9a06">&#34;logs/error.log&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">ErrorLog</span> <span style="color:#ba2121">&#34;logs/error.log&#34;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#000">LogLevel</span> <span style="color:#000">warn</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">LogLevel</span> <span style="color:#19177c">warn</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#000">IfModule</span> <span style="color:#000">log_config_module</span><span style="color:#000;font-weight:bold">&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">LogFormat</span> <span style="color:#4e9a06">&#34;%h %l %u %t </span><span style="color:#4e9a06">\&#34;</span><span style="color:#4e9a06">%r</span><span style="color:#4e9a06">\&#34;</span><span style="color:#4e9a06"> %&gt;s %b </span><span style="color:#4e9a06">\&#34;</span><span style="color:#4e9a06">%{Referer}i</span><span style="color:#4e9a06">\&#34;</span><span style="color:#4e9a06"> </span><span style="color:#4e9a06">\&#34;</span><span style="color:#4e9a06">%{User-Agent}i</span><span style="color:#4e9a06">\&#34;</span><span style="color:#4e9a06">&#34;</span> <span style="color:#000">combined</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">LogFormat</span> <span style="color:#4e9a06">&#34;%h %l %u %t </span><span style="color:#4e9a06">\&#34;</span><span style="color:#4e9a06">%r</span><span style="color:#4e9a06">\&#34;</span><span style="color:#4e9a06"> %&gt;s %b&#34;</span> <span style="color:#000">common</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#00f;font-weight:bold">IfModule</span> <span style="color:#19177c">log_config_module</span>&gt;
+</span></span><span style="display:flex;"><span>  <span style="color:#00f;font-weight:bold">LogFormat</span> <span style="color:#ba2121">&#34;%h %l %u %t </span><span style="color:#b62;font-weight:bold">\&#34;</span><span style="color:#ba2121">%r</span><span style="color:#b62;font-weight:bold">\&#34;</span><span style="color:#ba2121"> %&gt;s %b </span><span style="color:#b62;font-weight:bold">\&#34;</span><span style="color:#ba2121">%{Referer}i</span><span style="color:#b62;font-weight:bold">\&#34;</span><span style="color:#ba2121"> </span><span style="color:#b62;font-weight:bold">\&#34;</span><span style="color:#ba2121">%{User-Agent}i</span><span style="color:#b62;font-weight:bold">\&#34;</span><span style="color:#ba2121">&#34;</span> <span style="color:#19177c">combined</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f;font-weight:bold">LogFormat</span> <span style="color:#ba2121">&#34;%h %l %u %t </span><span style="color:#b62;font-weight:bold">\&#34;</span><span style="color:#ba2121">%r</span><span style="color:#b62;font-weight:bold">\&#34;</span><span style="color:#ba2121"> %&gt;s %b&#34;</span> <span style="color:#19177c">common</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#000">IfModule</span> <span style="color:#000">logio_module</span><span style="color:#000;font-weight:bold">&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">LogFormat</span> <span style="color:#4e9a06">&#34;%h %l %u %t </span><span style="color:#4e9a06">\&#34;</span><span style="color:#4e9a06">%r</span><span style="color:#4e9a06">\&#34;</span><span style="color:#4e9a06"> %&gt;s %b </span><span style="color:#4e9a06">\&#34;</span><span style="color:#4e9a06">%{Referer}i</span><span style="color:#4e9a06">\&#34;</span><span style="color:#4e9a06"> </span><span style="color:#4e9a06">\&#34;</span><span style="color:#4e9a06">%{User-Agent}i</span><span style="color:#4e9a06">\&#34;</span><span style="color:#4e9a06"> %I %O&#34;</span> <span style="color:#000">combinedio</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">IfModule</span><span style="color:#000;font-weight:bold">&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">CustomLog</span> <span style="color:#4e9a06">&#34;logs/access.log&#34;</span> <span style="color:#000">common</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">IfModule</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#00f;font-weight:bold">IfModule</span> <span style="color:#19177c">logio_module</span>&gt;
+</span></span><span style="display:flex;"><span>    <span style="color:#00f;font-weight:bold">LogFormat</span> <span style="color:#ba2121">&#34;%h %l %u %t </span><span style="color:#b62;font-weight:bold">\&#34;</span><span style="color:#ba2121">%r</span><span style="color:#b62;font-weight:bold">\&#34;</span><span style="color:#ba2121"> %&gt;s %b </span><span style="color:#b62;font-weight:bold">\&#34;</span><span style="color:#ba2121">%{Referer}i</span><span style="color:#b62;font-weight:bold">\&#34;</span><span style="color:#ba2121"> </span><span style="color:#b62;font-weight:bold">\&#34;</span><span style="color:#ba2121">%{User-Agent}i</span><span style="color:#b62;font-weight:bold">\&#34;</span><span style="color:#ba2121"> %I %O&#34;</span> <span style="color:#19177c">combinedio</span>
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#666">/</span><span style="color:#00f;font-weight:bold">IfModule</span>&gt;
+</span></span><span style="display:flex;"><span>  <span style="color:#00f;font-weight:bold">CustomLog</span> <span style="color:#ba2121">&#34;logs/access.log&#34;</span> <span style="color:#19177c">common</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#666">/</span><span style="color:#00f;font-weight:bold">IfModule</span>&gt;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#000">IfModule</span> <span style="color:#000">alias_module</span><span style="color:#000;font-weight:bold">&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">ScriptAlias</span> <span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">cgi</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">bin</span><span style="color:#ce5c00;font-weight:bold">/</span> <span style="color:#4e9a06">&#34;c:/Apache24/cgi-bin/&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">IfModule</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#00f;font-weight:bold">IfModule</span> <span style="color:#19177c">alias_module</span>&gt;
+</span></span><span style="display:flex;"><span>  <span style="color:#00f;font-weight:bold">ScriptAlias</span> <span style="color:#666">/</span><span style="color:#19177c">cgi</span><span style="color:#666">-</span><span style="color:#19177c">bin</span><span style="color:#666">/</span> <span style="color:#ba2121">&#34;c:/Apache24/cgi-bin/&#34;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#666">/</span><span style="color:#00f;font-weight:bold">IfModule</span>&gt;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#000">IfModule</span> <span style="color:#000">headers_module</span><span style="color:#000;font-weight:bold">&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">RequestHeader</span> <span style="color:#000">unset</span> <span style="color:#000">Proxy</span> <span style="color:#000">early</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">IfModule</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#00f;font-weight:bold">IfModule</span> <span style="color:#19177c">headers_module</span>&gt;
+</span></span><span style="display:flex;"><span>  <span style="color:#00f;font-weight:bold">RequestHeader</span> <span style="color:#19177c">unset</span> <span style="color:#00f;font-weight:bold">Proxy</span> <span style="color:#19177c">early</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#666">/</span><span style="color:#00f;font-weight:bold">IfModule</span>&gt;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#000">IfModule</span> <span style="color:#000">mime_module</span><span style="color:#000;font-weight:bold">&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">TypesConfig</span> <span style="color:#000">conf</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mime</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">types</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">AddType</span> <span style="color:#000">application</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">compress</span> <span style="color:#000;font-weight:bold">.</span><span style="color:#000">Z</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">AddType</span> <span style="color:#000">application</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">x</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">gzip</span> <span style="color:#000;font-weight:bold">.</span><span style="color:#000">gz</span> <span style="color:#000;font-weight:bold">.</span><span style="color:#000">tgz</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">IfModule</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#00f;font-weight:bold">IfModule</span> <span style="color:#19177c">mime_module</span>&gt;
+</span></span><span style="display:flex;"><span>  <span style="color:#00f;font-weight:bold">TypesConfig</span> <span style="color:#19177c">conf</span><span style="color:#666">/</span><span style="color:#19177c">mime</span>.<span style="color:#19177c">types</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f;font-weight:bold">AddType</span> <span style="color:#19177c">application</span><span style="color:#666">/</span><span style="color:#19177c">x</span><span style="color:#666">-</span><span style="color:#19177c">compress</span> .<span style="color:#00f;font-weight:bold">Z</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f;font-weight:bold">AddType</span> <span style="color:#19177c">application</span><span style="color:#666">/</span><span style="color:#19177c">x</span><span style="color:#666">-</span><span style="color:#19177c">gzip</span> .<span style="color:#19177c">gz</span> .<span style="color:#19177c">tgz</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#666">/</span><span style="color:#00f;font-weight:bold">IfModule</span>&gt;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">###</span> <span style="color:#000">include</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">###</span> <span style="color:#19177c">include</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#000">Include</span> <span style="color:#000">conf</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">extra</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">vhost</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">dlog</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">conf</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">Include</span> <span style="color:#000">conf</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">extra</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">ssl</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">conf</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">Include</span> <span style="color:#19177c">conf</span><span style="color:#666">/</span><span style="color:#19177c">extra</span><span style="color:#666">/</span><span style="color:#19177c">vhost</span><span style="color:#666">-</span><span style="color:#19177c">dlog</span>.<span style="color:#19177c">conf</span>
+</span></span><span style="display:flex;"><span><span style="color:#00f;font-weight:bold">Include</span> <span style="color:#19177c">conf</span><span style="color:#666">/</span><span style="color:#19177c">extra</span><span style="color:#666">/</span><span style="color:#19177c">ssl</span>.<span style="color:#19177c">conf</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">###</span> <span style="color:#000">exclude</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">###</span> <span style="color:#19177c">exclude</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#Include conf/extra/httpd-mpm.conf</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#Include conf/extra/httpd-multilang-errordoc.conf</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#Include conf/extra/httpd-autoindex.conf</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#Include conf/extra/httpd-languages.conf</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#Include conf/extra/httpd-userdir.conf</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#Include conf/extra/httpd-info.conf</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#Include conf/extra/httpd-manual.conf</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#Include conf/extra/httpd-dav.conf</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#Include conf/extra/httpd-default.conf</span>
-</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">#</span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#000">IfModule</span> <span style="color:#000">proxy_html_module</span><span style="color:#000;font-weight:bold">&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">#</span>  <span style="color:#000">Include</span> <span style="color:#000">conf</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">extra</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxy</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">html</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">conf</span>
-</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">#</span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">IfModule</span><span style="color:#000;font-weight:bold">&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#000">IfModule</span> <span style="color:#000">ssl_module</span><span style="color:#000;font-weight:bold">&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">SSLRandomSeed</span> <span style="color:#000">startup</span> <span style="color:#000">builtin</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000">SSLRandomSeed</span> <span style="color:#000">connect</span> <span style="color:#000">builtin</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">IfModule</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#Include conf/extra/httpd-mpm.conf</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#Include conf/extra/httpd-multilang-errordoc.conf</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#Include conf/extra/httpd-autoindex.conf</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#Include conf/extra/httpd-languages.conf</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#Include conf/extra/httpd-userdir.conf</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#Include conf/extra/httpd-info.conf</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#Include conf/extra/httpd-manual.conf</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#Include conf/extra/httpd-dav.conf</span>
+</span></span><span style="display:flex;"><span><span style="color:#bc7a00">#Include conf/extra/httpd-default.conf</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">#</span>&lt;<span style="color:#00f;font-weight:bold">IfModule</span> <span style="color:#19177c">proxy_html_module</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#666">#</span>  <span style="color:#00f;font-weight:bold">Include</span> <span style="color:#19177c">conf</span><span style="color:#666">/</span><span style="color:#19177c">extra</span><span style="color:#666">/</span><span style="color:#19177c">proxy</span><span style="color:#666">-</span><span style="color:#19177c">html</span>.<span style="color:#19177c">conf</span>
+</span></span><span style="display:flex;"><span><span style="color:#666">#</span>&lt;<span style="color:#666">/</span><span style="color:#00f;font-weight:bold">IfModule</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#00f;font-weight:bold">IfModule</span> <span style="color:#19177c">ssl_module</span>&gt;
+</span></span><span style="display:flex;"><span>  <span style="color:#00f;font-weight:bold">SSLRandomSeed</span> <span style="color:#19177c">startup</span> <span style="color:#19177c">builtin</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00f;font-weight:bold">SSLRandomSeed</span> <span style="color:#19177c">connect</span> <span style="color:#19177c">builtin</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#666">/</span><span style="color:#00f;font-weight:bold">IfModule</span>&gt;
 </span></span></code></pre></div><ul>
 <li>ssl.conf</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>Listen 9443
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>Listen 9443
 </span></span><span style="display:flex;"><span>#Listen 443
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>SSLCipherSuite HIGH:MEDIUM:!MD5:!RC4
@@ -944,7 +944,7 @@ configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modu
 </span></span></code></pre></div><ul>
 <li>vhost-dlog.conf</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>#&lt;VirtualHost *:80&gt;
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>#&lt;VirtualHost *:80&gt;
 </span></span><span style="display:flex;"><span>#  ServerName vdlog.mgkim.net:80
 </span></span><span style="display:flex;"><span>#
 </span></span><span style="display:flex;"><span>#  RewriteEngine On
@@ -1034,32 +1034,32 @@ configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modu
 </ol>
 <h4 id="useful">useful</h4>
 <p>개인키(domain.key)와 인증서(domain.crt) 파일을 동시에 생성하는 스크립트 입니다.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">[</span>root@develop /etc/httpd/conf.d/certs<span style="color:#ce5c00;font-weight:bold">]</span>$ cat create-cert.sh
-</span></span><span style="display:flex;"><span><span style="color:#000">DOMAIN</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">$1</span>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#666">[</span>root@develop /etc/httpd/conf.d/certs<span style="color:#666">]</span>$ cat create-cert.sh
+</span></span><span style="display:flex;"><span><span style="color:#19177c">DOMAIN</span><span style="color:#666">=</span><span style="color:#19177c">$1</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>openssl req -x509 -nodes -days <span style="color:#0000cf;font-weight:bold">730</span> -newkey rsa:2048 -keyout <span style="color:#000">$DOMAIN</span>.key -out <span style="color:#000">$DOMAIN</span>.crt -config &lt;<span style="color:#ce5c00;font-weight:bold">(</span>cat <span style="color:#4e9a06">&lt;&lt;- TEXT
-</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">[req]
-</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">distinguished_name = req_distinguished_name
-</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">x509_extensions = v3_req
-</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">prompt = no
-</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">[req_distinguished_name]
-</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">countryName             = KR
-</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">stateOrProvinceName     = Seoul
-</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">localityName            = Seonyudo
-</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">organizationName        = SPACESOFT
-</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">organizationalUnitName  = Dev Team
-</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">CN = $DOMAIN
-</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">[v3_req]
-</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">keyUsage = critical, digitalSignature, keyAgreement
-</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">extendedKeyUsage = serverAuth
-</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">subjectAltName = @alt_names
-</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">[alt_names]
-</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">DNS.1 = $DOMAIN
-</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">TEXT</span><span style="color:#ce5c00;font-weight:bold">)</span> -sha256
+</span></span><span style="display:flex;"><span>openssl req -x509 -nodes -days <span style="color:#666">730</span> -newkey rsa:2048 -keyout <span style="color:#19177c">$DOMAIN</span>.key -out <span style="color:#19177c">$DOMAIN</span>.crt -config &lt;<span style="color:#666">(</span>cat <span style="color:#ba2121">&lt;&lt;- TEXT
+</span></span></span><span style="display:flex;"><span><span style="color:#ba2121">[req]
+</span></span></span><span style="display:flex;"><span><span style="color:#ba2121">distinguished_name = req_distinguished_name
+</span></span></span><span style="display:flex;"><span><span style="color:#ba2121">x509_extensions = v3_req
+</span></span></span><span style="display:flex;"><span><span style="color:#ba2121">prompt = no
+</span></span></span><span style="display:flex;"><span><span style="color:#ba2121">[req_distinguished_name]
+</span></span></span><span style="display:flex;"><span><span style="color:#ba2121">countryName             = KR
+</span></span></span><span style="display:flex;"><span><span style="color:#ba2121">stateOrProvinceName     = Seoul
+</span></span></span><span style="display:flex;"><span><span style="color:#ba2121">localityName            = Seonyudo
+</span></span></span><span style="display:flex;"><span><span style="color:#ba2121">organizationName        = SPACESOFT
+</span></span></span><span style="display:flex;"><span><span style="color:#ba2121">organizationalUnitName  = Dev Team
+</span></span></span><span style="display:flex;"><span><span style="color:#ba2121">CN = $DOMAIN
+</span></span></span><span style="display:flex;"><span><span style="color:#ba2121">[v3_req]
+</span></span></span><span style="display:flex;"><span><span style="color:#ba2121">keyUsage = critical, digitalSignature, keyAgreement
+</span></span></span><span style="display:flex;"><span><span style="color:#ba2121">extendedKeyUsage = serverAuth
+</span></span></span><span style="display:flex;"><span><span style="color:#ba2121">subjectAltName = @alt_names
+</span></span></span><span style="display:flex;"><span><span style="color:#ba2121">[alt_names]
+</span></span></span><span style="display:flex;"><span><span style="color:#ba2121">DNS.1 = $DOMAIN
+</span></span></span><span style="display:flex;"><span><span style="color:#ba2121">TEXT</span><span style="color:#666">)</span> -sha256
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">[</span>root@develop /etc/httpd/conf.d/certs<span style="color:#ce5c00;font-weight:bold">]</span>$
+</span></span><span style="display:flex;"><span><span style="color:#666">[</span>root@develop /etc/httpd/conf.d/certs<span style="color:#666">]</span>$
 </span></span></code></pre></div><h3 id="selinux">selinux</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>chcon -Rt httpd_log_t /outlog/WEB
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>chcon -Rt httpd_log_t /outlog/WEB
 </span></span><span style="display:flex;"><span>chcon -Rt httpd_sys_content_t /app/WEB/dlog
 </span></span><span style="display:flex;"><span>setsebool -P httpd_can_network_connect on
 </span></span><span style="display:flex;"><span>

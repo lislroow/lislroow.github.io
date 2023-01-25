@@ -99,7 +99,7 @@ reindex POST _reindex { &#34;source&#34;: { &#34;index&#34;: &#34;mgkim-apache-l
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/offline-search-index.4f94867d1623c679d66ce1949cddd383.json"
+    data-offline-search-index-json-src="/offline-search-index.d8b13234e18a0cf7d9d0f50f0410ab2f.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -125,7 +125,7 @@ reindex POST _reindex { &#34;source&#34;: { &#34;index&#34;: &#34;mgkim-apache-l
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/offline-search-index.4f94867d1623c679d66ce1949cddd383.json"
+    data-offline-search-index-json-src="/offline-search-index.d8b13234e18a0cf7d9d0f50f0410ab2f.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -298,16 +298,16 @@ reindex POST _reindex { &#34;source&#34;: { &#34;index&#34;: &#34;mgkim-apache-l
 <h4 id="mapping">mapping</h4>
 <p>기존 index <code>mgkim-apache-log-2022.01.29</code>로 신규 index <code>mgkim-apache-log-remapping</code> 생성</p>
 <h5 id="기존-index-의-mapping-정보-조회">기존 index 의 mapping 정보 조회</h5>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>GET mgkim-apache-log-2022.01.29/_mapping
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>GET mgkim-apache-log-2022.01.29/_mapping
 </span></span></code></pre></div><p><code>&quot;mappings&quot;: {...}</code> 를 전체 복사하여 신규 index 를 편집하는곳에 붙여넣기로 시작</p>
 <p><a href="/files/ELK/20220130-asis-index-mapping.txt" target="_blank">새 창 보기</a></p>
 <h5 id="신규-index-생성">신규 index 생성</h5>
 <p>mappings 편집 항목</p>
 <p><code>&quot;auth&quot;: &quot;text&quot;</code> &gt; <code>&quot;auth&quot;: &quot;keyword&quot;</code>: 집계만하기 위해 변경</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>PUT mgkim-apache-log-remapping
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>PUT mgkim-apache-log-remapping
 </span></span></code></pre></div><p><a href="/files/ELK/20220130-tobe-index-mapping.txt" target="_blank">새 창 보기</a></p>
 <h5 id="reindex">reindex</h5>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>POST _reindex
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>POST _reindex
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>  &#34;source&#34;: {
 </span></span><span style="display:flex;"><span>    &#34;index&#34;: &#34;mgkim-apache-log-2022.01.29&#34;
@@ -321,7 +321,7 @@ reindex POST _reindex { &#34;source&#34;: { &#34;index&#34;: &#34;mgkim-apache-l
 <p>로그 포맷 변경 (combined + ROUTEID + txid + ssid)</p>
 <p>LogFormat &ldquo;%h %l %u %t &quot;%r&quot; %&gt;s %b  &quot;%{Referer}i&quot; &quot;%{User-Agent}i&quot;&rdquo; &quot;%{ROUTEID}C&quot; &quot;%{txid}i|%{ssid}i&quot;&quot; combined_trace</p>
 <p>Header add Set-Cookie &ldquo;ROUTEID=%{BALANCER_WORKER_ROUTE}e; path=/&rdquo; env=BALANCER_ROUTE_CHANGED</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>&lt;VirtualHost *:80&gt;
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>&lt;VirtualHost *:80&gt;
 </span></span><span style="display:flex;"><span>  ServerName dwww
 </span></span><span style="display:flex;"><span>  
 </span></span><span style="display:flex;"><span>  LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b  \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34; \&#34;%{ROUTEID}C\&#34; \&#34;%{txid}i|%{ssid}i\&#34;&#34; combined_trace

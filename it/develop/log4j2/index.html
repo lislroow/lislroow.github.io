@@ -91,7 +91,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/offline-search-index.4f94867d1623c679d66ce1949cddd383.json"
+    data-offline-search-index-json-src="/offline-search-index.d8b13234e18a0cf7d9d0f50f0410ab2f.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -117,7 +117,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/offline-search-index.4f94867d1623c679d66ce1949cddd383.json"
+    data-offline-search-index-json-src="/offline-search-index.d8b13234e18a0cf7d9d0f50f0410ab2f.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -275,7 +275,7 @@
 	</header>    
 	<h4 id="maven-dependency">maven-dependency</h4>
 <p>(Mar, 2021) 기준 log4j 는 <code>2.14.1</code> 버전이 최신입니다.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># 핵심 라이브러리
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># 핵심 라이브러리
 </span></span><span style="display:flex;"><span>log4j-api:2.14.1
 </span></span><span style="display:flex;"><span>log4j-core:2.14.1
 </span></span><span style="display:flex;"><span>log4j-web:2.14.1
@@ -287,46 +287,46 @@
 </span></span><span style="display:flex;"><span>log4j:1.2.17
 </span></span></code></pre></div><h4 id="log4j2xml">log4j2.xml</h4>
 <p>설정 파일의 기본 구조입니다.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;Configuration&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&lt;Properties&gt;</span> ... <span style="color:#204a87;font-weight:bold">&lt;/Properties&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&lt;Appenders&gt;</span> ... <span style="color:#204a87;font-weight:bold">&lt;/Appenders&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&lt;Loggers&gt;</span> ... <span style="color:#204a87;font-weight:bold">&lt;/Loggers&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;/Configuration&gt;</span>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">&lt;Configuration&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#008000;font-weight:bold">&lt;Properties&gt;</span> ... <span style="color:#008000;font-weight:bold">&lt;/Properties&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#008000;font-weight:bold">&lt;Appenders&gt;</span> ... <span style="color:#008000;font-weight:bold">&lt;/Appenders&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#008000;font-weight:bold">&lt;Loggers&gt;</span> ... <span style="color:#008000;font-weight:bold">&lt;/Loggers&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">&lt;/Configuration&gt;</span>
 </span></span></code></pre></div><h4 id="appenders-설정">&lt;Appenders&gt; 설정</h4>
 <p><code>&lt;Appenders&gt;</code> 는 로그의 출력을 설정합니다.</p>
 <p><code>&lt;File&gt;</code> 혹은 <code>&lt;RollingFile&gt;</code> 를 바로 정의 하는 것이 기본이고,<br>
 <code>&lt;Routing&gt;</code>을 사용하여 ThreadContext 의 값에 따라 <code>&lt;File&gt;</code> 혹은 <code>&lt;RollingFile&gt;</code> 을 routing 할 수 있습니다.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&lt;Appenders&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;Console&gt;</span> ... <span style="color:#204a87;font-weight:bold">&lt;/Console&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;Routing&gt;</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&lt;Routes&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;Route&gt;</span>
-</span></span><span style="display:flex;"><span>          <span style="color:#204a87;font-weight:bold">&lt;RollingFile&gt;</span> ... <span style="color:#204a87;font-weight:bold">&lt;/RollingFile&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;/Route&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;Route&gt;</span>
-</span></span><span style="display:flex;"><span>          <span style="color:#204a87;font-weight:bold">&lt;File&gt;</span> ... <span style="color:#204a87;font-weight:bold">&lt;/File&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;/Route&gt;</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&lt;/Routes&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;/Routing&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;Async&gt;</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&lt;AppenderRef&gt;</span> ... <span style="color:#204a87;font-weight:bold">&lt;/AppenderRef&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;/Async&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&lt;/Appenders&gt;</span>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>  <span style="color:#008000;font-weight:bold">&lt;Appenders&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#008000;font-weight:bold">&lt;Console&gt;</span> ... <span style="color:#008000;font-weight:bold">&lt;/Console&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#008000;font-weight:bold">&lt;Routing&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#008000;font-weight:bold">&lt;Routes&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#008000;font-weight:bold">&lt;Route&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#008000;font-weight:bold">&lt;RollingFile&gt;</span> ... <span style="color:#008000;font-weight:bold">&lt;/RollingFile&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#008000;font-weight:bold">&lt;/Route&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#008000;font-weight:bold">&lt;Route&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#008000;font-weight:bold">&lt;File&gt;</span> ... <span style="color:#008000;font-weight:bold">&lt;/File&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#008000;font-weight:bold">&lt;/Route&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#008000;font-weight:bold">&lt;/Routes&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#008000;font-weight:bold">&lt;/Routing&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#008000;font-weight:bold">&lt;Async&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#008000;font-weight:bold">&lt;AppenderRef&gt;</span> ... <span style="color:#008000;font-weight:bold">&lt;/AppenderRef&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#008000;font-weight:bold">&lt;/Async&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#008000;font-weight:bold">&lt;/Appenders&gt;</span>
 </span></span></code></pre></div><h4 id="routing-과-threadcontext">&lt;Routing&gt; 과 ThreadContext</h4>
 <p><code>&lt;Routing&gt;</code> 설정이 동작할 수 있도록 <code>ThreadContext</code> 을 어떻게 사용하는지에 대한 예시 입니다.</p>
 <p>참고로 <code>ThreadContext</code>는 log4j 의 <code>Lookups</code> 기능의 <code>Context Map</code> 을 사용하는 것이며, <code>Lookups</code> 의 세부 내용은 다시 다루겠습니다.</p>
 <p><code>&lt;Routing&gt;</code> 설정</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;Routing&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&lt;Routes</span> <span style="color:#c4a000">pattern=</span><span style="color:#4e9a06">&#34;$${ctx:userId}&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;Route&gt;</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&lt;RollingFile&gt;</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&lt;/RollingFile&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;/Route&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;Route&gt;</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&lt;File&gt;</span> ... <span style="color:#204a87;font-weight:bold">&lt;/File&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;/Route&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&lt;/Routes&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;/Routing&gt;</span>
+<div class="highlight"><pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">&lt;Routing&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#008000;font-weight:bold">&lt;Routes</span> <span style="color:#7d9029">pattern=</span><span style="color:#ba2121">&#34;$${ctx:userId}&#34;</span><span style="color:#008000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#008000;font-weight:bold">&lt;Route&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#008000;font-weight:bold">&lt;RollingFile&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#008000;font-weight:bold">&lt;/RollingFile&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#008000;font-weight:bold">&lt;/Route&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#008000;font-weight:bold">&lt;Route&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#008000;font-weight:bold">&lt;File&gt;</span> ... <span style="color:#008000;font-weight:bold">&lt;/File&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#008000;font-weight:bold">&lt;/Route&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#008000;font-weight:bold">&lt;/Routes&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#008000;font-weight:bold">&lt;/Routing&gt;</span>
 </span></span></code></pre></div><h4 id="log-format">log-format</h4>
 <table>
 <thead>
