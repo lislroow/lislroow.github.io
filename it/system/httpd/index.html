@@ -70,7 +70,8 @@ configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modu
       </ul>
   </div>
   <div class="navbar-nav d-none d-lg-block">
-    <div class="td-search td-search--offline">
+    
+<div class="td-search td-search--offline">
   <div class="td-search__icon"></div>
   <input
     type="search"
@@ -79,7 +80,7 @@ configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modu
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/offline-search-index.d8b13234e18a0cf7d9d0f50f0410ab2f.json"
+    data-offline-search-index-json-src="/offline-search-index.5b34d308acff97459e3ebce9a4873a0b.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -96,7 +97,8 @@ configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modu
 <div id="td-sidebar-menu" class="td-sidebar__inner">
   <div id="content-mobile">
   <form class="td-sidebar__search d-flex align-items-center">
-    <div class="td-search td-search--offline">
+    
+<div class="td-search td-search--offline">
   <div class="td-search__icon"></div>
   <input
     type="search"
@@ -105,7 +107,7 @@ configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modu
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/offline-search-index.d8b13234e18a0cf7d9d0f50f0410ab2f.json"
+    data-offline-search-index-json-src="/offline-search-index.5b34d308acff97459e3ebce9a4873a0b.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -116,72 +118,54 @@ configure httpd.conf ServerRoot &#34;/etc/httpd&#34; Listen 80 Include conf.modu
   </form>
   </div>
   <div id="content-desktop"></div>
-  <nav class="collapse td-sidebar-nav" id="td-section-nav">
+  <nav class="collapse td-sidebar-nav foldable-nav" id="td-section-nav">
     <ul class="td-sidebar-nav__section pr-md-3 ul-0">
       <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-it-li">
   <a href="/it/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-it"><span class="">it</span></a>
   <ul class="ul-1">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-itdevelop-li">
-  <a href="/it/develop/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-itdevelop"><span class="">develop</span></a>
-  <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itdeveloplog4j2-li">
-  <a href="/it/develop/log4j2/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itdeveloplog4j2"><span class="">log4j2</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itdeveloplogback-li">
-  <a href="/it/develop/logback/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itdeveloplogback"><span class="">logback</span></a>
-</li>
-  </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-itelk-li">
-  <a href="/it/elk/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-itelk"><span class="">ELK</span></a>
-  <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itelk20220129-apache_log-li">
-  <a href="/it/elk/20220129-apache_log/" title="2022.01.29" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itelk20220129-apache_log"><span class="">2022.01.29-apache_log</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itelk20220130-elastic_mappings-li">
-  <a href="/it/elk/20220130-elastic_mappings/" title="2022.01.30" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itelk20220130-elastic_mappings"><span class="">2022.01.30-dwww</span></a>
-</li>
-  </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-itlanguage-li">
-  <a href="/it/language/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-itlanguage"><span class="">language</span></a>
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-itlanguage-li">
+  <input type="checkbox" id="m-itlanguage-check"/>
+  <label for="m-itlanguage-check"><a href="/it/language/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-itlanguage"><span class="">language</span></a></label>
+  
   <ul class="ul-2 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itlanguagejava-li">
-  <a href="/it/language/java/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itlanguagejava"><span class="">java</span></a>
+  <input type="checkbox" id="m-itlanguagejava-check"/>
+  <label for="m-itlanguagejava-check"><a href="/it/language/java/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-itlanguagejava"><span class="">java</span></a></label>
+  
 </li>
   </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-itlocalenv-li">
-  <a href="/it/localenv/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-itlocalenv"><span class="">localenv</span></a>
+  <input type="checkbox" id="m-itlocalenv-check"/>
+  <label for="m-itlocalenv-check"><a href="/it/localenv/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-itlocalenv"><span class="">localenv</span></a></label>
+  
   <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itlocalenv04_ecb0b8eab3a0_eclipse-eb8ba8ecb695ed82a4-li">
-  <a href="/it/localenv/04_%EC%B0%B8%EA%B3%A0_eclipse-%EB%8B%A8%EC%B6%95%ED%82%A4/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itlocalenv04_ecb0b8eab3a0_eclipse-eb8ba8ecb695ed82a4"><span class="">04_참고_eclipse-단축키</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itlocalenvgit-li">
-  <a href="/it/localenv/git/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itlocalenvgit"><span class="">git</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itlocalenvgradle-li">
-  <a href="/it/localenv/gradle/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itlocalenvgradle"><span class="">gradle</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itlocalenvintellij-li">
-  <a href="/it/localenv/intellij/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itlocalenvintellij"><span class="">intellij</span></a>
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itlocalenvgit-li">
+  <input type="checkbox" id="m-itlocalenvgit-check"/>
+  <label for="m-itlocalenvgit-check"><a href="/it/localenv/git/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-itlocalenvgit"><span class="">git</span></a></label>
+  
 </li>
   </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-itsystem-li">
-  <a href="/it/system/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-itsystem"><span class="">system</span></a>
+  <input type="checkbox" id="m-itsystem-check" checked/>
+  <label for="m-itsystem-check"><a href="/it/system/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-itsystem"><span class="">system</span></a></label>
+  
   <ul class="ul-2 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itsystemcentos8-li">
-  <a href="/it/system/centos8/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itsystemcentos8"><span class="">centos8</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itsystemcurl-li">
-  <a href="/it/system/curl/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itsystemcurl"><span class="">curl</span></a>
+  <input type="checkbox" id="m-itsystemcentos8-check"/>
+  <label for="m-itsystemcentos8-check"><a href="/it/system/centos8/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-itsystemcentos8"><span class="">centos8</span></a></label>
+  
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itsystemelk-li">
-  <a href="/it/system/elk/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itsystemelk"><span class="">ELK</span></a>
+  <input type="checkbox" id="m-itsystemelk-check"/>
+  <label for="m-itsystemelk-check"><a href="/it/system/elk/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-itsystemelk"><span class="">ELK</span></a></label>
+  
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-itsystemhttpd-li">
-  <a href="/it/system/httpd/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-itsystemhttpd"><span class="td-sidebar-nav-active-item">httpd</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itsystemjenkins-li">
-  <a href="/it/system/jenkins/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itsystemjenkins"><span class="">jenkins</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itsystemkibana-li">
-  <a href="/it/system/kibana/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itsystemkibana"><span class="">kibana</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itsystemlinux-li">
-  <a href="/it/system/linux/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itsystemlinux"><span class="">linux</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itsystemopenssh-li">
-  <a href="/it/system/openssh/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itsystemopenssh"><span class="">openssh</span></a>
+  <input type="checkbox" id="m-itsystemhttpd-check" checked/>
+  <label for="m-itsystemhttpd-check"><a href="/it/system/httpd/" class="align-left pl-0  active td-sidebar-link td-sidebar-link__page" id="m-itsystemhttpd"><span class="td-sidebar-nav-active-item">httpd</span></a></label>
+  
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itsystemoracle12c-li">
-  <a href="/it/system/oracle12c/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itsystemoracle12c"><span class="">oracle12c</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itsystemtar-li">
-  <a href="/it/system/tar/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itsystemtar"><span class="">tar</span></a>
+  <input type="checkbox" id="m-itsystemoracle12c-check"/>
+  <label for="m-itsystemoracle12c-check"><a href="/it/system/oracle12c/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-itsystemoracle12c"><span class="">oracle12c</span></a></label>
+  
 </li>
   </ul>
 </li>
