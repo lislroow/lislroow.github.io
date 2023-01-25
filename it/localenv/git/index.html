@@ -1,0 +1,517 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.110.0">
+<meta name="robots" content="index, follow">
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
+
+<title>git | </title>
+<meta name="description" content="git-remote $ git remote -v origin https://github.com/lislroow/dlog.git (fetch) origin https://github.com/lislroow/dlog.git (push) $ git remote set-url origin git@github.com:lislroow/dlog.git $ git remote -v origin git@github.com:lislroow/dlog.git (fetch) origin git@github.com:lislroow/dlog.git (push) git-log git log --branches --not --remotes: commit 목록 중 원격지에 push 하지 않은 항목 출력 git log --oneline --graph: commit 목록을 1 line 으로 출력하면서 graph 로 표시 git log -p -1: commit 목록 중 최근 1개에 대하여 -p(patch) diff 출력 git log -p -S 문자열: patch 에 문자열이 포함된 commit 목록 출력 git log --since=&#39;2022-02-26 14:00&#39;: &amp;lsquo;2022-02-26 14:00&amp;rsquo; 부터 지금까지의 commit 목록 출력 (since/until) 주요 옵션">
+<meta property="og:title" content="git" />
+<meta property="og:description" content="git-remote $ git remote -v origin https://github.com/lislroow/dlog.git (fetch) origin https://github.com/lislroow/dlog.git (push) $ git remote set-url origin git@github.com:lislroow/dlog.git $ git remote -v origin git@github.com:lislroow/dlog.git (fetch) origin git@github.com:lislroow/dlog.git (push) git-log git log --branches --not --remotes: commit 목록 중 원격지에 push 하지 않은 항목 출력 git log --oneline --graph: commit 목록을 1 line 으로 출력하면서 graph 로 표시 git log -p -1: commit 목록 중 최근 1개에 대하여 -p(patch) diff 출력 git log -p -S 문자열: patch 에 문자열이 포함된 commit 목록 출력 git log --since=&#39;2022-02-26 14:00&#39;: &lsquo;2022-02-26 14:00&rsquo; 부터 지금까지의 commit 목록 출력 (since/until) 주요 옵션" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/it/localenv/git/" /><meta property="article:section" content="it" />
+
+
+<meta itemprop="name" content="git">
+<meta itemprop="description" content="git-remote $ git remote -v origin https://github.com/lislroow/dlog.git (fetch) origin https://github.com/lislroow/dlog.git (push) $ git remote set-url origin git@github.com:lislroow/dlog.git $ git remote -v origin git@github.com:lislroow/dlog.git (fetch) origin git@github.com:lislroow/dlog.git (push) git-log git log --branches --not --remotes: commit 목록 중 원격지에 push 하지 않은 항목 출력 git log --oneline --graph: commit 목록을 1 line 으로 출력하면서 graph 로 표시 git log -p -1: commit 목록 중 최근 1개에 대하여 -p(patch) diff 출력 git log -p -S 문자열: patch 에 문자열이 포함된 commit 목록 출력 git log --since=&#39;2022-02-26 14:00&#39;: &lsquo;2022-02-26 14:00&rsquo; 부터 지금까지의 commit 목록 출력 (since/until) 주요 옵션">
+
+<meta itemprop="wordCount" content="614">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="git"/>
+<meta name="twitter:description" content="git-remote $ git remote -v origin https://github.com/lislroow/dlog.git (fetch) origin https://github.com/lislroow/dlog.git (push) $ git remote set-url origin git@github.com:lislroow/dlog.git $ git remote -v origin git@github.com:lislroow/dlog.git (fetch) origin git@github.com:lislroow/dlog.git (push) git-log git log --branches --not --remotes: commit 목록 중 원격지에 push 하지 않은 항목 출력 git log --oneline --graph: commit 목록을 1 line 으로 출력하면서 graph 로 표시 git log -p -1: commit 목록 중 최근 1개에 대하여 -p(patch) diff 출력 git log -p -S 문자열: patch 에 문자열이 포함된 commit 목록 출력 git log --since=&#39;2022-02-26 14:00&#39;: &lsquo;2022-02-26 14:00&rsquo; 부터 지금까지의 commit 목록 출력 (since/until) 주요 옵션"/>
+
+
+
+
+<link rel="preload" href="/scss/main.min.128acf28d37348bf110ce1bb682c5a43d1cb433b3b1fa337f834286ee6f9d4f0.css" as="style">
+<link href="/scss/main.min.128acf28d37348bf110ce1bb682c5a43d1cb433b3b1fa337f834286ee6f9d4f0.css" rel="stylesheet" integrity="">
+
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
+  crossorigin="anonymous"></script>
+<script defer
+  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
+  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-page">
+    <header>
+      <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+  <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"></span><span class="navbar-brand__name"></span></a>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav mt-2 mt-lg-0">
+      <li class="nav-item me-4 mb-2 mb-lg-0">
+        <a class="nav-link active" href="/it/"><i class='fas fa-book'></i><span class="active">it</span></a>
+      </li>
+      </ul>
+  </div>
+  <div class="navbar-nav d-none d-lg-block">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site…"
+    aria-label="Search this site…"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/offline-search-index.4f94867d1623c679d66ce1949cddd383.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
+</div>
+
+  </div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  <div id="content-mobile">
+  <form class="td-sidebar__search d-flex align-items-center">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site…"
+    aria-label="Search this site…"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/offline-search-index.4f94867d1623c679d66ce1949cddd383.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
+</div>
+
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ms-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  </div>
+  <div id="content-desktop"></div>
+  <nav class="collapse td-sidebar-nav" id="td-section-nav">
+    <ul class="td-sidebar-nav__section pr-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-it-li">
+  <a href="/it/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-it"><span class="">it</span></a>
+  <ul class="ul-1">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-itdevelop-li">
+  <a href="/it/develop/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-itdevelop"><span class="">develop</span></a>
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itdeveloplog4j2-li">
+  <a href="/it/develop/log4j2/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itdeveloplog4j2"><span class="">log4j2</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itdeveloplogback-li">
+  <a href="/it/develop/logback/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itdeveloplogback"><span class="">logback</span></a>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-itelk-li">
+  <a href="/it/elk/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-itelk"><span class="">ELK</span></a>
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itelk20220129-apache_log-li">
+  <a href="/it/elk/20220129-apache_log/" title="2022.01.29" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itelk20220129-apache_log"><span class="">2022.01.29-apache_log</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itelk20220130-elastic_mappings-li">
+  <a href="/it/elk/20220130-elastic_mappings/" title="2022.01.30" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itelk20220130-elastic_mappings"><span class="">2022.01.30-dwww</span></a>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-itlanguage-li">
+  <a href="/it/language/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-itlanguage"><span class="">language</span></a>
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itlanguagejava-li">
+  <a href="/it/language/java/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itlanguagejava"><span class="">java</span></a>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-itlocalenv-li">
+  <a href="/it/localenv/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-itlocalenv"><span class="">localenv</span></a>
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itlocalenv04_ecb0b8eab3a0_eclipse-eb8ba8ecb695ed82a4-li">
+  <a href="/it/localenv/04_%EC%B0%B8%EA%B3%A0_eclipse-%EB%8B%A8%EC%B6%95%ED%82%A4/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itlocalenv04_ecb0b8eab3a0_eclipse-eb8ba8ecb695ed82a4"><span class="">04_참고_eclipse-단축키</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-itlocalenvgit-li">
+  <a href="/it/localenv/git/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-itlocalenvgit"><span class="td-sidebar-nav-active-item">git</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itlocalenvgradle-li">
+  <a href="/it/localenv/gradle/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itlocalenvgradle"><span class="">gradle</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itlocalenvintellij-li">
+  <a href="/it/localenv/intellij/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itlocalenvintellij"><span class="">intellij</span></a>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-itsystem-li">
+  <a href="/it/system/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-itsystem"><span class="">system</span></a>
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itsystemcentos8-li">
+  <a href="/it/system/centos8/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itsystemcentos8"><span class="">centos8</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itsystemcurl-li">
+  <a href="/it/system/curl/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itsystemcurl"><span class="">curl</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itsystemelk-li">
+  <a href="/it/system/elk/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itsystemelk"><span class="">ELK</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itsystemhttpd-li">
+  <a href="/it/system/httpd/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itsystemhttpd"><span class="">httpd</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itsystemjenkins-li">
+  <a href="/it/system/jenkins/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itsystemjenkins"><span class="">jenkins</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itsystemkibana-li">
+  <a href="/it/system/kibana/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itsystemkibana"><span class="">kibana</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itsystemlinux-li">
+  <a href="/it/system/linux/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itsystemlinux"><span class="">linux</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itsystemopenssh-li">
+  <a href="/it/system/openssh/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itsystemopenssh"><span class="">openssh</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itsystemoracle12c-li">
+  <a href="/it/system/oracle12c/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itsystemoracle12c"><span class="">oracle12c</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itsystemtar-li">
+  <a href="/it/system/tar/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itsystemtar"><span class="">tar</span></a>
+</li>
+  </ul>
+</li>
+  </ul>
+</li>
+    </ul>
+  </nav>
+</div>
+
+          </aside>
+          <aside class="d-none d-xl-block col-xl-3 td-sidebar-toc d-print-none">
+            
+<div class="td-page-meta ms-2 pb-1 pt-2 mb-0">
+
+</div>
+
+            <div class="td-toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#git-remote">git-remote</a></li>
+            <li><a href="#git-log">git-log</a></li>
+            <li><a href="#git-restore">git-restore</a></li>
+            <li><a href="#git-reset">git-reset</a></li>
+            <li><a href="#git-push">git-push</a></li>
+            <li><a href="#git-clean">git-clean</a></li>
+            <li><a href="#git-checkout">git-checkout</a></li>
+            <li><a href="#git-commit">git-commit</a></li>
+            <li><a href="#git-ls-files">git-ls-files</a></li>
+            <li><a href="#git-branch">git-branch</a></li>
+            <li><a href="#git-config-alias">git-config (alias)</a></li>
+            <li><a href="#git-diff">git-diff</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+    
+            
+
+	
+		
+
+
+
+  
+  
+
+	
+		
+
+
+
+  
+  
+
+	
+
+          </aside>
+          <main class="col-12 col-md-9 col-xl-7 pl-md-5" role="main">
+            
+            
+            
+<div class="td-content">
+	<h1>git</h1>
+	
+	<header class="article-meta">
+		
+
+  
+    
+
+
+  
+    
+
+
+  
+
+		
+	</header>    
+	<h4 id="git-remote">git-remote</h4>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>$ git remote -v
+</span></span><span style="display:flex;"><span>origin  https://github.com/lislroow/dlog.git (fetch)
+</span></span><span style="display:flex;"><span>origin  https://github.com/lislroow/dlog.git (push)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ git remote set-url origin git@github.com:lislroow/dlog.git
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ git remote -v
+</span></span><span style="display:flex;"><span>origin  git@github.com:lislroow/dlog.git (fetch)
+</span></span><span style="display:flex;"><span>origin  git@github.com:lislroow/dlog.git (push)
+</span></span></code></pre></div><h4 id="git-log">git-log</h4>
+<ul>
+<li><code>git log --branches --not --remotes</code>: commit 목록 중 원격지에 push 하지 않은 항목 출력</li>
+<li><code>git log --oneline --graph</code>: commit 목록을 1 line 으로 출력하면서 graph 로 표시</li>
+<li><code>git log -p -1</code>: commit 목록 중 최근 1개에 대하여 <code>-p</code>(patch) diff 출력</li>
+<li><code>git log -p -S 문자열</code>: patch 에 문자열이 포함된 commit 목록 출력</li>
+<li><code>git log --since='2022-02-26 14:00'</code>: &lsquo;2022-02-26 14:00&rsquo; 부터 지금까지의 commit 목록 출력 (since/until)</li>
+</ul>
+<p>주요 옵션</p>
+<table>
+<thead>
+<tr>
+<th>옵션</th>
+<th style="text-align:left"><center>설명</center></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-p</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>&ndash;stat</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>&ndash;shortstat</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>&ndash;name-only</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>&ndash;name-status</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>&ndash;graph</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>&ndash;pretty</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>&ndash;oneline</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<p>범위 제한 옵션</p>
+<table>
+<thead>
+<tr>
+<th>옵션</th>
+<th><center>설명</center></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-(n)</td>
+<td></td>
+</tr>
+<tr>
+<td>&ndash;since, &ndash;after</td>
+<td></td>
+</tr>
+<tr>
+<td>&ndash;until, &ndash;before</td>
+<td></td>
+</tr>
+<tr>
+<td>&ndash;author</td>
+<td></td>
+</tr>
+<tr>
+<td>&ndash;committer</td>
+<td></td>
+</tr>
+<tr>
+<td>&ndash;grep</td>
+<td>commit 메시지의 텍스트를 grep 합니다.</td>
+</tr>
+<tr>
+<td>&ndash;S</td>
+<td>patch 내용의 텍스트를 grep 합니다.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="git-restore">git-restore</h4>
+<ul>
+<li><code>git restore path-to-file</code>: working-directory 의 파일 변경 취소</li>
+<li><code>git restore --staged path-to-file</code>: Index 의 파일 변경 취소</li>
+</ul>
+<h4 id="git-reset">git-reset</h4>
+<ul>
+<li><code>git reset -- path-to-file</code>: Index 의 파일(Index에 파일이 있다는 것은 staged 상태임)을 unstaging 으로 변경</li>
+<li><code>git checkout path-to-file</code></li>
+</ul>
+<p>reset 명령은 HEAD가 가리키는 브랜치의 commit 을 바꿉니다.</p>
+<p>옵션은 --soft, --mixed, --hard 3가지가 있으며 기본은 --mixed 입니다.</p>
+<p>특정 파일 1개를 3회 commit 을 한 상태, 각 commit 의 해시 값은 v1, v2, v3 라고 가정합니다.</p>
+<p>reset 명령으로 commit 상태를 v2로 변경할 때, 옵션별 실행 결과입니다.</p>
+<table>
+<thead>
+<tr>
+<th>옵션</th>
+<th><center>결과</center></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>--soft  v2</td>
+<td>HEAD: v2, Index: v3, working-directory: v3</td>
+</tr>
+<tr>
+<td>--mixed v2</td>
+<td>HEAD: v2, Index: v2, working-directory: v3</td>
+</tr>
+<tr>
+<td>--hard  v2</td>
+<td>HEAD: v2, Index: v2, working-directory: v2</td>
+</tr>
+</tbody>
+</table>
+<p>commit 해시 값을 파라미터로 전달하지 않고, 이전의 commit 해시 값으로 변경할 경우 아래와 같이 실행합니다.</p>
+<p><code>git reset --soft HEAD~</code></p>
+<p>같이 commit 해야할 파일을 실수로 누락했을 경우 사용될 수 있습니다.</p>
+<p>reset 명령으로 Index 의 특정 파일을 HEAD에서 특정 commit 버전에 포함된 파일로 변경할 수 있습니다.</p>
+<p><code>git reset v2 -- file.txt</code></p>
+<p>HEAD 의 v2 버전 상태의 file.txt를 Index에 적용합니다.</p>
+<p>최근 2건의 commit 을 하나로 합쳐서 1건의 commit 으로 정리하고자 할 때 아래와 같이 reset 명령을 사용합니다.</p>
+<p><code>git reset --soft HEAD~2</code> 혹은 <code>git reset --soft HEAD@{2}</code></p>
+<p>reset 명령은 Untracked 파일(로컬에서 신규 생성한 파일)은 그대로 유지합니다.</p>
+<h4 id="git-push">git-push</h4>
+<ul>
+<li><code>git push origin +test</code>: 원격지 브랜치 test에 강제 push 를 합니다. <code>git push origin test -f</code> 와 같습니다. (강제 push를 하게되면 원격지의 commit history 가 덮어씌워 집니다.)</li>
+</ul>
+<h4 id="git-clean">git-clean</h4>
+<p>Untracked 파일만 삭제하는 명령입니다. (tracked 파일은 대상이 아닙니다.)</p>
+<ul>
+<li><code>git clean -f</code>: 파일만 삭제</li>
+<li><code>git clean -f -d</code>: 파일 및 디렉토리 삭제</li>
+<li><code>git clean -f -d -x</code>: 파일 및 디렉토리 및 무시된 파일 삭제</li>
+<li><code>git clean -n</code>: 삭제될 대상을 확인</li>
+</ul>
+<h4 id="git-checkout">git-checkout</h4>
+<p><code>git checkout branch</code>와 <code>git reset --hard 브랜치</code> 는</p>
+<h4 id="git-commit">git-commit</h4>
+<ul>
+<li><code>git commit --amend</code>: Index 에 추가된 항목으로 commit 을 재작성</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>$ git commit -m &#39;메시지&#39;
+</span></span><span style="display:flex;"><span>$ git add forgotten_file
+</span></span><span style="display:flex;"><span>$ git commit --amend
+</span></span></code></pre></div><h4 id="git-ls-files">git-ls-files</h4>
+<ul>
+<li><code>git ls-files -s</code>: (Index)</li>
+</ul>
+<h4 id="git-branch">git-branch</h4>
+<ul>
+<li><code>git branch --list</code></li>
+<li><code>git branch -vv</code></li>
+<li><code>git branch -avv</code>: 로컬/원격지 모든 브랜치 조회하면서 tracking 상태 확인</li>
+<li><code>git branch test --track origin/main</code>: 원격지 origin/main 브랜치를 start-point 로 하는 test 브랜치 생성</li>
+<li><code>git branch --set-upstream-to origin/main</code>: 현재 로컬 브랜치를 원격지 origin/main 브랜치로 tracking 하도록 설정</li>
+<li><code>git branch test --set-upstream-to origin/main</code>: 로컬 브랜치 test를 원격지 origin/main 브랜치로 tracking 하도록 설정</li>
+<li><code>git switch test</code></li>
+<li><code>git push origin test</code>: 로컬 브랜치 test를 원격지에 생성</li>
+<li><code>git push origin :test</code>: 원격지 브랜치 test를 삭제</li>
+<li><code>git branch -d</code>: merge 하지 않은 커밋을 담고 있는 브랜치는 <code>git branch -D</code> 로 강제 삭제할 수 있음</li>
+<li><code>git branch -r</code>: 원격지 브랜치 조회</li>
+<li><code>git branch -a</code>: 로컬/원격지 브랜치 모두 조회</li>
+<li><code>git remote show origin</code>: 로컬/원격지 tracking 상태 확인</li>
+<li><code>git remote prune origin</code>: 원격 브랜치와 유효하지 않는 참조를 삭제</li>
+<li><code>git remote update --prune</code></li>
+<li><code>git fetch -p</code>: fetch 를 실행하면서 원격 브랜치의 참조가 유효하지 않는 상태의 브랜치를 제거</li>
+</ul>
+<h4 id="git-config-alias">git-config (alias)</h4>
+<ul>
+<li><code>git config --global alias.br branch</code></li>
+<li><code>git config --global alias.unstage 'reset HEAD --'</code></li>
+<li><code>git config --global alias.last 'log -1 HEAD'</code></li>
+</ul>
+<h4 id="git-diff">git-diff</h4>
+<ul>
+<li><code>git diff</code></li>
+<li><code>git diff HEAD</code></li>
+<li><code>git diff HEAD --color-words</code></li>
+<li><code>git diff HEAD --word-diff</code></li>
+</ul>
+
+	
+	
+	
+</div>
+
+
+          </main>
+        </div>
+      </div>
+    </div>
+    
+        
+    
+  <style>
+.markmap > svg {
+  width: 100%;
+  height: 300px;
+}
+</style>
+<script>
+window.markmap = {
+  autoLoader: {
+      manual: true,
+      onReady() {
+        const { autoLoader, builtInPlugins } = window.markmap;
+        autoLoader.transformPlugins = builtInPlugins.filter(plugin => plugin.name !== 'prism');
+      },
+  },
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
+<script src='/js/deflate.js'></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/katex.min.css"
+      integrity="sha512-6VMVcy7XQNyarhVuiL50FzpgCFKsyTd6YO93aaQEyET+BNaWvj0IgKR86Bf6+AmWczxAcSnL+JGjo+iStgO1gQ==" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/katex.min.js"
+        integrity="sha512-b9IKj4LCNrtCPBhceRcoYOHWW/S2q9fpl7iAJlyxYpykRj1SKM7FE9+E0NEnJ8g8ni47LBr2GuX9qzg/xeuwzQ=="
+        crossorigin="anonymous">
+</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/contrib/mhchem.min.js"
+        integrity="sha512-V1hl0fnOXW6Cdqe5ZVqtw8TBpJVpu3XRDRQti96j/04+tMarPrCdXEUE3UdfvfKYTpOn9DV4zEZBVr0HhDiuiQ=="
+        crossorigin="anonymous">
+</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/contrib/auto-render.min.js"
+       integrity="sha512-iWiuBS5nt6r60fCz26Nd0Zqe0nbk1ZTIQbl3Kv7kYsX+yKMUFHzjaH2+AnM6vp2Xs+gNmaBAVWJjSmuPw76Efg==" crossorigin="anonymous"
+       onload='renderMathInElement(document.body, null);'>
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@9.2.2/dist/mermaid.min.js" integrity="sha512-IX+bU+wShHqfqaMHLMrtwi4nK6W/Z+QdZoL4kPNtRxI2wCLyHPMAdl3a43Fv1Foqv4AP+aiW6hg1dcrTt3xc+Q==" crossorigin="anonymous"></script>
+<script src="/js/main.min.1a01a98ed01dffe802c8f04f66fe0e0a96af28e6bdd06190087da881fab9ca20.js" integrity="sha256-GgGpjtAd/&#43;gCyPBPZv4OCpavKOa90GGQCH2ogfq5yiA=" crossorigin="anonymous"></script>
+<script src='/js/tabpane-persist.js'></script>
+
+  </body>
+</html>

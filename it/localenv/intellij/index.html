@@ -4,7 +4,6 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="generator" content="Hugo 0.110.0">
-<link rel="alternate" type="application/rss&#43;xml" href="/index.xml">
 <meta name="robots" content="index, follow">
 
 
@@ -19,16 +18,21 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title></title>
-<meta name="description" content="">
-<meta property="og:title" content="" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="/" />
-<meta itemprop="name" content="">
-<meta itemprop="description" content=""><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content=""/>
-<meta name="twitter:description" content=""/>
+<title>intellij | </title>
+<meta name="description" content=" ctrl&#43;shift&#43;T: 검색 (in classes) ctrl&#43;shift&#43;A: 검색 (in actions, intellij 의 기능을 검색, e.g, show lines) ctrl&#43;shift&#43;space: javadoc (dbl-click 시 우측 탭 열림) ctrl&#43;alt&#43;shift&#43;N: 검색 (in symbols, 메소드 혹은 변수를 검색) ctrl&#43;shift&#43;R: 검색 (in files) alt&#43;shift&#43;↑: 이전 항목까지 선택 (↓ 다음 항목까지 선택) ctrl&#43;/: 주석(//, 단일행 주석) ctrl&#43;shift&#43;/: 주석 (/* .. */, 여러행 주석) ctrl&#43;alt&#43;↓: 현재 행을 다음행에 복사 alt&#43;↑: 현재 행을 위로 이동 (↓ 아래로 이동, 메소드일 경우 메소드가 전체 이동함) ctrl&#43;-: collapse (&#43; expand, *: expand all) alt&#43;shift&#43;Z: ">
+<meta property="og:title" content="intellij" />
+<meta property="og:description" content=" ctrl&#43;shift&#43;T: 검색 (in classes) ctrl&#43;shift&#43;A: 검색 (in actions, intellij 의 기능을 검색, e.g, show lines) ctrl&#43;shift&#43;space: javadoc (dbl-click 시 우측 탭 열림) ctrl&#43;alt&#43;shift&#43;N: 검색 (in symbols, 메소드 혹은 변수를 검색) ctrl&#43;shift&#43;R: 검색 (in files) alt&#43;shift&#43;↑: 이전 항목까지 선택 (↓ 다음 항목까지 선택) ctrl&#43;/: 주석(//, 단일행 주석) ctrl&#43;shift&#43;/: 주석 (/* .. */, 여러행 주석) ctrl&#43;alt&#43;↓: 현재 행을 다음행에 복사 alt&#43;↑: 현재 행을 위로 이동 (↓ 아래로 이동, 메소드일 경우 메소드가 전체 이동함) ctrl&#43;-: collapse (&#43; expand, *: expand all) alt&#43;shift&#43;Z: " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/it/localenv/intellij/" /><meta property="article:section" content="it" />
+
+
+<meta itemprop="name" content="intellij">
+<meta itemprop="description" content=" ctrl&#43;shift&#43;T: 검색 (in classes) ctrl&#43;shift&#43;A: 검색 (in actions, intellij 의 기능을 검색, e.g, show lines) ctrl&#43;shift&#43;space: javadoc (dbl-click 시 우측 탭 열림) ctrl&#43;alt&#43;shift&#43;N: 검색 (in symbols, 메소드 혹은 변수를 검색) ctrl&#43;shift&#43;R: 검색 (in files) alt&#43;shift&#43;↑: 이전 항목까지 선택 (↓ 다음 항목까지 선택) ctrl&#43;/: 주석(//, 단일행 주석) ctrl&#43;shift&#43;/: 주석 (/* .. */, 여러행 주석) ctrl&#43;alt&#43;↓: 현재 행을 다음행에 복사 alt&#43;↑: 현재 행을 위로 이동 (↓ 아래로 이동, 메소드일 경우 메소드가 전체 이동함) ctrl&#43;-: collapse (&#43; expand, *: expand all) alt&#43;shift&#43;Z: ">
+
+<meta itemprop="wordCount" content="79">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="intellij"/>
+<meta name="twitter:description" content=" ctrl&#43;shift&#43;T: 검색 (in classes) ctrl&#43;shift&#43;A: 검색 (in actions, intellij 의 기능을 검색, e.g, show lines) ctrl&#43;shift&#43;space: javadoc (dbl-click 시 우측 탭 열림) ctrl&#43;alt&#43;shift&#43;N: 검색 (in symbols, 메소드 혹은 변수를 검색) ctrl&#43;shift&#43;R: 검색 (in files) alt&#43;shift&#43;↑: 이전 항목까지 선택 (↓ 다음 항목까지 선택) ctrl&#43;/: 주석(//, 단일행 주석) ctrl&#43;shift&#43;/: 주석 (/* .. */, 여러행 주석) ctrl&#43;alt&#43;↓: 현재 행을 다음행에 복사 alt&#43;↑: 현재 행을 위로 이동 (↓ 아래로 이동, 메소드일 경우 메소드가 전체 이동함) ctrl&#43;-: collapse (&#43; expand, *: expand all) alt&#43;shift&#43;Z: "/>
 
 
 
@@ -46,14 +50,14 @@
   crossorigin="anonymous"></script>
 
   </head>
-  <body class="td-home">
+  <body class="td-page">
     <header>
       <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
   <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"></span><span class="navbar-brand__name"></span></a>
   <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
     <ul class="navbar-nav mt-2 mt-lg-0">
       <li class="nav-item me-4 mb-2 mb-lg-0">
-        <a class="nav-link" href="/it/"><i class='fas fa-book'></i><span>it</span></a>
+        <a class="nav-link active" href="/it/"><i class='fas fa-book'></i><span class="active">it</span></a>
       </li>
       </ul>
   </div>
@@ -106,15 +110,12 @@
   <div id="content-desktop"></div>
   <nav class="collapse td-sidebar-nav" id="td-section-nav">
     <ul class="td-sidebar-nav__section pr-md-3 ul-0">
-      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m--li">
-  <a href="/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__section tree-root" id="m-"><span class="td-sidebar-nav-active-item"></span></a>
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-it-li">
+  <a href="/it/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-it"><span class="">it</span></a>
   <ul class="ul-1">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-it-li">
-  <a href="/it/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-it"><span class="">it</span></a>
-  <ul class="ul-2 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-itdevelop-li">
   <a href="/it/develop/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-itdevelop"><span class="">develop</span></a>
-  <ul class="ul-3 foldable">
+  <ul class="ul-2 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itdeveloplog4j2-li">
   <a href="/it/develop/log4j2/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itdeveloplog4j2"><span class="">log4j2</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itdeveloplogback-li">
@@ -123,7 +124,7 @@
   </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-itelk-li">
   <a href="/it/elk/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-itelk"><span class="">ELK</span></a>
-  <ul class="ul-3 foldable">
+  <ul class="ul-2 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itelk20220129-apache_log-li">
   <a href="/it/elk/20220129-apache_log/" title="2022.01.29" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itelk20220129-apache_log"><span class="">2022.01.29-apache_log</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itelk20220130-elastic_mappings-li">
@@ -132,27 +133,27 @@
   </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-itlanguage-li">
   <a href="/it/language/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-itlanguage"><span class="">language</span></a>
-  <ul class="ul-3 foldable">
+  <ul class="ul-2 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itlanguagejava-li">
   <a href="/it/language/java/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itlanguagejava"><span class="">java</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-itlocalenv-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-itlocalenv-li">
   <a href="/it/localenv/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-itlocalenv"><span class="">localenv</span></a>
-  <ul class="ul-3 foldable">
+  <ul class="ul-2 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itlocalenv04_ecb0b8eab3a0_eclipse-eb8ba8ecb695ed82a4-li">
   <a href="/it/localenv/04_%EC%B0%B8%EA%B3%A0_eclipse-%EB%8B%A8%EC%B6%95%ED%82%A4/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itlocalenv04_ecb0b8eab3a0_eclipse-eb8ba8ecb695ed82a4"><span class="">04_참고_eclipse-단축키</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itlocalenvgit-li">
   <a href="/it/localenv/git/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itlocalenvgit"><span class="">git</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itlocalenvgradle-li">
   <a href="/it/localenv/gradle/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itlocalenvgradle"><span class="">gradle</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itlocalenvintellij-li">
-  <a href="/it/localenv/intellij/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itlocalenvintellij"><span class="">intellij</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-itlocalenvintellij-li">
+  <a href="/it/localenv/intellij/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-itlocalenvintellij"><span class="td-sidebar-nav-active-item">intellij</span></a>
 </li>
   </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-itsystem-li">
   <a href="/it/system/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-itsystem"><span class="">system</span></a>
-  <ul class="ul-3 foldable">
+  <ul class="ul-2 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itsystemcentos8-li">
   <a href="/it/system/centos8/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itsystemcentos8"><span class="">centos8</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itsystemcurl-li">
@@ -178,8 +179,6 @@
 </li>
   </ul>
 </li>
-  </ul>
-</li>
     </ul>
   </nav>
 </div>
@@ -187,6 +186,10 @@
           </aside>
           <aside class="d-none d-xl-block col-xl-3 td-sidebar-toc d-print-none">
             
+<div class="td-page-meta ms-2 pb-1 pt-2 mb-0">
+
+</div>
+
             
             
 
@@ -213,6 +216,43 @@
             
             
             
+<div class="td-content">
+	<h1>intellij</h1>
+	
+	<header class="article-meta">
+		
+
+  
+    
+
+
+  
+    
+
+
+  
+
+		
+	</header>    
+	<ul>
+<li><code>ctrl</code>+<code>shift</code>+<code>T</code>: 검색 (in classes)</li>
+<li><code>ctrl</code>+<code>shift</code>+<code>A</code>: 검색 (in actions, intellij 의 기능을 검색, e.g, show lines)</li>
+<li><code>ctrl</code>+<code>shift</code>+<code>space</code>: javadoc (<code>dbl-click</code> 시 우측 탭 열림)</li>
+<li><code>ctrl</code>+<code>alt</code>+<code>shift</code>+<code>N</code>: 검색 (in symbols, 메소드 혹은 변수를 검색)</li>
+<li><code>ctrl</code>+<code>shift</code>+<code>R</code>: 검색 (in files)</li>
+<li><code>alt</code>+<code>shift</code>+<code>↑</code>: 이전 항목까지 선택 (<code>↓</code> 다음 항목까지 선택)</li>
+<li><code>ctrl</code>+<code>/</code>: 주석(//, 단일행 주석)</li>
+<li><code>ctrl</code>+<code>shift</code>+<code>/</code>: 주석 (/* .. */, 여러행 주석)</li>
+<li><code>ctrl</code>+<code>alt</code>+<code>↓</code>: 현재 행을 다음행에 복사</li>
+<li><code>alt</code>+<code>↑</code>: 현재 행을 위로 이동 (<code>↓</code> 아래로 이동, 메소드일 경우 메소드가 전체 이동함)</li>
+<li><code>ctrl</code>+<code>-</code>: collapse (<code>+</code> expand, <code>*</code>: expand all)</li>
+<li><code>alt</code>+<code>shift</code>+<code>Z</code>:</li>
+</ul>
+
+	
+	
+	
+</div>
 
 
           </main>

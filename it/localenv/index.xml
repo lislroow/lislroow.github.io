@@ -1,0 +1,584 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title> – localenv</title>
+    <link>/it/localenv/</link>
+    <description>Recent content in localenv on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="/it/localenv/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>It: 04_참고_eclipse-단축키</title>
+      <link>/it/localenv/04_%EC%B0%B8%EA%B3%A0_eclipse-%EB%8B%A8%EC%B6%95%ED%82%A4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/it/localenv/04_%EC%B0%B8%EA%B3%A0_eclipse-%EB%8B%A8%EC%B6%95%ED%82%A4/</guid>
+      <description>
+        
+        
+        &lt;h3 id=&#34;1-이클립스-기본-단축키&#34;&gt;1. 이클립스 기본 단축키&lt;/h3&gt;
+&lt;p&gt;이클립스에 기본으로 등록된 단축키 목록입니다.&lt;/p&gt;
+&lt;p&gt;중요도에 따라 ★를 표시했습니다.&lt;/p&gt;
+&lt;h4 id=&#34;11-ctrl--k-&#34;&gt;1.1 Ctrl + K (★★★)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;블록 선택된 단어가 다음에 일치하는 곳을 찾아갑니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Ctrl + Shift + K&lt;/code&gt; 일 경우 역방향으로 실행됩니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;대소문자 구분 옵션을 설정하려면 &lt;code&gt;Ctrl + F&lt;/code&gt; 찾기에서 &lt;code&gt;Case sentive&lt;/code&gt; 옵션을 선택해야합니다.&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;&lt;code&gt;Whole word&lt;/code&gt; 옵션으로 온전한 단어일 경우에만 검색되는 옵션도 있습니다.&lt;/strong&gt;&lt;/p&gt;
+ &lt;img src=&#34;/images/localenv/20211203-eclipse_shortcut_7.png&#34; width=&#34;800&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;/images/localenv/20211203-eclipse_shortcut_7.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;h4 id=&#34;12-ctrl--alt--down-&#34;&gt;1.2 Ctrl + Alt + DOWN (★★☆)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;블록 선택된 라인(혹은 커서가 있는 행)을 복제합니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;DOWN&lt;/code&gt; 은 방향키를 의미합니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;DOWN&lt;/code&gt; 일 경우 아래에 복제하고, &lt;code&gt;UP&lt;/code&gt; 일 경우 위에 복제합니다.&lt;/p&gt;
+ &lt;img src=&#34;/images/localenv/20211203-eclipse_shortcut_8.png&#34; width=&#34;600&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;/images/localenv/20211203-eclipse_shortcut_8.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;
+&lt;br&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;13-ctrl--alt--a-&#34;&gt;1.3 Ctrl + Alt + A (★★★)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;블록 선택을 반전시키는 기능입니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;일반 모드일 경우에는 행을 선택하는 형태이고, 컬럼 단위로 선택을 하기 위해 사용합니다.&lt;/p&gt;
+ &lt;img src=&#34;/images/localenv/20211203-eclipse_shortcut_16.png&#34; width=&#34;800&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;/images/localenv/20211203-eclipse_shortcut_16.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;
+&lt;br&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;14-ctrl--shift--g-&#34;&gt;1.4 Ctrl + Shift + G (★★★)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;유틸리티 클래스를 리팩토링 할 경우 영향도 체크를 위해 반드시 익혀야 합니다.&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;References in Workspace&lt;/code&gt; 라는 기능입니다.&lt;br&gt;
+기본 설명은 &lt;code&gt;Search for references to the selected element in the workspace&lt;/code&gt; 라고 되어 있습니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;java 의 클래스, 메소드, 변수가 참조되고 있는 파일의 라인을 찾아 줍니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;주로 프레임워크/공통 개발 시 제공된 클래스가 업무서비스의 어디서 참조되고 있는지를 검색해야 할 때 사용하면 좋습니다.&lt;/p&gt;
+ &lt;img src=&#34;/images/localenv/20211203-eclipse_shortcut_14.png&#34; width=&#34;800&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;/images/localenv/20211203-eclipse_shortcut_14.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;h4 id=&#34;15-alt--left-&#34;&gt;1.5 Alt + LEFT (★☆☆)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;이전에 활성화 했었던 파일을 re-open 해줍니다.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Ctrl + W&lt;/code&gt; 로 에디터에 열려진 파일을 닫은 직후 다시 열어야할 때 유용합니다.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;RIGHT&lt;/code&gt; 일 경우는 &lt;code&gt;LEFT&lt;/code&gt; 의 반대 방향입니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;h4 id=&#34;16-ctrl--pageup-&#34;&gt;1.6 Ctrl + PAGEUP (★☆☆)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;현재 활성화된 탭의 왼쪽 탭을 활성화 시킵니다.&lt;/li&gt;
+&lt;li&gt;에디터에 매우 많은 파일이 열려있을 경우 탭간의 이동을 마우스 클릭으로 이동하기 번거로울 경우 사용할 수 있습니다.&lt;br&gt;
+개발의 집중도를 높이기 위해 관련없는 파일들은 수정이 끝나면 &lt;code&gt;Ctrl + W&lt;/code&gt; 로 탭을 닫는 습관을 들이도록 해야겠습니다.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;PAGEDOWN&lt;/code&gt; 일 경우는 &lt;code&gt;PAGEUP&lt;/code&gt; 의 반대 방향, 오른쪽 탭을 활성화합니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;h4 id=&#34;17-ctrl--q-&#34;&gt;1.7 Ctrl + Q (☆☆☆)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;이전에 수정했던 파일의 라인으로 이동합니다.&lt;/p&gt;
+ &lt;img src=&#34;/images/localenv/20211203-eclipse_shortcut_9.png&#34; width=&#34;700&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;/images/localenv/20211203-eclipse_shortcut_9.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;
+&lt;br&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;18-ctrl--t-&#34;&gt;1.8 Ctrl + T (☆☆☆)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;java 클래스의 상속 구조를 봐야하는 경우 사용됩니다.&lt;br&gt;
+extends 에 대한 구조를 보여주며, implements 에 대한 구조는 보여주지 않습니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;프레임워크/공통 개발 시 오픈소스 라이브러리를 상속받고 구현체 클래스를 생성하는 경우가 많기에 알아둬야 겠습니다.&lt;/p&gt;
+ &lt;img src=&#34;/images/localenv/20211203-eclipse_shortcut_15.png&#34; width=&#34;600&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;/images/localenv/20211203-eclipse_shortcut_15.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;
+&lt;br&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;18-ctrl--l-&#34;&gt;1.8 Ctrl + L (★☆☆)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;editing 중인 파일의 해당 라인으로 이동하는 기능입니다.&lt;/p&gt;
+ &lt;img src=&#34;/images/localenv/20211203-eclipse_shortcut_17.png&#34; width=&#34;700&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;/images/localenv/20211203-eclipse_shortcut_17.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;
+&lt;br&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;19-ctrl--shift--r-&#34;&gt;1.9 Ctrl + Shift + R (★★★)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;이클립스 프로젝트에서 파일명으로 파일을 찾아서 open 하는 기능입니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;매우 사용 빈도가 높기에 필수로 기억해둬야 할 것입니다.&lt;/p&gt;
+ &lt;img src=&#34;/images/localenv/20211203-eclipse_shortcut_18.png&#34; width=&#34;700&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;/images/localenv/20211203-eclipse_shortcut_18.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;
+&lt;br&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;110-ctrl---&#34;&gt;1.10 Ctrl + = (☆☆☆)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;이클립스 에디터의 font 크기를 변경하는 기능입니다. (&lt;code&gt;=&lt;/code&gt; 은 더 크게, &lt;code&gt;-&lt;/code&gt;는 더 작게)&lt;/li&gt;
+&lt;li&gt;메뉴를 통해 font 크기를 변경하려면,&lt;br&gt;
+&lt;code&gt;Window&lt;/code&gt; &amp;gt; &lt;code&gt;Preferences&lt;/code&gt; &amp;gt; &lt;code&gt;General&lt;/code&gt; &amp;gt; &lt;code&gt;Appearance&lt;/code&gt; &amp;gt; &lt;code&gt;Colors and Fonts&lt;/code&gt; 로 이동한 다음&lt;br&gt;
+&lt;code&gt;Basic&lt;/code&gt; &amp;gt; &lt;code&gt;Text Font&lt;/code&gt; 에서 변경할 수 있습니다.&lt;/li&gt;
+&lt;li&gt;코드 리뷰 시간에 일시적으로 font 크기를 조절해야 할 경우 이 단축키를 사용할 것을 권합니다.&lt;/li&gt;
+&lt;li&gt;단축키 &lt;code&gt;Ctrl + =&lt;/code&gt; 에서 &lt;code&gt;=&lt;/code&gt; 는 키보드의 숫자 라인에 &lt;code&gt;+&lt;/code&gt; 와 같이 있는 키 입니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;h4 id=&#34;111-ctrl--alt--shifh--l-&#34;&gt;1.11 Ctrl + Alt + Shifh + L (★★☆)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;이클립스에 기본 탑재된 &lt;code&gt;Quick Search&lt;/code&gt; 기능입니다.&lt;br&gt;
+이클립스 InstaSearch 플러그인과 유사합니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;검색할 문자열을 블록 선택한 다음 &lt;code&gt;Ctrl + Alt + Shifh + L&lt;/code&gt; 을 입력하면 팝업이 open 되면서 검색이 시작됩니다.&lt;/p&gt;
+ &lt;img src=&#34;/images/localenv/20211203-eclipse_shortcut_20.png&#34; width=&#34;700&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;/images/localenv/20211203-eclipse_shortcut_20.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;h3 id=&#34;2-svn-단축키&#34;&gt;2. svn 단축키&lt;/h3&gt;
+&lt;h4 id=&#34;21-ctrl--alt--l-&#34;&gt;2.1 Ctrl + Alt + L (★★★)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;현재 editing 중인 파일이 svn 저장소에 commit 된 파일과 비교를 합니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;commit 을 하기전에는 무엇이 변경되었는지 빠르게 확인을 하기 위해 자주 사용되는 diff 단축키 입니다.&lt;/p&gt;
+ &lt;img src=&#34;/images/localenv/20211203-eclipse_shortcut_12.png&#34; width=&#34;600&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;/images/localenv/20211203-eclipse_shortcut_12.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;h4 id=&#34;22-ctrl--alt--s-&#34;&gt;2.2 Ctrl + Alt + S (★★★)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;svn 저장소와 동기화 단축키 입니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;project explorer&lt;/code&gt; 에서 이클립스 프로젝트를 선택한 다음&lt;br&gt;
+&lt;code&gt;우클릭&lt;/code&gt; &amp;gt; &lt;code&gt;Team&lt;/code&gt; &amp;gt; &lt;code&gt;Synchronized with Repository&lt;/code&gt; 를 선택하는 것과 동일합니다.&lt;br&gt;
+마우스 클릭으로 sync 를 하기 위해서는 번거롭다고 생각하시면 익혀두셔야 겠습니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;svn-commit(&lt;code&gt;Ctrl + Alt + C&lt;/code&gt;), svn-update(&lt;code&gt;Ctrl + Alt + U&lt;/code&gt;) 에 대한 단축키도 익혀두시면 좋겠습니다.&lt;/p&gt;
+ &lt;img src=&#34;/images/localenv/20211203-eclipse_shortcut_13.png&#34; width=&#34;400&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;/images/localenv/20211203-eclipse_shortcut_13.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;h3 id=&#34;3-anyedit-플러그인-단축키&#34;&gt;3. anyedit 플러그인 단축키&lt;/h3&gt;
+&lt;h4 id=&#34;31-ctrl--alt--k-&#34;&gt;3.1 Ctrl + Alt + K (★☆☆)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;camelcase 와 underscore-case 를 변환해주는 기능입니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;두 가지 case 에 대한 예시 입니다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;# e.g 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;employName 은 camelcase 이고, employ_name 는 underscore-case 입니다.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;oracle 에서는 컬럼에 대해 대소문자가 구분이되지 않기 때문에 underscore-case 표기법을 사용하게 됩니다.&lt;br&gt;
+java 에서는 oracle 컬럼에 대응되는 변수를 생성할 때&lt;br&gt;
+camelcase 를 사용하는 경우가 일반적이므로 이 기능의 활용도가 있을 것으로 예상합니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;사용법은 변환할 문자열을 블록 선택한 다음 &lt;code&gt;Ctrl + Alt + K&lt;/code&gt; 를 입력하면 됩니다.&lt;/p&gt;
+ &lt;img src=&#34;/images/localenv/20211203-eclipse_shortcut_19.png&#34;&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;h3 id=&#34;4-사용자-지정-단축키&#34;&gt;4. 사용자 지정 단축키&lt;/h3&gt;
+&lt;p&gt;개발을 하면서 자주 사용되는 기능에 대해 설정한 단축키 입니다.&lt;/p&gt;
+&lt;p&gt;사용자 지정 단축키는 &lt;code&gt;User&lt;/code&gt; 부분에 &lt;code&gt;U&lt;/code&gt; 라고 표시가 되어 있습니다.&lt;/p&gt;
+&lt;p&gt;만일 기존 단축키와 충돌이 발생할 경우 &lt;code&gt;C&lt;/code&gt; 라는 문자가 같이 포함되어 있으며,&lt;/p&gt;
+&lt;p&gt;해제 하고자 하는 명령을 선택하고 &lt;code&gt;Unbind Command&lt;/code&gt; 버튼을 클릭하면 해제할 수 있게 됩니다.&lt;/p&gt;
+&lt;img src=&#34;/images/localenv/20211203-eclipse_shortcut_5.png&#34; width=&#34;600&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;/images/localenv/20211203-eclipse_shortcut_5.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;41-ctrl--alt--h-&#34;&gt;4.1 Ctrl + Alt + H (★★☆)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;project explorer&lt;/code&gt; 에서 선택된 파일 혹은 디렉토리의 svn 에 commit 된 history 를 볼 수 있습니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;특정 파일을 편집 상태에서도 &lt;code&gt;Ctrl + Alt + H&lt;/code&gt; 를 입력하면, 편집 중인 파일의 svn-history 를 볼 수 있습니다.&lt;/p&gt;
+ &lt;img src=&#34;/images/localenv/20211203-eclipse_shortcut_6.png&#34; width=&#34;600&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;/images/localenv/20211203-eclipse_shortcut_6.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;h4 id=&#34;42-alt--c-&#34;&gt;4.2 Alt + C (★☆☆)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;이클립스 프로젝트를 다시 build(compile) 해야할 때 clean 을 사용되는 단축키 입니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;프로젝트를 선택한 상태에서 &lt;code&gt;Alt + C&lt;/code&gt; 를 입력하면 선택된 프로젝트가 Clean 대상으로 체크가 되어있습니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;java 파일을 editing 하는 상태에서 &lt;code&gt;Alt + C&lt;/code&gt; 를 입력하면 현재 파일을 포함하는 프로젝트가 Clean 대상으로 체크됩니다.&lt;/p&gt;
+ &lt;img src=&#34;/images/localenv/20211203-eclipse_shortcut_11.png&#34; width=&#34;600&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;/images/localenv/20211203-eclipse_shortcut_11.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;h4 id=&#34;43-alt--u-&#34;&gt;4.3 Alt + U (★★★)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;maven 프로젝트에서는 pom.xml 이 변경이 있거나, 의존성 library 의 최신 버전을 받아오기 위해 &lt;code&gt;maven-update&lt;/code&gt; 를 자주 하게 됩니다.&lt;/li&gt;
+&lt;li&gt;이클립스 기본 단축키는 &lt;code&gt;Alt + F5&lt;/code&gt; 이며, F5 키가 접근이 용이하지 않아 &lt;code&gt;Alt + U&lt;/code&gt; 단축키를 별도로 추가했습니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;h3 id=&#34;5-단축키-설정-방법&#34;&gt;5. 단축키 설정 방법&lt;/h3&gt;
+&lt;h4 id=&#34;51-설정창-이동&#34;&gt;5.1 설정창 이동&lt;/h4&gt;
+&lt;p&gt;이클립스 상단 context 메뉴에서 &lt;code&gt;Window&lt;/code&gt; &amp;gt; &lt;code&gt;Preferences&lt;/code&gt; 를 선택합니다. (Preferences 창이 열림)&lt;/p&gt;
+&lt;p&gt;Preferences 창에서 &lt;code&gt;General&lt;/code&gt; &amp;gt; &lt;code&gt;Keys&lt;/code&gt; 를 선택하면 단축키 설정 화면이 보입니다.&lt;/p&gt;
+&lt;img src=&#34;/images/localenv/20211203-eclipse_shortcut_1.png&#34; width=&#34;500&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;/images/localenv/20211203-eclipse_shortcut_1.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;h4 id=&#34;52-binding-상태-확인&#34;&gt;5.2 binding 상태 확인&lt;/h4&gt;
+&lt;p&gt;검색 영역에서 &lt;code&gt;binding&lt;/code&gt; 으로도 검색이 가능합니다.&lt;/p&gt;
+&lt;img src=&#34;/images/localenv/20211203-eclipse_shortcut_2.png&#34; width=&#34;500&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;/images/localenv/20211203-eclipse_shortcut_2.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;h4 id=&#34;53-단축키-변경&#34;&gt;5.3 단축키 변경&lt;/h4&gt;
+&lt;p&gt;단축키를 변경하기 위해서는 &lt;code&gt;Binding&lt;/code&gt; 에서 단축키를 직접 입력합니다.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;When&lt;/code&gt; 은 &lt;code&gt;In Windows&lt;/code&gt; 를 선택해주세요.&lt;/p&gt;
+&lt;img src=&#34;/images/localenv/20211203-eclipse_shortcut_3.png&#34; width=&#34;500&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;/images/localenv/20211203-eclipse_shortcut_3.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;참고로 &lt;code&gt;Editing Text&lt;/code&gt; 일 경우 텍스트를 편집할 때에만 적용된다는 의미가 됩니다.&lt;/p&gt;
+&lt;p&gt;아래는 기존 단축키를 유지하면서 새로운 단축키를 하나 더 설정하는 방법입니다.&lt;/p&gt;
+&lt;p&gt;(이클립스에 기본으로 Binding 된 단축키는 가급적이면 그대로 유지할 것을 권합니다.)&lt;/p&gt;
+&lt;img src=&#34;/images/localenv/20211203-eclipse_shortcut_4.png&#34; width=&#34;500&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;/images/localenv/20211203-eclipse_shortcut_4.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;&lt;/p&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;h4 id=&#34;54-ctrl--shift--l&#34;&gt;5.4 Ctrl + Shift + L&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;단축키 목록을 우측 하단에 표시 합니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;한 번 더 &lt;code&gt;Ctrl + Shift + L&lt;/code&gt; 를 입력하면 단축키 설정 창을 open 합니다.&lt;/p&gt;
+ &lt;img src=&#34;/images/localenv/20211203-eclipse_shortcut_10.png&#34; width=&#34;500&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;/images/localenv/20211203-eclipse_shortcut_10.png&#34; target=&#34;_blank&#34;&gt;새 창 보기&lt;/a&gt;
+&lt;br&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>It: git</title>
+      <link>/it/localenv/git/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/it/localenv/git/</guid>
+      <description>
+        
+        
+        &lt;h4 id=&#34;git-remote&#34;&gt;git-remote&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git remote -v
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;origin  https://github.com/lislroow/dlog.git (fetch)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;origin  https://github.com/lislroow/dlog.git (push)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git remote set-url origin git@github.com:lislroow/dlog.git
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git remote -v
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;origin  git@github.com:lislroow/dlog.git (fetch)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;origin  git@github.com:lislroow/dlog.git (push)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;git-log&#34;&gt;git-log&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git log --branches --not --remotes&lt;/code&gt;: commit 목록 중 원격지에 push 하지 않은 항목 출력&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git log --oneline --graph&lt;/code&gt;: commit 목록을 1 line 으로 출력하면서 graph 로 표시&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git log -p -1&lt;/code&gt;: commit 목록 중 최근 1개에 대하여 &lt;code&gt;-p&lt;/code&gt;(patch) diff 출력&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git log -p -S 문자열&lt;/code&gt;: patch 에 문자열이 포함된 commit 목록 출력&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git log --since=&#39;2022-02-26 14:00&#39;&lt;/code&gt;: &amp;lsquo;2022-02-26 14:00&amp;rsquo; 부터 지금까지의 commit 목록 출력 (since/until)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;주요 옵션&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;옵션&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;&lt;center&gt;설명&lt;/center&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;-p&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;ndash;stat&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;ndash;shortstat&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;ndash;name-only&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;ndash;name-status&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;ndash;graph&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;ndash;pretty&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;ndash;oneline&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;범위 제한 옵션&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;옵션&lt;/th&gt;
+&lt;th&gt;&lt;center&gt;설명&lt;/center&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;-(n)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;ndash;since, &amp;ndash;after&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;ndash;until, &amp;ndash;before&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;ndash;author&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;ndash;committer&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;ndash;grep&lt;/td&gt;
+&lt;td&gt;commit 메시지의 텍스트를 grep 합니다.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;ndash;S&lt;/td&gt;
+&lt;td&gt;patch 내용의 텍스트를 grep 합니다.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&#34;git-restore&#34;&gt;git-restore&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git restore path-to-file&lt;/code&gt;: working-directory 의 파일 변경 취소&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git restore --staged path-to-file&lt;/code&gt;: Index 의 파일 변경 취소&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;git-reset&#34;&gt;git-reset&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git reset -- path-to-file&lt;/code&gt;: Index 의 파일(Index에 파일이 있다는 것은 staged 상태임)을 unstaging 으로 변경&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git checkout path-to-file&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;reset 명령은 HEAD가 가리키는 브랜치의 commit 을 바꿉니다.&lt;/p&gt;
+&lt;p&gt;옵션은 --soft, --mixed, --hard 3가지가 있으며 기본은 --mixed 입니다.&lt;/p&gt;
+&lt;p&gt;특정 파일 1개를 3회 commit 을 한 상태, 각 commit 의 해시 값은 v1, v2, v3 라고 가정합니다.&lt;/p&gt;
+&lt;p&gt;reset 명령으로 commit 상태를 v2로 변경할 때, 옵션별 실행 결과입니다.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;옵션&lt;/th&gt;
+&lt;th&gt;&lt;center&gt;결과&lt;/center&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;--soft  v2&lt;/td&gt;
+&lt;td&gt;HEAD: v2, Index: v3, working-directory: v3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;--mixed v2&lt;/td&gt;
+&lt;td&gt;HEAD: v2, Index: v2, working-directory: v3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;--hard  v2&lt;/td&gt;
+&lt;td&gt;HEAD: v2, Index: v2, working-directory: v2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;commit 해시 값을 파라미터로 전달하지 않고, 이전의 commit 해시 값으로 변경할 경우 아래와 같이 실행합니다.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;git reset --soft HEAD~&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;같이 commit 해야할 파일을 실수로 누락했을 경우 사용될 수 있습니다.&lt;/p&gt;
+&lt;p&gt;reset 명령으로 Index 의 특정 파일을 HEAD에서 특정 commit 버전에 포함된 파일로 변경할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;git reset v2 -- file.txt&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;HEAD 의 v2 버전 상태의 file.txt를 Index에 적용합니다.&lt;/p&gt;
+&lt;p&gt;최근 2건의 commit 을 하나로 합쳐서 1건의 commit 으로 정리하고자 할 때 아래와 같이 reset 명령을 사용합니다.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;git reset --soft HEAD~2&lt;/code&gt; 혹은 &lt;code&gt;git reset --soft HEAD@{2}&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;reset 명령은 Untracked 파일(로컬에서 신규 생성한 파일)은 그대로 유지합니다.&lt;/p&gt;
+&lt;h4 id=&#34;git-push&#34;&gt;git-push&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git push origin +test&lt;/code&gt;: 원격지 브랜치 test에 강제 push 를 합니다. &lt;code&gt;git push origin test -f&lt;/code&gt; 와 같습니다. (강제 push를 하게되면 원격지의 commit history 가 덮어씌워 집니다.)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;git-clean&#34;&gt;git-clean&lt;/h4&gt;
+&lt;p&gt;Untracked 파일만 삭제하는 명령입니다. (tracked 파일은 대상이 아닙니다.)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git clean -f&lt;/code&gt;: 파일만 삭제&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git clean -f -d&lt;/code&gt;: 파일 및 디렉토리 삭제&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git clean -f -d -x&lt;/code&gt;: 파일 및 디렉토리 및 무시된 파일 삭제&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git clean -n&lt;/code&gt;: 삭제될 대상을 확인&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;git-checkout&#34;&gt;git-checkout&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;git checkout branch&lt;/code&gt;와 &lt;code&gt;git reset --hard 브랜치&lt;/code&gt; 는&lt;/p&gt;
+&lt;h4 id=&#34;git-commit&#34;&gt;git-commit&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git commit --amend&lt;/code&gt;: Index 에 추가된 항목으로 commit 을 재작성&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git commit -m &amp;#39;메시지&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git add forgotten_file
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git commit --amend
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;git-ls-files&#34;&gt;git-ls-files&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git ls-files -s&lt;/code&gt;: (Index)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;git-branch&#34;&gt;git-branch&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git branch --list&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git branch -vv&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git branch -avv&lt;/code&gt;: 로컬/원격지 모든 브랜치 조회하면서 tracking 상태 확인&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git branch test --track origin/main&lt;/code&gt;: 원격지 origin/main 브랜치를 start-point 로 하는 test 브랜치 생성&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git branch --set-upstream-to origin/main&lt;/code&gt;: 현재 로컬 브랜치를 원격지 origin/main 브랜치로 tracking 하도록 설정&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git branch test --set-upstream-to origin/main&lt;/code&gt;: 로컬 브랜치 test를 원격지 origin/main 브랜치로 tracking 하도록 설정&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git switch test&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git push origin test&lt;/code&gt;: 로컬 브랜치 test를 원격지에 생성&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git push origin :test&lt;/code&gt;: 원격지 브랜치 test를 삭제&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git branch -d&lt;/code&gt;: merge 하지 않은 커밋을 담고 있는 브랜치는 &lt;code&gt;git branch -D&lt;/code&gt; 로 강제 삭제할 수 있음&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git branch -r&lt;/code&gt;: 원격지 브랜치 조회&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git branch -a&lt;/code&gt;: 로컬/원격지 브랜치 모두 조회&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git remote show origin&lt;/code&gt;: 로컬/원격지 tracking 상태 확인&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git remote prune origin&lt;/code&gt;: 원격 브랜치와 유효하지 않는 참조를 삭제&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git remote update --prune&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git fetch -p&lt;/code&gt;: fetch 를 실행하면서 원격 브랜치의 참조가 유효하지 않는 상태의 브랜치를 제거&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;git-config-alias&#34;&gt;git-config (alias)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git config --global alias.br branch&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git config --global alias.unstage &#39;reset HEAD --&#39;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git config --global alias.last &#39;log -1 HEAD&#39;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;git-diff&#34;&gt;git-diff&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git diff&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git diff HEAD&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git diff HEAD --color-words&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git diff HEAD --word-diff&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>It: gradle</title>
+      <link>/it/localenv/gradle/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/it/localenv/gradle/</guid>
+      <description>
+        
+        
+        &lt;h4 id=&#34;다운로드&#34;&gt;다운로드&lt;/h4&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>It: intellij</title>
+      <link>/it/localenv/intellij/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/it/localenv/intellij/</guid>
+      <description>
+        
+        
+        &lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ctrl&lt;/code&gt;+&lt;code&gt;shift&lt;/code&gt;+&lt;code&gt;T&lt;/code&gt;: 검색 (in classes)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ctrl&lt;/code&gt;+&lt;code&gt;shift&lt;/code&gt;+&lt;code&gt;A&lt;/code&gt;: 검색 (in actions, intellij 의 기능을 검색, e.g, show lines)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ctrl&lt;/code&gt;+&lt;code&gt;shift&lt;/code&gt;+&lt;code&gt;space&lt;/code&gt;: javadoc (&lt;code&gt;dbl-click&lt;/code&gt; 시 우측 탭 열림)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ctrl&lt;/code&gt;+&lt;code&gt;alt&lt;/code&gt;+&lt;code&gt;shift&lt;/code&gt;+&lt;code&gt;N&lt;/code&gt;: 검색 (in symbols, 메소드 혹은 변수를 검색)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ctrl&lt;/code&gt;+&lt;code&gt;shift&lt;/code&gt;+&lt;code&gt;R&lt;/code&gt;: 검색 (in files)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;alt&lt;/code&gt;+&lt;code&gt;shift&lt;/code&gt;+&lt;code&gt;↑&lt;/code&gt;: 이전 항목까지 선택 (&lt;code&gt;↓&lt;/code&gt; 다음 항목까지 선택)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ctrl&lt;/code&gt;+&lt;code&gt;/&lt;/code&gt;: 주석(//, 단일행 주석)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ctrl&lt;/code&gt;+&lt;code&gt;shift&lt;/code&gt;+&lt;code&gt;/&lt;/code&gt;: 주석 (/* .. */, 여러행 주석)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ctrl&lt;/code&gt;+&lt;code&gt;alt&lt;/code&gt;+&lt;code&gt;↓&lt;/code&gt;: 현재 행을 다음행에 복사&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;alt&lt;/code&gt;+&lt;code&gt;↑&lt;/code&gt;: 현재 행을 위로 이동 (&lt;code&gt;↓&lt;/code&gt; 아래로 이동, 메소드일 경우 메소드가 전체 이동함)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ctrl&lt;/code&gt;+&lt;code&gt;-&lt;/code&gt;: collapse (&lt;code&gt;+&lt;/code&gt; expand, &lt;code&gt;*&lt;/code&gt;: expand all)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;alt&lt;/code&gt;+&lt;code&gt;shift&lt;/code&gt;+&lt;code&gt;Z&lt;/code&gt;:&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

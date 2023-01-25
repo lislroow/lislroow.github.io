@@ -4,7 +4,6 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="generator" content="Hugo 0.110.0">
-<link rel="alternate" type="application/rss&#43;xml" href="/index.xml">
 <meta name="robots" content="index, follow">
 
 
@@ -19,16 +18,49 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title></title>
-<meta name="description" content="">
-<meta property="og:title" content="" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="/" />
-<meta itemprop="name" content="">
-<meta itemprop="description" content=""><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content=""/>
-<meta name="twitter:description" content=""/>
+<title>2022.01.30 | </title>
+<meta name="description" content="elasticsearch 의 index 의 _mapping 을 수정하여 특정 field 관리할 수 있도록 정리
+mapping 기존 index mgkim-apache-log-2022.01.29로 신규 index mgkim-apache-log-remapping 생성
+기존 index 의 mapping 정보 조회 GET mgkim-apache-log-2022.01.29/_mapping &amp;quot;mappings&amp;quot;: {...} 를 전체 복사하여 신규 index 를 편집하는곳에 붙여넣기로 시작
+새 창 보기
+신규 index 생성 mappings 편집 항목
+&amp;quot;auth&amp;quot;: &amp;quot;text&amp;quot; &amp;gt; &amp;quot;auth&amp;quot;: &amp;quot;keyword&amp;quot;: 집계만하기 위해 변경
+PUT mgkim-apache-log-remapping 새 창 보기
+reindex POST _reindex { &amp;#34;source&amp;#34;: { &amp;#34;index&amp;#34;: &amp;#34;mgkim-apache-log-2022.">
+<meta property="og:title" content="2022.01.30" />
+<meta property="og:description" content="elasticsearch 의 index 의 _mapping 을 수정하여 특정 field 관리할 수 있도록 정리
+mapping 기존 index mgkim-apache-log-2022.01.29로 신규 index mgkim-apache-log-remapping 생성
+기존 index 의 mapping 정보 조회 GET mgkim-apache-log-2022.01.29/_mapping &quot;mappings&quot;: {...} 를 전체 복사하여 신규 index 를 편집하는곳에 붙여넣기로 시작
+새 창 보기
+신규 index 생성 mappings 편집 항목
+&quot;auth&quot;: &quot;text&quot; &gt; &quot;auth&quot;: &quot;keyword&quot;: 집계만하기 위해 변경
+PUT mgkim-apache-log-remapping 새 창 보기
+reindex POST _reindex { &#34;source&#34;: { &#34;index&#34;: &#34;mgkim-apache-log-2022." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/it/elk/20220130-elastic_mappings/" /><meta property="article:section" content="it" />
+
+
+<meta itemprop="name" content="2022.01.30">
+<meta itemprop="description" content="elasticsearch 의 index 의 _mapping 을 수정하여 특정 field 관리할 수 있도록 정리
+mapping 기존 index mgkim-apache-log-2022.01.29로 신규 index mgkim-apache-log-remapping 생성
+기존 index 의 mapping 정보 조회 GET mgkim-apache-log-2022.01.29/_mapping &quot;mappings&quot;: {...} 를 전체 복사하여 신규 index 를 편집하는곳에 붙여넣기로 시작
+새 창 보기
+신규 index 생성 mappings 편집 항목
+&quot;auth&quot;: &quot;text&quot; &gt; &quot;auth&quot;: &quot;keyword&quot;: 집계만하기 위해 변경
+PUT mgkim-apache-log-remapping 새 창 보기
+reindex POST _reindex { &#34;source&#34;: { &#34;index&#34;: &#34;mgkim-apache-log-2022.">
+
+<meta itemprop="wordCount" content="206">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="2022.01.30"/>
+<meta name="twitter:description" content="elasticsearch 의 index 의 _mapping 을 수정하여 특정 field 관리할 수 있도록 정리
+mapping 기존 index mgkim-apache-log-2022.01.29로 신규 index mgkim-apache-log-remapping 생성
+기존 index 의 mapping 정보 조회 GET mgkim-apache-log-2022.01.29/_mapping &quot;mappings&quot;: {...} 를 전체 복사하여 신규 index 를 편집하는곳에 붙여넣기로 시작
+새 창 보기
+신규 index 생성 mappings 편집 항목
+&quot;auth&quot;: &quot;text&quot; &gt; &quot;auth&quot;: &quot;keyword&quot;: 집계만하기 위해 변경
+PUT mgkim-apache-log-remapping 새 창 보기
+reindex POST _reindex { &#34;source&#34;: { &#34;index&#34;: &#34;mgkim-apache-log-2022."/>
 
 
 
@@ -46,14 +78,14 @@
   crossorigin="anonymous"></script>
 
   </head>
-  <body class="td-home">
+  <body class="td-page">
     <header>
       <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
   <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"></span><span class="navbar-brand__name"></span></a>
   <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
     <ul class="navbar-nav mt-2 mt-lg-0">
       <li class="nav-item me-4 mb-2 mb-lg-0">
-        <a class="nav-link" href="/it/"><i class='fas fa-book'></i><span>it</span></a>
+        <a class="nav-link active" href="/it/"><i class='fas fa-book'></i><span class="active">it</span></a>
       </li>
       </ul>
   </div>
@@ -106,40 +138,37 @@
   <div id="content-desktop"></div>
   <nav class="collapse td-sidebar-nav" id="td-section-nav">
     <ul class="td-sidebar-nav__section pr-md-3 ul-0">
-      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m--li">
-  <a href="/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__section tree-root" id="m-"><span class="td-sidebar-nav-active-item"></span></a>
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-it-li">
+  <a href="/it/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-it"><span class="">it</span></a>
   <ul class="ul-1">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-it-li">
-  <a href="/it/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-it"><span class="">it</span></a>
-  <ul class="ul-2 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-itdevelop-li">
   <a href="/it/develop/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-itdevelop"><span class="">develop</span></a>
-  <ul class="ul-3 foldable">
+  <ul class="ul-2 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itdeveloplog4j2-li">
   <a href="/it/develop/log4j2/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itdeveloplog4j2"><span class="">log4j2</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itdeveloplogback-li">
   <a href="/it/develop/logback/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itdeveloplogback"><span class="">logback</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-itelk-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-itelk-li">
   <a href="/it/elk/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-itelk"><span class="">ELK</span></a>
-  <ul class="ul-3 foldable">
+  <ul class="ul-2 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itelk20220129-apache_log-li">
   <a href="/it/elk/20220129-apache_log/" title="2022.01.29" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itelk20220129-apache_log"><span class="">2022.01.29-apache_log</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itelk20220130-elastic_mappings-li">
-  <a href="/it/elk/20220130-elastic_mappings/" title="2022.01.30" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itelk20220130-elastic_mappings"><span class="">2022.01.30-dwww</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-itelk20220130-elastic_mappings-li">
+  <a href="/it/elk/20220130-elastic_mappings/" title="2022.01.30" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-itelk20220130-elastic_mappings"><span class="td-sidebar-nav-active-item">2022.01.30-dwww</span></a>
 </li>
   </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-itlanguage-li">
   <a href="/it/language/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-itlanguage"><span class="">language</span></a>
-  <ul class="ul-3 foldable">
+  <ul class="ul-2 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itlanguagejava-li">
   <a href="/it/language/java/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itlanguagejava"><span class="">java</span></a>
 </li>
   </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-itlocalenv-li">
   <a href="/it/localenv/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-itlocalenv"><span class="">localenv</span></a>
-  <ul class="ul-3 foldable">
+  <ul class="ul-2 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itlocalenv04_ecb0b8eab3a0_eclipse-eb8ba8ecb695ed82a4-li">
   <a href="/it/localenv/04_%EC%B0%B8%EA%B3%A0_eclipse-%EB%8B%A8%EC%B6%95%ED%82%A4/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itlocalenv04_ecb0b8eab3a0_eclipse-eb8ba8ecb695ed82a4"><span class="">04_참고_eclipse-단축키</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itlocalenvgit-li">
@@ -152,7 +181,7 @@
   </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-itsystem-li">
   <a href="/it/system/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-itsystem"><span class="">system</span></a>
-  <ul class="ul-3 foldable">
+  <ul class="ul-2 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itsystemcentos8-li">
   <a href="/it/system/centos8/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itsystemcentos8"><span class="">centos8</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itsystemcurl-li">
@@ -178,8 +207,6 @@
 </li>
   </ul>
 </li>
-  </ul>
-</li>
     </ul>
   </nav>
 </div>
@@ -187,7 +214,37 @@
           </aside>
           <aside class="d-none d-xl-block col-xl-3 td-sidebar-toc d-print-none">
             
-            
+<div class="td-page-meta ms-2 pb-1 pt-2 mb-0">
+
+</div>
+
+            <div class="td-toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#mapping">mapping</a>
+              <ul>
+                <li><a href="#기존-index-의-mapping-정보-조회">기존 index 의 mapping 정보 조회</a></li>
+                <li><a href="#신규-index-생성">신규 index 생성</a></li>
+                <li><a href="#reindex">reindex</a></li>
+              </ul>
+            </li>
+            <li><a href="#웹-어플리케이션">웹 어플리케이션</a>
+              <ul>
+                <li><a href="#vhost-dwwwconf">vhost-dwww.conf</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+    
             
 
 	
@@ -213,6 +270,93 @@
             
             
             
+<div class="td-content">
+	<h1>2022.01.30</h1>
+	
+	<header class="article-meta">
+		
+
+  
+    
+
+
+  
+    
+
+
+  
+
+		
+	</header>    
+	
+
+<div class="pageinfo pageinfo-primary">
+<p>elasticsearch 의 index 의 <code>_mapping</code> 을 수정하여 특정 field 관리할 수 있도록 정리</p>
+
+</div>
+
+<h4 id="mapping">mapping</h4>
+<p>기존 index <code>mgkim-apache-log-2022.01.29</code>로 신규 index <code>mgkim-apache-log-remapping</code> 생성</p>
+<h5 id="기존-index-의-mapping-정보-조회">기존 index 의 mapping 정보 조회</h5>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>GET mgkim-apache-log-2022.01.29/_mapping
+</span></span></code></pre></div><p><code>&quot;mappings&quot;: {...}</code> 를 전체 복사하여 신규 index 를 편집하는곳에 붙여넣기로 시작</p>
+<p><a href="/files/ELK/20220130-asis-index-mapping.txt" target="_blank">새 창 보기</a></p>
+<h5 id="신규-index-생성">신규 index 생성</h5>
+<p>mappings 편집 항목</p>
+<p><code>&quot;auth&quot;: &quot;text&quot;</code> &gt; <code>&quot;auth&quot;: &quot;keyword&quot;</code>: 집계만하기 위해 변경</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>PUT mgkim-apache-log-remapping
+</span></span></code></pre></div><p><a href="/files/ELK/20220130-tobe-index-mapping.txt" target="_blank">새 창 보기</a></p>
+<h5 id="reindex">reindex</h5>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>POST _reindex
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  &#34;source&#34;: {
+</span></span><span style="display:flex;"><span>    &#34;index&#34;: &#34;mgkim-apache-log-2022.01.29&#34;
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  &#34;dest&#34;: {
+</span></span><span style="display:flex;"><span>    &#34;index&#34;: &#34;mgkim-apache-log-mapping&#34;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="웹-어플리케이션">웹 어플리케이션</h4>
+<h5 id="vhost-dwwwconf">vhost-dwww.conf</h5>
+<p>로그 포맷 변경 (combined + ROUTEID + txid + ssid)</p>
+<p>LogFormat &ldquo;%h %l %u %t &quot;%r&quot; %&gt;s %b  &quot;%{Referer}i&quot; &quot;%{User-Agent}i&quot;&rdquo; &quot;%{ROUTEID}C&quot; &quot;%{txid}i|%{ssid}i&quot;&quot; combined_trace</p>
+<p>Header add Set-Cookie &ldquo;ROUTEID=%{BALANCER_WORKER_ROUTE}e; path=/&rdquo; env=BALANCER_ROUTE_CHANGED</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>&lt;VirtualHost *:80&gt;
+</span></span><span style="display:flex;"><span>  ServerName dwww
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b  \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34; \&#34;%{ROUTEID}C\&#34; \&#34;%{txid}i|%{ssid}i\&#34;&#34; combined_trace
+</span></span><span style="display:flex;"><span>  ErrorLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/dwww-error.log.%Y-%m-%d 86400 +540&#34;
+</span></span><span style="display:flex;"><span>  CustomLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/dwww-access.log.%Y-%m-%d 86400 +540&#34; combined_trace
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  AllowEncodedSlashes On
+</span></span><span style="display:flex;"><span>  # reverse proxy 사용 시 Off
+</span></span><span style="display:flex;"><span>  ProxyRequests Off
+</span></span><span style="display:flex;"><span>  ProxyPreserveHost On
+</span></span><span style="display:flex;"><span>  # BALANCER_WORKER_ROUTE: BalancerMember 의 route 값을 쿠키에 포함 (dwww11, dwww12)
+</span></span><span style="display:flex;"><span>  Header add Set-Cookie &#34;ROUTEID=%{BALANCER_WORKER_ROUTE}e; path=/&#34; env=BALANCER_ROUTE_CHANGED
+</span></span><span style="display:flex;"><span>  Header set Access-Control-Allow-Origin &#34;*&#34;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  &lt;Proxy balancer://cluster&gt;
+</span></span><span style="display:flex;"><span>    BalancerMember http://127.0.0.1:7100 route=dwww11
+</span></span><span style="display:flex;"><span>    BalancerMember http://127.0.0.1:7101 route=dwww12
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    ProxySet stickysession=ROUTEID
+</span></span><span style="display:flex;"><span>    ## lbmethod
+</span></span><span style="display:flex;"><span>    # byrequests: 요청별 분배
+</span></span><span style="display:flex;"><span>    # bytraffic: byte 트래픽 가중치 분배
+</span></span><span style="display:flex;"><span>    # bybusyness: 보류중 요청 분배
+</span></span><span style="display:flex;"><span>    #ProxySet lbmethod=byrequests
+</span></span><span style="display:flex;"><span>  &lt;/Proxy&gt;
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  ProxyPass / balancer://cluster/
+</span></span><span style="display:flex;"><span>  ProxyPassReverse / balancer://cluster/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
+</span></span></code></pre></div>
+	
+	
+	
+</div>
 
 
           </main>

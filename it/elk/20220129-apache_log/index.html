@@ -1,0 +1,584 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.110.0">
+<meta name="robots" content="index, follow">
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
+
+<title>2022.01.29 | </title>
+<meta name="description" content="apache 로그파일 &amp;gt; filebeat &amp;gt; logstash &amp;gt; elastic 저장 과정에 대한 이해
+apache 로그에 대한 포맷 logstash 의 filter elastic 에 저장된 내용을 kibana 에서 조회 apache 로그 로그 포맷 &amp;lt;VirtualHost *:443&amp;gt; ServerName nexus # combined 포맷은 httpd.conf 에 정의되어 있음 LogFormat &amp;#34;%h %l %u %t \&amp;#34;%r\&amp;#34; %&amp;gt;s %b \&amp;#34;%{Referer}i\&amp;#34; \&amp;#34;%{User-Agent}i\&amp;#34;&amp;#34; combined CustomLog &amp;#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/nexus_ssl-access.log.%Y-%m-%d 86400 &#43;540%&amp;#34; combined ... 로그 설명 combined 라는 이름의 &amp;quot;%h %l %u %t \&amp;quot;%r\&amp;quot; %&amp;gt;s %b \&amp;quot;%{Referer}i\&amp;quot; \&amp;quot;%{User-Agent}i\&amp;quot;&amp;quot; 형식을 풀이하면 이렇다.">
+<meta property="og:title" content="2022.01.29" />
+<meta property="og:description" content="apache 로그파일 &gt; filebeat &gt; logstash &gt; elastic 저장 과정에 대한 이해
+apache 로그에 대한 포맷 logstash 의 filter elastic 에 저장된 내용을 kibana 에서 조회 apache 로그 로그 포맷 &lt;VirtualHost *:443&gt; ServerName nexus # combined 포맷은 httpd.conf 에 정의되어 있음 LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34;&#34; combined CustomLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/nexus_ssl-access.log.%Y-%m-%d 86400 &#43;540%&#34; combined ... 로그 설명 combined 라는 이름의 &quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b \&quot;%{Referer}i\&quot; \&quot;%{User-Agent}i\&quot;&quot; 형식을 풀이하면 이렇다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/it/elk/20220129-apache_log/" /><meta property="article:section" content="it" />
+
+
+<meta itemprop="name" content="2022.01.29">
+<meta itemprop="description" content="apache 로그파일 &gt; filebeat &gt; logstash &gt; elastic 저장 과정에 대한 이해
+apache 로그에 대한 포맷 logstash 의 filter elastic 에 저장된 내용을 kibana 에서 조회 apache 로그 로그 포맷 &lt;VirtualHost *:443&gt; ServerName nexus # combined 포맷은 httpd.conf 에 정의되어 있음 LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34;&#34; combined CustomLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/nexus_ssl-access.log.%Y-%m-%d 86400 &#43;540%&#34; combined ... 로그 설명 combined 라는 이름의 &quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b \&quot;%{Referer}i\&quot; \&quot;%{User-Agent}i\&quot;&quot; 형식을 풀이하면 이렇다.">
+
+<meta itemprop="wordCount" content="778">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="2022.01.29"/>
+<meta name="twitter:description" content="apache 로그파일 &gt; filebeat &gt; logstash &gt; elastic 저장 과정에 대한 이해
+apache 로그에 대한 포맷 logstash 의 filter elastic 에 저장된 내용을 kibana 에서 조회 apache 로그 로그 포맷 &lt;VirtualHost *:443&gt; ServerName nexus # combined 포맷은 httpd.conf 에 정의되어 있음 LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34;&#34; combined CustomLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/nexus_ssl-access.log.%Y-%m-%d 86400 &#43;540%&#34; combined ... 로그 설명 combined 라는 이름의 &quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b \&quot;%{Referer}i\&quot; \&quot;%{User-Agent}i\&quot;&quot; 형식을 풀이하면 이렇다."/>
+
+
+
+
+<link rel="preload" href="/scss/main.min.128acf28d37348bf110ce1bb682c5a43d1cb433b3b1fa337f834286ee6f9d4f0.css" as="style">
+<link href="/scss/main.min.128acf28d37348bf110ce1bb682c5a43d1cb433b3b1fa337f834286ee6f9d4f0.css" rel="stylesheet" integrity="">
+
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
+  crossorigin="anonymous"></script>
+<script defer
+  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
+  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-page">
+    <header>
+      <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+  <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"></span><span class="navbar-brand__name"></span></a>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav mt-2 mt-lg-0">
+      <li class="nav-item me-4 mb-2 mb-lg-0">
+        <a class="nav-link active" href="/it/"><i class='fas fa-book'></i><span class="active">it</span></a>
+      </li>
+      </ul>
+  </div>
+  <div class="navbar-nav d-none d-lg-block">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site…"
+    aria-label="Search this site…"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/offline-search-index.4f94867d1623c679d66ce1949cddd383.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
+</div>
+
+  </div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  <div id="content-mobile">
+  <form class="td-sidebar__search d-flex align-items-center">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site…"
+    aria-label="Search this site…"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/offline-search-index.4f94867d1623c679d66ce1949cddd383.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
+</div>
+
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ms-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  </div>
+  <div id="content-desktop"></div>
+  <nav class="collapse td-sidebar-nav" id="td-section-nav">
+    <ul class="td-sidebar-nav__section pr-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-it-li">
+  <a href="/it/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-it"><span class="">it</span></a>
+  <ul class="ul-1">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-itdevelop-li">
+  <a href="/it/develop/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-itdevelop"><span class="">develop</span></a>
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itdeveloplog4j2-li">
+  <a href="/it/develop/log4j2/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itdeveloplog4j2"><span class="">log4j2</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itdeveloplogback-li">
+  <a href="/it/develop/logback/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itdeveloplogback"><span class="">logback</span></a>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-itelk-li">
+  <a href="/it/elk/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-itelk"><span class="">ELK</span></a>
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-itelk20220129-apache_log-li">
+  <a href="/it/elk/20220129-apache_log/" title="2022.01.29" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-itelk20220129-apache_log"><span class="td-sidebar-nav-active-item">2022.01.29-apache_log</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itelk20220130-elastic_mappings-li">
+  <a href="/it/elk/20220130-elastic_mappings/" title="2022.01.30" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itelk20220130-elastic_mappings"><span class="">2022.01.30-dwww</span></a>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-itlanguage-li">
+  <a href="/it/language/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-itlanguage"><span class="">language</span></a>
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itlanguagejava-li">
+  <a href="/it/language/java/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itlanguagejava"><span class="">java</span></a>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-itlocalenv-li">
+  <a href="/it/localenv/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-itlocalenv"><span class="">localenv</span></a>
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itlocalenv04_ecb0b8eab3a0_eclipse-eb8ba8ecb695ed82a4-li">
+  <a href="/it/localenv/04_%EC%B0%B8%EA%B3%A0_eclipse-%EB%8B%A8%EC%B6%95%ED%82%A4/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itlocalenv04_ecb0b8eab3a0_eclipse-eb8ba8ecb695ed82a4"><span class="">04_참고_eclipse-단축키</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itlocalenvgit-li">
+  <a href="/it/localenv/git/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itlocalenvgit"><span class="">git</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itlocalenvgradle-li">
+  <a href="/it/localenv/gradle/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itlocalenvgradle"><span class="">gradle</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itlocalenvintellij-li">
+  <a href="/it/localenv/intellij/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itlocalenvintellij"><span class="">intellij</span></a>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-itsystem-li">
+  <a href="/it/system/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-itsystem"><span class="">system</span></a>
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itsystemcentos8-li">
+  <a href="/it/system/centos8/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itsystemcentos8"><span class="">centos8</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itsystemcurl-li">
+  <a href="/it/system/curl/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itsystemcurl"><span class="">curl</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itsystemelk-li">
+  <a href="/it/system/elk/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itsystemelk"><span class="">ELK</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itsystemhttpd-li">
+  <a href="/it/system/httpd/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itsystemhttpd"><span class="">httpd</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itsystemjenkins-li">
+  <a href="/it/system/jenkins/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itsystemjenkins"><span class="">jenkins</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itsystemkibana-li">
+  <a href="/it/system/kibana/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itsystemkibana"><span class="">kibana</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itsystemlinux-li">
+  <a href="/it/system/linux/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itsystemlinux"><span class="">linux</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itsystemopenssh-li">
+  <a href="/it/system/openssh/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itsystemopenssh"><span class="">openssh</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itsystemoracle12c-li">
+  <a href="/it/system/oracle12c/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itsystemoracle12c"><span class="">oracle12c</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itsystemtar-li">
+  <a href="/it/system/tar/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itsystemtar"><span class="">tar</span></a>
+</li>
+  </ul>
+</li>
+  </ul>
+</li>
+    </ul>
+  </nav>
+</div>
+
+          </aside>
+          <aside class="d-none d-xl-block col-xl-3 td-sidebar-toc d-print-none">
+            
+<div class="td-page-meta ms-2 pb-1 pt-2 mb-0">
+
+</div>
+
+            <div class="td-toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#apache-로그">apache 로그</a>
+              <ul>
+                <li><a href="#로그-포맷">로그 포맷</a></li>
+                <li><a href="#로그-설명">로그 설명</a></li>
+                <li><a href="#로그-예시">로그 예시</a></li>
+                <li><a href="#로그-포맷-추가">로그 포맷 추가</a></li>
+                <li><a href="#grok-패턴-greedydata">grok 패턴: %{GREEDYDATA}</a></li>
+                <li><a href="#logstash-filter-에-txid-추가">logstash filter 에 &ldquo;txid&rdquo; 추가</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+    
+            
+
+	
+		
+
+
+
+  
+  
+
+	
+		
+
+
+
+  
+  
+
+	
+
+          </aside>
+          <main class="col-12 col-md-9 col-xl-7 pl-md-5" role="main">
+            
+            
+            
+<div class="td-content">
+	<h1>2022.01.29</h1>
+	
+	<header class="article-meta">
+		
+
+  
+    
+
+
+  
+    
+
+
+  
+
+		
+	</header>    
+	
+
+<div class="pageinfo pageinfo-primary">
+<p>apache 로그파일 &gt; filebeat &gt; logstash &gt; elastic 저장 과정에 대한 이해</p>
+<ul>
+<li>apache 로그에 대한 포맷</li>
+<li>logstash 의 filter</li>
+<li>elastic 에 저장된 내용을 kibana 에서 조회</li>
+</ul>
+
+</div>
+
+<h4 id="apache-로그">apache 로그</h4>
+<h5 id="로그-포맷">로그 포맷</h5>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>&lt;VirtualHost *:443&gt;
+</span></span><span style="display:flex;"><span>  ServerName nexus
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  # combined 포맷은 httpd.conf 에 정의되어 있음
+</span></span><span style="display:flex;"><span>  LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b  \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34;&#34; combined
+</span></span><span style="display:flex;"><span>  CustomLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/nexus_ssl-access.log.%Y-%m-%d 86400 +540%&#34; combined
+</span></span><span style="display:flex;"><span>  ...
+</span></span></code></pre></div><h5 id="로그-설명">로그 설명</h5>
+<p><code>combined</code> 라는 이름의 <code>&quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b \&quot;%{Referer}i\&quot; \&quot;%{User-Agent}i\&quot;&quot;</code> 형식을 풀이하면 이렇다.</p>
+<table>
+<thead>
+<tr>
+<th>포맷</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>%h</code></td>
+<td>원격 호스트 이름</td>
+</tr>
+<tr>
+<td><code>%l</code></td>
+<td>ident 인증으로 알아낸 os 의 사용자명 <a href="https://www.rfc-editor.org/rfc/rfc1413.txt" target="_blank">rfc14</a></td>
+</tr>
+<tr>
+<td><code>%u</code></td>
+<td>http 인증으로 알아낸 사용자ID</td>
+</tr>
+<tr>
+<td><code>%r</code></td>
+<td>요청 uri (<code>%m %U%q %H</code> 와 같다.)</td>
+</tr>
+<tr>
+<td><code>%&gt;s</code></td>
+<td>http status</td>
+</tr>
+<tr>
+<td><code>%b</code></td>
+<td>클라이언트에 보낸 http body 의 byte 크기</td>
+</tr>
+<tr>
+<td><code>%{Referer}i</code></td>
+<td>http header 명 <code>Referer</code>의 값</td>
+</tr>
+<tr>
+<td><code>%{User-Agent}i</code></td>
+<td>http header 명 <code>User-Agent</code>의 값</td>
+</tr>
+</tbody>
+</table>
+<h5 id="로그-예시">로그 예시</h5>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>$ curl -X GET https://nexus/repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># apache 로그
+</span></span><span style="display:flex;"><span>172.28.200.30 - - [29/Jan/2022:22:35:05 +0900] &#34;GET /repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml HTTP/1.1&#34; 200 599 &#34;-&#34; &#34;curl/7.61.1&#34;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># kibana 에서 grok pattern: %{COMBINEDAPACHELOG}
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  &#34;request&#34;: &#34;/repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml&#34;,
+</span></span><span style="display:flex;"><span>  &#34;agent&#34;: &#34;\&#34;curl/7.61.1\&#34;&#34;,
+</span></span><span style="display:flex;"><span>  &#34;auth&#34;: &#34;-&#34;,
+</span></span><span style="display:flex;"><span>  &#34;ident&#34;: &#34;-&#34;,
+</span></span><span style="display:flex;"><span>  &#34;verb&#34;: &#34;GET&#34;,
+</span></span><span style="display:flex;"><span>  &#34;referrer&#34;: &#34;\&#34;-\&#34;&#34;,
+</span></span><span style="display:flex;"><span>  &#34;response&#34;: &#34;200&#34;,
+</span></span><span style="display:flex;"><span>  &#34;bytes&#34;: &#34;599&#34;,
+</span></span><span style="display:flex;"><span>  &#34;clientip&#34;: &#34;172.28.200.30&#34;,
+</span></span><span style="display:flex;"><span>  &#34;httpversion&#34;: &#34;1.1&#34;,
+</span></span><span style="display:flex;"><span>  &#34;timestamp&#34;: &#34;29/Jan/2022:22:35:05 +0900&#34;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h5 id="로그-포맷-추가">로그 포맷 추가</h5>
+<p><code>combined</code> 포맷에 http header <code>txid</code> 를 추가 후 curl 테스트</p>
+<p>txid 가 포함된 로그를 kibana grok debugger 에서 <code>%{COMBINEDAPACHELOG}</code> &gt; <code>%{COMBINEDAPACHELOG} \&quot;%{GREEDYDATA:txid}\&quot;</code> 로 테스트</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>$ vi /etc/httpd/conf.d/vhost-nexus.conf
+</span></span><span style="display:flex;"><span>&lt;VirtualHost *:443&gt;
+</span></span><span style="display:flex;"><span>  ServerName nexus
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  # combined_nexus 포맷에 &#34;txid&#34; 추가
+</span></span><span style="display:flex;"><span>  # LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b  \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34;&#34; combined
+</span></span><span style="display:flex;"><span>  LogFormat &#34;%h %l %u %t \&#34;%r\&#34; %&gt;s %b  \&#34;%{Referer}i\&#34; \&#34;%{User-Agent}i\&#34; \&#34;%{txid}i\&#34;&#34; combined_nexus
+</span></span><span style="display:flex;"><span>  # access log 의 포맷을 combined_nexus 로 변경
+</span></span><span style="display:flex;"><span>  CustomLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/nexus_ssl-access.log.%Y-%m-%d 86400 +540%&#34; combined_nexus
+</span></span><span style="display:flex;"><span>  ...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ systemctl restart httpd
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ curl -X GET -H &#34;txid: t1hruu5xl7le0o&#34; https://nexus/repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># apache 로그
+</span></span><span style="display:flex;"><span>172.28.200.30 - - [29/Jan/2022:22:43:39 +0900] &#34;GET /repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml HTTP/1.1&#34; 200 599 &#34;-&#34; &#34;curl/7.61.1&#34; &#34;t1hruu5xl7le0o&#34;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># kibana 에서 grok pattern: %{COMBINEDAPACHELOG} \&#34;%{GREEDYDATA:txid}\&#34;
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  &#34;request&#34;: &#34;/repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml&#34;,
+</span></span><span style="display:flex;"><span>  &#34;agent&#34;: &#34;\&#34;curl/7.61.1\&#34;&#34;,
+</span></span><span style="display:flex;"><span>  &#34;auth&#34;: &#34;-&#34;,
+</span></span><span style="display:flex;"><span>  &#34;ident&#34;: &#34;-&#34;,
+</span></span><span style="display:flex;"><span>  &#34;verb&#34;: &#34;GET&#34;,
+</span></span><span style="display:flex;"><span>  &#34;txid&#34;: &#34;t1hruu5xl7le0o&#34;,
+</span></span><span style="display:flex;"><span>  &#34;referrer&#34;: &#34;\&#34;-\&#34;&#34;,
+</span></span><span style="display:flex;"><span>  &#34;response&#34;: &#34;200&#34;,
+</span></span><span style="display:flex;"><span>  &#34;bytes&#34;: &#34;599&#34;,
+</span></span><span style="display:flex;"><span>  &#34;clientip&#34;: &#34;172.28.200.30&#34;,
+</span></span><span style="display:flex;"><span>  &#34;httpversion&#34;: &#34;1.1&#34;,
+</span></span><span style="display:flex;"><span>  &#34;timestamp&#34;: &#34;29/Jan/2022:22:43:39 +0900&#34;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>kibana grok debugger 에서 txid 를 parsing 하기 위해 %{GREEDYDATA:txid} 를 사용함</p>
+<h5 id="grok-패턴-greedydata">grok 패턴: %{GREEDYDATA}</h5>
+<p>github: <a href="https://github.com/logstash-plugins/logstash-patterns-core.git">https://github.com/logstash-plugins/logstash-patterns-core.git</a></p>
+<p><a href="https://raw.githubusercontent.com/logstash-plugins/logstash-patterns-core/main/patterns/ecs-v1/grok-patterns" target="_blank">grok-patterns</a></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>$ git pull https://github.com/logstash-plugins/logstash-patterns-core.git
+</span></span><span style="display:flex;"><span>$ find ./logstash-patterns-core/patterns/ -type f | grep grok | xargs grep -E &#34;^[^#\ ]&#34; | grep &#39;GREEDYDATA&#39;
+</span></span><span style="display:flex;"><span>./logstash-patterns-core/patterns/ecs-v1/grok-patterns:GREEDYDATA .*
+</span></span><span style="display:flex;"><span>./logstash-patterns-core/patterns/legacy/grok-patterns:GREEDYDATA .*
+</span></span><span style="display:flex;"><span>$ head -n 5 ./logstash-patterns-core/patterns/legacy/grok-patterns
+</span></span><span style="display:flex;"><span>USERNAME [a-zA-Z0-9._-]+
+</span></span><span style="display:flex;"><span>USER %{USERNAME}
+</span></span><span style="display:flex;"><span>EMAILLOCALPART [a-zA-Z][a-zA-Z0-9_.+-=:]+
+</span></span><span style="display:flex;"><span>EMAILADDRESS %{EMAILLOCALPART}@%{HOSTNAME}
+</span></span><span style="display:flex;"><span>INT (?:[+-]?(?:[0-9]+))
+</span></span><span style="display:flex;"><span>$ find ./logstash-patterns-core/patterns/ -type f | xargs grep -E &#34;^[^#\ ]&#34; | grep &#39;COMBINEDAPACHELOG&#39;
+</span></span><span style="display:flex;"><span>./logstash-patterns-core/patterns/legacy/httpd:COMBINEDAPACHELOG %{HTTPD_COMBINEDLOG}
+</span></span></code></pre></div><h5 id="logstash-filter-에-txid-추가">logstash filter 에 &ldquo;txid&rdquo; 추가</h5>
+<ul>
+<li>filebeat 테스트 준비</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># &#34;weblog.txt-txid&#34; 파일을 읽도록 수정
+</span></span><span style="display:flex;"><span>$ vi /etc/filebeat/filebeat.yml
+</span></span><span style="display:flex;"><span>  paths:
+</span></span><span style="display:flex;"><span>    #- /var/log/*.log
+</span></span><span style="display:flex;"><span>    #- /root/ls-test/weblog.txt
+</span></span><span style="display:flex;"><span>    - /root/ls-test/weblog.txt-txid
+</span></span><span style="display:flex;"><span>$
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># &#34;weblog.txt-txid&#34; 파일 생성
+</span></span><span style="display:flex;"><span>$ cat &lt;&lt; EOF &gt; /root/ls-test/weblog.txt-txid
+</span></span><span style="display:flex;"><span>172.28.200.30 - - [29/Jan/2022:22:43:39 +0900] &#34;GET /repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml HTTP/1.1&#34; 200 599 &#34;-&#34; &#34;curl/7.61.1&#34; &#34;t1hruu5xl7le0o&#34;
+</span></span><span style="display:flex;"><span>EOF
+</span></span><span style="display:flex;"><span>$ 
+</span></span></code></pre></div><ul>
+<li>logstash 테스트 준비</li>
+</ul>
+<p>kibana grok debugger 에서 테스트가 완료된 패턴을 logstash 에 추가</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># grok &gt; match 의 message 에 \&#34;%{GREEDYDATA:txid}\&#34; 추가
+</span></span><span style="display:flex;"><span>$ vi /etc/logstash/conf.d/exam_filebeat.conf
+</span></span><span style="display:flex;"><span>filter {
+</span></span><span style="display:flex;"><span>  mutate {
+</span></span><span style="display:flex;"><span>    remove_field =&gt; [&#34;agent&#34;]
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  grok {
+</span></span><span style="display:flex;"><span>    #match =&gt; { &#34;message&#34; =&gt; &#34;%{COMBINEDAPACHELOG}&#34;  }
+</span></span><span style="display:flex;"><span>    match =&gt; { &#34;message&#34; =&gt; &#34;%{COMBINEDAPACHELOG} \&#34;%{GREEDYDATA:txid}\&#34;&#34; }
+</span></span><span style="display:flex;"><span>$ 
+</span></span></code></pre></div><ul>
+<li>logstash 및 filebeat 재시작</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>$ systemctl stop logstash
+</span></span><span style="display:flex;"><span>$ systemctl stop filebeat
+</span></span><span style="display:flex;"><span>$ vi /etc/filebeat/filebeat.yml
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ rm -rf /data/PROD/filebeat/*
+</span></span><span style="display:flex;"><span>$ systemctl start logstash
+</span></span><span style="display:flex;"><span>$ systemctl start filebeat
+</span></span></code></pre></div><ul>
+<li>kibana 에서 조회</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>#GET _cat/indices/mgkim*?v
+</span></span><span style="display:flex;"><span>health status index                           uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+</span></span><span style="display:flex;"><span>yellow open   mgkim-apache-log-2022.01.29     DvbnByKXS9a56Rn8Vb_RMg   1   1          1            0     19.4kb         19.4kb
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>GET mgkim-apache-log-2022.01.29/_search
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  &#34;took&#34; : 0,
+</span></span><span style="display:flex;"><span>  &#34;timed_out&#34; : false,
+</span></span><span style="display:flex;"><span>  &#34;_shards&#34; : {
+</span></span><span style="display:flex;"><span>    &#34;total&#34; : 1,
+</span></span><span style="display:flex;"><span>    &#34;successful&#34; : 1,
+</span></span><span style="display:flex;"><span>    &#34;skipped&#34; : 0,
+</span></span><span style="display:flex;"><span>    &#34;failed&#34; : 0
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  &#34;hits&#34; : {
+</span></span><span style="display:flex;"><span>    &#34;total&#34; : {
+</span></span><span style="display:flex;"><span>      &#34;value&#34; : 1,
+</span></span><span style="display:flex;"><span>      &#34;relation&#34; : &#34;eq&#34;
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    &#34;max_score&#34; : 1.0,
+</span></span><span style="display:flex;"><span>    &#34;hits&#34; : [
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        &#34;_index&#34; : &#34;mgkim-apache-log-2022.01.29&#34;,
+</span></span><span style="display:flex;"><span>        &#34;_type&#34; : &#34;_doc&#34;,
+</span></span><span style="display:flex;"><span>        &#34;_id&#34; : &#34;9uPYqX4BOw_Yo7UZd8Fg&#34;,
+</span></span><span style="display:flex;"><span>        &#34;_score&#34; : 1.0,
+</span></span><span style="display:flex;"><span>        &#34;_source&#34; : {
+</span></span><span style="display:flex;"><span>          &#34;tags&#34; : [
+</span></span><span style="display:flex;"><span>            &#34;beats_input_codec_plain_applied&#34;,
+</span></span><span style="display:flex;"><span>            &#34;_geoip_lookup_failure&#34;
+</span></span><span style="display:flex;"><span>          ],
+</span></span><span style="display:flex;"><span>          &#34;bytes&#34; : 599,
+</span></span><span style="display:flex;"><span>          &#34;ecs&#34; : {
+</span></span><span style="display:flex;"><span>            &#34;version&#34; : &#34;1.12.0&#34;
+</span></span><span style="display:flex;"><span>          },
+</span></span><span style="display:flex;"><span>          &#34;useragent&#34; : {
+</span></span><span style="display:flex;"><span>            &#34;minor&#34; : &#34;61&#34;,
+</span></span><span style="display:flex;"><span>            &#34;device&#34; : &#34;Other&#34;,
+</span></span><span style="display:flex;"><span>            &#34;os_name&#34; : &#34;Other&#34;,
+</span></span><span style="display:flex;"><span>            &#34;os_full&#34; : &#34;Other&#34;,
+</span></span><span style="display:flex;"><span>            &#34;major&#34; : &#34;7&#34;,
+</span></span><span style="display:flex;"><span>            &#34;version&#34; : &#34;7.61.1&#34;,
+</span></span><span style="display:flex;"><span>            &#34;name&#34; : &#34;curl&#34;,
+</span></span><span style="display:flex;"><span>            &#34;os&#34; : &#34;Other&#34;,
+</span></span><span style="display:flex;"><span>            &#34;patch&#34; : &#34;1&#34;
+</span></span><span style="display:flex;"><span>          },
+</span></span><span style="display:flex;"><span>          &#34;response&#34; : &#34;200&#34;,
+</span></span><span style="display:flex;"><span>          &#34;auth&#34; : &#34;-&#34;,
+</span></span><span style="display:flex;"><span>          &#34;clientip&#34; : &#34;172.28.200.30&#34;,
+</span></span><span style="display:flex;"><span>          &#34;ident&#34; : &#34;-&#34;,
+</span></span><span style="display:flex;"><span>          &#34;log&#34; : {
+</span></span><span style="display:flex;"><span>            &#34;offset&#34; : 0,
+</span></span><span style="display:flex;"><span>            &#34;file&#34; : {
+</span></span><span style="display:flex;"><span>              &#34;path&#34; : &#34;/root/ls-test/weblog.txt-txid&#34;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>          },
+</span></span><span style="display:flex;"><span>          &#34;message&#34; : &#34;172.28.200.30 - - [29/Jan/2022:22:43:39 +0900] \&#34;GET /repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml HTTP/1.1\&#34; 200 599 \&#34;-\&#34; \&#34;curl/7.61.1\&#34; \&#34;t1hruu5xl7le0o\&#34;&#34;,
+</span></span><span style="display:flex;"><span>          &#34;referrer&#34; : &#34;\&#34;-\&#34;&#34;,
+</span></span><span style="display:flex;"><span>          &#34;httpversion&#34; : &#34;1.1&#34;,
+</span></span><span style="display:flex;"><span>          &#34;request&#34; : &#34;/repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml&#34;,
+</span></span><span style="display:flex;"><span>          &#34;txid&#34; : &#34;t1hruu5xl7le0o&#34;,
+</span></span><span style="display:flex;"><span>          &#34;geoip&#34; : { },
+</span></span><span style="display:flex;"><span>          &#34;verb&#34; : &#34;GET&#34;,
+</span></span><span style="display:flex;"><span>          &#34;input&#34; : {
+</span></span><span style="display:flex;"><span>            &#34;type&#34; : &#34;log&#34;
+</span></span><span style="display:flex;"><span>          },
+</span></span><span style="display:flex;"><span>          &#34;@timestamp&#34; : &#34;2022-01-29T13:43:39.000Z&#34;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>  #grok {
+</span></span><span style="display:flex;"><span>  #  patterns_dir =&gt; [ &#34;패턴파일경로&#34; ]
+</span></span><span style="display:flex;"><span>  #  match =&gt; {
+</span></span><span style="display:flex;"><span>  #    &#34;message&#34; =&gt; { &#34;%{COMBINEDAPACHELOG} \&#34;%{GREEDYDATA:txid}\&#34;&#34; }
+</span></span><span style="display:flex;"><span>  #  }
+</span></span></code></pre></div><ul>
+<li>elastic logstash: <a href="https://www.elastic.co/kr/blog/a-practical-introduction-to-logstash" target="_blank"><a href="https://www.elastic.co/kr/blog/a-practical-introduction-to-logstash">https://www.elastic.co/kr/blog/a-practical-introduction-to-logstash</a></a></li>
+<li>grok 테스트: <a href="http://grokdebug.herokuapp.com" target="_blank"><a href="http://grokdebug.herokuapp.com">http://grokdebug.herokuapp.com</a></a></li>
+<li>regex 테스트: <a href="https://regex101.com" target="_blank"><a href="https://regex101.com">https://regex101.com</a></a></li>
+<li>regex 참고1: <a href="https://velog.io/@koseungbin/%EC%A0%95%EA%B7%9C-%ED%91%9C%ED%98%84%EC%8B%9D" target="_blank"><a href="https://velog.io/@koseungbin/%EC%A0%95%EA%B7%9C-%ED%91%9C%ED%98%84%EC%8B%9D">https://velog.io/@koseungbin/%EC%A0%95%EA%B7%9C-%ED%91%9C%ED%98%84%EC%8B%9D</a></a></li>
+<li>regex 참고2: <a href="https://heropy.blog/2018/10/28/regexp/" target="_blank"><a href="https://heropy.blog/2018/10/28/regexp/">https://heropy.blog/2018/10/28/regexp/</a></a></li>
+</ul>
+<p>172.28.200.30 - - [29/Jan/2022:22:43:39 +0900] &ldquo;GET /repository/maven-snapshot/mgkim/framework/framework-core/maven-metadata.xml HTTP/1.1&rdquo; 200 599 &ldquo;-&rdquo; &ldquo;curl/7.61.1&rdquo; &ldquo;t1hruu5xl7le0o|s1jetbjlo0kpx0&rdquo;
+%{COMBINEDAPACHELOG} &quot;%{GREEDYDATA:txid}|%{GREEDYDATA:ssid}&quot;</p>
+
+	
+	
+	
+</div>
+
+
+          </main>
+        </div>
+      </div>
+    </div>
+    
+        
+    
+  <style>
+.markmap > svg {
+  width: 100%;
+  height: 300px;
+}
+</style>
+<script>
+window.markmap = {
+  autoLoader: {
+      manual: true,
+      onReady() {
+        const { autoLoader, builtInPlugins } = window.markmap;
+        autoLoader.transformPlugins = builtInPlugins.filter(plugin => plugin.name !== 'prism');
+      },
+  },
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
+<script src='/js/deflate.js'></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/katex.min.css"
+      integrity="sha512-6VMVcy7XQNyarhVuiL50FzpgCFKsyTd6YO93aaQEyET+BNaWvj0IgKR86Bf6+AmWczxAcSnL+JGjo+iStgO1gQ==" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/katex.min.js"
+        integrity="sha512-b9IKj4LCNrtCPBhceRcoYOHWW/S2q9fpl7iAJlyxYpykRj1SKM7FE9+E0NEnJ8g8ni47LBr2GuX9qzg/xeuwzQ=="
+        crossorigin="anonymous">
+</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/contrib/mhchem.min.js"
+        integrity="sha512-V1hl0fnOXW6Cdqe5ZVqtw8TBpJVpu3XRDRQti96j/04+tMarPrCdXEUE3UdfvfKYTpOn9DV4zEZBVr0HhDiuiQ=="
+        crossorigin="anonymous">
+</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/contrib/auto-render.min.js"
+       integrity="sha512-iWiuBS5nt6r60fCz26Nd0Zqe0nbk1ZTIQbl3Kv7kYsX+yKMUFHzjaH2+AnM6vp2Xs+gNmaBAVWJjSmuPw76Efg==" crossorigin="anonymous"
+       onload='renderMathInElement(document.body, null);'>
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@9.2.2/dist/mermaid.min.js" integrity="sha512-IX+bU+wShHqfqaMHLMrtwi4nK6W/Z+QdZoL4kPNtRxI2wCLyHPMAdl3a43Fv1Foqv4AP+aiW6hg1dcrTt3xc+Q==" crossorigin="anonymous"></script>
+<script src="/js/main.min.1a01a98ed01dffe802c8f04f66fe0e0a96af28e6bdd06190087da881fab9ca20.js" integrity="sha256-GgGpjtAd/&#43;gCyPBPZv4OCpavKOa90GGQCH2ogfq5yiA=" crossorigin="anonymous"></script>
+<script src='/js/tabpane-persist.js'></script>
+
+  </body>
+</html>

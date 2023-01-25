@@ -1,0 +1,390 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.110.0">
+<meta name="robots" content="index, follow">
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
+
+<title>openssh | </title>
+<meta name="description" content="패키지 확인 [root@develop ~]$ yum list *openssh* Loaded plugins: fastestmirror, langpacks Repodata is over 2 weeks old. Install yum-cron? Or run: yum makecache fast Loading mirror speeds from cached hostfile * base: mirror.kakao.com * epel: ftp.yz.yamagata-u.ac.jp * extras: mirror.kakao.com * updates: mirror.kakao.com Installed Packages openssh.x86_64 7.4p1-21.el7 @anaconda [root@develop ~]$ [root@develop ~]$ rpm -ql openssh.x86_64 /etc/ssh /etc/ssh/moduli /usr/bin/ssh-keygen [root@develop ~]$ key 생성 ssh-keygen 인자 -t rsa 는 rsa 타입으로 생성 입니다. key 생성 경로는 home 디렉토리의 .">
+<meta property="og:title" content="openssh" />
+<meta property="og:description" content="패키지 확인 [root@develop ~]$ yum list *openssh* Loaded plugins: fastestmirror, langpacks Repodata is over 2 weeks old. Install yum-cron? Or run: yum makecache fast Loading mirror speeds from cached hostfile * base: mirror.kakao.com * epel: ftp.yz.yamagata-u.ac.jp * extras: mirror.kakao.com * updates: mirror.kakao.com Installed Packages openssh.x86_64 7.4p1-21.el7 @anaconda [root@develop ~]$ [root@develop ~]$ rpm -ql openssh.x86_64 /etc/ssh /etc/ssh/moduli /usr/bin/ssh-keygen [root@develop ~]$ key 생성 ssh-keygen 인자 -t rsa 는 rsa 타입으로 생성 입니다. key 생성 경로는 home 디렉토리의 ." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/it/system/openssh/" /><meta property="article:section" content="it" />
+
+
+<meta itemprop="name" content="openssh">
+<meta itemprop="description" content="패키지 확인 [root@develop ~]$ yum list *openssh* Loaded plugins: fastestmirror, langpacks Repodata is over 2 weeks old. Install yum-cron? Or run: yum makecache fast Loading mirror speeds from cached hostfile * base: mirror.kakao.com * epel: ftp.yz.yamagata-u.ac.jp * extras: mirror.kakao.com * updates: mirror.kakao.com Installed Packages openssh.x86_64 7.4p1-21.el7 @anaconda [root@develop ~]$ [root@develop ~]$ rpm -ql openssh.x86_64 /etc/ssh /etc/ssh/moduli /usr/bin/ssh-keygen [root@develop ~]$ key 생성 ssh-keygen 인자 -t rsa 는 rsa 타입으로 생성 입니다. key 생성 경로는 home 디렉토리의 .">
+
+<meta itemprop="wordCount" content="514">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="openssh"/>
+<meta name="twitter:description" content="패키지 확인 [root@develop ~]$ yum list *openssh* Loaded plugins: fastestmirror, langpacks Repodata is over 2 weeks old. Install yum-cron? Or run: yum makecache fast Loading mirror speeds from cached hostfile * base: mirror.kakao.com * epel: ftp.yz.yamagata-u.ac.jp * extras: mirror.kakao.com * updates: mirror.kakao.com Installed Packages openssh.x86_64 7.4p1-21.el7 @anaconda [root@develop ~]$ [root@develop ~]$ rpm -ql openssh.x86_64 /etc/ssh /etc/ssh/moduli /usr/bin/ssh-keygen [root@develop ~]$ key 생성 ssh-keygen 인자 -t rsa 는 rsa 타입으로 생성 입니다. key 생성 경로는 home 디렉토리의 ."/>
+
+
+
+
+<link rel="preload" href="/scss/main.min.128acf28d37348bf110ce1bb682c5a43d1cb433b3b1fa337f834286ee6f9d4f0.css" as="style">
+<link href="/scss/main.min.128acf28d37348bf110ce1bb682c5a43d1cb433b3b1fa337f834286ee6f9d4f0.css" rel="stylesheet" integrity="">
+
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
+  crossorigin="anonymous"></script>
+<script defer
+  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
+  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-page">
+    <header>
+      <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+  <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"></span><span class="navbar-brand__name"></span></a>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav mt-2 mt-lg-0">
+      <li class="nav-item me-4 mb-2 mb-lg-0">
+        <a class="nav-link active" href="/it/"><i class='fas fa-book'></i><span class="active">it</span></a>
+      </li>
+      </ul>
+  </div>
+  <div class="navbar-nav d-none d-lg-block">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site…"
+    aria-label="Search this site…"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/offline-search-index.4f94867d1623c679d66ce1949cddd383.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
+</div>
+
+  </div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  <div id="content-mobile">
+  <form class="td-sidebar__search d-flex align-items-center">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site…"
+    aria-label="Search this site…"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/offline-search-index.4f94867d1623c679d66ce1949cddd383.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
+</div>
+
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ms-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  </div>
+  <div id="content-desktop"></div>
+  <nav class="collapse td-sidebar-nav" id="td-section-nav">
+    <ul class="td-sidebar-nav__section pr-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-it-li">
+  <a href="/it/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-it"><span class="">it</span></a>
+  <ul class="ul-1">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-itdevelop-li">
+  <a href="/it/develop/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-itdevelop"><span class="">develop</span></a>
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itdeveloplog4j2-li">
+  <a href="/it/develop/log4j2/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itdeveloplog4j2"><span class="">log4j2</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itdeveloplogback-li">
+  <a href="/it/develop/logback/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itdeveloplogback"><span class="">logback</span></a>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-itelk-li">
+  <a href="/it/elk/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-itelk"><span class="">ELK</span></a>
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itelk20220129-apache_log-li">
+  <a href="/it/elk/20220129-apache_log/" title="2022.01.29" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itelk20220129-apache_log"><span class="">2022.01.29-apache_log</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itelk20220130-elastic_mappings-li">
+  <a href="/it/elk/20220130-elastic_mappings/" title="2022.01.30" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itelk20220130-elastic_mappings"><span class="">2022.01.30-dwww</span></a>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-itlanguage-li">
+  <a href="/it/language/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-itlanguage"><span class="">language</span></a>
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itlanguagejava-li">
+  <a href="/it/language/java/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itlanguagejava"><span class="">java</span></a>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-itlocalenv-li">
+  <a href="/it/localenv/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-itlocalenv"><span class="">localenv</span></a>
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itlocalenv04_ecb0b8eab3a0_eclipse-eb8ba8ecb695ed82a4-li">
+  <a href="/it/localenv/04_%EC%B0%B8%EA%B3%A0_eclipse-%EB%8B%A8%EC%B6%95%ED%82%A4/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itlocalenv04_ecb0b8eab3a0_eclipse-eb8ba8ecb695ed82a4"><span class="">04_참고_eclipse-단축키</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itlocalenvgit-li">
+  <a href="/it/localenv/git/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itlocalenvgit"><span class="">git</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itlocalenvgradle-li">
+  <a href="/it/localenv/gradle/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itlocalenvgradle"><span class="">gradle</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itlocalenvintellij-li">
+  <a href="/it/localenv/intellij/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itlocalenvintellij"><span class="">intellij</span></a>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-itsystem-li">
+  <a href="/it/system/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-itsystem"><span class="">system</span></a>
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itsystemcentos8-li">
+  <a href="/it/system/centos8/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itsystemcentos8"><span class="">centos8</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itsystemcurl-li">
+  <a href="/it/system/curl/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itsystemcurl"><span class="">curl</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itsystemelk-li">
+  <a href="/it/system/elk/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itsystemelk"><span class="">ELK</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itsystemhttpd-li">
+  <a href="/it/system/httpd/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itsystemhttpd"><span class="">httpd</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itsystemjenkins-li">
+  <a href="/it/system/jenkins/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itsystemjenkins"><span class="">jenkins</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itsystemkibana-li">
+  <a href="/it/system/kibana/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itsystemkibana"><span class="">kibana</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itsystemlinux-li">
+  <a href="/it/system/linux/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itsystemlinux"><span class="">linux</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-itsystemopenssh-li">
+  <a href="/it/system/openssh/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-itsystemopenssh"><span class="td-sidebar-nav-active-item">openssh</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itsystemoracle12c-li">
+  <a href="/it/system/oracle12c/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itsystemoracle12c"><span class="">oracle12c</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-itsystemtar-li">
+  <a href="/it/system/tar/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-itsystemtar"><span class="">tar</span></a>
+</li>
+  </ul>
+</li>
+  </ul>
+</li>
+    </ul>
+  </nav>
+</div>
+
+          </aside>
+          <aside class="d-none d-xl-block col-xl-3 td-sidebar-toc d-print-none">
+            
+<div class="td-page-meta ms-2 pb-1 pt-2 mb-0">
+
+</div>
+
+            <div class="td-toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#패키지-확인">패키지 확인</a></li>
+    <li><a href="#key-생성">key 생성</a></li>
+  </ul>
+</nav>
+      </div>
+    
+            
+
+	
+		
+
+
+
+  
+  
+
+	
+		
+
+
+
+  
+  
+
+	
+
+          </aside>
+          <main class="col-12 col-md-9 col-xl-7 pl-md-5" role="main">
+            
+            
+            
+<div class="td-content">
+	<h1>openssh</h1>
+	
+	<header class="article-meta">
+		
+
+  
+    
+
+
+  
+    
+
+
+  
+
+		
+	</header>    
+	<h2 id="패키지-확인">패키지 확인</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>[root@develop ~]$ yum list *openssh*
+</span></span><span style="display:flex;"><span>Loaded plugins: fastestmirror, langpacks
+</span></span><span style="display:flex;"><span>Repodata is over 2 weeks old. Install yum-cron? Or run: yum makecache fast
+</span></span><span style="display:flex;"><span>Loading mirror speeds from cached hostfile
+</span></span><span style="display:flex;"><span> * base: mirror.kakao.com
+</span></span><span style="display:flex;"><span> * epel: ftp.yz.yamagata-u.ac.jp
+</span></span><span style="display:flex;"><span> * extras: mirror.kakao.com
+</span></span><span style="display:flex;"><span> * updates: mirror.kakao.com
+</span></span><span style="display:flex;"><span>Installed Packages
+</span></span><span style="display:flex;"><span>openssh.x86_64                                               7.4p1-21.el7                                                @anaconda
+</span></span><span style="display:flex;"><span>[root@develop ~]$
+</span></span><span style="display:flex;"><span>[root@develop ~]$ rpm -ql openssh.x86_64
+</span></span><span style="display:flex;"><span>/etc/ssh
+</span></span><span style="display:flex;"><span>/etc/ssh/moduli
+</span></span><span style="display:flex;"><span>/usr/bin/ssh-keygen
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[root@develop ~]$
+</span></span></code></pre></div><h2 id="key-생성">key 생성</h2>
+<p><code>ssh-keygen</code> 인자 <code>-t rsa</code> 는 rsa 타입으로 생성 입니다.
+key 생성 경로는 home 디렉토리의 <code>.ssh</code> 디렉토리에 생성이 됩니다.
+<code>passphrase</code> 는 key 의 비밀번호 입니다.</p>
+<p>key 생성이 되면 <code>.ssh</code> 디렉토리에는 <code>id_rsa</code>(개인키), <code>id_rsa.pub</code>(공개키) 2개의 파일이 있습니다.</p>
+<p>공개키인 <code>id_rsa.pub</code> 파일의 내용은 SSH로 접속하려는 대상 서버의 시스템계정 홈디렉토리의 .ssh/authorized_keys 파일에 추가하여 사용됩니다.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>[tomcat@develop ~]$ pwd
+</span></span><span style="display:flex;"><span>/home/tomcat
+</span></span><span style="display:flex;"><span>[tomcat@develop ~]$ ls -al
+</span></span><span style="display:flex;"><span>합계 28
+</span></span><span style="display:flex;"><span>drwx------. 4 tomcat ap    140  9월 13 11:41 .
+</span></span><span style="display:flex;"><span>drwxr-xr-x. 7 root   root   74 11월 22  2020 ..
+</span></span><span style="display:flex;"><span>-rw-------. 1 tomcat ap   1357  9월 13 11:41 .bash_history
+</span></span><span style="display:flex;"><span>-rw-r--r--. 1 tomcat ap     18  4월  1  2020 .bash_logout
+</span></span><span style="display:flex;"><span>-rw-r--r--. 1 tomcat ap    616 12월 24  2020 .bash_profile
+</span></span><span style="display:flex;"><span>-rw-r--r--. 1 tomcat ap    231  4월  1  2020 .bashrc
+</span></span><span style="display:flex;"><span>drwxr-xr-x. 3 tomcat ap     18 12월 24  2020 .cache
+</span></span><span style="display:flex;"><span>drwxr-xr-x. 3 tomcat ap     18 12월 24  2020 .config
+</span></span><span style="display:flex;"><span>-rw-------  1 tomcat ap   1024  9월 13 11:39 .rnd
+</span></span><span style="display:flex;"><span>-rw-------  1 tomcat ap   5762  9월 13 11:39 .viminfo
+</span></span><span style="display:flex;"><span>[tomcat@develop ~]$ ssh-keygen --help
+</span></span><span style="display:flex;"><span>unknown option -- -
+</span></span><span style="display:flex;"><span>usage: ssh-keygen [-q] [-b bits] [-t dsa | ecdsa | ed25519 | rsa | rsa1]
+</span></span><span style="display:flex;"><span>                  [-N new_passphrase] [-C comment] [-f output_keyfile]
+</span></span><span style="display:flex;"><span>       ssh-keygen -p [-P old_passphrase] [-N new_passphrase] [-f keyfile]
+</span></span><span style="display:flex;"><span>       ssh-keygen -i [-m key_format] [-f input_keyfile]
+</span></span><span style="display:flex;"><span>       ssh-keygen -e [-m key_format] [-f input_keyfile]
+</span></span><span style="display:flex;"><span>       ssh-keygen -y [-f input_keyfile]
+</span></span><span style="display:flex;"><span>       ssh-keygen -c [-P passphrase] [-C comment] [-f keyfile]
+</span></span><span style="display:flex;"><span>       ssh-keygen -l [-v] [-E fingerprint_hash] [-f input_keyfile]
+</span></span><span style="display:flex;"><span>       ssh-keygen -B [-f input_keyfile]
+</span></span><span style="display:flex;"><span>       ssh-keygen -D pkcs11
+</span></span><span style="display:flex;"><span>       ssh-keygen -F hostname [-f known_hosts_file] [-l]
+</span></span><span style="display:flex;"><span>       ssh-keygen -H [-f known_hosts_file]
+</span></span><span style="display:flex;"><span>       ssh-keygen -R hostname [-f known_hosts_file]
+</span></span><span style="display:flex;"><span>       ssh-keygen -r hostname [-f input_keyfile] [-g]
+</span></span><span style="display:flex;"><span>       ssh-keygen -G output_file [-v] [-b bits] [-M memory] [-S start_point]
+</span></span><span style="display:flex;"><span>       ssh-keygen -T output_file -f input_file [-v] [-a rounds] [-J num_lines]
+</span></span><span style="display:flex;"><span>                  [-j start_line] [-K checkpt] [-W generator]
+</span></span><span style="display:flex;"><span>       ssh-keygen -s ca_key -I certificate_identity [-h] [-n principals]
+</span></span><span style="display:flex;"><span>                  [-O option] [-V validity_interval] [-z serial_number] file ...
+</span></span><span style="display:flex;"><span>       ssh-keygen -L [-f input_keyfile]
+</span></span><span style="display:flex;"><span>       ssh-keygen -A
+</span></span><span style="display:flex;"><span>       ssh-keygen -k -f krl_file [-u] [-s ca_public] [-z version_number]
+</span></span><span style="display:flex;"><span>                  file ...
+</span></span><span style="display:flex;"><span>       ssh-keygen -Q -f krl_file file ...
+</span></span><span style="display:flex;"><span>[tomcat@develop ~]$ ssh-keygen -t rsa
+</span></span><span style="display:flex;"><span>Generating public/private rsa key pair.
+</span></span><span style="display:flex;"><span>Enter file in which to save the key (/home/tomcat/.ssh/id_rsa):
+</span></span><span style="display:flex;"><span>Enter passphrase (empty for no passphrase):
+</span></span><span style="display:flex;"><span>Enter same passphrase again:
+</span></span><span style="display:flex;"><span>Your identification has been saved in /home/tomcat/.ssh/id_rsa.
+</span></span><span style="display:flex;"><span>Your public key has been saved in /home/tomcat/.ssh/id_rsa.pub.
+</span></span><span style="display:flex;"><span>The key fingerprint is:
+</span></span><span style="display:flex;"><span>SHA256:Lp68Qh20r1rnsr+IyTTayVl/pbd8VlEL3mWGuez3IYY tomcat@develop
+</span></span><span style="display:flex;"><span>The key&#39;s randomart image is:
+</span></span><span style="display:flex;"><span>+---[RSA 2048]----+
+</span></span><span style="display:flex;"><span>|               o |
+</span></span><span style="display:flex;"><span>|      .      .o =|
+</span></span><span style="display:flex;"><span>|     . .    ..o++|
+</span></span><span style="display:flex;"><span>|      o      .o+ |
+</span></span><span style="display:flex;"><span>|     . oS   ..  .|
+</span></span><span style="display:flex;"><span>|    . ...  E.o..o|
+</span></span><span style="display:flex;"><span>|   .o +.o  o. .oo|
+</span></span><span style="display:flex;"><span>|   *.@oB  o.. o .|
+</span></span><span style="display:flex;"><span>|  . XoB==o .o+   |
+</span></span><span style="display:flex;"><span>+----[SHA256]-----+
+</span></span><span style="display:flex;"><span>[tomcat@develop ~]$
+</span></span><span style="display:flex;"><span>[tomcat@develop ~]$ ls -al /home/tomcat/.ssh
+</span></span><span style="display:flex;"><span>합계 8
+</span></span><span style="display:flex;"><span>drwx------  2 tomcat ap   38  9월 13 11:51 .
+</span></span><span style="display:flex;"><span>drwx------. 5 tomcat ap  152  9월 13 11:48 ..
+</span></span><span style="display:flex;"><span>-rw-------  1 tomcat ap 1766  9월 13 11:51 id_rsa
+</span></span><span style="display:flex;"><span>-rw-r--r--  1 tomcat ap  396  9월 13 11:51 id_rsa.pub
+</span></span><span style="display:flex;"><span>[tomcat@develop ~]$
+</span></span></code></pre></div>
+	
+	
+	
+</div>
+
+
+          </main>
+        </div>
+      </div>
+    </div>
+    
+        
+    
+  <style>
+.markmap > svg {
+  width: 100%;
+  height: 300px;
+}
+</style>
+<script>
+window.markmap = {
+  autoLoader: {
+      manual: true,
+      onReady() {
+        const { autoLoader, builtInPlugins } = window.markmap;
+        autoLoader.transformPlugins = builtInPlugins.filter(plugin => plugin.name !== 'prism');
+      },
+  },
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
+<script src='/js/deflate.js'></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/katex.min.css"
+      integrity="sha512-6VMVcy7XQNyarhVuiL50FzpgCFKsyTd6YO93aaQEyET+BNaWvj0IgKR86Bf6+AmWczxAcSnL+JGjo+iStgO1gQ==" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/katex.min.js"
+        integrity="sha512-b9IKj4LCNrtCPBhceRcoYOHWW/S2q9fpl7iAJlyxYpykRj1SKM7FE9+E0NEnJ8g8ni47LBr2GuX9qzg/xeuwzQ=="
+        crossorigin="anonymous">
+</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/contrib/mhchem.min.js"
+        integrity="sha512-V1hl0fnOXW6Cdqe5ZVqtw8TBpJVpu3XRDRQti96j/04+tMarPrCdXEUE3UdfvfKYTpOn9DV4zEZBVr0HhDiuiQ=="
+        crossorigin="anonymous">
+</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/contrib/auto-render.min.js"
+       integrity="sha512-iWiuBS5nt6r60fCz26Nd0Zqe0nbk1ZTIQbl3Kv7kYsX+yKMUFHzjaH2+AnM6vp2Xs+gNmaBAVWJjSmuPw76Efg==" crossorigin="anonymous"
+       onload='renderMathInElement(document.body, null);'>
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@9.2.2/dist/mermaid.min.js" integrity="sha512-IX+bU+wShHqfqaMHLMrtwi4nK6W/Z+QdZoL4kPNtRxI2wCLyHPMAdl3a43Fv1Foqv4AP+aiW6hg1dcrTt3xc+Q==" crossorigin="anonymous"></script>
+<script src="/js/main.min.1a01a98ed01dffe802c8f04f66fe0e0a96af28e6bdd06190087da881fab9ca20.js" integrity="sha256-GgGpjtAd/&#43;gCyPBPZv4OCpavKOa90GGQCH2ogfq5yiA=" crossorigin="anonymous"></script>
+<script src='/js/tabpane-persist.js'></script>
+
+  </body>
+</html>
