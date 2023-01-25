@@ -1,0 +1,43 @@
+
+# httpd 가상호스트 추가
+$ vi /etc/httpd/conf.d/vhost-grafana.conf
+<VirtualHost *:80>
+  ServerName grafana
+
+  RewriteEngine On
+  RewriteCond %{HTTPS} !=On [NC]
+  RewriteRule /(.*) https://grafana/$1 [P,L]
+  #RewriteCond %{HTTP:Upgrade} =websocket [NC]
+  #RewriteRule /(.*) wss://grafana/$1 [P,L]
+  #RewriteCond %{HTTP:Upgrade} !=websocket [NC]
+  #RewriteRule /(.*) https://grafana/$1 [P,L]
+</VirtualHost>
+
+<VirtualHost *:443>
+  ServerName grafana
+
+  SSLEngine On
+  SSLProtocol all -SSLv2
+  SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5
+  SSLCertificateFile /etc/httpd/conf.d/certs/grafana.crt
+  SSLCertificateKeyFile /etc/httpd/conf.d/certs/grafana.key
+
+  ErrorLog "|/usr/sbin/rotatelogs /outlog/WEB/httpd/grafana-error.log.%Y-%m-%d 86400 +540"
+  CustomLog "|/usr/sbin/rotatelogs /outlog/WEB/httpd/grafana-access.log.%Y-%m-%d 86400 +540" combined
+
+  ProxyRequests Off
+  ProxyPreserveHost On
+  SSLProxyEngine On
+
+  AllowEncodedSlashes On
+  Header set Access-Control-Allow-Origin "*"
+  RequestHeader set X-Forwarded-Proto https
+
+  <Proxy balancer://cluster1>
+    BalancerMember http://127.0.0.1:8001
+  </Proxy>
+  
+  ProxyPass / balancer://cluster1/ stickysession=JSESSIONID|jsessionid
+  ProxyPassReverse / balancer://cluster1/
+</VirtualHost>
+

@@ -1,0 +1,7 @@
+#!/bin/sh
+
+SVN_ARGS="${SVN_ARGS} --daemon"
+SVN_ARGS="${SVN_ARGS} --root /data/PROD/svn"
+SVN_ARGS="${SVN_ARGS} --log-file=/outlog/PROD/svn/default.log"
+
+svnserve $SVN_ARGS

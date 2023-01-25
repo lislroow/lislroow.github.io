@@ -2,29 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/</loc>
-  </url><url>
     <loc>/categories/</loc>
   </url><url>
-    <loc>/it/system/centos8/</loc>
+    <loc>/develop/</loc>
   </url><url>
-    <loc>/it/system/elk/</loc>
-  </url><url>
-    <loc>/it/localenv/git/</loc>
-  </url><url>
-    <loc>/it/system/httpd/</loc>
-  </url><url>
-    <loc>/it/</loc>
-  </url><url>
-    <loc>/it/language/java/</loc>
-  </url><url>
-    <loc>/it/language/</loc>
-  </url><url>
-    <loc>/it/localenv/</loc>
-  </url><url>
-    <loc>/it/system/oracle12c/</loc>
-  </url><url>
-    <loc>/it/system/</loc>
+    <loc>/</loc>
   </url><url>
     <loc>/tags/</loc>
   </url>
