@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>MEMO</title>
-    <link>https://lislroow.github.io/</link>
-    <description>Recent content on MEMO</description>
+    <title>Archives on MEMO</title>
+    <link>https://lislroow.github.io/archive/</link>
+    <description>Recent content in Archives on MEMO</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-kr</language>
-    <atom:link href="https://lislroow.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://lislroow.github.io/archive/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
       <link>https://lislroow.github.io/archive/apache/</link>
