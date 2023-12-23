@@ -1191,95 +1191,6 @@ guest-os 를 startup 하고 lsblk 로 확장된 크기를 확인합니다.
 </span></span><span style="display:flex;"><span>  RewriteCond %{HTTP:Upgrade} !=websocket [NC]
 </span></span><span style="display:flex;"><span>  RewriteRule /(.*) http://localhost:8400/$1 [P,L]
 </span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
-</span></span></code></pre></div><h4 id="apache-vhost-dlogconf">(apache) vhost-dlog.conf</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>&lt;VirtualHost *:80&gt;
-</span></span><span style="display:flex;"><span>  ServerName dlog
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  RewriteEngine On
-</span></span><span style="display:flex;"><span>  RewriteCond %{HTTPS} !=On
-</span></span><span style="display:flex;"><span>  RewriteRule /(.*) https://dlog.mgkim.net/$1 [QSA,R,L]
-</span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>&lt;VirtualHost *:443&gt;
-</span></span><span style="display:flex;"><span>  ServerName dlog
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  SSLEngine On
-</span></span><span style="display:flex;"><span>  SSLProtocol all -SSLv2
-</span></span><span style="display:flex;"><span>  SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5
-</span></span><span style="display:flex;"><span>  SSLCertificateFile /etc/httpd/conf.d/certs/dlog.crt
-</span></span><span style="display:flex;"><span>  SSLCertificateKeyFile /etc/httpd/conf.d/certs/dlog.key
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  RewriteEngine On
-</span></span><span style="display:flex;"><span>  RewriteRule /(.*) https://dlog.mgkim.net/$1 [QSA,R,L]
-</span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>### mgkim.net
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>&lt;VirtualHost *:80&gt;
-</span></span><span style="display:flex;"><span>  ServerName dlog.mgkim.net
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  RewriteEngine On
-</span></span><span style="display:flex;"><span>  RewriteCond %{HTTPS} !=On
-</span></span><span style="display:flex;"><span>  RewriteRule /(.*) https://%{HTTP_HOST}/$1 [QSA,R,L]
-</span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>&lt;VirtualHost *:443&gt;
-</span></span><span style="display:flex;"><span>  ServerName dlog.mgkim.net
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  #DocumentRoot &#34;/opt/gitlab/embedded/service/gitlab-rails/public&#34;
-</span></span><span style="display:flex;"><span>  ErrorLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/dlog.mgkim.net_ssl-error.log.%Y-%m-%d 86400 +540&#34;
-</span></span><span style="display:flex;"><span>  CustomLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/dlog.mgkim.net_ssl-access.log.%Y-%m-%d 86400 +540&#34; combined
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  SSLEngine On
-</span></span><span style="display:flex;"><span>  SSLProtocol all -SSLv2
-</span></span><span style="display:flex;"><span>  SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5
-</span></span><span style="display:flex;"><span>  SSLCertificateFile /etc/httpd/conf.d/certs/STAR.mgkim.net.crt
-</span></span><span style="display:flex;"><span>  SSLCertificateKeyFile /etc/httpd/conf.d/certs/STAR.mgkim.net.key
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  ProxyRequests Off
-</span></span><span style="display:flex;"><span>  ProxyPreserveHost On
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  &lt;Proxy gitlab&gt;
-</span></span><span style="display:flex;"><span>    Require all granted
-</span></span><span style="display:flex;"><span>  &lt;/Proxy&gt;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  AllowEncodedSlashes On
-</span></span><span style="display:flex;"><span>  Header set Access-Control-Allow-Origin &#34;*&#34;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  ProxyPass / http://127.0.0.1:1313/
-</span></span><span style="display:flex;"><span>  ProxyPassReverse / http://127.0.0.1:1313/
-</span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
-</span></span></code></pre></div><h4 id="apache-vhost-dwwwconf">(apache) vhost-dwww.conf</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>&lt;VirtualHost *:80&gt;
-</span></span><span style="display:flex;"><span>  ServerName dwww
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  ErrorLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/dwww-error.log.%Y-%m-%d 86400 +540&#34;
-</span></span><span style="display:flex;"><span>  CustomLog &#34;|/usr/sbin/rotatelogs /outlog/WEB/httpd/dwww-access.log.%Y-%m-%d 86400 +540&#34; combined
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  AllowEncodedSlashes On
-</span></span><span style="display:flex;"><span>  # reverse proxy 사용 시 Off
-</span></span><span style="display:flex;"><span>  ProxyRequests Off
-</span></span><span style="display:flex;"><span>  ProxyPreserveHost On
-</span></span><span style="display:flex;"><span>  # BALANCER_WORKER_ROUTE: BalancerMember 의 route 값을 쿠키에 포함 (cluster1, cluster2)
-</span></span><span style="display:flex;"><span>  Header add Set-Cookie &#34;ROUTEID=.%{BALANCER_WORKER_ROUTE}e; path=/&#34; env=BALANCER_ROUTE_CHANGED
-</span></span><span style="display:flex;"><span>  Header set Access-Control-Allow-Origin &#34;*&#34;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  &lt;Proxy balancer://cluster&gt;
-</span></span><span style="display:flex;"><span>    BalancerMember http://127.0.0.1:7100 route=cluster1
-</span></span><span style="display:flex;"><span>    BalancerMember http://127.0.0.1:7101 route=cluster2
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    ProxySet stickysession=ROUTEID
-</span></span><span style="display:flex;"><span>    ## lbmethod
-</span></span><span style="display:flex;"><span>    # byrequests: 요청별 분배
-</span></span><span style="display:flex;"><span>    # bytraffic: byte 트래픽 가중치 분배
-</span></span><span style="display:flex;"><span>    # bybusyness: 보류중 요청 분배
-</span></span><span style="display:flex;"><span>    #ProxySet lbmethod=byrequests
-</span></span><span style="display:flex;"><span>  &lt;/Proxy&gt;
-</span></span><span style="display:flex;"><span>  
-</span></span><span style="display:flex;"><span>  ProxyPass / balancer://cluster/
-</span></span><span style="display:flex;"><span>  ProxyPassReverse / balancer://cluster/
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
 </span></span></code></pre></div><h4 id="apache-weblogic-connector">(apache) weblogic-connector</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>LoadModule weblogic_module modules/mod_wl_24.so
 </span></span><span style="display:flex;"><span>
@@ -1299,32 +1210,6 @@ guest-os 를 startup 하고 lsblk 로 확장된 크기를 확인합니다.
 </span></span><span style="display:flex;"><span>  WebLogicCluster IP:PORT,IP:PORT,IP:PORT
 </span></span><span style="display:flex;"><span>  #Idempotent OFF
 </span></span><span style="display:flex;"><span>&lt;/Location&gt;
-</span></span></code></pre></div><h4 id="openssl-인증서-생성하기">(openssl) 인증서 생성하기</h4>
-<p>개인키(domain.key)와 인증서(domain.crt) 파일을 동시에 생성하는 스크립트 입니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>[root@develop /etc/httpd/conf.d/certs]$ cat create-cert.sh
-</span></span><span style="display:flex;"><span>DOMAIN=$1
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>openssl req -x509 -nodes -days 730 -newkey rsa:2048 -keyout $DOMAIN.key -out $DOMAIN.crt -config &lt;(cat &lt;&lt;- TEXT
-</span></span><span style="display:flex;"><span>[req]
-</span></span><span style="display:flex;"><span>distinguished_name = req_distinguished_name
-</span></span><span style="display:flex;"><span>x509_extensions = v3_req
-</span></span><span style="display:flex;"><span>prompt = no
-</span></span><span style="display:flex;"><span>[req_distinguished_name]
-</span></span><span style="display:flex;"><span>countryName             = KR
-</span></span><span style="display:flex;"><span>stateOrProvinceName     = Seoul
-</span></span><span style="display:flex;"><span>localityName            = Seonyudo
-</span></span><span style="display:flex;"><span>organizationName        = SPACESOFT
-</span></span><span style="display:flex;"><span>organizationalUnitName  = Dev Team
-</span></span><span style="display:flex;"><span>CN = $DOMAIN
-</span></span><span style="display:flex;"><span>[v3_req]
-</span></span><span style="display:flex;"><span>keyUsage = critical, digitalSignature, keyAgreement
-</span></span><span style="display:flex;"><span>extendedKeyUsage = serverAuth
-</span></span><span style="display:flex;"><span>subjectAltName = @alt_names
-</span></span><span style="display:flex;"><span>[alt_names]
-</span></span><span style="display:flex;"><span>DNS.1 = $DOMAIN
-</span></span><span style="display:flex;"><span>TEXT) -sha256
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>[root@develop /etc/httpd/conf.d/certs]$
 </span></span></code></pre></div>
         </div>
       </article>
@@ -1375,10 +1260,7 @@ guest-os 를 startup 하고 lsblk 로 확장된 크기를 확인합니다.
                 <li><a href="#apache-vhost-nexusconf">(apache) vhost-nexus.conf</a></li>
                 <li><a href="#apache-vhost-gitlabconf">(apache) vhost-gitlab.conf</a></li>
                 <li><a href="#apache-vhost-jenkinsconf">(apache) vhost-jenkins.conf</a></li>
-                <li><a href="#apache-vhost-dlogconf">(apache) vhost-dlog.conf</a></li>
-                <li><a href="#apache-vhost-dwwwconf">(apache) vhost-dwww.conf</a></li>
                 <li><a href="#apache-weblogic-connector">(apache) weblogic-connector</a></li>
-                <li><a href="#openssl-인증서-생성하기">(openssl) 인증서 생성하기</a></li>
               </ul>
             </li>
           </ul>
