@@ -2,24 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/categories/</loc>
+    <loc>https://lislroow.github.io/</loc>
   </url><url>
-    <loc>/develop/</loc>
+    <loc>https://lislroow.github.io/categories/</loc>
   </url><url>
-    <loc>/</loc>
+    <loc>https://lislroow.github.io/</loc>
   </url><url>
-    <loc>/elk/</loc>
-  </url><url>
-    <loc>/elk/memo/</loc>
-  </url><url>
-    <loc>/java/</loc>
-  </url><url>
-    <loc>/java/java-stream/</loc>
-  </url><url>
-    <loc>/science/</loc>
-  </url><url>
-    <loc>/science/memo/</loc>
-  </url><url>
-    <loc>/tags/</loc>
+    <loc>https://lislroow.github.io/tags/</loc>
   </url>
 </urlset>

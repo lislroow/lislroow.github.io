@@ -1,16 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title> – index</title>
-    <link>/</link>
-    <description>Recent content in index on </description>
+    <title>MEMO</title>
+    <link>https://lislroow.github.io/</link>
+    <description>Recent content on MEMO</description>
     <generator>Hugo -- gohugo.io</generator>
-    
-	  <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-      
-      
-    
-    
+    <language>ko-kr</language>
+    <atom:link href="https://lislroow.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>https://lislroow.github.io/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lislroow.github.io/</guid>
+      <description>(centos) hostname [root@develop ~]$ hostnamectl set-hostname develop [root@develop ~]$ (tar) -I, &amp;ndash;use-compress-program $ tar -I zstd -xvf zsh-5.8-5-x86_64.pkg.tar.zst (centos) xargs # 공백이나 개행문자가 포함된 파일명 삭제 $ fine . -type -f -print0 | xargs -O /bin/rm -f $ ls *.txt | xargs cat &amp;gt;&amp;gt; abc.txt $ ls | grep *.bak | xargs -I{} cp {} /home/bak_file (centos) lsof $ lsof -u jenkins -a +D /data $ lsof -i 4 $ lsof -t -i TCP:8100 $ ps -ef | grep `lsof -t -i tcp:8100` $ lsof -t -i tcp:8100 | xargs kill -9 (systemctl) Requires 속성 logstash 서비스를 elasticsearch 서비스의 종속으로 구성해야할 필요가 생겼습니다.</description>
+    </item>
   </channel>
 </rss>
