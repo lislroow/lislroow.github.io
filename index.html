@@ -15,6 +15,22 @@
   <div class="navbar">
     <a href="https://lislroow.github.io/">MEMO</a>
     
+    
+      
+      <div class="dropdown">
+        <button class="dropbtn">archive</button>
+        <div class="dropdown-content">
+        
+          <a href="/archive/apache/">apache</a>
+        
+          <a href="/archive/others/">others</a>
+        
+        </div>
+      </div>
+      
+    
+    
+    
     <a href="#" id="toggleTocButton" style="margin-left: auto;">+</a>
     <script>
     document.getElementById('toggleTocButton').addEventListener('click', function() {
@@ -31,36 +47,7 @@
       <article>
         <h1></h1>
         <div>
-          <h4 id="centos-apache-compile">(centos) apache compile</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gdscript3" data-lang="gdscript3"><span style="display:flex;"><span><span style="color:#f92672">$</span> mkdir <span style="color:#f92672">-</span>p <span style="color:#f92672">/</span>opt<span style="color:#f92672">/</span>apache
-</span></span><span style="display:flex;"><span><span style="color:#f92672">$</span> cd <span style="color:#f92672">/</span>opt<span style="color:#f92672">/</span>apache
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">$</span> wget https:<span style="color:#f92672">//</span>dlcdn<span style="color:#f92672">.</span>apache<span style="color:#f92672">.</span>org<span style="color:#f92672">/</span>httpd<span style="color:#f92672">/</span>httpd<span style="color:#f92672">-</span><span style="color:#ae81ff">2.4</span><span style="color:#f92672">.</span><span style="color:#ae81ff">58.</span>tar<span style="color:#f92672">.</span>gz
-</span></span><span style="display:flex;"><span><span style="color:#f92672">$</span> wget https:<span style="color:#f92672">//</span>dlcdn<span style="color:#f92672">.</span>apache<span style="color:#f92672">.</span>org<span style="color:#f92672">/</span>apr<span style="color:#f92672">/</span>apr<span style="color:#f92672">-</span><span style="color:#ae81ff">1.7</span><span style="color:#f92672">.</span><span style="color:#ae81ff">4.</span>tar<span style="color:#f92672">.</span>gz
-</span></span><span style="display:flex;"><span><span style="color:#f92672">$</span> wget https:<span style="color:#f92672">//</span>dlcdn<span style="color:#f92672">.</span>apache<span style="color:#f92672">.</span>org<span style="color:#f92672">/</span>apr<span style="color:#f92672">/</span>apr<span style="color:#f92672">-</span>util<span style="color:#f92672">-</span><span style="color:#ae81ff">1.6</span><span style="color:#f92672">.</span><span style="color:#ae81ff">3.</span>tar<span style="color:#f92672">.</span>gz
-</span></span><span style="display:flex;"><span><span style="color:#f92672">$</span> wget https:<span style="color:#f92672">//</span>github<span style="color:#f92672">.</span>com<span style="color:#f92672">/</span>PCRE2Project<span style="color:#f92672">/</span>pcre2<span style="color:#f92672">/</span>releases<span style="color:#f92672">/</span>download<span style="color:#f92672">/</span>pcre2<span style="color:#f92672">-</span><span style="color:#ae81ff">10.42</span><span style="color:#f92672">/</span>pcre2<span style="color:#f92672">-</span><span style="color:#ae81ff">10.42</span><span style="color:#f92672">.</span>tar<span style="color:#f92672">.</span>gz
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">$</span> cd <span style="color:#f92672">/</span>opt<span style="color:#f92672">/</span>apache<span style="color:#f92672">/</span>apr<span style="color:#f92672">-</span><span style="color:#ae81ff">1.7</span><span style="color:#f92672">.</span><span style="color:#ae81ff">4</span> <span style="color:#f92672">&amp;&amp;</span> \
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">./</span>configure <span style="color:#f92672">--</span>prefix<span style="color:#f92672">=/</span>usr<span style="color:#f92672">/</span>local<span style="color:#f92672">/</span>src<span style="color:#f92672">/</span>apr<span style="color:#f92672">-</span><span style="color:#ae81ff">1.7</span><span style="color:#f92672">.</span><span style="color:#ae81ff">4</span> <span style="color:#f92672">&amp;&amp;</span> \
-</span></span><span style="display:flex;"><span>  make <span style="color:#f92672">&amp;&amp;</span> \
-</span></span><span style="display:flex;"><span>  make install
-</span></span><span style="display:flex;"><span><span style="color:#f92672">$</span> cd <span style="color:#f92672">/</span>opt<span style="color:#f92672">/</span>apache<span style="color:#f92672">/</span>apr<span style="color:#f92672">-</span>util<span style="color:#f92672">-</span><span style="color:#ae81ff">1.6</span><span style="color:#f92672">.</span><span style="color:#ae81ff">3</span> <span style="color:#f92672">&amp;&amp;</span> \
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">./</span>configure <span style="color:#f92672">--</span>prefix<span style="color:#f92672">=/</span>usr<span style="color:#f92672">/</span>local<span style="color:#f92672">/</span>src<span style="color:#f92672">/</span>apr<span style="color:#f92672">-</span>util<span style="color:#f92672">-</span><span style="color:#ae81ff">1.6</span><span style="color:#f92672">.</span><span style="color:#ae81ff">3</span> <span style="color:#f92672">--</span>with<span style="color:#f92672">-</span>apr<span style="color:#f92672">=/</span>usr<span style="color:#f92672">/</span>local<span style="color:#f92672">/</span>src<span style="color:#f92672">/</span>apr<span style="color:#f92672">-</span><span style="color:#ae81ff">1.7</span><span style="color:#f92672">.</span><span style="color:#ae81ff">4</span> <span style="color:#f92672">&amp;&amp;</span> \
-</span></span><span style="display:flex;"><span>  make <span style="color:#f92672">&amp;&amp;</span> \
-</span></span><span style="display:flex;"><span>  make install
-</span></span><span style="display:flex;"><span><span style="color:#f92672">$</span> cd <span style="color:#f92672">/</span>opt<span style="color:#f92672">/</span>apache<span style="color:#f92672">/</span>pcre2<span style="color:#f92672">-</span><span style="color:#ae81ff">10.42</span> <span style="color:#f92672">&amp;&amp;</span> \
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">./</span>configure <span style="color:#f92672">--</span>prefix<span style="color:#f92672">=/</span>usr<span style="color:#f92672">/</span>local<span style="color:#f92672">/</span>src<span style="color:#f92672">/</span>pcre2<span style="color:#f92672">-</span><span style="color:#ae81ff">10.42</span> <span style="color:#f92672">--</span>with<span style="color:#f92672">-</span>apr<span style="color:#f92672">=/</span>usr<span style="color:#f92672">/</span>local<span style="color:#f92672">/</span>src<span style="color:#f92672">/</span>apr<span style="color:#f92672">-</span><span style="color:#ae81ff">1.7</span><span style="color:#f92672">.</span><span style="color:#ae81ff">4</span> <span style="color:#f92672">&amp;&amp;</span> \
-</span></span><span style="display:flex;"><span>  make <span style="color:#f92672">&amp;&amp;</span> \
-</span></span><span style="display:flex;"><span>  make install
-</span></span><span style="display:flex;"><span><span style="color:#f92672">$</span> cd <span style="color:#f92672">/</span>opt<span style="color:#f92672">/</span>apache<span style="color:#f92672">/</span>httpd<span style="color:#f92672">-</span><span style="color:#ae81ff">2.4</span><span style="color:#f92672">.</span><span style="color:#ae81ff">58</span> <span style="color:#f92672">&amp;&amp;</span> \
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">./</span>configure <span style="color:#f92672">--</span>prefix<span style="color:#f92672">=/</span>engn<span style="color:#f92672">/</span>apache <span style="color:#f92672">--</span>enable<span style="color:#f92672">-</span>modules<span style="color:#f92672">=</span>most <span style="color:#f92672">--</span>enable<span style="color:#f92672">-</span>mods<span style="color:#f92672">-</span>shared<span style="color:#f92672">=</span>all \
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">--</span>enable<span style="color:#f92672">-</span>so <span style="color:#f92672">--</span>with<span style="color:#f92672">-</span>mpm<span style="color:#f92672">=</span>prefork \
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">--</span>with<span style="color:#f92672">-</span>apr<span style="color:#f92672">=/</span>usr<span style="color:#f92672">/</span>local<span style="color:#f92672">/</span>src<span style="color:#f92672">/</span>apr<span style="color:#f92672">-</span><span style="color:#ae81ff">1.7</span><span style="color:#f92672">.</span><span style="color:#ae81ff">4</span> \
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">--</span>with<span style="color:#f92672">-</span>apr<span style="color:#f92672">-</span>util<span style="color:#f92672">=/</span>usr<span style="color:#f92672">/</span>local<span style="color:#f92672">/</span>src<span style="color:#f92672">/</span>apr<span style="color:#f92672">-</span>util<span style="color:#f92672">-</span><span style="color:#ae81ff">1.6</span><span style="color:#f92672">.</span><span style="color:#ae81ff">3</span> \
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">--</span>with<span style="color:#f92672">-</span>pcre<span style="color:#f92672">=/</span>usr<span style="color:#f92672">/</span>local<span style="color:#f92672">/</span>src<span style="color:#f92672">/</span>pcre2<span style="color:#f92672">-</span><span style="color:#ae81ff">10.42</span> <span style="color:#f92672">&amp;&amp;</span> \
-</span></span><span style="display:flex;"><span>  make <span style="color:#f92672">&amp;&amp;</span> \
-</span></span><span style="display:flex;"><span>  make install
-</span></span></code></pre></div><h4 id="centos-hostname">(centos) hostname</h4>
+          <h4 id="centos-hostname">(centos) hostname</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>[root@develop ~]$ hostnamectl set-hostname develop
 </span></span><span style="display:flex;"><span>[root@develop ~]$
 </span></span></code></pre></div><h4 id="tar--i---use-compress-program">(tar) -I, &ndash;use-compress-program</h4>
@@ -1186,7 +1173,7 @@
       </article>
     </div>
   </div>
-  <aside class="aside hidden">
+  <aside class="aside">
 
 
 
@@ -1198,7 +1185,6 @@
           <ul>
             <li>
               <ul>
-                <li><a href="#centos-apache-compile">(centos) apache compile</a></li>
                 <li><a href="#centos-hostname">(centos) hostname</a></li>
                 <li><a href="#tar--i---use-compress-program">(tar) -I, &ndash;use-compress-program</a></li>
                 <li><a href="#centos-xargs">(centos) xargs</a></li>
