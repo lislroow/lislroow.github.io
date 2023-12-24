@@ -47,20 +47,20 @@
       <article>
         <h1></h1>
         <div>
-          <h2 id="1-설치">1. 설치</h2>
+          <h2 id="-apache">Ⅰ. apache</h2>
 <ul>
 <li>버전: apache 2.4.x</li>
 </ul>
-<h3 id="1-다운로드">1) 다운로드</h3>
+<h3 id="1-다운로드">1. 다운로드</h3>
 <p>다운로드 후 tar zxvf *.tar.gz 로 압축 해제 합니다.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ wget https://dlcdn.apache.org/httpd/httpd-2.4.58.tar.gz
 </span></span><span style="display:flex;"><span>$ wget https://dlcdn.apache.org/apr/apr-1.7.4.tar.gz
 </span></span><span style="display:flex;"><span>$ wget https://dlcdn.apache.org/apr/apr-util-1.6.3.tar.gz
 </span></span><span style="display:flex;"><span>$ wget https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.42/pcre2-10.42.tar.gz
-</span></span></code></pre></div><h3 id="2-사전-점검">2) 사전 점검</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ yum list expat-devel
-</span></span></code></pre></div><h3 id="3-compile-설치">3) compile 설치</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ cd /opt/apache/apr-1.7.4 <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></code></pre></div><h3 id="2-설치">2. 설치</h3>
+<h4 id="1-의존성-설치">1) 의존성 설치</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ yum install expat-devel
+</span></span><span style="display:flex;"><span>$ cd /opt/apache/apr-1.7.4 <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  ./configure <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --prefix<span style="color:#f92672">=</span>/usr/local/src/apr-1.7.4 <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  make <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
@@ -77,7 +77,8 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --with-apr<span style="color:#f92672">=</span>/usr/local/src/apr-1.7.4 <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  make <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  make install
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># non-ssl compile</span>
+</span></span></code></pre></div><h4 id="2-설치-1">2) 설치</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># no-ssl compile</span>
 </span></span><span style="display:flex;"><span>$ cd /opt/apache/httpd-2.4.58 <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  ./configure <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --prefix<span style="color:#f92672">=</span>/engn/apache <span style="color:#ae81ff">\
@@ -105,8 +106,8 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --with-pcre<span style="color:#f92672">=</span>/usr/local/src/pcre2-10.42
 </span></span><span style="display:flex;"><span>  make <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  make install
-</span></span></code></pre></div><h2 id="2-설정">2. 설정</h2>
-<h3 id="1-기본-항목">1) 기본 항목</h3>
+</span></span></code></pre></div><h3 id="3-설정">3. 설정</h3>
+<h4 id="1-기본-항목">1) 기본 항목</h4>
 <ul>
 <li>
 <p>User, Group 설정: <code>User apache</code>, <code>Group apache</code></p>
@@ -146,7 +147,7 @@
 </span></span><span style="display:flex;"><span>ServerSignature <span style="color:#66d9ef">Off</span>
 </span></span></code></pre></div></li>
 </ul>
-<h3 id="2-성능-및-옵션">2) 성능 및 옵션</h3>
+<h4 id="2-성능-및-옵션">2) 성능 및 옵션</h4>
 <ul>
 <li>mpm 설정: <code>mpm_prefork_module</code>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-apacheconf" data-lang="apacheconf"><span style="display:flex;"><span><span style="color:#f92672">&lt;IfModule</span> <span style="color:#e6db74">mpm_prefork_module</span><span style="color:#f92672">&gt;</span>
@@ -175,7 +176,7 @@
 </span></span><span style="display:flex;"><span>ExtendedStatus <span style="color:#66d9ef">On</span>
 </span></span></code></pre></div></li>
 </ul>
-<h3 id="3-가상호스트-및-proxy-설정">3) 가상호스트 및 proxy 설정</h3>
+<h4 id="3-가상호스트-및-proxy-설정">3) 가상호스트 및 proxy 설정</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-apacheconf" data-lang="apacheconf"><span style="display:flex;"><span><span style="color:#f92672">&lt;VirtualHost</span> <span style="color:#e6db74">*:80</span><span style="color:#f92672">&gt;</span>
 </span></span><span style="display:flex;"><span>  ServerName smpl.develop.net
 </span></span><span style="display:flex;"><span>  
@@ -204,66 +205,7 @@
 </span></span><span style="display:flex;"><span>  ProxyPassMatch <span style="color:#e6db74">/api/</span>(.*)    balancer://cluster
 </span></span><span style="display:flex;"><span>  ProxyPassMatch /(.*\.jsp.*) balancer://cluster
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/VirtualHost&gt;</span>
-</span></span></code></pre></div><h2 id="3-ssl">3. SSL</h2>
-<h3 id="1-openssl-인증서-생성">1) openssl 인증서 생성</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  
-</span></span><span style="display:flex;"><span>DOMAIN<span style="color:#f92672">=</span>$1
-</span></span><span style="display:flex;"><span>FILENM<span style="color:#f92672">=</span>star.<span style="color:#e6db74">${</span>DOMAIN<span style="color:#e6db74">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>cat <span style="color:#e6db74">&lt;&lt;- EOF &gt; ${FILENM}.cnf
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[req]
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">distinguished_name = req_distinguished_name
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">x509_extensions = v3_req
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">prompt = no
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[req_distinguished_name]
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">countryName             = KR
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">stateOrProvinceName     = Seoul
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">localityName            = Seonyudo
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">organizationName        = MK
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">organizationalUnitName  = Dev.Team
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">CN                      = ${DOMAIN}
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[v3_req]
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">keyUsage = critical, digitalSignature, keyAgreement
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">extendedKeyUsage = serverAuth
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">subjectAltName = @alt_names
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[alt_names]
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">DNS.1 = *.${DOMAIN}
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># crt 생성</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># openssl req -x509 -nodes -days 730 -newkey rsa:2048 -keyout ${FILENM}.key -out ${FILENM}.crt -sha256 -config ${FILENM}.cnf</span>
-</span></span><span style="display:flex;"><span>openssl req -x509 <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -nodes <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -days <span style="color:#ae81ff">730</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -newkey rsa:2048 <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -keyout <span style="color:#e6db74">${</span>FILENM<span style="color:#e6db74">}</span>.key <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -out <span style="color:#e6db74">${</span>FILENM<span style="color:#e6db74">}</span>.crt <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -sha256 <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -config <span style="color:#e6db74">${</span>FILENM<span style="color:#e6db74">}</span>.cnf
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># ---</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 참고1) 실행 및 확인</span>
-</span></span><span style="display:flex;"><span>$ ./create-crt.sh develop.net
-</span></span><span style="display:flex;"><span>$ ls -al *develop.net*
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 참고2) crt to pfx 변환</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># DOMAIN=develop.net</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># FILENM=star.${DOMAIN}</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># openssl pkcs12 -export -in ${FILENM}.crt -inkey ${FILENM}.key -out ${FILENM}.pfx</span>
-</span></span><span style="display:flex;"><span>$ openssl pkcs12 -export <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -in star.develop.net.crt <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -inkey star.develop.net.key <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -out star.develop.net.pfx
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 참고3) pfx to jks 변환</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># keytool -importkeystore -srckeystore ${FILENM}.pfx -srcstoretype pkcs12 -destkeystore ${FILENM}.jks -deststoretype jks</span>
-</span></span><span style="display:flex;"><span>$ keytool -importkeystore <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -srckeystore star.develop.net.pfx <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -srcstoretype pkcs12 <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -destkeystore star.develop.net.jks <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -deststoretype jks
-</span></span></code></pre></div><h3 id="2-ssl-인증서-적용">2) SSL 인증서 적용</h3>
+</span></span></code></pre></div><h4 id="4-ssl-인증서-적용">4) SSL 인증서 적용</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-apacheconf" data-lang="apacheconf"><span style="display:flex;"><span><span style="color:#75715e"># conf/httpd.conf</span>
 </span></span><span style="display:flex;"><span>LoadModule socache_shmcb_module modules/mod_socache_shmcb.so
 </span></span><span style="display:flex;"><span>LoadModule ssl_module modules/mod_ssl.so
@@ -355,6 +297,126 @@
 </span></span><span style="display:flex;"><span>  ProxyPassMatch <span style="color:#e6db74">/api/</span>(.*)    balancer://cluster
 </span></span><span style="display:flex;"><span>  ProxyPassMatch /(.*\.jsp.*) balancer://cluster
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/VirtualHost&gt;</span>
+</span></span></code></pre></div><h4 id="5-weblogic-connector">5) weblogic-connector</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>LoadModule weblogic_module modules/mod_wl_24.so
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;IfModule mod_weblogic.c&gt;
+</span></span><span style="display:flex;"><span>  WebLogicCluster IP:PORT,IP:PORT,IP:PORT
+</span></span><span style="display:flex;"><span>  ConnectTimeoutSecs 8
+</span></span><span style="display:flex;"><span>  ConnectRetrySecs 2
+</span></span><span style="display:flex;"><span>  Idempotent OFF
+</span></span><span style="display:flex;"><span>  DynamicServerList OFF
+</span></span><span style="display:flex;"><span>  MatchExpression *
+</span></span><span style="display:flex;"><span>  KeepAliveEnabled OFF
+</span></span><span style="display:flex;"><span>&lt;/IfModule&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;Location /api &gt;
+</span></span><span style="display:flex;"><span>  WLSRequest On
+</span></span><span style="display:flex;"><span>  #SetHandler weblogic-handler
+</span></span><span style="display:flex;"><span>  WebLogicCluster IP:PORT,IP:PORT,IP:PORT
+</span></span><span style="display:flex;"><span>  #Idempotent OFF
+</span></span><span style="display:flex;"><span>&lt;/Location&gt;
+</span></span></code></pre></div><h4 id="6-selinux">6) selinux</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ chcon -Rt httpd_log_t /log/apache
+</span></span><span style="display:flex;"><span>$ chcon -Rt httpd_sys_content_t /sorc/memo
+</span></span><span style="display:flex;"><span>$ setsebool -P httpd_can_network_connect on
+</span></span></code></pre></div><h2 id="-인증서">Ⅱ. 인증서</h2>
+<h3 id="1-openssl-인증서-생성">1. openssl 인증서 생성</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>DOMAIN<span style="color:#f92672">=</span>$1
+</span></span><span style="display:flex;"><span>FILENM<span style="color:#f92672">=</span>star.<span style="color:#e6db74">${</span>DOMAIN<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cat <span style="color:#e6db74">&lt;&lt;- EOF &gt; ${FILENM}.cnf
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[req]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">distinguished_name = req_distinguished_name
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">x509_extensions = v3_req
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">prompt = no
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[req_distinguished_name]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">countryName             = KR
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">stateOrProvinceName     = Seoul
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">localityName            = Seonyudo
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">organizationName        = MK
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">organizationalUnitName  = Dev.Team
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">CN                      = ${DOMAIN}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[v3_req]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">keyUsage = critical, digitalSignature, keyAgreement
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">extendedKeyUsage = serverAuth
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">subjectAltName = @alt_names
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[alt_names]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">DNS.1 = *.${DOMAIN}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># crt 생성</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># openssl req -x509 -nodes -days 730 -newkey rsa:2048 -keyout ${FILENM}.key -out ${FILENM}.crt -sha256 -config ${FILENM}.cnf</span>
+</span></span><span style="display:flex;"><span>openssl req -x509 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -nodes <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -days <span style="color:#ae81ff">730</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -newkey rsa:2048 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -keyout <span style="color:#e6db74">${</span>FILENM<span style="color:#e6db74">}</span>.key <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -out <span style="color:#e6db74">${</span>FILENM<span style="color:#e6db74">}</span>.crt <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -sha256 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -config <span style="color:#e6db74">${</span>FILENM<span style="color:#e6db74">}</span>.cnf
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ---</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 참고1) 실행 및 확인</span>
+</span></span><span style="display:flex;"><span>$ ./create-crt.sh develop.net
+</span></span><span style="display:flex;"><span>$ ls -al *develop.net*
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 참고2) crt to pfx 변환</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># DOMAIN=develop.net</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># FILENM=star.${DOMAIN}</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># openssl pkcs12 -export -in ${FILENM}.crt -inkey ${FILENM}.key -out ${FILENM}.pfx</span>
+</span></span><span style="display:flex;"><span>$ openssl pkcs12 -export <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -in star.develop.net.crt <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -inkey star.develop.net.key <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -out star.develop.net.pfx
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 참고3) pfx to jks 변환</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># keytool -importkeystore -srckeystore ${FILENM}.pfx -srcstoretype pkcs12 -destkeystore ${FILENM}.jks -deststoretype jks</span>
+</span></span><span style="display:flex;"><span>$ keytool -importkeystore <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -srckeystore star.develop.net.pfx <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -srcstoretype pkcs12 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -destkeystore star.develop.net.jks <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -deststoretype jks
+</span></span></code></pre></div><h3 id="2-keytool-인증서-생성">2. keytool 인증서 생성</h3>
+<p>java 에 포함된 keytool 은 keystore 기반으로 인증서와 키를 관리할 수 있습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># private-key(mgkim.net.jks 파일) 생성</span>
+</span></span><span style="display:flex;"><span>$ keytool -genkeypair <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -keyalg RSA <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -dname <span style="color:#e6db74">&#34;CN=mgkim.net, OU=API Development, O=mgkim.net, L=Seoul, C=KR&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -keypass <span style="color:#e6db74">&#34;dev1234&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -storepass <span style="color:#e6db74">&#34;dev1234&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -keystore <span style="color:#e6db74">&#34;mgkim.net.jks&#34;</span>
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>다음에 대해 유효 기간이 90일인 2,048비트 RSA 키 쌍 및 자체 서명된 인증서<span style="color:#f92672">(</span>SHA256withRSA<span style="color:#f92672">)</span>를 생성하는 중
+</span></span><span style="display:flex;"><span>        : CN<span style="color:#f92672">=</span>mgkim.net, OU<span style="color:#f92672">=</span>API Development, O<span style="color:#f92672">=</span>mgkim.net, L<span style="color:#f92672">=</span>Seoul, C<span style="color:#f92672">=</span>KR
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 인증서 파일(mgkim.net.cer 파일) 생성</span>
+</span></span><span style="display:flex;"><span>$ keytool -export <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -keystore <span style="color:#e6db74">&#34;mgkim.net.jks&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -rfc <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -file <span style="color:#e6db74">&#34;mgkim.net.cer&#34;</span>
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>키 저장소 비밀번호 입력:  dev1234
+</span></span><span style="display:flex;"><span>인증서가 &lt;mgkim.net.cer&gt; 파일에 저장되었습니다.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># public-key(mgkim.net.jks.pub 파일) 생성</span>
+</span></span><span style="display:flex;"><span>$ keytool -import <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -file <span style="color:#e6db74">&#34;mgkim.net.cer&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -keystore <span style="color:#e6db74">&#34;mgkim.net.jks.pub&#34;</span>
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>키 저장소 비밀번호 입력:  dev1234
+</span></span><span style="display:flex;"><span>새 비밀번호 다시 입력: dev1234
+</span></span><span style="display:flex;"><span>소유자: CN<span style="color:#f92672">=</span>mgkim.net, OU<span style="color:#f92672">=</span>API Development, O<span style="color:#f92672">=</span>mgkim.net, L<span style="color:#f92672">=</span>Seoul, C<span style="color:#f92672">=</span>KR
+</span></span><span style="display:flex;"><span>발행자: CN<span style="color:#f92672">=</span>mgkim.net, OU<span style="color:#f92672">=</span>API Development, O<span style="color:#f92672">=</span>mgkim.net, L<span style="color:#f92672">=</span>Seoul, C<span style="color:#f92672">=</span>KR
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>이 인증서를 신뢰합니까? <span style="color:#f92672">[</span>아니오<span style="color:#f92672">]</span>:  y
+</span></span><span style="display:flex;"><span>인증서가 키 저장소에 추가되었습니다.
+</span></span></code></pre></div><h2 id="-tomcat">Ⅲ. tomcat</h2>
+<h3 id="1-다운로드-1">1. 다운로드</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ wget https://archive.apache.org/dist/tomcat/tomcat-8/v8.5.96/bin/apache-tomcat-8.5.96.tar.gz
 </span></span></code></pre></div>
         </div>
       </article>
@@ -368,24 +430,36 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#1-설치">1. 설치</a>
+        <li><a href="#-apache">Ⅰ. apache</a>
           <ul>
-            <li><a href="#1-다운로드">1) 다운로드</a></li>
-            <li><a href="#2-사전-점검">2) 사전 점검</a></li>
-            <li><a href="#3-compile-설치">3) compile 설치</a></li>
+            <li><a href="#1-다운로드">1. 다운로드</a></li>
+            <li><a href="#2-설치">2. 설치</a>
+              <ul>
+                <li><a href="#1-의존성-설치">1) 의존성 설치</a></li>
+                <li><a href="#2-설치-1">2) 설치</a></li>
+              </ul>
+            </li>
+            <li><a href="#3-설정">3. 설정</a>
+              <ul>
+                <li><a href="#1-기본-항목">1) 기본 항목</a></li>
+                <li><a href="#2-성능-및-옵션">2) 성능 및 옵션</a></li>
+                <li><a href="#3-가상호스트-및-proxy-설정">3) 가상호스트 및 proxy 설정</a></li>
+                <li><a href="#4-ssl-인증서-적용">4) SSL 인증서 적용</a></li>
+                <li><a href="#5-weblogic-connector">5) weblogic-connector</a></li>
+                <li><a href="#6-selinux">6) selinux</a></li>
+              </ul>
+            </li>
           </ul>
         </li>
-        <li><a href="#2-설정">2. 설정</a>
+        <li><a href="#-인증서">Ⅱ. 인증서</a>
           <ul>
-            <li><a href="#1-기본-항목">1) 기본 항목</a></li>
-            <li><a href="#2-성능-및-옵션">2) 성능 및 옵션</a></li>
-            <li><a href="#3-가상호스트-및-proxy-설정">3) 가상호스트 및 proxy 설정</a></li>
+            <li><a href="#1-openssl-인증서-생성">1. openssl 인증서 생성</a></li>
+            <li><a href="#2-keytool-인증서-생성">2. keytool 인증서 생성</a></li>
           </ul>
         </li>
-        <li><a href="#3-ssl">3. SSL</a>
+        <li><a href="#-tomcat">Ⅲ. tomcat</a>
           <ul>
-            <li><a href="#1-openssl-인증서-생성">1) openssl 인증서 생성</a></li>
-            <li><a href="#2-ssl-인증서-적용">2) SSL 인증서 적용</a></li>
+            <li><a href="#1-다운로드-1">1. 다운로드</a></li>
           </ul>
         </li>
       </ul>
