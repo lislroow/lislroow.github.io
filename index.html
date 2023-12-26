@@ -97,38 +97,38 @@
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span>USER_LIST<span style="color:#f92672">=(</span><span style="color:#66d9ef">$(</span>cat <span style="color:#e6db74">&lt;&lt;- EOF
+</span></span><span style="display:flex;"><span>LIST<span style="color:#f92672">=(</span><span style="color:#66d9ef">$(</span>cat <span style="color:#e6db74">&lt;&lt;- EOF
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">smpl
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">hello
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">smpl2:smpl_2
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">)</span><span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>read -r userList <span style="color:#f92672">&lt;&lt;&lt;</span> <span style="color:#e6db74">${</span>USER_LIST[*]<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>read -r list <span style="color:#f92672">&lt;&lt;&lt;</span> <span style="color:#e6db74">${</span>LIST[*]<span style="color:#e6db74">}</span>
 </span></span><span style="display:flex;"><span>idx<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> item in <span style="color:#e6db74">${</span>userList[*]<span style="color:#e6db74">}</span>; <span style="color:#66d9ef">do</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> ! -e <span style="color:#e6db74">&#34;/home/</span><span style="color:#e6db74">${</span>item<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> item in <span style="color:#e6db74">${</span>list[*]<span style="color:#e6db74">}</span>; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>  userid<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>item%:*<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>  instance<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>item##*:<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> ! -e <span style="color:#e6db74">&#34;/home/</span><span style="color:#e6db74">${</span>userid<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">continue</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">fi</span>
-</span></span><span style="display:flex;"><span>  
-</span></span><span style="display:flex;"><span>  cat <span style="color:#e6db74">&lt;&lt;- EOF &gt; /etc/systemd/system/${item}.service
+</span></span><span style="display:flex;"><span>  cat <span style="color:#e6db74">&lt;&lt;- EOF &gt; /etc/systemd/system/${instance}.service
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[Unit]
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Description=${item} service
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Description=${instance} service
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">After=network.target syslog.target
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[Service]
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Type=forking
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">User=${item}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">User=${userid}
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Group=wasadm
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">ExecStart=/engn/servers/${item}/start-${item}.sh
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">ExecStop=/engn/servers/${item}/stop-${item}.sh
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">ExecStart=/engn/servers/${instance}/start-${instance}.sh
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">ExecStop=/engn/servers/${instance}/stop-${instance}.sh
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Restart=no
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[Install]
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">WantedBy=multi-user.target
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
-</span></span><span style="display:flex;"><span>  systemctl enable <span style="color:#e6db74">${</span>item<span style="color:#e6db74">}</span>.service
+</span></span><span style="display:flex;"><span>  systemctl enable <span style="color:#e6db74">${</span>instance<span style="color:#e6db74">}</span>.service
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
 </span></span></code></pre></div><h4 id="5-service-unit-enableddisabled-확인">5) service unit enabled/disabled 확인</h4>
 <ul>

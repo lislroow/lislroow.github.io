@@ -47,7 +47,7 @@
       <article>
         <h1></h1>
         <div>
-          <h2 id="-apache">Ⅰ. apache</h2>
+          <h2 id="-apache"><code>Ⅰ. apache</code></h2>
 <ul>
 <li>버전: apache 2.4.x</li>
 </ul>
@@ -297,30 +297,46 @@
 </span></span><span style="display:flex;"><span>  ProxyPassMatch <span style="color:#e6db74">/api/</span>(.*)    balancer://cluster
 </span></span><span style="display:flex;"><span>  ProxyPassMatch /(.*\.jsp.*) balancer://cluster
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/VirtualHost&gt;</span>
+</span></span></code></pre></div><h4 id="5-systemd-등록">5) systemd 등록</h4>
+<p>/etc/systemd/system/apache.service</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#f92672">[</span>Unit<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>Description<span style="color:#f92672">=</span>apache httpd 2.4.58
+</span></span><span style="display:flex;"><span>After<span style="color:#f92672">=</span>network.target syslog.target
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>Service<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>Type<span style="color:#f92672">=</span>forking
+</span></span><span style="display:flex;"><span>User<span style="color:#f92672">=</span>root
+</span></span><span style="display:flex;"><span>Group<span style="color:#f92672">=</span>root
+</span></span><span style="display:flex;"><span>ExecStart<span style="color:#f92672">=</span>/engn/apache/bin/apachectl start
+</span></span><span style="display:flex;"><span>ExecStop<span style="color:#f92672">=</span>/engn/apache/bin/apachectl graceful-stop
+</span></span><span style="display:flex;"><span>Restart<span style="color:#f92672">=</span>no
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>Install<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>WantedBy<span style="color:#f92672">=</span>multi-user.target
 </span></span></code></pre></div><h4 id="5-weblogic-connector">5) weblogic-connector</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>LoadModule weblogic_module modules/mod_wl_24.so
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-apacheconf" data-lang="apacheconf"><span style="display:flex;"><span>LoadModule weblogic_module modules/mod_wl_24.so
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>&lt;IfModule mod_weblogic.c&gt;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;IfModule</span> <span style="color:#e6db74">mod_weblogic.c</span><span style="color:#f92672">&gt;</span>
 </span></span><span style="display:flex;"><span>  WebLogicCluster IP:PORT,IP:PORT,IP:PORT
-</span></span><span style="display:flex;"><span>  ConnectTimeoutSecs 8
-</span></span><span style="display:flex;"><span>  ConnectRetrySecs 2
-</span></span><span style="display:flex;"><span>  Idempotent OFF
-</span></span><span style="display:flex;"><span>  DynamicServerList OFF
+</span></span><span style="display:flex;"><span>  ConnectTimeoutSecs <span style="color:#ae81ff">8</span>
+</span></span><span style="display:flex;"><span>  ConnectRetrySecs <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>  Idempotent <span style="color:#66d9ef">OFF</span>
+</span></span><span style="display:flex;"><span>  DynamicServerList <span style="color:#66d9ef">OFF</span>
 </span></span><span style="display:flex;"><span>  MatchExpression *
-</span></span><span style="display:flex;"><span>  KeepAliveEnabled OFF
-</span></span><span style="display:flex;"><span>&lt;/IfModule&gt;
+</span></span><span style="display:flex;"><span>  KeepAliveEnabled <span style="color:#66d9ef">OFF</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/IfModule&gt;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>&lt;Location /api &gt;
-</span></span><span style="display:flex;"><span>  WLSRequest On
-</span></span><span style="display:flex;"><span>  #SetHandler weblogic-handler
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;Location</span> <span style="color:#e6db74">/api </span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>  WLSRequest <span style="color:#66d9ef">On</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">#SetHandler weblogic-handler</span>
 </span></span><span style="display:flex;"><span>  WebLogicCluster IP:PORT,IP:PORT,IP:PORT
-</span></span><span style="display:flex;"><span>  #Idempotent OFF
-</span></span><span style="display:flex;"><span>&lt;/Location&gt;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">#Idempotent OFF</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/Location&gt;</span>
 </span></span></code></pre></div><h4 id="6-selinux">6) selinux</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ chcon -Rt httpd_log_t /log/apache
 </span></span><span style="display:flex;"><span>$ chcon -Rt httpd_sys_content_t /sorc/memo
 </span></span><span style="display:flex;"><span>$ setsebool -P httpd_can_network_connect on
-</span></span></code></pre></div><h2 id="-인증서">Ⅱ. 인증서</h2>
+</span></span></code></pre></div><h2 id="-인증서"><code>Ⅱ. 인증서</code></h2>
 <h3 id="1-openssl-인증서-생성">1. openssl 인증서 생성</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
@@ -414,9 +430,329 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>이 인증서를 신뢰합니까? <span style="color:#f92672">[</span>아니오<span style="color:#f92672">]</span>:  y
 </span></span><span style="display:flex;"><span>인증서가 키 저장소에 추가되었습니다.
-</span></span></code></pre></div><h2 id="-tomcat">Ⅲ. tomcat</h2>
+</span></span></code></pre></div><h2 id="-tomcat"><code>Ⅲ. tomcat</code></h2>
 <h3 id="1-다운로드-1">1. 다운로드</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ wget https://archive.apache.org/dist/tomcat/tomcat-8/v8.5.96/bin/apache-tomcat-8.5.96.tar.gz
+</span></span></code></pre></div><h3 id="2-디렉토리-구조">2. 디렉토리 구조</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>servers/
+</span></span><span style="display:flex;"><span>└── smpl
+</span></span><span style="display:flex;"><span>    ├── conf
+</span></span><span style="display:flex;"><span>    │    ├── Catalina
+</span></span><span style="display:flex;"><span>    │    │    └── localhost
+</span></span><span style="display:flex;"><span>    │    │         └── ROOT.xml
+</span></span><span style="display:flex;"><span>    │    ├── catalina.policy
+</span></span><span style="display:flex;"><span>    │    ├── catalina.properties
+</span></span><span style="display:flex;"><span>    │    ├── context.xml
+</span></span><span style="display:flex;"><span>    │    ├── jaspic-providers.xml
+</span></span><span style="display:flex;"><span>    │    ├── jaspic-providers.xsd
+</span></span><span style="display:flex;"><span>    │    ├── server.xml
+</span></span><span style="display:flex;"><span>    │    ├── star.develop.net.jks
+</span></span><span style="display:flex;"><span>    │    └── web.xml
+</span></span><span style="display:flex;"><span>    ├── lib
+</span></span><span style="display:flex;"><span>    │    ├── ojdbc8-19.21.0.0.jar
+</span></span><span style="display:flex;"><span>    │    └── tomcat-8.5-ext.jar
+</span></span><span style="display:flex;"><span>    ├── restart-smpl.sh
+</span></span><span style="display:flex;"><span>    ├── start-smpl.sh
+</span></span><span style="display:flex;"><span>    ├── stop-smpl.sh
+</span></span><span style="display:flex;"><span>    ├── webapps
+</span></span><span style="display:flex;"><span>    └── work
+</span></span><span style="display:flex;"><span>tomcat/
+</span></span><span style="display:flex;"><span>└── tomcat-8.5.96
+</span></span><span style="display:flex;"><span>    ├── bin
+</span></span><span style="display:flex;"><span>    ├── conf
+</span></span><span style="display:flex;"><span>    ├── lib
+</span></span><span style="display:flex;"><span>    ├── logs
+</span></span><span style="display:flex;"><span>    ├── temp
+</span></span><span style="display:flex;"><span>    ├── webapps
+</span></span><span style="display:flex;"><span>    └── work
+</span></span><span style="display:flex;"><span>scouter/
+</span></span><span style="display:flex;"><span>├── agent.host
+</span></span><span style="display:flex;"><span>│   ├── conf
+</span></span><span style="display:flex;"><span>│   │   └── scouter.conf
+</span></span><span style="display:flex;"><span>│   ├── host.sh
+</span></span><span style="display:flex;"><span>│   ├── lib
+</span></span><span style="display:flex;"><span>│   ├── logs
+</span></span><span style="display:flex;"><span>│   ├── readlink.sh
+</span></span><span style="display:flex;"><span>│   ├── scouter.host.jar
+</span></span><span style="display:flex;"><span>│   └── stop.sh
+</span></span><span style="display:flex;"><span>└── agent.java
+</span></span><span style="display:flex;"><span>    ├── conf
+</span></span><span style="display:flex;"><span>    │    └── scouter.conf
+</span></span><span style="display:flex;"><span>    ├── dump
+</span></span><span style="display:flex;"><span>    ├── plugin
+</span></span><span style="display:flex;"><span>    ├── scouter-agent-java-2.20.0.jar
+</span></span><span style="display:flex;"><span>    └── scouter.agent.jar
+</span></span></code></pre></div><h3 id="3-스크립트">3. 스크립트</h3>
+<h4 id="1-start-smplsh">1) start-smpl.sh</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>BASE_DIR<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span> cd <span style="color:#66d9ef">$(</span> dirname $0 <span style="color:#66d9ef">)</span> <span style="color:#f92672">&amp;&amp;</span> pwd -P <span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>INSTANCE_ID<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;smpl&#34;</span>
+</span></span><span style="display:flex;"><span>EXEC_USER<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;smpl&#34;</span>
+</span></span><span style="display:flex;"><span>JAVA_HOME<span style="color:#f92672">=</span>/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.392.b08-4.el8_8.x86_64
+</span></span><span style="display:flex;"><span>CATALINA_HOME<span style="color:#f92672">=</span>/engn/tomcat/tomcat-8.5.96
+</span></span><span style="display:flex;"><span>LOG_BASE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/logs/</span><span style="color:#e6db74">${</span>INSTANCE_ID<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>PATH<span style="color:#f92672">=</span>$JAVA_HOME/bin:$PATH
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> ! -e $LOG_BASE <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>  mkdir -p $LOG_BASE
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>CATALINA_BASE<span style="color:#f92672">=</span>$BASE_DIR
+</span></span><span style="display:flex;"><span>CATALINA_TMPDIR<span style="color:#f92672">=</span>$CATALINA_HOME/temp
+</span></span><span style="display:flex;"><span>CATALINA_OUT<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>LOG_BASE<span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">${</span>INSTANCE_ID<span style="color:#e6db74">}</span><span style="color:#e6db74">-tomcat_console.log&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;tomcat starting&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">`</span>whoami<span style="color:#e6db74">`</span> !<span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>EXEC_USER<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;please execute \&#34;</span><span style="color:#e6db74">${</span>EXEC_USER<span style="color:#e6db74">}</span><span style="color:#e6db74">\&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>  exit <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>pid<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span> ps -ef | grep <span style="color:#e6db74">&#34;instance.id=</span><span style="color:#e6db74">${</span>INSTANCE_ID<span style="color:#e6db74">}</span><span style="color:#e6db74"> &#34;</span> | grep -v grep | awk <span style="color:#e6db74">&#39;{print $2}&#39;</span> <span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> ! -z <span style="color:#e6db74">&#34;</span>$pid<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;tomcat already running. please check pid \&#34;</span><span style="color:#e6db74">${</span>pid<span style="color:#e6db74">}</span><span style="color:#e6db74">\&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>  exit <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>SCOUTER_AGENT_DIR<span style="color:#f92672">=</span>/engn/scouter/agent.java
+</span></span><span style="display:flex;"><span>JAVA_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;-server&#34;</span>
+</span></span><span style="display:flex;"><span>JAVA_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JAVA_OPTS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -Xms512m -Xmx512m&#34;</span>
+</span></span><span style="display:flex;"><span>JAVA_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JAVA_OPTS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -verbose:gc&#34;</span>
+</span></span><span style="display:flex;"><span>JAVA_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JAVA_OPTS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -Xloggc:</span><span style="color:#e6db74">${</span>LOG_BASE<span style="color:#e6db74">}</span><span style="color:#e6db74">/gc/`date +%Y%m%d_%H%M%S`-gc.log&#34;</span>
+</span></span><span style="display:flex;"><span>JAVA_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JAVA_OPTS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -XX:+PrintGCDetails&#34;</span>
+</span></span><span style="display:flex;"><span>JAVA_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JAVA_OPTS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -XX:+PrintGCDateStamps&#34;</span>
+</span></span><span style="display:flex;"><span>JAVA_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JAVA_OPTS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -XX:+PrintHeapAtGC&#34;</span>
+</span></span><span style="display:flex;"><span>JAVA_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JAVA_OPTS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -XX:+UseGCLogFileRotation&#34;</span>
+</span></span><span style="display:flex;"><span>JAVA_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JAVA_OPTS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -XX:+ExitOnOutOfMemoryError&#34;</span>
+</span></span><span style="display:flex;"><span>JAVA_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JAVA_OPTS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -XX:+HeapDumpOnOutOfMemoryError&#34;</span>
+</span></span><span style="display:flex;"><span>JAVA_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JAVA_OPTS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -XX:HeapDumpPath=</span><span style="color:#e6db74">${</span>LOG_BASE<span style="color:#e6db74">}</span><span style="color:#e6db74">/dump_</span><span style="color:#e6db74">${</span>INSTANCE_ID<span style="color:#e6db74">}</span><span style="color:#e6db74">_&#39;date+%Y%m%d_%H%M%S&#39;.hprof&#34;</span>
+</span></span><span style="display:flex;"><span>JAVA_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JAVA_OPTS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -XX:+DisableExplicitGC&#34;</span>
+</span></span><span style="display:flex;"><span>JAVA_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JAVA_OPTS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -Dinstance.id=</span><span style="color:#e6db74">${</span>INSTANCE_ID<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>JAVA_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JAVA_OPTS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -Dlog.base=</span><span style="color:#e6db74">${</span>LOG_BASE<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>JAVA_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JAVA_OPTS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -Dfile.encoding=utf-8&#34;</span>
+</span></span><span style="display:flex;"><span>JAVA_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JAVA_OPTS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -Djava.library.path=</span><span style="color:#e6db74">${</span>BASE_DIR<span style="color:#e6db74">}</span><span style="color:#e6db74">/lib&#34;</span>
+</span></span><span style="display:flex;"><span>JAVA_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JAVA_OPTS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -Doracle.jdbc.autoCommitSpecCompliant=false&#34;</span>
+</span></span><span style="display:flex;"><span>JAVA_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JAVA_OPTS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -javaagent:</span><span style="color:#e6db74">${</span>SCOUTER_AGENT_DIR<span style="color:#e6db74">}</span><span style="color:#e6db74">/scouter.agent.jar&#34;</span>
+</span></span><span style="display:flex;"><span>JAVA_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JAVA_OPTS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -Dscuter.config=</span><span style="color:#e6db74">${</span>SCOUTER_AGENT_DIR<span style="color:#e6db74">}</span><span style="color:#e6db74">/conf/scouter.conf&#34;</span>
+</span></span><span style="display:flex;"><span>JAVA_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JAVA_OPTS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -Dobj_name=</span><span style="color:#e6db74">${</span>INSTANCE_ID<span style="color:#e6db74">}</span><span style="color:#e6db74">_1&#34;</span>
+</span></span><span style="display:flex;"><span>JAVA_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JAVA_OPTS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -Djava.net.preferIPv4Stack=true&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>source <span style="color:#e6db74">${</span>CATALINA_HOME<span style="color:#e6db74">}</span>/bin/catalina.sh start <span style="color:#e6db74">&#34;</span>$@<span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div><h4 id="2-stop-smplsh">2) stop-smpl.sh</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  
+</span></span><span style="display:flex;"><span>BASE_DIR<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span> cd <span style="color:#66d9ef">$(</span> dirname $0 <span style="color:#66d9ef">)</span> <span style="color:#f92672">&amp;&amp;</span> pwd -P <span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>INSTANCE_ID<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;smpl&#34;</span>
+</span></span><span style="display:flex;"><span>EXEC_USER<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;tomcat&#34;</span>
+</span></span><span style="display:flex;"><span>JAVA_HOME<span style="color:#f92672">=</span>/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.392.b08-4.el8_8.x86_64
+</span></span><span style="display:flex;"><span>CATALINA_HOME<span style="color:#f92672">=</span>/engn/tomcat/tomcat-8.5.96
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>PATH<span style="color:#f92672">=</span>$JAVA_HOME/bin:$PATH
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>CATALINA_BASE<span style="color:#f92672">=</span>$BASE_DIR
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;tomcat stopping&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>pid<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span> ps -ef | grep <span style="color:#e6db74">&#34;instance.id=</span><span style="color:#e6db74">${</span>INSTANCE_ID<span style="color:#e6db74">}</span><span style="color:#e6db74"> &#34;</span> | grep -v grep | awk <span style="color:#e6db74">&#39;{print $2}&#39;</span> <span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -z <span style="color:#e6db74">&#34;</span>$pid<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;tomcat is not running.&#34;</span>
+</span></span><span style="display:flex;"><span>  exit <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>source <span style="color:#e6db74">${</span>CATALINA_HOME<span style="color:#e6db74">}</span>/bin/catalina.sh stop <span style="color:#e6db74">&#34;</span>$@<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i in <span style="color:#f92672">{</span>1..1<span style="color:#f92672">}</span>; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>  printf <span style="color:#e6db74">&#34;.&#34;</span>
+</span></span><span style="display:flex;"><span>  pid<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span> ps -ef | grep <span style="color:#e6db74">&#34;instance.id=</span><span style="color:#e6db74">${</span>INSTANCE_ID<span style="color:#e6db74">}</span><span style="color:#e6db74"> &#34;</span> | grep -v grep | awk <span style="color:#e6db74">&#39;{print $2}&#39;</span> <span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>pid<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> !<span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    sleep <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>    break
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span><span style="display:flex;"><span>printf <span style="color:#e6db74">$&#39;\n&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>pid<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> !<span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>  kill -15 <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>pid<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;tomcat stopped&#34;</span>
+</span></span></code></pre></div><h3 id="4-설정">4. 설정</h3>
+<h4 id="1-confserverxml">1) conf/server.xml</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;Server</span> <span style="color:#a6e22e">port=</span><span style="color:#e6db74">&#34;8015&#34;</span> <span style="color:#a6e22e">shutdown=</span><span style="color:#e6db74">&#34;SHUTDOWN&#34;</span><span style="color:#f92672">&gt;</span><span style="color:#75715e">&lt;!-- default-port: 8005 --&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;Listener</span> <span style="color:#a6e22e">className=</span><span style="color:#e6db74">&#34;org.apache.catalina.startup.VersionLoggerListener&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;Listener</span> <span style="color:#a6e22e">className=</span><span style="color:#e6db74">&#34;org.apache.catalina.core.AprLifecycleListener&#34;</span> <span style="color:#a6e22e">SSLEngine=</span><span style="color:#e6db74">&#34;on&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;Listener</span> <span style="color:#a6e22e">className=</span><span style="color:#e6db74">&#34;org.apache.catalina.core.JreMemoryLeakPreventionListener&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;Listener</span> <span style="color:#a6e22e">className=</span><span style="color:#e6db74">&#34;org.apache.catalina.mbeans.GlobalResourcesLifecycleListener&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;Listener</span> <span style="color:#a6e22e">className=</span><span style="color:#e6db74">&#34;org.apache.catalina.core.ThreadLocalLeakPreventionListener&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;GlobalNamingResources&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;Resource</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;UserDatabase&#34;</span> <span style="color:#a6e22e">auth=</span><span style="color:#e6db74">&#34;Container&#34;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;org.apache.catalina.UserDatabase&#34;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#a6e22e">description=</span><span style="color:#e6db74">&#34;User database that can be updated and saved&#34;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#a6e22e">factory=</span><span style="color:#e6db74">&#34;org.apache.catalina.users.MemoryUserDatabaseFactory&#34;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#a6e22e">pathname=</span><span style="color:#e6db74">&#34;conf/tomcat-users.xml&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;Resource</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;oracle/smplDS&#34;</span> <span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;javax.sql.DataSource&#34;</span> <span style="color:#a6e22e">auth=</span><span style="color:#e6db74">&#34;Container&#34;</span> <span style="color:#a6e22e">url=</span><span style="color:#e6db74">&#34;jdbc:oracle:thin:@172.28.200.31:1521:ORCLCDB&#34;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#a6e22e">driverClassName=</span><span style="color:#e6db74">&#34;oracle.jdbc.driver.OracleDriver&#34;</span> <span style="color:#a6e22e">username=</span><span style="color:#e6db74">&#34;SYSTEM&#34;</span> <span style="color:#a6e22e">password=</span><span style="color:#e6db74">&#34;1&#34;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#a6e22e">factory=</span><span style="color:#e6db74">&#34;org.apache.tomcat.jdbc.pool.DataSourceFactory&#34;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#a6e22e">maxTotal=</span><span style="color:#e6db74">&#34;10&#34;</span> <span style="color:#a6e22e">maxIdle=</span><span style="color:#e6db74">&#34;10&#34;</span> <span style="color:#a6e22e">initialSize=</span><span style="color:#e6db74">&#34;10&#34;</span> <span style="color:#a6e22e">maxWait=</span><span style="color:#e6db74">&#34;3000&#34;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#a6e22e">validationQuery=</span><span style="color:#e6db74">&#34;SELECT 1 FROM DUAL&#34;</span> <span style="color:#a6e22e">testOnBorrow=</span><span style="color:#e6db74">&#34;true&#34;</span> <span style="color:#a6e22e">testOnConnect=</span><span style="color:#e6db74">&#34;true&#34;</span> <span style="color:#a6e22e">testWhileIdle=</span><span style="color:#e6db74">&#34;true&#34;</span> <span style="color:#a6e22e">logAbandoned=</span><span style="color:#e6db74">&#34;true&#34;</span> <span style="color:#a6e22e">logValidationErrors=</span><span style="color:#e6db74">&#34;true&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/GlobalNamingResources&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;Service</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;Catalina&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;Executor</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;tomcatThreadPool&#34;</span> <span style="color:#a6e22e">namePrefix=</span><span style="color:#e6db74">&#34;catalina-exec-&#34;</span> <span style="color:#a6e22e">maxThreads=</span><span style="color:#e6db74">&#34;150&#34;</span> <span style="color:#a6e22e">minSpareThreads=</span><span style="color:#e6db74">&#34;4&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!-- default-port: 8080 --&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;Connector</span> <span style="color:#a6e22e">port=</span><span style="color:#e6db74">&#34;8010&#34;</span> <span style="color:#a6e22e">protocol=</span><span style="color:#e6db74">&#34;HTTP/1.1&#34;</span> <span style="color:#a6e22e">connectionTimeout=</span><span style="color:#e6db74">&#34;20000&#34;</span> <span style="color:#a6e22e">redirectPort=</span><span style="color:#e6db74">&#34;8443&#34;</span> 
+</span></span><span style="display:flex;"><span>               <span style="color:#a6e22e">server=</span><span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#a6e22e">maxParameterCount=</span><span style="color:#e6db74">&#34;-1&#34;</span> <span style="color:#a6e22e">maxPostSize=</span><span style="color:#e6db74">&#34;-1&#34;</span> 
+</span></span><span style="display:flex;"><span>               <span style="color:#a6e22e">relaxedQueryChars=</span><span style="color:#e6db74">&#34;[]|{}^&amp;#x5c;&amp;#x60;&amp;quot;&amp;lt;&amp;gt;&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;Connector</span> <span style="color:#a6e22e">protocol=</span><span style="color:#e6db74">&#34;org.apache.coyote.http11.Http11NioProtocol&#34;</span> <span style="color:#a6e22e">port=</span><span style="color:#e6db74">&#34;8443&#34;</span> <span style="color:#a6e22e">maxThread=</span><span style="color:#e6db74">&#34;150&#34;</span> <span style="color:#a6e22e">SSLEnabled=</span><span style="color:#e6db74">&#34;true&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;SSLHostConfig&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;Certificate</span> <span style="color:#a6e22e">certificateKeystoreFile=</span><span style="color:#e6db74">&#34;conf/star.develop.net.jks&#34;</span> <span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;RSA&#34;</span> <span style="color:#a6e22e">certificateKeystorePassword=</span><span style="color:#e6db74">&#34;dev1234&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;/SSLHostConfig&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/Connector&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;Engine</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;Catalina&#34;</span> <span style="color:#a6e22e">defaultHost=</span><span style="color:#e6db74">&#34;localhost&#34;</span> <span style="color:#a6e22e">jvmRoute=</span><span style="color:#e6db74">&#34;worker1&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;Realm</span> <span style="color:#a6e22e">className=</span><span style="color:#e6db74">&#34;org.apache.catalina.realm.LockOutRealm&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;Realm</span> <span style="color:#a6e22e">className=</span><span style="color:#e6db74">&#34;org.apache.catalina.realm.UserDatabaseRealm&#34;</span> <span style="color:#a6e22e">resourceName=</span><span style="color:#e6db74">&#34;UserDatabase&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;/Realm&gt;</span>
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">&lt;!-- cluster --&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">&lt;!-- default-port: 4000 --&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;Cluster</span> <span style="color:#a6e22e">className=</span><span style="color:#e6db74">&#34;org.apache.catalina.ha.tcp.SimpleTcpCluster&#34;</span> <span style="color:#a6e22e">channelSendOptions=</span><span style="color:#e6db74">&#34;8&#34;</span> <span style="color:#a6e22e">channelStartOptions=</span><span style="color:#e6db74">&#34;3&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;Manager</span> <span style="color:#a6e22e">className=</span><span style="color:#e6db74">&#34;org.apache.catalina.ha.session.DeltaManager&#34;</span> <span style="color:#a6e22e">expireSessionsOnShutdown=</span><span style="color:#e6db74">&#34;false&#34;</span> <span style="color:#a6e22e">notifyListenersOnReplication=</span><span style="color:#e6db74">&#34;true&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;Channel</span> <span style="color:#a6e22e">className=</span><span style="color:#e6db74">&#34;org.apache.catalina.tribes.group.GroupChannel&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&lt;Sender</span> <span style="color:#a6e22e">className=</span><span style="color:#e6db74">&#34;org.apache.catalina.tribes.transport.ReplicationTransmitter&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;Transport</span> <span style="color:#a6e22e">className=</span><span style="color:#e6db74">&#34;org.apache.catalina.tribes.transport.nio.PooledParallelSender&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&lt;/Sender&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&lt;Receiver</span> <span style="color:#a6e22e">className=</span><span style="color:#e6db74">&#34;org.apache.catalina.tribes.transport.nio.NioReceiver&#34;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">address=</span><span style="color:#e6db74">&#34;127.0.0.1&#34;</span> <span style="color:#a6e22e">port=</span><span style="color:#e6db74">&#34;4010&#34;</span> <span style="color:#a6e22e">autoBind=</span><span style="color:#e6db74">&#34;0&#34;</span> <span style="color:#a6e22e">maxThreads=</span><span style="color:#e6db74">&#34;6&#34;</span> <span style="color:#a6e22e">selectorTimeout=</span><span style="color:#e6db74">&#34;5000&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&lt;Interceptor</span> <span style="color:#a6e22e">className=</span><span style="color:#e6db74">&#34;org.apache.catalina.tribes.group.interceptors.TcpPingInterceptor&#34;</span> <span style="color:#a6e22e">staticOnly=</span><span style="color:#e6db74">&#34;true&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&lt;Interceptor</span> <span style="color:#a6e22e">className=</span><span style="color:#e6db74">&#34;org.apache.catalina.tribes.group.interceptors.TcpFailureDetector&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&lt;Interceptor</span> <span style="color:#a6e22e">className=</span><span style="color:#e6db74">&#34;org.apache.catalina.tribes.group.interceptors.StaticMembershipInterceptor&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;Member</span> <span style="color:#a6e22e">className=</span><span style="color:#e6db74">&#34;org.apache.catalina.tribes.membership.StaticMember&#34;</span> 
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">host=</span><span style="color:#e6db74">&#34;127.0.0.1&#34;</span> <span style="color:#a6e22e">port=</span><span style="color:#e6db74">&#34;4011&#34;</span> <span style="color:#a6e22e">uniqueId=</span><span style="color:#e6db74">&#34;{0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2}&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&lt;/Interceptor&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&lt;Interceptor</span> <span style="color:#a6e22e">className=</span><span style="color:#e6db74">&#34;org.apache.catalina.tribes.group.interceptors.MessageDispatchInterceptor&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/Channel&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;Valve</span> <span style="color:#a6e22e">className=</span><span style="color:#e6db74">&#34;org.apache.catalina.ha.tcp.ReplicationValve&#34;</span> <span style="color:#a6e22e">filter=</span><span style="color:#e6db74">&#34;.*\.gif;.*\.js;.*\.jpg;.*\.png;.*\.htm;.*\.html;.*\.css;.*\.txt;&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;ClusterListener</span> <span style="color:#a6e22e">className=</span><span style="color:#e6db74">&#34;org.apache.catalina.ha.session.ClusterSessionListener&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;/Cluster&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">&lt;!-- //cluster --&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;Host</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;localhost&#34;</span>  <span style="color:#a6e22e">appBase=</span><span style="color:#e6db74">&#34;webapps&#34;</span> <span style="color:#a6e22e">unpackWARs=</span><span style="color:#e6db74">&#34;false&#34;</span> <span style="color:#a6e22e">autoDeploy=</span><span style="color:#e6db74">&#34;false&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;Valve</span> <span style="color:#a6e22e">className=</span><span style="color:#e6db74">&#34;org.apache.catalina.valves.AccessLogValve&#34;</span> 
+</span></span><span style="display:flex;"><span>               <span style="color:#a6e22e">rotatable=</span><span style="color:#e6db74">&#34;false&#34;</span> <span style="color:#a6e22e">directory=</span><span style="color:#e6db74">&#34;${log.base}&#34;</span> <span style="color:#a6e22e">prefix=</span><span style="color:#e6db74">&#34;${instance.id}-tomcat_access&#34;</span> <span style="color:#a6e22e">suffix=</span><span style="color:#e6db74">&#34;.log&#34;</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#a6e22e">pattern=</span><span style="color:#e6db74">&#34;%{X-Forwarded-For}i %h %l %u %t &amp;quot;%r&amp;quot; %s %b&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;Valve</span> <span style="color:#a6e22e">className=</span><span style="color:#e6db74">&#34;org.apache.catalina.valves.HealthCheckValve&#34;</span> <span style="color:#a6e22e">path=</span><span style="color:#e6db74">&#34;/health&#34;</span> <span style="color:#a6e22e">checkContainersAvailable=</span><span style="color:#e6db74">&#34;true&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;/Host&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/Engine&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/Service&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/Server&gt;</span>
+</span></span></code></pre></div><h4 id="2-confcontextxml">2) conf/context.xml</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;Context&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;WatchedResource&gt;</span>WEB-INF/web.xml<span style="color:#f92672">&lt;/WatchedResource&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;WatchedResource&gt;</span>${catalina.base}/conf/web.xml<span style="color:#f92672">&lt;/WatchedResource&gt;</span>
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;ResourceLink</span> <span style="color:#a6e22e">global=</span><span style="color:#e6db74">&#34;oracle/smplDS&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;oracle/smplDS&#34;</span> <span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;javax.sql.DataSource&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/Context&gt;</span>
+</span></span></code></pre></div><h4 id="3-confcatalinalocalhostrootxml">3) conf/Catalina/localhost/ROOT.xml</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;Context</span> <span style="color:#a6e22e">path=</span><span style="color:#e6db74">&#34;&#34;</span> <span style="color:#a6e22e">docBase=</span><span style="color:#e6db74">&#34;/sorc/smpl/war&#34;</span> <span style="color:#a6e22e">reloadable=</span><span style="color:#e6db74">&#34;false&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/Context&gt;</span>
+</span></span></code></pre></div><h3 id="5-기타">5. 기타</h3>
+<h4 id="1-alias">1) alias</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>alias cdwas<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;cd /engn/servers/smpl&#39;</span>
+</span></span><span style="display:flex;"><span>alias cdapp<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;cd /sorc/smpl&#39;</span>
+</span></span><span style="display:flex;"><span>alias cdlog<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;cd /logs/smpl&#39;</span>
+</span></span><span style="display:flex;"><span>alias tailwas<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;tail -f /logs/smpl/smpl-tomcat_console.log&#39;</span>
+</span></span><span style="display:flex;"><span>alias viwas<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;vi /logs/smpl/smpl-tomcat_console.log&#39;</span>
+</span></span><span style="display:flex;"><span>alias tailacc<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;tail -f /logs/smpl/smpl-tomcat_access.log&#39;</span>
+</span></span><span style="display:flex;"><span>alias curlwas<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;curl -X GET http://localhost:8010/&#39;</span>
+</span></span><span style="display:flex;"><span>alias pswas<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;ps -ef | grep java | grep &#34;instance.id=smpl &#34;&#39;</span>
+</span></span></code></pre></div><h4 id="2-config-listsh">2) config-list.sh</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>INSTANCE_BASE<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;/engn/servers&#39;</span>
+</span></span><span style="display:flex;"><span>LIST<span style="color:#f92672">=(</span><span style="color:#66d9ef">$(</span>ls /engn/servers<span style="color:#66d9ef">)</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>printf <span style="color:#e6db74">&#34;\e[0;32m[tomcat] basic \e[0m&#34;</span>
+</span></span><span style="display:flex;"><span>printf <span style="color:#e6db74">$&#39;\n&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  printf <span style="color:#e6db74">&#34;%10s %5s %5s %15s %5s %15s %5s %34s&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>         <span style="color:#e6db74">&#34;inst&#34;</span> <span style="color:#e6db74">&#34;shut&#34;</span> <span style="color:#e6db74">&#34;http&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>         <span style="color:#e6db74">&#34;cIp&#34;</span> <span style="color:#e6db74">&#34;cPort&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>         <span style="color:#e6db74">&#34;mIp&#34;</span> <span style="color:#e6db74">&#34;mPort&#34;</span> <span style="color:#e6db74">&#34;mId&#34;</span>
+</span></span><span style="display:flex;"><span>  printf <span style="color:#e6db74">$&#39;\n&#39;</span>
+</span></span><span style="display:flex;"><span>  echo -e <span style="color:#e6db74">&#39;&#39;</span>$_<span style="color:#f92672">{</span>1..102<span style="color:#f92672">}</span><span style="color:#e6db74">&#39;\b-&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> item in <span style="color:#e6db74">${</span>LIST[*]<span style="color:#e6db74">}</span>; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>    configXml<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>INSTANCE_BASE<span style="color:#e6db74">}</span>/<span style="color:#e6db74">${</span>item<span style="color:#e6db74">}</span>/conf/server.xml
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> ! -r <span style="color:#e6db74">${</span>configXml<span style="color:#e6db74">}</span> <span style="color:#f92672">]]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    instanceId<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>echo <span style="color:#e6db74">${</span>configXml<span style="color:#e6db74">}</span> | sed -n <span style="color:#e6db74">&#39;s|&#39;</span><span style="color:#e6db74">${</span>INSTANCE_BASE<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;/\(.*\)/conf/server.xml|\1|p&#39;</span><span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>    shutdownPort<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>xmllint <span style="color:#e6db74">${</span>configXml<span style="color:#e6db74">}</span> --xpath <span style="color:#e6db74">&#39;string(/Server/@port)&#39;</span><span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>    httpPort<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>xmllint <span style="color:#e6db74">${</span>configXml<span style="color:#e6db74">}</span> --xpath <span style="color:#e6db74">&#39;string(//Connector/@port)&#39;</span><span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>    clusterListenIp<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>xmllint <span style="color:#e6db74">${</span>configXml<span style="color:#e6db74">}</span> --xpath <span style="color:#e6db74">&#39;string(Server/Service/Engine/Cluster/Channel/Receiver/@address)&#39;</span><span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>    clusterListenPort<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>xmllint <span style="color:#e6db74">${</span>configXml<span style="color:#e6db74">}</span> --xpath <span style="color:#e6db74">&#39;string(Server/Service/Engine/Cluster/Channel/Receiver/@port)&#39;</span><span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>    clusterMemberHost<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>xmllint <span style="color:#e6db74">${</span>configXml<span style="color:#e6db74">}</span> --xpath <span style="color:#e6db74">&#39;string(Server/Service/Engine/Cluster/Channel/Interceptor/Member/@host)&#39;</span><span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>    clusterMemberPort<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>xmllint <span style="color:#e6db74">${</span>configXml<span style="color:#e6db74">}</span> --xpath <span style="color:#e6db74">&#39;string(Server/Service/Engine/Cluster/Channel/Interceptor/Member/@port)&#39;</span><span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>    clusterMemberId<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>xmllint <span style="color:#e6db74">${</span>configXml<span style="color:#e6db74">}</span> --xpath <span style="color:#e6db74">&#39;string(Server/Service/Engine/Cluster/Channel/Interceptor/Member/@uniqueId)&#39;</span><span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    printf <span style="color:#e6db74">&#34;%10s %5s %5s %15s %5s %15s %5s %34s&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>      <span style="color:#e6db74">${</span>instanceId<span style="color:#e6db74">}</span> <span style="color:#e6db74">${</span>shutdownPort<span style="color:#e6db74">}</span> <span style="color:#e6db74">${</span>httpPort<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>      <span style="color:#e6db74">${</span>clusterListenIp<span style="color:#e6db74">}</span> <span style="color:#e6db74">${</span>clusterListenPort<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>      <span style="color:#e6db74">${</span>clusterMemberHost<span style="color:#e6db74">}</span> <span style="color:#e6db74">${</span>clusterMemberPort<span style="color:#e6db74">}</span> <span style="color:#e6db74">${</span>clusterMemberId<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>    printf <span style="color:#e6db74">$&#39;\n&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">done</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>printf <span style="color:#e6db74">$&#39;\n&#39;</span>
+</span></span><span style="display:flex;"><span>printf <span style="color:#e6db74">&#34;\e[0;32m[tomcat] jndi \e[0m&#34;</span>
+</span></span><span style="display:flex;"><span>printf <span style="color:#e6db74">$&#39;\n&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  printf <span style="color:#e6db74">&#34;%10s %15s %12s %s&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>         <span style="color:#e6db74">&#34;inst&#34;</span> <span style="color:#e6db74">&#34;jndi&#34;</span> <span style="color:#e6db74">&#34;username&#34;</span> <span style="color:#e6db74">&#34;url&#34;</span>
+</span></span><span style="display:flex;"><span>  printf <span style="color:#e6db74">$&#39;\n&#39;</span>
+</span></span><span style="display:flex;"><span>  echo -e <span style="color:#e6db74">&#39;&#39;</span>$_<span style="color:#f92672">{</span>1..102<span style="color:#f92672">}</span><span style="color:#e6db74">&#39;\b-&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> item in <span style="color:#e6db74">${</span>LIST[*]<span style="color:#e6db74">}</span>; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>    configXml<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>INSTANCE_BASE<span style="color:#e6db74">}</span>/<span style="color:#e6db74">${</span>item<span style="color:#e6db74">}</span>/conf/server.xml
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> ! -r <span style="color:#e6db74">${</span>configXml<span style="color:#e6db74">}</span> <span style="color:#f92672">]]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    cnt<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>xmllint <span style="color:#e6db74">${</span>configXml<span style="color:#e6db74">}</span> --xpath <span style="color:#e6db74">&#39;count(Server/GlobalNamingResources/Resource[@name!=&#34;UserDatabase&#34;])&#39;</span><span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>    instanceId<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>echo <span style="color:#e6db74">${</span>configXml<span style="color:#e6db74">}</span> | sed -n <span style="color:#e6db74">&#39;s|&#39;</span><span style="color:#e6db74">${</span>INSTANCE_BASE<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;/\(.*\)/conf/server.xml|\1|p&#39;</span><span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> <span style="color:#f92672">((</span> idx<span style="color:#f92672">=</span>1; idx &lt;<span style="color:#f92672">=</span> $cnt; idx++ <span style="color:#f92672">))</span>; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>      jndi<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span> xmllint <span style="color:#e6db74">${</span>configXml<span style="color:#e6db74">}</span> --xpath <span style="color:#e6db74">&#39;string(Server/GlobalNamingResources/Resource[@name!=&#34;UserDatabase&#34;][&#39;</span><span style="color:#e6db74">${</span>idx<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;]/@name)&#39;</span> <span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>      username<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span> xmllint <span style="color:#e6db74">${</span>configXml<span style="color:#e6db74">}</span> --xpath <span style="color:#e6db74">&#39;string(Server/GlobalNamingResources/Resource[@name!=&#34;UserDatabase&#34;][&#39;</span><span style="color:#e6db74">${</span>idx<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;]/@username)&#39;</span> <span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>      url<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span> xmllint <span style="color:#e6db74">${</span>configXml<span style="color:#e6db74">}</span> --xpath <span style="color:#e6db74">&#39;string(Server/GlobalNamingResources/Resource[@name!=&#34;UserDatabase&#34;][&#39;</span><span style="color:#e6db74">${</span>idx<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;]/@url)&#39;</span> <span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>      printf <span style="color:#e6db74">&#34;%10s %15s %12s %s&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>        <span style="color:#e6db74">${</span>instanceId<span style="color:#e6db74">}</span> <span style="color:#e6db74">${</span>jndi<span style="color:#e6db74">}</span> <span style="color:#e6db74">${</span>username<span style="color:#e6db74">}</span> <span style="color:#e6db74">${</span>url<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>      printf <span style="color:#e6db74">$&#39;\n&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">done</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">done</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>tomcat<span style="color:#f92672">]</span> basic 
+</span></span><span style="display:flex;"><span>      inst  shut  http             cIp cPort             mIp mPort                                mId
+</span></span><span style="display:flex;"><span>------------------------------------------------------------------------------------------------------
+</span></span><span style="display:flex;"><span>      smpl  <span style="color:#ae81ff">8015</span>  <span style="color:#ae81ff">8010</span>       127.0.0.1  <span style="color:#ae81ff">4010</span>       127.0.0.1  <span style="color:#ae81ff">4011</span>  <span style="color:#f92672">{</span>0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    smpl_2  <span style="color:#ae81ff">8016</span>  <span style="color:#ae81ff">8011</span>       127.0.0.1  <span style="color:#ae81ff">4011</span>       127.0.0.1  <span style="color:#ae81ff">4010</span>  <span style="color:#f92672">{</span>0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>tomcat<span style="color:#f92672">]</span> jndi 
+</span></span><span style="display:flex;"><span>      inst            jndi     username url
+</span></span><span style="display:flex;"><span>------------------------------------------------------------------------------------------------------
+</span></span><span style="display:flex;"><span>      smpl   oracle/smplDS       SYSTEM jdbc:oracle:thin:@172.28.200.31:1521:ORCLCDB
+</span></span><span style="display:flex;"><span>    smpl_2   oracle/smplDS       SYSTEM jdbc:oracle:thin:@172.28.200.31:1521:ORCLCDB
 </span></span></code></pre></div>
         </div>
       </article>
@@ -430,7 +766,7 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#-apache">Ⅰ. apache</a>
+        <li><a href="#-apache"><code>Ⅰ. apache</code></a>
           <ul>
             <li><a href="#1-다운로드">1. 다운로드</a></li>
             <li><a href="#2-설치">2. 설치</a>
@@ -445,21 +781,42 @@
                 <li><a href="#2-성능-및-옵션">2) 성능 및 옵션</a></li>
                 <li><a href="#3-가상호스트-및-proxy-설정">3) 가상호스트 및 proxy 설정</a></li>
                 <li><a href="#4-ssl-인증서-적용">4) SSL 인증서 적용</a></li>
+                <li><a href="#5-systemd-등록">5) systemd 등록</a></li>
                 <li><a href="#5-weblogic-connector">5) weblogic-connector</a></li>
                 <li><a href="#6-selinux">6) selinux</a></li>
               </ul>
             </li>
           </ul>
         </li>
-        <li><a href="#-인증서">Ⅱ. 인증서</a>
+        <li><a href="#-인증서"><code>Ⅱ. 인증서</code></a>
           <ul>
             <li><a href="#1-openssl-인증서-생성">1. openssl 인증서 생성</a></li>
             <li><a href="#2-keytool-인증서-생성">2. keytool 인증서 생성</a></li>
           </ul>
         </li>
-        <li><a href="#-tomcat">Ⅲ. tomcat</a>
+        <li><a href="#-tomcat"><code>Ⅲ. tomcat</code></a>
           <ul>
             <li><a href="#1-다운로드-1">1. 다운로드</a></li>
+            <li><a href="#2-디렉토리-구조">2. 디렉토리 구조</a></li>
+            <li><a href="#3-스크립트">3. 스크립트</a>
+              <ul>
+                <li><a href="#1-start-smplsh">1) start-smpl.sh</a></li>
+                <li><a href="#2-stop-smplsh">2) stop-smpl.sh</a></li>
+              </ul>
+            </li>
+            <li><a href="#4-설정">4. 설정</a>
+              <ul>
+                <li><a href="#1-confserverxml">1) conf/server.xml</a></li>
+                <li><a href="#2-confcontextxml">2) conf/context.xml</a></li>
+                <li><a href="#3-confcatalinalocalhostrootxml">3) conf/Catalina/localhost/ROOT.xml</a></li>
+              </ul>
+            </li>
+            <li><a href="#5-기타">5. 기타</a>
+              <ul>
+                <li><a href="#1-alias">1) alias</a></li>
+                <li><a href="#2-config-listsh">2) config-list.sh</a></li>
+              </ul>
+            </li>
           </ul>
         </li>
       </ul>
