@@ -30,6 +30,17 @@
       </div>
       
     
+      
+      <div class="dropdown">
+        <button class="dropbtn">&#43; spring</button>
+        <div class="dropdown-content">
+        
+          <a href="/spring/mybatis/">mybatis</a>
+        
+        </div>
+      </div>
+      
+    
     
     
     <a href="#" id="toggleTocButton" style="margin-left: auto;">+</a>
@@ -99,7 +110,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span>LIST<span style="color:#f92672">=(</span><span style="color:#66d9ef">$(</span>cat <span style="color:#e6db74">&lt;&lt;- EOF
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">smpl2:smpl_2
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">smpl
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">)</span><span style="color:#f92672">)</span>
@@ -107,8 +118,10 @@
 </span></span><span style="display:flex;"><span>read -r list <span style="color:#f92672">&lt;&lt;&lt;</span> <span style="color:#e6db74">${</span>LIST[*]<span style="color:#e6db74">}</span>
 </span></span><span style="display:flex;"><span>idx<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> item in <span style="color:#e6db74">${</span>list[*]<span style="color:#e6db74">}</span>; <span style="color:#66d9ef">do</span>
-</span></span><span style="display:flex;"><span>  userid<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>item%:*<span style="color:#e6db74">}</span>
-</span></span><span style="display:flex;"><span>  instance<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>item##*:<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">#userid=${item%:*}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">#instance=${item##*:}</span>
+</span></span><span style="display:flex;"><span>  userid<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>item<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>  instance<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>item<span style="color:#e6db74">}</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> ! -e <span style="color:#e6db74">&#34;/home/</span><span style="color:#e6db74">${</span>userid<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">continue</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">fi</span>

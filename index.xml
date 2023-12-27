@@ -21,5 +21,12 @@
       <guid>https://lislroow.github.io/archive/others/</guid>
       <description>(erwin) database connection 우선 display 를 물리 모델로 변경합니다.&#xA;상단 메뉴 Database &amp;gt; Database Connection 선택하면 아래 팝업 창이 열립니다.&#xA;Connection String: 의 값은 tnsnames.ora 에 등록된 항목으로 입력합니다.&#xA;(dnf-makecache) 오류 dnf-makecache는 centos의 자동업데이트 기능입니다.&#xA;오류: repo &#39;appstream&#39;: Cannot prepare internal mirrorlist: No URLs in mirrorlist 를 위해 메타데이타 내려받기에 실패하였습니다&#xA;disable 명령어는 다음과 같습니다.&#xA;$ gsettings set org.gnome.software download-updates false $ systemctl disable dnf-makecache.service $ systemctl disable dnf-makecache.timer 정상 작동하도록 하기 위해 yum 저장소 설정 파일을 수정합니다.</description>
     </item>
+    <item>
+      <title></title>
+      <link>https://lislroow.github.io/spring/mybatis/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lislroow.github.io/spring/mybatis/</guid>
+      <description>* eclipse DTD mybatis-config.xml 의 DTD 가 eclipse Language Server &amp;gt; LemMinX 에 의해 다운로드가 되지 않을 경우 다음의 선택지를 참고합니다.&#xA;&amp;lt;!DOCTYPE Config PUBLIC &amp;#34;-//mybatis.org//DTD Config 3.0//EN&amp;#34; &amp;#34;http://mybatis.org/dtd/mybatis-3-config.dtd&amp;#34;&amp;gt; &amp;lt;!-- DTD 를 정의하지 않고 사용함 (Document Type Definition 이 없으면 유효성 검증은 할 수 없음) --&amp;gt; &amp;lt;!DOCTYPE configuration&amp;gt; &amp;lt;configuration&amp;gt; &amp;lt;settings&amp;gt; ... &amp;lt;/settings&amp;gt; &amp;lt;/configuration&amp;gt; &amp;lt;!-- mapper 또한 같음 --&amp;gt; &amp;lt;!DOCTYPE mapper&amp;gt; &amp;lt;mapper&amp;gt; &amp;lt;/mapper&amp;gt; * 기본 코드 package spring.framework.mybatis.config; import javax.sql.DataSource; import org.mybatis.spring.SqlSessionFactoryBean; import org.</description>
+    </item>
   </channel>
 </rss>

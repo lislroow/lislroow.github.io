@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MEMO</title>
+  <meta name="author" content="lislroow@daum.net">
+  <meta name="description" content="KIM MYEONGGU&#39;s MEMO site">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/highlight/prism.css">
+  <script src="/highlight/prism.js"></script>
+</head>
+<body>
+  <header>
+  <div class="navbar">
+    <a href="https://lislroow.github.io/">MEMO</a>
+    
+    
+      
+      <div class="dropdown">
+        <button class="dropbtn">&#43; archive</button>
+        <div class="dropdown-content">
+        
+          <a href="/archive/apache/">apache</a>
+        
+          <a href="/archive/others/">others</a>
+        
+        </div>
+      </div>
+      
+    
+      
+      <div class="dropdown">
+        <button class="dropbtn">&#43; spring</button>
+        <div class="dropdown-content">
+        
+          <a href="/spring/mybatis/">mybatis</a>
+        
+        </div>
+      </div>
+      
+    
+    
+    
+    <a href="#" id="toggleTocButton" style="margin-left: auto;">+</a>
+    <script>
+    document.getElementById('toggleTocButton').addEventListener('click', function() {
+      document.querySelector('.aside').classList.toggle('hidden');
+    });
+    </script>
+  </div>
+</header>
+
+  
+<main class="container">
+  <div class="main-content">
+    <div class="content">
+      <article>
+        <h1></h1>
+        <div>
+          <h4 id="-eclipse-dtd">* <code>eclipse DTD</code></h4>
+<p>mybatis-config.xml 의 DTD 가 eclipse <code>Language Server &gt; LemMinX</code> 에 의해 다운로드가 되지 않을 경우 다음의 선택지를 참고합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE Config PUBLIC &#34;-//mybatis.org//DTD Config 3.0//EN&#34; 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  &#34;http://mybatis.org/dtd/mybatis-3-config.dtd&#34;&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- DTD 를 정의하지 않고 사용함 (Document Type Definition 이 없으면 유효성 검증은 할 수 없음) --&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE configuration&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;configuration&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;settings&gt;</span>
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/settings&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/configuration&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- mapper 또한 같음 --&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE mapper&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;mapper&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/mapper&gt;</span>
+</span></span></code></pre></div><h4 id="-기본-코드">* 기본 코드</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> spring.framework.mybatis.config;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> javax.sql.DataSource;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.mybatis.spring.SqlSessionFactoryBean;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.mybatis.spring.annotation.MapperScan;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.beans.factory.annotation.Autowired;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.boot.context.properties.EnableConfigurationProperties;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.context.annotation.Bean;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.context.annotation.Conditional;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.context.annotation.Configuration;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.core.io.Resource;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> com.zaxxer.hikari.HikariConfig;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> com.zaxxer.hikari.HikariDataSource;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> lombok.extern.slf4j.Slf4j;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Slf4j</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Configuration</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Conditional</span>(MybatisProperties.<span style="color:#a6e22e">class</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@EnableConfigurationProperties</span>({MybatisProperties.<span style="color:#a6e22e">class</span>, DataSourceProperties.<span style="color:#a6e22e">class</span>})
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@MapperScan</span>(basePackages <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;spring&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MybatisConfig</span> {
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">@Autowired</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> MybatisProperties properties;
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">@Autowired</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> DataSourceProperties dataSourceProperties;
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">@Bean</span>
+</span></span><span style="display:flex;"><span>  DataSource <span style="color:#a6e22e">dataSource</span>() {
+</span></span><span style="display:flex;"><span>    HikariConfig hikariConfig <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HikariConfig();
+</span></span><span style="display:flex;"><span>    hikariConfig.<span style="color:#a6e22e">setDriverClassName</span>(dataSourceProperties.<span style="color:#a6e22e">getDriverClassName</span>());
+</span></span><span style="display:flex;"><span>    hikariConfig.<span style="color:#a6e22e">setJdbcUrl</span>(dataSourceProperties.<span style="color:#a6e22e">getJdbcUrl</span>());
+</span></span><span style="display:flex;"><span>    hikariConfig.<span style="color:#a6e22e">setUsername</span>(dataSourceProperties.<span style="color:#a6e22e">getUsername</span>());
+</span></span><span style="display:flex;"><span>    hikariConfig.<span style="color:#a6e22e">setPassword</span>(dataSourceProperties.<span style="color:#a6e22e">getPassword</span>());
+</span></span><span style="display:flex;"><span>    hikariConfig.<span style="color:#a6e22e">setMaximumPoolSize</span>(dataSourceProperties.<span style="color:#a6e22e">getMaximumPoolSize</span>());
+</span></span><span style="display:flex;"><span>    hikariConfig.<span style="color:#a6e22e">setMinimumIdle</span>(dataSourceProperties.<span style="color:#a6e22e">getMinimumIdle</span>());
+</span></span><span style="display:flex;"><span>    hikariConfig.<span style="color:#a6e22e">setConnectionTestQuery</span>(dataSourceProperties.<span style="color:#a6e22e">getConnectionTestQuery</span>());
+</span></span><span style="display:flex;"><span>    hikariConfig.<span style="color:#a6e22e">setConnectionTimeout</span>(dataSourceProperties.<span style="color:#a6e22e">getConnectionTimeout</span>());
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> HikariDataSource(hikariConfig);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">@Bean</span>
+</span></span><span style="display:flex;"><span>  SqlSessionFactoryBean <span style="color:#a6e22e">sqlSessionFactoryBean</span>(DataSource dataSource) <span style="color:#66d9ef">throws</span> Exception {
+</span></span><span style="display:flex;"><span>    String configFile <span style="color:#f92672">=</span> properties.<span style="color:#a6e22e">getConfigFile</span>();
+</span></span><span style="display:flex;"><span>    String mapperLocation <span style="color:#f92672">=</span> properties.<span style="color:#a6e22e">getMapperLocation</span>();
+</span></span><span style="display:flex;"><span>    SqlSessionFactoryBean sqlSessionFactoryBean <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SqlSessionFactoryBean();
+</span></span><span style="display:flex;"><span>    sqlSessionFactoryBean.<span style="color:#a6e22e">setDataSource</span>(dataSource);
+</span></span><span style="display:flex;"><span>    sqlSessionFactoryBean.<span style="color:#a6e22e">setConfigLocation</span>(
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">new</span> PathMatchingResourcePatternResolver().<span style="color:#a6e22e">getResource</span>(configFile));
+</span></span><span style="display:flex;"><span>    sqlSessionFactoryBean.<span style="color:#a6e22e">setMapperLocations</span>(
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">new</span> PathMatchingResourcePatternResolver().<span style="color:#a6e22e">getResources</span>(mapperLocation));
+</span></span><span style="display:flex;"><span>    sqlSessionFactoryBean.<span style="color:#a6e22e">setTypeAliasesPackage</span>(<span style="color:#e6db74">&#34;spring&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> sqlSessionFactoryBean;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ---</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.boot.context.properties.ConfigurationProperties;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.context.annotation.Condition;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.context.annotation.ConditionContext;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.core.type.AnnotatedTypeMetadata;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> lombok.extern.slf4j.Slf4j;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Slf4j</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@ConfigurationProperties</span>(prefix <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;framework.mybatis&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MybatisProperties</span> <span style="color:#66d9ef">implements</span> Condition {
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> String ENABLED <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;framework.mybatis.enabled&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">boolean</span> enabled;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> String mapperLocation;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> String configFile;
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">@Override</span> 
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">matches</span>(ConditionContext context, AnnotatedTypeMetadata metadata) {
+</span></span><span style="display:flex;"><span>    String enabled <span style="color:#f92672">=</span> context.<span style="color:#a6e22e">getEnvironment</span>().<span style="color:#a6e22e">getProperty</span>(ENABLED);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;true&#34;</span>.<span style="color:#a6e22e">equals</span>(enabled);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isEnabled</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> enabled;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setEnabled</span>(<span style="color:#66d9ef">boolean</span> enabled) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">enabled</span> <span style="color:#f92672">=</span> enabled;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  ...
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ---</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.boot.context.properties.ConfigurationProperties;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Slf4j</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@ConfigurationProperties</span>(prefix <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;framework.mybatis.data-source&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DataSourceProperties</span> {
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> String driverClassName;
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  ...
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ---</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">package</span> spring.smpl.basic;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.Date;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.apache.ibatis.annotations.Mapper;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Mapper</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">BasicMapper</span> {
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> Date <span style="color:#a6e22e">selectNow</span>();
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+        </div>
+      </article>
+    </div>
+  </div>
+  <aside class="aside">
+
+
+
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li>
+              <ul>
+                <li><a href="#-eclipse-dtd">* <code>eclipse DTD</code></a></li>
+                <li><a href="#-기본-코드">* 기본 코드</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+</aside>
+
+</main>
+
+  <footer class="footer">
+Designed by MK
+</footer>
+</body>
+</html>
