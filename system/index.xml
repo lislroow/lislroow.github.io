@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Systems on MEMO</title>
+    <link>https://lislroow.github.io/system/</link>
+    <description>Recent content in Systems on MEMO</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko-kr</language>
+    <atom:link href="https://lislroow.github.io/system/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>https://lislroow.github.io/system/ubuntu22-docker/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lislroow.github.io/system/ubuntu22-docker/</guid>
+      <description>2. misc 3) scripts cnameList=($(docker ps --format &amp;#34;{{.Names}}&amp;#34;)) midx=1 mtot=${#cnameList[*]} for cname in ${cnameList[*]}; do cpid=($(docker inspect --format &amp;#39;{{.State.Pid}}&amp;#39; ${cname})) cport=$(netstat -ntpl | grep ${cpid} | awk &amp;#39;{ gsub(&amp;#34;:::&amp;#34;, &amp;#34;&amp;#34;, $4); print $4 }&amp;#39;) if [[ -z &amp;#34;${cport}&amp;#34; ]]; then cport=$(docker inspect --format &amp;#39;{{.HostConfig.PortBindings}}&amp;#39; ${cname}) fi ccmd=$(docker inspect --format &amp;#39;{{.Config.Cmd}}&amp;#39; ${cname}) if [[ -n &amp;#34;${cport}&amp;#34; ]] || [[ &amp;#34;${ccmd}&amp;#34; != &amp;#34;null&amp;#34; ]]; then echo &amp;#34;# [${midx}/${mtot}] ${cname}&amp;#34; echo &amp;#34; - pid: ${cpid}&amp;#34; echo &amp;#34; - listen port: ${cport}&amp;#34; echo &amp;#34; - command: ${ccmd}&amp;#34; fi let &amp;#34;midx = midx + 1&amp;#34; done 2) docker build Dockerfile 설정 cat &amp;lt;&amp;lt; EOF &amp;gt; images/java-app/Dockerfile FROM localhost:5000/amazoncorretto:8-alpine-jdk-with-curl WORKDIR /service COPY .</description>
+    </item>
+  </channel>
+</rss>

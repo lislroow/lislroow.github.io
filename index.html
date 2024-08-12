@@ -32,10 +32,10 @@
     
       
       <div class="dropdown">
-        <button class="dropbtn">&#43; spring</button>
+        <button class="dropbtn">&#43; docker</button>
         <div class="dropdown-content">
         
-          <a href="/spring/mybatis/">mybatis</a>
+          <a href="/system/ubuntu22-docker/">ubuntu22-docker</a>
         
         </div>
       </div>
@@ -59,7 +59,13 @@
       <article>
         <h1></h1>
         <div>
-          <h3 id="-systemctl">* <code>systemctl</code></h3>
+          <h3 id="-curl">* <code>curl</code></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ curl -X <span style="color:#e6db74">&#39;POST&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  http://localhost:8080/v2/file/upload <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#39;Content-Type: multipart-form-data&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -F <span style="color:#e6db74">&#39;file1=@photo.jpg&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -F <span style="color:#e6db74">&#39;name1=홍길동&#39;</span>
+</span></span></code></pre></div><h3 id="-systemctl">* <code>systemctl</code></h3>
 <h4 id="1-unit">1) [Unit]</h4>
 <ul>
 <li><code>Before=</code>, <code>After=</code> unit 시작의 전후 관계에 대한 옵션이며, Requires= 옵션과는 독립적입니다. Before= 에 나열된 unit 이 시작되기 전에 해당 unit 이 실행됩니다.</li>
@@ -380,7 +386,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># -samefile 혹은 -name 해도됨</span>
 </span></span><span style="display:flex;"><span>$ find . -maxdepth <span style="color:#ae81ff">1</span> -type f ! -newer a.txt -name <span style="color:#e6db74">&#39;*.txt&#39;</span> ! -samefile a.txt
 </span></span><span style="display:flex;"><span>./old.txt
-</span></span></code></pre></div><h3 id="-curl">* <code>curl</code></h3>
+</span></span></code></pre></div><h3 id="-curl-1">* <code>curl</code></h3>
 <h4 id="--curl--w-http_code">- curl -w &lsquo;%{http_code}&rsquo;</h4>
 <ul>
 <li><code>-w</code>, &ndash;write-out <format> Use output FORMAT after completion</li>
@@ -890,6 +896,7 @@
       <ul>
         <li>
           <ul>
+            <li><a href="#-curl">* <code>curl</code></a></li>
             <li><a href="#-systemctl">* <code>systemctl</code></a>
               <ul>
                 <li><a href="#1-unit">1) [Unit]</a></li>
@@ -959,7 +966,7 @@
                 <li><a href="#--find--newer--samefile">- find -newer -samefile</a></li>
               </ul>
             </li>
-            <li><a href="#-curl">* <code>curl</code></a>
+            <li><a href="#-curl-1">* <code>curl</code></a>
               <ul>
                 <li><a href="#--curl--w-http_code">- curl -w &lsquo;%{http_code}&rsquo;</a></li>
               </ul>

@@ -12,7 +12,7 @@
       <link>https://lislroow.github.io/archive/apache/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://lislroow.github.io/archive/apache/</guid>
-      <description>Ⅰ. apache 버전: apache 2.4.x 1. 다운로드 다운로드 후 tar zxvf *.tar.gz 로 압축 해제 합니다.&#xA;$ wget https://dlcdn.apache.org/httpd/httpd-2.4.58.tar.gz $ wget https://dlcdn.apache.org/apr/apr-1.7.4.tar.gz $ wget https://dlcdn.apache.org/apr/apr-util-1.6.3.tar.gz $ wget https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.42/pcre2-10.42.tar.gz 2. 설치 1) 의존성 설치 $ yum install expat-devel $ cd /opt/apache/apr-1.7.4 &amp;amp;&amp;amp; \ ./configure \ --prefix=/usr/local/src/apr-1.7.4 &amp;amp;&amp;amp; \ make &amp;amp;&amp;amp; \ make install $ cd /opt/apache/apr-util-1.6.3 &amp;amp;&amp;amp; \ ./configure \ --prefix=/usr/local/src/apr-util-1.6.3 \ --with-apr=/usr/local/src/apr-1.7.4 &amp;amp;&amp;amp; \ make &amp;amp;&amp;amp; \ make install $ cd /opt/apache/pcre2-10.</description>
+      <description>Ⅰ. apache 버전: apache 2.4.x 1. 다운로드 다운로드 후 tar zxvf *.tar.gz 로 압축 해제 합니다.&#xA;$ wget https://dlcdn.apache.org/httpd/httpd-2.4.58.tar.gz $ wget https://dlcdn.apache.org/apr/apr-1.7.4.tar.gz $ wget https://dlcdn.apache.org/apr/apr-util-1.6.3.tar.gz $ wget https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.42/pcre2-10.42.tar.gz 2. 설치 1) 의존성 설치 $ yum install gcc gcc-c++ expat expat-devel expat-static $ cd /opt/apache/apr-1.7.4 &amp;amp;&amp;amp; \ ./configure \ --prefix=/usr/local/src/apr-1.7.4 &amp;amp;&amp;amp; \ make &amp;amp;&amp;amp; \ make install $ cd /opt/apache/apr-util-1.6.3 &amp;amp;&amp;amp; \ ./configure \ --prefix=/usr/local/src/apr-util-1.6.3 \ --with-apr=/usr/local/src/apr-1.7.4 &amp;amp;&amp;amp; \ make &amp;amp;&amp;amp; \ make install $ cd /opt/apache/pcre2-10.</description>
     </item>
     <item>
       <title></title>
@@ -23,10 +23,10 @@
     </item>
     <item>
       <title></title>
-      <link>https://lislroow.github.io/spring/mybatis/</link>
+      <link>https://lislroow.github.io/system/ubuntu22-docker/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lislroow.github.io/spring/mybatis/</guid>
-      <description>* eclipse DTD mybatis-config.xml 의 DTD 가 eclipse Language Server &amp;gt; LemMinX 에 의해 다운로드가 되지 않을 경우 다음의 선택지를 참고합니다.&#xA;&amp;lt;!DOCTYPE Config PUBLIC &amp;#34;-//mybatis.org//DTD Config 3.0//EN&amp;#34; &amp;#34;http://mybatis.org/dtd/mybatis-3-config.dtd&amp;#34;&amp;gt; &amp;lt;!-- DTD 를 정의하지 않고 사용함 (Document Type Definition 이 없으면 유효성 검증은 할 수 없음) --&amp;gt; &amp;lt;!DOCTYPE configuration&amp;gt; &amp;lt;configuration&amp;gt; &amp;lt;settings&amp;gt; ... &amp;lt;/settings&amp;gt; &amp;lt;/configuration&amp;gt; &amp;lt;!-- mapper 또한 같음 --&amp;gt; &amp;lt;!DOCTYPE mapper&amp;gt; &amp;lt;mapper&amp;gt; &amp;lt;/mapper&amp;gt; * 기본 코드 package spring.framework.mybatis.config; import javax.sql.DataSource; import org.mybatis.spring.SqlSessionFactoryBean; import org.</description>
+      <guid>https://lislroow.github.io/system/ubuntu22-docker/</guid>
+      <description>2. misc 3) scripts cnameList=($(docker ps --format &amp;#34;{{.Names}}&amp;#34;)) midx=1 mtot=${#cnameList[*]} for cname in ${cnameList[*]}; do cpid=($(docker inspect --format &amp;#39;{{.State.Pid}}&amp;#39; ${cname})) cport=$(netstat -ntpl | grep ${cpid} | awk &amp;#39;{ gsub(&amp;#34;:::&amp;#34;, &amp;#34;&amp;#34;, $4); print $4 }&amp;#39;) if [[ -z &amp;#34;${cport}&amp;#34; ]]; then cport=$(docker inspect --format &amp;#39;{{.HostConfig.PortBindings}}&amp;#39; ${cname}) fi ccmd=$(docker inspect --format &amp;#39;{{.Config.Cmd}}&amp;#39; ${cname}) if [[ -n &amp;#34;${cport}&amp;#34; ]] || [[ &amp;#34;${ccmd}&amp;#34; != &amp;#34;null&amp;#34; ]]; then echo &amp;#34;# [${midx}/${mtot}] ${cname}&amp;#34; echo &amp;#34; - pid: ${cpid}&amp;#34; echo &amp;#34; - listen port: ${cport}&amp;#34; echo &amp;#34; - command: ${ccmd}&amp;#34; fi let &amp;#34;midx = midx + 1&amp;#34; done 2) docker build Dockerfile 설정 cat &amp;lt;&amp;lt; EOF &amp;gt; images/java-app/Dockerfile FROM localhost:5000/amazoncorretto:8-alpine-jdk-with-curl WORKDIR /service COPY .</description>
     </item>
   </channel>
 </rss>
