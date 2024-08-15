@@ -16,6 +16,13 @@
     </item>
     <item>
       <title></title>
+      <link>https://lislroow.github.io/archive/nginx/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lislroow.github.io/archive/nginx/</guid>
+      <description>Ⅰ. nginx 버전: nginx/1.18.0 (Ubuntu) 1. 다운로드 TBD&#xA;2. 설치 1) 의존성 설치 TBD&#xA;2) 설치 $ apt-get install nginx 3. 설정 1) 기본 설정 파일: /etc/nginx/nginx.conf user www-data; worker_processes auto; pid /run/nginx.pid; include /etc/nginx/modules-enabled/*.conf; events { worker_connections 768; } http { sendfile on; tcp_nopush on; types_hash_max_size 2048; include /etc/nginx/mime.types; default_type application/octet-stream; ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3; # Dropping SSLv3, ref: POODLE ssl_prefer_server_ciphers on; access_log /var/log/nginx/access.log; error_log /var/log/nginx/error.log; gzip on; include /etc/nginx/conf.</description>
+    </item>
+    <item>
+      <title></title>
       <link>https://lislroow.github.io/archive/others/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://lislroow.github.io/archive/others/</guid>
