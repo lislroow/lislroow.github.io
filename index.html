@@ -295,7 +295,17 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># BASE_DIR: script 파일의 디렉토리 경로</span>
-</span></span><span style="display:flex;"><span>BASE_DIR<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span> cd <span style="color:#66d9ef">$(</span> dirname $0 <span style="color:#66d9ef">)</span> <span style="color:#f92672">&amp;&amp;</span> pwd -P <span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#BASE_DIR=$( cd $( dirname $0 ) &amp;&amp; pwd -P ) # word splitting 문제를 방지하기 위해 변수나 명령어 확장 부분을 인용부호(&#34;)로 감싸야 함. 공백이 문제를 일으킬 수 있음.</span>
+</span></span><span style="display:flex;"><span>BASEDIR<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span> cd <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span> dirname <span style="color:#e6db74">&#34;</span>$0<span style="color:#e6db74">&#34;</span> <span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&amp;&amp;</span> pwd -P <span style="color:#66d9ef">)</span>
+</span></span></code></pre></div><h4 id="--mapfile">- mapfile</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mapfile -t LIST <span style="color:#e6db74">&lt;&lt;- EOF
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">.project
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">.settings
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span></code></pre></div><h4 id="--rm">- rm</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># ${BASEDIR} 과 ${item} 사이에 공백이 있거나 의도하지 않은 globbing(파일명 확장)이 발생하지 않도록 방지</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># :?를 추가하여 변수가 정의되지 않았을 경우 스크립트를 중단하도록 하고, 에러 메시지를 출력</span>
+</span></span><span style="display:flex;"><span>rm -rf <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>BASEDIR:?<span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">${</span>item:?<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
 </span></span></code></pre></div><h4 id="--파일명-확장자">- 파일명, 확장자</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ FILE_NAME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;a.txt&#34;</span>
 </span></span><span style="display:flex;"><span>
@@ -943,6 +953,8 @@
             <li><a href="#-bash">* <code>bash</code></a>
               <ul>
                 <li><a href="#--base_dir">- BASE_DIR</a></li>
+                <li><a href="#--mapfile">- mapfile</a></li>
+                <li><a href="#--rm">- rm</a></li>
                 <li><a href="#--파일명-확장자">- 파일명, 확장자</a></li>
                 <li><a href="#--case-문">- case 문</a></li>
               </ul>
