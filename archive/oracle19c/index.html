@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MEMO</title>
+  <meta name="author" content="lislroow@daum.net">
+  <meta name="description" content="KIM MYEONGGU&#39;s MEMO site">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/highlight/prism.css">
+  <script src="/highlight/prism.js"></script>
+</head>
+<body>
+  <header>
+  <div class="navbar">
+    <a href="https://lislroow.github.io/">MEMO</a>
+    
+    
+      
+      <div class="dropdown">
+        <button class="dropbtn">&#43; archive</button>
+        <div class="dropdown-content">
+        
+          <a href="/archive/apache/">apache</a>
+        
+          <a href="/archive/nginx/">nginx</a>
+        
+          <a href="/archive/oracle19c/">oracle19c</a>
+        
+          <a href="/archive/others/">others</a>
+        
+        </div>
+      </div>
+      
+    
+      
+      <div class="dropdown">
+        <button class="dropbtn">&#43; docker</button>
+        <div class="dropdown-content">
+        
+          <a href="/system/ubuntu22-docker/">ubuntu22-docker</a>
+        
+        </div>
+      </div>
+      
+    
+    
+    
+    <a href="#" id="toggleTocButton" style="margin-left: auto;">+</a>
+    <script>
+    document.getElementById('toggleTocButton').addEventListener('click', function() {
+      document.querySelector('.aside').classList.toggle('hidden');
+    });
+    </script>
+  </div>
+</header>
+
+  
+<main class="container">
+  <div class="main-content">
+    <div class="content">
+      <article>
+        <h1></h1>
+        <div>
+          <h4 id="3-새로운-pdb-생성-및-계정-생성">3. 새로운 pdb 생성 및 계정 생성</h4>
+<h5 id="31-pdb-생성">3.1 pdb 생성</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># 접속
+</span></span><span style="display:flex;"><span>sqlplus sys as sysdba
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># 데이터베이스 상태 확인
+</span></span><span style="display:flex;"><span>SQL&gt; SELECT STATUS FROM V$INSTANCE;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># 현재 세션을 CDB 로 변경하고, 변경 여부 확인
+</span></span><span style="display:flex;"><span>SQL&gt; ALTER SESSION SET CONTAINER = CDB$ROOT;
+</span></span><span style="display:flex;"><span>SQL&gt; SHOW CON_NAME;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># pdb 생성
+</span></span><span style="display:flex;"><span>SQL&gt; CREATE PLUGGABLE DATABASE market ADMIN USER pdb_market IDENTIFIED BY 1 FILE_NAME_CONVERT = (&#39;/opt/oracle/oradata/ORCLCDB&#39;, &#39;/opt/oracle/oradata/ORCLCDB/market&#39;);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Pluggable database created.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># 생성된 pdb 확인
+</span></span><span style="display:flex;"><span>SQL&gt; SHOW PDBS;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    CON_ID CON_NAME       OPEN MODE  RESTRICTED
+</span></span><span style="display:flex;"><span>---------- ------------------------------ ---------- ----------
+</span></span><span style="display:flex;"><span>   2 PDB$SEED       READ ONLY  NO
+</span></span><span style="display:flex;"><span>   3 ORCLPDB1       READ WRITE NO
+</span></span><span style="display:flex;"><span>   4 MARKET         READ WRITE NO
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># 생성된 pdb 시작(OPEN)
+</span></span><span style="display:flex;"><span>SQL&gt; ALTER PLUGGABLE DATABASE market OPEN;
+</span></span></code></pre></div><h5 id="32-새로운-pdb-에-user-생성">3.2 새로운 pdb 에 user 생성</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># 현재 세션이 연결된 컨테이너 확인
+</span></span><span style="display:flex;"><span>SQL&gt; SHOW CON_NAME;
+</span></span><span style="display:flex;"><span>CON_NAME
+</span></span><span style="display:flex;"><span>------------------------------
+</span></span><span style="display:flex;"><span>CDB$ROOT
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># 현재 세션을 PDB 로 변경
+</span></span><span style="display:flex;"><span>SQL&gt; ALTER SESSION SET CONTAINER = market;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Session altered.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># PDB 로 세션 변경이 되었는지 확인 
+</span></span><span style="display:flex;"><span>SQL&gt; SHOW CON_NAME;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>CON_NAME
+</span></span><span style="display:flex;"><span>------------------------------
+</span></span><span style="display:flex;"><span>MARKET
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># &#39;ORA-65096: invalid common user or role name&#39; 오류 발생
+</span></span><span style="display:flex;"><span>alter session set &#34;_oracle_script&#34;=true;
+</span></span><span style="display:flex;"><span>CREATE USER mkuser IDENTIFIED BY 1;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># GRANT RESOURCE TO mkuser (ORA-01924: role &#39;RESOURCE&#39; not granted or does not exist)
+</span></span><span style="display:flex;"><span>SQL&gt; GRANT CREATE SESSION TO mkuser;
+</span></span><span style="display:flex;"><span>SQL&gt; GRANT CREATE TABLE TO mkuser;
+</span></span><span style="display:flex;"><span>SQL&gt; GRANT CREATE VIEW TO mkuser;
+</span></span><span style="display:flex;"><span>SQL&gt; GRANT CREATE PROCEDURE TO mkuser;
+</span></span><span style="display:flex;"><span>SQL&gt; GRANT CREATE SEQUENCE TO mkuser;
+</span></span><span style="display:flex;"><span>SQL&gt; GRANT CREATE TRIGGER TO mkuser;
+</span></span><span style="display:flex;"><span>SQL&gt; GRANT CREATE SYNONYM TO mkuser;
+</span></span><span style="display:flex;"><span>SQL&gt; GRANT CREATE TYPE TO mkuser;
+</span></span><span style="display:flex;"><span>SQL&gt; GRANT UNLIMITED TABLESPACE TO mkuser;
+</span></span></code></pre></div><h4 id="2-oracle19c-환경-정보">2. oracle19c 환경 정보</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gdscript3" data-lang="gdscript3"><span style="display:flex;"><span><span style="color:#75715e"># 설치 경로(디렉토리) 확인</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># cat /etc/oratab</span>
+</span></span><span style="display:flex;"><span>ORCLCDB:<span style="color:#f92672">/</span>opt<span style="color:#f92672">/</span>oracle<span style="color:#f92672">/</span>product<span style="color:#f92672">/</span><span style="color:#ae81ff">19</span>c<span style="color:#f92672">/</span>dbhome_1:Y
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 서비스명 확인</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># systemctl list-units | grep oracle</span>
+</span></span><span style="display:flex;"><span>oracledb_ORCLCDB<span style="color:#f92672">-</span><span style="color:#ae81ff">19</span>c<span style="color:#f92672">.</span>service  loaded active running   SYSV: This script is responsible <span style="color:#66d9ef">for</span> taking care of configuring the Oracle Database <span style="color:#f92672">and</span> its associated services<span style="color:#f92672">.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 서비스 실행 확인</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># systemctl status oracledb_ORCLCDB-19c</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">/</span>etc<span style="color:#f92672">/</span>rc<span style="color:#f92672">.</span>d<span style="color:#f92672">/</span>init<span style="color:#f92672">.</span>d<span style="color:#f92672">/</span>oracledb_ORCLCDB<span style="color:#f92672">-</span><span style="color:#ae81ff">19</span>c
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># lsnrctl status | grep -n Service</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># listener 에 등록된 서비스명 확인 (ORCLCDB)</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">22</span>:Services Summary<span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">23</span>:Service <span style="color:#e6db74">&#34;1db7b95ef20a357be0633cc81cac0df1&#34;</span> has <span style="color:#ae81ff">1</span> instance(s)<span style="color:#f92672">.</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">25</span>:Service <span style="color:#e6db74">&#34;1db9133561fa1204e0633cc81cac10e9&#34;</span> has <span style="color:#ae81ff">1</span> instance(s)<span style="color:#f92672">.</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">27</span>:Service <span style="color:#e6db74">&#34;ORCLCDB&#34;</span> has <span style="color:#ae81ff">2</span> instance(s)<span style="color:#f92672">.</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">30</span>:Service <span style="color:#e6db74">&#34;ORCLCDBXDB&#34;</span> has <span style="color:#ae81ff">1</span> instance(s)<span style="color:#f92672">.</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">34</span>:Service <span style="color:#e6db74">&#34;orclpdb1&#34;</span> has <span style="color:#ae81ff">1</span> instance(s)<span style="color:#f92672">.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ORCLCDB 에 접속</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># sqlplus system/passwd@localhost:1521/ORCLCDB</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 인스턴스 확인 (OPEN 이 되어야 함)</span>
+</span></span><span style="display:flex;"><span>SQL<span style="color:#f92672">&gt;</span> select status from v<span style="color:#f92672">$</span>instance;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>STATUS
+</span></span><span style="display:flex;"><span><span style="color:#f92672">------------</span>
+</span></span><span style="display:flex;"><span>OPEN
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># CDB 여부 확인</span>
+</span></span><span style="display:flex;"><span>SQL<span style="color:#f92672">&gt;</span> select name, cdb from v<span style="color:#f92672">$</span>database;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>NAME    CDB
+</span></span><span style="display:flex;"><span><span style="color:#f92672">---------</span> <span style="color:#f92672">---</span>
+</span></span><span style="display:flex;"><span>ORCLCDB   YES
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>SQL<span style="color:#f92672">&gt;</span> 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># pdb 확인</span>
+</span></span><span style="display:flex;"><span>SQL<span style="color:#f92672">&gt;</span> select con_id, name, open_mode from v<span style="color:#f92672">$</span>pdbs;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  CON_ID NAME                                 OPEN_MODE
+</span></span><span style="display:flex;"><span><span style="color:#f92672">----------</span> <span style="color:#f92672">-------------------------------------------------</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">2</span> PDB<span style="color:#f92672">$</span>SEED                                 READ ONLY
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">3</span> ORCLPDB1                                 READ WRITE
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 클라이언트에서 rocky8-oracle19:1521/orclpdb1 접속</span>
+</span></span><span style="display:flex;"><span>orclpdb1 <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>  (DESCRIPTION <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>    (ADDRESS <span style="color:#f92672">=</span>(PROTOCOL<span style="color:#f92672">=</span>TCP)(HOST<span style="color:#f92672">=</span><span style="color:#ae81ff">172.28</span><span style="color:#f92672">.</span><span style="color:#ae81ff">200.60</span>)(PORT<span style="color:#f92672">=</span><span style="color:#ae81ff">1521</span>)
+</span></span><span style="display:flex;"><span>  )
+</span></span><span style="display:flex;"><span>  (CONNECT_DATA <span style="color:#f92672">=</span>(SERVICE_NAME<span style="color:#f92672">=</span>orclpdb1)
+</span></span><span style="display:flex;"><span>  )
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><h4 id="1-oracle19c-설치">1. oracle19c 설치</h4>
+<p>생략</p>
+
+        </div>
+      </article>
+    </div>
+  </div>
+  <aside class="aside">
+
+
+
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li>
+              <ul>
+                <li><a href="#3-새로운-pdb-생성-및-계정-생성">3. 새로운 pdb 생성 및 계정 생성</a>
+                  <ul>
+                    <li><a href="#31-pdb-생성">3.1 pdb 생성</a></li>
+                    <li><a href="#32-새로운-pdb-에-user-생성">3.2 새로운 pdb 에 user 생성</a></li>
+                  </ul>
+                </li>
+                <li><a href="#2-oracle19c-환경-정보">2. oracle19c 환경 정보</a></li>
+                <li><a href="#1-oracle19c-설치">1. oracle19c 설치</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+</aside>
+
+</main>
+
+  <footer class="footer">
+Designed by MK
+</footer>
+</body>
+</html>
