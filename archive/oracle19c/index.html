@@ -62,7 +62,54 @@
       <article>
         <h1></h1>
         <div>
-          <h4 id="6-expdp-명령pump으로-dump-생성하기">6. expdp 명령(pump)으로 dump 생성하기</h4>
+          <h4 id="7-데이터-이관-작업">7. 데이터 이관 작업</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gdscript3" data-lang="gdscript3"><span style="display:flex;"><span><span style="color:#75715e"># 임시 테이블스페이스, 계정 생성</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ALTER SESSION SET CONTAINER <span style="color:#f92672">=</span> develop;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>CREATE TABLESPACE develop_test
+</span></span><span style="display:flex;"><span>  DATAFILE <span style="color:#e6db74">&#39;/opt/oracle/oradata/ORCLCDB/develop/test.dbf&#39;</span> 
+</span></span><span style="display:flex;"><span>  SIZE <span style="color:#ae81ff">100</span>M 
+</span></span><span style="display:flex;"><span>  AUTOEXTEND ON 
+</span></span><span style="display:flex;"><span>  NEXT <span style="color:#ae81ff">50</span>M MAXSIZE UNLIMITED;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ALTER SESSION SET <span style="color:#e6db74">&#34;_oracle_script&#34;</span><span style="color:#f92672">=</span>true;
+</span></span><span style="display:flex;"><span>CREATE USER testuser IDENTIFIED BY <span style="color:#ae81ff">1</span> DEFAULT TABLESPACE develop_test;
+</span></span><span style="display:flex;"><span>ALTER USER testuser QUOTA UNLIMITED ON develop_test;
+</span></span><span style="display:flex;"><span>GRANT CREATE SESSION TO testuser;
+</span></span><span style="display:flex;"><span>GRANT CREATE TABLE TO testuser;
+</span></span><span style="display:flex;"><span>GRANT CREATE VIEW TO testuser;
+</span></span><span style="display:flex;"><span>GRANT CREATE PROCEDURE TO testuser;
+</span></span><span style="display:flex;"><span>GRANT CREATE SEQUENCE TO testuser;
+</span></span><span style="display:flex;"><span>GRANT CREATE TRIGGER TO testuser;
+</span></span><span style="display:flex;"><span>GRANT CREATE SYNONYM TO testuser;
+</span></span><span style="display:flex;"><span>GRANT CREATE TYPE TO testuser;
+</span></span><span style="display:flex;"><span>GRANT UNLIMITED TABLESPACE TO testuser;
+</span></span><span style="display:flex;"><span>GRANT READ, WRITE ON DIRECTORY backup_dir TO testuser;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">---</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># imp 실행</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> NLS_LANG<span style="color:#f92672">=</span>KOREAN_KOREA<span style="color:#f92672">.</span>KO16MSWIN949
+</span></span><span style="display:flex;"><span>imp system<span style="color:#f92672">/</span><span style="color:#ae81ff">1</span> FILE<span style="color:#f92672">=./</span>backup<span style="color:#f92672">.</span>dmp LOG<span style="color:#f92672">=</span>dump_log<span style="color:#f92672">.</span>log SHOW<span style="color:#f92672">=</span>Y FULL<span style="color:#f92672">=</span>Y
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>imp system<span style="color:#f92672">/</span>passwd<span style="color:#960050;background-color:#1e0010">@</span>develop FILE<span style="color:#f92672">=./</span>backup<span style="color:#f92672">.</span>dmp LOG<span style="color:#f92672">=</span>dump_log<span style="color:#f92672">.</span>log FROMUSER<span style="color:#f92672">=</span>OCRM TOUSER<span style="color:#f92672">=</span>testuser ROWS<span style="color:#f92672">=</span>N
+</span></span><span style="display:flex;"><span>imp system<span style="color:#f92672">/</span>passwd<span style="color:#960050;background-color:#1e0010">@</span>develop FILE<span style="color:#f92672">=./</span>backup<span style="color:#f92672">.</span>dmp LOG<span style="color:#f92672">=</span>dump_log<span style="color:#f92672">.</span>log FROMUSER<span style="color:#f92672">=</span>OCRM TOUSER<span style="color:#f92672">=</span>testuser ROWS<span style="color:#f92672">=</span>Y IGNORE<span style="color:#f92672">=</span>Y
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">---</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># (데이터 정리 후) exp 실행</span>
+</span></span><span style="display:flex;"><span>expdp testuser<span style="color:#f92672">/</span>passwd<span style="color:#960050;background-color:#1e0010">@</span>develop DIRECTORY<span style="color:#f92672">=</span>backup_dir DUMPFILE<span style="color:#f92672">=</span>exp<span style="color:#f92672">.</span>dmp TABLES<span style="color:#f92672">=</span>tb_foo,tb_bar LOGFILE<span style="color:#f92672">=</span>backup_log<span style="color:#f92672">.</span>log
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># imp 실행</span>
+</span></span><span style="display:flex;"><span>impdp mkuser<span style="color:#f92672">/</span>passwd<span style="color:#960050;background-color:#1e0010">@</span>develop DIRECTORY<span style="color:#f92672">=</span>backup_dir DUMPFILE<span style="color:#f92672">=</span>exp<span style="color:#f92672">.</span>dmp REMAP_SCHEMA<span style="color:#f92672">=</span>testuser:mkuser LOGFILE<span style="color:#f92672">=</span>import_log<span style="color:#f92672">.</span>log
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">---</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 임시 테이블스페이스, 계정 삭제</span>
+</span></span><span style="display:flex;"><span>drop user testuser cascade;
+</span></span><span style="display:flex;"><span>DROP TABLESPACE develop_test INCLUDING CONTENTS AND DATAFILES;
+</span></span></code></pre></div><h4 id="6-expdp-명령pump으로-dump-생성하기">6. expdp 명령(pump)으로 dump 생성하기</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># backup 디렉토리 설정
 </span></span><span style="display:flex;"><span>SQL&gt; CREATE DIRECTORY backup_dir AS &#39;/home/oracle/dump&#39;;
 </span></span><span style="display:flex;"><span>SQL&gt; GRANT READ, WRITE ON DIRECTORY backup_dir TO mkuser;
@@ -324,6 +371,7 @@
           <ul>
             <li>
               <ul>
+                <li><a href="#7-데이터-이관-작업">7. 데이터 이관 작업</a></li>
                 <li><a href="#6-expdp-명령pump으로-dump-생성하기">6. expdp 명령(pump)으로 dump 생성하기</a></li>
                 <li><a href="#5-dump-파일-import-하기">5. dump 파일 import 하기</a></li>
                 <li><a href="#4-pdb-삭제">4. pdb 삭제</a></li>
