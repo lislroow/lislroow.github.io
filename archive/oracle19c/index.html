@@ -62,7 +62,24 @@
       <article>
         <h1></h1>
         <div>
-          <h4 id="5-dump-파일-import-하기">5. dump 파일 import 하기</h4>
+          <h4 id="6-expdp-명령pump으로-dump-생성하기">6. expdp 명령(pump)으로 dump 생성하기</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># backup 디렉토리 설정
+</span></span><span style="display:flex;"><span>SQL&gt; CREATE DIRECTORY backup_dir AS &#39;/home/oracle/dump&#39;;
+</span></span><span style="display:flex;"><span>SQL&gt; GRANT READ, WRITE ON DIRECTORY backup_dir TO mkuser;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># expdp 명령 dump 생성
+</span></span><span style="display:flex;"><span>$ expdp mkuser/passwd@develop DIRECTORY=backup_dir DUMPFILE=develop.dmp LOGFILE=develop_backup.log
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># impdp 명령 dump 적재 (for test)
+</span></span><span style="display:flex;"><span># REMAP_SCHEMA=mkuser:testuser: 덤프 파일에 있는 데이터를 mkuser라는 원래 사용자로부터 testuser로 매핑하여 적재
+</span></span><span style="display:flex;"><span>$ impdp testuser/passwd@testdb DIRECTORY=backup_dir DUMPFILE=develop.dmp REMAP_SCHEMA=mkuser:testuser LOGFILE=import_log.log
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># impdp 실행 전 디렉토리 생성
+</span></span><span style="display:flex;"><span>SQL&gt; CREATE DIRECTORY backup_dir AS &#39;/home/oracle/dump&#39;;
+</span></span><span style="display:flex;"><span>SQL&gt; GRANT READ, WRITE ON DIRECTORY backup_dir TO testuser;
+</span></span></code></pre></div><h4 id="5-dump-파일-import-하기">5. dump 파일 import 하기</h4>
 <p>imp 명령어와 impdp 명령어가 있으며, exp 로 생성한 dump 는 imp 로 import 해야 함</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gdscript3" data-lang="gdscript3"><span style="display:flex;"><span><span style="color:#75715e"># dump 파일의 메타 정보 확인</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">$</span> imp system<span style="color:#f92672">/</span>passwd FILE<span style="color:#f92672">=/</span>opt<span style="color:#f92672">/</span>dump<span style="color:#f92672">/</span>fund<span style="color:#f92672">.</span>dmp LOG<span style="color:#f92672">=</span>dump_log<span style="color:#f92672">.</span>log SHOW<span style="color:#f92672">=</span>Y FULL<span style="color:#f92672">=</span>Y
@@ -307,6 +324,7 @@
           <ul>
             <li>
               <ul>
+                <li><a href="#6-expdp-명령pump으로-dump-생성하기">6. expdp 명령(pump)으로 dump 생성하기</a></li>
                 <li><a href="#5-dump-파일-import-하기">5. dump 파일 import 하기</a></li>
                 <li><a href="#4-pdb-삭제">4. pdb 삭제</a></li>
                 <li><a href="#3-새로운-pdb-생성-및-계정-생성">3. 새로운 pdb 생성 및 계정 생성</a>

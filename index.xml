@@ -26,7 +26,7 @@
       <link>https://lislroow.github.io/archive/oracle19c/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://lislroow.github.io/archive/oracle19c/</guid>
-      <description>5. dump 파일 import 하기 imp 명령어와 impdp 명령어가 있으며, exp 로 생성한 dump 는 imp 로 import 해야 함&#xA;# dump 파일의 메타 정보 확인 $ imp system/passwd FILE=/opt/dump/fund.dmp LOG=dump_log.log SHOW=Y FULL=Y # dump 파일의 캐릭터셋은 NLS_LANG 변수로 설정 $ export NLS_LANG=KOREAN_KOREA.KO16MSWIN949 # only schema import $ imp system/passwd@develop FILE=/opt/dump/fund.dmp LOG=dump_log.log FROMUSER=FUNDO TOUSER=mkuser ROWS=N # data import (ignore=Y 는 schema 가 있을 경우 무시하고 data 를 import) $ imp system/passwd@develop FILE=/opt/dump/fund.</description>
+      <description>6. expdp 명령(pump)으로 dump 생성하기 # backup 디렉토리 설정 SQL&amp;gt; CREATE DIRECTORY backup_dir AS &amp;#39;/home/oracle/dump&amp;#39;; SQL&amp;gt; GRANT READ, WRITE ON DIRECTORY backup_dir TO mkuser; # expdp 명령 dump 생성 $ expdp mkuser/passwd@develop DIRECTORY=backup_dir DUMPFILE=develop.dmp LOGFILE=develop_backup.log --- # impdp 명령 dump 적재 (for test) # REMAP_SCHEMA=mkuser:testuser: 덤프 파일에 있는 데이터를 mkuser라는 원래 사용자로부터 testuser로 매핑하여 적재 $ impdp testuser/passwd@testdb DIRECTORY=backup_dir DUMPFILE=develop.dmp REMAP_SCHEMA=mkuser:testuser LOGFILE=import_log.log # impdp 실행 전 디렉토리 생성 SQL&amp;gt; CREATE DIRECTORY backup_dir AS &amp;#39;/home/oracle/dump&amp;#39;; SQL&amp;gt; GRANT READ, WRITE ON DIRECTORY backup_dir TO testuser; 5.</description>
     </item>
     <item>
       <title></title>
