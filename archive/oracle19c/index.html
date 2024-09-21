@@ -62,7 +62,63 @@
       <article>
         <h1></h1>
         <div>
-          <h4 id="4-pdb-삭제">4. pdb 삭제</h4>
+          <h4 id="5-dump-파일-import-하기">5. dump 파일 import 하기</h4>
+<p>imp 명령어와 impdp 명령어가 있으며, exp 로 생성한 dump 는 imp 로 import 해야 함</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gdscript3" data-lang="gdscript3"><span style="display:flex;"><span><span style="color:#75715e"># dump 파일의 메타 정보 확인</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">$</span> imp system<span style="color:#f92672">/</span>passwd FILE<span style="color:#f92672">=/</span>opt<span style="color:#f92672">/</span>dump<span style="color:#f92672">/</span>fund<span style="color:#f92672">.</span>dmp LOG<span style="color:#f92672">=</span>dump_log<span style="color:#f92672">.</span>log SHOW<span style="color:#f92672">=</span>Y FULL<span style="color:#f92672">=</span>Y
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># dump 파일의 캐릭터셋은 NLS_LANG 변수로 설정</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">$</span> <span style="color:#66d9ef">export</span> NLS_LANG<span style="color:#f92672">=</span>KOREAN_KOREA<span style="color:#f92672">.</span>KO16MSWIN949
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># only schema import</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">$</span> imp system<span style="color:#f92672">/</span>passwd<span style="color:#960050;background-color:#1e0010">@</span>develop FILE<span style="color:#f92672">=/</span>opt<span style="color:#f92672">/</span>dump<span style="color:#f92672">/</span>fund<span style="color:#f92672">.</span>dmp LOG<span style="color:#f92672">=</span>dump_log<span style="color:#f92672">.</span>log FROMUSER<span style="color:#f92672">=</span>FUNDO TOUSER<span style="color:#f92672">=</span>mkuser ROWS<span style="color:#f92672">=</span>N
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># data import (ignore=Y 는 schema 가 있을 경우 무시하고 data 를 import)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">$</span> imp system<span style="color:#f92672">/</span>passwd<span style="color:#960050;background-color:#1e0010">@</span>develop FILE<span style="color:#f92672">=/</span>opt<span style="color:#f92672">/</span>dump<span style="color:#f92672">/</span>fund<span style="color:#f92672">.</span>dmp LOG<span style="color:#f92672">=</span>dump_log<span style="color:#f92672">.</span>log FROMUSER<span style="color:#f92672">=</span>FUNDO TOUSER<span style="color:#f92672">=</span>mkuser ROWS<span style="color:#f92672">=</span>Y IGNORE<span style="color:#f92672">=</span>Y
+</span></span></code></pre></div><p>system 테이블스페이스에는 데이터를 import 할 수 없음</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># pdb 선택
+</span></span><span style="display:flex;"><span>SQL&gt; ALTER SESSION SET CONTAINER = develop;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># 테이블스페이스 생성
+</span></span><span style="display:flex;"><span>SQL&gt; CREATE TABLESPACE develop
+</span></span><span style="display:flex;"><span>  DATAFILE &#39;/opt/oracle/oradata/ORCLCDB/develop/develop.dbf&#39; 
+</span></span><span style="display:flex;"><span>  SIZE 10G 
+</span></span><span style="display:flex;"><span>  AUTOEXTEND ON 
+</span></span><span style="display:flex;"><span>  NEXT 50M MAXSIZE UNLIMITED;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># mkuser 기본 테이블스페이스 지정 및 할당량 지정
+</span></span><span style="display:flex;"><span>SQL&gt; ALTER USER mkuser DEFAULT TABLESPACE develop;
+</span></span><span style="display:flex;"><span>SQL&gt; ALTER USER mkuser QUOTA UNLIMITED ON develop;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># pdb 선택
+</span></span><span style="display:flex;"><span>SQL&gt; ALTER SESSION SET CONTAINER = develop;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># mkuser 계정 삭제
+</span></span><span style="display:flex;"><span>SQL&gt; ALTER SESSION SET &#34;_oracle_script&#34;=true;
+</span></span><span style="display:flex;"><span>SQL&gt; DROP USER mkuser CASCADE;
+</span></span><span style="display:flex;"><span># ORA-28014: cannot drop administrative user or role
+</span></span><span style="display:flex;"><span>SQL&gt; SELECT * FROM dba_role_privs WHERE grantee = &#39;mkuser&#39;;
+</span></span><span style="display:flex;"><span>SQL&gt; REVOKE SYSDBA FROM mkuser;
+</span></span><span style="display:flex;"><span>SQL&gt; REVOKE DBA FROM mkuser;
+</span></span><span style="display:flex;"><span># ORA-01940: cannot drop a user that is currently connected
+</span></span><span style="display:flex;"><span>SQL&gt; SELECT SID,SERIAL# FROM V$SESSION WHERE USERNAME = &#39;MKUSER&#39;;
+</span></span><span style="display:flex;"><span>SQL&gt; ALTER SYSTEM KILL SESSION &#39;SID,SERIAL#&#39;;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># 테이블스페이스 삭제 (dbf 파일은 삭제되지 않음)
+</span></span><span style="display:flex;"><span>SQL&gt; DROP TABLESPACE develop;
+</span></span><span style="display:flex;"><span>SQL&gt; DROP TABLESPACE develop INCLUDING CONTENTS AND DATAFILES;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># dbf 파일 삭제
+</span></span><span style="display:flex;"><span>$ rm -rf /opt/oracle/oradata/ORCLCDB/develop/develop.dbf
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># mkuser 계정 생성 (기본 테이블스페이스 지정)
+</span></span><span style="display:flex;"><span>SQL&gt; ALTER SESSION SET &#34;_oracle_script&#34;=true;
+</span></span><span style="display:flex;"><span>SQL&gt; CREATE USER mkuser IDENTIFIED BY 1 DEFAULT TABLESPACE develop;
+</span></span></code></pre></div><h4 id="4-pdb-삭제">4. pdb 삭제</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>SQL&gt; SHOW PDBS
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    CON_ID CON_NAME       OPEN MODE  RESTRICTED
@@ -105,7 +161,7 @@
 </span></span></code></pre></div><h4 id="3-새로운-pdb-생성-및-계정-생성">3. 새로운 pdb 생성 및 계정 생성</h4>
 <h5 id="31-pdb-생성">3.1 pdb 생성</h5>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># 접속
-</span></span><span style="display:flex;"><span>sqlplus sys as sysdba
+</span></span><span style="display:flex;"><span>$ sqlplus sys as sysdba
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span># 데이터베이스 상태 확인
 </span></span><span style="display:flex;"><span>SQL&gt; SELECT STATUS FROM V$INSTANCE;
@@ -116,6 +172,7 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span># pdb 생성
 </span></span><span style="display:flex;"><span>SQL&gt; CREATE PLUGGABLE DATABASE market ADMIN USER pdb_market IDENTIFIED BY 1 FILE_NAME_CONVERT = (&#39;/opt/oracle/oradata/ORCLCDB&#39;, &#39;/opt/oracle/oradata/ORCLCDB/market&#39;);
+</span></span><span style="display:flex;"><span>SQL&gt; CREATE PLUGGABLE DATABASE develop ADMIN USER pdb_market IDENTIFIED BY 1 FILE_NAME_CONVERT = (&#39;/opt/oracle/oradata/ORCLCDB&#39;, &#39;/opt/oracle/oradata/ORCLCDB/develop&#39;);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>Pluggable database created.
 </span></span><span style="display:flex;"><span>
@@ -150,8 +207,8 @@
 </span></span><span style="display:flex;"><span>MARKET
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span># &#39;ORA-65096: invalid common user or role name&#39; 오류 발생
-</span></span><span style="display:flex;"><span>alter session set &#34;_oracle_script&#34;=true;
-</span></span><span style="display:flex;"><span>CREATE USER mkuser IDENTIFIED BY 1;
+</span></span><span style="display:flex;"><span>SQL&gt; ALTER SESSION SET &#34;_oracle_script&#34;=true;
+</span></span><span style="display:flex;"><span>SQL&gt; CREATE USER mkuser IDENTIFIED BY 1;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span># GRANT RESOURCE TO mkuser (ORA-01924: role &#39;RESOURCE&#39; not granted or does not exist)
 </span></span><span style="display:flex;"><span>SQL&gt; GRANT CREATE SESSION TO mkuser;
@@ -163,6 +220,17 @@
 </span></span><span style="display:flex;"><span>SQL&gt; GRANT CREATE SYNONYM TO mkuser;
 </span></span><span style="display:flex;"><span>SQL&gt; GRANT CREATE TYPE TO mkuser;
 </span></span><span style="display:flex;"><span>SQL&gt; GRANT UNLIMITED TABLESPACE TO mkuser;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># tnsnames.ora 추가 (sqlplus,imp,exp 사용시)
+</span></span><span style="display:flex;"><span>/opt/oracle/product/19c/dbhome_1/network/admin/tnsnames.ora
+</span></span><span style="display:flex;"><span>market =
+</span></span><span style="display:flex;"><span>  (DESCRIPTION =
+</span></span><span style="display:flex;"><span>    (ADDRESS = (PROTOCOL = TCP)(HOST = rocky8-oracle19c)(PORT = 1521))
+</span></span><span style="display:flex;"><span>    (CONNECT_DATA =
+</span></span><span style="display:flex;"><span>      (SERVER = DEDICATED)
+</span></span><span style="display:flex;"><span>      (SERVICE_NAME = market)
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>  )
 </span></span></code></pre></div><h4 id="2-oracle19c-환경-정보">2. oracle19c 환경 정보</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gdscript3" data-lang="gdscript3"><span style="display:flex;"><span><span style="color:#75715e"># 설치 경로(디렉토리) 확인</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># cat /etc/oratab</span>
@@ -170,7 +238,7 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 서비스명 확인</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># systemctl list-units | grep oracle</span>
-</span></span><span style="display:flex;"><span>oracledb_ORCLCDB<span style="color:#f92672">-</span><span style="color:#ae81ff">19</span>c<span style="color:#f92672">.</span>service  loaded active running   SYSV: This script is responsible <span style="color:#66d9ef">for</span> taking care of configuring the Oracle Database <span style="color:#f92672">and</span> its associated services<span style="color:#f92672">.</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">$</span> oracledb_ORCLCDB<span style="color:#f92672">-</span><span style="color:#ae81ff">19</span>c<span style="color:#f92672">.</span>service  loaded active running   SYSV: This script is responsible <span style="color:#66d9ef">for</span> taking care of configuring the Oracle Database <span style="color:#f92672">and</span> its associated services<span style="color:#f92672">.</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 서비스 실행 확인</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># systemctl status oracledb_ORCLCDB-19c</span>
@@ -239,6 +307,7 @@
           <ul>
             <li>
               <ul>
+                <li><a href="#5-dump-파일-import-하기">5. dump 파일 import 하기</a></li>
                 <li><a href="#4-pdb-삭제">4. pdb 삭제</a></li>
                 <li><a href="#3-새로운-pdb-생성-및-계정-생성">3. 새로운 pdb 생성 및 계정 생성</a>
                   <ul>

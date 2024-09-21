@@ -26,7 +26,7 @@
       <link>https://lislroow.github.io/archive/oracle19c/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://lislroow.github.io/archive/oracle19c/</guid>
-      <description>4. pdb 삭제 SQL&amp;gt; SHOW PDBS CON_ID CON_NAME OPEN MODE RESTRICTED ---------- ------------------------------ ---------- ---------- 2 PDB$SEED READ ONLY NO 3 ORCLPDB1 READ WRITE NO 4 MARKET READ WRITE NO # pdb close 상태로 전환 SQL&amp;gt; ALTER PLUGGABLE DATABASE market CLOSE IMMEDIATE; Pluggable database altered. # pdb unplug SQL&amp;gt; ALTER PLUGGABLE DATABASE market UNPLUG INTO &amp;#39;/home/oracle/market.xml&amp;#39;; Pluggable database altered. # pdb 상태 확인 SQL&amp;gt; SHOW PDBS; CON_ID CON_NAME OPEN MODE RESTRICTED ---------- ------------------------------ ---------- ---------- 2 PDB$SEED READ ONLY NO 3 ORCLPDB1 READ WRITE NO 4 MARKET MOUNTED # pdb 삭제 SQL&amp;gt; DROP PLUGGABLE DATABASE market INCLUDING DATAFILES; Pluggable database dropped.</description>
+      <description>5. dump 파일 import 하기 imp 명령어와 impdp 명령어가 있으며, exp 로 생성한 dump 는 imp 로 import 해야 함&#xA;# dump 파일의 메타 정보 확인 $ imp system/passwd FILE=/opt/dump/fund.dmp LOG=dump_log.log SHOW=Y FULL=Y # dump 파일의 캐릭터셋은 NLS_LANG 변수로 설정 $ export NLS_LANG=KOREAN_KOREA.KO16MSWIN949 # only schema import $ imp system/passwd@develop FILE=/opt/dump/fund.dmp LOG=dump_log.log FROMUSER=FUNDO TOUSER=mkuser ROWS=N # data import (ignore=Y 는 schema 가 있을 경우 무시하고 data 를 import) $ imp system/passwd@develop FILE=/opt/dump/fund.</description>
     </item>
     <item>
       <title></title>
