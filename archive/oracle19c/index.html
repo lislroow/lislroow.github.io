@@ -62,7 +62,110 @@
       <article>
         <h1></h1>
         <div>
-          <h4 id="7-데이터-이관-작업">7. 데이터 이관 작업</h4>
+          <h4 id="8-sqlldr-우편번호-적재">8. sqlldr 우편번호 적재</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># 우편번호 데이터
+</span></span><span style="display:flex;"><span>$ curl -sOL https://www.epost.go.kr/search/areacd/zipcode_DB.zip
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># zipcode.ctl 생성
+</span></span><span style="display:flex;"><span>$ cat &lt;&lt;- EOF ./zipcode.ctl
+</span></span><span style="display:flex;"><span>LOAD DATA
+</span></span><span style="display:flex;"><span>CHARACTERSET AL32UTF8
+</span></span><span style="display:flex;"><span>APPEND
+</span></span><span style="display:flex;"><span>INTO TABLE CM_ZIPCODE_I
+</span></span><span style="display:flex;"><span>FIELDS TERMINATED BY &#39;|&#39; 
+</span></span><span style="display:flex;"><span>TRAILING NULLCOLS
+</span></span><span style="display:flex;"><span>(
+</span></span><span style="display:flex;"><span>    zipcode CHAR,
+</span></span><span style="display:flex;"><span>    sido CHAR,
+</span></span><span style="display:flex;"><span>    sido_en CHAR,
+</span></span><span style="display:flex;"><span>    sigungu CHAR,
+</span></span><span style="display:flex;"><span>    sigungu_en CHAR,
+</span></span><span style="display:flex;"><span>    eupmyun CHAR,
+</span></span><span style="display:flex;"><span>    eupmyun_en CHAR,
+</span></span><span style="display:flex;"><span>    road_cd CHAR,
+</span></span><span style="display:flex;"><span>    road_nm CHAR,
+</span></span><span style="display:flex;"><span>    road_nm_en CHAR,
+</span></span><span style="display:flex;"><span>    underground_yn CHAR,
+</span></span><span style="display:flex;"><span>    bldg_no1 CHAR,
+</span></span><span style="display:flex;"><span>    bldg_no2 CHAR,
+</span></span><span style="display:flex;"><span>    bldg_mgmt_no CHAR,
+</span></span><span style="display:flex;"><span>    lg_delivery_nm CHAR,
+</span></span><span style="display:flex;"><span>    sigungu_bldg_nm CHAR,
+</span></span><span style="display:flex;"><span>    legal_dong_cd CHAR,
+</span></span><span style="display:flex;"><span>    legal_dong_nm CHAR,
+</span></span><span style="display:flex;"><span>    ri_name CHAR,
+</span></span><span style="display:flex;"><span>    admin_dong_nm CHAR,
+</span></span><span style="display:flex;"><span>    mountain_yn CHAR,
+</span></span><span style="display:flex;"><span>    jibeon_no1 CHAR,
+</span></span><span style="display:flex;"><span>    eupmyundong_seqno CHAR,
+</span></span><span style="display:flex;"><span>    jibeon_no2 CHAR,
+</span></span><span style="display:flex;"><span>    old_zipcode CHAR,
+</span></span><span style="display:flex;"><span>    zipcode_seqno CHAR
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>EOF
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># CM_ZIPCODE_I 테이블 생성
+</span></span><span style="display:flex;"><span>CREATE TABLE &#34;MKUSER&#34;.&#34;CM_ZIPCODE_I&#34; 
+</span></span><span style="display:flex;"><span>   (  &#34;ZIPCODE&#34; VARCHAR2(10) NOT NULL ENABLE, 
+</span></span><span style="display:flex;"><span>  &#34;SIDO&#34; VARCHAR2(50), 
+</span></span><span style="display:flex;"><span>  &#34;SIDO_EN&#34; VARCHAR2(100), 
+</span></span><span style="display:flex;"><span>  &#34;SIGUNGU&#34; VARCHAR2(50), 
+</span></span><span style="display:flex;"><span>  &#34;SIGUNGU_EN&#34; VARCHAR2(100), 
+</span></span><span style="display:flex;"><span>  &#34;EUPMYUN&#34; VARCHAR2(50), 
+</span></span><span style="display:flex;"><span>  &#34;EUPMYUN_EN&#34; VARCHAR2(100), 
+</span></span><span style="display:flex;"><span>  &#34;ROAD_CD&#34; VARCHAR2(20), 
+</span></span><span style="display:flex;"><span>  &#34;ROAD_NM&#34; VARCHAR2(100), 
+</span></span><span style="display:flex;"><span>  &#34;ROAD_NM_EN&#34; VARCHAR2(100), 
+</span></span><span style="display:flex;"><span>  &#34;UNDERGROUND_YN&#34; VARCHAR2(1), 
+</span></span><span style="display:flex;"><span>  &#34;BLDG_NO1&#34; VARCHAR2(10), 
+</span></span><span style="display:flex;"><span>  &#34;BLDG_NO2&#34; VARCHAR2(10), 
+</span></span><span style="display:flex;"><span>  &#34;BLDG_MGMT_NO&#34; VARCHAR2(50), 
+</span></span><span style="display:flex;"><span>  &#34;LG_DELIVERY_NM&#34; VARCHAR2(100), 
+</span></span><span style="display:flex;"><span>  &#34;SIGUNGU_BLDG_NM&#34; VARCHAR2(100), 
+</span></span><span style="display:flex;"><span>  &#34;LEGAL_DONG_CD&#34; VARCHAR2(20), 
+</span></span><span style="display:flex;"><span>  &#34;LEGAL_DONG_NM&#34; VARCHAR2(100), 
+</span></span><span style="display:flex;"><span>  &#34;RI_NAME&#34; VARCHAR2(100), 
+</span></span><span style="display:flex;"><span>  &#34;ADMIN_DONG_NM&#34; VARCHAR2(100), 
+</span></span><span style="display:flex;"><span>  &#34;MOUNTAIN_YN&#34; VARCHAR2(1), 
+</span></span><span style="display:flex;"><span>  &#34;JIBEON_NO1&#34; VARCHAR2(10), 
+</span></span><span style="display:flex;"><span>  &#34;EUPMYUNDONG_SEQNO&#34; VARCHAR2(10), 
+</span></span><span style="display:flex;"><span>  &#34;JIBEON_NO2&#34; VARCHAR2(10), 
+</span></span><span style="display:flex;"><span>  &#34;OLD_ZIPCODE&#34; VARCHAR2(10), 
+</span></span><span style="display:flex;"><span>  &#34;ZIPCODE_SEQNO&#34; VARCHAR2(10)
+</span></span><span style="display:flex;"><span>   );
+</span></span><span style="display:flex;"><span>COMMENT ON TABLE MKUSER.CM_ZIPCODE_I IS &#39;우편번호정보&#39;;
+</span></span><span style="display:flex;"><span>COMMENT ON COLUMN MKUSER.CM_ZIPCODE_I.ZIPCODE IS &#39;우편번호&#39;;
+</span></span><span style="display:flex;"><span>COMMENT ON COLUMN MKUSER.CM_ZIPCODE_I.SIDO IS &#39;시도&#39;;
+</span></span><span style="display:flex;"><span>COMMENT ON COLUMN MKUSER.CM_ZIPCODE_I.SIDO_EN IS &#39;시도영문&#39;;
+</span></span><span style="display:flex;"><span>COMMENT ON COLUMN MKUSER.CM_ZIPCODE_I.SIGUNGU IS &#39;시군구&#39;;
+</span></span><span style="display:flex;"><span>COMMENT ON COLUMN MKUSER.CM_ZIPCODE_I.SIGUNGU_EN IS &#39;시군구영문&#39;;
+</span></span><span style="display:flex;"><span>COMMENT ON COLUMN MKUSER.CM_ZIPCODE_I.EUPMYUN IS &#39;읍면&#39;;
+</span></span><span style="display:flex;"><span>COMMENT ON COLUMN MKUSER.CM_ZIPCODE_I.EUPMYUN_EN IS &#39;읍면영문&#39;;
+</span></span><span style="display:flex;"><span>COMMENT ON COLUMN MKUSER.CM_ZIPCODE_I.ROAD_CD IS &#39;도로명코드&#39;;
+</span></span><span style="display:flex;"><span>COMMENT ON COLUMN MKUSER.CM_ZIPCODE_I.ROAD_NM IS &#39;도로명&#39;;
+</span></span><span style="display:flex;"><span>COMMENT ON COLUMN MKUSER.CM_ZIPCODE_I.ROAD_NM_EN IS &#39;도로명영문&#39;;
+</span></span><span style="display:flex;"><span>COMMENT ON COLUMN MKUSER.CM_ZIPCODE_I.UNDERGROUND_YN IS &#39;지하여부&#39;;
+</span></span><span style="display:flex;"><span>COMMENT ON COLUMN MKUSER.CM_ZIPCODE_I.BLDG_NO1 IS &#39;건물번호본번&#39;;
+</span></span><span style="display:flex;"><span>COMMENT ON COLUMN MKUSER.CM_ZIPCODE_I.BLDG_NO2 IS &#39;건물번호부번&#39;;
+</span></span><span style="display:flex;"><span>COMMENT ON COLUMN MKUSER.CM_ZIPCODE_I.BLDG_MGMT_NO IS &#39;건물관리번호&#39;;
+</span></span><span style="display:flex;"><span>COMMENT ON COLUMN MKUSER.CM_ZIPCODE_I.LG_DELIVERY_NM IS &#39;다량배달처명&#39;;
+</span></span><span style="display:flex;"><span>COMMENT ON COLUMN MKUSER.CM_ZIPCODE_I.SIGUNGU_BLDG_NM IS &#39;시군구용건물명&#39;;
+</span></span><span style="display:flex;"><span>COMMENT ON COLUMN MKUSER.CM_ZIPCODE_I.LEGAL_DONG_CD IS &#39;법정동코드&#39;;
+</span></span><span style="display:flex;"><span>COMMENT ON COLUMN MKUSER.CM_ZIPCODE_I.LEGAL_DONG_NM IS &#39;법정동명&#39;;
+</span></span><span style="display:flex;"><span>COMMENT ON COLUMN MKUSER.CM_ZIPCODE_I.RI_NAME IS &#39;리명&#39;;
+</span></span><span style="display:flex;"><span>COMMENT ON COLUMN MKUSER.CM_ZIPCODE_I.ADMIN_DONG_NM IS &#39;행정동명&#39;;
+</span></span><span style="display:flex;"><span>COMMENT ON COLUMN MKUSER.CM_ZIPCODE_I.MOUNTAIN_YN IS &#39;산여부&#39;;
+</span></span><span style="display:flex;"><span>COMMENT ON COLUMN MKUSER.CM_ZIPCODE_I.JIBEON_NO1 IS &#39;지번본번&#39;;
+</span></span><span style="display:flex;"><span>COMMENT ON COLUMN MKUSER.CM_ZIPCODE_I.EUPMYUNDONG_SEQNO IS &#39;읍면동일련번호&#39;;
+</span></span><span style="display:flex;"><span>COMMENT ON COLUMN MKUSER.CM_ZIPCODE_I.JIBEON_NO2 IS &#39;지번부번&#39;;
+</span></span><span style="display:flex;"><span>COMMENT ON COLUMN MKUSER.CM_ZIPCODE_I.OLD_ZIPCODE IS &#39;구우편번호&#39;;
+</span></span><span style="display:flex;"><span>COMMENT ON COLUMN MKUSER.CM_ZIPCODE_I.ZIPCODE_SEQNO IS &#39;우편번호일련번호&#39;;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># 데이터 적재
+</span></span><span style="display:flex;"><span>$ for file in *.txt; do
+</span></span><span style="display:flex;"><span>  sqlldr mkuser/passwd@develop control=zipcode.ctl data=$file SKIP=1
+</span></span><span style="display:flex;"><span>done
+</span></span></code></pre></div><h4 id="7-데이터-이관-작업">7. 데이터 이관 작업</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gdscript3" data-lang="gdscript3"><span style="display:flex;"><span><span style="color:#75715e"># 임시 테이블스페이스, 계정 생성</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>ALTER SESSION SET CONTAINER <span style="color:#f92672">=</span> develop;
@@ -371,6 +474,7 @@
           <ul>
             <li>
               <ul>
+                <li><a href="#8-sqlldr-우편번호-적재">8. sqlldr 우편번호 적재</a></li>
                 <li><a href="#7-데이터-이관-작업">7. 데이터 이관 작업</a></li>
                 <li><a href="#6-expdp-명령pump으로-dump-생성하기">6. expdp 명령(pump)으로 dump 생성하기</a></li>
                 <li><a href="#5-dump-파일-import-하기">5. dump 파일 import 하기</a></li>
