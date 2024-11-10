@@ -62,7 +62,28 @@
       <article>
         <h1></h1>
         <div>
-          <h4 id="8-sqlldr-우편번호-적재">8. sqlldr 우편번호 적재</h4>
+          <h4 id="10-pdb-mkuser-백업">10. pdb mkuser 백업</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># (참고) 디렉토리 변경</span>
+</span></span><span style="display:flex;"><span>SQL&gt; CREATE DIRECTORY backup_dir AS <span style="color:#e6db74">&#39;/home/oracle/dump&#39;</span>;
+</span></span><span style="display:flex;"><span>SQL&gt; DROP DIRECTORY backup_dir;
+</span></span><span style="display:flex;"><span>SQL&gt; CREATE DIRECTORY backup_dir AS <span style="color:#e6db74">&#39;/home/oracle&#39;</span>;
+</span></span><span style="display:flex;"><span>SQL&gt; GRANT READ, WRITE ON DIRECTORY backup_dir TO mkuser;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ expdp mkuser/passwd@develop DIRECTORY<span style="color:#f92672">=</span>backup_dir DUMPFILE<span style="color:#f92672">=</span>develop.dmp LOGFILE<span style="color:#f92672">=</span>develop_backup.log
+</span></span></code></pre></div><h4 id="9-pdb-관리자-계정-변경">9. pdb 관리자 계정 변경</h4>
+<p>새로운 관리자 계정 생성 후 기존 계정을 삭제해야 함</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">USER</span> pdb_develop IDENTIFIED <span style="color:#66d9ef">BY</span> passwd;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 새로운 관리자 계정 권한 부여
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">GRANT</span> DBA <span style="color:#66d9ef">TO</span> pdb_develop;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">GRANT</span> <span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">SESSION</span> <span style="color:#66d9ef">TO</span> pdb_develop;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">GRANT</span> <span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">ANY</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#66d9ef">TO</span> pdb_develop;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">GRANT</span> UNLIMITED TABLESPACE <span style="color:#66d9ef">TO</span> pdb_develop;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 기존 관리자 계정 권한 회수 및 삭제
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">REVOKE</span> DBA <span style="color:#66d9ef">FROM</span> pdb_market;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">DROP</span> <span style="color:#66d9ef">USER</span> pdb_market <span style="color:#66d9ef">CASCADE</span>;
+</span></span></code></pre></div><h4 id="8-sqlldr-우편번호-적재">8. sqlldr 우편번호 적재</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># 우편번호 데이터</span>
 </span></span><span style="display:flex;"><span>$ curl -sOL https://www.epost.go.kr/search/areacd/zipcode_DB.zip
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 압축 해제 대상 디렉토리 지정, 파일명 인코딩 설정</span>
@@ -206,10 +227,10 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">---
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">#</span> (<span style="color:#960050;background-color:#1e0010">데이터</span> <span style="color:#960050;background-color:#1e0010">정리</span> <span style="color:#960050;background-color:#1e0010">후</span>) exp <span style="color:#960050;background-color:#1e0010">실행</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">#</span> (<span style="color:#960050;background-color:#1e0010">데이터</span> <span style="color:#960050;background-color:#1e0010">정리</span> <span style="color:#960050;background-color:#1e0010">후</span>) expdp <span style="color:#960050;background-color:#1e0010">실행</span>
 </span></span><span style="display:flex;"><span>expdp testuser<span style="color:#f92672">/</span>passwd<span style="color:#f92672">@</span>develop DIRECTORY<span style="color:#f92672">=</span>backup_dir DUMPFILE<span style="color:#f92672">=</span>exp.dmp TABLES<span style="color:#f92672">=</span>tb_foo,tb_bar LOGFILE<span style="color:#f92672">=</span>backup_log.log
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">#</span> imp <span style="color:#960050;background-color:#1e0010">실행</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">#</span> impdp <span style="color:#960050;background-color:#1e0010">실행</span>
 </span></span><span style="display:flex;"><span>impdp mkuser<span style="color:#f92672">/</span>passwd<span style="color:#f92672">@</span>develop DIRECTORY<span style="color:#f92672">=</span>backup_dir DUMPFILE<span style="color:#f92672">=</span>exp.dmp REMAP_SCHEMA<span style="color:#f92672">=</span>testuser:mkuser REMAP_TABLESPACE<span style="color:#f92672">=</span>develop_test:develop LOGFILE<span style="color:#f92672">=</span>import_log.log
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">---
@@ -219,7 +240,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">DROP</span> TABLESPACE develop_test <span style="color:#66d9ef">INCLUDING</span> CONTENTS <span style="color:#66d9ef">AND</span> DATAFILES;
 </span></span></code></pre></div><h4 id="6-expdp-명령pump으로-dump-생성하기">6. expdp 명령(pump)으로 dump 생성하기</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#f92672">#</span> backup <span style="color:#960050;background-color:#1e0010">디렉토리</span> <span style="color:#960050;background-color:#1e0010">설정</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SQL</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">CREATE</span> DIRECTORY backup_dir <span style="color:#66d9ef">AS</span> <span style="color:#e6db74">&#39;/home/oracle/dump&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SQL</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">CREATE</span> DIRECTORY backup_dir <span style="color:#66d9ef">AS</span> <span style="color:#e6db74">&#39;/home/oracle&#39;</span>;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">SQL</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">GRANT</span> <span style="color:#66d9ef">READ</span>, <span style="color:#66d9ef">WRITE</span> <span style="color:#66d9ef">ON</span> DIRECTORY backup_dir <span style="color:#66d9ef">TO</span> mkuser;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">#</span> expdp <span style="color:#960050;background-color:#1e0010">명령</span> dump <span style="color:#960050;background-color:#1e0010">생성</span>
@@ -232,7 +253,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">$</span> impdp testuser<span style="color:#f92672">/</span>passwd<span style="color:#f92672">@</span>testdb DIRECTORY<span style="color:#f92672">=</span>backup_dir DUMPFILE<span style="color:#f92672">=</span>develop.dmp REMAP_SCHEMA<span style="color:#f92672">=</span>mkuser:testuser LOGFILE<span style="color:#f92672">=</span>import_log.log
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">#</span> impdp <span style="color:#960050;background-color:#1e0010">실행</span> <span style="color:#960050;background-color:#1e0010">전</span> <span style="color:#960050;background-color:#1e0010">디렉토리</span> <span style="color:#960050;background-color:#1e0010">생성</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SQL</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">CREATE</span> DIRECTORY backup_dir <span style="color:#66d9ef">AS</span> <span style="color:#e6db74">&#39;/home/oracle/dump&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SQL</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">CREATE</span> DIRECTORY backup_dir <span style="color:#66d9ef">AS</span> <span style="color:#e6db74">&#39;/home/oracle&#39;</span>;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">SQL</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">GRANT</span> <span style="color:#66d9ef">READ</span>, <span style="color:#66d9ef">WRITE</span> <span style="color:#66d9ef">ON</span> DIRECTORY backup_dir <span style="color:#66d9ef">TO</span> testuser;
 </span></span></code></pre></div><h4 id="5-dump-파일-import-하기">5. dump 파일 import 하기</h4>
 <p>imp 명령어와 impdp 명령어가 있으며, exp 로 생성한 dump 는 imp 로 import 해야 함</p>
@@ -344,7 +365,7 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">#</span> pdb <span style="color:#960050;background-color:#1e0010">생성</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">SQL</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">CREATE</span> PLUGGABLE <span style="color:#66d9ef">DATABASE</span> market <span style="color:#66d9ef">ADMIN</span> <span style="color:#66d9ef">USER</span> pdb_market IDENTIFIED <span style="color:#66d9ef">BY</span> <span style="color:#ae81ff">1</span> FILE_NAME_CONVERT <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#39;/opt/oracle/oradata/ORCLCDB&#39;</span>, <span style="color:#e6db74">&#39;/opt/oracle/oradata/ORCLCDB/market&#39;</span>);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SQL</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">CREATE</span> PLUGGABLE <span style="color:#66d9ef">DATABASE</span> develop <span style="color:#66d9ef">ADMIN</span> <span style="color:#66d9ef">USER</span> pdb_market IDENTIFIED <span style="color:#66d9ef">BY</span> <span style="color:#ae81ff">1</span> FILE_NAME_CONVERT <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#39;/opt/oracle/oradata/ORCLCDB&#39;</span>, <span style="color:#e6db74">&#39;/opt/oracle/oradata/ORCLCDB/develop&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SQL</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">CREATE</span> PLUGGABLE <span style="color:#66d9ef">DATABASE</span> develop <span style="color:#66d9ef">ADMIN</span> <span style="color:#66d9ef">USER</span> pdb_develop IDENTIFIED <span style="color:#66d9ef">BY</span> <span style="color:#ae81ff">1</span> FILE_NAME_CONVERT <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#39;/opt/oracle/oradata/ORCLCDB&#39;</span>, <span style="color:#e6db74">&#39;/opt/oracle/oradata/ORCLCDB/develop&#39;</span>);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>Pluggable <span style="color:#66d9ef">database</span> created.
 </span></span><span style="display:flex;"><span>
@@ -479,6 +500,8 @@
           <ul>
             <li>
               <ul>
+                <li><a href="#10-pdb-mkuser-백업">10. pdb mkuser 백업</a></li>
+                <li><a href="#9-pdb-관리자-계정-변경">9. pdb 관리자 계정 변경</a></li>
                 <li><a href="#8-sqlldr-우편번호-적재">8. sqlldr 우편번호 적재</a></li>
                 <li><a href="#7-데이터-이관-작업">7. 데이터 이관 작업</a></li>
                 <li><a href="#6-expdp-명령pump으로-dump-생성하기">6. expdp 명령(pump)으로 dump 생성하기</a></li>

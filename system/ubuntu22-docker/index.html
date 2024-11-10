@@ -370,13 +370,15 @@
 <li>daemon.json 항목 추가
 <ul>
 <li>docker 이미지를 생성할 때 dns lookup 을 할 수 있도록 설정 추가</li>
+<li>원격 api 요청 수신 설정</li>
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>cat &lt;&lt; EOF &gt; /etc/docker/daemon.json
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gdscript3" data-lang="gdscript3"><span style="display:flex;"><span>cat <span style="color:#f92672">&lt;&lt;</span> EOF <span style="color:#f92672">&gt;</span> <span style="color:#f92672">/</span>etc<span style="color:#f92672">/</span>docker<span style="color:#f92672">/</span>daemon<span style="color:#f92672">.</span>json
 </span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  &#34;insecure-registries&#34;: [&#34;localhost:5000&#34;],
-</span></span><span style="display:flex;"><span>  &#34;dns&#34;: [&#34;8.8.8.8&#34;, &#34;8.8.4.4&#34;]
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;insecure-registries&#34;</span>: [<span style="color:#e6db74">&#34;localhost:5000&#34;</span>],
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;dns&#34;</span>: [<span style="color:#e6db74">&#34;8.8.8.8&#34;</span>, <span style="color:#e6db74">&#34;8.8.4.4&#34;</span>],
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;hosts&#34;</span>: [<span style="color:#e6db74">&#34;tcp://0.0.0.0:2375&#34;</span>, <span style="color:#e6db74">&#34;unix:///var/run/docker.sock&#34;</span>]
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>EOF
 </span></span></code></pre></div><ul>
@@ -438,6 +440,18 @@
 </span></span><span style="display:flex;"><span>add-apt-repository <span style="color:#e6db74">&#34;deb [arch=amd64] https://download.docker.com/linux/ubuntu </span><span style="color:#66d9ef">$(</span>lsb_release -cs<span style="color:#66d9ef">)</span><span style="color:#e6db74"> stable&#34;</span>
 </span></span><span style="display:flex;"><span>apt-get update
 </span></span><span style="display:flex;"><span>apt-get install docker-ce docker-ce-cli containerd.io
+</span></span></code></pre></div><h4 id="docker-host-설정">docker host 설정</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>/usr/lib/systemd/system/docker.service
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock</span>
+</span></span><span style="display:flex;"><span>ExecStart<span style="color:#f92672">=</span>/usr/bin/dockerd --containerd<span style="color:#f92672">=</span>/run/containerd/containerd.sock
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cat <span style="color:#e6db74">&lt;&lt; EOF &gt; /etc/docker/daemon.json
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  ... ,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;hosts&#34;: [&#34;tcp://0.0.0.0:2375&#34;, &#34;unix:///var/run/docker.sock&#34;]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
 </span></span></code></pre></div><h4 id="locale">locale</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>apt install locales
 </span></span><span style="display:flex;"><span>vi /etc/locale.gen
@@ -504,6 +518,7 @@
                   </ul>
                 </li>
                 <li><a href="#docker-설치-ubuntu22">docker 설치 (ubuntu22)</a></li>
+                <li><a href="#docker-host-설정">docker host 설정</a></li>
                 <li><a href="#locale">locale</a></li>
                 <li><a href="#ufw-방화벽">ufw: 방화벽</a></li>
                 <li><a href="#network">network</a></li>
