@@ -64,7 +64,34 @@
       <article>
         <h1></h1>
         <div>
-          <h4 id="dnf">dnf</h4>
+          <h4 id="partition-수정">partition 수정</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>dnf install parted e2fsprogs lvm2 -y
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>rsync -avz /home/ /home_backup/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>umount /home
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># e2fsck -f /dev/mapper/rl-home
+</span></span><span style="display:flex;"><span># resize2fs /dev/mapper/rl-home 3G
+</span></span><span style="display:flex;"><span># lvreduce -L 3G /dev/mapper/rl-home
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>lvremove /dev/mapper/rl-home
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>lvcreate -L 3G -n home rl
+</span></span><span style="display:flex;"><span>mkfs.xfs /dev/mapper/rl-home
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>lvextend -l +100%FREE /dev/mapper/rl-root
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># resize2fs /dev/mapper/rl-root
+</span></span><span style="display:flex;"><span>xfs_growfs /
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># mount /home
+</span></span><span style="display:flex;"><span>mount /dev/mapper/rl-home /home
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>rsync -avz /home_backup/ /home/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>vi /etc/fstab
+</span></span></code></pre></div><h4 id="dnf">dnf</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>dnf history
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span># 패키지 정보 확인
@@ -99,6 +126,7 @@
           <ul>
             <li>
               <ul>
+                <li><a href="#partition-수정">partition 수정</a></li>
                 <li><a href="#dnf">dnf</a></li>
               </ul>
             </li>
