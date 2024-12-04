@@ -47,7 +47,7 @@
       <link>https://lislroow.github.io/shell/bash/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://lislroow.github.io/shell/bash/</guid>
-      <description>ssh 파일 전송 tar cvfz - N305.sh \ &amp;gt; | ssh root@172.28.200.2 &amp;#39;tar zxvf - -C /root/bin&amp;#39; getopts getopts는 옵션을 하나씩 처리할 때마다 옵션 문자를 OPTIND와 같은 변수에 저장하고, 각 옵션에 대한 인수는 $OPTARG에 저장됩니다. $OPTARG는 현재 옵션의 인수를 나타내며, 이 값은 getopts 명령어에서 옵션을 읽을 때 자동으로 설정됩니다. getopts는 옵션을 처리한 후, 아직 처리되지 않은 인수들을 남겨두는데, OPTIND는 다음 처리할 인수의 인덱스를 나타냅니다. shift $((OPTIND - 1))는 getopts로 처리한 옵션들을 제외한 나머지 인수들을 다룰 수 있도록, OPTIND - 1만큼 인수 목록을 왼쪽으로 이동시킵니다.</description>
+      <description>grep -q grep -q: &amp;ldquo;quiet&amp;rdquo; 또는 &amp;ldquo;silent&amp;rdquo; 모드로 실행 grep은 검색 결과를 출력하지 않고, 검색 결과의 유무에 따라 exitCode 만 반환 있을 경우 exitCode 는 0 이되고, 그렇지 않을 경우 1을 반환 root@a54d5bb18443:/etc# grep -q &amp;#39;root&amp;#39; passwd root@a54d5bb18443:/etc# echo $? 0 root@a54d5bb18443:/etc# grep -q &amp;#39;root2&amp;#39; passwd root@a54d5bb18443:/etc# echo $? 1 root@a54d5bb18443:/etc# ssh 파일 전송 tar cvfz - N305.sh \ &amp;gt; | ssh root@172.28.200.2 &amp;#39;tar zxvf - -C /root/bin&amp;#39; getopts getopts는 옵션을 하나씩 처리할 때마다 옵션 문자를 OPTIND와 같은 변수에 저장하고, 각 옵션에 대한 인수는 $OPTARG에 저장됩니다.</description>
     </item>
     <item>
       <title></title>
