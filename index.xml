@@ -44,6 +44,13 @@
     </item>
     <item>
       <title></title>
+      <link>https://lislroow.github.io/shell/bash/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lislroow.github.io/shell/bash/</guid>
+      <description>실행파일 PATH 에 있는지 확인 if ! which docker 1&amp;gt; /dev/null; then echo &amp;#34;docker not exist&amp;#34; else echo &amp;#34;docker exist!&amp;#34; fi </description>
+    </item>
+    <item>
+      <title></title>
       <link>https://lislroow.github.io/system/ubuntu22-docker/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://lislroow.github.io/system/ubuntu22-docker/</guid>
