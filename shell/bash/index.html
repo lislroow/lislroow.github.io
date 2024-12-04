@@ -73,7 +73,10 @@
       <article>
         <h1></h1>
         <div>
-          <h4 id="getopts">getopts</h4>
+          <h4 id="ssh-파일-전송">ssh 파일 전송</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>tar cvfz - N305.sh \
+</span></span><span style="display:flex;"><span>&gt;  | ssh root@172.28.200.2 &#39;tar zxvf - -C /root/bin&#39;
+</span></span></code></pre></div><h4 id="getopts">getopts</h4>
 <ul>
 <li>getopts는 옵션을 하나씩 처리할 때마다 옵션 문자를 OPTIND와 같은 변수에 저장하고, 각 옵션에 대한 인수는 $OPTARG에 저장됩니다.</li>
 <li>$OPTARG는 현재 옵션의 인수를 나타내며, 이 값은 getopts 명령어에서 옵션을 읽을 때 자동으로 설정됩니다.</li>
@@ -125,6 +128,7 @@
           <ul>
             <li>
               <ul>
+                <li><a href="#ssh-파일-전송">ssh 파일 전송</a></li>
                 <li><a href="#getopts">getopts</a></li>
                 <li><a href="#실행파일-path-에-있는지-확인">실행파일 PATH 에 있는지 확인</a></li>
               </ul>
