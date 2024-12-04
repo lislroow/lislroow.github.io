@@ -12,7 +12,7 @@
       <link>https://lislroow.github.io/shell/bash/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://lislroow.github.io/shell/bash/</guid>
-      <description>실행파일 PATH 에 있는지 확인 if ! which docker 1&amp;gt; /dev/null; then echo &amp;#34;docker not exist&amp;#34; else echo &amp;#34;docker exist!&amp;#34; fi </description>
+      <description>getopts getopts는 옵션을 하나씩 처리할 때마다 옵션 문자를 OPTIND와 같은 변수에 저장하고, 각 옵션에 대한 인수는 $OPTARG에 저장됩니다. $OPTARG는 현재 옵션의 인수를 나타내며, 이 값은 getopts 명령어에서 옵션을 읽을 때 자동으로 설정됩니다. getopts는 옵션을 처리한 후, 아직 처리되지 않은 인수들을 남겨두는데, OPTIND는 다음 처리할 인수의 인덱스를 나타냅니다. shift $((OPTIND - 1))는 getopts로 처리한 옵션들을 제외한 나머지 인수들을 다룰 수 있도록, OPTIND - 1만큼 인수 목록을 왼쪽으로 이동시킵니다. usage() { cat &amp;lt;&amp;lt;EOF Usage: $0 [-h] &amp;lt;-f 파일 이름&amp;gt; &amp;lt;-o 출력 옵션&amp;gt; &amp;lt;prefix&amp;gt; Options -f 파일 이름 -o 출력 옵션 EOF } while getopts &amp;#34;f:o:&amp;#34; opt; do case &amp;#34;$opt&amp;#34; in f) echo &amp;#34;파일 이름: $OPTARG&amp;#34; ;; # -f 뒤에 인수 o) echo &amp;#34;출력 옵션: $OPTARG&amp;#34; ;; # -o 뒤에 인수 *) echo &amp;#34;지원되지 않는 옵션&amp;#34; ;; esac shift $((OPTIND - 1)) done prefix=$1 실행파일 PATH 에 있는지 확인 if !</description>
     </item>
   </channel>
 </rss>

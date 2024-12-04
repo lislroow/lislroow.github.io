@@ -73,7 +73,36 @@
       <article>
         <h1></h1>
         <div>
-          <h4 id="실행파일-path-에-있는지-확인">실행파일 PATH 에 있는지 확인</h4>
+          <h4 id="getopts">getopts</h4>
+<ul>
+<li>getopts는 옵션을 하나씩 처리할 때마다 옵션 문자를 OPTIND와 같은 변수에 저장하고, 각 옵션에 대한 인수는 $OPTARG에 저장됩니다.</li>
+<li>$OPTARG는 현재 옵션의 인수를 나타내며, 이 값은 getopts 명령어에서 옵션을 읽을 때 자동으로 설정됩니다.</li>
+<li>getopts는 옵션을 처리한 후, 아직 처리되지 않은 인수들을 남겨두는데, OPTIND는 다음 처리할 인수의 인덱스를 나타냅니다.</li>
+<li>shift $((OPTIND - 1))는 getopts로 처리한 옵션들을 제외한 나머지 인수들을 다룰 수 있도록, OPTIND - 1만큼 인수 목록을 왼쪽으로 이동시킵니다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>usage<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  cat <span style="color:#e6db74">&lt;&lt;EOF
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Usage: $0 [-h] &lt;-f 파일 이름&gt; &lt;-o 출력 옵션&gt; &lt;prefix&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Options
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  -f 파일 이름
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  -o 출력 옵션
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> getopts <span style="color:#e6db74">&#34;f:o:&#34;</span> opt; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;</span>$opt<span style="color:#e6db74">&#34;</span> in
+</span></span><span style="display:flex;"><span>    f<span style="color:#f92672">)</span> echo <span style="color:#e6db74">&#34;파일 이름: </span>$OPTARG<span style="color:#e6db74">&#34;</span> ;;  <span style="color:#75715e"># -f 뒤에 인수</span>
+</span></span><span style="display:flex;"><span>    o<span style="color:#f92672">)</span> echo <span style="color:#e6db74">&#34;출력 옵션: </span>$OPTARG<span style="color:#e6db74">&#34;</span> ;;  <span style="color:#75715e"># -o 뒤에 인수</span>
+</span></span><span style="display:flex;"><span>    *<span style="color:#f92672">)</span> echo <span style="color:#e6db74">&#34;지원되지 않는 옵션&#34;</span> ;;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">esac</span>
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  shift <span style="color:#66d9ef">$((</span>OPTIND <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span><span style="color:#66d9ef">))</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>prefix<span style="color:#f92672">=</span>$1
+</span></span></code></pre></div><h4 id="실행파일-path-에-있는지-확인">실행파일 PATH 에 있는지 확인</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> ! which docker 1&gt; /dev/null; <span style="color:#66d9ef">then</span>
 </span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;docker not exist&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>
@@ -96,6 +125,7 @@
           <ul>
             <li>
               <ul>
+                <li><a href="#getopts">getopts</a></li>
                 <li><a href="#실행파일-path-에-있는지-확인">실행파일 PATH 에 있는지 확인</a></li>
               </ul>
             </li>
