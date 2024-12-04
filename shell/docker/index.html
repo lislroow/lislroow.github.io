@@ -71,6 +71,17 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
 </span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">postgresql_data:/var/lib/postgresql/data</span>
 </span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">./postgresql:/docker-entrypoint-initdb.d</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># /docker-entrypoint-initdb.d/01_create_database.sh</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>USER_NAME<span style="color:#f92672">=</span>postgres
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>DATABASE_NAME<span style="color:#f92672">=</span>mattermost
+</span></span><span style="display:flex;"><span>psql -U $USER_NAME -tc <span style="color:#e6db74">&#34;SELECT 1 FROM pg_database WHERE datname = &#39;</span><span style="color:#e6db74">${</span>DATABASE_NAME<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;&#34;</span> | grep -q <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  <span style="color:#f92672">||</span> psql -U $USER_NAME -c <span style="color:#e6db74">&#34;CREATE DATABASE </span><span style="color:#e6db74">${</span>DATABASE_NAME<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>DATABASE_NAME<span style="color:#f92672">=</span>sonarqube
+</span></span><span style="display:flex;"><span>psql -U $USER_NAME -tc <span style="color:#e6db74">&#34;SELECT 1 FROM pg_database WHERE datname = &#39;</span><span style="color:#e6db74">${</span>DATABASE_NAME<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;&#34;</span> | grep -q <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  <span style="color:#f92672">||</span> psql -U $USER_NAME -c <span style="color:#e6db74">&#34;CREATE DATABASE </span><span style="color:#e6db74">${</span>DATABASE_NAME<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
 </span></span></code></pre></div>
         </div>
       </article>

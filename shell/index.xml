@@ -19,7 +19,7 @@
       <link>https://lislroow.github.io/shell/docker/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://lislroow.github.io/shell/docker/</guid>
-      <description>postgres: /docker-entrypoint-initdb.d /docker-entrypoint-initdb.d 디렉토리에 sh, sql 파일이 있으면 스크립트를 실행 volumes: - postgresql_data:/var/lib/postgresql/data - ./postgresql:/docker-entrypoint-initdb.d </description>
+      <description>postgres: /docker-entrypoint-initdb.d /docker-entrypoint-initdb.d 디렉토리에 sh, sql 파일이 있으면 스크립트를 실행 volumes: - postgresql_data:/var/lib/postgresql/data - ./postgresql:/docker-entrypoint-initdb.d # /docker-entrypoint-initdb.d/01_create_database.sh USER_NAME=postgres DATABASE_NAME=mattermost psql -U $USER_NAME -tc &amp;#34;SELECT 1 FROM pg_database WHERE datname = &amp;#39;${DATABASE_NAME}&amp;#39;&amp;#34; | grep -q 1 \ || psql -U $USER_NAME -c &amp;#34;CREATE DATABASE ${DATABASE_NAME}&amp;#34; DATABASE_NAME=sonarqube psql -U $USER_NAME -tc &amp;#34;SELECT 1 FROM pg_database WHERE datname = &amp;#39;${DATABASE_NAME}&amp;#39;&amp;#34; | grep -q 1 \ || psql -U $USER_NAME -c &amp;#34;CREATE DATABASE ${DATABASE_NAME}&amp;#34; </description>
     </item>
   </channel>
 </rss>
