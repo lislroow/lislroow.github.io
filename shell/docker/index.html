@@ -62,14 +62,41 @@
   <div class="main-content">
     <div class="content">
       <article>
-        <h1>Archives</h1>
+        <h1></h1>
         <div>
-          
+          <h4 id="postgres-docker-entrypoint-initdbd">postgres: /docker-entrypoint-initdb.d</h4>
+<ul>
+<li>/docker-entrypoint-initdb.d 디렉토리에 sh, sql 파일이 있으면 스크립트를 실행</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">postgresql_data:/var/lib/postgresql/data</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">./postgresql:/docker-entrypoint-initdb.d</span>
+</span></span></code></pre></div>
         </div>
       </article>
     </div>
   </div>
   <aside class="aside">
+
+
+
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li>
+              <ul>
+                <li><a href="#postgres-docker-entrypoint-initdbd">postgres: /docker-entrypoint-initdb.d</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
 
