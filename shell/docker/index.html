@@ -76,20 +76,31 @@
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h4 id="lets-encrypt">lets encrypt</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker run -it --rm --name certbot -p 80:80 <span style="color:#ae81ff">\
+<ul>
+<li>~/bin/letsencrypt.sh</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;[1/4] Set domain&#39;</span>
+</span></span><span style="display:flex;"><span>read -p <span style="color:#e6db74">&#34;Enter the x (x.mgkim.net) : &#34;</span> -ei <span style="color:#e6db74">&#34;x&#34;</span> domain
+</span></span><span style="display:flex;"><span>printf <span style="color:#e6db74">$&#39;\n&#39;$&#39;\n&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;[2/4] Shutdown nginx (http:80)&#39;</span>
+</span></span><span style="display:flex;"><span>docker stop nginx
+</span></span><span style="display:flex;"><span>printf <span style="color:#e6db74">$&#39;\n&#39;$&#39;\n&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;[3/4] Generate cert&#39;</span>
+</span></span><span style="display:flex;"><span>docker run -it --rm --name certbot -p 80:80 <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -v <span style="color:#e6db74">&#34;/etc/letsencrypt:/etc/letsencrypt&#34;</span> <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -v <span style="color:#e6db74">&#34;/lib/letsencrypt:/var/lib/letsencrypt&#34;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    certbot/certbot certonly --standalone -d <span style="color:#e6db74">&#39;nexus.mgkim.net&#39;</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    certbot/certbot certonly --standalone -d <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>domain<span style="color:#e6db74">}</span><span style="color:#e6db74">.mgkim.net&#34;</span>
+</span></span><span style="display:flex;"><span>printf <span style="color:#e6db74">$&#39;\n&#39;$&#39;\n&#39;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>---
-</span></span><span style="display:flex;"><span>Saving debug log to /var/log/letsencrypt/letsencrypt.log
-</span></span><span style="display:flex;"><span>Requesting a certificate <span style="color:#66d9ef">for</span> nexus.mgkim.net
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;[4/4] start nginx&#39;</span>
+</span></span><span style="display:flex;"><span>docker start nginx
+</span></span><span style="display:flex;"><span>printf <span style="color:#e6db74">$&#39;\n&#39;$&#39;\n&#39;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Successfully received certificate.
-</span></span><span style="display:flex;"><span>Certificate is saved at: /etc/letsencrypt/live/nexus.mgkim.net/fullchain.pem
-</span></span><span style="display:flex;"><span>Key is saved at:         /etc/letsencrypt/live/nexus.mgkim.net/privkey.pem
-</span></span><span style="display:flex;"><span>This certificate expires on 2025-03-04.
-</span></span><span style="display:flex;"><span>These files will be updated when the certificate renews.
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;finish&#39;</span>
 </span></span></code></pre></div><h4 id="postgres-docker-entrypoint-initdbd">postgres /docker-entrypoint-initdb.d</h4>
 <ul>
 <li>/docker-entrypoint-initdb.d 디렉토리에 sh, sql 파일이 있으면 스크립트를 실행</li>
