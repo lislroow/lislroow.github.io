@@ -28,5 +28,12 @@
       <guid>https://lislroow.github.io/shell/git/</guid>
       <description>config git config --global init.defaultBranch main </description>
     </item>
+    <item>
+      <title></title>
+      <link>https://lislroow.github.io/shell/gradle/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lislroow.github.io/shell/gradle/</guid>
+      <description>gradle wrapper 생성 java8 버전의 호환되는 gradle 버전: 7.6.1 $ gradle wrapper $ gradle wrapper --gradle-version 7.6.1 </description>
+    </item>
   </channel>
 </rss>
