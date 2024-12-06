@@ -54,7 +54,14 @@
       <link>https://lislroow.github.io/shell/docker/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://lislroow.github.io/shell/docker/</guid>
-      <description>docker login ~/.docker/config.json 파일에 인증정보 echo -n &amp;quot;admin:password&amp;quot; | base64 를 추가 (-n: newline 추가 하지 않음) { &amp;#34;auths&amp;#34;: { &amp;#34;docker.mgkim.net:5000&amp;#34;: { &amp;#34;auth&amp;#34;: &amp;#34;YWRtaW46cGFzc3dvcmQ=&amp;#34; // base64(username:password) } } } lets encrypt ~/bin/letsencrypt.sh #!/bin/bash echo &amp;#39;[1/4] Set domain&amp;#39; read -p &amp;#34;Enter the x (x.mgkim.net) : &amp;#34; -ei &amp;#34;x&amp;#34; domain printf $&amp;#39;\n&amp;#39;$&amp;#39;\n&amp;#39; echo &amp;#39;[2/4] Shutdown nginx (http:80)&amp;#39; docker stop nginx printf $&amp;#39;\n&amp;#39;$&amp;#39;\n&amp;#39; echo &amp;#39;[3/4] Generate cert&amp;#39; docker run -it --rm --name certbot -p 80:80 \ -v &amp;#34;/etc/letsencrypt:/etc/letsencrypt&amp;#34; \ -v &amp;#34;/lib/letsencrypt:/var/lib/letsencrypt&amp;#34; \ certbot/certbot certonly --standalone -d &amp;#34;${domain}.</description>
+      <description>docker search $ docker search gitlab/gitlab-runner NAME DESCRIPTION STARS OFFICIAL gitlab/gitlab-runner GitLab CI Multi Runner used to fetch and run… 957 $ curl -s https://registry.hub.docker.com/v2/repositories/gitlab/gitlab-runner/tags | grep &amp;#39;&amp;#34;name&amp;#34;&amp;#39; docker login ~/.docker/config.json 파일에 인증정보 echo -n &amp;quot;admin:password&amp;quot; | base64 를 추가 (-n: newline 추가 하지 않음) { &amp;#34;auths&amp;#34;: { &amp;#34;docker.mgkim.net:5000&amp;#34;: { &amp;#34;auth&amp;#34;: &amp;#34;YWRtaW46cGFzc3dvcmQ=&amp;#34; // base64(username:password) } } } lets encrypt ~/bin/letsencrypt.sh #!/bin/bash echo &amp;#39;[1/4] Set domain&amp;#39; read -p &amp;#34;Enter the x (x.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://lislroow.github.io/shell/git/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lislroow.github.io/shell/git/</guid>
+      <description>config git config --global init.defaultBranch main </description>
     </item>
     <item>
       <title></title>
