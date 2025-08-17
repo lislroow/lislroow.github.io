@@ -54,7 +54,7 @@
       <link>https://lislroow.github.io/shell/docker/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://lislroow.github.io/shell/docker/</guid>
-      <description>docker search $ docker search gitlab/gitlab-runner NAME DESCRIPTION STARS OFFICIAL gitlab/gitlab-runner GitLab CI Multi Runner used to fetch and run… 957 $ curl -s https://registry.hub.docker.com/v2/repositories/gitlab/gitlab-runner/tags | grep &amp;#39;&amp;#34;name&amp;#34;&amp;#39; docker login ~/.docker/config.json 파일에 인증정보 echo -n &amp;quot;admin:password&amp;quot; | base64 를 추가 (-n: newline 추가 하지 않음) { &amp;#34;auths&amp;#34;: { &amp;#34;docker.mgkim.net:5000&amp;#34;: { &amp;#34;auth&amp;#34;: &amp;#34;YWRtaW46cGFzc3dvcmQ=&amp;#34; // base64(username:password) } } } lets encrypt ~/bin/letsencrypt.sh #!/bin/bash echo &amp;#39;[1/4] Set domain&amp;#39; read -p &amp;#34;Enter the x (x.</description>
+      <description>docker ENTRYPOINT ENTRYPOINT [&amp;#34;/bin/bash&amp;#34;, &amp;#34;-c&amp;#34;, &amp;#34;pwd &amp;amp;&amp;amp; ls -al &amp;amp;&amp;amp; /app/start-scouter.sh&amp;#34;] /app total 36 drwxr-xr-x 1 root root 18 Dec 11 07:53 . drwxr-xr-x 1 root root 17 Dec 11 07:53 .. drwxr-xr-x 2 root root 116 Dec 10 22:33 conf drwxr-xr-x 17 root root 4096 Dec 11 07:42 data drwxr-xr-x 2 root root 24 Dec 9 21:20 extweb drwxr-xr-x 2 root root 8192 Dec 10 22:33 lib drwxr-xr-x 2 root root 4096 Dec 9 21:20 plugin -rw-r--r-- 1 root root 5936 Dec 9 21:20 scouter-server-boot.</description>
     </item>
     <item>
       <title></title>

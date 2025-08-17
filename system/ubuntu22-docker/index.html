@@ -384,10 +384,26 @@
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>EOF
 </span></span></code></pre></div><ul>
-<li>systemctl restart docker</li>
-<li>docker login http://localhost:5000</li>
+<li>
+<p>systemctl restart docker</p>
+</li>
+<li>
+<p>docker login http://localhost:5000</p>
+</li>
+<li>
+<p>인증정보</p>
+</li>
 </ul>
-<h5 id="2-docker-이미지-push">2) docker 이미지 push</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>cat &lt;&lt; EOF &gt; ~/.docker/config.json
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  &#34;auths&#34;: {
+</span></span><span style="display:flex;"><span>    &#34;localhost:5000&#34;: {
+</span></span><span style="display:flex;"><span>      &#34;auth&#34;: &#34;YWRtaW46c2tkaSwsMTIz&#34;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>EOF
+</span></span></code></pre></div><h5 id="2-docker-이미지-push">2) docker 이미지 push</h5>
 <ul>
 <li>jdk 이미지 생성</li>
 </ul>

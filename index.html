@@ -862,6 +862,12 @@
 </span></span><span style="display:flex;"><span>$ git remote add -f origin git@github.com:lislroow/pilot.git
 </span></span><span style="display:flex;"><span>$ echo &#34;bom/framework-bom/*&#34; &gt; .git/info/sparse-checkout
 </span></span><span style="display:flex;"><span>$ git pull origin main
+</span></span></code></pre></div><h4 id="--git-submodule">- git submodule</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>$ git submodule add git@github.com:lislroow/child-repo.git path/to/child-repo
+</span></span><span style="display:flex;"><span># submodule까지 포함해서 clone
+</span></span><span style="display:flex;"><span>$ git clone --recurse-submodules git@github.com:lislroow/parent-repo.git
+</span></span><span style="display:flex;"><span># 이미 clone한 경우
+</span></span><span style="display:flex;"><span>$ git submodule update --init --recursive
 </span></span></code></pre></div><h3 id="-github">* <code>github</code></h3>
 <h4 id="--ssh-key-등록">- ssh key 등록</h4>
 <ul>
@@ -1068,6 +1074,7 @@
                 <li><a href="#--diff">- diff</a></li>
                 <li><a href="#--tag">- tag</a></li>
                 <li><a href="#--특정-경로만-checkout-하기">- 특정 경로만 checkout 하기</a></li>
+                <li><a href="#--git-submodule">- git submodule</a></li>
               </ul>
             </li>
             <li><a href="#-github">* <code>github</code></a>
