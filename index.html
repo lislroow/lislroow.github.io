@@ -340,11 +340,14 @@
 </span></span></code></pre></div><h3 id="-vim">* <code>vim</code></h3>
 <h4 id="--homevimrc">- $HOME/.vimrc</h4>
 <p>.vimrc 에는 # 주석 불가</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>set paste
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>set ts<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>
-</span></span><span style="display:flex;"><span>set sts<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>
-</span></span><span style="display:flex;"><span>set shiftwidth<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cat <span style="color:#e6db74">&lt;&lt; EOF &gt; $HOME/.vimrc 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">set paste
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">set expandtab      &#34; Tab 입력 시 스페이스로 변환
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">set tabstop=2      &#34; 파일에서 탭을 몇 칸으로 보일지 (2칸)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">set shiftwidth=2   &#34; 자동 들여쓰기 시 이동 칸수 (2칸)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">set softtabstop=2  &#34; Tab 키 입력 시 실제 스페이스 2칸 삽입
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
 </span></span></code></pre></div><h3 id="-self-signed-cert">* <code>self-signed-cert</code></h3>
 <h4 id="--git-bash-ca-bundlecrt">- &ldquo;git-bash&rdquo; ca-bundle.crt</h4>
 <p>git-bash 에서 ssl 통신 대상 서버가 ca 에 등록되지 않은 crt 인증서를 사용할 경우 curl 을 사용할 때 오류 발생</p>
@@ -734,6 +737,8 @@
 </span></span></code></pre></div><h3 id="-git">* <code>git</code></h3>
 <h4 id="--chmod">- chmod</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ git update-index --chmod<span style="color:#f92672">=</span>+x script.sh
+</span></span><span style="display:flex;"><span>$ git ls-files --stage | grep script.sh
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">100755</span> bd8896bf2217b46faa0291585e01ac1a3441a958 <span style="color:#ae81ff">0</span>       script.sh
 </span></span></code></pre></div><h4 id="--일반-옵션">- 일반 옵션</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ git config --global core.autocrlf true
 </span></span><span style="display:flex;"><span>$ git config --global user.name 김명구

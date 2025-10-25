@@ -459,14 +459,35 @@
 </span></span><span style="display:flex;"><span>apt-get update
 </span></span><span style="display:flex;"><span>apt-get install docker-ce docker-ce-cli containerd.io
 </span></span></code></pre></div><h4 id="docker-host-설정">docker host 설정</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>/usr/lib/systemd/system/docker.service
+<ul>
+<li><code>dnf update</code> 이후 docker-ce 업데이트 이후 docker.service 파일이 갱신되어 다시 수정해야함</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>[root@rocky10-develop ~]# rpm -ql docker-ce.x86_64 | xargs -I{} find {} -type f  | xargs ls -al
+</span></span><span style="display:flex;"><span>-rw-r--r-- 1 root root       81  9월  6일  09:03 /etc/docker/daemon.json
+</span></span><span style="display:flex;"><span>-rwxr-xr-x 1 root root  2759624  9월  4일  05:59 /usr/bin/docker-proxy
+</span></span><span style="display:flex;"><span>-rwxr-xr-x 1 root root 86546056  9월  4일  05:59 /usr/bin/dockerd
+</span></span><span style="display:flex;"><span>-rw-r--r-- 1 root root     1341  9월  6일  09:01 /usr/lib/systemd/system/docker.service
+</span></span><span style="display:flex;"><span>-rw-r--r-- 1 root root      295  9월  4일  05:55 /usr/lib/systemd/system/docker.socket
+</span></span><span style="display:flex;"><span>-rwxr-xr-x 1 root root   726856  9월  4일  05:59 /usr/libexec/docker/docker-init
+</span></span><span style="display:flex;"><span>-rw-r--r-- 1 root root     6579  9월  4일  05:59 /usr/share/man/man8/dockerd.8.gz
+</span></span><span style="display:flex;"><span>[root@rocky10-develop ~]# dnf list | grep docker-ce
+</span></span><span style="display:flex;"><span>containerd.io.x86_64                                                                     1.7.27-3.1.el10                             @docker-ce-stable                                
+</span></span><span style="display:flex;"><span>docker-buildx-plugin.x86_64                                                              0.27.0-1.el10                               @docker-ce-stable                                
+</span></span><span style="display:flex;"><span>docker-ce.x86_64                                                                         3:28.4.0-1.el10                             @docker-ce-stable                                
+</span></span><span style="display:flex;"><span>docker-ce-cli.x86_64                                                                     1:28.4.0-1.el10                             @docker-ce-stable                                
+</span></span><span style="display:flex;"><span>docker-ce-rootless-extras.x86_64                                                         28.4.0-1.el10                               @docker-ce-stable                                
+</span></span><span style="display:flex;"><span>docker-compose-plugin.x86_64                                                             2.39.2-1.el10                               @docker-ce-stable                                
+</span></span><span style="display:flex;"><span>docker-model-plugin.x86_64                                                               0.1.39-1.el10                               docker-ce-stable                                 
+</span></span><span style="display:flex;"><span>[root@rocky10-develop ~]# 
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>/usr/lib/systemd/system/docker.service
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock</span>
 </span></span><span style="display:flex;"><span>ExecStart<span style="color:#f92672">=</span>/usr/bin/dockerd --containerd<span style="color:#f92672">=</span>/run/containerd/containerd.sock
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>cat <span style="color:#e6db74">&lt;&lt; EOF &gt; /etc/docker/daemon.json
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">{
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  ... ,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;insecure-registries&#34;: [&#34;localhost:5000&#34;],
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;dns&#34;: [&#34;8.8.8.8&#34;, &#34;8.8.4.4&#34;],
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;hosts&#34;: [&#34;tcp://0.0.0.0:2375&#34;, &#34;unix:///var/run/docker.sock&#34;]
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
