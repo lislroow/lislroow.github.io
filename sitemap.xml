@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://172.28.200.103:1313/100.%EC%8A%A4%ED%84%B0%EB%94%94/</loc>
+    <loc>https://lislroow.github.io/</loc>
   </url><url>
-    <loc>http://172.28.200.103:1313/</loc>
+    <loc>https://lislroow.github.io/study/20260104/</loc>
   </url><url>
-    <loc>http://172.28.200.103:1313/100.%EC%8A%A4%ED%84%B0%EB%94%94/20260104/</loc>
+    <loc>https://lislroow.github.io/categories/</loc>
   </url><url>
-    <loc>http://172.28.200.103:1313/categories/</loc>
+    <loc>https://lislroow.github.io/tags/</loc>
   </url><url>
-    <loc>http://172.28.200.103:1313/tags/</loc>
+    <loc>https://lislroow.github.io/study/</loc>
   </url>
 </urlset>

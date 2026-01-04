@@ -136,7 +136,7 @@ hr {
   transition: flex 0.3s ease;
   overflow-y: auto;
   margin-top: 50px; /* navbar 높이 */
-  margin-bottom: 31px; /* footer 높이 */
+  /* margin-bottom: 31px; footer 높이 */
 }
 
 .aside {
@@ -150,8 +150,8 @@ hr {
   right: 0;
   z-index: 1;
   margin-top: 50px; /* navbar 높이 */
-  margin-bottom: 31px; /* footer 높이 */
-  max-height: calc(100vh - 76px); /* navbar, footer 높이 고려 */
+  /* margin-bottom: 31px; footer 높이 */
+  /* max-height: calc(100vh - 76px); navbar, footer 높이 고려 */
 }
 
 aside.hidden {
