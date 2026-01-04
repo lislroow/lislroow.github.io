@@ -200,6 +200,18 @@ document.getElementById('toggleTocButton').addEventListener('click', function() 
 <ul>
 <li>설치 진행 대기 → Reboot System 클릭</li>
 </ul>
+<details>
+<summary>(shell) sshd 22 방화벽 해제 (필수 사항)</summary>
+<ul>
+<li>설정 내용 반영 시 <code>--reload</code> 필수</li>
+<li>설정 변경 전/후 등록된 목록 확인: <code>--list-rich-rules</code></li>
+<li>netstat 명령으로 확인된 소켓 상태가 <code>SYN_SENT</code> 이면 방화벽 차단이 유력함</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh-session" data-lang="sh-session"><span style="display:flex;"><span>$ firewall-cmd --list-rich-rules
+</span></span><span style="display:flex;"><span>$ firewall-cmd --permanent --add-rich-rule<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;rule family=&#34;ipv4&#34; source address=&#34;172.28.200.0/24&#34; port protocol=&#34;tcp&#34; port=&#34;22&#34; accept&#39;</span>
+</span></span><span style="display:flex;"><span>$ firewall-cmd --list-rich-rules
+</span></span><span style="display:flex;"><span>$ firewall-cmd --reload
+</span></span></code></pre></div></details>
 <h3 id="13-developel10-caddy--code-server-구성">1.3 develop.el10: caddy + code-server 구성</h3>
 <ul>
 <li>목적: <code>설정 파일</code>, <code>스크립트 파일</code> 편집 편의성</li>
@@ -303,6 +315,11 @@ document.getElementById('toggleTocButton').addEventListener('click', function() 
 </ul>
 </li>
 <li>설정 변경 후 재시작 → 필요함 <code>systemct restart caddy</code></li>
+<li>기타 사항:
+<ul>
+<li>방화벽 해제 필요 → <code>80 포트</code></li>
+</ul>
+</li>
 </ul>
 
 
@@ -355,6 +372,7 @@ document.getElementById('toggleTocButton').addEventListener('click', function() 
 <ul>
 <li>호스트 추가: <code>172.28.200.101  code.develop.el10</code></li>
 <li>code-server URL: <code>http://code.develop.el10/</code></li>
+<li>caddy 80 포트 방화벽 해제 확인 할 것</li>
 </ul>
 <h4 id="todo"><code>TODO</code></h4>
 <ul>
@@ -362,6 +380,7 @@ document.getElementById('toggleTocButton').addEventListener('click', function() 
 <ul>
 <li>tls 적용: <code>code.develop.el10:443</code></li>
 <li>client 인증서 요구 적용</li>
+<li>개인 도메인 → Host PC (IP) → Guest OS → caddy</li>
 </ul>
 </li>
 <li>서비스 / 프로세스 관리 방법
