@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <meta name="author" content="myeonggu.kim@develoers">
+  
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/highlight/prism.css">
+  <script src="/highlight/prism.js"></script>
+</head>
+<body>
+  <header>
+  <div class="navbar">
+    <div>
+      <a href="#" id="toggleTocButton" style="margin-left: auto;">+</a>
+    </div>
+    
+    
+    
+      
+      <div class="dropdown">
+        <button class="dropbtn">스터디</button>
+        <div class="dropdown-content">
+        
+          <a href="/100.%EC%8A%A4%ED%84%B0%EB%94%94/20260104/">2026.01.04</a>
+        
+        </div>
+      </div>
+      
+    
+    
+  </div>
+</header>
+
+<script>
+document.getElementById('toggleTocButton').addEventListener('click', function() {
+  document.querySelector('.aside').classList.toggle('hidden');
+});
+</script>
+
+  
+<main class="container">
+  <aside class="aside">
+<span>2026.01.04 에이바우트</span>
+
+
+
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1-vm-환경-구성">1. vm 환경 구성</a>
+          <ul>
+            <li><a href="#11-vmware-환경-구성">1.1 vmware 환경 구성</a>
+              <ul>
+                <li><a href="#1-vmware-workstation-설치">1) vmware workstation 설치</a></li>
+                <li><a href="#2-vmware-설정-nat-설정">2) vmware 설정: NAT 설정</a></li>
+                <li><a href="#3-rocky-linux-10-다운로드">3) rocky linux 10 다운로드</a></li>
+                <li><a href="#4-vm-생성">4) vm 생성</a></li>
+              </ul>
+            </li>
+            <li><a href="#12-guest-os-설치">1.2 Guest OS 설치</a>
+              <ul>
+                <li><a href="#1-network--host-name-설정">1) Network &amp; Host Name 설정</a></li>
+                <li><a href="#2-time--date-설정">2) Time &amp; Date 설정</a></li>
+                <li><a href="#3-software-selection-설정">3) Software Selection 설정</a></li>
+                <li><a href="#4-installation-destination-설정">4) Installation Destination 설정</a></li>
+                <li><a href="#5-root-account-설정">5) Root Account 설정</a></li>
+                <li><a href="#6-begin-installation">6) Begin Installation</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+</aside>
+
+  <div class="main-content">
+    <div class="content">
+      <article>
+        <h1>2026.01.04 에이바우트</h1>
+        <div>
+          <h2 id="1-vm-환경-구성">1. vm 환경 구성</h2>
+<h3 id="11-vmware-환경-구성">1.1 vmware 환경 구성</h3>
+<h4 id="1-vmware-workstation-설치">1) vmware workstation 설치</h4>
+<ul>
+<li>다운로드: broadcom</li>
+</ul>
+<h4 id="2-vmware-설정-nat-설정">2) vmware 설정: NAT 설정</h4>
+<ul>
+<li>Edit → Virtual Network Editor → <code>NAT</code> Type: VMnet8 선택 → Change Settings 클릭
+<ul>
+<li>Subnet IP: 172.28.200.0</li>
+<li>Subnet mask: 255.255.255.0</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-rocky-linux-10-다운로드">3) rocky linux 10 다운로드</h4>
+<ul>
+<li><code>Rocky-10.1-x86_64-dvd1.iso</code> (8.64 GB)</li>
+</ul>
+<h4 id="4-vm-생성">4) vm 생성</h4>
+<ul>
+<li>(탐색기) <code>C:\vm\study</code> 디렉토리 생성</li>
+<li>(vmware) File → New Virtual Machine
+<ul>
+<li>Typical 선택</li>
+<li>I will install the operating system later 선택</li>
+<li>Linux 선택</li>
+<li>Location: <code>C:\vm\study</code> 디렉토리, Virtual Machine Name: <code>develop.el10</code></li>
+<li>20 GB → (Finish)</li>
+</ul>
+</li>
+<li>(vmware) <code>develop.el10</code> 선택
+<ul>
+<li>Memory: 4 GB</li>
+<li>Processor: 4 (1 / 4)</li>
+<li>CD/DVD (IDE) → (Use ISO image file) <code>Rocky-10.1-x86_64-dvd1.iso</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="12-guest-os-설치">1.2 Guest OS 설치</h3>
+<ul>
+<li><code>develop.el10</code> Guest OS 시작</li>
+<li>Rocky Linux 설치 진입 → Locale 선택: <code>한국어</code>, <code>한국</code> 선택</li>
+</ul>
+<h4 id="1-network--host-name-설정">1) Network &amp; Host Name 설정</h4>
+<ul>
+<li>Ethernet(ens160) → <code>활성화</code></li>
+<li>configure →
+<ul>
+<li>IPv6 Settings → Method → (Automatic &gt; <code>Disabled</code>)</li>
+<li>IPv4 Settings →
+<ul>
+<li>Method → (Automatic &gt; <code>Manual</code>)</li>
+<li>Address <code>Add</code> →
+<ul>
+<li>Address: <code>172.28.200.101</code></li>
+<li>Netmask: <code>25.255.255.0</code></li>
+<li>Gateway: <code>172.28.200.2</code></li>
+</ul>
+</li>
+<li>DNS Server: <code>8.8.8.8</code></li>
+</ul>
+</li>
+<li>Host Name: <code>develop</code> → (Done)</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-time--date-설정">2) Time &amp; Date 설정</h4>
+<ul>
+<li>Region: <code>Asia</code></li>
+<li>Time: <code>Seoul</code></li>
+<li>Automatic date &amp; time → <code>체크</code> → (Done)</li>
+</ul>
+<h4 id="3-software-selection-설정">3) Software Selection 설정</h4>
+<ul>
+<li>Base Environment → <code>Server</code> → (Done)</li>
+</ul>
+<h4 id="4-installation-destination-설정">4) Installation Destination 설정</h4>
+<ul>
+<li>Storage Configuration → <code>Custom</code> 선택 → (Done) → Manual Partitioning
+<ul>
+<li><code>Click here to create them automatically</code> 클릭</li>
+<li>→ (Done) → <code>Accept Changes</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="5-root-account-설정">5) Root Account 설정</h4>
+<ul>
+<li>Enable root account 클릭 → (패스워드 입력) → Allow root SSH login with password <code>체크</code></li>
+</ul>
+<h4 id="6-begin-installation">6) Begin Installation</h4>
+<ul>
+<li>설치 진행 대기 → Reboot System 클릭</li>
+</ul>
+
+        </div>
+      </article>
+    </div>
+  </div>
+</main>
+
+  <footer class="footer">
+Designed by 총총
+</footer>
+</body>
+</html>
