@@ -61,44 +61,27 @@ document.getElementById('toggleTocButton').addEventListener('click', function() 
   <ul>
     <li>
       <ul>
-        <li><a href="#1-vm-환경-구성">1. vm 환경 구성</a>
+        <li><a href="#1-developel10-설치">1. <code>develop.el10</code> 설치</a>
           <ul>
-            <li><a href="#11-vmware-환경-구성">1.1 vmware 환경 구성</a>
+            <li><a href="#11-vmware-설치">1.1 VMware 설치</a></li>
+            <li><a href="#12-virtual-machine-생성">1.2 Virtual Machine 생성</a></li>
+            <li><a href="#13-guest-os-설치">1.3 Guest OS 설치</a></li>
+          </ul>
+        </li>
+        <li><a href="#2-developel10-구성">2. <code>develop.el10</code> 구성</a>
+          <ul>
+            <li><a href="#21-code-server-구성">2.1 <code>code-server</code> 구성</a>
               <ul>
-                <li><a href="#1-vmware-workstation-설치">1) vmware workstation 설치</a></li>
-                <li><a href="#2-vmware-설정-nat-설정">2) vmware 설정: NAT 설정</a></li>
-                <li><a href="#3-rocky-linux-10-다운로드">3) rocky linux 10 다운로드</a></li>
-                <li><a href="#4-vm-생성">4) vm 생성</a></li>
+                <li><a href="#1-code-server-설치-dnf-install">1) code-server 설치: dnf install</a></li>
+                <li><a href="#2-code-server-설정-인증-비활성화">2) code-server 설정: 인증 비활성화</a></li>
+                <li><a href="#3-code-server-서비스-systemd-기반-관리">3) code-server 서비스: systemd 기반 관리</a></li>
               </ul>
             </li>
-            <li><a href="#12-guest-os-설치-developel10-rocky-10">1.2 Guest OS 설치: <code>develop.el10</code> (Rocky 10)</a>
+            <li><a href="#22-caddy-구성">2.2 <code>caddy</code> 구성</a>
               <ul>
-                <li><a href="#1-network--host-name-설정">1) Network &amp; Host Name 설정</a></li>
-                <li><a href="#2-time--date-설정">2) Time &amp; Date 설정</a></li>
-                <li><a href="#3-software-selection-설정">3) Software Selection 설정</a></li>
-                <li><a href="#4-installation-destination-설정">4) Installation Destination 설정</a></li>
-                <li><a href="#5-root-account-설정">5) Root Account 설정</a></li>
-                <li><a href="#6-begin-installation">6) Begin Installation</a></li>
-              </ul>
-            </li>
-            <li><a href="#13-developel10-caddy--code-server-구성">1.3 develop.el10: caddy + code-server 구성</a>
-              <ul>
-                <li><a href="#1-code-server-구성">1) code-server 구성</a>
-                  <ul>
-                    <li><a href="#a-code-server-설치-dnf-install">a. code-server 설치: dnf install</a></li>
-                    <li><a href="#b-code-server-설정-인증-비활성화">b. code-server 설정: 인증 비활성화</a></li>
-                    <li><a href="#c-code-server-서비스-systemd-기반-관리">c. code-server 서비스: systemd 기반 관리</a></li>
-                  </ul>
-                </li>
-                <li><a href="#2-caddy-구성">2) caddy 구성</a>
-                  <ul>
-                    <li><a href="#a-caddy-설치-dnf-install">a. caddy 설치: dnf install</a></li>
-                    <li><a href="#b-caddy-설정-가상호스트-추가">b. caddy 설정: 가상호스트 추가</a></li>
-                    <li><a href="#c-caddy-서비스-systemd-기반-관리">c. caddy 서비스: systemd 기반 관리</a></li>
-                  </ul>
-                </li>
-                <li><a href="#덧붙임"><code>덧붙임</code></a></li>
-                <li><a href="#todo"><code>TODO</code></a></li>
+                <li><a href="#1-caddy-설치-dnf-install">1) caddy 설치: dnf install</a></li>
+                <li><a href="#2-caddy-설정-가상호스트-추가">2) caddy 설정: 가상호스트 추가</a></li>
+                <li><a href="#3-caddy-서비스-systemd-기반-관리">3) caddy 서비스: systemd 기반 관리</a></li>
               </ul>
             </li>
           </ul>
@@ -117,13 +100,14 @@ document.getElementById('toggleTocButton').addEventListener('click', function() 
       <article>
         <h1>2026.01.04 에이바우트</h1>
         <div>
-          <h2 id="1-vm-환경-구성">1. vm 환경 구성</h2>
-<h3 id="11-vmware-환경-구성">1.1 vmware 환경 구성</h3>
-<h4 id="1-vmware-workstation-설치">1) vmware workstation 설치</h4>
-<ul>
-<li>다운로드: broadcom</li>
-</ul>
-<h4 id="2-vmware-설정-nat-설정">2) vmware 설정: NAT 설정</h4>
+          <h2 id="1-developel10-설치">1. <code>develop.el10</code> 설치</h2>
+<h3 id="11-vmware-설치">1.1 VMware 설치</h3>
+<details>
+<summary>다운로드 → 설치 → NAT 설정</summary>
+<ol>
+<li>다운로드: 회원 가입 후 VMware Workstation 다운로드 <a href="https://www.broadcom.com" target="_blank">링크</a></li>
+<li>설치</li>
+<li>NAT 설정
 <ul>
 <li>Edit → Virtual Network Editor → <code>NAT</code> Type: VMnet8 선택 → Change Settings 클릭
 <ul>
@@ -132,12 +116,13 @@ document.getElementById('toggleTocButton').addEventListener('click', function() 
 </ul>
 </li>
 </ul>
-<h4 id="3-rocky-linux-10-다운로드">3) rocky linux 10 다운로드</h4>
-<ul>
-<li>다운로드: <code>Rocky-10.1-x86_64-dvd1.iso</code> (8.64 GB), <a href="https://rockylinux.org/ko-KR/download" target="_blank">링크</a></li>
-</ul>
-<h4 id="4-vm-생성">4) vm 생성</h4>
-<ul>
+</li>
+</ol>
+</details>
+<h3 id="12-virtual-machine-생성">1.2 Virtual Machine 생성</h3>
+<details>
+<summary>Virtual Machine 생성</summary>
+<ol>
 <li>(탐색기) <code>C:\vm\study</code> 디렉토리 생성</li>
 <li>(vmware) File → New Virtual Machine
 <ul>
@@ -155,13 +140,16 @@ document.getElementById('toggleTocButton').addEventListener('click', function() 
 <li>CD/DVD (IDE) → (Use ISO image file) <code>Rocky-10.1-x86_64-dvd1.iso</code></li>
 </ul>
 </li>
-</ul>
-<h3 id="12-guest-os-설치-developel10-rocky-10">1.2 Guest OS 설치: <code>develop.el10</code> (Rocky 10)</h3>
-<ul>
-<li><code>develop.el10</code> Guest OS 시작</li>
-<li>Rocky Linux 설치 진입 → Locale 선택: <code>한국어</code>, <code>한국</code> 선택</li>
-</ul>
-<h4 id="1-network--host-name-설정">1) Network &amp; Host Name 설정</h4>
+</ol>
+</details>
+<h3 id="13-guest-os-설치">1.3 Guest OS 설치</h3>
+<ol>
+<li>다운로드: <code>Rocky-10.1-x86_64-dvd1.iso</code> (8.64 GB), <a href="https://rockylinux.org/ko-KR/download" target="_blank">링크</a></li>
+<li>VM 시작: Guest OS - <code>develop.el10</code> 시작</li>
+<li>Guest OS 설치 진행</li>
+</ol>
+<details>
+<summary>Network & Host Name 설정</summary>
 <ul>
 <li>Ethernet(ens160) → <code>활성화</code></li>
 <li>configure →
@@ -184,17 +172,26 @@ document.getElementById('toggleTocButton').addEventListener('click', function() 
 </li>
 <li>Host Name: <code>develop.el10</code> → (Done)</li>
 </ul>
-<h4 id="2-time--date-설정">2) Time &amp; Date 설정</h4>
+</summary>
+</details>
+<details>
+<summary>Time & Date 설정</summary>
 <ul>
 <li>Region: <code>Asia</code></li>
 <li>Time: <code>Seoul</code></li>
 <li>Automatic date &amp; time → <code>체크</code> → (Done)</li>
 </ul>
-<h4 id="3-software-selection-설정">3) Software Selection 설정</h4>
+</summary>
+</details>
+<details>
+<summary>Software Selection 설정</summary>
 <ul>
 <li>Base Environment → <code>Server</code> → (Done)</li>
 </ul>
-<h4 id="4-installation-destination-설정">4) Installation Destination 설정</h4>
+</summary>
+</details>
+<details>
+<summary>Installation Destination 설정</summary>
 <ul>
 <li>Storage Configuration → <code>Custom</code> 선택 → (Done) → Manual Partitioning
 <ul>
@@ -203,14 +200,22 @@ document.getElementById('toggleTocButton').addEventListener('click', function() 
 </ul>
 </li>
 </ul>
-<h4 id="5-root-account-설정">5) Root Account 설정</h4>
+</summary>
+</details>
+<details>
+<summary>Root Account 설정</summary>
 <ul>
 <li>Enable root account 클릭 → (패스워드 입력) → Allow root SSH login with password <code>체크</code></li>
 </ul>
-<h4 id="6-begin-installation">6) Begin Installation</h4>
+</summary>
+</details>
+<details>
+<summary>Begin Installation</summary>
 <ul>
 <li>설치 진행 대기 → Reboot System 클릭</li>
 </ul>
+</summary>
+</details>
 <details>
 <summary>(shell) sshd 22 방화벽 해제 (필수 사항)</summary>
 <ul>
@@ -223,23 +228,18 @@ document.getElementById('toggleTocButton').addEventListener('click', function() 
 </span></span><span style="display:flex;"><span>$ firewall-cmd --list-rich-rules
 </span></span><span style="display:flex;"><span>$ firewall-cmd --reload
 </span></span></code></pre></div></details>
-<h3 id="13-developel10-caddy--code-server-구성">1.3 develop.el10: caddy + code-server 구성</h3>
-<ul>
-<li>목적: <code>설정 파일</code>, <code>스크립트 파일</code> 편집 편의성</li>
-</ul>
-<h4 id="1-code-server-구성">1) code-server 구성</h4>
-<h5 id="a-code-server-설치-dnf-install">a. code-server 설치: dnf install</h5>
-<ul>
-<li>설치 명령: <code>curl -fsSL https://code-server.dev/install.sh | sh</code></li>
-</ul>
+<h2 id="2-developel10-구성">2. <code>develop.el10</code> 구성</h2>
+<h3 id="21-code-server-구성">2.1 <code>code-server</code> 구성</h3>
+<h4 id="1-code-server-설치-dnf-install">1) code-server 설치: dnf install</h4>
 <details>
 <summary>(shell) code-server 설치: 사이트 제공 install.sh 실행</summary>
 <ul>
+<li>설치 명령: <code>curl -fsSL https://code-server.dev/install.sh | sh</code></li>
 <li>sh 다운로드와 실행을 한 줄 명령으로 실행</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh-session" data-lang="sh-session"><span style="display:flex;"><span>$ curl -fsSL https://code-server.dev/install.sh | sh
 </span></span></code></pre></div></details>
-<h5 id="b-code-server-설정-인증-비활성화">b. code-server 설정: 인증 비활성화</h5>
+<h4 id="2-code-server-설정-인증-비활성화">2) code-server 설정: 인증 비활성화</h4>
 <details>
 <summary>(file) code-server 설정: 인증 비활성화</summary>
 <ul>
@@ -306,24 +306,22 @@ document.getElementById('toggleTocButton').addEventListener('click', function() 
 </div>
 
 </details>
-<h5 id="c-code-server-서비스-systemd-기반-관리">c. code-server 서비스: systemd 기반 관리</h5>
+<h4 id="3-code-server-서비스-systemd-기반-관리">3) code-server 서비스: systemd 기반 관리</h4>
+<details>
+<summary>(shell) code-server 실행</summary>
 <ul>
 <li>특징: code-server 의 systemd service 파일은 템플릿 패턴이 적용됨 → <code>code-server@사용자</code></li>
 </ul>
-<details>
-<summary>(shell) code-server 실행</summary>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh-session" data-lang="sh-session"><span style="display:flex;"><span>$ systemctl enable code-server@root
 </span></span><span style="display:flex;"><span>$ systemctl start code-server@root
 </span></span><span style="display:flex;"><span>$ systemctl status code-server@root
 </span></span></code></pre></div></details>
-<h4 id="2-caddy-구성">2) caddy 구성</h4>
-<h5 id="a-caddy-설치-dnf-install">a. caddy 설치: dnf install</h5>
-<ul>
-<li>설치 명령: <code>dnf install -y caddy</code></li>
-</ul>
+<h3 id="22-caddy-구성">2.2 <code>caddy</code> 구성</h3>
+<h4 id="1-caddy-설치-dnf-install">1) caddy 설치: dnf install</h4>
 <details>
 <summary>(shell) caddy 설치: caddy repo 추가 → dnf install</summary>
 <ul>
+<li>설치 명령: <code>dnf install -y caddy</code></li>
 <li>rocky 기본 저장소에서는 (/etc/yum.repos.d/rocky*.repo) caddy 패키지를 제공하지 않으므로 별도 repo 추가 후 dnf install 실행</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh-session" data-lang="sh-session"><span style="display:flex;"><span># caddy repo 추가
@@ -333,7 +331,7 @@ document.getElementById('toggleTocButton').addEventListener('click', function() 
 </span></span></span><span style="display:flex;"><span># caddy 설치
 </span></span><span style="display:flex;"><span>$ dnf install -y caddy
 </span></span></code></pre></div></details>
-<h5 id="b-caddy-설정-가상호스트-추가">b. caddy 설정: 가상호스트 추가</h5>
+<h4 id="2-caddy-설정-가상호스트-추가">2) caddy 설정: 가상호스트 추가</h4>
 <details>
 <summary>(file) caddy 설정: 가상호스트 추가 → code.develop.el10</summary>
 <ul>
@@ -408,20 +406,24 @@ document.getElementById('toggleTocButton').addEventListener('click', function() 
 </div>
 
 </details>
-<h5 id="c-caddy-서비스-systemd-기반-관리">c. caddy 서비스: systemd 기반 관리</h5>
+<h4 id="3-caddy-서비스-systemd-기반-관리">3) caddy 서비스: systemd 기반 관리</h4>
 <details>
 <summary>(shell) caddy 실행</summary>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh-session" data-lang="sh-session"><span style="display:flex;"><span>$ systemctl enable code-server@root
 </span></span><span style="display:flex;"><span>$ systemctl start code-server@root
 </span></span><span style="display:flex;"><span>$ systemctl status code-server@root
 </span></span></code></pre></div></details>
-<h4 id="덧붙임"><code>덧붙임</code></h4>
+<ul>
+<li>
+<p>덧붙임</p>
 <ul>
 <li>호스트 추가: <code>172.28.200.101  code.develop.el10</code></li>
 <li>code-server URL: <code>http://code.develop.el10/</code></li>
 <li>caddy 80 포트 방화벽 해제 확인 할 것</li>
 </ul>
-<h4 id="todo"><code>TODO</code></h4>
+</li>
+<li>
+<p>TODO</p>
 <ul>
 <li>(caddy) 가상호스트
 <ul>
@@ -434,6 +436,8 @@ document.getElementById('toggleTocButton').addEventListener('click', function() 
 <ul>
 <li>ps, netstat 명령어로 프로세스 상태 확인</li>
 <li>systemctl (서비스 관리), journalctl (로그)</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
