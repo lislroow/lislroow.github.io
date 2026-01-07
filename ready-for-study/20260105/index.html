@@ -61,16 +61,12 @@ document.getElementById('toggleTocButton').addEventListener('click', function() 
   <ul>
     <li>
       <ul>
-        <li><a href="#1-vm-환경-구성-계속">1. vm 환경 구성 (계속)</a>
+        <li><a href="#2-developel10-구성-계속">2. develop.el10 구성 (계속)</a>
           <ul>
-            <li><a href="#11-developel10-계속">1.1 develop.el10 (계속)</a>
+            <li><a href="#22-caddy-구성-계속">2.2 caddy 구성 (계속)</a>
               <ul>
-                <li><a href="#1-caddy-설정-계속">1) caddy 설정 (계속)</a>
-                  <ul>
-                    <li><a href="#a-self-signed-인증서-적용-생성-포함">a. self-signed 인증서 적용 (생성 포함)</a></li>
-                    <li><a href="#b-개인-도메인-인증서-적용">b. 개인 도메인 인증서 적용</a></li>
-                  </ul>
-                </li>
+                <li><a href="#4-self-signed-인증서-적용-생성-포함">4) self-signed 인증서 적용 (생성 포함)</a></li>
+                <li><a href="#5-개인-도메인-인증서-적용">5) 개인 도메인 인증서 적용</a></li>
               </ul>
             </li>
           </ul>
@@ -89,10 +85,9 @@ document.getElementById('toggleTocButton').addEventListener('click', function() 
       <article>
         <h1>2026.01.05</h1>
         <div>
-          <h2 id="1-vm-환경-구성-계속">1. vm 환경 구성 (계속)</h2>
-<h3 id="11-developel10-계속">1.1 develop.el10 (계속)</h3>
-<h4 id="1-caddy-설정-계속">1) caddy 설정 (계속)</h4>
-<h5 id="a-self-signed-인증서-적용-생성-포함">a. self-signed 인증서 적용 (생성 포함)</h5>
+          <h2 id="2-developel10-구성-계속">2. develop.el10 구성 (계속)</h2>
+<h3 id="22-caddy-구성-계속">2.2 caddy 구성 (계속)</h3>
+<h4 id="4-self-signed-인증서-적용-생성-포함">4) self-signed 인증서 적용 (생성 포함)</h4>
 <details>
 <summary>self-signed 인증서 생성</summary>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>- <span style="color:#f92672">(</span>ca 인증서 생성<span style="color:#f92672">)</span> <span style="color:#e6db74">`</span>./certmgr.sh create ca<span style="color:#e6db74">`</span>
@@ -313,7 +308,7 @@ document.getElementById('toggleTocButton').addEventListener('click', function() 
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">esac</span>
 </span></span></code></pre></div></details>
 
-<h5 id="b-개인-도메인-인증서-적용">b. 개인 도메인 인증서 적용</h5>
+<h4 id="5-개인-도메인-인증서-적용">5) 개인 도메인 인증서 적용</h4>
 <ul>
 <li>개인 도메인 준비 (가비아 → dlog.my 구매)</li>
 <li>가비아: <code>dlog.my</code> 도메인 → 도메인 관리 → <code>code.dlog.my 공유기IP</code> 추가</li>
