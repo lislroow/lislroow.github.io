@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <meta name="author" content="myeonggu.kim@kakao.com">
+  
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/highlight/prism.css">
+  <script src="/highlight/prism.js"></script>
+</head>
+<body>
+  <header>
+  <div class="navbar">
+    <div>
+      <a href="#" id="toggleTocButton" style="margin-left: auto;">+</a>
+    </div>
+    
+    
+      
+      <div class="dropdown">
+        <button class="dropbtn">스터디</button>
+        <div class="dropdown-content">
+        
+          <a href="/study/20260104/">2026.01.04</a>
+        
+        </div>
+      </div>
+      
+    
+      
+      <div class="dropdown">
+        <button class="dropbtn">스터디 준비</button>
+        <div class="dropdown-content">
+        
+          <a href="/ready-for-study/20260105/">2026.01.05</a>
+        
+        </div>
+      </div>
+      
+    
+    
+  </div>
+</header>
+
+<script>
+document.getElementById('toggleTocButton').addEventListener('click', function() {
+  document.querySelector('.aside').classList.toggle('hidden');
+});
+</script>
+
+  
+<main class="container">
+  <aside class="aside">
+<span></span>
+
+
+
+<nav id="TableOfContents"></nav>
+
+
+
+</aside>
+
+  <div class="main-content">
+    <div class="content">
+      <article>
+        <h1></h1>
+        <div>
+          <details>
+<summary>(script) certmgr.sh</summary>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/env bash
+</span></span></span><span style="display:flex;"><span>BASEDIR<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>cd <span style="color:#66d9ef">$(</span>dirname $0<span style="color:#66d9ef">)</span> <span style="color:#f92672">&amp;&amp;</span> pwd -P<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>SCRIPT_NM<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>0##*/<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># usage</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> USAGE <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  cat <span style="color:#e6db74">&lt;&lt; EOF
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Usage  $SCRIPT_NM COMMAND
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">COMMAND:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  create ca             # Create CA certificate
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  create server [name]  # Create server certificate
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  create client [name]  # Create client certificate
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">OPTION:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  --host [hostname]     # *default: &#39;develop&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span><span style="display:flex;"><span>  exit <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># //usage</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># options</span>
+</span></span><span style="display:flex;"><span>OPTIONS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>LONGOPTIONS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;host:&#34;</span>
+</span></span><span style="display:flex;"><span>opts<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>getopt --options <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>OPTIONS<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>              --longoptions <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>LONGOPTIONS<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>              -- <span style="color:#e6db74">&#34;</span>$@<span style="color:#e6db74">&#34;</span> <span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>eval set -- <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>opts<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> true; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">[</span> -z <span style="color:#e6db74">&#34;</span>$1<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span> <span style="color:#f92672">&amp;&amp;</span> break
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;</span>$1<span style="color:#e6db74">&#34;</span> in
+</span></span><span style="display:flex;"><span>    --host<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>      host<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$2<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>      shift
+</span></span><span style="display:flex;"><span>      ;;
+</span></span><span style="display:flex;"><span>    --<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>      ;;
+</span></span><span style="display:flex;"><span>    *<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>      argv<span style="color:#f92672">+=(</span>$1<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>      ;;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">esac</span>
+</span></span><span style="display:flex;"><span>  shift
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -- options</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># validate</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span> -z <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>host<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span> <span style="color:#f92672">&amp;&amp;</span> host<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;el10&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -- validate</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>create<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  local f_ca_key<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>BASEDIR<span style="color:#e6db74">}</span><span style="color:#e6db74">/ca/</span><span style="color:#e6db74">${</span>host<span style="color:#e6db74">}</span><span style="color:#e6db74">CA.key&#34;</span>
+</span></span><span style="display:flex;"><span>  local f_ca_crt<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>BASEDIR<span style="color:#e6db74">}</span><span style="color:#e6db74">/ca/</span><span style="color:#e6db74">${</span>host<span style="color:#e6db74">}</span><span style="color:#e6db74">CA.crt&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>type<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> in
+</span></span><span style="display:flex;"><span>    ca<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>      echo <span style="color:#e6db74">&#34;CA 생성&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> -f <span style="color:#e6db74">${</span>f_ca_key<span style="color:#e6db74">}</span> <span style="color:#f92672">]]</span> <span style="color:#f92672">||</span> <span style="color:#f92672">[[</span> -f <span style="color:#e6db74">${</span>f_ca_crt<span style="color:#e6db74">}</span> <span style="color:#f92672">]]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>        printf <span style="color:#e6db74">&#34;[ERROR] already exist: </span><span style="color:#e6db74">${</span>f_ca_key<span style="color:#e6db74">}</span><span style="color:#e6db74"> or </span><span style="color:#e6db74">${</span>f_ca_crt<span style="color:#e6db74">}</span><span style="color:#e6db74">\n&#34;</span>
+</span></span><span style="display:flex;"><span>        exit
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>      openssl genrsa -out <span style="color:#e6db74">${</span>f_ca_key<span style="color:#e6db74">}</span> <span style="color:#ae81ff">4096</span>
+</span></span><span style="display:flex;"><span>      openssl req -x509 -new -key <span style="color:#e6db74">${</span>f_ca_key<span style="color:#e6db74">}</span> -out <span style="color:#e6db74">${</span>f_ca_crt<span style="color:#e6db74">}</span> -subj <span style="color:#e6db74">&#34;/CN=</span><span style="color:#e6db74">${</span>host<span style="color:#e6db74">}</span><span style="color:#e6db74">CA&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>        -nodes -sha256 -days <span style="color:#66d9ef">$((</span><span style="color:#ae81ff">365</span><span style="color:#f92672">*</span><span style="color:#ae81ff">20</span><span style="color:#66d9ef">))</span>
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>      printf <span style="color:#e6db74">&#34;  %-8s: %s\n&#34;</span> <span style="color:#e6db74">&#34;CA&#34;</span> <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>echo <span style="color:#e6db74">${</span>f_ca_key%.*<span style="color:#e6db74">}</span>*<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>      chmod +r <span style="color:#e6db74">${</span>f_ca_key<span style="color:#e6db74">}</span> <span style="color:#e6db74">${</span>f_ca_crt<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>      printf <span style="color:#e6db74">&#34;[INFO] (done) \$ chmod +r </span><span style="color:#e6db74">${</span>f_ca_key<span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">${</span>f_ca_crt<span style="color:#e6db74">}</span><span style="color:#e6db74">\n&#34;</span>
+</span></span><span style="display:flex;"><span>      ;;
+</span></span><span style="display:flex;"><span>    server<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>      local f_serv_key<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>BASEDIR<span style="color:#e6db74">}</span><span style="color:#e6db74">/server/</span><span style="color:#e6db74">${</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74">.</span><span style="color:#e6db74">${</span>host<span style="color:#e6db74">}</span><span style="color:#e6db74">.key&#34;</span>
+</span></span><span style="display:flex;"><span>      local f_serv_csr<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>BASEDIR<span style="color:#e6db74">}</span><span style="color:#e6db74">/server/</span><span style="color:#e6db74">${</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74">.</span><span style="color:#e6db74">${</span>host<span style="color:#e6db74">}</span><span style="color:#e6db74">.csr&#34;</span>
+</span></span><span style="display:flex;"><span>      local f_serv_crt<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>BASEDIR<span style="color:#e6db74">}</span><span style="color:#e6db74">/server/</span><span style="color:#e6db74">${</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74">.</span><span style="color:#e6db74">${</span>host<span style="color:#e6db74">}</span><span style="color:#e6db74">.crt&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      echo <span style="color:#e6db74">&#34;서버 인증서 생성&#34;</span>
+</span></span><span style="display:flex;"><span>      openssl genrsa -out <span style="color:#e6db74">${</span>f_serv_key<span style="color:#e6db74">}</span> <span style="color:#ae81ff">4096</span>
+</span></span><span style="display:flex;"><span>      openssl req -new -key <span style="color:#e6db74">${</span>f_serv_key<span style="color:#e6db74">}</span> -out <span style="color:#e6db74">${</span>f_serv_csr<span style="color:#e6db74">}</span> -subj <span style="color:#e6db74">&#34;/CN=</span><span style="color:#e6db74">${</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74">.</span><span style="color:#e6db74">${</span>host<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>      openssl x509 -req -in <span style="color:#e6db74">${</span>f_serv_csr<span style="color:#e6db74">}</span> -out <span style="color:#e6db74">${</span>f_serv_crt<span style="color:#e6db74">}</span> -days <span style="color:#66d9ef">$((</span><span style="color:#ae81ff">365</span><span style="color:#f92672">*</span><span style="color:#ae81ff">20</span><span style="color:#66d9ef">))</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>        -CAkey <span style="color:#e6db74">${</span>f_ca_key<span style="color:#e6db74">}</span> -CA <span style="color:#e6db74">${</span>f_ca_crt<span style="color:#e6db74">}</span> -CAcreateserial <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>        -extensions v3_req -extfile &lt;<span style="color:#f92672">(</span>printf <span style="color:#e6db74">&#34;[v3_req]\nsubjectAltName=DNS:</span><span style="color:#e6db74">${</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74">.</span><span style="color:#e6db74">${</span>host<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      printf <span style="color:#e6db74">&#34;  %-8s: %s\n&#34;</span> <span style="color:#e6db74">&#34;server&#34;</span> <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>echo <span style="color:#e6db74">${</span>f_serv_csr%.*<span style="color:#e6db74">}</span>.crt <span style="color:#e6db74">${</span>f_serv_csr%.*<span style="color:#e6db74">}</span>.key<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>      chmod +r <span style="color:#66d9ef">$(</span>echo <span style="color:#e6db74">${</span>f_serv_csr%.*<span style="color:#e6db74">}</span>.crt <span style="color:#e6db74">${</span>f_serv_csr%.*<span style="color:#e6db74">}</span>.key<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>      printf <span style="color:#e6db74">&#34;[INFO] (done) \$ chmod +r </span><span style="color:#66d9ef">$(</span>echo <span style="color:#e6db74">${</span>f_serv_csr%.*<span style="color:#e6db74">}</span>.crt <span style="color:#e6db74">${</span>f_serv_csr%.*<span style="color:#e6db74">}</span>.key<span style="color:#66d9ef">)</span><span style="color:#e6db74">\n&#34;</span>
+</span></span><span style="display:flex;"><span>      ;;
+</span></span><span style="display:flex;"><span>    client<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>      local f_clnt_key<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>BASEDIR<span style="color:#e6db74">}</span><span style="color:#e6db74">/client/client-</span><span style="color:#e6db74">${</span>host<span style="color:#e6db74">}</span><span style="color:#e6db74">.key&#34;</span>
+</span></span><span style="display:flex;"><span>      local f_clnt_csr<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>BASEDIR<span style="color:#e6db74">}</span><span style="color:#e6db74">/client/client-</span><span style="color:#e6db74">${</span>host<span style="color:#e6db74">}</span><span style="color:#e6db74">.csr&#34;</span>
+</span></span><span style="display:flex;"><span>      local f_clnt_crt<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>BASEDIR<span style="color:#e6db74">}</span><span style="color:#e6db74">/client/client-</span><span style="color:#e6db74">${</span>host<span style="color:#e6db74">}</span><span style="color:#e6db74">.crt&#34;</span>
+</span></span><span style="display:flex;"><span>      local f_clnt_p12<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>BASEDIR<span style="color:#e6db74">}</span><span style="color:#e6db74">/client/client-</span><span style="color:#e6db74">${</span>host<span style="color:#e6db74">}</span><span style="color:#e6db74">.p12&#34;</span>
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>      echo <span style="color:#e6db74">&#34;클라이언트 인증서 생성&#34;</span>
+</span></span><span style="display:flex;"><span>      openssl genrsa -out <span style="color:#e6db74">${</span>f_clnt_key<span style="color:#e6db74">}</span> <span style="color:#ae81ff">4096</span>
+</span></span><span style="display:flex;"><span>      openssl req -new -key <span style="color:#e6db74">${</span>f_clnt_key<span style="color:#e6db74">}</span> -out <span style="color:#e6db74">${</span>f_clnt_csr<span style="color:#e6db74">}</span> -subj <span style="color:#e6db74">&#34;/CN=client-</span><span style="color:#e6db74">${</span>host<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>      openssl x509 -req -in <span style="color:#e6db74">${</span>f_clnt_csr<span style="color:#e6db74">}</span> -out <span style="color:#e6db74">${</span>f_clnt_crt<span style="color:#e6db74">}</span> -days <span style="color:#66d9ef">$((</span><span style="color:#ae81ff">365</span><span style="color:#f92672">*</span><span style="color:#ae81ff">20</span><span style="color:#66d9ef">))</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>        -CAkey <span style="color:#e6db74">${</span>f_ca_key<span style="color:#e6db74">}</span> -CA <span style="color:#e6db74">${</span>f_ca_crt<span style="color:#e6db74">}</span> -CAcreateserial
+</span></span><span style="display:flex;"><span>      openssl pkcs12 -export -in <span style="color:#e6db74">${</span>f_clnt_crt<span style="color:#e6db74">}</span> -out <span style="color:#e6db74">${</span>f_clnt_p12<span style="color:#e6db74">}</span> -inkey <span style="color:#e6db74">${</span>f_clnt_key<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>            -certfile <span style="color:#e6db74">${</span>f_ca_crt<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      printf <span style="color:#e6db74">&#34;  %-8s: %s\n&#34;</span> <span style="color:#e6db74">&#34;client&#34;</span> <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>echo <span style="color:#e6db74">${</span>f_clnt_key%.*<span style="color:#e6db74">}</span>.p12<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>      ;;
+</span></span><span style="display:flex;"><span>    *<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>      USAGE
+</span></span><span style="display:flex;"><span>      ;;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">esac</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># main</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">((</span> <span style="color:#e6db74">${#</span>argv[@]<span style="color:#e6db74">}</span> &lt; <span style="color:#ae81ff">1</span> <span style="color:#f92672">))</span> <span style="color:#f92672">&amp;&amp;</span> USAGE
+</span></span><span style="display:flex;"><span>command<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>argv[0]<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>command<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> in
+</span></span><span style="display:flex;"><span>  create<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">((</span> <span style="color:#e6db74">${#</span>argv[@]<span style="color:#e6db74">}</span> &lt; <span style="color:#ae81ff">2</span> <span style="color:#f92672">))</span> <span style="color:#f92672">&amp;&amp;</span> USAGE
+</span></span><span style="display:flex;"><span>    type<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>argv[1]<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>type<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> in
+</span></span><span style="display:flex;"><span>      server<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">((</span> <span style="color:#e6db74">${#</span>argv[@]<span style="color:#e6db74">}</span> !<span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">))</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>          echo <span style="color:#e6db74">&#34;[ERROR] invalid name: \$ </span><span style="color:#e6db74">${</span>SCRIPT_NM<span style="color:#e6db74">}</span><span style="color:#e6db74"> create </span><span style="color:#e6db74">${</span>type<span style="color:#e6db74">}</span><span style="color:#e6db74"> [</span><span style="color:#e6db74">${</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74">]&#34;</span>
+</span></span><span style="display:flex;"><span>          exit <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>          name<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>argv[2]<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>        ;;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">esac</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;[INFO] create </span><span style="color:#e6db74">${</span>type<span style="color:#e6db74">}</span><span style="color:#e6db74"> certificate&#34;</span>
+</span></span><span style="display:flex;"><span>    create <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>type<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>    ;;
+</span></span><span style="display:flex;"><span>  *<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    USAGE
+</span></span><span style="display:flex;"><span>    ;;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">esac</span>
+</span></span></code></pre></div></details>
+        </div>
+      </article>
+    </div>
+  </div>
+</main>
+
+  
+</body>
+</html>

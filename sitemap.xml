@@ -2,14 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://lislroow.github.io/200.%EC%8A%A4%ED%84%B0%EB%94%94%EC%A4%80%EB%B9%84/20260105/20260105-caddy-letsencrypt/</loc>
+  </url><url>
+    <loc>https://lislroow.github.io/200.%EC%8A%A4%ED%84%B0%EB%94%94%EC%A4%80%EB%B9%84/20260105/20260105-certmgr.sh/</loc>
+  </url><url>
     <loc>https://lislroow.github.io/</loc>
   </url><url>
     <loc>https://lislroow.github.io/study/20260104/</loc>
+  </url><url>
+    <loc>https://lislroow.github.io/ready-for-study/20260105/</loc>
   </url><url>
     <loc>https://lislroow.github.io/categories/</loc>
   </url><url>
     <loc>https://lislroow.github.io/tags/</loc>
   </url><url>
     <loc>https://lislroow.github.io/study/</loc>
+  </url><url>
+    <loc>https://lislroow.github.io/ready-for-study/</loc>
   </url>
 </urlset>

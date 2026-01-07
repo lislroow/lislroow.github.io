@@ -230,6 +230,8 @@ pre[class*="language-"] code {
 #TableOfContents li > a {
   display: block;
   padding: 2px 4px;
+
+  width: fit-content
 }
 
 #TableOfContents li > a:hover {
@@ -300,6 +302,13 @@ details {
 summary {
   color: #B8860B;
   font-weight: 500;
+
+  margin-block-end: 0.5em;
+  cursor: pointer;
+  
+  display: list-item;
+  width: fit-content;
+  list-style-position: inside;
 }
 
 /* code-compare */

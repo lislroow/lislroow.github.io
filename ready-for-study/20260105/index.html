@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <meta name="author" content="myeonggu.kim@kakao.com">
+  
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/highlight/prism.css">
+  <script src="/highlight/prism.js"></script>
+</head>
+<body>
+  <header>
+  <div class="navbar">
+    <div>
+      <a href="#" id="toggleTocButton" style="margin-left: auto;">+</a>
+    </div>
+    
+    
+      
+      <div class="dropdown">
+        <button class="dropbtn">스터디</button>
+        <div class="dropdown-content">
+        
+          <a href="/study/20260104/">2026.01.04</a>
+        
+        </div>
+      </div>
+      
+    
+      
+      <div class="dropdown">
+        <button class="dropbtn">스터디 준비</button>
+        <div class="dropdown-content">
+        
+          <a href="/ready-for-study/20260105/">2026.01.05</a>
+        
+        </div>
+      </div>
+      
+    
+    
+  </div>
+</header>
+
+<script>
+document.getElementById('toggleTocButton').addEventListener('click', function() {
+  document.querySelector('.aside').classList.toggle('hidden');
+});
+</script>
+
+  
+<main class="container">
+  <aside class="aside">
+<span>2026.01.05</span>
+
+
+
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1-vm-환경-구성-계속">1. vm 환경 구성 (계속)</a>
+          <ul>
+            <li><a href="#11-developel10-계속">1.1 develop.el10 (계속)</a>
+              <ul>
+                <li><a href="#1-caddy-설정-계속">1) caddy 설정 (계속)</a>
+                  <ul>
+                    <li><a href="#a-self-signed-인증서-적용-생성-포함">a. self-signed 인증서 적용 (생성 포함)</a></li>
+                    <li><a href="#b-개인-도메인-인증서-적용">b. 개인 도메인 인증서 적용</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+</aside>
+
+  <div class="main-content">
+    <div class="content">
+      <article>
+        <h1>2026.01.05</h1>
+        <div>
+          <h2 id="1-vm-환경-구성-계속">1. vm 환경 구성 (계속)</h2>
+<h3 id="11-developel10-계속">1.1 develop.el10 (계속)</h3>
+<h4 id="1-caddy-설정-계속">1) caddy 설정 (계속)</h4>
+<h5 id="a-self-signed-인증서-적용-생성-포함">a. self-signed 인증서 적용 (생성 포함)</h5>
+<details>
+<summary>self-signed 인증서 생성</summary>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>- <span style="color:#f92672">(</span>ca 인증서 생성<span style="color:#f92672">)</span> <span style="color:#e6db74">`</span>./certmgr.sh create ca<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>  - el10CA.key
+</span></span><span style="display:flex;"><span>  - el10CA.crt  <span style="color:#75715e"># caddy 적용 + 클라이언트 추가</span>
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">(</span>서버 인증서 생성<span style="color:#f92672">)</span> <span style="color:#e6db74">`</span>./certmgr.sh create server code.develop<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>  - code.develop.el10.key <span style="color:#75715e"># caddy 적용</span>
+</span></span><span style="display:flex;"><span>  - code.develop.el10.crt <span style="color:#75715e"># caddy 적용</span>
+</span></span><span style="display:flex;"><span>  - code.develop.el10.csr
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">(</span>클라이언트 인증서 생성<span style="color:#f92672">)</span> <span style="color:#e6db74">`</span>./certmgr.sh create client<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>  - client-el10.key
+</span></span><span style="display:flex;"><span>  - client-el10.crt
+</span></span><span style="display:flex;"><span>  - client-el10.p12  <span style="color:#75715e"># 클라이언트 추가</span>
+</span></span><span style="display:flex;"><span>  - client-el10.csr
+</span></span></code></pre></div></details>
+<details>
+<summary>self-signed 인증서 → caddy 적용 + 클라이언트 추가</summary>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="code-compare two-col">
+
+  
+  <div class="code-col good">
+    <div class="code-title">caddy 적용</div>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># /etc/caddy/Caddyfile
+</span></span><span style="display:flex;"><span>code.develop.el10:443 {
+</span></span><span style="display:flex;"><span>  # 실제 적용 시 /app/certs/server/ 경로 붙일 것
+</span></span><span style="display:flex;"><span>  tls code.develop.el10.crt code.develop.el10.key {
+</span></span><span style="display:flex;"><span>    client_auth {
+</span></span><span style="display:flex;"><span>      mode require_and_verify
+</span></span><span style="display:flex;"><span>      trust_pool file /app/certs/ca/el10CA.crt
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  reverse_proxy localhost:8080
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
+  </div>
+  
+  
+  
+
+  
+  <div class="code-col bad">
+    <div class="code-title">클라이언트 추가</div>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># 클라이언트 인증서 추가
+</span></span><span style="display:flex;"><span>- `el10CA.crt` 추가
+</span></span><span style="display:flex;"><span>  1) el10CA.crt 더블클릭
+</span></span><span style="display:flex;"><span>  2) `(중요) 저장소 위치: &#39;현재 사용자&#39; (&#39;로컬 컴퓨터&#39; 아님)`
+</span></span><span style="display:flex;"><span>  3) &#39;인증서 종류를 기준으로 인증서 저장소를 자동으로 선택&#39;
+</span></span><span style="display:flex;"><span>  - (마침) → (Win + R) certmgr.msc → &#39;신뢰..루트&#39; 확인 필수
+</span></span><span style="display:flex;"><span>- `client-el10.p12` 추가
+</span></span><span style="display:flex;"><span>  1) client-el10.p12 더블클릭
+</span></span><span style="display:flex;"><span>  2) `(중요) 저장소 위치: &#39;현재 사용자&#39; (&#39;로컬 컴퓨터&#39; 아님)`
+</span></span><span style="display:flex;"><span>  3) (client-el10.p12 생성 시 설정 했던) 암호 입력
+</span></span><span style="display:flex;"><span>  4) &#39;인증서 종류를 기준으로 인증서 저장소를 자동으로 선택&#39;
+</span></span><span style="display:flex;"><span>  - (마침) → (Win + R) certmgr.msc → 개인용 확인 필수
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>- `현재 사용자`에 있어야 chrome 에서 읽어들임</span></span></code></pre></div>
+  </div>
+
+</div>
+
+</details>
+
+
+<details>
+<summary>(script) certmgr.sh</summary>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/env bash
+</span></span></span><span style="display:flex;"><span>BASEDIR<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>cd <span style="color:#66d9ef">$(</span>dirname $0<span style="color:#66d9ef">)</span> <span style="color:#f92672">&amp;&amp;</span> pwd -P<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>SCRIPT_NM<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>0##*/<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># usage</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> USAGE <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  cat <span style="color:#e6db74">&lt;&lt; EOF
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Usage  $SCRIPT_NM COMMAND
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">COMMAND:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  create ca             # Create CA certificate
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  create server [name]  # Create server certificate
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  create client [name]  # Create client certificate
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">OPTION:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  --host [hostname]     # *default: &#39;develop&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span><span style="display:flex;"><span>  exit <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># //usage</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># options</span>
+</span></span><span style="display:flex;"><span>OPTIONS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>LONGOPTIONS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;host:&#34;</span>
+</span></span><span style="display:flex;"><span>opts<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>getopt --options <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>OPTIONS<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>              --longoptions <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>LONGOPTIONS<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>              -- <span style="color:#e6db74">&#34;</span>$@<span style="color:#e6db74">&#34;</span> <span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>eval set -- <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>opts<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> true; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">[</span> -z <span style="color:#e6db74">&#34;</span>$1<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span> <span style="color:#f92672">&amp;&amp;</span> break
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;</span>$1<span style="color:#e6db74">&#34;</span> in
+</span></span><span style="display:flex;"><span>    --host<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>      host<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$2<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>      shift
+</span></span><span style="display:flex;"><span>      ;;
+</span></span><span style="display:flex;"><span>    --<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>      ;;
+</span></span><span style="display:flex;"><span>    *<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>      argv<span style="color:#f92672">+=(</span>$1<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>      ;;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">esac</span>
+</span></span><span style="display:flex;"><span>  shift
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -- options</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># validate</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span> -z <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>host<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span> <span style="color:#f92672">&amp;&amp;</span> host<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;el10&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -- validate</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>create<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  local f_ca_key<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>BASEDIR<span style="color:#e6db74">}</span><span style="color:#e6db74">/ca/</span><span style="color:#e6db74">${</span>host<span style="color:#e6db74">}</span><span style="color:#e6db74">CA.key&#34;</span>
+</span></span><span style="display:flex;"><span>  local f_ca_crt<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>BASEDIR<span style="color:#e6db74">}</span><span style="color:#e6db74">/ca/</span><span style="color:#e6db74">${</span>host<span style="color:#e6db74">}</span><span style="color:#e6db74">CA.crt&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>type<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> in
+</span></span><span style="display:flex;"><span>    ca<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>      echo <span style="color:#e6db74">&#34;CA 생성&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> -f <span style="color:#e6db74">${</span>f_ca_key<span style="color:#e6db74">}</span> <span style="color:#f92672">]]</span> <span style="color:#f92672">||</span> <span style="color:#f92672">[[</span> -f <span style="color:#e6db74">${</span>f_ca_crt<span style="color:#e6db74">}</span> <span style="color:#f92672">]]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>        printf <span style="color:#e6db74">&#34;[ERROR] already exist: </span><span style="color:#e6db74">${</span>f_ca_key<span style="color:#e6db74">}</span><span style="color:#e6db74"> or </span><span style="color:#e6db74">${</span>f_ca_crt<span style="color:#e6db74">}</span><span style="color:#e6db74">\n&#34;</span>
+</span></span><span style="display:flex;"><span>        exit
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>      openssl genrsa -out <span style="color:#e6db74">${</span>f_ca_key<span style="color:#e6db74">}</span> <span style="color:#ae81ff">4096</span>
+</span></span><span style="display:flex;"><span>      openssl req -x509 -new -key <span style="color:#e6db74">${</span>f_ca_key<span style="color:#e6db74">}</span> -out <span style="color:#e6db74">${</span>f_ca_crt<span style="color:#e6db74">}</span> -subj <span style="color:#e6db74">&#34;/CN=</span><span style="color:#e6db74">${</span>host<span style="color:#e6db74">}</span><span style="color:#e6db74">CA&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>        -nodes -sha256 -days <span style="color:#66d9ef">$((</span><span style="color:#ae81ff">365</span><span style="color:#f92672">*</span><span style="color:#ae81ff">20</span><span style="color:#66d9ef">))</span>
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>      printf <span style="color:#e6db74">&#34;  %-8s: %s\n&#34;</span> <span style="color:#e6db74">&#34;CA&#34;</span> <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>echo <span style="color:#e6db74">${</span>f_ca_key%.*<span style="color:#e6db74">}</span>*<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>      chmod +r <span style="color:#e6db74">${</span>f_ca_key<span style="color:#e6db74">}</span> <span style="color:#e6db74">${</span>f_ca_crt<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>      printf <span style="color:#e6db74">&#34;[INFO] (done) \$ chmod +r </span><span style="color:#e6db74">${</span>f_ca_key<span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">${</span>f_ca_crt<span style="color:#e6db74">}</span><span style="color:#e6db74">\n&#34;</span>
+</span></span><span style="display:flex;"><span>      ;;
+</span></span><span style="display:flex;"><span>    server<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>      local f_serv_key<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>BASEDIR<span style="color:#e6db74">}</span><span style="color:#e6db74">/server/</span><span style="color:#e6db74">${</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74">.</span><span style="color:#e6db74">${</span>host<span style="color:#e6db74">}</span><span style="color:#e6db74">.key&#34;</span>
+</span></span><span style="display:flex;"><span>      local f_serv_csr<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>BASEDIR<span style="color:#e6db74">}</span><span style="color:#e6db74">/server/</span><span style="color:#e6db74">${</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74">.</span><span style="color:#e6db74">${</span>host<span style="color:#e6db74">}</span><span style="color:#e6db74">.csr&#34;</span>
+</span></span><span style="display:flex;"><span>      local f_serv_crt<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>BASEDIR<span style="color:#e6db74">}</span><span style="color:#e6db74">/server/</span><span style="color:#e6db74">${</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74">.</span><span style="color:#e6db74">${</span>host<span style="color:#e6db74">}</span><span style="color:#e6db74">.crt&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      echo <span style="color:#e6db74">&#34;서버 인증서 생성&#34;</span>
+</span></span><span style="display:flex;"><span>      openssl genrsa -out <span style="color:#e6db74">${</span>f_serv_key<span style="color:#e6db74">}</span> <span style="color:#ae81ff">4096</span>
+</span></span><span style="display:flex;"><span>      openssl req -new -key <span style="color:#e6db74">${</span>f_serv_key<span style="color:#e6db74">}</span> -out <span style="color:#e6db74">${</span>f_serv_csr<span style="color:#e6db74">}</span> -subj <span style="color:#e6db74">&#34;/CN=</span><span style="color:#e6db74">${</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74">.</span><span style="color:#e6db74">${</span>host<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>      openssl x509 -req -in <span style="color:#e6db74">${</span>f_serv_csr<span style="color:#e6db74">}</span> -out <span style="color:#e6db74">${</span>f_serv_crt<span style="color:#e6db74">}</span> -days <span style="color:#66d9ef">$((</span><span style="color:#ae81ff">365</span><span style="color:#f92672">*</span><span style="color:#ae81ff">20</span><span style="color:#66d9ef">))</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>        -CAkey <span style="color:#e6db74">${</span>f_ca_key<span style="color:#e6db74">}</span> -CA <span style="color:#e6db74">${</span>f_ca_crt<span style="color:#e6db74">}</span> -CAcreateserial <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>        -extensions v3_req -extfile &lt;<span style="color:#f92672">(</span>printf <span style="color:#e6db74">&#34;[v3_req]\nsubjectAltName=DNS:</span><span style="color:#e6db74">${</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74">.</span><span style="color:#e6db74">${</span>host<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      printf <span style="color:#e6db74">&#34;  %-8s: %s\n&#34;</span> <span style="color:#e6db74">&#34;server&#34;</span> <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>echo <span style="color:#e6db74">${</span>f_serv_csr%.*<span style="color:#e6db74">}</span>.crt <span style="color:#e6db74">${</span>f_serv_csr%.*<span style="color:#e6db74">}</span>.key<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>      chmod +r <span style="color:#66d9ef">$(</span>echo <span style="color:#e6db74">${</span>f_serv_csr%.*<span style="color:#e6db74">}</span>.crt <span style="color:#e6db74">${</span>f_serv_csr%.*<span style="color:#e6db74">}</span>.key<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>      printf <span style="color:#e6db74">&#34;[INFO] (done) \$ chmod +r </span><span style="color:#66d9ef">$(</span>echo <span style="color:#e6db74">${</span>f_serv_csr%.*<span style="color:#e6db74">}</span>.crt <span style="color:#e6db74">${</span>f_serv_csr%.*<span style="color:#e6db74">}</span>.key<span style="color:#66d9ef">)</span><span style="color:#e6db74">\n&#34;</span>
+</span></span><span style="display:flex;"><span>      ;;
+</span></span><span style="display:flex;"><span>    client<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>      local f_clnt_key<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>BASEDIR<span style="color:#e6db74">}</span><span style="color:#e6db74">/client/client-</span><span style="color:#e6db74">${</span>host<span style="color:#e6db74">}</span><span style="color:#e6db74">.key&#34;</span>
+</span></span><span style="display:flex;"><span>      local f_clnt_csr<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>BASEDIR<span style="color:#e6db74">}</span><span style="color:#e6db74">/client/client-</span><span style="color:#e6db74">${</span>host<span style="color:#e6db74">}</span><span style="color:#e6db74">.csr&#34;</span>
+</span></span><span style="display:flex;"><span>      local f_clnt_crt<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>BASEDIR<span style="color:#e6db74">}</span><span style="color:#e6db74">/client/client-</span><span style="color:#e6db74">${</span>host<span style="color:#e6db74">}</span><span style="color:#e6db74">.crt&#34;</span>
+</span></span><span style="display:flex;"><span>      local f_clnt_p12<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>BASEDIR<span style="color:#e6db74">}</span><span style="color:#e6db74">/client/client-</span><span style="color:#e6db74">${</span>host<span style="color:#e6db74">}</span><span style="color:#e6db74">.p12&#34;</span>
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>      echo <span style="color:#e6db74">&#34;클라이언트 인증서 생성&#34;</span>
+</span></span><span style="display:flex;"><span>      openssl genrsa -out <span style="color:#e6db74">${</span>f_clnt_key<span style="color:#e6db74">}</span> <span style="color:#ae81ff">4096</span>
+</span></span><span style="display:flex;"><span>      openssl req -new -key <span style="color:#e6db74">${</span>f_clnt_key<span style="color:#e6db74">}</span> -out <span style="color:#e6db74">${</span>f_clnt_csr<span style="color:#e6db74">}</span> -subj <span style="color:#e6db74">&#34;/CN=client-</span><span style="color:#e6db74">${</span>host<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>      openssl x509 -req -in <span style="color:#e6db74">${</span>f_clnt_csr<span style="color:#e6db74">}</span> -out <span style="color:#e6db74">${</span>f_clnt_crt<span style="color:#e6db74">}</span> -days <span style="color:#66d9ef">$((</span><span style="color:#ae81ff">365</span><span style="color:#f92672">*</span><span style="color:#ae81ff">20</span><span style="color:#66d9ef">))</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>        -CAkey <span style="color:#e6db74">${</span>f_ca_key<span style="color:#e6db74">}</span> -CA <span style="color:#e6db74">${</span>f_ca_crt<span style="color:#e6db74">}</span> -CAcreateserial
+</span></span><span style="display:flex;"><span>      openssl pkcs12 -export -in <span style="color:#e6db74">${</span>f_clnt_crt<span style="color:#e6db74">}</span> -out <span style="color:#e6db74">${</span>f_clnt_p12<span style="color:#e6db74">}</span> -inkey <span style="color:#e6db74">${</span>f_clnt_key<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>            -certfile <span style="color:#e6db74">${</span>f_ca_crt<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      printf <span style="color:#e6db74">&#34;  %-8s: %s\n&#34;</span> <span style="color:#e6db74">&#34;client&#34;</span> <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>echo <span style="color:#e6db74">${</span>f_clnt_key%.*<span style="color:#e6db74">}</span>.p12<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>      ;;
+</span></span><span style="display:flex;"><span>    *<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>      USAGE
+</span></span><span style="display:flex;"><span>      ;;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">esac</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># main</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">((</span> <span style="color:#e6db74">${#</span>argv[@]<span style="color:#e6db74">}</span> &lt; <span style="color:#ae81ff">1</span> <span style="color:#f92672">))</span> <span style="color:#f92672">&amp;&amp;</span> USAGE
+</span></span><span style="display:flex;"><span>command<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>argv[0]<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>command<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> in
+</span></span><span style="display:flex;"><span>  create<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">((</span> <span style="color:#e6db74">${#</span>argv[@]<span style="color:#e6db74">}</span> &lt; <span style="color:#ae81ff">2</span> <span style="color:#f92672">))</span> <span style="color:#f92672">&amp;&amp;</span> USAGE
+</span></span><span style="display:flex;"><span>    type<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>argv[1]<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>type<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> in
+</span></span><span style="display:flex;"><span>      server<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">((</span> <span style="color:#e6db74">${#</span>argv[@]<span style="color:#e6db74">}</span> !<span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">))</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>          echo <span style="color:#e6db74">&#34;[ERROR] invalid name: \$ </span><span style="color:#e6db74">${</span>SCRIPT_NM<span style="color:#e6db74">}</span><span style="color:#e6db74"> create </span><span style="color:#e6db74">${</span>type<span style="color:#e6db74">}</span><span style="color:#e6db74"> [</span><span style="color:#e6db74">${</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74">]&#34;</span>
+</span></span><span style="display:flex;"><span>          exit <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>          name<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>argv[2]<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>        ;;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">esac</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;[INFO] create </span><span style="color:#e6db74">${</span>type<span style="color:#e6db74">}</span><span style="color:#e6db74"> certificate&#34;</span>
+</span></span><span style="display:flex;"><span>    create <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>type<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>    ;;
+</span></span><span style="display:flex;"><span>  *<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    USAGE
+</span></span><span style="display:flex;"><span>    ;;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">esac</span>
+</span></span></code></pre></div></details>
+
+<h5 id="b-개인-도메인-인증서-적용">b. 개인 도메인 인증서 적용</h5>
+<ul>
+<li>개인 도메인 준비 (가비아 → dlog.my 구매)</li>
+<li>가비아: <code>dlog.my</code> 도메인 → 도메인 관리 → <code>code.dlog.my 공유기IP</code> 추가</li>
+<li>공유기: Port Forwarding 설정 → <code>외부IP:443 → 내부IP:443</code></li>
+<li>vm 호스트: Port Forwarding 설정 → <code>vm호스트:443 → vm게스트:443</code></li>
+<li>vm 게스트: caddy 가상호스트 설정 → (caddy 재시작) → 자동으로 letsencrypt 인증서 발급 시도 → 조건 충족 시 인증서 발급 완료</li>
+</ul>
+<details>
+<summary>vm 호스트: Port Forwarding 설정</summary>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>&gt; netsh interface portproxy add v4tov4 listenport=<span style="color:#ae81ff">443</span> listenaddress=<span style="color:#ae81ff">0.0</span>.0.0 connectaddress=<span style="color:#ae81ff">172.28</span>.200.240 connectport=<span style="color:#ae81ff">443</span>
+</span></span></code></pre></div></details>
+<details>
+<summary>caddy: letencrypt 인증서 발급 설정</summary>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nginx" data-lang="nginx"><span style="display:flex;"><span><span style="color:#75715e"># /etc/caddy/Caddyfile
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">email</span> <span style="color:#e6db74">myeonggu.kim@kakao.com</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>code.dlog.my:<span style="color:#ae81ff">443</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">tls</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">client_auth</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">mode</span> <span style="color:#e6db74">require_and_verify</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">trust_pool</span> <span style="color:#e6db74">file</span> <span style="color:#e6db74">/app/certs/ca/el10CA.crt</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">reverse_proxy</span> localhost:<span style="color:#ae81ff">8080</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">}</span>
+</span></span></code></pre></div></details>
+
+
+<details>
+<summary>caddy: letencrypt 인증서 발급 로그 → (정상)</summary>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Jan</span> <span style="color:#ae81ff">05</span> <span style="color:#ae81ff">22</span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#ae81ff">28</span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#ae81ff">26</span> <span style="color:#960050;background-color:#1e0010">develop</span> <span style="color:#960050;background-color:#1e0010">caddy</span>[<span style="color:#ae81ff">3129</span>]<span style="color:#960050;background-color:#1e0010">:</span> {<span style="color:#f92672">&#34;level&#34;</span>:<span style="color:#e6db74">&#34;info&#34;</span>,<span style="color:#f92672">&#34;ts&#34;</span>:<span style="color:#ae81ff">1767619706.854623</span>,<span style="color:#f92672">&#34;msg&#34;</span>:<span style="color:#e6db74">&#34;trying to solve challenge&#34;</span>,<span style="color:#f92672">&#34;identifier&#34;</span>:<span style="color:#e6db74">&#34;code.dlog.my&#34;</span>,<span style="color:#f92672">&#34;challenge_type&#34;</span>:<span style="color:#e6db74">&#34;tls-alpn-01&#34;</span>,<span style="color:#f92672">&#34;ca&#34;</span>:<span style="color:#e6db74">&#34;https://acme-v02.api.letsencrypt.org/directory&#34;</span>}
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Jan</span> <span style="color:#ae81ff">05</span> <span style="color:#ae81ff">22</span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#ae81ff">28</span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#ae81ff">27</span> <span style="color:#960050;background-color:#1e0010">develop</span> <span style="color:#960050;background-color:#1e0010">caddy</span>[<span style="color:#ae81ff">3129</span>]<span style="color:#960050;background-color:#1e0010">:</span> {<span style="color:#f92672">&#34;level&#34;</span>:<span style="color:#e6db74">&#34;info&#34;</span>,<span style="color:#f92672">&#34;ts&#34;</span>:<span style="color:#ae81ff">1767619707.7143872</span>,<span style="color:#f92672">&#34;logger&#34;</span>:<span style="color:#e6db74">&#34;tls&#34;</span>,<span style="color:#f92672">&#34;msg&#34;</span>:<span style="color:#e6db74">&#34;served key authentication certificate&#34;</span>,<span style="color:#f92672">&#34;server_name&#34;</span>:<span style="color:#e6db74">&#34;code.dlog.my&#34;</span>,<span style="color:#f92672">&#34;challenge&#34;</span>:<span style="color:#e6db74">&#34;tls-alpn-01&#34;</span>,<span style="color:#f92672">&#34;remote&#34;</span>:<span style="color:#e6db74">&#34;172.28.200.1:52859&#34;</span>,<span style="color:#f92672">&#34;distributed&#34;</span>:<span style="color:#66d9ef">false</span>}
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Jan</span> <span style="color:#ae81ff">05</span> <span style="color:#ae81ff">22</span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#ae81ff">28</span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#ae81ff">28</span> <span style="color:#960050;background-color:#1e0010">develop</span> <span style="color:#960050;background-color:#1e0010">caddy</span>[<span style="color:#ae81ff">3129</span>]<span style="color:#960050;background-color:#1e0010">:</span> {<span style="color:#f92672">&#34;level&#34;</span>:<span style="color:#e6db74">&#34;info&#34;</span>,<span style="color:#f92672">&#34;ts&#34;</span>:<span style="color:#ae81ff">1767619708.2426596</span>,<span style="color:#f92672">&#34;logger&#34;</span>:<span style="color:#e6db74">&#34;tls&#34;</span>,<span style="color:#f92672">&#34;msg&#34;</span>:<span style="color:#e6db74">&#34;served key authentication certificate&#34;</span>,<span style="color:#f92672">&#34;server_name&#34;</span>:<span style="color:#e6db74">&#34;code.dlog.my&#34;</span>,<span style="color:#f92672">&#34;challenge&#34;</span>:<span style="color:#e6db74">&#34;tls-alpn-01&#34;</span>,<span style="color:#f92672">&#34;remote&#34;</span>:<span style="color:#e6db74">&#34;172.28.200.1:55256&#34;</span>,<span style="color:#f92672">&#34;distributed&#34;</span>:<span style="color:#66d9ef">false</span>}
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Jan</span> <span style="color:#ae81ff">05</span> <span style="color:#ae81ff">22</span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#ae81ff">28</span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#ae81ff">28</span> <span style="color:#960050;background-color:#1e0010">develop</span> <span style="color:#960050;background-color:#1e0010">caddy</span>[<span style="color:#ae81ff">3129</span>]<span style="color:#960050;background-color:#1e0010">:</span> {<span style="color:#f92672">&#34;level&#34;</span>:<span style="color:#e6db74">&#34;info&#34;</span>,<span style="color:#f92672">&#34;ts&#34;</span>:<span style="color:#ae81ff">1767619708.4677136</span>,<span style="color:#f92672">&#34;logger&#34;</span>:<span style="color:#e6db74">&#34;tls&#34;</span>,<span style="color:#f92672">&#34;msg&#34;</span>:<span style="color:#e6db74">&#34;served key authentication certificate&#34;</span>,<span style="color:#f92672">&#34;server_name&#34;</span>:<span style="color:#e6db74">&#34;code.dlog.my&#34;</span>,<span style="color:#f92672">&#34;challenge&#34;</span>:<span style="color:#e6db74">&#34;tls-alpn-01&#34;</span>,<span style="color:#f92672">&#34;remote&#34;</span>:<span style="color:#e6db74">&#34;172.28.200.1:55257&#34;</span>,<span style="color:#f92672">&#34;distributed&#34;</span>:<span style="color:#66d9ef">false</span>}
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Jan</span> <span style="color:#ae81ff">05</span> <span style="color:#ae81ff">22</span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#ae81ff">28</span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#ae81ff">28</span> <span style="color:#960050;background-color:#1e0010">develop</span> <span style="color:#960050;background-color:#1e0010">caddy</span>[<span style="color:#ae81ff">3129</span>]<span style="color:#960050;background-color:#1e0010">:</span> {<span style="color:#f92672">&#34;level&#34;</span>:<span style="color:#e6db74">&#34;info&#34;</span>,<span style="color:#f92672">&#34;ts&#34;</span>:<span style="color:#ae81ff">1767619708.6282117</span>,<span style="color:#f92672">&#34;logger&#34;</span>:<span style="color:#e6db74">&#34;tls&#34;</span>,<span style="color:#f92672">&#34;msg&#34;</span>:<span style="color:#e6db74">&#34;served key authentication certificate&#34;</span>,<span style="color:#f92672">&#34;server_name&#34;</span>:<span style="color:#e6db74">&#34;code.dlog.my&#34;</span>,<span style="color:#f92672">&#34;challenge&#34;</span>:<span style="color:#e6db74">&#34;tls-alpn-01&#34;</span>,<span style="color:#f92672">&#34;remote&#34;</span>:<span style="color:#e6db74">&#34;172.28.200.1:55258&#34;</span>,<span style="color:#f92672">&#34;distributed&#34;</span>:<span style="color:#66d9ef">false</span>}
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Jan</span> <span style="color:#ae81ff">05</span> <span style="color:#ae81ff">22</span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#ae81ff">28</span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#ae81ff">28</span> <span style="color:#960050;background-color:#1e0010">develop</span> <span style="color:#960050;background-color:#1e0010">caddy</span>[<span style="color:#ae81ff">3129</span>]<span style="color:#960050;background-color:#1e0010">:</span> {<span style="color:#f92672">&#34;level&#34;</span>:<span style="color:#e6db74">&#34;info&#34;</span>,<span style="color:#f92672">&#34;ts&#34;</span>:<span style="color:#ae81ff">1767619708.9261951</span>,<span style="color:#f92672">&#34;logger&#34;</span>:<span style="color:#e6db74">&#34;tls&#34;</span>,<span style="color:#f92672">&#34;msg&#34;</span>:<span style="color:#e6db74">&#34;served key authentication certificate&#34;</span>,<span style="color:#f92672">&#34;server_name&#34;</span>:<span style="color:#e6db74">&#34;code.dlog.my&#34;</span>,<span style="color:#f92672">&#34;challenge&#34;</span>:<span style="color:#e6db74">&#34;tls-alpn-01&#34;</span>,<span style="color:#f92672">&#34;remote&#34;</span>:<span style="color:#e6db74">&#34;172.28.200.1:55259&#34;</span>,<span style="color:#f92672">&#34;distributed&#34;</span>:<span style="color:#66d9ef">false</span>}
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Jan</span> <span style="color:#ae81ff">05</span> <span style="color:#ae81ff">22</span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#ae81ff">28</span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#ae81ff">30</span> <span style="color:#960050;background-color:#1e0010">develop</span> <span style="color:#960050;background-color:#1e0010">caddy</span>[<span style="color:#ae81ff">3129</span>]<span style="color:#960050;background-color:#1e0010">:</span> {<span style="color:#f92672">&#34;level&#34;</span>:<span style="color:#e6db74">&#34;info&#34;</span>,<span style="color:#f92672">&#34;ts&#34;</span>:<span style="color:#ae81ff">1767619710.9926841</span>,<span style="color:#f92672">&#34;msg&#34;</span>:<span style="color:#e6db74">&#34;authorization finalized&#34;</span>,<span style="color:#f92672">&#34;identifier&#34;</span>:<span style="color:#e6db74">&#34;code.dlog.my&#34;</span>,<span style="color:#f92672">&#34;authz_status&#34;</span>:<span style="color:#e6db74">&#34;valid&#34;</span>}
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Jan</span> <span style="color:#ae81ff">05</span> <span style="color:#ae81ff">22</span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#ae81ff">28</span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#ae81ff">30</span> <span style="color:#960050;background-color:#1e0010">develop</span> <span style="color:#960050;background-color:#1e0010">caddy</span>[<span style="color:#ae81ff">3129</span>]<span style="color:#960050;background-color:#1e0010">:</span> {<span style="color:#f92672">&#34;level&#34;</span>:<span style="color:#e6db74">&#34;info&#34;</span>,<span style="color:#f92672">&#34;ts&#34;</span>:<span style="color:#ae81ff">1767619710.9927933</span>,<span style="color:#f92672">&#34;msg&#34;</span>:<span style="color:#e6db74">&#34;validations succeeded; finalizing order&#34;</span>,<span style="color:#f92672">&#34;order&#34;</span>:<span style="color:#e6db74">&#34;https://acme-v02.api.letsencrypt.org/acme/order/2936352046/466285600676&#34;</span>}
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Jan</span> <span style="color:#ae81ff">05</span> <span style="color:#ae81ff">22</span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#ae81ff">28</span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#ae81ff">33</span> <span style="color:#960050;background-color:#1e0010">develop</span> <span style="color:#960050;background-color:#1e0010">caddy</span>[<span style="color:#ae81ff">3129</span>]<span style="color:#960050;background-color:#1e0010">:</span> {<span style="color:#f92672">&#34;level&#34;</span>:<span style="color:#e6db74">&#34;info&#34;</span>,<span style="color:#f92672">&#34;ts&#34;</span>:<span style="color:#ae81ff">1767619713.7199697</span>,<span style="color:#f92672">&#34;msg&#34;</span>:<span style="color:#e6db74">&#34;got renewal info&#34;</span>,<span style="color:#f92672">&#34;names&#34;</span>:[<span style="color:#e6db74">&#34;code.dlog.my&#34;</span>],<span style="color:#f92672">&#34;window_start&#34;</span>:<span style="color:#ae81ff">1772723645</span>,<span style="color:#f92672">&#34;window_end&#34;</span>:<span style="color:#ae81ff">1772879095</span>,<span style="color:#f92672">&#34;selected_time&#34;</span>:<span style="color:#ae81ff">1772852430</span>,<span style="color:#f92672">&#34;recheck_after&#34;</span>:<span style="color:#ae81ff">1767641313.7199423</span>,<span style="color:#f92672">&#34;explanation_url&#34;</span>:<span style="color:#e6db74">&#34;&#34;</span>}
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Jan</span> <span style="color:#ae81ff">05</span> <span style="color:#ae81ff">22</span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#ae81ff">28</span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#ae81ff">34</span> <span style="color:#960050;background-color:#1e0010">develop</span> <span style="color:#960050;background-color:#1e0010">caddy</span>[<span style="color:#ae81ff">3129</span>]<span style="color:#960050;background-color:#1e0010">:</span> {<span style="color:#f92672">&#34;level&#34;</span>:<span style="color:#e6db74">&#34;info&#34;</span>,<span style="color:#f92672">&#34;ts&#34;</span>:<span style="color:#ae81ff">1767619714.4713502</span>,<span style="color:#f92672">&#34;msg&#34;</span>:<span style="color:#e6db74">&#34;got renewal info&#34;</span>,<span style="color:#f92672">&#34;names&#34;</span>:[<span style="color:#e6db74">&#34;code.dlog.my&#34;</span>],<span style="color:#f92672">&#34;window_start&#34;</span>:<span style="color:#ae81ff">1772723645</span>,<span style="color:#f92672">&#34;window_end&#34;</span>:<span style="color:#ae81ff">1772879095</span>,<span style="color:#f92672">&#34;selected_time&#34;</span>:<span style="color:#ae81ff">1772868553</span>,<span style="color:#f92672">&#34;recheck_after&#34;</span>:<span style="color:#ae81ff">1767641314.471326</span>,<span style="color:#f92672">&#34;explanation_url&#34;</span>:<span style="color:#e6db74">&#34;&#34;</span>}
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Jan</span> <span style="color:#ae81ff">05</span> <span style="color:#ae81ff">22</span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#ae81ff">28</span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#ae81ff">34</span> <span style="color:#960050;background-color:#1e0010">develop</span> <span style="color:#960050;background-color:#1e0010">caddy</span>[<span style="color:#ae81ff">3129</span>]<span style="color:#960050;background-color:#1e0010">:</span> {<span style="color:#f92672">&#34;level&#34;</span>:<span style="color:#e6db74">&#34;info&#34;</span>,<span style="color:#f92672">&#34;ts&#34;</span>:<span style="color:#ae81ff">1767619714.4715023</span>,<span style="color:#f92672">&#34;msg&#34;</span>:<span style="color:#e6db74">&#34;successfully downloaded available certificate chains&#34;</span>,<span style="color:#f92672">&#34;count&#34;</span>:<span style="color:#ae81ff">2</span>,<span style="color:#f92672">&#34;first_url&#34;</span>:<span style="color:#e6db74">&#34;https://acme-v02.api.letsencrypt.org/acme/cert/0653a703e8b57bddc41864c8859d2a55bb94&#34;</span>}
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Jan</span> <span style="color:#ae81ff">05</span> <span style="color:#ae81ff">22</span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#ae81ff">28</span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#ae81ff">34</span> <span style="color:#960050;background-color:#1e0010">develop</span> <span style="color:#960050;background-color:#1e0010">caddy</span>[<span style="color:#ae81ff">3129</span>]<span style="color:#960050;background-color:#1e0010">:</span> {<span style="color:#f92672">&#34;level&#34;</span>:<span style="color:#e6db74">&#34;info&#34;</span>,<span style="color:#f92672">&#34;ts&#34;</span>:<span style="color:#ae81ff">1767619714.477102</span>,<span style="color:#f92672">&#34;logger&#34;</span>:<span style="color:#e6db74">&#34;tls.obtain&#34;</span>,<span style="color:#f92672">&#34;msg&#34;</span>:<span style="color:#e6db74">&#34;certificate obtained successfully&#34;</span>,<span style="color:#f92672">&#34;identifier&#34;</span>:<span style="color:#e6db74">&#34;code.dlog.my&#34;</span>,<span style="color:#f92672">&#34;issuer&#34;</span>:<span style="color:#e6db74">&#34;acme-v02.api.letsencrypt.org-directory&#34;</span>}
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">Jan</span> <span style="color:#ae81ff">05</span> <span style="color:#ae81ff">22</span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#ae81ff">28</span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#ae81ff">34</span> <span style="color:#960050;background-color:#1e0010">develop</span> <span style="color:#960050;background-color:#1e0010">caddy</span>[<span style="color:#ae81ff">3129</span>]<span style="color:#960050;background-color:#1e0010">:</span> {<span style="color:#f92672">&#34;level&#34;</span>:<span style="color:#e6db74">&#34;info&#34;</span>,<span style="color:#f92672">&#34;ts&#34;</span>:<span style="color:#ae81ff">1767619714.4772775</span>,<span style="color:#f92672">&#34;logger&#34;</span>:<span style="color:#e6db74">&#34;tls.obtain&#34;</span>,<span style="color:#f92672">&#34;msg&#34;</span>:<span style="color:#e6db74">&#34;releasing lock&#34;</span>,<span style="color:#f92672">&#34;identifier&#34;</span>:<span style="color:#e6db74">&#34;code.dlog.my&#34;</span>}
+</span></span></code></pre></div></details>
+
+
+
+        </div>
+      </article>
+    </div>
+  </div>
+</main>
+
+  
+</body>
+</html>
