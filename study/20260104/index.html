@@ -25,6 +25,8 @@
         
           <a href="/study/20260104/">2026.01.04</a>
         
+          <a href="/study/20260111/">2026.01.11</a>
+        
         </div>
       </div>
       
@@ -125,6 +127,7 @@ document.getElementById('toggleTocButton').addEventListener('click', function() 
 </li>
 </ol>
 </details>
+<p>~</p>
 <h3 id="12-virtual-machine-생성">1.2 Virtual Machine 생성</h3>
 <details>
 <summary>Virtual Machine 생성</summary>
@@ -415,9 +418,9 @@ document.getElementById('toggleTocButton').addEventListener('click', function() 
 <h4 id="3-caddy-서비스-systemd-기반-관리">3) caddy 서비스: systemd 기반 관리</h4>
 <details>
 <summary>(shell) caddy 실행</summary>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh-session" data-lang="sh-session"><span style="display:flex;"><span>$ systemctl enable code-server@root
-</span></span><span style="display:flex;"><span>$ systemctl start code-server@root
-</span></span><span style="display:flex;"><span>$ systemctl status code-server@root
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh-session" data-lang="sh-session"><span style="display:flex;"><span>$ systemctl enable caddy
+</span></span><span style="display:flex;"><span>$ systemctl start caddy
+</span></span><span style="display:flex;"><span>$ systemctl status caddy
 </span></span></code></pre></div></details>
 <hr>
 <ul>

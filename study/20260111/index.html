@@ -55,11 +55,48 @@ document.getElementById('toggleTocButton').addEventListener('click', function() 
   
 <main class="container">
   <aside class="aside">
-<span></span>
+<span>2026.01.11 에이바우트</span>
 
 
 
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#2-developel10-구성-계속">2. develop.el10 구성 (계속)</a>
+          <ul>
+            <li><a href="#22-caddy-구성-계속">2.2 caddy 구성 (계속)</a>
+              <ul>
+                <li><a href="#4-self-signed-인증서-적용-생성-포함">4) self-signed 인증서 적용 (생성 포함)</a></li>
+              </ul>
+            </li>
+            <li><a href="#23-nexus-구성">2.3 nexus 구성</a>
+              <ul>
+                <li><a href="#1-nexus-설치">1) nexus 설치</a></li>
+                <li><a href="#2-nexus-설정">2) nexus 설정</a></li>
+                <li><a href="#3-nexus-서비스">3) nexus 서비스</a></li>
+              </ul>
+            </li>
+            <li><a href="#24-postgres-구성">2.4 postgres 구성</a>
+              <ul>
+                <li><a href="#1-postgres-설치">1) postgres 설치</a></li>
+                <li><a href="#2-postgres-설정">2) postgres 설정</a></li>
+                <li><a href="#3-postgres-서비스">3) postgres 서비스</a></li>
+              </ul>
+            </li>
+            <li><a href="#25-redis-구성">2.5 redis 구성</a>
+              <ul>
+                <li><a href="#1-redis-설치">1) redis 설치</a></li>
+                <li><a href="#2-redis-설정">2) redis 설정</a></li>
+                <li><a href="#3-redis-서비스">3) redis 서비스</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
 
@@ -68,9 +105,14 @@ document.getElementById('toggleTocButton').addEventListener('click', function() 
   <div class="main-content">
     <div class="content">
       <article>
-        <h1></h1>
+        <h1>2026.01.11 에이바우트</h1>
         <div>
-          <details>
+          <h2 id="2-developel10-구성-계속">2. develop.el10 구성 (계속)</h2>
+<h3 id="22-caddy-구성-계속">2.2 caddy 구성 (계속)</h3>
+<h4 id="4-self-signed-인증서-적용-생성-포함">4) self-signed 인증서 적용 (생성 포함)</h4>
+
+
+<details>
 <summary>(script) certmgr.sh</summary>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/env bash
 </span></span></span><span style="display:flex;"><span>BASEDIR<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>cd <span style="color:#66d9ef">$(</span>dirname $0<span style="color:#66d9ef">)</span> <span style="color:#f92672">&amp;&amp;</span> pwd -P<span style="color:#66d9ef">)</span>
@@ -205,6 +247,70 @@ document.getElementById('toggleTocButton').addEventListener('click', function() 
 </span></span><span style="display:flex;"><span>    ;;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">esac</span>
 </span></span></code></pre></div></details>
+
+<details>
+<summary>self-signed 인증서 생성</summary>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"></code></pre></div></details>
+<details>
+<summary>self-signed 인증서 → caddy 적용 + 클라이언트 추가</summary>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="code-compare two-col">
+
+  
+  <div class="code-col good">
+    <div class="code-title">caddy 적용</div>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># /etc/caddy/Caddyfile</span></span></code></pre></div>
+  </div>
+  
+  
+  
+
+  
+  <div class="code-col bad">
+    <div class="code-title">클라이언트 추가</div>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># 클라이언트 인증서 추가</span></span></code></pre></div>
+  </div>
+
+</div>
+
+</details>
+<hr>
+<h3 id="23-nexus-구성">2.3 nexus 구성</h3>
+<h4 id="1-nexus-설치">1) nexus 설치</h4>
+<h4 id="2-nexus-설정">2) nexus 설정</h4>
+<h4 id="3-nexus-서비스">3) nexus 서비스</h4>
+<hr>
+<h3 id="24-postgres-구성">2.4 postgres 구성</h3>
+<h4 id="1-postgres-설치">1) postgres 설치</h4>
+<h4 id="2-postgres-설정">2) postgres 설정</h4>
+<h4 id="3-postgres-서비스">3) postgres 서비스</h4>
+<hr>
+<h3 id="25-redis-구성">2.5 redis 구성</h3>
+<h4 id="1-redis-설치">1) redis 설치</h4>
+<h4 id="2-redis-설정">2) redis 설정</h4>
+<h4 id="3-redis-서비스">3) redis 서비스</h4>
+
         </div>
       </article>
     </div>
