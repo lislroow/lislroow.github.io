@@ -350,7 +350,7 @@ document.getElementById('toggleTocButton').addEventListener('click', function() 
 <h5 id="java-변경">java 변경</h5>
 <ul>
 <li><em>nexus 를 실행하기 위한 java 경로가 어디인지 알아보고, 앞서 설치한 java21 로 변경해볼 것</em></li>
-<li><code>/sw/nexus/bin/nexux:56-65 확인 할 것</code></li>
+<li><code>/sw/nexus/bin/nexus:56-65 확인 할 것</code></li>
 </ul>
 <h4 id="3-nexus-서비스">3) nexus 서비스</h4>
 <ul>
@@ -383,6 +383,32 @@ document.getElementById('toggleTocButton').addEventListener('click', function() 
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>$ systemctl enable nexus.service
+</span></span></code></pre></div></details>
+<details>
+<summary>서비스 점검</summary>
+<ul>
+<li><em>netstat 옵션 외워두기 (필수)</em></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ netstat -ntp
+</span></span><span style="display:flex;"><span>$ netstat -ntplu
+</span></span><span style="display:flex;"><span>$ netstat -ntpueao
+</span></span><span style="display:flex;"><span>$ ss -ntp
+</span></span><span style="display:flex;"><span>$ ss -ntplu
+</span></span><span style="display:flex;"><span>$ ss -ntpueao
+</span></span></code></pre></div><ul>
+<li><em>아래 awk 를 이해할 것</em></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ ps -ef | grep nexus
+</span></span><span style="display:flex;"><span>$ ps -ef | grep nexus | grep -v grep
+</span></span><span style="display:flex;"><span>$ ps -ef | grep nexus | grep -v grep | awk <span style="color:#e6db74">&#39;{ print $2 }&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 이 명령을 이해해 볼 것</span>
+</span></span><span style="display:flex;"><span>$ netstat -ntplu | grep <span style="color:#66d9ef">$(</span>ps -ef | grep nexus | grep -v grep | awk <span style="color:#e6db74">&#39;{ print $2 }&#39;</span><span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 이렇게 사용될 수 있음</span>
+</span></span><span style="display:flex;"><span>$ pstree -p <span style="color:#66d9ef">$(</span>ps -ef | grep nexus | grep -v grep | awk <span style="color:#e6db74">&#39;{ print $2 }&#39;</span><span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>$ pstree -sp <span style="color:#66d9ef">$(</span>ps -ef | grep nexus | grep -v grep | awk <span style="color:#e6db74">&#39;{ print $2 }&#39;</span><span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>$ pstree -spa <span style="color:#66d9ef">$(</span>ps -ef | grep nexus | grep -v grep | awk <span style="color:#e6db74">&#39;{ print $2 }&#39;</span><span style="color:#66d9ef">)</span>
 </span></span></code></pre></div></details>
 <hr>
 <h3 id="24-postgres-구성">2.4 postgres 구성</h3>
