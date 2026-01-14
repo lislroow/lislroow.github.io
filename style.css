@@ -40,6 +40,14 @@ h5 {
   font-size: medium;
 }
 
+h6 {
+  color: #1F3A5F;
+  margin-block-start: 0.5em;
+  margin-block-end: 0.5em;
+  padding-inline-start: 4px;
+  font-size: small;
+}
+
 ul {
   margin-block-start: 0em;
   margin-block-end: 0em;
@@ -235,7 +243,7 @@ pre[class*="language-"] code {
 }
 
 #TableOfContents li > a:hover {
-  background-color: rgb(130, 130, 130);
+  background-color: rgb(174, 174, 174);
 }
 
 #TableOfContents > ul > li > a {

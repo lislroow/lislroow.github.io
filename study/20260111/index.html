@@ -73,7 +73,13 @@ document.getElementById('toggleTocButton').addEventListener('click', function() 
             <li><a href="#23-nexus-구성">2.3 nexus 구성</a>
               <ul>
                 <li><a href="#1-nexus-설치">1) nexus 설치</a></li>
-                <li><a href="#2-nexus-설정">2) nexus 설정</a></li>
+                <li><a href="#2-nexus-설정">2) nexus 설정</a>
+                  <ul>
+                    <li><a href="#데이터-디렉토리-변경">데이터 디렉토리 변경</a></li>
+                    <li><a href="#로그-디렉토리-변경">로그 디렉토리 변경</a></li>
+                    <li><a href="#java-변경">java 변경</a></li>
+                  </ul>
+                </li>
                 <li><a href="#3-nexus-서비스">3) nexus 서비스</a></li>
               </ul>
             </li>
@@ -298,8 +304,86 @@ document.getElementById('toggleTocButton').addEventListener('click', function() 
 <hr>
 <h3 id="23-nexus-구성">2.3 nexus 구성</h3>
 <h4 id="1-nexus-설치">1) nexus 설치</h4>
+<details>
+<summary>Nexus OSS 3 설치</summary>
+<p><a href="https://help.sonatype.com/en/download-archives---repository-manager-3.html" target="_blank">(링크) Download Archives - Repository Manager 3</a></p>
+<ul>
+<li><code>/sw</code>, <code>/data</code>, <code>/app</code>, <code>/logs</code> → <em>IT업계에서 표준 디렉토리이며, 각각 디렉토리의 정의를 생각해볼 것</em></li>
+<li><code>sonatype-work</code> 디렉토리는 삭제할 것</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh-session" data-lang="sh-session"><span style="display:flex;"><span>$ curl -LO https://download.sonatype.com/nexus/3/nexus-3.88.0-08-linux-x86_64.tar.gz
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span># 설치 디렉토리
+</span></span><span style="display:flex;"><span>/sw
+</span></span><span style="display:flex;"><span>└ nexus
+</span></span></code></pre></div></details>
+<details>
+<summary>java 8, 11, 17, 21 설치</summary>
+<ul>
+<li>/usr/local/lib 설치 → <em>/opt, /usr/lib, /sw 에 설치하는 것을 고려해볼 것</em></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh-session" data-lang="sh-session"><span style="display:flex;"><span>$ curl -LO https://corretto.aws/downloads/latest/amazon-corretto-8-x64-linux-jdk.tar.gz
+</span></span><span style="display:flex;"><span>$ curl -LO https://corretto.aws/downloads/latest/amazon-corretto-11-x64-linux-jdk.tar.gz
+</span></span><span style="display:flex;"><span>$ curl -LO https://corretto.aws/downloads/latest/amazon-corretto-17-x64-linux-jdk.tar.gz
+</span></span><span style="display:flex;"><span>$ curl -LO https://corretto.aws/downloads/latest/amazon-corretto-21-x64-linux-jdk.tar.gz
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span># 설치 디렉토리
+</span></span><span style="display:flex;"><span>/usr/local/lib
+</span></span><span style="display:flex;"><span>├ java8
+</span></span><span style="display:flex;"><span>├ java11
+</span></span><span style="display:flex;"><span>├ java17
+</span></span><span style="display:flex;"><span>└ java21
+</span></span></code></pre></div></details>
 <h4 id="2-nexus-설정">2) nexus 설정</h4>
+<h5 id="데이터-디렉토리-변경">데이터 디렉토리 변경</h5>
+<ul>
+<li><em>sonatype-work → /data/nexus 변경해 볼 것</em></li>
+<li><em><code>sonatype-work</code> 디렉토리 설정이 어디에 있는지 찾는 방법을 이해해볼 것</em></li>
+<li><code>find /sw/nexus -type f | xargs grep -in 'sonatype'</code> 이 명령어(find, xargs, grep) 에 대해 가급적 완벽히 이해할 것</li>
+</ul>
+<h5 id="로그-디렉토리-변경">로그 디렉토리 변경</h5>
+<ul>
+<li><em>데이터 디렉토리 변경하는 것과 마찬가지로 로그 디렉토리도 /logs/nexus 로 변경해볼 것</em></li>
+</ul>
+<h5 id="java-변경">java 변경</h5>
+<ul>
+<li><em>nexus 를 실행하기 위한 java 경로가 어디인지 알아보고, 앞서 설치한 java21 로 변경해볼 것</em></li>
+<li><code>/sw/nexus/bin/nexux:56-65 확인 할 것</code></li>
+</ul>
 <h4 id="3-nexus-서비스">3) nexus 서비스</h4>
+<ul>
+<li><em>nexus 서비스 등록해볼 것</em></li>
+<li><em>heredoc 에 대해 이해해볼 것</em></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>$ cat <span style="color:#e6db74">&lt;&lt; EOF &gt; a.txt
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">apple
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ cat a.txt
+</span></span><span style="display:flex;"><span>apple
+</span></span></code></pre></div><details>
+<summary>systemd 서비스 등록</summary>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ cat <span style="color:#e6db74">&lt;&lt; EOF &gt; /etc/systemd/system/nexus.service
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[Unit]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Description=Nexus OSS 3
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">After=network.target syslog.target
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[Service]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Type=forking
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">User=root
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Group=root
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">ExecStart=/app/nexus/bin/nexus start
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">ExecStop=/app/nexus/bin/nexus stop
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Restart=no
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[Install]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">WantedBy=multi-user.target
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ systemctl enable nexus.service
+</span></span></code></pre></div></details>
 <hr>
 <h3 id="24-postgres-구성">2.4 postgres 구성</h3>
 <h4 id="1-postgres-설치">1) postgres 설치</h4>
